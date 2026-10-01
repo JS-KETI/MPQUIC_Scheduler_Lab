@@ -39,12 +39,21 @@
 #include "ns3/random-variable-stream.h"
 #include <iostream>
 #include <iomanip>
+#include <fstream>
 #include "ns3/flow-monitor-module.h"
 #include "ns3/gnuplot.h"
 
 using namespace ns3;
 
 NS_LOG_COMPONENT_DEFINE("wns3-mpquic-one-path");
+
+// Opt-in passive diagnosis. These callbacks schedule no events and change no state in QUIC.
+static bool g_diag = false;
+static std::ofstream g_diagRx;
+static std::ofstream g_diagLink;
+static double g_diagFirstRx = -1.0;
+static double g_diagFct95 = -1.0;
+static double g_diagFctDecimal = -1.0;
 
 // Week 1: passive application receive measurement; no simulation behavior changes.
 static uint64_t g_w1Rx = 0;
@@ -55,6 +64,16 @@ static void Week1SinkRx (Ptr<const Packet> packet, const Address &from)
 {
     g_w1Rx += packet->GetSize ();
     const double elapsed = Simulator::Now ().GetSeconds () - 1.0;
+    if (g_diag)
+    {
+        if (g_diagFirstRx < 0) g_diagFirstRx = elapsed;
+        if (g_diagFct95 < 0 && g_w1Rx >= (g_w1Size * 95 + 99) / 100)
+            g_diagFct95 = elapsed;
+        if (g_diagFctDecimal < 0 && g_w1Rx >= 5000000)
+            g_diagFctDecimal = elapsed;
+        g_diagRx << std::fixed << std::setprecision (9)
+                 << elapsed << "," << g_w1Rx << "," << packet->GetSize () << "\n";
+    }
     if (g_w1Fct < 0 && g_w1Rx >= (g_w1Size > 3000 ? g_w1Size - 3000 : g_w1Size))
         g_w1Fct = elapsed;
     if (g_w1FctFull < 0 && g_w1Rx >= g_w1Size)
@@ -77,6 +96,10 @@ void ThroughputMonitor (FlowMonitorHelper *fmhelper, Ptr<FlowMonitor> flowMon, P
 
 void
 ModifyLinkRate(NetDeviceContainer *ptp, DataRate lr, Time delay) {
+    if (g_diag)
+        g_diagLink << std::fixed << std::setprecision (9)
+                   << Simulator::Now ().GetSeconds () - 1.0 << ","
+                   << lr.GetBitRate () << "," << delay.GetSeconds () << "\n";
     StaticCast<PointToPointNetDevice>(ptp->Get(0))->SetDataRate(lr);
     StaticCast<PointToPointChannel>(StaticCast<PointToPointNetDevice>(ptp->Get(0))->GetChannel())->SetAttribute("Delay", TimeValue(delay));
 }
@@ -125,7 +148,16 @@ main (int argc, char *argv[])
     cmd.AddValue ("LossRate", "e.g. 0.0001", lossrate);
     cmd.AddValue ("Select", "e.g. 0.0001", mselect);
     cmd.AddValue ("CcType", "in use congestion control type (0 - QuicNewReno, 1 - OLIA)", ccType);
+    cmd.AddValue ("Diag", "Enable passive receive/link CSVs in the current run directory", g_diag);
     cmd.Parse (argc, argv);
+    if (g_diag)
+    {
+        g_diagRx.open ("diag-rx.csv");
+        g_diagLink.open ("diag-link.csv");
+        NS_ABORT_MSG_IF (!g_diagRx.is_open () || !g_diagLink.is_open (), "Cannot open diagnostic CSVs");
+        g_diagRx << "elapsed_s,rx_app,packet_bytes\n";
+        g_diagLink << "elapsed_s,rate_bps,delay_s\n";
+    }
 
     NS_LOG_INFO("\n\n#################### SIMULATION SET-UP ####################\n\n\n");
     
@@ -316,6 +348,13 @@ main (int argc, char *argv[])
               << schedulerType << "," << seed << "," << maxBytes << ","
               << g_w1Fct << "," << g_w1FctFull << "," << g_w1Rx << std::endl;
 
+    if (g_diag)
+    {
+        std::cout << "DIAG_ONE_PATH," << g_diagFirstRx << ","
+                  << g_diagFct95 << "," << g_diagFctDecimal << std::endl;
+        g_diagRx.close ();
+        g_diagLink.close ();
+    }
     Simulator::Destroy ();
 
     return 0;
