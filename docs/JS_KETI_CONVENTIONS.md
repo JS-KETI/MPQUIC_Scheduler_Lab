@@ -21,7 +21,8 @@
 
 ## 보고·산출물
 
-- [제출용 주간 보고](../artifacts/WEEK1_WEEKLY_REPORT.md): 지난주 작업, 핵심 수치 1~2개, 막힌 점·원인, 다음 주 계획
+- [제출용 주간 보고](../artifacts/WEEK1_WEEKLY_REPORT.md): 주차별 작업 내용 아래 테스트별 제목·본문 시각 자료·결과, 핵심 수치, 대상이 명확한 문제·조치·결과, 다음 주 계획
+- [그림 내장 열람용 문서](../artifacts/WEEK1_WEEKLY_REPORT.html): 이미지 파일을 따로 열지 않아도 본문에서 볼 수 있는 HTML 사본
 - [코드·산출물 인덱스](../artifacts/README.md): CSV·그림·로그·패치·상세 보고로 연결
 - 새 파일·수정 파일의 역할·변경 내용·검증 결과는 프로젝트 Notion 기록에 같은 작업에서 반영
 - `artifacts/manifest.json`의 경로·크기·SHA-256을 갱신하고, 실제 Git 추적·링크 존재를 확인
