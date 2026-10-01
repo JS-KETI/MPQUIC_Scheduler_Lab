@@ -6,7 +6,7 @@
   <rdf:RDF xmlns:dc="http://purl.org/dc/elements/1.1/" xmlns:cc="http://creativecommons.org/ns#" xmlns:rdf="http://www.w3.org/1999/02/22-rdf-syntax-ns#">
    <cc:Work>
     <dc:type rdf:resource="http://purl.org/dc/dcmitype/StillImage"/>
-    <dc:date>2026-10-01</dc:date>
+    <dc:date>2026-10-02</dc:date>
     <dc:format>image/svg+xml</dc:format>
     <dc:creator>
      <cc:Agent>
@@ -104,31 +104,31 @@ L 645.950512 98.496
     <g id="ytick_1">
      <g id="line2d_7"/>
      <g id="text_5">
-      <text style="font: 11px 'Malgun Gothic'; text-anchor: end" x="381.984" y="129.869344" transform="rotate(-0 381.984 129.869344)">최초 검증 · 고정 5Mbps / Peekaboo</text>
+      <text style="font: 11px 'Malgun Gothic'; text-anchor: end" x="381.984" y="129.869344" transform="rotate(-0 381.984 129.869344)">고정 5Mbps · 50ms · Peekaboo</text>
      </g>
     </g>
     <g id="ytick_2">
      <g id="line2d_8"/>
      <g id="text_6">
-      <text style="font: 11px 'Malgun Gothic'; text-anchor: end" x="381.984" y="170.909344" transform="rotate(-0 381.984 170.909344)">RR만 변경 · 고정 5Mbps</text>
+      <text style="font: 11px 'Malgun Gothic'; text-anchor: end" x="381.984" y="170.909344" transform="rotate(-0 381.984 170.909344)">고정 5Mbps · 50ms · RR</text>
      </g>
     </g>
     <g id="ytick_3">
      <g id="line2d_9"/>
      <g id="text_7">
-      <text style="font: 11px 'Malgun Gothic'; text-anchor: end" x="381.984" y="211.427703" transform="rotate(-0 381.984 211.427703)">지연만 변경 · 50~55ms</text>
+      <text style="font: 11px 'Malgun Gothic'; text-anchor: end" x="381.984" y="211.949344" transform="rotate(-0 381.984 211.949344)">고정 5Mbps · 50~55ms · RR</text>
      </g>
     </g>
     <g id="ytick_4">
      <g id="line2d_10"/>
      <g id="text_8">
-      <text style="font: 11px 'Malgun Gothic'; text-anchor: end" x="381.984" y="252.989344" transform="rotate(-0 381.984 252.989344)">속도만 변경 · 5~6Mbps</text>
+      <text style="font: 11px 'Malgun Gothic'; text-anchor: end" x="381.984" y="252.467703" transform="rotate(-0 381.984 252.467703)">5~6Mbps · 50ms · RR</text>
      </g>
     </g>
     <g id="ytick_5">
      <g id="line2d_11"/>
      <g id="text_9">
-      <text style="font: 11px 'Malgun Gothic'; text-anchor: end" x="381.984" y="294.029344" transform="rotate(-0 381.984 294.029344)">원본 조건 재검증 · 5~6Mbps / 50~55ms / RR</text>
+      <text style="font: 11px 'Malgun Gothic'; text-anchor: end" x="381.984" y="294.029344" transform="rotate(-0 381.984 294.029344)">5~6Mbps · 50~55ms · RR (원본 링크 조건)</text>
      </g>
     </g>
    </g>
@@ -140,17 +140,17 @@ L 531.420279 98.496
    <g id="LineCollection_1">
     <path d="M 635.879274 125.172
 L 635.879274 125.172
-" clip-path="url(#pb50c80237a)" style="fill: none; stroke: #b44444; stroke-width: 4"/>
+" clip-path="url(#pb50c80237a)" style="fill: none; stroke: #51768d; stroke-width: 4"/>
    </g>
    <g id="LineCollection_2">
     <path d="M 635.879274 166.212
 L 635.879274 166.212
-" clip-path="url(#pb50c80237a)" style="fill: none; stroke: #b44444; stroke-width: 4"/>
+" clip-path="url(#pb50c80237a)" style="fill: none; stroke: #51768d; stroke-width: 4"/>
    </g>
    <g id="LineCollection_3">
     <path d="M 639.424764 207.252
 L 641.27997 207.252
-" clip-path="url(#pb50c80237a)" style="fill: none; stroke: #b44444; stroke-width: 4"/>
+" clip-path="url(#pb50c80237a)" style="fill: none; stroke: #51768d; stroke-width: 4"/>
    </g>
    <g id="LineCollection_4">
     <path d="M 434.446014 248.292
@@ -169,7 +169,7 @@ L 787.968 316.008
    </g>
    <g id="PathCollection_1">
     <defs>
-     <path id="m9ee6cc7e2d" d="M 0 2.54951
+     <path id="m70fb1c2e47" d="M 0 2.54951
 C 0.676138 2.54951 1.324674 2.280877 1.802776 1.802776
 C 2.280877 1.324674 2.54951 0.676138 2.54951 0
 C 2.54951 -0.676138 2.280877 -1.324674 1.802776 -1.802776
@@ -179,39 +179,39 @@ C -2.280877 -1.324674 -2.54951 -0.676138 -2.54951 0
 C -2.54951 0.676138 -2.280877 1.324674 -1.802776 1.802776
 C -1.324674 2.280877 -0.676138 2.54951 0 2.54951
 z
-" style="stroke: #b44444; stroke-opacity: 0.35"/>
+" style="stroke: #51768d; stroke-opacity: 0.35"/>
     </defs>
     <g clip-path="url(#pb50c80237a)">
-     <use xlink:href="#m9ee6cc7e2d" x="635.879274" y="125.172" style="fill: #b44444; fill-opacity: 0.35; stroke: #b44444; stroke-opacity: 0.35"/>
-     <use xlink:href="#m9ee6cc7e2d" x="635.879274" y="125.172" style="fill: #b44444; fill-opacity: 0.35; stroke: #b44444; stroke-opacity: 0.35"/>
-     <use xlink:href="#m9ee6cc7e2d" x="635.879274" y="125.172" style="fill: #b44444; fill-opacity: 0.35; stroke: #b44444; stroke-opacity: 0.35"/>
+     <use xlink:href="#m70fb1c2e47" x="635.879274" y="125.172" style="fill: #51768d; fill-opacity: 0.35; stroke: #51768d; stroke-opacity: 0.35"/>
+     <use xlink:href="#m70fb1c2e47" x="635.879274" y="125.172" style="fill: #51768d; fill-opacity: 0.35; stroke: #51768d; stroke-opacity: 0.35"/>
+     <use xlink:href="#m70fb1c2e47" x="635.879274" y="125.172" style="fill: #51768d; fill-opacity: 0.35; stroke: #51768d; stroke-opacity: 0.35"/>
     </g>
    </g>
    <g id="text_10">
-    <text style="fill: #b44444; font: 11px 'Malgun Gothic'" transform="translate(687.181395 121.736391)">9.4560초</text>
-    <text style="fill: #b44444; font: 11px 'Malgun Gothic'" transform="translate(687.181395 134.358547)">시간 충족 0/3</text>
+    <text style="fill: #51768d; font: 11px 'Malgun Gothic'" transform="translate(687.181395 121.736391)">9.4560초</text>
+    <text style="fill: #51768d; font: 11px 'Malgun Gothic'" transform="translate(687.181395 134.358547)">전체 수신 3/3</text>
    </g>
    <g id="PathCollection_2">
     <g clip-path="url(#pb50c80237a)">
-     <use xlink:href="#m9ee6cc7e2d" x="635.879274" y="166.212" style="fill: #b44444; fill-opacity: 0.35; stroke: #b44444; stroke-opacity: 0.35"/>
-     <use xlink:href="#m9ee6cc7e2d" x="635.879274" y="166.212" style="fill: #b44444; fill-opacity: 0.35; stroke: #b44444; stroke-opacity: 0.35"/>
-     <use xlink:href="#m9ee6cc7e2d" x="635.879274" y="166.212" style="fill: #b44444; fill-opacity: 0.35; stroke: #b44444; stroke-opacity: 0.35"/>
+     <use xlink:href="#m70fb1c2e47" x="635.879274" y="166.212" style="fill: #51768d; fill-opacity: 0.35; stroke: #51768d; stroke-opacity: 0.35"/>
+     <use xlink:href="#m70fb1c2e47" x="635.879274" y="166.212" style="fill: #51768d; fill-opacity: 0.35; stroke: #51768d; stroke-opacity: 0.35"/>
+     <use xlink:href="#m70fb1c2e47" x="635.879274" y="166.212" style="fill: #51768d; fill-opacity: 0.35; stroke: #51768d; stroke-opacity: 0.35"/>
     </g>
    </g>
    <g id="text_11">
-    <text style="fill: #b44444; font: 11px 'Malgun Gothic'" transform="translate(687.181395 162.776391)">9.4560초</text>
-    <text style="fill: #b44444; font: 11px 'Malgun Gothic'" transform="translate(687.181395 175.398547)">시간 충족 0/3</text>
+    <text style="fill: #51768d; font: 11px 'Malgun Gothic'" transform="translate(687.181395 162.776391)">9.4560초</text>
+    <text style="fill: #51768d; font: 11px 'Malgun Gothic'" transform="translate(687.181395 175.398547)">전체 수신 3/3</text>
    </g>
    <g id="PathCollection_3">
     <g clip-path="url(#pb50c80237a)">
-     <use xlink:href="#m9ee6cc7e2d" x="639.424764" y="207.252" style="fill: #b44444; fill-opacity: 0.35; stroke: #b44444; stroke-opacity: 0.35"/>
-     <use xlink:href="#m9ee6cc7e2d" x="641.27997" y="207.252" style="fill: #b44444; fill-opacity: 0.35; stroke: #b44444; stroke-opacity: 0.35"/>
-     <use xlink:href="#m9ee6cc7e2d" x="639.437957" y="207.252" style="fill: #b44444; fill-opacity: 0.35; stroke: #b44444; stroke-opacity: 0.35"/>
+     <use xlink:href="#m70fb1c2e47" x="639.424764" y="207.252" style="fill: #51768d; fill-opacity: 0.35; stroke: #51768d; stroke-opacity: 0.35"/>
+     <use xlink:href="#m70fb1c2e47" x="641.27997" y="207.252" style="fill: #51768d; fill-opacity: 0.35; stroke: #51768d; stroke-opacity: 0.35"/>
+     <use xlink:href="#m70fb1c2e47" x="639.437957" y="207.252" style="fill: #51768d; fill-opacity: 0.35; stroke: #51768d; stroke-opacity: 0.35"/>
     </g>
    </g>
    <g id="text_12">
-    <text style="fill: #b44444; font: 11px 'Malgun Gothic'" transform="translate(687.181395 203.816391)">9.4742초</text>
-    <text style="fill: #b44444; font: 11px 'Malgun Gothic'" transform="translate(687.181395 216.438547)">시간 충족 0/3</text>
+    <text style="fill: #51768d; font: 11px 'Malgun Gothic'" transform="translate(687.181395 203.816391)">9.4742초</text>
+    <text style="fill: #51768d; font: 11px 'Malgun Gothic'" transform="translate(687.181395 216.438547)">전체 수신 3/3</text>
    </g>
    <g id="PathCollection_4">
     <defs>
@@ -242,7 +242,7 @@ z
    </g>
    <g id="text_13">
     <text style="fill: #2b719e; font: 11px 'Malgun Gothic'" transform="translate(687.181395 244.856391)">8.6532초</text>
-    <text style="fill: #2b719e; font: 11px 'Malgun Gothic'" transform="translate(687.181395 257.478547)">시간 충족 10/10</text>
+    <text style="fill: #2b719e; font: 11px 'Malgun Gothic'" transform="translate(687.181395 257.478547)">전체 수신 10/10</text>
    </g>
    <g id="PathCollection_5">
     <defs>
@@ -273,11 +273,11 @@ z
    </g>
    <g id="text_14">
     <text style="fill: #24826b; font: 11px 'Malgun Gothic'" transform="translate(687.181395 285.896391)">8.6756초</text>
-    <text style="fill: #24826b; font: 11px 'Malgun Gothic'" transform="translate(687.181395 298.518547)">시간 충족 10/10</text>
+    <text style="fill: #24826b; font: 11px 'Malgun Gothic'" transform="translate(687.181395 298.518547)">전체 수신 10/10</text>
    </g>
    <g id="PathCollection_6">
     <defs>
-     <path id="m25f05916e4" d="M 0 4.609772
+     <path id="mfbe8e201b8" d="M 0 4.609772
 C 1.222526 4.609772 2.395145 4.124058 3.259601 3.259601
 C 4.124058 2.395145 4.609772 1.222526 4.609772 0
 C 4.609772 -1.222526 4.124058 -2.395145 3.259601 -3.259601
@@ -290,17 +290,17 @@ z
 " style="stroke: #ffffff"/>
     </defs>
     <g clip-path="url(#pb50c80237a)">
-     <use xlink:href="#m25f05916e4" x="635.879274" y="125.172" style="fill: #b44444; stroke: #ffffff"/>
+     <use xlink:href="#mfbe8e201b8" x="635.879274" y="125.172" style="fill: #51768d; stroke: #ffffff"/>
     </g>
    </g>
    <g id="PathCollection_7">
     <g clip-path="url(#pb50c80237a)">
-     <use xlink:href="#m25f05916e4" x="635.879274" y="166.212" style="fill: #b44444; stroke: #ffffff"/>
+     <use xlink:href="#mfbe8e201b8" x="635.879274" y="166.212" style="fill: #51768d; stroke: #ffffff"/>
     </g>
    </g>
    <g id="PathCollection_8">
     <g clip-path="url(#pb50c80237a)">
-     <use xlink:href="#m25f05916e4" x="640.047564" y="207.252" style="fill: #b44444; stroke: #ffffff"/>
+     <use xlink:href="#mfbe8e201b8" x="640.047564" y="207.252" style="fill: #51768d; stroke: #ffffff"/>
     </g>
    </g>
    <g id="PathCollection_9">
@@ -341,16 +341,16 @@ z
    </g>
   </g>
   <g id="text_15">
-   <text style="fill: #143b51; font: 700 18px 'Malgun Gothic'; text-anchor: start" x="41.04" y="32.832" transform="rotate(-0 41.04 32.832)">단일 경로 · 최초 미통과부터 원본 조건 재검증까지</text>
+   <text style="fill: #143b51; font: 700 18px 'Malgun Gothic'; text-anchor: start" x="41.04" y="32.832" transform="rotate(-0 41.04 32.832)">단일 경로 · 링크 속도 조건별 전송 시간 비교</text>
   </g>
   <g id="text_16">
-   <text style="fill: #526371; font: 11px 'Malgun Gothic'; text-anchor: start" x="41.04" y="73.872" transform="rotate(-0 41.04 73.872)">음영: 요청 시간 8.5~9.0초  |  점: 평균 · 개별 seed  |  선: 최솟값~최댓값</text>
+   <text style="fill: #526371; font: 11px 'Malgun Gothic'; text-anchor: start" x="41.04" y="73.872" transform="rotate(-0 41.04 73.872)">음영: 요청서 참고 시간 8.5~9.0초  |  점: 평균 · 개별 seed  |  선: 최솟값~최댓값</text>
   </g>
   <g id="text_17">
    <text style="fill: #143b51; font: 11px 'Malgun Gothic'; text-anchor: start" x="41.04" y="373.464" transform="rotate(-0 41.04 373.464)">표시한 모든 실행: 5,242,880B 전체 수신 · 손실률 0 · OLIA</text>
   </g>
   <g id="text_18">
-   <text style="fill: #526371; font: 10px 'Malgun Gothic'; text-anchor: start" x="41.04" y="400.14" transform="rotate(-0 41.04 400.14)">원본 조건에 맞춘 재검증 결과. 고정 5Mbps 성능 개선으로 해석하지 않음.</text>
+   <text style="fill: #526371; font: 10px 'Malgun Gothic'; text-anchor: start" x="41.04" y="400.14" transform="rotate(-0 41.04 400.14)">고정 5Mbps와 원본 링크 조건 5~6Mbps를 각각 지정해 측정</text>
   </g>
  </g>
  <defs>

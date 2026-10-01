@@ -16,7 +16,7 @@ ns-3 MP-QUIC 스케줄러의 환경 구축·결과 재현·원인 분석을 보�
 - 단일 경로 원인 분석·조건별 실험: `artifacts/one-path-analysis-2026-10-01/`
 - 실행별 명령·소스 버전·환경·검증 결과는 각 폴더의 provenance·validation·로그에 보관
 - 최초 `setup.sh` 설치 기록: `artifacts/setup-test-2026-10-01/`
-- 최초 미통과 기록을 보존. 원본 링크 조건의 재검증과 고정 5Mbps 성능을 구분
+- 고정 5Mbps·원본 링크 조건 5~6Mbps의 측정값·실행 기록 보존
 
 ## 버전 근거
 

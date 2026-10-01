@@ -1,6 +1,6 @@
 {
   "date_kst": "2026-10-01",
-  "code_branch": "docs/#4-reports-and-local-tools",
+  "code_branch": "docs/#5-one-path-condition-report",
   "analysis_code_commit": "6b8cd38e160d37b81f53e708f3f79e592ade1db0",
   "preserved_original_file_count": 335,
   "visualization_added": "report-visuals-2026-10-01",
@@ -8,8 +8,8 @@
   "files": [
     {
       "path": "README.md",
-      "bytes": 5234,
-      "sha256": "c6e026a9e6389e67551b532d2d710bc47695876359eab7d91e35ea66b62d544a"
+      "bytes": 5252,
+      "sha256": "3b84378a7750bfb8b6635f3a83ee7a7228787d4a87c3cb2a517a00d954434348"
     },
     {
       "path": "one-path-analysis-2026-10-01/05-one-path-diagnosis.patch",
@@ -1298,8 +1298,8 @@
     },
     {
       "path": "report-visuals-2026-10-01/README.md",
-      "bytes": 1565,
-      "sha256": "8f85918046622123853f4f6e4d72af233de36b6115111a73a9385a7c48788977"
+      "bytes": 1745,
+      "sha256": "4608c9e1bd3102b11d5fcbbabf773c4fb00b38889d0c9d56ff88cb958d47744b"
     },
     {
       "path": "report-visuals-2026-10-01/completion_counts.png",
@@ -1314,22 +1314,22 @@
     {
       "path": "report-visuals-2026-10-01/figure_data.json",
       "bytes": 4937,
-      "sha256": "1626f5e0dd2fd710637f7cd304ff193934e8bfed8291fde0bc7c650f26e127e1"
+      "sha256": "eb97543b469391c3cfbbf5054d14d4e9d5ffc2cda6fe805cfa81fbdc970c9fe7"
     },
     {
       "path": "report-visuals-2026-10-01/generate_figures.py",
-      "bytes": 8137,
-      "sha256": "1f5c39bc7206ee8df9ea629caf18ba3d372175e124f9ce7bfd736e8ed0218878"
+      "bytes": 8274,
+      "sha256": "5b047ad43842701d4f44952755a8dcdae76950937d9f981761a81fbed41264cf"
     },
     {
       "path": "report-visuals-2026-10-01/one_path_comparison.png",
-      "bytes": 167101,
-      "sha256": "d3ff0433458769345a4da5d7dac1f70559db56aec075a15b18a314e1318bffb3"
+      "bytes": 161493,
+      "sha256": "8990a1de7b47c437f4fc0a335f59ce42fb9424ff33e486eaa0b9d4e073fb0406"
     },
     {
       "path": "report-visuals-2026-10-01/one_path_comparison.svg",
-      "bytes": 17694,
-      "sha256": "703e1e726d652f8b20580fdd54fb0c35c3f62a4b597539c3687158738a5cf1e7"
+      "bytes": 17656,
+      "sha256": "3648c672beb504e683a46789dd7de48e61c9fc146f72be49bdc87089c3ab44f0"
     },
     {
       "path": "setup-test-2026-10-01/03-matplotlib-compat.patch",
