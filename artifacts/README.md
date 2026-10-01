@@ -8,7 +8,8 @@
 
 | 항목 | 보기 |
 |---|---|
-| 최신 1주차 보고서 | [WEEK1_REPORT.md](WEEK1_REPORT.md) |
+| 제출용 주간 보고서 | [WEEK1_WEEKLY_REPORT.md](WEEK1_WEEKLY_REPORT.md) |
+| 상세 1주차 보고서 | [WEEK1_REPORT.md](WEEK1_REPORT.md) |
 | 210회 반복 실행 | [run_sweep.py](../sched-lab/run_sweep.py) |
 | 요약·그림 생성 | [analyze.py](../sched-lab/analyze.py) |
 | 2경로 실험 소스 | [mpquic-sched-lab.cc](../scratch/mpquic-sched-lab.cc) |

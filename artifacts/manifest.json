@@ -4,17 +4,22 @@
   "analysis_code_commit": "f2ed7be4e9e87325aaee82ce75351b5f08c0aab8",
   "preserved_original_file_count": 335,
   "visualization_added": "report-visuals-2026-10-01",
-  "file_count": 344,
+  "file_count": 345,
   "files": [
     {
       "path": "README.md",
-      "bytes": 4757,
-      "sha256": "e82b15d6d1a6d0761cb68adc590a27b79ed7cf782eedd7b8f20d5e8ed4749974"
+      "bytes": 4839,
+      "sha256": "c42d9d70092dcc9fdf92f8e14c5ae4eb9875d0e62f2a2dabfa1f02bbd2f8bb3f"
     },
     {
       "path": "WEEK1_REPORT.md",
       "bytes": 4915,
       "sha256": "d38acf99638b3163e38e5fe8924fd76ab9c3a160c4d47b38d080dbb50d051285"
+    },
+    {
+      "path": "WEEK1_WEEKLY_REPORT.md",
+      "bytes": 2711,
+      "sha256": "b625804217cfb7e367cb2ddb98693347eda0bb07a8169e9b6c6f0522c3d3009c"
     },
     {
       "path": "one-path-analysis-2026-10-01/05-one-path-diagnosis.patch",
@@ -1726,5 +1731,8 @@
       "bytes": 327,
       "sha256": "2f10ccad43a41213a8f0d4d0a7c7663e1d51c3119d74993ecc378059590e78b3"
     }
-  ]
+  ],
+  "weekly_report": "WEEK1_WEEKLY_REPORT.md",
+  "publication_repository": "https://github.com/JS-KETI/MPQUIC_Scheduler_Lab",
+  "publication_visibility": "private"
 }

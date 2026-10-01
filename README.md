@@ -1,3 +1,33 @@
+# MPQUIC Scheduler Lab · JS-KETI
+
+ns-3 MP-QUIC 스케줄러의 환경 구축·결과 재현·원인 분석을 보관하는 실험 저장소입니다.
+
+- [1주차 제출용 주간 보고](artifacts/WEEK1_WEEKLY_REPORT.md)
+- [코드·CSV·그림·로그·패치 인덱스](artifacts/README.md)
+- [상세 1주차 보고](artifacts/WEEK1_REPORT.md)
+- [작업 관례](docs/JS_KETI_CONVENTIONS.md)
+
+## 재현 자료
+
+- 검증 환경: Ubuntu 24.04 · WSL 2 · Python 3.12 · g++ 13
+- 210회 실행·기준 대조: `artifacts/week1-2026-10-01/`
+- 단일 경로 원인 분석·조건별 실험: `artifacts/one-path-analysis-2026-10-01/`
+- 실행별 명령·소스 버전·환경·검증 결과는 각 폴더의 provenance·validation·로그에 보관
+- 최초 `setup.sh` 설치 기록: `artifacts/setup-test-2026-10-01/`
+- 최초 미통과 기록을 보존. 원본 링크 조건의 재검증과 고정 5Mbps 성능을 구분
+
+## 버전 근거
+
+- 기반: https://github.com/ssjShirley/mpquic
+- 원본 기준: `99df419d0bb49e81b9afa1f4747769ab3f9e53ae`
+- 1주차 setup 보존: `c09aa53e2f67a5481389839b06a7edadf3d00d86`
+- 단일 경로 분석: `lab/w1-one-path-diagnosis-20261001`
+- 제공 01·02 패치와 추가 관찰·호환 패치를 구분해 보관. 원본 라이선스 유지
+
+---
+
+## 원본 프로젝트 안내
+
 
 A Multipath Extension to the QUIC Module in ns-3
 ================================
