@@ -1,0 +1,33 @@
+{
+  "created_at": "2026-10-01T01:56:35.899041+00:00",
+  "commit": "f2ed7be4e9e87325aaee82ce75351b5f08c0aab8",
+  "base_commit": "c09aa53e2f67a5481389839b06a7edadf3d00d86",
+  "branch": "lab/w1-one-path-diagnosis-20261001",
+  "matrix_runs": 39,
+  "observer_disabled_runs": 1,
+  "unique_combinations": 39,
+  "full_receive_count": 39,
+  "counts": {
+    "baseline-fixed": 3,
+    "scheduler-RR-only": 3,
+    "rate-5-6-only": 10,
+    "delay-50-55-only": 3,
+    "upstream-exact": 10,
+    "reference-full-size": 10
+  },
+  "reference_full_size_time_range_pass": 10,
+  "observer_disabled_stdout_equal": true,
+  "observer_disabled_ip_trace_equal": true,
+  "observer_enabled_ip_trace_equal": true,
+  "diag_default_off": true,
+  "tracked_worktree_clean": true,
+  "patch_reverse_check": true,
+  "source_sha256": {
+    "AGENTS.md": "a43dc7775156a2611c876a5ea207d66ab33f81ab3516a531f661c36f3fba3280",
+    "scratch/wns3-mpquic-one-path.cc": "6babd67fe4df8b61d23e116f00567c748e7de7f36a5e7ff2b7aff1f1940f637a",
+    "sched-lab/one-path-investigate.py": "b43265d4a629e9f9ff12766666400f65f72498a11339e153acc7befb7282129d",
+    "sched-lab/one-path-diagnosis.md": "7f1b5e8d25bb978c89546a51a35748d041d4e378003a40fe07b38a709ad7f858",
+    "exp-wns3-one-path.sh": "071fde6118adf0807310d0a808976530d667b7c5edc9c941f9daaae96f7263d0"
+  },
+  "validator_sha256": "1e2bb8b861095d0f6c1dca6ac7d91c7f0114573e4f460a11647458e07f3018e4"
+}

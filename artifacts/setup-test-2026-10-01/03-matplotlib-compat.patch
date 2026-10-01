@@ -1,0 +1,11 @@
+--- a/sched-lab/analyze.py
++++ b/sched-lab/analyze.py
+@@ -33,7 +33,7 @@
+     data = [d[d.name == n].fct_s.values for n in order]
+     tot = df[df.scenario == sc]
+     labels = [f"{n.replace('(new)', '*')}\n{len(d[d.name == n])}/{len(tot[tot.name == n])}" for n in order]
+-    ax.boxplot(data, tick_labels=labels, showmeans=True)
++    ax.boxplot(data, labels=labels, showmeans=True)
+     ax.set_title(sc)
+     ax.set_ylabel("flow completion time [s]")
+     ax.tick_params(axis="x", rotation=40)

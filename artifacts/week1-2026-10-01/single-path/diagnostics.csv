@@ -1,0 +1,5 @@
+case,seed,size,rate_min_mbps,rate_max_mbps,delay_ms,fct_s,fct_full_s,rx_app,in_gate_range
+rate-range-5-5p5,1,5242880,5.0,5.5,50.0,9.053170178,9.056787214,5242880,False
+rate-range-5-5p5,2,5242880,5.0,5.5,50.0,9.032477416,9.035944879,5242880,False
+rate-range-5-5p5,3,5242880,5.0,5.5,50.0,9.022889233,9.026155822,5242880,False
+decimal-5MB,1,5000000,5.0,5.0,50.0,9.034953766,9.038191526,5000000,False

@@ -1,0 +1,50 @@
+[
+  {
+    "case": "rate-range-5-5p5",
+    "seed": 1,
+    "size": 5242880,
+    "rate_min_mbps": 5.0,
+    "rate_max_mbps": 5.5,
+    "delay_ms": 50.0,
+    "fct_s": 9.053170178,
+    "fct_full_s": 9.056787214,
+    "rx_app": 5242880,
+    "in_gate_range": false
+  },
+  {
+    "case": "rate-range-5-5p5",
+    "seed": 2,
+    "size": 5242880,
+    "rate_min_mbps": 5.0,
+    "rate_max_mbps": 5.5,
+    "delay_ms": 50.0,
+    "fct_s": 9.032477416,
+    "fct_full_s": 9.035944879,
+    "rx_app": 5242880,
+    "in_gate_range": false
+  },
+  {
+    "case": "rate-range-5-5p5",
+    "seed": 3,
+    "size": 5242880,
+    "rate_min_mbps": 5.0,
+    "rate_max_mbps": 5.5,
+    "delay_ms": 50.0,
+    "fct_s": 9.022889233,
+    "fct_full_s": 9.026155822,
+    "rx_app": 5242880,
+    "in_gate_range": false
+  },
+  {
+    "case": "decimal-5MB",
+    "seed": 1,
+    "size": 5000000,
+    "rate_min_mbps": 5.0,
+    "rate_max_mbps": 5.0,
+    "delay_ms": 50.0,
+    "fct_s": 9.034953766,
+    "fct_full_s": 9.038191526,
+    "rx_app": 5000000,
+    "in_gate_range": false
+  }
+]

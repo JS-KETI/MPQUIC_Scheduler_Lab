@@ -1,0 +1,25 @@
+{
+  "csv": "/home/ubuntu/projects/keti/mpquic-sched-lab/mpquic/sched-lab/quick.csv",
+  "rows": 63,
+  "unique_combinations": 63,
+  "duplicates": 0,
+  "missing": [],
+  "unexpected": [],
+  "scenarios": {
+    "dominating": {
+      "runs": 21,
+      "completed": 21
+    },
+    "competing": {
+      "runs": 21,
+      "completed": 19
+    },
+    "degrade": {
+      "runs": 21,
+      "completed": 21
+    }
+  },
+  "total_wall_seconds": 23.5,
+  "summary_exists": true,
+  "plot_exists": true
+}

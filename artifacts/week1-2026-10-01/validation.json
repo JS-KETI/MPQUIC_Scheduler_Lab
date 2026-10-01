@@ -1,0 +1,142 @@
+{
+  "date": "2026-10-01T02:14:35.956821+09:00",
+  "rows": 210,
+  "unique_combinations": 210,
+  "missing": [],
+  "duplicates": 0,
+  "execution_failures": 0,
+  "matched_reference_rows": 210,
+  "differing_fields": 0,
+  "completed": 191,
+  "exact_target_bytes": 181,
+  "stalled": 19,
+  "scenarios": {
+    "dominating": {
+      "runs": 70,
+      "completed": 68
+    },
+    "competing": {
+      "runs": 70,
+      "completed": 53
+    },
+    "degrade": {
+      "runs": 70,
+      "completed": 70
+    }
+  },
+  "simulation_metrics_checked": [
+    "size",
+    "fct_s",
+    "fct95_s",
+    "rx_app",
+    "rx_p0",
+    "rx_p1",
+    "delay_p0_ms",
+    "delay_p1_ms",
+    "done"
+  ],
+  "new_wall_total_s": 70.6,
+  "reference_wall_total_s": 154.8,
+  "over_five_pct": [],
+  "single_path": [
+    {
+      "scheduler": 4,
+      "seed": 1,
+      "size": 5242880,
+      "fct_s": 9.452427366,
+      "fct_full_s": 9.456032406,
+      "rx_app": 5242880,
+      "wall_s": 0.334,
+      "in_gate_range": false
+    },
+    {
+      "scheduler": 4,
+      "seed": 2,
+      "size": 5242880,
+      "fct_s": 9.452427366,
+      "fct_full_s": 9.456032406,
+      "rx_app": 5242880,
+      "wall_s": 0.32,
+      "in_gate_range": false
+    },
+    {
+      "scheduler": 4,
+      "seed": 3,
+      "size": 5242880,
+      "fct_s": 9.452427366,
+      "fct_full_s": 9.456032406,
+      "rx_app": 5242880,
+      "wall_s": 0.319,
+      "in_gate_range": false
+    }
+  ],
+  "single_path_diagnostics": [
+    {
+      "case": "rate-range-5-5p5",
+      "seed": 1,
+      "size": 5242880,
+      "rate_min_mbps": 5.0,
+      "rate_max_mbps": 5.5,
+      "delay_ms": 50.0,
+      "fct_s": 9.053170178,
+      "fct_full_s": 9.056787214,
+      "rx_app": 5242880,
+      "in_gate_range": false
+    },
+    {
+      "case": "rate-range-5-5p5",
+      "seed": 2,
+      "size": 5242880,
+      "rate_min_mbps": 5.0,
+      "rate_max_mbps": 5.5,
+      "delay_ms": 50.0,
+      "fct_s": 9.032477416,
+      "fct_full_s": 9.035944879,
+      "rx_app": 5242880,
+      "in_gate_range": false
+    },
+    {
+      "case": "rate-range-5-5p5",
+      "seed": 3,
+      "size": 5242880,
+      "rate_min_mbps": 5.0,
+      "rate_max_mbps": 5.5,
+      "delay_ms": 50.0,
+      "fct_s": 9.022889233,
+      "fct_full_s": 9.026155822,
+      "rx_app": 5242880,
+      "in_gate_range": false
+    },
+    {
+      "case": "decimal-5MB",
+      "seed": 1,
+      "size": 5000000,
+      "rate_min_mbps": 5.0,
+      "rate_max_mbps": 5.0,
+      "delay_ms": 50.0,
+      "fct_s": 9.034953766,
+      "fct_full_s": 9.038191526,
+      "rx_app": 5000000,
+      "in_gate_range": false
+    }
+  ],
+  "gate": {
+    "schedulers_pass": true,
+    "dominating_rr_pass": true,
+    "dominating_rr_mean_s": 3.27331,
+    "dominating_rr_target_s": 3.27,
+    "dominating_rr_difference_pct": 0.10122324159020923,
+    "single_path_pass": false,
+    "single_path_full_fct_s": 9.456032406,
+    "single_path_upper_bound_s": 9.0,
+    "single_path_exceeds_upper_pct": 5.067026733333346,
+    "overall": "미달: 단일 경로 시간 기준 초과"
+  },
+  "partial_completed": 10,
+  "instrumentation_crosscheck": {
+    "identical": true,
+    "sha256": "2795563f0c536fa695fc4ac1ca9eee46faa8159a83e61348261a5dda360ad115",
+    "meaning": "Original and instrumented single-path binaries produce identical IP receive traces for seed 1."
+  },
+  "csv_completed_at": "2026-10-01T02:05:37.780361+09:00"
+}

@@ -1,0 +1,12 @@
+{
+  "date": "2026-10-01T02:14:35.956821+09:00",
+  "code_commit": "99df419d0bb49e81b9afa1f4747769ab3f9e53ae",
+  "branch": "lab/setup-ubuntu-20261001",
+  "applied_patches": {
+    "01-sched-lab.patch": "2c2930aef76d3c4fe00915e142e17ffdb8bcbad7cec548e71a164e37fa19beb6",
+    "02-stack-fixes.patch": "99cad1585faeff652114579c362d748c7523be7e282c2abb7e9c04842b19e334",
+    "03-matplotlib-compat.patch": "208d4ebc4f07719dbfb14bab01fb78add03e7c35a4c67132c991d5df2bf39415",
+    "04-week1-one-path-measurement.patch": "5deda768cc50e74c618e2119746cc504386f4eda2620490a4803e56756e4fe6c"
+  },
+  "code_change": "04 adds only passive Rx tracing and result printing to the one-path executable; multi-path sweep unchanged"
+}

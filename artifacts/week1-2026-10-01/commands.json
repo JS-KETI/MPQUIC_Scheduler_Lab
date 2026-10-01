@@ -1,0 +1,5 @@
+{
+  "sweep": "python3 -u sched-lab/run_sweep.py --seeds 10 --out sched-lab/w1-2026-10-01/w1.csv",
+  "analysis": "python3 sched-lab/analyze.py sched-lab/w1-2026-10-01/w1.csv",
+  "one_path": "build/scratch/wns3-mpquic-one-path --SchedulerType=4 --Seed=<1..3> --Size=5242880 --Rate0a=5 --Rate0b=5 --Delay0a=50 --Delay0b=50 --LossRate=0 --CcType=1"
+}

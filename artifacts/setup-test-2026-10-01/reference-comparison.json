@@ -1,0 +1,22 @@
+{
+  "reference_rows": 210,
+  "actual_rows": 63,
+  "matched_keys": 63,
+  "metrics_checked": [
+    "size",
+    "fct_s",
+    "fct95_s",
+    "rx_app",
+    "rx_p0",
+    "rx_p1",
+    "delay_p0_ms",
+    "delay_p1_ms",
+    "done"
+  ],
+  "rows_with_all_metrics_equal": 63,
+  "differences": [],
+  "new_wall_total_s": 23.5,
+  "reference_wall_total_for_same_keys_s": 49.2,
+  "new_completed": 61,
+  "reference_completed_for_same_keys": 61
+}

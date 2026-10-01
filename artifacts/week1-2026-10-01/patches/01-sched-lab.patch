@@ -1,0 +1,699 @@
+diff --git a/sched-lab/analyze.py b/sched-lab/analyze.py
+new file mode 100644
+index 0000000..fea1422
+--- /dev/null
++++ b/sched-lab/analyze.py
+@@ -0,0 +1,44 @@
++#!/usr/bin/env python3
++"""Summarise sched-lab results:  python3 sched-lab/analyze.py sched-lab/results.csv"""
++import sys
++import pandas as pd
++import matplotlib
++matplotlib.use("Agg")
++import matplotlib.pyplot as plt
++
++csv = sys.argv[1] if len(sys.argv) > 1 else "sched-lab/results.csv"
++out_png = csv.rsplit(".", 1)[0] + "_fct.png"
++df = pd.read_csv(csv)
++order = ["RR", "MinRTT", "BLEST", "ECF", "Peekaboo", "MinRTT-multi(new)", "EAT(new)"]
++order = [o for o in order if o in set(df.name)] + sorted(set(df.name) - set(order))
++
++rows = []
++for (sc, name), g in df.groupby(["scenario", "name"]):
++    ok = g[g.done == 1]
++    rows.append(dict(scenario=sc, scheduler=name, runs=len(g), completed=len(ok),
++                     fct_mean=ok.fct_s.mean(), fct_std=ok.fct_s.std(), fct_median=ok.fct_s.median(),
++                     fct_p90=ok.fct_s.quantile(0.9), fct95_mean=ok.fct95_s.mean(),
++                     share_p1=(ok.rx_p1 / (ok.rx_p0 + ok.rx_p1)).mean()))
++summ = pd.DataFrame(rows)
++summ["scheduler"] = pd.Categorical(summ.scheduler, order, ordered=True)
++summ = summ.sort_values(["scenario", "scheduler"])
++pd.set_option("display.width", 160)
++print(summ.to_string(index=False, float_format=lambda x: f"{x:.3f}"))
++summ.to_csv(csv.rsplit(".", 1)[0] + "_summary.csv", index=False)
++
++scens = list(dict.fromkeys(df.scenario))
++fig, axes = plt.subplots(1, len(scens), figsize=(5.2 * len(scens), 4.2), squeeze=False)
++for ax, sc in zip(axes[0], scens):
++    d = df[(df.scenario == sc) & (df.done == 1)]
++    data = [d[d.name == n].fct_s.values for n in order]
++    tot = df[df.scenario == sc]
++    labels = [f"{n.replace('(new)', '*')}\n{len(d[d.name == n])}/{len(tot[tot.name == n])}" for n in order]
++    ax.boxplot(data, tick_labels=labels, showmeans=True)
++    ax.set_title(sc)
++    ax.set_ylabel("flow completion time [s]")
++    ax.tick_params(axis="x", rotation=40)
++    ax.grid(axis="y", ls="--", alpha=0.5)
++fig.suptitle("MPQUIC ns-3, 5 MB bulk transfer (* = added; n/N = completed/total runs, stalled runs not plotted)")
++fig.tight_layout()
++fig.savefig(out_png, dpi=130)
++print("saved", out_png)
+diff --git a/sched-lab/run_sweep.py b/sched-lab/run_sweep.py
+new file mode 100644
+index 0000000..2337c8d
+--- /dev/null
++++ b/sched-lab/run_sweep.py
+@@ -0,0 +1,89 @@
++#!/usr/bin/env python3
++"""
++Scheduler sweep for mpquic-sched-lab.
++
++usage (from the ns-3 root, after ./waf build):
++    python3 sched-lab/run_sweep.py --seeds 10 --out sched-lab/results.csv
++    python3 sched-lab/run_sweep.py --schedulers 1,3,5 --scenarios dominating --seeds 20
++
++Add your own scenario to SCENARIOS and your own scheduler id to NAMES.
++"""
++import argparse, csv, glob, os, subprocess, sys, time
++
++NAMES = {0: "RR", 1: "MinRTT", 2: "BLEST", 3: "ECF", 4: "Peekaboo", 5: "EAT(new)", 6: "MinRTT-multi(new)"}
++
++# rates in Mbps, delays = one-way ms, [min, max] redrawn every 100 ms (as in the paper)
++SCENARIOS = {
++    # WNS3'23 Fig.9: one path better in both bandwidth and delay
++    "dominating": dict(Rate0a=5, Rate0b=5.5, Delay0a=50, Delay0b=55,
++                       Rate1a=10, Rate1b=11, Delay1a=10, Delay1b=11),
++    # WNS3'23 Fig.10: bandwidth and delay conflict
++    "competing":  dict(Rate0a=5, Rate0b=5.5, Delay0a=10, Delay0b=11,
++                       Rate1a=10, Rate1b=11, Delay1a=50, Delay1b=55),
++    # dominating, but the fast path collapses 1.5 s after start (UAV link degradation-like)
++    "degrade":    dict(Rate0a=5, Rate0b=5.5, Delay0a=50, Delay0b=55,
++                       Rate1a=10, Rate1b=11, Delay1a=10, Delay1b=11,
++                       EventTime=1.5, Rate1After=1.0, Delay1After=120),
++}
++
++
++def find_binary(root):
++    cands = glob.glob(os.path.join(root, "build", "scratch", "*mpquic-sched-lab*"))
++    cands = [c for c in cands if os.access(c, os.X_OK) and not c.endswith(".o")]
++    if not cands:
++        sys.exit("binary not found - run ./waf build first")
++    return cands[0]
++
++
++def main():
++    ap = argparse.ArgumentParser()
++    ap.add_argument("--root", default=".")
++    ap.add_argument("--schedulers", default="0,1,2,3,4,5,6")
++    ap.add_argument("--scenarios", default=",".join(SCENARIOS))
++    ap.add_argument("--seeds", type=int, default=5)
++    ap.add_argument("--size", type=int, default=5242880)
++    ap.add_argument("--extra", default="", help='extra args, e.g. "--EatMargin=0.2 --LossRate=0.001"')
++    ap.add_argument("--out", default="sched-lab/results.csv")
++    a = ap.parse_args()
++
++    root = os.path.abspath(a.root)
++    binary = find_binary(root)
++    env = dict(os.environ)
++    env["LD_LIBRARY_PATH"] = os.path.join(root, "build", "lib") + ":" + env.get("LD_LIBRARY_PATH", "")
++
++    scheds = [int(s) for s in a.schedulers.split(",")]
++    scens = a.scenarios.split(",")
++    os.makedirs(os.path.dirname(os.path.abspath(a.out)), exist_ok=True)
++    new = not os.path.exists(a.out)
++    with open(a.out, "a", newline="") as f:
++        w = csv.writer(f)
++        if new:
++            w.writerow(["scenario", "scheduler", "name", "seed", "size", "fct_s", "fct95_s", "rx_app",
++                        "rx_p0", "rx_p1", "delay_p0_ms", "delay_p1_ms", "done", "wall_s"])
++        total = len(scheds) * len(scens) * a.seeds
++        k = 0
++        for sc in scens:
++            for s in scheds:
++                for seed in range(1, a.seeds + 1):
++                    k += 1
++                    args = [binary, f"--SchedulerType={s}", f"--Seed={seed}", f"--Size={a.size}"]
++                    args += [f"--{kk}={vv}" for kk, vv in SCENARIOS[sc].items()]
++                    args += a.extra.split()
++                    t0 = time.time()
++                    p = subprocess.run(args, env=env, capture_output=True, text=True, cwd=root)
++                    wall = time.time() - t0
++                    line = [l for l in p.stdout.splitlines() if l.startswith("RESULT,")]
++                    if p.returncode != 0 or not line:
++                        print(f"[{k}/{total}] {sc} {NAMES.get(s, s)} seed={seed} FAILED rc={p.returncode}",
++                              p.stderr[-300:], file=sys.stderr)
++                        continue
++                    v = line[-1].split(",")[1:]
++                    w.writerow([sc, s, NAMES.get(s, str(s)), seed] + v[2:] + [f"{wall:.1f}"])
++                    f.flush()
++                    print(f"[{k}/{total}] {sc:10s} {NAMES.get(s, s):17s} seed={seed:2d} "
++                          f"FCT={float(v[3]):7.3f}s FCT95={float(v[4]):7.3f}s done={v[10]} "
++                          f"p0={int(v[6])/1e6:.2f}MB p1={int(v[7])/1e6:.2f}MB ({wall:.1f}s)")
++
++
++if __name__ == "__main__":
++    main()
+diff --git a/scratch/mpquic-sched-lab.cc b/scratch/mpquic-sched-lab.cc
+new file mode 100644
+index 0000000..56b8b84
+--- /dev/null
++++ b/scratch/mpquic-sched-lab.cc
+@@ -0,0 +1,265 @@
++/* -*- Mode:C++; c-file-style:"gnu"; indent-tabs-mode:nil; -*- */
++/*
++ * mpquic-sched-lab.cc  --  scheduler comparison bench (based on wns3-mpquic-two-path.cc)
++ *
++ * Same 2-path topology as the WNS3'23 paper (client n4 -> server n5, path0 via n1-n8,
++ * path1 via n6-n9, bottleneck links d1d8 / d6d9 re-drawn every 100 ms from U[a,b]).
++ *
++ * Added for scheduler experiments:
++ *   - precise flow completion time (FCT) from the PacketSink Rx trace (no 50 ms sampling)
++ *   - simulation stops right after completion (much faster sweeps)
++ *   - optional step event on path 1 at EventTime (e.g. UAV link degradation / handover)
++ *   - one CSV line on stdout (prefixed with "RESULT,"):
++ *       RESULT,sched,seed,size,fct_s,fct95_s,rx_app,rx_p0,rx_p1,delay_p0_ms,delay_p1_ms,done
++ *
++ * Example:
++ *   ./waf --run "mpquic-sched-lab --SchedulerType=5 --Seed=3"
++ *   ./waf --run "mpquic-sched-lab --SchedulerType=3 --EventTime=2.0 --Rate1After=2 --Delay1After=80"
++ */
++
++#include "ns3/core-module.h"
++#include "ns3/network-module.h"
++#include "ns3/internet-module.h"
++#include "ns3/quic-module.h"
++#include "ns3/point-to-point-module.h"
++#include "ns3/applications-module.h"
++#include "ns3/flow-monitor-module.h"
++#include <iostream>
++#include <iomanip>
++
++using namespace ns3;
++
++NS_LOG_COMPONENT_DEFINE ("mpquic-sched-lab");
++
++static uint64_t g_rxTotal = 0;
++static uint64_t g_target = 0;     // "complete": size minus the last partial segment (see note)
++static uint64_t g_target95 = 0;   // paper-style criterion (WNS3 notebooks use > 5,000,000 B of 5,242,800 B)
++static double g_fct = -1.0;
++static double g_fct95 = -1.0;
++static double g_start = 1.0;
++
++// NOTE: in this code base the last few hundred bytes of a bulk transfer are often
++// never delivered to the sink (the paper's plotting scripts therefore count a run as
++// finished at > 5,000,000 B).  We treat "size - 3000 B" as complete.
++static void
++SinkRx (Ptr<const Packet> p, const Address &from)
++{
++  g_rxTotal += p->GetSize ();
++  double t = Simulator::Now ().GetSeconds () - g_start;
++  if (g_fct95 < 0 && g_rxTotal >= g_target95)
++    {
++      g_fct95 = t;
++    }
++  if (g_fct < 0 && g_rxTotal >= g_target)
++    {
++      g_fct = t;
++      Simulator::Stop (MilliSeconds (10));
++    }
++}
++
++static void
++ModifyLinkRate (NetDeviceContainer *ptp, DataRate lr, Time delay)
++{
++  StaticCast<PointToPointNetDevice> (ptp->Get (0))->SetDataRate (lr);
++  StaticCast<PointToPointChannel> (StaticCast<PointToPointNetDevice> (ptp->Get (0))->GetChannel ())
++      ->SetAttribute ("Delay", TimeValue (delay));
++}
++
++int
++main (int argc, char *argv[])
++{
++  int schedulerType = MpQuicScheduler::MIN_RTT;
++  uint32_t size = 5242880;
++  double lossrate = 0.0;
++  double rate0a = 5.0, rate0b = 5.5, delay0a = 50.0, delay0b = 55.0;   // path 0 (Mbps, ms one-way)
++  double rate1a = 10.0, rate1b = 11.0, delay1a = 10.0, delay1b = 11.0; // path 1
++  double eventTime = -1.0;            // <0 : no event
++  double rate1After = 2.0, delay1After = 80.0;
++  double eatMargin = 0.1;
++  int ccType = QuicSocketBase::OLIA;
++  int seed = 1;
++  int bLambda = 200, bVar = 0;
++  double simEnd = 60.0;
++
++  CommandLine cmd;
++  cmd.AddValue ("SchedulerType", "0 RR, 1 MinRTT, 2 BLEST, 3 ECF, 4 Peekaboo, 5 EAT(new), 6 MinRTT-multi(new)", schedulerType);
++  cmd.AddValue ("Size", "bytes to transfer", size);
++  cmd.AddValue ("Seed", "RNG seed", seed);
++  cmd.AddValue ("LossRate", "packet error rate on both bottlenecks", lossrate);
++  cmd.AddValue ("Rate0a", "path0 min rate [Mbps]", rate0a);
++  cmd.AddValue ("Rate0b", "path0 max rate [Mbps]", rate0b);
++  cmd.AddValue ("Delay0a", "path0 min one-way delay [ms]", delay0a);
++  cmd.AddValue ("Delay0b", "path0 max one-way delay [ms]", delay0b);
++  cmd.AddValue ("Rate1a", "path1 min rate [Mbps]", rate1a);
++  cmd.AddValue ("Rate1b", "path1 max rate [Mbps]", rate1b);
++  cmd.AddValue ("Delay1a", "path1 min one-way delay [ms]", delay1a);
++  cmd.AddValue ("Delay1b", "path1 max one-way delay [ms]", delay1b);
++  cmd.AddValue ("EventTime", "time after app start when path1 changes (<0 = none)", eventTime);
++  cmd.AddValue ("Rate1After", "path1 rate after event [Mbps]", rate1After);
++  cmd.AddValue ("Delay1After", "path1 one-way delay after event [ms]", delay1After);
++  cmd.AddValue ("EatMargin", "EAT scheduler safety margin", eatMargin);
++  cmd.AddValue ("CcType", "0 NewReno, 1 OLIA", ccType);
++  cmd.AddValue ("BLambda", "BLEST lambda", bLambda);
++  cmd.AddValue ("BVar", "BLEST lambda increment", bVar);
++  cmd.AddValue ("SimEnd", "hard stop [s]", simEnd);
++  cmd.Parse (argc, argv);
++
++  Time::SetResolution (Time::NS);
++  RngSeedManager::SetSeed (seed);
++  g_target = size > 3000 ? size - 3000 : size;
++  g_target95 = (uint64_t) (0.95 * size);
++
++  TypeId ccTypeId = (ccType == QuicSocketBase::OLIA) ? MpQuicCongestionOps::GetTypeId ()
++                                                     : QuicCongestionOps::GetTypeId ();
++
++  Config::SetDefault ("ns3::QuicSocketBase::SocketSndBufSize", UintegerValue (40000000));
++  Config::SetDefault ("ns3::QuicStreamBase::StreamSndBufSize", UintegerValue (40000000));
++  Config::SetDefault ("ns3::QuicSocketBase::SocketRcvBufSize", UintegerValue (40000000));
++  Config::SetDefault ("ns3::QuicStreamBase::StreamRcvBufSize", UintegerValue (40000000));
++  Config::SetDefault ("ns3::QuicSocketBase::EnableMultipath", BooleanValue (true));
++  Config::SetDefault ("ns3::QuicSocketBase::CcType", IntegerValue (ccType));
++  Config::SetDefault ("ns3::QuicL4Protocol::SocketType", TypeIdValue (ccTypeId));
++  Config::SetDefault ("ns3::MpQuicScheduler::SchedulerType", IntegerValue (schedulerType));
++  Config::SetDefault ("ns3::MpQuicScheduler::BlestVar", UintegerValue (bVar));
++  Config::SetDefault ("ns3::MpQuicScheduler::BlestLambda", UintegerValue (bLambda));
++  Config::SetDefault ("ns3::MpQuicScheduler::EatMargin", DoubleValue (eatMargin));
++
++  Ptr<RateErrorModel> em = CreateObjectWithAttributes<RateErrorModel> (
++      "RanVar", StringValue ("ns3::UniformRandomVariable[Min=0.0|Max=1.0]"),
++      "ErrorRate", DoubleValue (lossrate));
++
++  Ptr<UniformRandomVariable> r0 = CreateObject<UniformRandomVariable> ();
++  r0->SetAttribute ("Min", DoubleValue (rate0a));
++  r0->SetAttribute ("Max", DoubleValue (rate0b));
++  Ptr<UniformRandomVariable> r1 = CreateObject<UniformRandomVariable> ();
++  r1->SetAttribute ("Min", DoubleValue (rate1a));
++  r1->SetAttribute ("Max", DoubleValue (rate1b));
++  Ptr<UniformRandomVariable> d0 = CreateObject<UniformRandomVariable> ();
++  d0->SetAttribute ("Min", DoubleValue (delay0a));
++  d0->SetAttribute ("Max", DoubleValue (delay0b));
++  Ptr<UniformRandomVariable> d1 = CreateObject<UniformRandomVariable> ();
++  d1->SetAttribute ("Min", DoubleValue (delay1a));
++  d1->SetAttribute ("Max", DoubleValue (delay1b));
++
++  // ---------------- topology (identical to the paper's two-path script) ----------------
++  NodeContainer c;
++  c.Create (10);
++  NodeContainer n0n1 (c.Get (0), c.Get (1)), n1n8 (c.Get (1), c.Get (8)), n8n2 (c.Get (8), c.Get (2));
++  NodeContainer n3n6 (c.Get (3), c.Get (6)), n6n9 (c.Get (6), c.Get (9)), n9n7 (c.Get (9), c.Get (7));
++  NodeContainer n4n1 (c.Get (4), c.Get (1)), n8n5 (c.Get (8), c.Get (5));
++  NodeContainer n4n6 (c.Get (4), c.Get (6)), n9n5 (c.Get (9), c.Get (5));
++
++  InternetStackHelper internet;
++  for (uint32_t i : {0u, 1u, 2u, 3u, 6u, 7u, 8u, 9u})
++    {
++      internet.Install (c.Get (i));
++    }
++  QuicHelper stack;
++  stack.InstallQuic (c.Get (4));
++  stack.InstallQuic (c.Get (5));
++
++  PointToPointHelper p2p;
++  p2p.SetDeviceAttribute ("DataRate", StringValue (std::to_string (r0->GetValue ()) + "Mbps"));
++  p2p.SetChannelAttribute ("Delay", StringValue (std::to_string (d0->GetValue ()) + "ms"));
++  NetDeviceContainer d1d8 = p2p.Install (n1n8);
++  d1d8.Get (1)->SetAttribute ("ReceiveErrorModel", PointerValue (em));
++
++  p2p.SetDeviceAttribute ("DataRate", StringValue (std::to_string (r1->GetValue ()) + "Mbps"));
++  p2p.SetChannelAttribute ("Delay", StringValue (std::to_string (d1->GetValue ()) + "ms"));
++  NetDeviceContainer d6d9 = p2p.Install (n6n9);
++  d6d9.Get (1)->SetAttribute ("ReceiveErrorModel", PointerValue (em));
++
++  p2p.SetDeviceAttribute ("DataRate", StringValue ("100Mbps"));
++  p2p.SetChannelAttribute ("Delay", StringValue ("0.01ms"));
++  NetDeviceContainer d4d1 = p2p.Install (n4n1);
++  NetDeviceContainer d0d1 = p2p.Install (n0n1);
++  NetDeviceContainer d8d5 = p2p.Install (n8n5);
++  NetDeviceContainer d4d6 = p2p.Install (n4n6);
++  NetDeviceContainer d9d5 = p2p.Install (n9n5);
++  NetDeviceContainer d8d2 = p2p.Install (n8n2);
++  NetDeviceContainer d3d6 = p2p.Install (n3n6);
++  NetDeviceContainer d9d7 = p2p.Install (n9n7);
++
++  Ipv4AddressHelper ipv4;
++  ipv4.SetBase ("10.1.4.0", "255.255.255.0");  ipv4.Assign (d4d1);
++  ipv4.SetBase ("10.1.9.0", "255.255.255.0");  ipv4.Assign (d1d8);
++  ipv4.SetBase ("10.1.5.0", "255.255.255.0");  Ipv4InterfaceContainer i8i5 = ipv4.Assign (d8d5);
++  ipv4.SetBase ("10.1.6.0", "255.255.255.0");  ipv4.Assign (d4d6);
++  ipv4.SetBase ("10.1.10.0", "255.255.255.0"); ipv4.Assign (d6d9);
++  ipv4.SetBase ("10.1.7.0", "255.255.255.0");  ipv4.Assign (d9d5);
++  ipv4.SetBase ("10.1.1.0", "255.255.255.0");  ipv4.Assign (d0d1);
++  ipv4.SetBase ("10.1.2.0", "255.255.255.0");  ipv4.Assign (d8d2);
++  ipv4.SetBase ("10.1.3.0", "255.255.255.0");  ipv4.Assign (d3d6);
++  ipv4.SetBase ("10.1.8.0", "255.255.255.0");  ipv4.Assign (d9d7);
++
++  Ipv4StaticRoutingHelper rh;
++  Ptr<Ipv4StaticRouting> sr4 = rh.GetStaticRouting (c.Get (4)->GetObject<Ipv4> ());
++  sr4->AddHostRouteTo (Ipv4Address ("10.1.5.2"), Ipv4Address ("10.1.9.2"), 1);
++  sr4->AddHostRouteTo (Ipv4Address ("10.1.7.2"), Ipv4Address ("10.1.10.2"), 2);
++  Ptr<Ipv4StaticRouting> sr5 = rh.GetStaticRouting (c.Get (5)->GetObject<Ipv4> ());
++  sr5->AddHostRouteTo (Ipv4Address ("10.1.4.1"), Ipv4Address ("10.1.9.1"), 1);
++  sr5->AddHostRouteTo (Ipv4Address ("10.1.6.1"), Ipv4Address ("10.1.10.1"), 2);
++  Ipv4GlobalRoutingHelper::PopulateRoutingTables ();
++
++  // ---------------- application ----------------
++  uint16_t port = 9;
++  MpquicBulkSendHelper source ("ns3::QuicSocketFactory", InetSocketAddress (i8i5.GetAddress (1), port));
++  source.SetAttribute ("MaxBytes", UintegerValue (size));
++  ApplicationContainer srcApps = source.Install (c.Get (4));
++  srcApps.Start (Seconds (g_start));
++  srcApps.Stop (Seconds (simEnd));
++
++  PacketSinkHelper sink ("ns3::QuicSocketFactory", InetSocketAddress (Ipv4Address::GetAny (), port));
++  ApplicationContainer sinkApps = sink.Install (c.Get (5));
++  sinkApps.Start (Seconds (0.0));
++  sinkApps.Stop (Seconds (simEnd));
++  sinkApps.Get (0)->TraceConnectWithoutContext ("Rx", MakeCallback (&SinkRx));
++
++  FlowMonitorHelper flowmon;
++  Ptr<FlowMonitor> monitor = flowmon.InstallAll ();
++
++  // ---------------- link dynamics ----------------
++  for (double t = g_start; t < simEnd; t += 0.1)
++    {
++      bool after = (eventTime >= 0 && t >= g_start + eventTime);
++      Simulator::Schedule (Seconds (t), &ModifyLinkRate, &d1d8,
++                           DataRate (std::to_string (r0->GetValue ()) + "Mbps"),
++                           Time::FromDouble (d0->GetValue (), Time::MS));
++      double rate1 = after ? rate1After : r1->GetValue ();
++      double delay1 = after ? delay1After : d1->GetValue ();
++      Simulator::Schedule (Seconds (t), &ModifyLinkRate, &d6d9,
++                           DataRate (std::to_string (rate1) + "Mbps"),
++                           Time::FromDouble (delay1, Time::MS));
++    }
++
++  Simulator::Stop (Seconds (simEnd));
++  Simulator::Run ();
++
++  // ---------------- per-path statistics ----------------
++  monitor->CheckForLostPackets ();
++  Ptr<Ipv4FlowClassifier> cls = DynamicCast<Ipv4FlowClassifier> (flowmon.GetClassifier ());
++  uint64_t rx[2] = {0, 0};
++  double dsum[2] = {0, 0};
++  uint64_t np[2] = {0, 0};
++  for (auto &kv : monitor->GetFlowStats ())
++    {
++      Ipv4FlowClassifier::FiveTuple t = cls->FindFlow (kv.first);
++      int p = -1;
++      if (t.destinationAddress == Ipv4Address ("10.1.5.2")) p = 0;
++      if (t.destinationAddress == Ipv4Address ("10.1.7.2")) p = 1;
++      if (p < 0) continue;
++      rx[p] += kv.second.rxBytes;
++      dsum[p] += kv.second.delaySum.GetSeconds ();
++      np[p] += kv.second.rxPackets;
++    }
++  std::cout << std::fixed << std::setprecision (4) << "RESULT,"
++            << schedulerType << "," << seed << "," << size << ","
++            << (g_fct < 0 ? simEnd : g_fct) << "," << (g_fct95 < 0 ? simEnd : g_fct95) << ","
++            << g_rxTotal << "," << rx[0] << "," << rx[1] << ","
++            << (np[0] ? 1000 * dsum[0] / np[0] : 0) << ","
++            << (np[1] ? 1000 * dsum[1] / np[1] : 0) << ","
++            << (g_fct < 0 ? 0 : 1) << std::endl;
++
++  Simulator::Destroy ();
++  return 0;
++}
+diff --git a/src/quic/model/mp-quic-scheduler.cc b/src/quic/model/mp-quic-scheduler.cc
+index 9df421e..95157ec 100755
+--- a/src/quic/model/mp-quic-scheduler.cc
++++ b/src/quic/model/mp-quic-scheduler.cc
+@@ -37,6 +37,8 @@
+ #include <vector>
+ #include <bitset>
+ #include <numeric>
++#include <limits>
++#include <cmath>
+ 
+ #include "mp-quic-scheduler.h"
+ #include "ns3/random-variable-stream.h"
+@@ -83,6 +85,16 @@ MpQuicScheduler::GetTypeId (void)
+                    UintegerValue (0),
+                    MakeUintegerAccessor (&MpQuicScheduler::m_select),
+                    MakeUintegerChecker<uint16_t> ())            
++    .AddAttribute ("EatMargin",
++                   "EAT: relative safety margin applied to the arrival estimate of a slower path",
++                   DoubleValue (0.1),
++                   MakeDoubleAccessor (&MpQuicScheduler::m_eatMargin),
++                   MakeDoubleChecker<double> (0.0))
++    .AddAttribute ("EatAlpha",
++                   "EAT: EWMA gain of the scheduler-local SRTT filter",
++                   DoubleValue (0.125),
++                   MakeDoubleAccessor (&MpQuicScheduler::m_eatAlpha),
++                   MakeDoubleChecker<double> (0.0, 1.0))
+      
+   ;
+   return tid;
+@@ -97,6 +109,8 @@ MpQuicScheduler::MpQuicScheduler ()
+   NS_LOG_FUNCTION_NOARGS ();
+   m_lastUpdateRounds = 1;
+   m_e = 0;
++  m_eatMargin = 0.1;
++  m_eatAlpha = 0.125;
+ }
+ 
+ MpQuicScheduler::~MpQuicScheduler ()
+@@ -138,6 +152,14 @@ MpQuicScheduler::GetNextPathIdToUse()
+       tosend = Peekaboo();
+       break;
+ 
++    case EAT:
++      tosend = Eat();
++      break;
++
++    case MIN_RTT_MULTI:
++      tosend = MinRttMulti();
++      break;
++
+     default:
+       tosend = RoundRobin();
+       break;
+@@ -444,6 +466,175 @@ MpQuicScheduler::PeekabooReward(uint8_t pathId, Time lastActTime)
+ }
+ 
+ 
++
++/*
++ * ---------------------------------------------------------------------------
++ *  EAT: N-path Earliest-Arrival-Time scheduler  (example extension)
++ * ---------------------------------------------------------------------------
++ *  Idea (ECF generalised to N paths + DEMS-style bounded split):
++ *   1. For every active path i estimate when the NEXT segment would arrive
++ *      if it were queued on i now:
++ *        T_i = max(0, inflight_i + MSS - cwnd_i) / rate_i  +  SRTT_i / 2
++ *      with rate_i = cwnd_i / SRTT_i.
++ *   2. The path with the smallest T (best) is always filled when open.
++ *   3. Any other open path j is filled too, but only if its segment still
++ *      arrives before the best path could deliver the whole remaining
++ *      backlog k:  T_j(1+margin) + RTTVAR_j  <  T_best + k/rate_best,
++ *      and only with the fraction of k it can deliver in that time.
++ *      If nothing qualifies, wait for the best path.
++ *  Unlike the built-in MinRTT/BLEST/ECF/Peekaboo (which only look at
++ *  subflows 0 and 1) this works with any number of paths.
++ *  RTT is filtered locally because tcb->m_smoothedRtt is not usable in this
++ *  code base (RFC6298 update uses integer division 7/8 == 0).
++ */
++std::vector<double>
++MpQuicScheduler::Eat ()
++{
++  NS_LOG_FUNCTION (this);
++  const uint32_t n = m_subflows.size ();
++  std::vector<double> tosend (n, 0.0);
++  if (n <= 1)
++    {
++      m_lastUsedPathId = 0;
++      tosend[0] = 1.0;
++      return tosend;
++    }
++  if (m_eatSrtt.size () < n)
++    {
++      m_eatSrtt.resize (n, 0.0);
++      m_eatRttVar.resize (n, 0.0);
++      m_eatLastSample.resize (n, -1);
++    }
++  const double mss = m_socket->GetSegSize ();
++
++  // (1) scheduler-local RFC6298 filter, updated only on NEW raw samples
++  for (uint32_t i = 0; i < n; i++)
++    {
++      Time last = m_subflows[i]->m_tcb->m_lastRtt.Get ();
++      if (last.IsZero () || last.GetNanoSeconds () == m_eatLastSample[i])
++        {
++          continue;
++        }
++      m_eatLastSample[i] = last.GetNanoSeconds ();
++      double s = last.GetSeconds ();
++      if (m_eatSrtt[i] == 0.0)
++        {
++          m_eatSrtt[i] = s;
++          m_eatRttVar[i] = s / 2.0;
++        }
++      else
++        {
++          m_eatRttVar[i] = 0.75 * m_eatRttVar[i] + 0.25 * std::abs (m_eatSrtt[i] - s);
++          m_eatSrtt[i] = (1.0 - m_eatAlpha) * m_eatSrtt[i] + m_eatAlpha * s;
++        }
++    }
++
++  // (2) probe paths that have no RTT sample yet
++  for (uint32_t i = 0; i < n; i++)
++    {
++      if (m_eatSrtt[i] == 0.0 && m_socket->AvailableWindow (i) >= mss)
++        {
++          m_lastUsedPathId = i;
++          tosend[i] = 1.0;
++          return tosend;
++        }
++    }
++
++  // (3) predicted arrival time of the next segment on each path
++  const double INF = std::numeric_limits<double>::infinity ();
++  std::vector<double> T (n, INF), rate (n, 0.0);
++  std::vector<bool> open (n, false);
++  for (uint32_t i = 0; i < n; i++)
++    {
++      if (m_eatSrtt[i] == 0.0)
++        {
++          continue;
++        }
++      double cwnd = std::max<double> (m_subflows[i]->m_tcb->m_cWnd.Get (), mss);
++      double inflight = m_socket->BytesInFlight (i);
++      rate[i] = cwnd / m_eatSrtt[i];
++      T[i] = std::max (0.0, inflight + mss - cwnd) / rate[i] + m_eatSrtt[i] / 2.0;
++      open[i] = m_socket->AvailableWindow (i) >= mss;
++    }
++
++  uint32_t best = 0, bestOpen = n;
++  for (uint32_t i = 0; i < n; i++)
++    {
++      if (T[i] < T[best]) best = i;
++      if (open[i] && (bestOpen == n || T[i] < T[bestOpen])) bestOpen = i;
++    }
++  if (T[best] == INF)
++    {
++      m_lastUsedPathId = 0;
++      tosend[0] = 1.0;
++      return tosend;
++    }
++
++  if (bestOpen == n)
++    {
++      // no window anywhere: nothing can be sent now, just point at the best path
++      m_lastUsedPathId = best;
++      tosend[best] = 1.0;
++      return tosend;
++    }
++
++  // (4) Fill EVERY open path that helps (one call may use several paths).
++  //     The best path is always used when open.  Any other open path j is used
++  //     only if its segment still arrives before the best path could deliver
++  //     the whole remaining backlog k, and only for the share of k it can
++  //     deliver in that time (bounded split => less tail HoL / reordering).
++  const double k = std::max<double> (m_socket->GetBytesInBuffer (), mss);
++  const double finishBest = T[best] + k / rate[best];
++  for (uint32_t i = 0; i < n; i++)
++    {
++      if (!open[i])
++        {
++          continue;
++        }
++      if (i == best)
++        {
++          tosend[i] = 1.0;
++          continue;
++        }
++      const double arrive = T[i] * (1.0 + m_eatMargin) + m_eatRttVar[i];
++      if (arrive < finishBest)
++        {
++          double frac = rate[i] * (finishBest - arrive) / k;
++          tosend[i] = std::min (1.0, std::max (frac, mss / k));
++        }
++    }
++  m_lastUsedPathId = best;
++  return tosend;
++}
++
++/*
++ * MIN_RTT_MULTI: control baseline for EAT.  Plain MinRTT semantics, but every
++ * path with an open congestion window is filled in the same call (this is how
++ * MinRTT behaves in Linux MPTCP / quic-go, where the scheduler is invoked in a
++ * loop until no window is left).  Comparing EAT against this baseline isolates
++ * the benefit of EAT's decision logic from the benefit of multi-path filling.
++ */
++std::vector<double>
++MpQuicScheduler::MinRttMulti ()
++{
++  NS_LOG_FUNCTION (this);
++  std::vector<double> tosend (m_subflows.size (), 0.0);
++  bool any = false;
++  for (uint32_t i = 0; i < m_subflows.size (); i++)
++    {
++      if (m_socket->AvailableWindow (i) >= m_socket->GetSegSize ())
++        {
++          tosend[i] = 1.0;
++          any = true;
++        }
++    }
++  if (!any)
++    {
++      tosend[0] = 1.0;
++    }
++  return tosend;
++}
++
+ void
+ MpQuicScheduler::SetNumOfLostPackets(uint16_t lost){
+   m_lostPackets = lost;
+diff --git a/src/quic/model/mp-quic-scheduler.h b/src/quic/model/mp-quic-scheduler.h
+index c1f0f60..687b00f 100755
+--- a/src/quic/model/mp-quic-scheduler.h
++++ b/src/quic/model/mp-quic-scheduler.h
+@@ -40,7 +40,9 @@ public:
+       MIN_RTT,
+       BLEST,
+       ECF,
+-      PEEKABOO
++      PEEKABOO,
++      EAT,              //!< (new) N-path Earliest-Arrival-Time scheduler, example extension
++      MIN_RTT_MULTI     //!< (new) control baseline: MinRTT that fills all open windows per call
+     } SchedulerType_t;
+   
+   /**
+@@ -78,6 +80,15 @@ private:
+   std::vector<double> MabDelay();
+   std::vector<double> Blest();
+   std::vector<double> Ecf();
++  std::vector<double> Eat();          //!< (new) example extension scheduler
++  std::vector<double> MinRttMulti();  //!< (new) control baseline for Eat()
++
++  // ---- state for the EAT example scheduler (scheduler-local RTT filter) ----
++  double m_eatMargin;                    //!< safety margin on slow-path arrival (0.2 = 20%)
++  double m_eatAlpha;                     //!< EWMA gain for the scheduler-local SRTT
++  std::vector<double> m_eatSrtt;         //!< per-path smoothed RTT [s]
++  std::vector<double> m_eatRttVar;       //!< per-path RTT variation [s]
++  std::vector<int64_t> m_eatLastSample;  //!< last raw RTT sample seen per path [ns]
+ 
+   uint32_t m_rate;
+   uint16_t m_lostPackets;
+diff --git a/src/quic/model/quic-socket-base.cc b/src/quic/model/quic-socket-base.cc
+index e6ee3e6..f323ce7 100755
+--- a/src/quic/model/quic-socket-base.cc
++++ b/src/quic/model/quic-socket-base.cc
+@@ -430,6 +430,8 @@ QuicSocketState::QuicSocketState ()
+     m_kMaxPacketsReceivedBeforeAckSend (20)
+ {
+   m_lossDetectionAlarm.Cancel ();
++  m_bytesBeforeLost1 = 0;   // [fix] was uninitialized (used by OLIA alpha)
++  m_bytesBeforeLost2 = 0;
+ }
+ 
+ QuicSocketState::QuicSocketState (const QuicSocketState &other)
+@@ -475,6 +477,8 @@ QuicSocketState::QuicSocketState (const QuicSocketState &other)
+       other.m_kDefaultInitialRtt),
+     m_kMaxPacketsReceivedBeforeAckSend (other.m_kMaxPacketsReceivedBeforeAckSend)
+ {
++  m_bytesBeforeLost1 = other.m_bytesBeforeLost1;   // [fix]
++  m_bytesBeforeLost2 = other.m_bytesBeforeLost2;
+   m_lossDetectionAlarm.Cancel ();
+ }
+ 

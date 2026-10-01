@@ -1,0 +1,32 @@
+[
+  {
+    "scheduler": 4,
+    "seed": 1,
+    "size": 5242880,
+    "fct_s": 9.452427366,
+    "fct_full_s": 9.456032406,
+    "rx_app": 5242880,
+    "wall_s": 0.334,
+    "in_gate_range": false
+  },
+  {
+    "scheduler": 4,
+    "seed": 2,
+    "size": 5242880,
+    "fct_s": 9.452427366,
+    "fct_full_s": 9.456032406,
+    "rx_app": 5242880,
+    "wall_s": 0.32,
+    "in_gate_range": false
+  },
+  {
+    "scheduler": 4,
+    "seed": 3,
+    "size": 5242880,
+    "fct_s": 9.452427366,
+    "fct_full_s": 9.456032406,
+    "rx_app": 5242880,
+    "wall_s": 0.319,
+    "in_gate_range": false
+  }
+]

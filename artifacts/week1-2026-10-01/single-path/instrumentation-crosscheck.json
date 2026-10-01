@@ -1,0 +1,5 @@
+{
+  "identical": true,
+  "sha256": "2795563f0c536fa695fc4ac1ca9eee46faa8159a83e61348261a5dda360ad115",
+  "meaning": "Original and instrumented single-path binaries produce identical IP receive traces for seed 1."
+}

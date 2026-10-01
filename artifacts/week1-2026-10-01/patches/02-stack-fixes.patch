@@ -1,0 +1,93 @@
+--- a/src/quic/model/quic-socket-base.cc
++++ b/src/quic/model/quic-socket-base.cc
+@@ -174,7 +174,7 @@
+                    MakeUintegerAccessor (&QuicSocketState::m_kReorderingThreshold),
+                    MakeUintegerChecker<uint32_t> ())
+     .AddAttribute ("kTimeReorderingFraction", "Maximum reordering in time space before time based loss detection considers a packet lost",
+-                   DoubleValue (9 / 8),
++                   DoubleValue (9.0 / 8),   // [fix] was 9 / 8 == 1
+                    MakeDoubleAccessor (&QuicSocketState::m_kTimeReorderingFraction),
+                    MakeDoubleChecker<double> (0))
+     .AddAttribute ("kUsingTimeLossDetection", "Whether time based loss detection is in use", 
+@@ -357,7 +357,7 @@
+                    MakeUintegerChecker<uint32_t> ())
+     .AddAttribute ("kTimeReorderingFraction",
+                    "Maximum reordering in time space before time based loss detection considers a packet lost",
+-                   DoubleValue (9 / 8),
++                   DoubleValue (9.0 / 8),   // [fix] was 9 / 8 == 1
+                    MakeDoubleAccessor (&QuicSocketState::m_kTimeReorderingFraction),
+                    MakeDoubleChecker<double> (0))
+     .AddAttribute ("kUsingTimeLossDetection",
+@@ -416,7 +416,7 @@
+     m_kMaxTLPs (
+       2),
+     m_kReorderingThreshold (3),
+-    m_kTimeReorderingFraction (9 / 8),
++    m_kTimeReorderingFraction (9.0 / 8),   // [fix]
+     m_kUsingTimeLossDetection (
+       false),
+     m_kMinTLPTimeout (MilliSeconds (10)),
+@@ -1052,6 +1052,10 @@
+     uint32_t availableWindow = AvailableWindow (sendingPathId);
+     uint32_t sendSize = m_txBuffer->AppSize () * sendP[sendingPathId];
+     uint32_t sendNumber = sendSize/GetSegSize();
++    if (sendNumber == 0 && sendSize > 0)
++      {
++        sendNumber = 1;   // [fix] a tail smaller than one MSS was never sent (last bytes of a transfer lost)
++      }
+     if (sendSize > availableWindow)
+     {
+       sendNumber = availableWindow/GetSegSize();
+@@ -1430,7 +1434,7 @@
+         }
+       alarmDuration = std::max (alarmDuration + m_subflows[pathId]->m_tcb->m_maxAckDelay,
+                                 m_subflows[pathId]->m_tcb->m_kMinTLPTimeout);
+-      alarmDuration = alarmDuration * (2 ^ m_subflows[pathId]->m_tcb->m_handshakeCount);
++      alarmDuration = alarmDuration * (int64_t) (1u << std::min<uint32_t> (m_subflows[pathId]->m_tcb->m_handshakeCount, 10));   // [fix] 2 ^ n was XOR
+       m_subflows[pathId]->m_tcb->m_alarmType = 0;
+     }
+   else if (m_subflows[pathId]->m_tcb->m_lossTime != Seconds (0))
+@@ -1444,7 +1448,7 @@
+     {
+       NS_LOG_LOGIC ("m_subflows[pathId]->m_tcb->m_tlpCount < m_subflows[pathId]->m_tcb->m_kMaxTLPs");
+       // Tail Loss Probe
+-      alarmDuration = std::max ((3 / 2) * m_subflows[pathId]->m_tcb->m_smoothedRtt + m_subflows[pathId]->m_tcb->m_maxAckDelay,
++      alarmDuration = std::max (m_subflows[pathId]->m_tcb->m_smoothedRtt * 3 / 2 + m_subflows[pathId]->m_tcb->m_maxAckDelay,   // [fix] (3 / 2) == 1
+                                 m_subflows[pathId]->m_tcb->m_kMinTLPTimeout);
+       m_subflows[pathId]->m_tcb->m_alarmType = 2;
+     }
+@@ -1454,7 +1458,7 @@
+       alarmDuration = m_subflows[pathId]->m_tcb->m_smoothedRtt + 4 * m_subflows[pathId]->m_tcb->m_rttVar
+                     + m_subflows[pathId]->m_tcb->m_maxAckDelay;
+       alarmDuration = std::max (alarmDuration, m_subflows[pathId]->m_tcb->m_kMinRTOTimeout);
+-      alarmDuration = alarmDuration * (2 ^ m_subflows[pathId]->m_tcb->m_rtoCount);
++      alarmDuration = alarmDuration * (int64_t) (1u << std::min<uint32_t> (m_subflows[pathId]->m_tcb->m_rtoCount, 10));   // [fix] 2 ^ n was XOR
+       m_subflows[pathId]->m_tcb->m_alarmType = 3;
+     }
+   NS_LOG_INFO ("Schedule ReTxTimeout at time " << Simulator::Now ().GetSeconds () << " to expire at time " << (Simulator::Now () + alarmDuration).GetSeconds ());
+--- a/src/quic/model/quic-congestion-ops.cc
++++ b/src/quic/model/quic-congestion-ops.cc
+@@ -167,8 +167,8 @@
+     {
+       Time rttVarSample = Time (
+         std::abs ((tcbd->m_smoothedRtt - latestRtt).GetDouble ()));
+-      tcbd->m_rttVar = 3 / 4 * tcbd->m_rttVar + 1 / 4 * rttVarSample;
+-      tcbd->m_smoothedRtt = 7 / 8 * tcbd->m_smoothedRtt + 1 / 8 * latestRtt;
++      tcbd->m_rttVar = (tcbd->m_rttVar * 3 + rttVarSample) / 4;   // [fix] was 3/4*x + 1/4*y (integer division -> 0)
++      tcbd->m_smoothedRtt = (tcbd->m_smoothedRtt * 7 + latestRtt) / 8;   // [fix] was 7/8*x + 1/8*y (integer division -> 0)
+     }
+ 
+ }
+--- a/src/quic/model/mp-quic-congestion-ops.cc
++++ b/src/quic/model/mp-quic-congestion-ops.cc
+@@ -171,8 +171,8 @@
+     {
+       Time rttVarSample = Time (
+         std::abs ((tcbd->m_smoothedRtt - latestRtt).GetDouble ()));
+-      tcbd->m_rttVar = 3 / 4 * tcbd->m_rttVar + 1 / 4 * rttVarSample;
+-      tcbd->m_smoothedRtt = 7 / 8 * tcbd->m_smoothedRtt + 1 / 8 * latestRtt;
++      tcbd->m_rttVar = (tcbd->m_rttVar * 3 + rttVarSample) / 4;   // [fix] was 3/4*x + 1/4*y (integer division -> 0)
++      tcbd->m_smoothedRtt = (tcbd->m_smoothedRtt * 7 + latestRtt) / 8;   // [fix] was 7/8*x + 1/8*y (integer division -> 0)
+     }
+ 
+ }

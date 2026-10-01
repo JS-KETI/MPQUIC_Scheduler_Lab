@@ -1,0 +1,23 @@
+  scenario         scheduler  runs  completed  fct_mean  fct_std  fct_median  fct_p90  fct95_mean  share_p1
+ competing                RR     3          3     3.422    0.040       3.404    3.455       3.274     0.609
+ competing            MinRTT     3          3     5.388    1.251       5.381    6.390       5.032     0.501
+ competing             BLEST     3          3     5.017    1.408       4.236    6.161       4.732     0.583
+ competing               ECF     3          3     5.510    1.475       5.351    6.716       5.163     0.457
+ competing          Peekaboo     3          3     5.518    1.270       5.771    6.468       5.163     0.486
+ competing MinRTT-multi(new)     3          2     3.443    0.011       3.443    3.449       3.294     0.606
+ competing          EAT(new)     3          2     3.434    0.011       3.434    3.440       3.294     0.607
+   degrade                RR     3          3     6.600    0.473       6.340    6.984       6.231     0.383
+   degrade            MinRTT     3          3     6.926    0.381       6.882    7.238       6.525     0.285
+   degrade             BLEST     3          3     7.327    0.281       7.191    7.559       6.901     0.278
+   degrade               ECF     3          3     6.427    0.236       6.549    6.572       5.996     0.318
+   degrade          Peekaboo     3          3     6.949    0.330       6.798    7.221       6.518     0.267
+   degrade MinRTT-multi(new)     3          3     6.331    0.052       6.315    6.375       5.966     0.378
+   degrade          EAT(new)     3          3     6.298    0.430       6.089    6.652       6.210     0.377
+dominating                RR     3          3     3.286    0.008       3.290    3.290       3.141     0.672
+dominating            MinRTT     3          3     4.050    0.245       3.981    4.254       3.910     0.819
+dominating             BLEST     3          3     4.326    0.031       4.323    4.352       4.114     0.894
+dominating               ECF     3          3     3.789    0.146       3.809    3.901       3.607     0.795
+dominating          Peekaboo     3          3     4.050    0.245       3.981    4.254       3.910     0.819
+dominating MinRTT-multi(new)     3          3     3.270    0.012       3.270    3.280       3.127     0.674
+dominating          EAT(new)     3          3     3.298    0.075       3.264    3.360       3.150     0.687
+saved sched-lab/quick_fct.png

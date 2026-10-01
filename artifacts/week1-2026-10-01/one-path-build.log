@@ -1,0 +1,46 @@
+/home/ubuntu/projects/keti/mpquic-sched-lab/mpquic/bindings/python/wscript:321: SyntaxWarning: invalid escape sequence '\d'
+  m = re.match( "^castxml version (\d\.\d)(-)?(\w+)?", castxml_version_line)
+Waf: Entering directory `/home/ubuntu/projects/keti/mpquic-sched-lab/mpquic/build'
+[389/390] Compiling scratch/wns3-mpquic-one-path.cc
+In file included from ./ns3/address-utils.h:24,
+                 from ./ns3/network-module.h:10,
+                 from ../scratch/wns3-mpquic-one-path.cc:33:
+./ns3/ipv4-address.h:438:37: warning: ‘template<class _Arg, class _Result> struct std::unary_function’ is deprecated [-Wdeprecated-declarations]
+  438 | class Ipv4AddressHash : public std::unary_function<Ipv4Address, size_t> {
+      |                                     ^~~~~~~~~~~~~~
+In file included from /usr/include/c++/13/string:49,
+                 from /usr/include/c++/13/bits/locale_classes.h:40,
+                 from /usr/include/c++/13/bits/ios_base.h:41,
+                 from /usr/include/c++/13/ios:44,
+                 from /usr/include/c++/13/ostream:40,
+                 from /usr/include/c++/13/iostream:41,
+                 from ./ns3/fatal-error.h:24,
+                 from ./ns3/abort.h:24,
+                 from ./ns3/core-module.h:10,
+                 from ../scratch/wns3-mpquic-one-path.cc:32:
+/usr/include/c++/13/bits/stl_function.h:117:12: note: declared here
+  117 |     struct unary_function
+      |            ^~~~~~~~~~~~~~
+In file included from ./ns3/address-utils.h:25:
+./ns3/ipv6-address.h:700:37: warning: ‘template<class _Arg, class _Result> struct std::unary_function’ is deprecated [-Wdeprecated-declarations]
+  700 | class Ipv6AddressHash : public std::unary_function<Ipv6Address, size_t>
+      |                                     ^~~~~~~~~~~~~~
+/usr/include/c++/13/bits/stl_function.h:117:12: note: declared here
+  117 |     struct unary_function
+      |            ^~~~~~~~~~~~~~
+
+[390/390] Linking build/scratch/wns3-mpquic-one-path
+Waf: Leaving directory `/home/ubuntu/projects/keti/mpquic-sched-lab/mpquic/build'
+Build commands will be stored in build/compile_commands.json
+'build' finished successfully (2.921s)
+
+Modules built:
+applications              bridge                    config-store
+core                      flow-monitor              internet
+network                   point-to-point            quic (no Python)
+stats                     traffic-control
+
+Modules not built (see ns-3 tutorial for explanation):
+brite                     click                     dpdk-net-device
+mpi                       openflow                  visualizer
+

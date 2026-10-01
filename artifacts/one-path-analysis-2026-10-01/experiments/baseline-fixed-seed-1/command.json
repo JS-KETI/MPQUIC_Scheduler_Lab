@@ -1,0 +1,13 @@
+[
+  "/home/ubuntu/projects/keti/mpquic-sched-lab/mpquic/build/scratch/wns3-mpquic-one-path",
+  "--SchedulerType=4",
+  "--Seed=1",
+  "--Size=5242880",
+  "--Rate0a=5",
+  "--Rate0b=5",
+  "--Delay0a=50",
+  "--Delay0b=50",
+  "--LossRate=0",
+  "--CcType=1",
+  "--Diag=1"
+]

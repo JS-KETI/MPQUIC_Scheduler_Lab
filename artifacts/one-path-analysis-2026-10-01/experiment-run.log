@@ -1,0 +1,86 @@
+baseline-fixed 1 9.456032406 5242880
+baseline-fixed 2 9.456032406 5242880
+baseline-fixed 3 9.456032406 5242880
+scheduler-RR-only 1 9.456032406 5242880
+scheduler-RR-only 2 9.456032406 5242880
+scheduler-RR-only 3 9.456032406 5242880
+rate-5-6-only 1 8.705579785 5242880
+rate-5-6-only 2 8.668567845 5242880
+rate-5-6-only 3 8.645897026 5242880
+rate-5-6-only 4 8.660379644 5242880
+rate-5-6-only 5 8.684626524 5242880
+rate-5-6-only 6 8.639239779 5242880
+rate-5-6-only 7 8.576643375 5242880
+rate-5-6-only 8 8.68719165 5242880
+rate-5-6-only 9 8.591129779 5242880
+rate-5-6-only 10 8.673099572 5242880
+delay-50-55-only 1 9.471510806 5242880
+delay-50-55-only 2 9.479610006 5242880
+delay-50-55-only 3 9.471568406 5242880
+upstream-exact 1 8.720002418 5242800
+upstream-exact 2 8.684143494 5242800
+upstream-exact 3 8.674136218 5242800
+upstream-exact 4 8.680777662 5242800
+upstream-exact 5 8.715027376 5242800
+upstream-exact 6 8.657683411 5242800
+upstream-exact 7 8.610859721 5242800
+upstream-exact 8 8.707239295 5242800
+upstream-exact 9 8.604878524 5242800
+upstream-exact 10 8.699452015 5242800
+[
+  {
+    "case": "baseline-fixed",
+    "n": 3,
+    "completed": 3,
+    "gate_n": 0,
+    "mean_s": 9.456032406,
+    "median_s": 9.456032406,
+    "min_s": 9.456032406,
+    "max_s": 9.456032406,
+    "p90_s": 9.456032406
+  },
+  {
+    "case": "scheduler-RR-only",
+    "n": 3,
+    "completed": 3,
+    "gate_n": 0,
+    "mean_s": 9.456032406,
+    "median_s": 9.456032406,
+    "min_s": 9.456032406,
+    "max_s": 9.456032406,
+    "p90_s": 9.456032406
+  },
+  {
+    "case": "rate-5-6-only",
+    "n": 10,
+    "completed": 10,
+    "gate_n": 10,
+    "mean_s": 8.6532354979,
+    "median_s": 8.6644737445,
+    "min_s": 8.576643375,
+    "max_s": 8.705579785,
+    "p90_s": 8.68719165
+  },
+  {
+    "case": "delay-50-55-only",
+    "n": 3,
+    "completed": 3,
+    "gate_n": 0,
+    "mean_s": 9.474229739333333,
+    "median_s": 9.471568406,
+    "min_s": 9.471510806,
+    "max_s": 9.479610006,
+    "p90_s": 9.479610006
+  },
+  {
+    "case": "upstream-exact",
+    "n": 10,
+    "completed": 10,
+    "gate_n": 10,
+    "mean_s": 8.6754200134,
+    "median_s": 8.682460578,
+    "min_s": 8.604878524,
+    "max_s": 8.720002418,
+    "p90_s": 8.715027376
+  }
+]

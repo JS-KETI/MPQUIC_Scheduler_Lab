@@ -1,0 +1,23 @@
+reference-full-size 1 8.720128322 5242880
+reference-full-size 2 8.684272496 5242880
+reference-full-size 3 8.674268483 5242880
+reference-full-size 4 8.680913371 5242880
+reference-full-size 5 8.715166721 5242880
+reference-full-size 6 8.657826605 5242880
+reference-full-size 7 8.611005089 5242880
+reference-full-size 8 8.707366011 5242880
+reference-full-size 9 8.605009588 5242880
+reference-full-size 10 8.699585181 5242880
+[
+  {
+    "case": "reference-full-size",
+    "n": 10,
+    "completed": 10,
+    "gate_n": 10,
+    "mean_s": 8.6755541867,
+    "median_s": 8.6825929335,
+    "min_s": 8.605009588,
+    "max_s": 8.720128322,
+    "p90_s": 8.715166721
+  }
+]

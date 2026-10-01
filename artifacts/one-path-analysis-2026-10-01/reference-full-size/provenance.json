@@ -1,0 +1,19 @@
+{
+  "created_at": "2026-10-01T01:46:26.515938+00:00",
+  "root": "/home/ubuntu/projects/keti/mpquic-sched-lab/mpquic",
+  "branch": "lab/w1-one-path-diagnosis-20261001",
+  "commit": "c09aa53e2f67a5481389839b06a7edadf3d00d86",
+  "argv": [
+    "sched-lab/one-path-investigate.py",
+    "--cases",
+    "reference-full-size",
+    "--out",
+    "sched-lab/one-path-analysis-2026-10-01/reference-full-size"
+  ],
+  "patch_state": "01+02+03+04 + opt-in 05 observer",
+  "sources": {
+    "scratch/wns3-mpquic-one-path.cc": "6babd67fe4df8b61d23e116f00567c748e7de7f36a5e7ff2b7aff1f1940f637a",
+    "exp-wns3-one-path.sh": "071fde6118adf0807310d0a808976530d667b7c5edc9c941f9daaae96f7263d0",
+    "sched-lab/one-path-investigate.py": "b43265d4a629e9f9ff12766666400f65f72498a11339e153acc7befb7282129d"
+  }
+}
