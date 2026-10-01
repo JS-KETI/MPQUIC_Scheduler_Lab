@@ -44,6 +44,14 @@
 | 인계 도구·소스 사본 | [reproduction-tools](one-path-analysis-2026-10-01/reproduction-tools) |
 | 전체 분석 산출물 | [one-path-analysis-2026-10-01](one-path-analysis-2026-10-01) |
 
+## 보고서 본문용 시각화
+
+| 항목 | 보기 |
+|---|---|
+| 전체 수신 / 완료 처리 횟수 | [SVG](report-visuals-2026-10-01/completion_counts.svg) / [PNG](report-visuals-2026-10-01/completion_counts.png) |
+| 단일 경로 최초 미통과·원본 조건 재검증 | [SVG](report-visuals-2026-10-01/one_path_comparison.svg) / [PNG](report-visuals-2026-10-01/one_path_comparison.png) |
+| 집계 수치·그림 생성 코드·설명 | [figure_data.json](report-visuals-2026-10-01/figure_data.json) / [generate_figures.py](report-visuals-2026-10-01/generate_figures.py) / [README](report-visuals-2026-10-01/README.md) |
+
 ## 설치·파일 무결성
 
 - [설치 확인 산출물](setup-test-2026-10-01)

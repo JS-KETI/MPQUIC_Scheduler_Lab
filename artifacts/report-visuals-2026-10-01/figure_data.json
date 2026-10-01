@@ -1,0 +1,220 @@
+{
+  "date_kst": "2026-10-01",
+  "simulation_rerun": false,
+  "inputs": [
+    {
+      "path": "week1-2026-10-01/w1.csv",
+      "sha256": "20f4496921aaa5448547e7cc93d4c1198033b6c01a3bf3496681756c5fe5377b"
+    },
+    {
+      "path": "one-path-analysis-2026-10-01/all_experiments.csv",
+      "sha256": "d290c11138da656ba3b7d7e8062a1bf1790d318b617ec0afbd95873c469c3ce3"
+    }
+  ],
+  "completion": {
+    "runs": 210,
+    "full_receive": 181,
+    "done": 191,
+    "groups": [
+      {
+        "scenario": "dominating",
+        "scheduler": "RR",
+        "runs": 10,
+        "full_receive": 10,
+        "done": 10
+      },
+      {
+        "scenario": "dominating",
+        "scheduler": "MinRTT",
+        "runs": 10,
+        "full_receive": 10,
+        "done": 10
+      },
+      {
+        "scenario": "dominating",
+        "scheduler": "BLEST",
+        "runs": 10,
+        "full_receive": 9,
+        "done": 9
+      },
+      {
+        "scenario": "dominating",
+        "scheduler": "ECF",
+        "runs": 10,
+        "full_receive": 9,
+        "done": 9
+      },
+      {
+        "scenario": "dominating",
+        "scheduler": "Peekaboo",
+        "runs": 10,
+        "full_receive": 10,
+        "done": 10
+      },
+      {
+        "scenario": "dominating",
+        "scheduler": "MinRTT-multi(new)",
+        "runs": 10,
+        "full_receive": 10,
+        "done": 10
+      },
+      {
+        "scenario": "dominating",
+        "scheduler": "EAT(new)",
+        "runs": 10,
+        "full_receive": 10,
+        "done": 10
+      },
+      {
+        "scenario": "competing",
+        "scheduler": "RR",
+        "runs": 10,
+        "full_receive": 4,
+        "done": 6
+      },
+      {
+        "scenario": "competing",
+        "scheduler": "MinRTT",
+        "runs": 10,
+        "full_receive": 10,
+        "done": 10
+      },
+      {
+        "scenario": "competing",
+        "scheduler": "BLEST",
+        "runs": 10,
+        "full_receive": 8,
+        "done": 9
+      },
+      {
+        "scenario": "competing",
+        "scheduler": "ECF",
+        "runs": 10,
+        "full_receive": 8,
+        "done": 10
+      },
+      {
+        "scenario": "competing",
+        "scheduler": "Peekaboo",
+        "runs": 10,
+        "full_receive": 10,
+        "done": 10
+      },
+      {
+        "scenario": "competing",
+        "scheduler": "MinRTT-multi(new)",
+        "runs": 10,
+        "full_receive": 4,
+        "done": 4
+      },
+      {
+        "scenario": "competing",
+        "scheduler": "EAT(new)",
+        "runs": 10,
+        "full_receive": 3,
+        "done": 4
+      },
+      {
+        "scenario": "degrade",
+        "scheduler": "RR",
+        "runs": 10,
+        "full_receive": 7,
+        "done": 10
+      },
+      {
+        "scenario": "degrade",
+        "scheduler": "MinRTT",
+        "runs": 10,
+        "full_receive": 9,
+        "done": 10
+      },
+      {
+        "scenario": "degrade",
+        "scheduler": "BLEST",
+        "runs": 10,
+        "full_receive": 10,
+        "done": 10
+      },
+      {
+        "scenario": "degrade",
+        "scheduler": "ECF",
+        "runs": 10,
+        "full_receive": 10,
+        "done": 10
+      },
+      {
+        "scenario": "degrade",
+        "scheduler": "Peekaboo",
+        "runs": 10,
+        "full_receive": 10,
+        "done": 10
+      },
+      {
+        "scenario": "degrade",
+        "scheduler": "MinRTT-multi(new)",
+        "runs": 10,
+        "full_receive": 10,
+        "done": 10
+      },
+      {
+        "scenario": "degrade",
+        "scheduler": "EAT(new)",
+        "runs": 10,
+        "full_receive": 10,
+        "done": 10
+      }
+    ]
+  },
+  "one_path_plotted_groups": [
+    {
+      "case": "baseline-fixed",
+      "runs": 3,
+      "full_receive": 3,
+      "time_range_pass": 0,
+      "fct_full_mean_s": 9.456032406,
+      "fct_full_min_s": 9.456032406,
+      "fct_full_max_s": 9.456032406
+    },
+    {
+      "case": "scheduler-RR-only",
+      "runs": 3,
+      "full_receive": 3,
+      "time_range_pass": 0,
+      "fct_full_mean_s": 9.456032406,
+      "fct_full_min_s": 9.456032406,
+      "fct_full_max_s": 9.456032406
+    },
+    {
+      "case": "delay-50-55-only",
+      "runs": 3,
+      "full_receive": 3,
+      "time_range_pass": 0,
+      "fct_full_mean_s": 9.474229739333333,
+      "fct_full_min_s": 9.471510806,
+      "fct_full_max_s": 9.479610006
+    },
+    {
+      "case": "rate-5-6-only",
+      "runs": 10,
+      "full_receive": 10,
+      "time_range_pass": 10,
+      "fct_full_mean_s": 8.6532354979,
+      "fct_full_min_s": 8.576643375,
+      "fct_full_max_s": 8.705579785
+    },
+    {
+      "case": "reference-full-size",
+      "runs": 10,
+      "full_receive": 10,
+      "time_range_pass": 10,
+      "fct_full_mean_s": 8.675554186700001,
+      "fct_full_min_s": 8.605009588,
+      "fct_full_max_s": 8.720128322
+    }
+  ],
+  "definitions": {
+    "full_receive": "rx_app == size",
+    "done": "source code completion flag",
+    "one_path_fct": "fct_full_s; not threshold FCT"
+  }
+}
