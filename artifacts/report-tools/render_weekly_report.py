@@ -8,7 +8,7 @@ import re
 from pathlib import Path
 from urllib.parse import quote
 
-REPO_FILES = "https://github.com/JS-KETI/MPQUIC_Scheduler_Lab/blob/docs/%233-author-and-report-policy/artifacts/"
+REPO_FILES = "https://github.com/JS-KETI/MPQUIC_Scheduler_Lab/blob/main/reports/week1/"
 
 
 def inline(text):
@@ -25,7 +25,7 @@ def inline(text):
                 label, url = link.groups()
                 if not url.startswith(("https://", "http://")):
                     url = REPO_FILES + quote(url, safe="/")
-                result.append('<a href="' + html.escape(url, quote=True) + '" target="_blank" rel="noopener">' + html.escape(label) + "</a>")
+                result.append(html.escape(label + " : " + url))
             else:
                 result.append(html.escape(part))
     return "".join(result)
@@ -84,13 +84,13 @@ def render_lines(lines, root):
 
 def main():
     parser = argparse.ArgumentParser(description=__doc__)
-    parser.add_argument("--artifacts-root", type=Path, default=Path(__file__).resolve().parents[1])
+    parser.add_argument("--report-root", "--artifacts-root", dest="report_root", type=Path, default=Path(__file__).resolve().parents[2] / "reports" / "week1")
     args = parser.parse_args()
-    root = args.artifacts_root.resolve()
+    root = args.report_root.resolve()
     source = root / "WEEK1_WEEKLY_REPORT.md"
     body = render_lines(source.read_text(encoding="utf-8").splitlines(), root)
     style = """
-    * { box-sizing: border-box; } body { margin: 0; background: #eef2f4; color: #17252e; font-family: 'Malgun Gothic','Noto Sans KR',sans-serif; font-size: 13px; line-height: 1.55; }
+    * { box-sizing: border-box; } body { margin: 0; background: #eef2f4; color: #17252e; font-family: 'Malgun Gothic','Noto Sans KR',sans-serif; font-size: 13px; line-height: 1.55; overflow-wrap: anywhere; }
     main { max-width: 960px; margin: 24px auto; padding: 28px 36px; background: white; box-shadow: 0 2px 14px #0001; }
     h1 { font-size: 23px; margin: 0 0 10px; } h2 { font-size: 17px; margin: 25px 0 12px; padding: 9px 12px; background: #e4f1e9; border-left: 4px solid #38845b; }
     h3 { font-size: 14px; margin: 18px 0 10px; padding: 7px 10px; background: #e9f1fa; border-left: 3px solid #5682b2; }

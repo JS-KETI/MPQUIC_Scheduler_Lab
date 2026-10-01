@@ -53,21 +53,21 @@
 
 - FCT 분포: 완료 처리(`done=1`) 실행만 표시 / 각 스케줄러의 완료 수·전체 수 함께 확인
 
-![3시나리오 × 7스케줄러 FCT 분포](week1-2026-10-01/w1_fct.png)
+![3시나리오 × 7스케줄러 FCT 분포](figures/w1_fct.png)
 
 - 전체 수신 / 완료 처리 횟수: 181/210과 191/210 구분 / 각 칸은 전체 수신 수 / 완료 처리 수
 
-![시나리오·스케줄러별 전체 수신과 완료 처리](report-visuals-2026-10-01/completion_counts.png)
+![시나리오·스케줄러별 전체 수신과 완료 처리](figures/completion_counts.png)
 
 - 단일 경로: 최초 고정 5Mbps의 미통과와 원본 링크 조건 재검증 구분 / 모든 표시 실행은 5,242,880B 전체 수신
 
-![단일 경로 최초 미통과·조건별 실험·원본 조건 재검증](report-visuals-2026-10-01/one_path_comparison.png)
+![단일 경로 최초 미통과·조건별 실험·원본 조건 재검증](figures/one_path_comparison.png)
 
 - 그림은 기존 CSV로 생성 / 추가 시뮬레이션 없음 / 노션 보고서에도 본문 이미지 3개 첨부
 
 ## 산출물
 
-- [코드·산출물 인덱스](README.md)
-- [최초 검증 보고서](week1-2026-10-01/1주차_보고서.md) / [210회 CSV](week1-2026-10-01/w1.csv) / [요약표](week1-2026-10-01/w1_summary.csv) / [그림](week1-2026-10-01/w1_fct.png)
-- [원인 분석 보고서](one-path-analysis-2026-10-01/REPORT.md) / [39회 통합 CSV](one-path-analysis-2026-10-01/all_experiments.csv) / [검증 JSON](one-path-analysis-2026-10-01/validation.json)
-- [1주차 노션 보고서](https://app.notion.com/p/3eb5698e257e815f9031ccc630fe0864) / [시도별 분석](https://app.notion.com/p/3ec5698e257e815bb1a9e362b6d6d262)
+- 코드·산출물 인덱스 : https://github.com/JS-KETI/MPQUIC_Scheduler_Lab/blob/main/artifacts/README.md
+- 최초 검증 보고서 : https://github.com/JS-KETI/MPQUIC_Scheduler_Lab/blob/main/artifacts/week1-2026-10-01/1%EC%A3%BC%EC%B0%A8_%EB%B3%B4%EA%B3%A0%EC%84%9C.md / 210회 CSV : https://github.com/JS-KETI/MPQUIC_Scheduler_Lab/blob/main/artifacts/week1-2026-10-01/w1.csv / 요약표 : https://github.com/JS-KETI/MPQUIC_Scheduler_Lab/blob/main/artifacts/week1-2026-10-01/w1_summary.csv / 그림 : https://github.com/JS-KETI/MPQUIC_Scheduler_Lab/blob/main/artifacts/week1-2026-10-01/w1_fct.png
+- 원인 분석 보고서 : https://github.com/JS-KETI/MPQUIC_Scheduler_Lab/blob/main/artifacts/one-path-analysis-2026-10-01/REPORT.md / 39회 통합 CSV : https://github.com/JS-KETI/MPQUIC_Scheduler_Lab/blob/main/artifacts/one-path-analysis-2026-10-01/all_experiments.csv / 검증 JSON : https://github.com/JS-KETI/MPQUIC_Scheduler_Lab/blob/main/artifacts/one-path-analysis-2026-10-01/validation.json
+- 1주차 노션 보고서 : https://app.notion.com/p/3eb5698e257e815f9031ccc630fe0864 / 시도별 분석 : https://app.notion.com/p/3ec5698e257e815bb1a9e362b6d6d262

@@ -16,7 +16,7 @@
 
 ### 1-2. 멀티 경로 스케줄러 성능 테스트
 
-![3시나리오·7스케줄러의 전송 완료 시간 분포](week1-2026-10-01/w1_fct.png)
+![1차 테스트 결과](figures/w1_fct.png)
 
 - `run_sweep.py`와 `analyze.py` 사용 → **3시나리오 × 7스케줄러 × 10seed 실행 → 210개 결과·요약·그림 생성**
 - 그림은 완료 처리된 실행의 전송 시간 분포. 삼각형은 평균, 박스 중앙선은 중앙값. 미완료 실행은 시간 평균에서 제외
@@ -34,7 +34,7 @@
 
 ### 1-4. 멀티 경로 완료 처리·전체 바이트 수신 테스트
 
-![시나리오·스케줄러별 전체 수신과 완료 처리 횟수](report-visuals-2026-10-01/completion_counts.png)
+![멀티경로 3_7 조합 테스트](figures/completion_counts.png)
 
 - `done`과 `rx_app` 대조 → **완료 처리 191/210, 목표 5,242,880B 전체 수신 181/210**
 - 바이트 미달 29건: 완료 처리됐지만 전체 수신 미달 10건 + 완료 기준 미충족 19건. 제공 기준 CSV에도 동일하게 존재
@@ -82,7 +82,10 @@
 | EAT(new) | 10/10 | 10/10 | 6.2709 | 6.0633 | 6.8675 |
 
 - 세 시나리오의 완료 처리 합계: dominating 68/70, competing 53/70, degrade 70/70
-- 표준편차·95% 수신 시간·경로별 수신 비율과 seed별 원시 값: [그룹 요약 CSV](week1-2026-10-01/w1_summary.csv) · [210회 원시 CSV](week1-2026-10-01/w1.csv)
+- 표준편차·95% 수신 시간·경로별 수신 비율과 seed별 원시 값:
+
+- 그룹 요약 CSV : https://github.com/JS-KETI/MPQUIC_Scheduler_Lab/blob/main/artifacts/week1-2026-10-01/w1_summary.csv
+- 210회 원시 CSV : https://github.com/JS-KETI/MPQUIC_Scheduler_Lab/blob/main/artifacts/week1-2026-10-01/w1.csv
 
 ## 2. 핵심 기준값 검증 결과
 
@@ -93,12 +96,12 @@
 
 ## 3. 문제 상황 - 단일 경로 테스트 기준값 미충족
 
-![단일 경로 최초 실패·조건별 검증·원본 조건 재검증](report-visuals-2026-10-01/one_path_comparison.png)
+![단일 경로 최초 테스트 결과](figures/one_path_comparison.png)
 
 - **최초 문제 상황(현상)**
-  - 고정 5Mbps·50ms·Peekaboo에서 전체 바이트 수신 3/3. 전송 시간 9.4560초로 기준 상한 9.0초 초과
+  - **고정 5Mbps·50ms·Peekaboo (기본 상태)**에서 전체 바이트 수신 3/3. **전송 시간 9.4560초로 기준 상한 9.0초 초과**
 - **문제 정의·식별**
-  - 최초 속도는 고정 5Mbps, 원본 실행 스크립트는 5~6Mbps로 조건 불일치
+  - 최초 속도는 고정 5Mbps, 원본 실행 스크립트는 5~6Mbps로 **조건 불일치**
   - 속도 범위를 바꾼 통제 실험에서 시간 기준 충족 → 속도 설정 차이가 주요 원인
 - **접근(수정) 방법**
   - `one-path-investigate.py`로 속도·지연·스케줄러·전송량을 구분해 검증
@@ -147,15 +150,12 @@
 
 - 관찰 옵션의 기본값은 비활성. 이벤트·전송·혼잡 제어·스케줄러 동작 유지
 
-### 3-4. 환경 설치·측정에서 해결한 문제
-
-- WSL 온라인 설치 정체 → 공식 Ubuntu 이미지의 SHA-256 확인 후 로컬 설치 완료
-- Matplotlib 라벨 인자 오류 → 03 호환 패치 적용 → 재설치 종료 코드 0
-- 정확한 단일 경로 전체 수신 시각 출력 부재 → 04 수신 계측 추가 → 원본과 IP 추적 일치 확인
-
 ## 4. 다음 주 계획
 
 - 3시나리오 × 7스케줄러 × 30seed로 630회 기준선 실험, 완료율·평균·중앙값·p90 전송 시간 정리
 - dominating 평균 전송 시간의 95% 신뢰구간 폭 0.1초 이하 확인, 게이트 2 판정 후 기준선 동결
 
-**근거 자료:** [수정 브랜치](https://github.com/JS-KETI/MPQUIC_Scheduler_Lab/tree/docs/%233-author-and-report-policy) · [코드·CSV·로그·패치 인덱스](README.md) · [그림 내장 열람용 문서](WEEK1_WEEKLY_REPORT.html)
+**근거 자료**
+
+- 수정 브랜치 : https://github.com/JS-KETI/MPQUIC_Scheduler_Lab/tree/docs/%234-reports-and-local-tools
+- 그림 내장 열람용 문서 : https://github.com/JS-KETI/MPQUIC_Scheduler_Lab/blob/main/reports/week1/WEEK1_WEEKLY_REPORT.html

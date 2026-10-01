@@ -1,30 +1,15 @@
 {
   "date_kst": "2026-10-01",
-  "code_branch": "docs/#3-author-and-report-policy",
+  "code_branch": "docs/#4-reports-and-local-tools",
   "analysis_code_commit": "6b8cd38e160d37b81f53e708f3f79e592ade1db0",
   "preserved_original_file_count": 335,
   "visualization_added": "report-visuals-2026-10-01",
-  "file_count": 347,
+  "file_count": 344,
   "files": [
     {
       "path": "README.md",
-      "bytes": 5183,
-      "sha256": "333fce5c12e4e0b4b60e95e0ebb0b8faf8cbe8655e37813ec761eeb798dee0bc"
-    },
-    {
-      "path": "WEEK1_REPORT.md",
-      "bytes": 4915,
-      "sha256": "d38acf99638b3163e38e5fe8924fd76ab9c3a160c4d47b38d080dbb50d051285"
-    },
-    {
-      "path": "WEEK1_WEEKLY_REPORT.html",
-      "bytes": 531517,
-      "sha256": "50cf5fb66724054cab9844d9bcd0ba524052fd78b8c59cdbc4da2f8fa35d77d2"
-    },
-    {
-      "path": "WEEK1_WEEKLY_REPORT.md",
-      "bytes": 8729,
-      "sha256": "a8a42d62e1db004f4422d89b8e887c6642ad0d47e3b7bb16cca01029576c7e34"
+      "bytes": 5234,
+      "sha256": "c6e026a9e6389e67551b532d2d710bc47695876359eab7d91e35ea66b62d544a"
     },
     {
       "path": "one-path-analysis-2026-10-01/05-one-path-diagnosis.patch",
@@ -1308,8 +1293,8 @@
     },
     {
       "path": "report-tools/render_weekly_report.py",
-      "bytes": 6294,
-      "sha256": "0fabd99933d2c509a9487fba19de090f5e6333a84d1993581b5b26a10d335adc"
+      "bytes": 6271,
+      "sha256": "13e278768afd738205c28174a6c9393dbbd865aabe9d8a062abee9acae434212"
     },
     {
       "path": "report-visuals-2026-10-01/README.md",
@@ -1747,5 +1732,6 @@
   "publication_visibility": "private",
   "weekly_report_html": "WEEK1_WEEKLY_REPORT.html",
   "weekly_report_renderer": "report-tools/render_weekly_report.py",
-  "analysis_code_original_commit": "f2ed7be4e9e87325aaee82ce75351b5f08c0aab8"
+  "analysis_code_original_commit": "f2ed7be4e9e87325aaee82ce75351b5f08c0aab8",
+  "reports_directory": "../reports/week1"
 }

@@ -8,10 +8,10 @@
 
 | 항목 | 보기 |
 |---|---|
-| 제출용 주간 보고서 | [WEEK1_WEEKLY_REPORT.md](WEEK1_WEEKLY_REPORT.md) |
-| 그림 내장 열람용 보고서 | [WEEK1_WEEKLY_REPORT.html](WEEK1_WEEKLY_REPORT.html) |
+| 제출용 주간 보고서 | [WEEK1_WEEKLY_REPORT.md](../reports/week1/WEEK1_WEEKLY_REPORT.md) |
+| 그림 내장 열람용 보고서 | [WEEK1_WEEKLY_REPORT.html](../reports/week1/WEEK1_WEEKLY_REPORT.html) |
 | 열람용 보고 생성 도구 | [render_weekly_report.py](report-tools/render_weekly_report.py) |
-| 상세 1주차 보고서 | [WEEK1_REPORT.md](WEEK1_REPORT.md) |
+| 상세 1주차 보고서 | [WEEK1_REPORT.md](../reports/week1/WEEK1_REPORT.md) |
 | 210회 반복 실행 | [run_sweep.py](../sched-lab/run_sweep.py) |
 | 요약·그림 생성 | [analyze.py](../sched-lab/analyze.py) |
 | 2경로 실험 소스 | [mpquic-sched-lab.cc](../scratch/mpquic-sched-lab.cc) |

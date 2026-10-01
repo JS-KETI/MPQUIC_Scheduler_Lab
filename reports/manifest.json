@@ -1,0 +1,46 @@
+{
+  "date_kst": "2026-10-01",
+  "file_count": 8,
+  "files": [
+    {
+      "path": "README.md",
+      "bytes": 332,
+      "sha256": "fab4b1df37db764a778dec58d760272ade212e7378c76a48cc88417125b4e4b8"
+    },
+    {
+      "path": "week1/README.md",
+      "bytes": 737,
+      "sha256": "6b53161cb81fb3d859aea35454fab487e7ee468bd013b85839ae907f6ae127eb"
+    },
+    {
+      "path": "week1/WEEK1_REPORT.md",
+      "bytes": 5434,
+      "sha256": "0c0b00203634206e925bb65523b4f73c0ee84e2e2a330c03e2082f9cfc440cbb"
+    },
+    {
+      "path": "week1/WEEK1_WEEKLY_REPORT.html",
+      "bytes": 530587,
+      "sha256": "3d4d8b1cfc879064e5ac34bd4ba000bd7650d9ee2fa76a33e44f367cd885c558"
+    },
+    {
+      "path": "week1/WEEK1_WEEKLY_REPORT.md",
+      "bytes": 8383,
+      "sha256": "0d69abaf906baf6c22ab78cb547a0ca63dff708869d17e1e028095336d82fdd7"
+    },
+    {
+      "path": "week1/figures/completion_counts.png",
+      "bytes": 113759,
+      "sha256": "8471900c129f38ab351115ec071d9fbf74187821b140c7a082a003a4374c3ae0"
+    },
+    {
+      "path": "week1/figures/one_path_comparison.png",
+      "bytes": 167101,
+      "sha256": "d3ff0433458769345a4da5d7dac1f70559db56aec075a15b18a314e1318bffb3"
+    },
+    {
+      "path": "week1/figures/w1_fct.png",
+      "bytes": 106880,
+      "sha256": "580b8785a849bf80ec3f4a4de3e01ab1aac746d2eb7389b68af20ba273290643"
+    }
+  ]
+}
