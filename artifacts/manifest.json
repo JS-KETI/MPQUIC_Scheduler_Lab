@@ -1,15 +1,15 @@
 {
   "date_kst": "2026-10-01",
-  "code_branch": "docs/#2-week1-report-layout",
-  "analysis_code_commit": "f2ed7be4e9e87325aaee82ce75351b5f08c0aab8",
+  "code_branch": "docs/#3-author-and-report-policy",
+  "analysis_code_commit": "6b8cd38e160d37b81f53e708f3f79e592ade1db0",
   "preserved_original_file_count": 335,
   "visualization_added": "report-visuals-2026-10-01",
   "file_count": 347,
   "files": [
     {
       "path": "README.md",
-      "bytes": 5033,
-      "sha256": "7572d42371f603a6a5898440e33f4a2d3e4d6ea258da7ba6a7880cede845504a"
+      "bytes": 5183,
+      "sha256": "333fce5c12e4e0b4b60e95e0ebb0b8faf8cbe8655e37813ec761eeb798dee0bc"
     },
     {
       "path": "WEEK1_REPORT.md",
@@ -18,13 +18,13 @@
     },
     {
       "path": "WEEK1_WEEKLY_REPORT.html",
-      "bytes": 532587,
-      "sha256": "ae723455084a19ebcd4cf174df6036c41c39cb3b10c0692442e51b70024c02fd"
+      "bytes": 531517,
+      "sha256": "50cf5fb66724054cab9844d9bcd0ba524052fd78b8c59cdbc4da2f8fa35d77d2"
     },
     {
       "path": "WEEK1_WEEKLY_REPORT.md",
-      "bytes": 9754,
-      "sha256": "cf4985d92e50eec483b711fb6cfd231766286c40c15a865d0eef6e9ee0dc265a"
+      "bytes": 8729,
+      "sha256": "a8a42d62e1db004f4422d89b8e887c6642ad0d47e3b7bb16cca01029576c7e34"
     },
     {
       "path": "one-path-analysis-2026-10-01/05-one-path-diagnosis.patch",
@@ -1308,8 +1308,8 @@
     },
     {
       "path": "report-tools/render_weekly_report.py",
-      "bytes": 6289,
-      "sha256": "ff7952162897d63e951c26f4bcb5df6526f5d998729aade22b3e38e386bcd000"
+      "bytes": 6294,
+      "sha256": "0fabd99933d2c509a9487fba19de090f5e6333a84d1993581b5b26a10d335adc"
     },
     {
       "path": "report-visuals-2026-10-01/README.md",
@@ -1746,5 +1746,6 @@
   "publication_repository": "https://github.com/JS-KETI/MPQUIC_Scheduler_Lab",
   "publication_visibility": "private",
   "weekly_report_html": "WEEK1_WEEKLY_REPORT.html",
-  "weekly_report_renderer": "report-tools/render_weekly_report.py"
+  "weekly_report_renderer": "report-tools/render_weekly_report.py",
+  "analysis_code_original_commit": "f2ed7be4e9e87325aaee82ce75351b5f08c0aab8"
 }

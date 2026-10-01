@@ -8,7 +8,7 @@ import re
 from pathlib import Path
 from urllib.parse import quote
 
-REPO_FILES = "https://github.com/JS-KETI/MPQUIC_Scheduler_Lab/blob/docs/%232-week1-report-layout/artifacts/"
+REPO_FILES = "https://github.com/JS-KETI/MPQUIC_Scheduler_Lab/blob/docs/%233-author-and-report-policy/artifacts/"
 
 
 def inline(text):

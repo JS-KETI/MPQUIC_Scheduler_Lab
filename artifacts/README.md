@@ -59,4 +59,5 @@
 
 - [설치 확인 산출물](setup-test-2026-10-01)
 - 파일별 SHA-256 목록: `manifest.json`
-- 최초 분석 코드 버전: `f2ed7be4e9e87325aaee82ce75351b5f08c0aab8` / 파일별 검증 이력은 각 날짜 폴더의 provenance·validation JSON 참고
+- 원시 분석 기록의 코드 SHA: `f2ed7be4e9e87325aaee82ce75351b5f08c0aab8` / 명의 정정 후 같은 코드의 SHA: `40542b8dde3120ad206f7c5ae9bf969f5babb48b`
+- 이전·새 SHA는 위 명의 정정 대응표 참고. 파일별 검증 이력은 각 날짜 폴더의 provenance·validation JSON에 보존
