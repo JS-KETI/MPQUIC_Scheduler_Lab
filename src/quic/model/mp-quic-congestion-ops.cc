@@ -171,8 +171,8 @@ MpQuicCongestionOps::UpdateRtt (Ptr<TcpSocketState> tcb, Time latestRtt,
     {
       Time rttVarSample = Time (
         std::abs ((tcbd->m_smoothedRtt - latestRtt).GetDouble ()));
-      tcbd->m_rttVar = 3 / 4 * tcbd->m_rttVar + 1 / 4 * rttVarSample;
-      tcbd->m_smoothedRtt = 7 / 8 * tcbd->m_smoothedRtt + 1 / 8 * latestRtt;
+      tcbd->m_rttVar = (tcbd->m_rttVar * 3 + rttVarSample) / 4;   // [fix] was 3/4*x + 1/4*y (integer division -> 0)
+      tcbd->m_smoothedRtt = (tcbd->m_smoothedRtt * 7 + latestRtt) / 8;   // [fix] was 7/8*x + 1/8*y (integer division -> 0)
     }
 
 }

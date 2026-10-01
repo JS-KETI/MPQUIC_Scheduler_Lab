@@ -174,7 +174,7 @@ QuicSocketBase::GetTypeId (void)
                    MakeUintegerAccessor (&QuicSocketState::m_kReorderingThreshold),
                    MakeUintegerChecker<uint32_t> ())
     .AddAttribute ("kTimeReorderingFraction", "Maximum reordering in time space before time based loss detection considers a packet lost",
-                   DoubleValue (9 / 8),
+                   DoubleValue (9.0 / 8),   // [fix] was 9 / 8 == 1
                    MakeDoubleAccessor (&QuicSocketState::m_kTimeReorderingFraction),
                    MakeDoubleChecker<double> (0))
     .AddAttribute ("kUsingTimeLossDetection", "Whether time based loss detection is in use", 
@@ -357,7 +357,7 @@ QuicSocketState::GetTypeId (void)
                    MakeUintegerChecker<uint32_t> ())
     .AddAttribute ("kTimeReorderingFraction",
                    "Maximum reordering in time space before time based loss detection considers a packet lost",
-                   DoubleValue (9 / 8),
+                   DoubleValue (9.0 / 8),   // [fix] was 9 / 8 == 1
                    MakeDoubleAccessor (&QuicSocketState::m_kTimeReorderingFraction),
                    MakeDoubleChecker<double> (0))
     .AddAttribute ("kUsingTimeLossDetection",
@@ -416,7 +416,7 @@ QuicSocketState::QuicSocketState ()
     m_kMaxTLPs (
       2),
     m_kReorderingThreshold (3),
-    m_kTimeReorderingFraction (9 / 8),
+    m_kTimeReorderingFraction (9.0 / 8),   // [fix]
     m_kUsingTimeLossDetection (
       false),
     m_kMinTLPTimeout (MilliSeconds (10)),
@@ -430,6 +430,8 @@ QuicSocketState::QuicSocketState ()
     m_kMaxPacketsReceivedBeforeAckSend (20)
 {
   m_lossDetectionAlarm.Cancel ();
+  m_bytesBeforeLost1 = 0;   // [fix] was uninitialized (used by OLIA alpha)
+  m_bytesBeforeLost2 = 0;
 }
 
 QuicSocketState::QuicSocketState (const QuicSocketState &other)
@@ -475,6 +477,8 @@ QuicSocketState::QuicSocketState (const QuicSocketState &other)
       other.m_kDefaultInitialRtt),
     m_kMaxPacketsReceivedBeforeAckSend (other.m_kMaxPacketsReceivedBeforeAckSend)
 {
+  m_bytesBeforeLost1 = other.m_bytesBeforeLost1;   // [fix]
+  m_bytesBeforeLost2 = other.m_bytesBeforeLost2;
   m_lossDetectionAlarm.Cancel ();
 }
 
@@ -1048,6 +1052,10 @@ QuicSocketBase::SendPendingData (bool withAck)
     uint32_t availableWindow = AvailableWindow (sendingPathId);
     uint32_t sendSize = m_txBuffer->AppSize () * sendP[sendingPathId];
     uint32_t sendNumber = sendSize/GetSegSize();
+    if (sendNumber == 0 && sendSize > 0)
+      {
+        sendNumber = 1;   // [fix] a tail smaller than one MSS was never sent (last bytes of a transfer lost)
+      }
     if (sendSize > availableWindow)
     {
       sendNumber = availableWindow/GetSegSize();
@@ -1426,7 +1434,7 @@ QuicSocketBase::SetReTxTimeout (uint8_t pathId)
         }
       alarmDuration = std::max (alarmDuration + m_subflows[pathId]->m_tcb->m_maxAckDelay,
                                 m_subflows[pathId]->m_tcb->m_kMinTLPTimeout);
-      alarmDuration = alarmDuration * (2 ^ m_subflows[pathId]->m_tcb->m_handshakeCount);
+      alarmDuration = alarmDuration * (int64_t) (1u << std::min<uint32_t> (m_subflows[pathId]->m_tcb->m_handshakeCount, 10));   // [fix] 2 ^ n was XOR
       m_subflows[pathId]->m_tcb->m_alarmType = 0;
     }
   else if (m_subflows[pathId]->m_tcb->m_lossTime != Seconds (0))
@@ -1440,7 +1448,7 @@ QuicSocketBase::SetReTxTimeout (uint8_t pathId)
     {
       NS_LOG_LOGIC ("m_subflows[pathId]->m_tcb->m_tlpCount < m_subflows[pathId]->m_tcb->m_kMaxTLPs");
       // Tail Loss Probe
-      alarmDuration = std::max ((3 / 2) * m_subflows[pathId]->m_tcb->m_smoothedRtt + m_subflows[pathId]->m_tcb->m_maxAckDelay,
+      alarmDuration = std::max (m_subflows[pathId]->m_tcb->m_smoothedRtt * 3 / 2 + m_subflows[pathId]->m_tcb->m_maxAckDelay,   // [fix] (3 / 2) == 1
                                 m_subflows[pathId]->m_tcb->m_kMinTLPTimeout);
       m_subflows[pathId]->m_tcb->m_alarmType = 2;
     }
@@ -1450,7 +1458,7 @@ QuicSocketBase::SetReTxTimeout (uint8_t pathId)
       alarmDuration = m_subflows[pathId]->m_tcb->m_smoothedRtt + 4 * m_subflows[pathId]->m_tcb->m_rttVar
                     + m_subflows[pathId]->m_tcb->m_maxAckDelay;
       alarmDuration = std::max (alarmDuration, m_subflows[pathId]->m_tcb->m_kMinRTOTimeout);
-      alarmDuration = alarmDuration * (2 ^ m_subflows[pathId]->m_tcb->m_rtoCount);
+      alarmDuration = alarmDuration * (int64_t) (1u << std::min<uint32_t> (m_subflows[pathId]->m_tcb->m_rtoCount, 10));   // [fix] 2 ^ n was XOR
       m_subflows[pathId]->m_tcb->m_alarmType = 3;
     }
   NS_LOG_INFO ("Schedule ReTxTimeout at time " << Simulator::Now ().GetSeconds () << " to expire at time " << (Simulator::Now () + alarmDuration).GetSeconds ());

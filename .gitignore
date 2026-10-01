@@ -45,3 +45,10 @@ version.cache
 *.eps
 *.out
 *.pdf
+
+# Local assistant instructions, state, and internal maintenance records
+AGENTS.md
+AGENTS.override.md
+.codex/
+.agents/
+/docs/GIT_AUTHOR_CORRECTION_*.json

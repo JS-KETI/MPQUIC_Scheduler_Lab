@@ -40,7 +40,9 @@ public:
       MIN_RTT,
       BLEST,
       ECF,
-      PEEKABOO
+      PEEKABOO,
+      EAT,              //!< (new) N-path Earliest-Arrival-Time scheduler, example extension
+      MIN_RTT_MULTI     //!< (new) control baseline: MinRTT that fills all open windows per call
     } SchedulerType_t;
   
   /**
@@ -78,6 +80,15 @@ private:
   std::vector<double> MabDelay();
   std::vector<double> Blest();
   std::vector<double> Ecf();
+  std::vector<double> Eat();          //!< (new) example extension scheduler
+  std::vector<double> MinRttMulti();  //!< (new) control baseline for Eat()
+
+  // ---- state for the EAT example scheduler (scheduler-local RTT filter) ----
+  double m_eatMargin;                    //!< safety margin on slow-path arrival (0.2 = 20%)
+  double m_eatAlpha;                     //!< EWMA gain for the scheduler-local SRTT
+  std::vector<double> m_eatSrtt;         //!< per-path smoothed RTT [s]
+  std::vector<double> m_eatRttVar;       //!< per-path RTT variation [s]
+  std::vector<int64_t> m_eatLastSample;  //!< last raw RTT sample seen per path [ns]
 
   uint32_t m_rate;
   uint16_t m_lostPackets;

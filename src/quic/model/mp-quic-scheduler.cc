@@ -37,6 +37,8 @@
 #include <vector>
 #include <bitset>
 #include <numeric>
+#include <limits>
+#include <cmath>
 
 #include "mp-quic-scheduler.h"
 #include "ns3/random-variable-stream.h"
@@ -83,6 +85,16 @@ MpQuicScheduler::GetTypeId (void)
                    UintegerValue (0),
                    MakeUintegerAccessor (&MpQuicScheduler::m_select),
                    MakeUintegerChecker<uint16_t> ())            
+    .AddAttribute ("EatMargin",
+                   "EAT: relative safety margin applied to the arrival estimate of a slower path",
+                   DoubleValue (0.1),
+                   MakeDoubleAccessor (&MpQuicScheduler::m_eatMargin),
+                   MakeDoubleChecker<double> (0.0))
+    .AddAttribute ("EatAlpha",
+                   "EAT: EWMA gain of the scheduler-local SRTT filter",
+                   DoubleValue (0.125),
+                   MakeDoubleAccessor (&MpQuicScheduler::m_eatAlpha),
+                   MakeDoubleChecker<double> (0.0, 1.0))
      
   ;
   return tid;
@@ -97,6 +109,8 @@ MpQuicScheduler::MpQuicScheduler ()
   NS_LOG_FUNCTION_NOARGS ();
   m_lastUpdateRounds = 1;
   m_e = 0;
+  m_eatMargin = 0.1;
+  m_eatAlpha = 0.125;
 }
 
 MpQuicScheduler::~MpQuicScheduler ()
@@ -136,6 +150,14 @@ MpQuicScheduler::GetNextPathIdToUse()
 
     case PEEKABOO:
       tosend = Peekaboo();
+      break;
+
+    case EAT:
+      tosend = Eat();
+      break;
+
+    case MIN_RTT_MULTI:
+      tosend = MinRttMulti();
       break;
 
     default:
@@ -443,6 +465,175 @@ MpQuicScheduler::PeekabooReward(uint8_t pathId, Time lastActTime)
   
 }
 
+
+
+/*
+ * ---------------------------------------------------------------------------
+ *  EAT: N-path Earliest-Arrival-Time scheduler  (example extension)
+ * ---------------------------------------------------------------------------
+ *  Idea (ECF generalised to N paths + DEMS-style bounded split):
+ *   1. For every active path i estimate when the NEXT segment would arrive
+ *      if it were queued on i now:
+ *        T_i = max(0, inflight_i + MSS - cwnd_i) / rate_i  +  SRTT_i / 2
+ *      with rate_i = cwnd_i / SRTT_i.
+ *   2. The path with the smallest T (best) is always filled when open.
+ *   3. Any other open path j is filled too, but only if its segment still
+ *      arrives before the best path could deliver the whole remaining
+ *      backlog k:  T_j(1+margin) + RTTVAR_j  <  T_best + k/rate_best,
+ *      and only with the fraction of k it can deliver in that time.
+ *      If nothing qualifies, wait for the best path.
+ *  Unlike the built-in MinRTT/BLEST/ECF/Peekaboo (which only look at
+ *  subflows 0 and 1) this works with any number of paths.
+ *  RTT is filtered locally because tcb->m_smoothedRtt is not usable in this
+ *  code base (RFC6298 update uses integer division 7/8 == 0).
+ */
+std::vector<double>
+MpQuicScheduler::Eat ()
+{
+  NS_LOG_FUNCTION (this);
+  const uint32_t n = m_subflows.size ();
+  std::vector<double> tosend (n, 0.0);
+  if (n <= 1)
+    {
+      m_lastUsedPathId = 0;
+      tosend[0] = 1.0;
+      return tosend;
+    }
+  if (m_eatSrtt.size () < n)
+    {
+      m_eatSrtt.resize (n, 0.0);
+      m_eatRttVar.resize (n, 0.0);
+      m_eatLastSample.resize (n, -1);
+    }
+  const double mss = m_socket->GetSegSize ();
+
+  // (1) scheduler-local RFC6298 filter, updated only on NEW raw samples
+  for (uint32_t i = 0; i < n; i++)
+    {
+      Time last = m_subflows[i]->m_tcb->m_lastRtt.Get ();
+      if (last.IsZero () || last.GetNanoSeconds () == m_eatLastSample[i])
+        {
+          continue;
+        }
+      m_eatLastSample[i] = last.GetNanoSeconds ();
+      double s = last.GetSeconds ();
+      if (m_eatSrtt[i] == 0.0)
+        {
+          m_eatSrtt[i] = s;
+          m_eatRttVar[i] = s / 2.0;
+        }
+      else
+        {
+          m_eatRttVar[i] = 0.75 * m_eatRttVar[i] + 0.25 * std::abs (m_eatSrtt[i] - s);
+          m_eatSrtt[i] = (1.0 - m_eatAlpha) * m_eatSrtt[i] + m_eatAlpha * s;
+        }
+    }
+
+  // (2) probe paths that have no RTT sample yet
+  for (uint32_t i = 0; i < n; i++)
+    {
+      if (m_eatSrtt[i] == 0.0 && m_socket->AvailableWindow (i) >= mss)
+        {
+          m_lastUsedPathId = i;
+          tosend[i] = 1.0;
+          return tosend;
+        }
+    }
+
+  // (3) predicted arrival time of the next segment on each path
+  const double INF = std::numeric_limits<double>::infinity ();
+  std::vector<double> T (n, INF), rate (n, 0.0);
+  std::vector<bool> open (n, false);
+  for (uint32_t i = 0; i < n; i++)
+    {
+      if (m_eatSrtt[i] == 0.0)
+        {
+          continue;
+        }
+      double cwnd = std::max<double> (m_subflows[i]->m_tcb->m_cWnd.Get (), mss);
+      double inflight = m_socket->BytesInFlight (i);
+      rate[i] = cwnd / m_eatSrtt[i];
+      T[i] = std::max (0.0, inflight + mss - cwnd) / rate[i] + m_eatSrtt[i] / 2.0;
+      open[i] = m_socket->AvailableWindow (i) >= mss;
+    }
+
+  uint32_t best = 0, bestOpen = n;
+  for (uint32_t i = 0; i < n; i++)
+    {
+      if (T[i] < T[best]) best = i;
+      if (open[i] && (bestOpen == n || T[i] < T[bestOpen])) bestOpen = i;
+    }
+  if (T[best] == INF)
+    {
+      m_lastUsedPathId = 0;
+      tosend[0] = 1.0;
+      return tosend;
+    }
+
+  if (bestOpen == n)
+    {
+      // no window anywhere: nothing can be sent now, just point at the best path
+      m_lastUsedPathId = best;
+      tosend[best] = 1.0;
+      return tosend;
+    }
+
+  // (4) Fill EVERY open path that helps (one call may use several paths).
+  //     The best path is always used when open.  Any other open path j is used
+  //     only if its segment still arrives before the best path could deliver
+  //     the whole remaining backlog k, and only for the share of k it can
+  //     deliver in that time (bounded split => less tail HoL / reordering).
+  const double k = std::max<double> (m_socket->GetBytesInBuffer (), mss);
+  const double finishBest = T[best] + k / rate[best];
+  for (uint32_t i = 0; i < n; i++)
+    {
+      if (!open[i])
+        {
+          continue;
+        }
+      if (i == best)
+        {
+          tosend[i] = 1.0;
+          continue;
+        }
+      const double arrive = T[i] * (1.0 + m_eatMargin) + m_eatRttVar[i];
+      if (arrive < finishBest)
+        {
+          double frac = rate[i] * (finishBest - arrive) / k;
+          tosend[i] = std::min (1.0, std::max (frac, mss / k));
+        }
+    }
+  m_lastUsedPathId = best;
+  return tosend;
+}
+
+/*
+ * MIN_RTT_MULTI: control baseline for EAT.  Plain MinRTT semantics, but every
+ * path with an open congestion window is filled in the same call (this is how
+ * MinRTT behaves in Linux MPTCP / quic-go, where the scheduler is invoked in a
+ * loop until no window is left).  Comparing EAT against this baseline isolates
+ * the benefit of EAT's decision logic from the benefit of multi-path filling.
+ */
+std::vector<double>
+MpQuicScheduler::MinRttMulti ()
+{
+  NS_LOG_FUNCTION (this);
+  std::vector<double> tosend (m_subflows.size (), 0.0);
+  bool any = false;
+  for (uint32_t i = 0; i < m_subflows.size (); i++)
+    {
+      if (m_socket->AvailableWindow (i) >= m_socket->GetSegSize ())
+        {
+          tosend[i] = 1.0;
+          any = true;
+        }
+    }
+  if (!any)
+    {
+      tosend[0] = 1.0;
+    }
+  return tosend;
+}
 
 void
 MpQuicScheduler::SetNumOfLostPackets(uint16_t lost){
