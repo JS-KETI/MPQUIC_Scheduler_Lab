@@ -1,8 +1,8 @@
-# 1주차 보고서
+# 1주차 진행상황
 
-- 1주차 보고서 : https://github.com/JS-KETI/MPQUIC_Scheduler_Lab/blob/main/reports/week1/WEEK1_WEEKLY_REPORT.md
-- 1주차 보고서 HTML : https://github.com/JS-KETI/MPQUIC_Scheduler_Lab/blob/main/reports/week1/WEEK1_WEEKLY_REPORT.html
-- 상세 실험 기록 : https://github.com/JS-KETI/MPQUIC_Scheduler_Lab/blob/main/reports/week1/WEEK1_REPORT.md
+- 1주차 진행상황 : https://github.com/JS-KETI/MPQUIC_Scheduler_Lab/blob/main/reports/week1/1%EC%A3%BC%EC%B0%A8%20%EC%A7%84%ED%96%89%EC%83%81%ED%99%A9.md
+- 1주차 진행상황 HTML : https://github.com/JS-KETI/MPQUIC_Scheduler_Lab/blob/main/reports/week1/1%EC%A3%BC%EC%B0%A8%20%EC%A7%84%ED%96%89%EC%83%81%ED%99%A9.html
+- 상세 실험 기록 : https://github.com/JS-KETI/MPQUIC_Scheduler_Lab/blob/main/reports/week1/1%EC%A3%BC%EC%B0%A8%20%EC%83%81%EC%84%B8%20%EC%8B%A4%ED%97%98%20%EA%B8%B0%EB%A1%9D.md
 - 본문 그림 : https://github.com/JS-KETI/MPQUIC_Scheduler_Lab/tree/main/reports/week1/figures
 - 원시 측정값·로그·패치 : https://github.com/JS-KETI/MPQUIC_Scheduler_Lab/blob/main/artifacts/README.md
 

@@ -87,7 +87,7 @@ def main():
     parser.add_argument("--report-root", "--artifacts-root", dest="report_root", type=Path, default=Path(__file__).resolve().parents[2] / "reports" / "week1")
     args = parser.parse_args()
     root = args.report_root.resolve()
-    source = root / "WEEK1_WEEKLY_REPORT.md"
+    source = root / "1주차 진행상황.md"
     body = render_lines(source.read_text(encoding="utf-8").splitlines(), root)
     style = """
     * { box-sizing: border-box; } body { margin: 0; background: #eef2f4; color: #17252e; font-family: 'Malgun Gothic','Noto Sans KR',sans-serif; font-size: 13px; line-height: 1.55; overflow-wrap: anywhere; }
@@ -101,8 +101,8 @@ def main():
     @media(max-width: 650px) { main { margin: 0; padding: 18px; } body { font-size: 12px; } }
     @media print { body { background: white; } main { max-width: none; margin: 0; padding: 0; box-shadow: none; } h2,h3,figure,table { break-inside: avoid; } }
     """
-    output = '<!doctype html><html lang="ko"><head><meta charset="utf-8"><meta name="viewport" content="width=device-width,initial-scale=1"><title>1주차 보고서</title><style>' + style + '</style></head><body><main>' + body + '</main></body></html>\n'
-    target = root / "WEEK1_WEEKLY_REPORT.html"
+    output = '<!doctype html><html lang="ko"><head><meta charset="utf-8"><meta name="viewport" content="width=device-width,initial-scale=1"><title>1주차 진행상황</title><style>' + style + '</style></head><body><main>' + body + '</main></body></html>\n'
+    target = root / "1주차 진행상황.html"
     target.write_text(output, encoding="utf-8", newline="\n")
     print(f"Created {target.name}: {len(output.encode('utf-8'))} bytes, {body.count('<figure>')} embedded figures")
 

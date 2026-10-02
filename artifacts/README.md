@@ -8,10 +8,10 @@
 
 | 항목 | 보기 |
 |---|---|
-| 1주차 보고서 | [WEEK1_WEEKLY_REPORT.md](../reports/week1/WEEK1_WEEKLY_REPORT.md) |
-| 1주차 보고서 HTML | [WEEK1_WEEKLY_REPORT.html](../reports/week1/WEEK1_WEEKLY_REPORT.html) |
+| 1주차 진행상황 | [1%EC%A3%BC%EC%B0%A8%20%EC%A7%84%ED%96%89%EC%83%81%ED%99%A9.md](../reports/week1/1%EC%A3%BC%EC%B0%A8%20%EC%A7%84%ED%96%89%EC%83%81%ED%99%A9.md) |
+| 1주차 진행상황 HTML | [1%EC%A3%BC%EC%B0%A8%20%EC%A7%84%ED%96%89%EC%83%81%ED%99%A9.html](../reports/week1/1%EC%A3%BC%EC%B0%A8%20%EC%A7%84%ED%96%89%EC%83%81%ED%99%A9.html) |
 | 보고서 HTML 생성 도구 | [render_weekly_report.py](report-tools/render_weekly_report.py) |
-| 상세 1주차 보고서 | [WEEK1_REPORT.md](../reports/week1/WEEK1_REPORT.md) |
+| 1주차 상세 실험 기록 | [1%EC%A3%BC%EC%B0%A8%20%EC%83%81%EC%84%B8%20%EC%8B%A4%ED%97%98%20%EA%B8%B0%EB%A1%9D.md](../reports/week1/1%EC%A3%BC%EC%B0%A8%20%EC%83%81%EC%84%B8%20%EC%8B%A4%ED%97%98%20%EA%B8%B0%EB%A1%9D.md) |
 | 210회 반복 실행 | [run_sweep.py](../sched-lab/run_sweep.py) |
 | 요약·그림 생성 | [analyze.py](../sched-lab/analyze.py) |
 | 2경로 실험 소스 | [mpquic-sched-lab.cc](../scratch/mpquic-sched-lab.cc) |

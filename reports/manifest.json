@@ -4,28 +4,28 @@
   "files": [
     {
       "path": "README.md",
-      "bytes": 321,
-      "sha256": "6597f49b0dbe60133cee042cafd6a331046a03310dc03633f70fc6b01d9ed5d7"
+      "bytes": 324,
+      "sha256": "a1c1b8fb457be03462ed57e7c90dadeaad760f777dc26a7ac4a8d78968840054"
     },
     {
       "path": "week1/README.md",
-      "bytes": 980,
-      "sha256": "1ff4c4e459b30caa843a903768fd7f72c59f4fc46fae9a16408916701208ab9f"
+      "bytes": 1137,
+      "sha256": "385f748af1a6acedb8a39415c2c42719e4ededaae7d85aa15eb722782b1c3739"
     },
     {
-      "path": "week1/WEEK1_REPORT.md",
+      "path": "week1/1주차 상세 실험 기록.md",
       "bytes": 5106,
       "sha256": "abb285f8080336c4db074c1c3117adeae642a58a1ce8af888683eda6ecb0df12"
     },
     {
-      "path": "week1/WEEK1_WEEKLY_REPORT.html",
-      "bytes": 527342,
-      "sha256": "47cb61e937d58e3f9248151f0da0f336601cb3fa680e92c9f1c4a90e12f0d5a7"
+      "path": "week1/1주차 진행상황.html",
+      "bytes": 527386,
+      "sha256": "88cd26e7d24d51e135361114b0726122d8fa72a14dfc6ace1ac5d956b229ccf7"
     },
     {
-      "path": "week1/WEEK1_WEEKLY_REPORT.md",
-      "bytes": 12183,
-      "sha256": "bb8bef9c0181fb62b574f73d66c5195045ea039d4855ba2ec3cf492dfac067c2"
+      "path": "week1/1주차 진행상황.md",
+      "bytes": 12224,
+      "sha256": "8e129e1bb3186b7ad7e3d7ad6ebfbb7d551fd3df47554186388e2db1196999de"
     },
     {
       "path": "week1/figures/completion_counts.png",
