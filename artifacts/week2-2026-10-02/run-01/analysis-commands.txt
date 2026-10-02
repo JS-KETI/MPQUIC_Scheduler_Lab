@@ -1,0 +1,5 @@
+# Run from repository root. Use a NEW output directory for later analyses.
+python3 -m unittest discover -s sched-lab -p test_stats.py -v
+python3 sched-lab/stats.py --csv artifacts/week2-2026-10-02/run-01/baseline.csv --out artifacts/week2-2026-10-02/run-01/analysis --week1-csv artifacts/week1-2026-10-01/w1.csv
+python3 sched-lab/plot_baseline.py --csv artifacts/week2-2026-10-02/run-01/baseline.csv --out artifacts/week2-2026-10-02/run-01/figures
+python3 artifacts/report-tools/render_weekly_report.py --report-root reports/week2 --name '2주차 진행상황'

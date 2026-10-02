@@ -1,0 +1,11 @@
+test_ci_known_sample (test_stats.StatsTests.test_ci_known_sample) ... ok
+test_exact_no_ties_matches_scipy (test_stats.StatsTests.test_exact_no_ties_matches_scipy) ... ok
+test_holm (test_stats.StatsTests.test_holm) ... ok
+test_input_validation (test_stats.StatsTests.test_input_validation) ... ok
+test_pairs_only_joint_completed_seeds (test_stats.StatsTests.test_pairs_only_joint_completed_seeds) ... ok
+test_ties_zeros_against_enumeration (test_stats.StatsTests.test_ties_zeros_against_enumeration) ... ok
+
+----------------------------------------------------------------------
+Ran 6 tests in 0.084s
+
+OK

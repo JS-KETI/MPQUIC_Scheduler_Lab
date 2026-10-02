@@ -1,0 +1,35 @@
+{
+  "rows": 630,
+  "unique_keys": 630,
+  "completed": 568,
+  "full_received": 533,
+  "paired_comparison_rows": 63,
+  "dominating_all_seven_ci_widths_le_0_1_s": false,
+  "ci_method": "95% two-sided Student t; completed runs only",
+  "wilcoxon_method": "exact conditional sign permutation; zero differences discarded; tied midranks; 0.0001s precision",
+  "multiplicity": "Holm adjustment across 21 pairs within each scenario",
+  "week1_reproduction": {
+    "compared_rows": 210,
+    "compared_metrics": [
+      "size",
+      "fct_s",
+      "fct95_s",
+      "rx_app",
+      "rx_p0",
+      "rx_p1",
+      "delay_p0_ms",
+      "delay_p1_ms",
+      "done"
+    ],
+    "differing_cells": 0,
+    "differing_rows": 0
+  }
+}
+ scheduler              name  completed  runs  ci95_width_s  width_le_0_1_s
+         0                RR         30    30      0.014291            True
+         1            MinRTT         30    30      0.164810           False
+         2             BLEST         26    30      0.075887            True
+         3               ECF         28    30      0.175367           False
+         4          Peekaboo         30    30      0.168282           False
+         6 MinRTT-multi(new)         30    30      0.013035            True
+         5          EAT(new)         30    30      0.024191            True

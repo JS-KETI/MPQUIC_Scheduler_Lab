@@ -1,0 +1,1 @@
+/usr/bin/python3 -u sched-lab/run_sweep.py --root /home/ubuntu/projects/keti/mpquic-sched-lab/mpquic --schedulers 0,1,2,3,4,5,6 --scenarios dominating,competing,degrade --seeds 30 --size 5242880 --extra '--LossRate=0 --CcType=1 --SimEnd=60' --out /home/ubuntu/projects/keti/mpquic-sched-lab/mpquic/artifacts/week2-2026-10-02/run-01/baseline.csv
