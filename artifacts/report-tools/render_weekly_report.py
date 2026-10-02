@@ -85,9 +85,14 @@ def render_lines(lines, root):
 def main():
     parser = argparse.ArgumentParser(description=__doc__)
     parser.add_argument("--report-root", "--artifacts-root", dest="report_root", type=Path, default=Path(__file__).resolve().parents[2] / "reports" / "week1")
+    parser.add_argument("--name", default="1주차 진행상황", help="Report file stem and HTML title")
     args = parser.parse_args()
+    if Path(args.name).name != args.name:
+        parser.error("--name must be a file stem, not a path")
+    global REPO_FILES
+    REPO_FILES = "https://github.com/JS-KETI/MPQUIC_Scheduler_Lab/blob/main/reports/" + args.report_root.name + "/"
     root = args.report_root.resolve()
-    source = root / "1주차 진행상황.md"
+    source = root / (args.name + ".md")
     body = render_lines(source.read_text(encoding="utf-8").splitlines(), root)
     style = """
     * { box-sizing: border-box; } body { margin: 0; background: #eef2f4; color: #17252e; font-family: 'Malgun Gothic','Noto Sans KR',sans-serif; font-size: 13px; line-height: 1.55; overflow-wrap: anywhere; }
@@ -101,8 +106,8 @@ def main():
     @media(max-width: 650px) { main { margin: 0; padding: 18px; } body { font-size: 12px; } }
     @media print { body { background: white; } main { max-width: none; margin: 0; padding: 0; box-shadow: none; } h2,h3,figure,table { break-inside: avoid; } }
     """
-    output = '<!doctype html><html lang="ko"><head><meta charset="utf-8"><meta name="viewport" content="width=device-width,initial-scale=1"><title>1주차 진행상황</title><style>' + style + '</style></head><body><main>' + body + '</main></body></html>\n'
-    target = root / "1주차 진행상황.html"
+    output = '<!doctype html><html lang="ko"><head><meta charset="utf-8"><meta name="viewport" content="width=device-width,initial-scale=1"><title>' + html.escape(args.name) + '</title><style>' + style + '</style></head><body><main>' + body + '</main></body></html>\n'
+    target = root / (args.name + ".html")
     target.write_text(output, encoding="utf-8", newline="\n")
     print(f"Created {target.name}: {len(output.encode('utf-8'))} bytes, {body.count('<figure>')} embedded figures")
 
