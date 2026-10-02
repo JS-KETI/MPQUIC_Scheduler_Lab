@@ -1,0 +1,9 @@
+{
+  "frozen_utc": "2026-10-02T07:35:22.161438+00:00",
+  "status": "MEASUREMENTS_FROZEN_GATE2_PENDING_SCOPE",
+  "simulation_source_commit": "598f162e74e0e25bbbf702f2db3151223fefc9b2",
+  "analysis_tools_commit": "ba3315794d2987c08e82a257fe79a25e51b9c513",
+  "baseline_sha256": "2a0e48432404913d484a24a91ca6498fc83ce402dad7e54c34534883f9b24ae5",
+  "gate2": "scope unresolved; 3 of 7 dominating CI widths exceed 0.1s",
+  "policy": "Do not modify this run. New experiments or analyses must use another folder."
+}

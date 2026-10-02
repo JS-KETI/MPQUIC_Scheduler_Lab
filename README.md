@@ -1,5 +1,7 @@
 # MPQUIC Scheduler Lab · JS-KETI
 
+- 2주차 진행상황 : https://github.com/JS-KETI/MPQUIC_Scheduler_Lab/blob/main/reports/week2/2%EC%A3%BC%EC%B0%A8%20%EC%A7%84%ED%96%89%EC%83%81%ED%99%A9.md
+
 ns-3 MP-QUIC 스케줄러의 환경 구축·결과 재현·원인 분석을 보관하는 실험 저장소입니다.
 
 - 1주차 진행상황 : https://github.com/JS-KETI/MPQUIC_Scheduler_Lab/blob/main/reports/week1/1%EC%A3%BC%EC%B0%A8%20%EC%A7%84%ED%96%89%EC%83%81%ED%99%A9.md

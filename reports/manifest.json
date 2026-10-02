@@ -1,16 +1,11 @@
 {
   "date_kst": "2026-10-02",
-  "file_count": 8,
+  "file_count": 14,
   "files": [
     {
       "path": "README.md",
-      "bytes": 324,
-      "sha256": "a1c1b8fb457be03462ed57e7c90dadeaad760f777dc26a7ac4a8d78968840054"
-    },
-    {
-      "path": "week1/README.md",
-      "bytes": 1137,
-      "sha256": "385f748af1a6acedb8a39415c2c42719e4ededaae7d85aa15eb722782b1c3739"
+      "bytes": 484,
+      "sha256": "0914ddc981c98a0e21a0614e53a6f7f6c2d1f1505e23d86a2a413c5fb1c9a6f8"
     },
     {
       "path": "week1/1주차 상세 실험 기록.md",
@@ -28,6 +23,11 @@
       "sha256": "8e129e1bb3186b7ad7e3d7ad6ebfbb7d551fd3df47554186388e2db1196999de"
     },
     {
+      "path": "week1/README.md",
+      "bytes": 1137,
+      "sha256": "385f748af1a6acedb8a39415c2c42719e4ededaae7d85aa15eb722782b1c3739"
+    },
+    {
       "path": "week1/figures/completion_counts.png",
       "bytes": 113759,
       "sha256": "8471900c129f38ab351115ec071d9fbf74187821b140c7a082a003a4374c3ae0"
@@ -41,6 +41,36 @@
       "path": "week1/figures/w1_fct.png",
       "bytes": 106880,
       "sha256": "580b8785a849bf80ec3f4a4de3e01ab1aac746d2eb7389b68af20ba273290643"
+    },
+    {
+      "path": "week2/2주차 진행상황.html",
+      "bytes": 388442,
+      "sha256": "d2d15c3ffc3a6e2949cb98311f704482890b225238beb6c8c6f2b846c8ff9a7d"
+    },
+    {
+      "path": "week2/2주차 진행상황.md",
+      "bytes": 11978,
+      "sha256": "8e3e255808dd670a192aa1a52db02d42abedcf572953715e284e0873a2348bea"
+    },
+    {
+      "path": "week2/README.md",
+      "bytes": 561,
+      "sha256": "905216016580b726869507394cd23440bf094475b7b440d449e9f4d0de2d6be9"
+    },
+    {
+      "path": "week2/figures/completion_rates.png",
+      "bytes": 74559,
+      "sha256": "76c0e9e3f3dca3cb169e92ada5976f77984bd9bcf3fc7c1303597d44b08d6527"
+    },
+    {
+      "path": "week2/figures/fct_distributions.png",
+      "bytes": 114612,
+      "sha256": "8b7550b15dbea5a5daf68295c94531e0d74f60cf72848286db4f1b3a2a004f46"
+    },
+    {
+      "path": "week2/figures/path_shares.png",
+      "bytes": 88866,
+      "sha256": "3e94bf3f56b656a184a44b7f35cb8a546b2c2edaf8917cd42d23976740d605af"
     }
   ]
 }

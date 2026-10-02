@@ -1,4 +1,11 @@
-# 1주차 코드·산출물 인덱스
+# 주차별 코드·산출물 인덱스
+
+## 2주차 630회 기준 데이터
+
+- 원시 측정·통계·그림·실행 기록 : https://github.com/JS-KETI/MPQUIC_Scheduler_Lab/tree/main/artifacts/week2-2026-10-02/run-01
+- 2주차 진행상황 : https://github.com/JS-KETI/MPQUIC_Scheduler_Lab/blob/main/reports/week2/2%EC%A3%BC%EC%B0%A8%20%EC%A7%84%ED%96%89%EC%83%81%ED%99%A9.md
+- 통계 계산 : https://github.com/JS-KETI/MPQUIC_Scheduler_Lab/blob/main/sched-lab/stats.py
+- 그림 생성 : https://github.com/JS-KETI/MPQUIC_Scheduler_Lab/blob/main/sched-lab/plot_baseline.py
 
 - 초기 검증 기록과 단일 경로 조건별 비교 기록을 구분해 보관
 - 원시 CSV·그림·로그·패치는 전달 산출물의 사본 / 원본 변경 없음

@@ -1,0 +1,13 @@
+{
+  "run_log_results": 630,
+  "run_errors": 0,
+  "unchanged_measured_sources": 3336,
+  "unchanged_binary_and_libraries": 12,
+  "preserved_week1_raw_files": 335,
+  "preserved_week1_report_files": 7,
+  "statistics_tests_passed": 6,
+  "report_embedded_figures": 3,
+  "report_first_heading": "1. 2주차 작업 내용",
+  "raw_baseline_sha256": "2a0e48432404913d484a24a91ca6498fc83ce402dad7e54c34534883f9b24ae5",
+  "analysis_commit": "ba3315794d2987c08e82a257fe79a25e51b9c513"
+}
