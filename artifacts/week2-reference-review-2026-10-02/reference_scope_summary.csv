@@ -1,0 +1,5 @@
+scope,runs,completed,full_received,completed_short,incomplete,reference_status
+provided_seed1_10,210,191,181,10,19,provided reference
+measured_seed1_10,210,191,181,10,19,all 210 match reference
+measured_seed11_30,420,377,352,25,43,no supplied reference
+measured_all,630,568,533,35,62,210 matched; 420 without reference

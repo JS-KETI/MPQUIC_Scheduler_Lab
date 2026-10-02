@@ -4,12 +4,12 @@
   "analysis_code_commit": "6b8cd38e160d37b81f53e708f3f79e592ade1db0",
   "preserved_original_file_count": 335,
   "visualization_added": "report-visuals-2026-10-01",
-  "file_count": 372,
+  "file_count": 378,
   "files": [
     {
       "path": "README.md",
-      "bytes": 6069,
-      "sha256": "e00e52400db7b289913cb3ba8fad9a15b1bb4a2cb630142dafa7e2555485b6b1"
+      "bytes": 6222,
+      "sha256": "2328022f20a3e61a78ffee930bd613f556f666c55f3351d9c241bdc845560359"
     },
     {
       "path": "one-path-analysis-2026-10-01/05-one-path-diagnosis.patch",
@@ -1742,6 +1742,11 @@
       "sha256": "813b5f41c290b1ecbb7f544705a3e20ff7deef48463132fe733014629ea72738"
     },
     {
+      "path": "week2-2026-10-02/run-01/analysis-commands.txt",
+      "bytes": 561,
+      "sha256": "74109d1356dd992041d30bc3cbc5188c56d7681cdff94ff337f0ba6c4834f4b3"
+    },
+    {
       "path": "week2-2026-10-02/run-01/analysis/below_target_runs.csv",
       "bytes": 8761,
       "sha256": "f273cfdad3ecf245b0b7fdb0b816dc9fdeac89577419a0c2a57a66351082875a"
@@ -1775,11 +1780,6 @@
       "path": "week2-2026-10-02/run-01/analysis/week1_comparison_cells.csv",
       "bytes": 14322,
       "sha256": "c19f48cdc8f56e35b43762f8ea670542ff74e08adf6e1e97318ab56469ab551b"
-    },
-    {
-      "path": "week2-2026-10-02/run-01/analysis-commands.txt",
-      "bytes": 561,
-      "sha256": "74109d1356dd992041d30bc3cbc5188c56d7681cdff94ff337f0ba6c4834f4b3"
     },
     {
       "path": "week2-2026-10-02/run-01/baseline.csv",
@@ -1865,6 +1865,36 @@
       "path": "week2-2026-10-02/run-01/sweep.log",
       "bytes": 68562,
       "sha256": "504265788c34a5d73d49f8f4144cce91ac521952df154ff6a5c54db53930b5db"
+    },
+    {
+      "path": "week2-reference-review-2026-10-02/README.md",
+      "bytes": 1562,
+      "sha256": "5c8c44ea2d65c47fa1123663d46419a01a6bbc293943bdb2dbbbc905aad0fc64"
+    },
+    {
+      "path": "week2-reference-review-2026-10-02/provided_results_fixed_stack.csv",
+      "bytes": 19451,
+      "sha256": "9aa9b9ccafa11b3e3836a553eeecc51a3b1647b5ac324e25d63d0c72014c0404"
+    },
+    {
+      "path": "week2-reference-review-2026-10-02/provided_seed1_10_comparison.csv",
+      "bytes": 31443,
+      "sha256": "99609577455c23892778a92617ae21b317b88cc65d67fe65563caa04e94f7bd1"
+    },
+    {
+      "path": "week2-reference-review-2026-10-02/reference_scope_summary.csv",
+      "bytes": 319,
+      "sha256": "977e279aef821a45cc294324d51f1413f85adb262aae0de1b2adc9a68b3b2fcf"
+    },
+    {
+      "path": "week2-reference-review-2026-10-02/seed11_30_below_target_without_reference.csv",
+      "bytes": 6309,
+      "sha256": "5eadda2fa2273793d20a8053596d447e4fc6bed1fb361e868af2acefd5f6f8ec"
+    },
+    {
+      "path": "week2-reference-review-2026-10-02/validation.json",
+      "bytes": 2093,
+      "sha256": "bb25f3bf6174b5165e9fb7055c54e6db5c7fa494bf53cd6f615dc21c73437992"
     }
   ],
   "weekly_report": "WEEK1_WEEKLY_REPORT.md",

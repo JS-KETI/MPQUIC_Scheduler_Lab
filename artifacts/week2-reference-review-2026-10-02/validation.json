@@ -1,0 +1,74 @@
+{
+  "checked_utc": "2026-10-02T07:53:00.883663+00:00",
+  "source_commit": "c38cdb8d76bc057e39faeb6ff13ff83a0b2a9271",
+  "provided_file": "results_fixed_stack.csv (01+02 patches)",
+  "provided_sha256": "9aa9b9ccafa11b3e3836a553eeecc51a3b1647b5ac324e25d63d0c72014c0404",
+  "baseline_file": "artifacts/week2-2026-10-02/run-01/baseline.csv",
+  "baseline_sha256": "2a0e48432404913d484a24a91ca6498fc83ce402dad7e54c34534883f9b24ae5",
+  "compared_keys": [
+    "scenario",
+    "scheduler",
+    "seed"
+  ],
+  "compared_metrics": [
+    "size",
+    "fct_s",
+    "fct95_s",
+    "rx_app",
+    "rx_p0",
+    "rx_p1",
+    "delay_p0_ms",
+    "delay_p1_ms",
+    "done"
+  ],
+  "compared_rows": 210,
+  "compared_cells": 1890,
+  "differing_cells": 0,
+  "differing_rows": 0,
+  "provided_incomplete_runs": 19,
+  "provided_below_target_runs": 29,
+  "new_incomplete_vs_provided_in_comparable_scope": 0,
+  "new_below_target_vs_provided_in_comparable_scope": 0,
+  "additional_seed_rows_without_provided_reference": 420,
+  "additional_seed_incomplete": 43,
+  "additional_seed_below_target": 68,
+  "scope_summary": [
+    {
+      "scope": "provided_seed1_10",
+      "runs": 210,
+      "completed": 191,
+      "full_received": 181,
+      "completed_short": 10,
+      "incomplete": 19,
+      "reference_status": "provided reference"
+    },
+    {
+      "scope": "measured_seed1_10",
+      "runs": 210,
+      "completed": 191,
+      "full_received": 181,
+      "completed_short": 10,
+      "incomplete": 19,
+      "reference_status": "all 210 match reference"
+    },
+    {
+      "scope": "measured_seed11_30",
+      "runs": 420,
+      "completed": 377,
+      "full_received": 352,
+      "completed_short": 25,
+      "incomplete": 43,
+      "reference_status": "no supplied reference"
+    },
+    {
+      "scope": "measured_all",
+      "runs": 630,
+      "completed": 568,
+      "full_received": 533,
+      "completed_short": 35,
+      "incomplete": 62,
+      "reference_status": "210 matched; 420 without reference"
+    }
+  ],
+  "note": "wall_s excluded: host execution time differs by environment, unlike simulation metrics."
+}
