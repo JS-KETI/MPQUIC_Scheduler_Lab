@@ -1,6 +1,6 @@
 {
   "date_kst": "2026-10-01",
-  "code_branch": "docs/#5-one-path-condition-report",
+  "code_branch": "docs/#6-week1-report-clarity",
   "analysis_code_commit": "6b8cd38e160d37b81f53e708f3f79e592ade1db0",
   "preserved_original_file_count": 335,
   "visualization_added": "report-visuals-2026-10-01",
@@ -8,8 +8,8 @@
   "files": [
     {
       "path": "README.md",
-      "bytes": 5252,
-      "sha256": "3b84378a7750bfb8b6635f3a83ee7a7228787d4a87c3cb2a517a00d954434348"
+      "bytes": 5226,
+      "sha256": "3f3db12fffd0dce1eb24dc05f17a916be2d3aa87d45c6caf8cdccaba3e7335ea"
     },
     {
       "path": "one-path-analysis-2026-10-01/05-one-path-diagnosis.patch",
@@ -1293,8 +1293,8 @@
     },
     {
       "path": "report-tools/render_weekly_report.py",
-      "bytes": 6271,
-      "sha256": "13e278768afd738205c28174a6c9393dbbd865aabe9d8a062abee9acae434212"
+      "bytes": 6259,
+      "sha256": "ab8b21d461b98818d1b2d0ce9fe2d016ab9922d007d4d23768ca1efd5564184a"
     },
     {
       "path": "report-visuals-2026-10-01/README.md",

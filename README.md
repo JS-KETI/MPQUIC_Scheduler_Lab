@@ -2,12 +2,12 @@
 
 ns-3 MP-QUIC 스케줄러의 환경 구축·결과 재현·원인 분석을 보관하는 실험 저장소입니다.
 
-- 1주차 제출용 주간 보고 : https://github.com/JS-KETI/MPQUIC_Scheduler_Lab/blob/main/reports/week1/WEEK1_WEEKLY_REPORT.md
+- 1주차 보고서 : https://github.com/JS-KETI/MPQUIC_Scheduler_Lab/blob/main/reports/week1/WEEK1_WEEKLY_REPORT.md
 - 코드·CSV·그림·로그·패치 인덱스 : https://github.com/JS-KETI/MPQUIC_Scheduler_Lab/blob/main/artifacts/README.md
 - 상세 1주차 보고 : https://github.com/JS-KETI/MPQUIC_Scheduler_Lab/blob/main/reports/week1/WEEK1_REPORT.md
 - 작업 관례 : https://github.com/JS-KETI/MPQUIC_Scheduler_Lab/blob/main/docs/JS_KETI_CONVENTIONS.md
 
-- 주차별 보고·공유 자료 : https://github.com/JS-KETI/MPQUIC_Scheduler_Lab/tree/main/reports
+- 주차별 보고서 : https://github.com/JS-KETI/MPQUIC_Scheduler_Lab/tree/main/reports
 
 ## 재현 자료
 

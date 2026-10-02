@@ -101,7 +101,7 @@ def main():
     @media(max-width: 650px) { main { margin: 0; padding: 18px; } body { font-size: 12px; } }
     @media print { body { background: white; } main { max-width: none; margin: 0; padding: 0; box-shadow: none; } h2,h3,figure,table { break-inside: avoid; } }
     """
-    output = '<!doctype html><html lang="ko"><head><meta charset="utf-8"><meta name="viewport" content="width=device-width,initial-scale=1"><title>MP-QUIC 1주차 작업 보고</title><style>' + style + '</style></head><body><main>' + body + '</main></body></html>\n'
+    output = '<!doctype html><html lang="ko"><head><meta charset="utf-8"><meta name="viewport" content="width=device-width,initial-scale=1"><title>1주차 보고서</title><style>' + style + '</style></head><body><main>' + body + '</main></body></html>\n'
     target = root / "WEEK1_WEEKLY_REPORT.html"
     target.write_text(output, encoding="utf-8", newline="\n")
     print(f"Created {target.name}: {len(output.encode('utf-8'))} bytes, {body.count('<figure>')} embedded figures")

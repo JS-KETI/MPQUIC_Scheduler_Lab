@@ -8,9 +8,9 @@
 
 | 항목 | 보기 |
 |---|---|
-| 제출용 주간 보고서 | [WEEK1_WEEKLY_REPORT.md](../reports/week1/WEEK1_WEEKLY_REPORT.md) |
-| 그림 내장 열람용 보고서 | [WEEK1_WEEKLY_REPORT.html](../reports/week1/WEEK1_WEEKLY_REPORT.html) |
-| 열람용 보고 생성 도구 | [render_weekly_report.py](report-tools/render_weekly_report.py) |
+| 1주차 보고서 | [WEEK1_WEEKLY_REPORT.md](../reports/week1/WEEK1_WEEKLY_REPORT.md) |
+| 1주차 보고서 HTML | [WEEK1_WEEKLY_REPORT.html](../reports/week1/WEEK1_WEEKLY_REPORT.html) |
+| 보고서 HTML 생성 도구 | [render_weekly_report.py](report-tools/render_weekly_report.py) |
 | 상세 1주차 보고서 | [WEEK1_REPORT.md](../reports/week1/WEEK1_REPORT.md) |
 | 210회 반복 실행 | [run_sweep.py](../sched-lab/run_sweep.py) |
 | 요약·그림 생성 | [analyze.py](../sched-lab/analyze.py) |
@@ -52,7 +52,7 @@
 | 항목 | 보기 |
 |---|---|
 | 전체 수신 / 완료 처리 횟수 | [SVG](report-visuals-2026-10-01/completion_counts.svg) / [PNG](report-visuals-2026-10-01/completion_counts.png) |
-| 단일 경로 최초 미통과·원본 조건 재검증 | [SVG](report-visuals-2026-10-01/one_path_comparison.svg) / [PNG](report-visuals-2026-10-01/one_path_comparison.png) |
+| 단일 경로 링크 조건별 전송 시간 비교 | [SVG](report-visuals-2026-10-01/one_path_comparison.svg) / [PNG](report-visuals-2026-10-01/one_path_comparison.png) |
 | 집계 수치·그림 생성 코드·설명 | [figure_data.json](report-visuals-2026-10-01/figure_data.json) / [generate_figures.py](report-visuals-2026-10-01/generate_figures.py) / [README](report-visuals-2026-10-01/README.md) |
 
 ## 설치·파일 무결성

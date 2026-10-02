@@ -4,28 +4,28 @@
   "files": [
     {
       "path": "README.md",
-      "bytes": 332,
-      "sha256": "fab4b1df37db764a778dec58d760272ade212e7378c76a48cc88417125b4e4b8"
+      "bytes": 321,
+      "sha256": "6597f49b0dbe60133cee042cafd6a331046a03310dc03633f70fc6b01d9ed5d7"
     },
     {
       "path": "week1/README.md",
-      "bytes": 1000,
-      "sha256": "3da65644334839f2163d5fc926a88ced2fa22f387a19eaed63ad5c27b47c5922"
+      "bytes": 980,
+      "sha256": "1ff4c4e459b30caa843a903768fd7f72c59f4fc46fae9a16408916701208ab9f"
     },
     {
       "path": "week1/WEEK1_REPORT.md",
-      "bytes": 4669,
-      "sha256": "83fadacce245d99c50651e498b664a28447822e350284f7fa8757a84be31f245"
+      "bytes": 5106,
+      "sha256": "abb285f8080336c4db074c1c3117adeae642a58a1ce8af888683eda6ecb0df12"
     },
     {
       "path": "week1/WEEK1_WEEKLY_REPORT.html",
-      "bytes": 523326,
-      "sha256": "f60b5f04c58f32dcc0d81e3882e42a7a417c8864c5558f1e2b2bd6ef655470c4"
+      "bytes": 527342,
+      "sha256": "47cb61e937d58e3f9248151f0da0f336601cb3fa680e92c9f1c4a90e12f0d5a7"
     },
     {
       "path": "week1/WEEK1_WEEKLY_REPORT.md",
-      "bytes": 8616,
-      "sha256": "55805511cb4be7daca15c5ea50a8773b27a198f6d6810a47fb322645c3a791c1"
+      "bytes": 12183,
+      "sha256": "bb8bef9c0181fb62b574f73d66c5195045ea039d4855ba2ec3cf492dfac067c2"
     },
     {
       "path": "week1/figures/completion_counts.png",
