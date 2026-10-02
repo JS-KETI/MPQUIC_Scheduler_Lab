@@ -4,7 +4,7 @@
   "analysis_code_commit": "6b8cd38e160d37b81f53e708f3f79e592ade1db0",
   "preserved_original_file_count": 335,
   "visualization_added": "report-visuals-2026-10-01",
-  "file_count": 373,
+  "file_count": 372,
   "files": [
     {
       "path": "README.md",
@@ -1260,11 +1260,6 @@
       "path": "one-path-analysis-2026-10-01/reference-run.log",
       "bytes": 655,
       "sha256": "c0ae831018bb418464b1044e2d66225f235c0cc6faef7a248ae9c6fd45bc14ce"
-    },
-    {
-      "path": "one-path-analysis-2026-10-01/reproduction-tools/AGENTS.md",
-      "bytes": 8808,
-      "sha256": "a43dc7775156a2611c876a5ea207d66ab33f81ab3516a531f661c36f3fba3280"
     },
     {
       "path": "one-path-analysis-2026-10-01/reproduction-tools/exp-wns3-one-path.sh",
