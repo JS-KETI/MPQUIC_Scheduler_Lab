@@ -4,7 +4,7 @@
   "analysis_code_commit": "6b8cd38e160d37b81f53e708f3f79e592ade1db0",
   "preserved_original_file_count": 335,
   "visualization_added": "report-visuals-2026-10-01",
-  "file_count": 378,
+  "file_count": 383,
   "files": [
     {
       "path": "README.md",
@@ -1865,6 +1865,31 @@
       "path": "week2-2026-10-02/run-01/sweep.log",
       "bytes": 68562,
       "sha256": "504265788c34a5d73d49f8f4144cce91ac521952df154ff6a5c54db53930b5db"
+    },
+    {
+      "path": "week2-baseline-usability-2026-10-02/README.md",
+      "bytes": 3956,
+      "sha256": "0170b5756357d1da112381f2f6ca942192c31895238af5864453503595508a6b"
+    },
+    {
+      "path": "week2-baseline-usability-2026-10-02/completion_and_progress.csv",
+      "bytes": 1641,
+      "sha256": "133f9588baf9dc6f8c5b259ea2bbc87f3bc4655c60c1a90a27cecbebcb1950a8"
+    },
+    {
+      "path": "week2-baseline-usability-2026-10-02/primary_comparison_coverage.csv",
+      "bytes": 2411,
+      "sha256": "d9b3cc4a425b587b67af784664e24bc30e990a1995ffb04ccc23d5853ca44456"
+    },
+    {
+      "path": "week2-baseline-usability-2026-10-02/seed_block_counts.csv",
+      "bytes": 3857,
+      "sha256": "6da1544d0dca2fe8503a1ff8da28de9fc4c25b7cd87ffa0535ef6bca3db86b1c"
+    },
+    {
+      "path": "week2-baseline-usability-2026-10-02/validation.json",
+      "bytes": 725,
+      "sha256": "39a6abfdba5d4008f7951b964a16c7d77a1eabe373b7bc02d655ae2caeab5bab"
     },
     {
       "path": "week2-reference-review-2026-10-02/README.md",

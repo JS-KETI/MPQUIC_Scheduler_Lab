@@ -1,0 +1,15 @@
+{
+  "reviewed_utc": "2026-10-02T08:12:07.880444+00:00",
+  "review_source_commit": "5305863de919384618ab0ca3d027e590c655368b",
+  "baseline_sha256": "2a0e48432404913d484a24a91ca6498fc83ce402dad7e54c34534883f9b24ae5",
+  "group_rows": 21,
+  "primary_comparison_rows": 18,
+  "seed_block_rows": 63,
+  "completion_counts_match_frozen_summary": true,
+  "paired_completed_counts_match_frozen_statistics": true,
+  "frozen_run_sha256_verified": true,
+  "fct95_population": "all runs that reached 95% of target, including done=0; fct95_s=60 is sentinel, not elapsed completion time",
+  "new_simulations": 0,
+  "code_changes": false,
+  "provided_reference_scope": "seed 1-10 only, 210 rows match; seed 11-30 have no supplied reference"
+}

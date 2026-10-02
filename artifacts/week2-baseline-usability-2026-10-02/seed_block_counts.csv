@@ -1,0 +1,64 @@
+scenario,scheduler,name,seed_range,runs,completed,full_received,reference_status
+dominating,0,RR,1-10,10,10,10,matches provided CSV
+dominating,0,RR,11-20,10,10,10,not included in provided CSV
+dominating,0,RR,21-30,10,10,10,not included in provided CSV
+dominating,1,MinRTT,1-10,10,10,10,matches provided CSV
+dominating,1,MinRTT,11-20,10,10,9,not included in provided CSV
+dominating,1,MinRTT,21-30,10,10,10,not included in provided CSV
+dominating,2,BLEST,1-10,10,9,9,matches provided CSV
+dominating,2,BLEST,11-20,10,8,8,not included in provided CSV
+dominating,2,BLEST,21-30,10,9,9,not included in provided CSV
+dominating,3,ECF,1-10,10,9,9,matches provided CSV
+dominating,3,ECF,11-20,10,9,9,not included in provided CSV
+dominating,3,ECF,21-30,10,10,10,not included in provided CSV
+dominating,4,Peekaboo,1-10,10,10,10,matches provided CSV
+dominating,4,Peekaboo,11-20,10,10,10,not included in provided CSV
+dominating,4,Peekaboo,21-30,10,10,10,not included in provided CSV
+dominating,6,MinRTT-multi(new),1-10,10,10,10,matches provided CSV
+dominating,6,MinRTT-multi(new),11-20,10,10,10,not included in provided CSV
+dominating,6,MinRTT-multi(new),21-30,10,10,10,not included in provided CSV
+dominating,5,EAT(new),1-10,10,10,10,matches provided CSV
+dominating,5,EAT(new),11-20,10,10,10,not included in provided CSV
+dominating,5,EAT(new),21-30,10,10,10,not included in provided CSV
+competing,0,RR,1-10,10,6,4,matches provided CSV
+competing,0,RR,11-20,10,1,1,not included in provided CSV
+competing,0,RR,21-30,10,6,6,not included in provided CSV
+competing,1,MinRTT,1-10,10,10,10,matches provided CSV
+competing,1,MinRTT,11-20,10,10,8,not included in provided CSV
+competing,1,MinRTT,21-30,10,9,6,not included in provided CSV
+competing,2,BLEST,1-10,10,9,8,matches provided CSV
+competing,2,BLEST,11-20,10,7,6,not included in provided CSV
+competing,2,BLEST,21-30,10,10,8,not included in provided CSV
+competing,3,ECF,1-10,10,10,8,matches provided CSV
+competing,3,ECF,11-20,10,10,6,not included in provided CSV
+competing,3,ECF,21-30,10,10,10,not included in provided CSV
+competing,4,Peekaboo,1-10,10,10,10,matches provided CSV
+competing,4,Peekaboo,11-20,10,10,9,not included in provided CSV
+competing,4,Peekaboo,21-30,10,10,7,not included in provided CSV
+competing,6,MinRTT-multi(new),1-10,10,4,4,matches provided CSV
+competing,6,MinRTT-multi(new),11-20,10,3,3,not included in provided CSV
+competing,6,MinRTT-multi(new),21-30,10,6,4,not included in provided CSV
+competing,5,EAT(new),1-10,10,4,3,matches provided CSV
+competing,5,EAT(new),11-20,10,3,3,not included in provided CSV
+competing,5,EAT(new),21-30,10,6,4,not included in provided CSV
+degrade,0,RR,1-10,10,10,7,matches provided CSV
+degrade,0,RR,11-20,10,10,9,not included in provided CSV
+degrade,0,RR,21-30,10,10,10,not included in provided CSV
+degrade,1,MinRTT,1-10,10,10,9,matches provided CSV
+degrade,1,MinRTT,11-20,10,10,10,not included in provided CSV
+degrade,1,MinRTT,21-30,10,10,10,not included in provided CSV
+degrade,2,BLEST,1-10,10,10,10,matches provided CSV
+degrade,2,BLEST,11-20,10,10,10,not included in provided CSV
+degrade,2,BLEST,21-30,10,10,10,not included in provided CSV
+degrade,3,ECF,1-10,10,10,10,matches provided CSV
+degrade,3,ECF,11-20,10,10,10,not included in provided CSV
+degrade,3,ECF,21-30,10,10,10,not included in provided CSV
+degrade,4,Peekaboo,1-10,10,10,10,matches provided CSV
+degrade,4,Peekaboo,11-20,10,10,10,not included in provided CSV
+degrade,4,Peekaboo,21-30,10,10,10,not included in provided CSV
+degrade,6,MinRTT-multi(new),1-10,10,10,10,matches provided CSV
+degrade,6,MinRTT-multi(new),11-20,10,10,9,not included in provided CSV
+degrade,6,MinRTT-multi(new),21-30,10,10,8,not included in provided CSV
+degrade,5,EAT(new),1-10,10,10,10,matches provided CSV
+degrade,5,EAT(new),11-20,10,10,10,not included in provided CSV
+degrade,5,EAT(new),21-30,10,10,10,not included in provided CSV
