@@ -1,6 +1,6 @@
 {
-  "date_kst": "2026-10-02",
-  "file_count": 14,
+  "date_kst": "2026-10-04",
+  "file_count": 15,
   "files": [
     {
       "path": "README.md",
@@ -43,6 +43,11 @@
       "sha256": "580b8785a849bf80ec3f4a4de3e01ab1aac746d2eb7389b68af20ba273290643"
     },
     {
+      "path": "week2/2주차 기준 데이터 사용 문의.md",
+      "bytes": 2597,
+      "sha256": "def14188c67f2a38b53b17fa909dc6b462041a98cab5c406b0139504dfd9ef42"
+    },
+    {
       "path": "week2/2주차 진행상황.html",
       "bytes": 393850,
       "sha256": "2c57c21b0e26ac365c5f95bf5159bc808ebe0678c2f193ddc7e5c2946106de61"
@@ -54,8 +59,8 @@
     },
     {
       "path": "week2/README.md",
-      "bytes": 715,
-      "sha256": "68ab8b8b546e51217b896de7e2848793a5be539a6211771f8d557bfe55175024"
+      "bytes": 953,
+      "sha256": "1b4c94b07896c2b97070dfd740e6a4d1950c1f257bf683a207d0646bc0275cf0"
     },
     {
       "path": "week2/figures/completion_rates.png",
