@@ -18,5 +18,10 @@
     "path_shares",
     "recovery_counts"
   ],
+  "current_formats": [
+    "md",
+    "html"
+  ],
+  "pdf_status": "previous version retained; not regenerated",
   "report_scope": "2주차 기본 시각화 3종 및 유효 수정 원인·결과 요약"
 }
