@@ -43,11 +43,6 @@
       "sha256": "580b8785a849bf80ec3f4a4de3e01ab1aac746d2eb7389b68af20ba273290643"
     },
     {
-      "path": "week2/2주차 기준 데이터 사용 문의.md",
-      "bytes": 3339,
-      "sha256": "884bf3fb88bb9f2f050b613c4c0047784c49a6ee5452c8962f3442afc3379886"
-    },
-    {
       "path": "week2/2주차 진행상황.html",
       "bytes": 393850,
       "sha256": "2c57c21b0e26ac365c5f95bf5159bc808ebe0678c2f193ddc7e5c2946106de61"
@@ -58,9 +53,14 @@
       "sha256": "26b590cf9d04fe096b2263bf8d14168f486710cff14359bb667ae9d043216a1c"
     },
     {
+      "path": "week2/2주차 측정 특이사항.md",
+      "bytes": 2812,
+      "sha256": "03388cc22b587763623c442a92efdaf0b2318773596e40186ce7cf07b1b3cac8"
+    },
+    {
       "path": "week2/README.md",
-      "bytes": 953,
-      "sha256": "1b4c94b07896c2b97070dfd740e6a4d1950c1f257bf683a207d0646bc0275cf0"
+      "bytes": 894,
+      "sha256": "c9f5daa598466b481e3f4e481c8876098c66715a21304a9321a75825abb4eee4"
     },
     {
       "path": "week2/figures/completion_rates.png",
