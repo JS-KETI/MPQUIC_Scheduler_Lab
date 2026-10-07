@@ -1,11 +1,11 @@
 {
   "date_kst": "2026-10-07",
-  "file_count": 19,
+  "file_count": 28,
   "files": [
     {
       "path": "README.md",
-      "bytes": 874,
-      "sha256": "74e4db2d52e261a4cc1b987f4879960e2b78aa23b1afde69a87e50e552c16aa5"
+      "bytes": 1530,
+      "sha256": "cd7ceef965d16f3491c395e1ab3f856c044d28875cb9a8bb772f50fd9826b06c"
     },
     {
       "path": "week1/1주차 상세 실험 기록.md",
@@ -69,8 +69,8 @@
     },
     {
       "path": "week2/README.md",
-      "bytes": 1284,
-      "sha256": "079d99120edd64be0e59a34a89ecb213980855bcf89d01c2451477fdf5c54c03"
+      "bytes": 1940,
+      "sha256": "6f6b35eac2d30a72f4f90cd7b8f35f7dbeececcb5f89938e81cac87f8aead20d"
     },
     {
       "path": "week2/figures/completion_rates.png",
@@ -96,6 +96,51 @@
       "path": "week2/figures/path_shares.png",
       "bytes": 88866,
       "sha256": "3e94bf3f56b656a184a44b7f35cb8a546b2c2edaf8917cd42d23976740d605af"
+    },
+    {
+      "path": "week2/summary/2주차 진행상황.html",
+      "bytes": 285985,
+      "sha256": "9e9c73bb500c6a29fc29a154a9da6fade8de4ff1eebe0ad2f1baf048cd6b3faf"
+    },
+    {
+      "path": "week2/summary/2주차 진행상황.md",
+      "bytes": 4726,
+      "sha256": "36ba0d4c86c7ef3fe940b212a9b4f6dc41e382a9c72102b12d36366e729ae667"
+    },
+    {
+      "path": "week2/summary/2주차 진행상황.pdf",
+      "bytes": 337893,
+      "sha256": "fa9bc6dd8a12e970dec12cf921b165ffea5af893742ba0e5d562e7650cac0b76"
+    },
+    {
+      "path": "week2/summary/README.md",
+      "bytes": 1088,
+      "sha256": "db66eeb1c7fddc3b52931cd727131df0a4ed01dc1bb5c76fa2c5446c3173df3b"
+    },
+    {
+      "path": "week2/summary/figures/baseline_performance.png",
+      "bytes": 167307,
+      "sha256": "1e8db0f119084fc8af0fecccf762fbb99df1b47f1800e31efc1c1307c35de33a"
+    },
+    {
+      "path": "week2/summary/figures/baseline_performance.svg",
+      "bytes": 97762,
+      "sha256": "38e78e2577feeb3b3b6b5cc3473336552f2b6e0a0e6b5bb9800bbdcda0ac77a0"
+    },
+    {
+      "path": "week2/summary/figures/recovery_counts.png",
+      "bytes": 42144,
+      "sha256": "7530c299a885a2a1dfdd45f558e3229199be492e6f799ab81d64ead9226139bd"
+    },
+    {
+      "path": "week2/summary/figures/recovery_counts.svg",
+      "bytes": 27084,
+      "sha256": "7e6503b1c97837da4e150d7db3176e040599f83455f72585f9cf915deb52577e"
+    },
+    {
+      "path": "week2/summary/source.json",
+      "bytes": 396,
+      "sha256": "ec4419853966709ede3363d1ec301a9e6fa2988f389b84825bffced7b938030c"
     }
   ]
 }

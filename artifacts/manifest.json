@@ -1,11 +1,11 @@
 {
   "date_kst": "2026-10-07",
-  "file_count": 2425,
+  "file_count": 2426,
   "files": [
     {
       "path": "README.md",
-      "bytes": 6612,
-      "sha256": "d57dbbc7addd7602fcf8e3e39d86bbec01ef0f88a35aa182dd99de5ac17f2951"
+      "bytes": 7268,
+      "sha256": "e4b804420684486154c19f56c1d816508734f54f81620d18a474af4c68273be0"
     },
     {
       "path": "one-path-analysis-2026-10-01/05-one-path-diagnosis.patch",
@@ -1296,6 +1296,11 @@
       "path": "report-tools/render_weekly_report.py",
       "bytes": 6611,
       "sha256": "a84ce709b15b5816c7b4ade62d4686df3d118ce888836857b2799b35e72bd284"
+    },
+    {
+      "path": "report-tools/week2_compact_report.py",
+      "bytes": 17996,
+      "sha256": "b5d5bad7f4aba8bb6bc877f0b4f53c0e3721430527d4435664477227fd0938b5"
     },
     {
       "path": "report-visuals-2026-10-01/README.md",

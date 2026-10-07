@@ -1,0 +1,14 @@
+{
+  "original": "artifacts/week2-2026-10-02/run-01/baseline.csv",
+  "modified": "artifacts/week2-incomplete-2026-10-07/14-fin-preservation-full-630/results.csv",
+  "original_counts": [
+    568,
+    533
+  ],
+  "modified_counts": [
+    630,
+    621
+  ],
+  "modified_source_commit": "856af610bc34cf3aeefe57bc6843c5480658fbe7",
+  "report_scope": "2주차 측정 및 미완료 원인 분석 요약"
+}
