@@ -22,25 +22,29 @@
 #include "ns3/internet-module.h"
 #include "ns3/quic-module.h"
 #include "ns3/point-to-point-module.h"
+#include "ns3/mpquic-bulk-send-application.h"
 #include "ns3/applications-module.h"
 #include "ns3/flow-monitor-module.h"
+#include "ns3/traffic-control-module.h"
 #include <iostream>
 #include <iomanip>
+#include <set>
 
 using namespace ns3;
 
 NS_LOG_COMPONENT_DEFINE ("mpquic-sched-lab");
 
 static uint64_t g_rxTotal = 0;
-static uint64_t g_target = 0;     // "complete": size minus the last partial segment (see note)
+static uint64_t g_target = 0;     // Original benchmark done threshold: size - 3000 bytes
 static uint64_t g_target95 = 0;   // paper-style criterion (WNS3 notebooks use > 5,000,000 B of 5,242,800 B)
 static double g_fct = -1.0;
 static double g_fct95 = -1.0;
 static double g_start = 1.0;
+static double g_completionGraceMs = 10.0;
 
-// NOTE: in this code base the last few hundred bytes of a bulk transfer are often
-// never delivered to the sink (the paper's plotting scripts therefore count a run as
-// finished at > 5,000,000 B).  We treat "size - 3000 B" as complete.
+// Keep the supplied benchmark's completion threshold for comparable FCTs.
+// Exact receipt is reported separately as rx_app == size. CompletionGraceMs
+// controls only the observation window after this threshold (default 10 ms).
 static void
 SinkRx (Ptr<const Packet> p, const Address &from)
 {
@@ -53,7 +57,7 @@ SinkRx (Ptr<const Packet> p, const Address &from)
   if (g_fct < 0 && g_rxTotal >= g_target)
     {
       g_fct = t;
-      Simulator::Stop (MilliSeconds (10));
+      Simulator::Stop (Seconds (g_completionGraceMs / 1000.0));
     }
 }
 
@@ -63,6 +67,140 @@ ModifyLinkRate (NetDeviceContainer *ptp, DataRate lr, Time delay)
   StaticCast<PointToPointNetDevice> (ptp->Get (0))->SetDataRate (lr);
   StaticCast<PointToPointChannel> (StaticCast<PointToPointNetDevice> (ptp->Get (0))->GetChannel ())
       ->SetAttribute ("Delay", TimeValue (delay));
+}
+
+// Optional observers only read state; they do not change buffers, timers, or RNG.
+static void
+ObservePacket (std::string context, Ptr<const Packet> packet,
+               const QuicHeader &header, Ptr<const QuicSocketBase> socket)
+{
+  std::cerr << "OBS,packet," << Simulator::Now ().GetSeconds () << "," << context << ","
+            << socket->GetNode ()->GetId () << "," << unsigned (header.GetPathId ()) << ","
+            << header.GetPacketNumber () << "," << packet->GetUid () << "," << packet->GetSize () << std::endl;
+  Ptr<Packet> copy = packet->Copy ();
+  while (copy->GetSize () > 0)
+    {
+      QuicSubheader sub;
+      uint32_t n = copy->RemoveHeader (sub);
+      if (n == 0) break;
+      std::cerr << "OBS,frame," << Simulator::Now ().GetSeconds () << ","
+                << context << "," << socket->GetNode ()->GetId () << ","
+                << unsigned (header.GetPathId ()) << "," << header.GetPacketNumber () << ","
+                << unsigned (sub.GetFrameType ());
+      if (sub.IsStream ())
+        {
+          std::cerr << "," << sub.GetStreamId () << "," << sub.GetOffset ()
+                    << "," << sub.GetLength () << std::endl;
+          uint32_t length = sub.GetLength ();
+          if (length > copy->GetSize ()) break;
+          copy->RemoveAtStart (length);
+        }
+      else if (sub.IsAck ())
+        {
+          std::cerr << ",ack," << sub.GetLargestAcknowledged () << std::endl;
+        }
+      else std::cerr << std::endl;
+    }
+}
+
+static void
+ObserveState (Ptr<MpquicBulkSendApplication> app)
+{
+  Ptr<QuicSocketBase> socket = DynamicCast<QuicSocketBase> (app->GetSocket ());
+  if (!socket) return;
+  std::cerr << "OBS,state," << Simulator::Now ().GetSeconds () << ","
+            << socket->GetSocketState () << "," << g_rxTotal << ","
+            << socket->GetBytesInBuffer () << std::endl;
+  uint32_t pathId = 0;
+  for (auto flow : socket->GetActiveSubflows ())
+    {
+      auto tcb = flow->m_tcb;
+      std::cerr << "OBS,path," << Simulator::Now ().GetSeconds () << "," << pathId++ << ","
+                << tcb->m_bytesInFlight.Get () << "," << tcb->m_cWnd.Get () << ","
+                << tcb->m_highTxMark.Get () << "," << tcb->m_lastAckedSeq << ","
+                << tcb->m_lossDetectionAlarm.IsRunning () << ","
+                << tcb->m_tlpCount << "," << tcb->m_rtoCount << std::endl;
+    }
+}
+
+static void
+ObserveDrop (std::string context, Ptr<const Packet> packet)
+{
+  std::cerr << "OBS,drop," << Simulator::Now ().GetSeconds () << "," << context << ","
+            << packet->GetUid () << "," << packet->GetSize () << std::endl;
+}
+
+static void
+ObserveQueueDrop (std::string context, Ptr<const QueueDiscItem> item, const char *reason)
+{
+  Ptr<const Ipv4QueueDiscItem> ip = DynamicCast<const Ipv4QueueDiscItem> (item);
+  if (!ip) return;
+  Ipv4Header header = ip->GetHeader ();
+  std::cerr << "OBS,qdrop," << Simulator::Now ().GetSeconds () << "," << context << ","
+            << reason << "," << header.GetSource () << "," << header.GetDestination () << ","
+            << header.GetIdentification () << "," << header.GetFragmentOffset () << ","
+            << item->GetPacket ()->GetSize ();
+  if (header.GetFragmentOffset () == 0 && header.GetProtocol () == 17
+      && item->GetPacket ()->GetSize () > 40)
+    {
+      Ptr<Packet> copy = item->GetPacket ()->Copy ();
+      UdpHeader udp;
+      QuicHeader quic;
+      copy->RemoveHeader (udp);
+      copy->RemoveHeader (quic);
+      std::cerr << "," << unsigned (quic.GetPathId ()) << "," << quic.GetPacketNumber ();
+    }
+  std::cerr << std::endl;
+}
+
+static void
+ObserveIpFragment (std::string context, Ptr<const Packet> packet, Ptr<Ipv4> ipv4, uint32_t interface)
+{
+  Ptr<Packet> copy = packet->Copy ();
+  Ipv4Header header;
+  copy->RemoveHeader (header);
+  if (header.GetFragmentOffset () == 0 && header.IsLastFragment ()) return;
+  std::cerr << "OBS,ipfrag," << Simulator::Now ().GetSeconds () << "," << context << ","
+            << ipv4->GetObject<Node> ()->GetId () << "," << interface << ","
+            << header.GetSource () << "," << header.GetDestination () << ","
+            << header.GetIdentification () << "," << header.GetFragmentOffset () << ","
+            << header.IsLastFragment () << "," << copy->GetSize ();
+  if (header.GetFragmentOffset () == 0 && header.GetProtocol () == 17 && copy->GetSize () > 40)
+    {
+      UdpHeader udp;
+      QuicHeader quic;
+      copy->RemoveHeader (udp);
+      copy->RemoveHeader (quic);
+      std::cerr << "," << unsigned (quic.GetPathId ()) << "," << quic.GetPacketNumber ();
+    }
+  std::cerr << std::endl;
+}
+
+static void
+ObserveIpDrop (std::string context, const Ipv4Header &header, Ptr<const Packet> packet,
+               Ipv4L3Protocol::DropReason reason, Ptr<Ipv4> ipv4, uint32_t interface)
+{
+  std::cerr << "OBS,ipdrop," << Simulator::Now ().GetSeconds () << "," << context << ","
+            << unsigned (reason) << "," << interface << "," << packet->GetUid () << ","
+            << header.GetSource () << "," << header.GetDestination () << ","
+            << header.GetIdentification () << "," << header.GetFragmentOffset () << ","
+            << packet->GetSize () << std::endl;
+}
+
+static void
+ConnectObservers ()
+{
+  static std::set<const QuicSocketBase *> connected;
+  Config::MatchContainer matches = Config::LookupMatches ("/NodeList/*/$ns3::QuicL4Protocol/SocketList/*/QuicSocketBase");
+  for (uint32_t i = 0; i < matches.GetN (); ++i)
+    {
+      Ptr<QuicSocketBase> socket = DynamicCast<QuicSocketBase> (matches.Get (i));
+      if (socket && connected.insert (PeekPointer (socket)).second)
+        {
+          socket->TraceConnect ("Tx", "Tx", MakeCallback (&ObservePacket));
+          socket->TraceConnect ("Rx", "Rx", MakeCallback (&ObservePacket));
+        }
+    }
 }
 
 int
@@ -80,6 +218,7 @@ main (int argc, char *argv[])
   int seed = 1;
   int bLambda = 200, bVar = 0;
   double simEnd = 60.0;
+  bool observe = false;
 
   CommandLine cmd;
   cmd.AddValue ("SchedulerType", "0 RR, 1 MinRTT, 2 BLEST, 3 ECF, 4 Peekaboo, 5 EAT(new), 6 MinRTT-multi(new)", schedulerType);
@@ -102,6 +241,8 @@ main (int argc, char *argv[])
   cmd.AddValue ("BLambda", "BLEST lambda", bLambda);
   cmd.AddValue ("BVar", "BLEST lambda increment", bVar);
   cmd.AddValue ("SimEnd", "hard stop [s]", simEnd);
+  cmd.AddValue ("CompletionGraceMs", "diagnostic wait after unchanged done threshold [ms]", g_completionGraceMs);
+  cmd.AddValue ("Observe", "read-only packet and sender-state diagnostics on stderr", observe);
   cmd.Parse (argc, argv);
 
   Time::SetResolution (Time::NS);
@@ -232,6 +373,21 @@ main (int argc, char *argv[])
                            Time::FromDouble (delay1, Time::MS));
     }
 
+  if (observe)
+    {
+      Config::Connect ("/NodeList/*/DeviceList/*/$ns3::PointToPointNetDevice/TxQueue/Drop", MakeCallback (&ObserveDrop));
+      Config::Connect ("/NodeList/*/DeviceList/*/$ns3::PointToPointNetDevice/PhyRxDrop", MakeCallback (&ObserveDrop));
+      Config::Connect ("/NodeList/*/$ns3::Ipv4L3Protocol/Drop", MakeCallback (&ObserveIpDrop));
+      Config::Connect ("/NodeList/*/$ns3::Ipv4L3Protocol/Rx", MakeCallback (&ObserveIpFragment));
+      Config::Connect ("/NodeList/*/$ns3::Ipv4L3Protocol/Tx", MakeCallback (&ObserveIpFragment));
+      Config::Connect ("/NodeList/*/$ns3::TrafficControlLayer/RootQueueDiscList/*/DropBeforeEnqueue", MakeCallback (&ObserveQueueDrop));
+      Config::Connect ("/NodeList/*/$ns3::TrafficControlLayer/RootQueueDiscList/*/DropAfterDequeue", MakeCallback (&ObserveQueueDrop));
+      for (double t : {0.001, 1.000000001, 1.1, 1.2})
+        Simulator::Schedule (Seconds (t), &ConnectObservers);
+      for (double t : {2.0, 4.0, 6.0, 10.0, 30.0, simEnd - 0.001})
+        if (t < simEnd) Simulator::Schedule (Seconds (t), &ObserveState,
+                                              DynamicCast<MpquicBulkSendApplication> (srcApps.Get (0)));
+    }
   Simulator::Stop (Seconds (simEnd));
   Simulator::Run ();
 

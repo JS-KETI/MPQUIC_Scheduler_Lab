@@ -136,30 +136,23 @@ QuicSocketRxBuffer::Extract (uint32_t maxSize)
 
   Ptr<Packet> outPkt = Create<Packet> ();
 
-  QuicSocketRxPacketList::iterator it = m_socketRecvList.begin ();
-
-  while (extractSize > 0 && !m_socketRecvList.empty () && it != m_socketRecvList.end ())
+  while (extractSize > 0 && !m_socketRecvList.empty ())
     {
-      it = m_socketRecvList.begin ();
-      Ptr<Packet> currentPacket = *it;
-
-      if (currentPacket->GetSize () + outPkt->GetSize () <= extractSize)   // Merge
+      Ptr<Packet> currentPacket = m_socketRecvList.front ();
+      uint32_t bytes = std::min (extractSize, currentPacket->GetSize ());
+      outPkt->AddAtEnd (currentPacket->CreateFragment (0, bytes));
+      if (bytes == currentPacket->GetSize ())
         {
-
-          outPkt->AddAtEnd ((*it));
-          m_socketRecvList.erase (it);
-
-          m_recvSize -= (*it)->GetSize ();
-          extractSize -= (*it)->GetSize ();
-          NS_LOG_LOGIC ("Added packet of size " << (*it)->GetSize ());
-          continue;
+          m_socketRecvList.erase (m_socketRecvList.begin ());
         }
       else
         {
-          break;
+          currentPacket->RemoveAtStart (bytes);
         }
-
-      it++;
+      // Account for the extracted packet, never an invalidated iterator.
+      m_recvSize -= bytes;
+      extractSize -= bytes;
+      NS_LOG_LOGIC ("Added packet fragment of size " << bytes);
     }
 
   if (outPkt->GetSize () == 0)
