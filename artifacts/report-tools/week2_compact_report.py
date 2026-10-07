@@ -9,6 +9,8 @@ import csv
 import html
 import json
 import statistics
+import hashlib
+import shutil
 from pathlib import Path
 
 BASE = 'artifacts/week2-2026-10-02/run-01/baseline.csv'
@@ -17,6 +19,54 @@ ORDER = [0, 1, 2, 3, 4, 6, 5]
 NAMES = ['RR', 'MinRTT', 'BLEST', 'ECF', 'Peekaboo', 'MinRTT-multi', 'EAT']
 SCENARIOS = ['dominating', 'competing', 'degrade']
 BRANCH = 'https://github.com/JS-KETI/MPQUIC_Scheduler_Lab/tree/fix/%239-week2-incomplete-diagnosis'
+BASIC = 'artifacts/week2-basic-visuals-2026-10-08'
+
+
+def prepare_basic_figures(repo, out):
+    """Run the supplied analyzer on a COPY; preserve the frozen baseline."""
+    import contextlib
+    import runpy
+    import sys
+    import matplotlib
+    matplotlib.use('Agg')
+    import matplotlib.pyplot as plt
+    plt.rcdefaults()
+    archive = repo/BASIC
+    archive.mkdir(parents=True, exist_ok=True)
+    source = repo/BASE
+    copied = archive/'baseline.csv'
+    if copied.exists():
+        assert copied.read_bytes() == source.read_bytes()
+    else:
+        shutil.copy2(source, copied)
+    old_argv = sys.argv[:]
+    try:
+        sys.argv = [str(repo/'sched-lab/analyze.py'), str(copied)]
+        with (archive/'analyze.log').open('w') as log, contextlib.redirect_stdout(log):
+            runpy.run_path(str(repo/'sched-lab/analyze.py'), run_name='__main__')
+        # Export the very same provided-tool figure as SVG for native Notion images.
+        plt.gcf().savefig(archive/'baseline_fct.svg')
+        plt.close('all')
+    finally:
+        sys.argv = old_argv
+    for ext in ['png', 'svg']:
+        shutil.copy2(archive/f'baseline_fct.{ext}', out/'figures'/f'baseline_fct.{ext}')
+        for name in ['completion_rates', 'path_shares']:
+            shutil.copy2(repo/'artifacts/week2-2026-10-02/run-01/figures'/f'{name}.{ext}', out/'figures'/f'{name}.{ext}')
+    provenance = {
+        'input': BASE, 'input_sha256': hashlib.sha256(source.read_bytes()).hexdigest(),
+        'provided_analyzer': 'sched-lab/analyze.py',
+        'analyzer_sha256': hashlib.sha256((repo/'sched-lab/analyze.py').read_bytes()).hexdigest(),
+        'compatibility': 'Existing matplotlib compatibility patch: tick_labels -> labels; measurement and plotting logic retained',
+        'command': f'python3 artifacts/report-tools/week2_compact_report.py --repo {repo} --charts',
+        'provided_cli_equivalent': f'python3 sched-lab/analyze.py {BASIC}/baseline.csv',
+        'execution_method': 'runpy.run_path with the supplied analyzer path and copied CSV in sys.argv',
+        'svg_export': 'matplotlib.pyplot.gcf().savefig on the same figure after runpy execution',
+        'copied_week2_figures': ['completion_rates', 'path_shares'],
+        'additional_simulation_runs': 0,
+    }
+    (archive/'provenance.json').write_text(json.dumps(provenance, ensure_ascii=False, indent=2)+'\n')
+    (archive/'README.md').write_text('# 2주차 기본 시각화 자료\n\n- 원본 동결 baseline.csv를 복사해 제공 analyze.py 실행. 630회 데이터 내용 동일\n- baseline_fct.png: 제공 도구의 시간 분포·완료 횟수 박스플롯\n- baseline_fct.svg: 동일 Figure의 SVG 출력, 노션 본문 표시\n- baseline_summary.csv·analyze.log·provenance.json: 제공 도구의 요약표·실행 출력·생성 근거\n- 완료율·경로 비율 그림은 기존 동결 run-01 그림을 보고서에 그대로 복사\n- 추가 시뮬레이션 없음. 원본 동결 폴더 수정 없음\n')
 
 
 def read_rows(path):
@@ -101,39 +151,31 @@ def blocks(original, fixed):
         ('h3', '1-1. 멀티 경로 스케줄러 630회 측정 (제공 seed 1~10 결과와 모두 일치)'),
         ('bullet', '**수행:** run_sweep.py·mpquic-sched-lab.cc 사용 → 3시나리오 × 7스케줄러 × 30seed = 630회. 누락·중복·실행 오류 0건.'),
         ('bullet', '**조건:** 목표 5,242,880B, 혼잡 제어 OLIA, 설정 손실률 0, 시뮬레이션 종료 시각 60초. seed는 링크 변동을 재현하는 난수 번호.'),
-        ('image', 'baseline_performance.png', '그림 1. 기존 측정의 평균 전송 완료 시간과 수신 횟수 (스케줄러·시나리오별 각 30회)'),
-        ('note', '평균 시간은 완료 처리된 실행만 집계. 그림의 “완료”는 목표보다 최대 3,000B 부족해도 충족하는 코드 기준, “전체 수신”은 목표 5,242,880B 정확 수신.'),
+        ('image', 'baseline_fct.png', '그림 1. 제공 analyze.py의 전송 시간 분포·완료 횟수 (630회 기준 데이터)'),
+        ('note', '완료 실행만 표시. 세모: 평균, 상자: 가운데 50% 구간, 이름 아래 숫자: 완료/전체 실행 수. dominating: 빠른 경로의 지연도 짧음, competing: 빠른 경로의 지연은 더 김, degrade: 전송 중 한 경로 악화.'),
         ('table', ['측정 범위', '완료 처리', '목표 전체 수신', '제공 기준 대조'], [
             ['seed 1~10 · 210회', '191/210', '181/210', '기준도 191·181회, 미달 조합·수신량 동일'],
             ['seed 11~30 · 420회', '377/420', '352/420', '제공 기준 없음 · 추가 측정'],
             ['seed 1~30 · 630회', '568/630', '533/630', '전체 바이트 미달 97회'],
         ], [1.18, .76, .90, 2.66]),
-        ('bullet', '**바이트 미달 97회:** 완료 처리됐지만 전체 수신 미달 **35회**, 완료 기준 미충족 **62회**. seed 1~10의 29회는 제공 기준에도 존재.'),
-        ('h3', '1-2. 통계·경로 분배 분석 (측정 자료·명령·그림 동결 완료)'),
-        ('bullet', '**산출물:** 완료율·평균·중앙값·p90(상위 10% 경계)·목표 95% 수신 시간, 같은 seed끼리의 시간 차이·95% 신뢰구간·유의확률 집계. 그림 3종과 baseline.csv 보존.'),
-        ('bullet', '**주 비교 대상 MinRTT-multi:** dominating 평균 3.2678초, 빠른 경로 전송 비율 67.5%. competing은 13/30회 완료, 목표 95% 수신은 30/30회·평균 3.3656초.'),
+        ('h3', '1-2. 완료율·목표 바이트 수신 테스트 (완료 568회·전체 수신 533회)'),
+        ('image', 'completion_rates.png', '그림 2. 요청서에서 요구한 완료율 분석 · 추가 작성한 plot_baseline.py로 생성'),
+        ('note', '완료 처리: 목표보다 최대 3,000B 부족해도 코드 기준 충족. 전체 수신: 목표 5,242,880B 정확 수신. 초록: 전체 수신 533회, 노랑: 완료 후 부족 35회, 회색: 미완료 62회. seed 1~10의 바이트 미달 29회는 제공 기준과 동일.'),
         ('break',),
+        ('h3', '1-3. 두 경로의 전송 분배 테스트 (시나리오별 경로 사용 비율 확인)'),
+        ('image', 'path_shares.png', '그림 3. 요청서에서 요구한 경로별 전송 비율 분석 · 추가 작성한 plot_baseline.py로 생성'),
+        ('note', '완료 실행의 IP 계층 수신 바이트 비율(헤더·재전송 포함). MinRTT-multi의 경로 1 비율: dominating 67.5%, competing 60.9%, degrade 37.7%.'),
+        ('bullet', '**통계 산출물:** stats.py로 평균·중앙값·p90(상위 10% 경계)·95% 수신 시간과 같은 seed끼리의 시간 차이·신뢰구간 집계. baseline.csv·명령·그림 동결 완료.'),
         ('h2', '2. 문제 상황 - 미완료 62회 원인 분석·수정'),
-        ('h3', '2-1. 같은 시나리오·스케줄러·seed 재실험 (미완료 62회 모두 전체 수신)'),
-        ('image', 'recovery_counts.png', '그림 2. 기존 코드와 수정 코드의 630회 결과 (동일 실행 조건, 완료 후 10ms 종료 유지)'),
-        ('bullet', '**최초 문제 상황(현상)**'),
-        ('sub', '7개 스케줄러·시나리오 조합에서 62회 미완료. 제공 seed 1~10의 19회는 기준과 동일, 추가 seed 11~30의 43회는 제공 기준 없음.'),
-        ('bullet', '**문제 정의·식별**'),
-        ('sub', '54회: 이미 전달한 중복 데이터가 수신 버퍼에 들어가, 수신 위치 계산과 실제 전달 바이트가 달라짐. 8회: 네트워크 큐(FqCoDel)의 지연 목표 초과로 IPv4 조각(분할 패킷) 폐기, 재전송 판단 누락.'),
-        ('bullet', '**접근(수정) 방법**'),
-        ('sub', 'QuicStreamBase::Recv의 중복·부분 중복 처리와 실제 수신량 계산 수정. QuicSocketTxBuffer::OnAckUpdate의 손실 판단 보완. 종료 표시(FIN) 보존 및 수신 버퍼 부분 읽기 수정.'),
-        ('table', ['원인별 검증 테스트', '완료 처리', '전체 수신', '확인 결과'], [
-            ['종료 시각 60 → 300초', '0/62', '0/62', '수신량 동일 · 시간 연장 효과 없음'],
-            ['수신 버퍼 부분 읽기만 수정', '0/62', '0/62', '개별 버퍼 결함 확인 · 미완료는 유지'],
-            ['중복 수신 처리만 수정', '54/62', '54/62', '중복 데이터 관련 54회 복구'],
-            ['재전송 판단만 수정 · 나머지 8회', '8/8', '8/8', 'IPv4 조각 유실 관련 8회 복구'],
-            ['수정 통합 · seed 1~30 전체', '630/630', '621/630', '기존 미완료 62회 모두 전체 수신'],
-            ['남은 9회 · 종료 대기 10 → 250ms', '9/9', '9/9', '후속 바이트 수신 · 완료 시각 동일'],
-        ], [2.30, .70, .70, 1.80]),
-        ('bullet', '**결과**'),
-        ('sub', '기본 종료 대기 10ms에서 전체 수신 미달 9회 유지: 기존 미달 5회 + 수정 후 신규 미달 4회. 별도 250ms 대기 실험에서는 9회 모두 전체 수신.'),
-        ('sub', '수신·재전송·FIN 단위 검증 통과. 관찰 옵션 전후 62회 결과 일치. 동결 기준 자료 27개 파일의 해시(내용 식별값) 유지.'),
-        ('h3', '2-2. 남은 확인·다음 작업 (시간 증가 및 기준선 채택 검토)'),
+        ('h3', '2-1. 원인별 유효 수정 결과 (미완료 62회 모두 전체 수신)'),
+        ('table', ['확인된 원인', '수정 내용·결과'], [
+            ['54회: 전달이 끝난 중복 데이터로 수신 위치 계산과 실제 전달량 불일치', '이미 전달한 범위 제외·실제 추출량만 수신 위치에 반영 → 해당 54회 모두 완료·전체 수신'],
+            ['8회: 네트워크 큐(FqCoDel)의 지연 목표 초과로 IPv4 조각 폐기, 재전송 판단 누락', 'ACK(수신 확인) 번호가 송신 목록에 없어도 번호 차이로 손실 검사 수행 → 해당 8회 모두 완료·전체 수신'],
+        ], [2.65, 2.85]),
+        ('image', 'recovery_counts.png', '그림 4. 동일 조건 630회 수정 전후 결과 (완료 후 10ms 종료 유지)'),
+        ('note', '기존 미완료 62회: 제공 seed 1~10의 19회는 기준과 동일, 추가 seed 11~30의 43회는 제공 기준 없음. 수정 후 전체 630회 완료·621회 전체 수신.'),
+        ('h3', '2-2. 남은 확인·다음 작업 (전체 수신 미달 9회·시간 증가 검토)'),
+        ('bullet', '**종료 대기 검증:** 남은 9회는 완료 후 10ms 종료로 후속 바이트 수신 전에 측정 종료. 별도 실험에서 대기 250ms로 변경 → 9/9회 전체 수신, 기록된 완료 시각 동일. 기본 10ms 결과의 미달은 기존 5회 + 신규 4회.'),
         ('bullet', '**전송 시간:** competing·MinRTT-multi의 수정 전후 공통 완료 seed 13개 평균 3.4185 → 3.7220초, **0.3035초 증가**. 시간 증가 원인과 남은 9회 종료 처리 검토.'),
         ('bullet', '**게이트 2:** dominating 평균의 95% 신뢰구간 폭(상한-하한) 기준 0.1초. MinRTT-multi는 기존 0.0130초 → 수정 0.0257초로 충족. MinRTT·ECF·Peekaboo는 수정 후에도 0.1647~0.1751초로 초과. 적용 대상·기준선 확정 → 기준 충족 여부 판정 → 3주차 진입 결정.'),
         ('link', '수정 코드·측정 자료', 'https://github.com/JS-KETI/MPQUIC_Scheduler_Lab/pull/10'),
@@ -250,11 +292,12 @@ def main():
     original, fixed = read_rows(args.repo/BASE), read_rows(args.repo/FIXED)
     if args.charts:
         make_charts(args.repo, out, original, fixed)
+        prepare_basic_figures(args.repo, out)
     else:
         data = blocks(original, fixed)
         documents(out, data)
         pdf(out, data)
-        (out/'source.json').write_text(json.dumps({'original':BASE,'modified':FIXED,'original_counts':counts(original),'modified_counts':counts(fixed),'modified_source_commit':'856af610bc34cf3aeefe57bc6843c5480658fbe7','report_scope':'2주차 측정 및 미완료 원인 분석 요약'}, ensure_ascii=False, indent=2)+'\n', encoding='utf-8', newline='\n')
+        (out/'source.json').write_text(json.dumps({'original':BASE,'modified':FIXED,'original_counts':counts(original),'modified_counts':counts(fixed),'modified_source_commit':'856af610bc34cf3aeefe57bc6843c5480658fbe7','basic_visuals':BASIC,'provided_analyzer':'sched-lab/analyze.py','report_figures':['baseline_fct','completion_rates','path_shares','recovery_counts'],'report_scope':'2주차 기본 시각화 3종 및 유효 수정 원인·결과 요약'}, ensure_ascii=False, indent=2)+'\n', encoding='utf-8', newline='\n')
     print(out)
 
 

@@ -10,5 +10,13 @@
     621
   ],
   "modified_source_commit": "856af610bc34cf3aeefe57bc6843c5480658fbe7",
-  "report_scope": "2주차 측정 및 미완료 원인 분석 요약"
+  "basic_visuals": "artifacts/week2-basic-visuals-2026-10-08",
+  "provided_analyzer": "sched-lab/analyze.py",
+  "report_figures": [
+    "baseline_fct",
+    "completion_rates",
+    "path_shares",
+    "recovery_counts"
+  ],
+  "report_scope": "2주차 기본 시각화 3종 및 유효 수정 원인·결과 요약"
 }

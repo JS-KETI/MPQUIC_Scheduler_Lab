@@ -1,11 +1,11 @@
 {
-  "date_kst": "2026-10-07",
-  "file_count": 2426,
+  "date_kst": "2026-10-08",
+  "file_count": 2433,
   "files": [
     {
       "path": "README.md",
-      "bytes": 7268,
-      "sha256": "e4b804420684486154c19f56c1d816508734f54f81620d18a474af4c68273be0"
+      "bytes": 7442,
+      "sha256": "1cf036e0c5d978a970aa51fc03fa357e42df05abe72c9b97018149fbc1c05d14"
     },
     {
       "path": "one-path-analysis-2026-10-01/05-one-path-diagnosis.patch",
@@ -1299,8 +1299,8 @@
     },
     {
       "path": "report-tools/week2_compact_report.py",
-      "bytes": 17996,
-      "sha256": "b5d5bad7f4aba8bb6bc877f0b4f53c0e3721430527d4435664477227fd0938b5"
+      "bytes": 20686,
+      "sha256": "c4a693629afab2f0d5dd55c0ccda5dcac2f48160807e9ef74e2f92309b93ea68"
     },
     {
       "path": "report-visuals-2026-10-01/README.md",
@@ -1896,6 +1896,41 @@
       "path": "week2-baseline-usability-2026-10-02/validation.json",
       "bytes": 725,
       "sha256": "39a6abfdba5d4008f7951b964a16c7d77a1eabe373b7bc02d655ae2caeab5bab"
+    },
+    {
+      "path": "week2-basic-visuals-2026-10-08/README.md",
+      "bytes": 560,
+      "sha256": "2cc70ad107b9c6400cdbb48ae7726f97051a802603de586ee183af9c4046ba59"
+    },
+    {
+      "path": "week2-basic-visuals-2026-10-08/analyze.log",
+      "bytes": 2491,
+      "sha256": "35625830015b1275e337fb1cf1e0cf66456c690d7a03ff6827a110cdf80bc563"
+    },
+    {
+      "path": "week2-basic-visuals-2026-10-08/baseline.csv",
+      "bytes": 58498,
+      "sha256": "2a0e48432404913d484a24a91ca6498fc83ce402dad7e54c34534883f9b24ae5"
+    },
+    {
+      "path": "week2-basic-visuals-2026-10-08/baseline_fct.png",
+      "bytes": 109890,
+      "sha256": "46d2f59297ead253c3a8bc7721a53d0acfcfcab4f59a524f78e0eaca8b1bc4fb"
+    },
+    {
+      "path": "week2-basic-visuals-2026-10-08/baseline_fct.svg",
+      "bytes": 107965,
+      "sha256": "f729dc528cd472f3d2f3e2f83b75d5855c30ebdd81f9fdddadc04f07e497e2fa"
+    },
+    {
+      "path": "week2-basic-visuals-2026-10-08/baseline_summary.csv",
+      "bytes": 2566,
+      "sha256": "a4038132922a857cfeac1ccb6492088464db330b78b070404006dd63862d8815"
+    },
+    {
+      "path": "week2-basic-visuals-2026-10-08/provenance.json",
+      "bytes": 966,
+      "sha256": "54b77091b756866c316e14a2c740d3aab2bbb88a16684b8d2a5d0e67be2033d4"
     },
     {
       "path": "week2-incomplete-2026-10-07/01-extended-300s/commands.json",
