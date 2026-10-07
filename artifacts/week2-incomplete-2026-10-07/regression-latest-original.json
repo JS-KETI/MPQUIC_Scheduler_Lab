@@ -1,0 +1,38 @@
+{
+  "socket": {
+    "command": [
+      "build/scratch/quic-rx-regression",
+      "--Layer=socket"
+    ],
+    "returncode": 1,
+    "stdout": "REGRESSION,socket-add-13,PASS\nREGRESSION,socket-add-7,PASS\nREGRESSION,socket-add-31,PASS\nREGRESSION,socket-large-read-keeps-all-51-bytes-in-order,FAIL\nREGRESSION,socket-large-read-remaining-size-zero,FAIL\nREGRESSION,socket-add-13,PASS\nREGRESSION,socket-add-7,PASS\nREGRESSION,socket-add-31,PASS\nREGRESSION,socket-read-limit-20-consumes-two-frames,FAIL\nREGRESSION,socket-after-20-read-31-bytes-remain,FAIL\nREGRESSION,socket-next-read-consumes-31-bytes,FAIL\nREGRESSION,socket-bounded-reads-preserve-byte-sequence,FAIL\nREGRESSION,socket-bounded-reads-drain-buffer,FAIL\nREGRESSION,socket-add-13,PASS\nREGRESSION,socket-add-7,PASS\nREGRESSION,socket-add-31,PASS\nREGRESSION,socket-partial-first-read-obeys-five-byte-limit,FAIL\nREGRESSION,socket-partial-first-read-leaves-46-bytes,FAIL\nREGRESSION,socket-partial-cross-packet-read-obeys-17-byte-limit,FAIL\nREGRESSION,socket-partial-cross-packet-read-leaves-29-bytes,FAIL\nREGRESSION,socket-partial-final-read-consumes-only-remaining-29-bytes,FAIL\nREGRESSION,socket-partial-reads-preserve-all-51-bytes-in-order,FAIL\nREGRESSION,socket-partial-reads-drain-buffer,FAIL\nREGRESSION_SUMMARY,failures=14\n",
+    "stderr": ""
+  },
+  "stream": {
+    "command": [
+      "build/scratch/quic-rx-regression",
+      "--Layer=stream"
+    ],
+    "returncode": 1,
+    "stdout": "0\t1\t0\t0\t0\t\nREGRESSION,stream-receive-offset-0,PASS\n0\t1\t200\t0\t0\t\nREGRESSION,stream-receive-offset-0-with-fin,PASS\nREGRESSION,stream-duplicate-payload-first-fin-reaches-data-read,FAIL\nREGRESSION,stream-duplicate-payload-first-fin-keeps-only-200-unique-bytes,PASS\nREGRESSION,stream-duplicate-payload-first-fin-preserves-actual-byte-sequence,PASS\n0\t1\t0\t0\t0\t\nREGRESSION,stream-receive-offset-0,PASS\n0\t1\t200\t0\t0\t\nREGRESSION,stream-receive-offset-0,PASS\n0\t1\t200\t250\t100\t\nREGRESSION,stream-receive-offset-250,PASS\n0\t1\t200\t200\t150\t\nREGRESSION,stream-receive-offset-200,PASS\nREGRESSION,stream-old-duplicate-does-not-prevent-delivery-of-300-bytes,FAIL\nREGRESSION,stream-old-duplicate-preserves-actual-byte-sequence,FAIL\n0\t1\t0\t0\t0\t\nREGRESSION,stream-receive-offset-0,PASS\n0\t1\t200\t250\t0\t\nREGRESSION,stream-receive-offset-250,PASS\n0\t1\t200\t190\t50\t\nREGRESSION,stream-receive-offset-190,PASS\nREGRESSION,stream-partial-overlap-delivers-300-unique-bytes,FAIL\nREGRESSION,stream-partial-overlap-preserves-actual-byte-sequence,FAIL\n0\t1\t0\t100\t0\t\nREGRESSION,stream-receive-offset-100,PASS\n0\t1\t0\t100\t50\t\nREGRESSION,stream-receive-offset-100,PASS\n0\t1\t0\t0\t50\t\nREGRESSION,stream-receive-offset-0,PASS\nREGRESSION,stream-buffered-duplicate-is-not-counted-twice,PASS\nREGRESSION,stream-buffered-duplicate-preserves-actual-byte-sequence,PASS\n0\t1\t0\t200\t0\t\nREGRESSION,stream-receive-offset-200,PASS\n0\t1\t0\t100\t100\t\nREGRESSION,stream-receive-offset-100,PASS\n0\t1\t0\t0\t200\t\nREGRESSION,stream-receive-offset-0,PASS\nREGRESSION,stream-reversed-frames-deliver-300-bytes-after-hole-filled,PASS\nREGRESSION,stream-reversed-frames-preserve-actual-byte-sequence,PASS\nREGRESSION_SUMMARY,failures=5\n",
+    "stderr": ""
+  },
+  "loss": {
+    "command": [
+      "build/scratch/quic-loss-regression"
+    ],
+    "returncode": 1,
+    "stdout": "REGRESSION,tx-add-packet-9,PASS\nREGRESSION,tx-send-packet-9,PASS\nREGRESSION,tx-add-packet-10,PASS\nREGRESSION,tx-send-packet-10,PASS\nREGRESSION,gap-acknowledges-only-received-packet-9,PASS\nREGRESSION,gap-does-not-acknowledge-missing-packet-10,PASS\nREGRESSION,missing-packet-10-remains-outstanding,PASS\nREGRESSION,missing-largest-data-item-still-detects-old-packet-10-loss,FAIL\nREGRESSION,lost-byte-count-is-exactly-missing-packet-10,FAIL\nREGRESSION,retransmission-queues-missing-data-and-excludes-acked-packet-9,FAIL\nREGRESSION,tx-add-packet-10,PASS\nREGRESSION,tx-send-packet-10,PASS\nREGRESSION,recent-gap-packet-stays-unacknowledged,PASS\nREGRESSION,packet-number-distance-two-does-not-exceed-existing-threshold-three,PASS\nREGRESSION,tx-add-packet-10,PASS\nREGRESSION,tx-send-packet-10,PASS\nREGRESSION,tx-add-packet-20,PASS\nREGRESSION,tx-send-packet-20,PASS\nREGRESSION,tracked-largest-packet-20-is-acknowledged,PASS\nREGRESSION,tracked-largest-packet-keeps-existing-packet-threshold-behavior,PASS\nREGRESSION_SUMMARY,failures=3\n",
+    "stderr": ""
+  },
+  "provenance": {
+    "head": "1dfe61122940afb7bcf0da6537a8f4dfeafad343",
+    "source_hashes": {
+      "src/quic/model/quic-socket-rx-buffer.cc": "a8febcf0025b3658e826b79098d45ee81e4599ac387935afc7ef57c9d225eb34",
+      "src/quic/model/quic-stream-base.cc": "b7fe8114769e79738069a958f73446b05ff7524bd4cee644462bc013ea78e5e3",
+      "src/quic/model/quic-socket-tx-buffer.cc": "0440825e4a64db17dba0acdc2860025e2d4b28bc82f75b04149b7a3ab9f0df6c",
+      "scratch/quic-rx-regression.cc": "7042b6028826d28c650422e05506cdcf43541f423e0b31c9e8450bcaf655146b",
+      "scratch/quic-loss-regression.cc": "14dca19c99ef8d93e1f682fc5b1b720b60631fa604960edc665fc95506eb1fc8"
+    }
+  }
+}

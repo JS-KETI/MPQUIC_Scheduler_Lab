@@ -1,0 +1,28 @@
+{
+  "created_at": "2026-10-07T19:05:23+0900",
+  "head": "1dfe61122940afb7bcf0da6537a8f4dfeafad343",
+  "baseline_sha256": "2a0e48432404913d484a24a91ca6498fc83ce402dad7e54c34534883f9b24ae5",
+  "source_patch_sha256": "f301d7c9d31ab4103b432350345ad194f47766403433c36cacd3d6ac6bd7a094",
+  "selection": "all",
+  "cases": "competing:1:8,competing:2:16,competing:3:23,degrade:0:4,degrade:0:6,degrade:0:19,degrade:1:9,degrade:6:17,degrade:6:22",
+  "sim_end": 60,
+  "extra": "--CompletionGraceMs=250 --Observe=1",
+  "planned_runs": 9,
+  "binary_sha256": "87181ff13576c417add9ea92ebd4d49e2bbe8e4c55cd918ea76c87bd55b2085e",
+  "quic_library_sha256": {
+    "libns3-dev-quic-optimized.so": "032794e6bb10639c2c2ca4f3b9f2b34c7acc4adaa0fe4700ae2cb2df0f7d55cc"
+  },
+  "runner_sha256": "332367bf0554fbe59e22d8337922a667fd02519dfc56cf9feb75fc35ab720c20",
+  "runner_command": [
+    "sched-lab/incomplete-investigate.py",
+    "--baseline-dir",
+    "artifacts/week2-2026-10-02/run-01",
+    "--out",
+    "artifacts/week2-incomplete-2026-10-07/09-completion-grace-250ms",
+    "--selection",
+    "all",
+    "--cases",
+    "competing:1:8,competing:2:16,competing:3:23,degrade:0:4,degrade:0:6,degrade:0:19,degrade:1:9,degrade:6:17,degrade:6:22",
+    "--extra=--CompletionGraceMs=250 --Observe=1"
+  ]
+}

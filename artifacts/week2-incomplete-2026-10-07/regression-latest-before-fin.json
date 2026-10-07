@@ -1,0 +1,21 @@
+{
+  "stream": {
+    "command": [
+      "build/scratch/quic-rx-regression",
+      "--Layer=stream"
+    ],
+    "returncode": 1,
+    "stdout": "0\t1\t0\t0\t0\t\nREGRESSION,stream-receive-offset-0,PASS\nREGRESSION,stream-receive-offset-0-with-fin,PASS\nREGRESSION,stream-duplicate-payload-first-fin-reaches-data-read,FAIL\nREGRESSION,stream-duplicate-payload-first-fin-keeps-only-200-unique-bytes,PASS\nREGRESSION,stream-duplicate-payload-first-fin-preserves-actual-byte-sequence,PASS\n0\t1\t0\t0\t0\t\nREGRESSION,stream-receive-offset-0,PASS\nREGRESSION,stream-receive-offset-0,PASS\n0\t1\t200\t250\t0\t\nREGRESSION,stream-receive-offset-250,PASS\n0\t1\t200\t200\t50\t\nREGRESSION,stream-receive-offset-200,PASS\nREGRESSION,stream-old-duplicate-does-not-prevent-delivery-of-300-bytes,PASS\nREGRESSION,stream-old-duplicate-preserves-actual-byte-sequence,PASS\n0\t1\t0\t0\t0\t\nREGRESSION,stream-receive-offset-0,PASS\n0\t1\t200\t250\t0\t\nREGRESSION,stream-receive-offset-250,PASS\n0\t1\t200\t200\t50\t\nREGRESSION,stream-receive-offset-190,PASS\nREGRESSION,stream-partial-overlap-delivers-300-unique-bytes,PASS\nREGRESSION,stream-partial-overlap-preserves-actual-byte-sequence,PASS\n0\t1\t0\t100\t0\t\nREGRESSION,stream-receive-offset-100,PASS\n0\t1\t0\t100\t50\t\nREGRESSION,stream-receive-offset-100,PASS\n0\t1\t0\t0\t50\t\nREGRESSION,stream-receive-offset-0,PASS\nREGRESSION,stream-buffered-duplicate-is-not-counted-twice,PASS\nREGRESSION,stream-buffered-duplicate-preserves-actual-byte-sequence,PASS\n0\t1\t0\t200\t0\t\nREGRESSION,stream-receive-offset-200,PASS\n0\t1\t0\t100\t100\t\nREGRESSION,stream-receive-offset-100,PASS\n0\t1\t0\t0\t200\t\nREGRESSION,stream-receive-offset-0,PASS\nREGRESSION,stream-reversed-frames-deliver-300-bytes-after-hole-filled,PASS\nREGRESSION,stream-reversed-frames-preserve-actual-byte-sequence,PASS\nREGRESSION_SUMMARY,failures=1\n",
+    "stderr": ""
+  },
+  "provenance": {
+    "head": "1dfe61122940afb7bcf0da6537a8f4dfeafad343",
+    "source_hashes": {
+      "src/quic/model/quic-socket-rx-buffer.cc": "523aadfc1846b4cf91e6f0d414f4f2243d3c1063499b95562ec00dc772ae467c",
+      "src/quic/model/quic-stream-base.cc": "52e09fe9d76c6d1217c02126152168bccaaff9e18207ddbba86d7d785e39d61e",
+      "src/quic/model/quic-socket-tx-buffer.cc": "529d4351b9c9f0cf19ad1a99f36ab1ce47ee9e1bf332bbb4ed3959ae67a66a91",
+      "scratch/quic-rx-regression.cc": "7042b6028826d28c650422e05506cdcf43541f423e0b31c9e8450bcaf655146b",
+      "scratch/quic-loss-regression.cc": "14dca19c99ef8d93e1f682fc5b1b720b60631fa604960edc665fc95506eb1fc8"
+    }
+  }
+}

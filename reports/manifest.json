@@ -1,11 +1,11 @@
 {
   "date_kst": "2026-10-07",
-  "file_count": 15,
+  "file_count": 19,
   "files": [
     {
       "path": "README.md",
-      "bytes": 484,
-      "sha256": "0914ddc981c98a0e21a0614e53a6f7f6c2d1f1505e23d86a2a413c5fb1c9a6f8"
+      "bytes": 874,
+      "sha256": "74e4db2d52e261a4cc1b987f4879960e2b78aa23b1afde69a87e50e552c16aa5"
     },
     {
       "path": "week1/1주차 상세 실험 기록.md",
@@ -43,14 +43,24 @@
       "sha256": "580b8785a849bf80ec3f4a4de3e01ab1aac746d2eb7389b68af20ba273290643"
     },
     {
+      "path": "week2/2주차 미완료 원인 분석.html",
+      "bytes": 138573,
+      "sha256": "d96cb3484abbef50b1f99891b47532143f7b235d2824950f9e6fd50fcf05c319"
+    },
+    {
+      "path": "week2/2주차 미완료 원인 분석.md",
+      "bytes": 13079,
+      "sha256": "0f1afaa12fdb8dc4a6dbce6f22d571118900e6f9b6ee7f59d991f8bb9efc173d"
+    },
+    {
       "path": "week2/2주차 진행상황.html",
-      "bytes": 393850,
-      "sha256": "2c57c21b0e26ac365c5f95bf5159bc808ebe0678c2f193ddc7e5c2946106de61"
+      "bytes": 517488,
+      "sha256": "56318bf78d8918cbba29cb5a769b2d1cb521514bb36835cdf0a859a68b742a6b"
     },
     {
       "path": "week2/2주차 진행상황.md",
-      "bytes": 16472,
-      "sha256": "26b590cf9d04fe096b2263bf8d14168f486710cff14359bb667ae9d043216a1c"
+      "bytes": 18822,
+      "sha256": "0c9deff572b3a1d7f3e7ccdc5b69fa61102ca3f69be3159e24e3bbbeb23f8d75"
     },
     {
       "path": "week2/2주차 측정 특이사항.md",
@@ -59,8 +69,8 @@
     },
     {
       "path": "week2/README.md",
-      "bytes": 894,
-      "sha256": "c9f5daa598466b481e3f4e481c8876098c66715a21304a9321a75825abb4eee4"
+      "bytes": 1284,
+      "sha256": "079d99120edd64be0e59a34a89ecb213980855bcf89d01c2451477fdf5c54c03"
     },
     {
       "path": "week2/figures/completion_rates.png",
@@ -71,6 +81,16 @@
       "path": "week2/figures/fct_distributions.png",
       "bytes": 114612,
       "sha256": "8b7550b15dbea5a5daf68295c94531e0d74f60cf72848286db4f1b3a2a004f46"
+    },
+    {
+      "path": "week2/figures/incomplete_recovery.png",
+      "bytes": 90683,
+      "sha256": "065407653b6094a7a383e90c196f6d8765b79c0f3291c49e83ea45e08c192050"
+    },
+    {
+      "path": "week2/figures/incomplete_recovery.svg",
+      "bytes": 46739,
+      "sha256": "e74b7afc96c53f944cfc0796c1ed4bdd75077c286f2a8ead4513f351ea09e3ac"
     },
     {
       "path": "week2/figures/path_shares.png",

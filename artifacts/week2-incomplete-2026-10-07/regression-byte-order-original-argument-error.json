@@ -1,0 +1,17 @@
+{
+  "socket": {
+    "returncode": 1,
+    "stdout": "",
+    "stderr": "Invalid command-line arguments: --Case=socket\n [Program Options] [General Arguments]\n\nProgram Options:\n    --Layer:  Run socket, stream or all receiver tests [all]\n\nGeneral Arguments:\n    --PrintGlobals:              Print the list of globals.\n    --PrintGroups:               Print the list of groups.\n    --PrintGroup=[group]:        Print all TypeIds of group.\n    --PrintTypeIds:              Print all TypeIds.\n    --PrintAttributes=[typeid]:  Print all attributes of typeid.\n    --PrintVersion:              Print the ns-3 version.\n    --PrintHelp:                 Print this help message.\n\n"
+  },
+  "stream": {
+    "returncode": 1,
+    "stdout": "",
+    "stderr": "Invalid command-line arguments: --Case=stream\n [Program Options] [General Arguments]\n\nProgram Options:\n    --Layer:  Run socket, stream or all receiver tests [all]\n\nGeneral Arguments:\n    --PrintGlobals:              Print the list of globals.\n    --PrintGroups:               Print the list of groups.\n    --PrintGroup=[group]:        Print all TypeIds of group.\n    --PrintTypeIds:              Print all TypeIds.\n    --PrintAttributes=[typeid]:  Print all attributes of typeid.\n    --PrintVersion:              Print the ns-3 version.\n    --PrintHelp:                 Print this help message.\n\n"
+  },
+  "loss": {
+    "returncode": 1,
+    "stdout": "REGRESSION,tx-add-packet-9,PASS\nREGRESSION,tx-send-packet-9,PASS\nREGRESSION,tx-add-packet-10,PASS\nREGRESSION,tx-send-packet-10,PASS\nREGRESSION,gap-acknowledges-only-received-packet-9,PASS\nREGRESSION,gap-does-not-acknowledge-missing-packet-10,PASS\nREGRESSION,missing-packet-10-remains-outstanding,PASS\nREGRESSION,missing-largest-data-item-still-detects-old-packet-10-loss,FAIL\nREGRESSION,lost-byte-count-is-exactly-missing-packet-10,FAIL\nREGRESSION,retransmission-queues-missing-data-and-excludes-acked-packet-9,FAIL\nREGRESSION,tx-add-packet-10,PASS\nREGRESSION,tx-send-packet-10,PASS\nREGRESSION,recent-gap-packet-stays-unacknowledged,PASS\nREGRESSION,packet-number-distance-two-does-not-exceed-existing-threshold-three,PASS\nREGRESSION,tx-add-packet-10,PASS\nREGRESSION,tx-send-packet-10,PASS\nREGRESSION,tx-add-packet-20,PASS\nREGRESSION,tx-send-packet-20,PASS\nREGRESSION,tracked-largest-packet-20-is-acknowledged,PASS\nREGRESSION,tracked-largest-packet-keeps-existing-packet-threshold-behavior,PASS\nREGRESSION_SUMMARY,failures=3\n",
+    "stderr": ""
+  }
+}

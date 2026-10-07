@@ -1,0 +1,43 @@
+diff --git a/src/quic/model/quic-stream-base.cc b/src/quic/model/quic-stream-base.cc
+index 69709e1..df4eb2a 100755
+--- a/src/quic/model/quic-stream-base.cc
++++ b/src/quic/model/quic-stream-base.cc
+@@ -308,10 +308,11 @@ QuicStreamBase::StreamWindow () const
+ }
+ 
+ int
+-QuicStreamBase::Recv (Ptr<Packet> frame, const QuicSubheader& sub, Address &address)
++QuicStreamBase::Recv (Ptr<Packet> frame, const QuicSubheader& receivedSub, Address &address)
+ {
+   NS_LOG_FUNCTION (this);
+ 
++  QuicSubheader sub = receivedSub;
+   uint8_t frameType = sub.GetFrameType ();
+ 
+   switch (frameType)
+@@ -435,6 +436,16 @@ QuicStreamBase::Recv (Ptr<Packet> frame, const QuicSubheader& sub, Address &addr
+           return -1;
+         }
+ 
++      // Retransmitted stream ranges may already have been delivered.
++      // Do not let stale bytes occupy the front of the reordering buffer.
++      if (sub.GetLength () > 0 && sub.GetOffset () < m_recvSize)
++        {
++          uint64_t delivered = std::min (sub.GetLength (), m_recvSize - sub.GetOffset ());
++          if (delivered == sub.GetLength ()) return 0;
++          frame->RemoveAtStart (delivered);
++          sub.SetOffset (m_recvSize);
++          sub.SetLength (sub.GetLength () - delivered);
++        }
+       m_fin = sub.IsStreamFin ();
+ 
+       if (m_fin && m_streamId == 0)
+@@ -475,7 +486,7 @@ QuicStreamBase::Recv (Ptr<Packet> frame, const QuicSubheader& sub, Address &addr
+           if (offSetLength.second > 0)
+             {
+               Ptr<Packet> payload = m_rxBuffer->Extract (offSetLength.second);
+-              m_recvSize += offSetLength.second;
++              if (payload) m_recvSize += payload->GetSize ();
+               if (payload) {
+                 frame->AddAtEnd (payload);
+               }

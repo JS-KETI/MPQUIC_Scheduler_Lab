@@ -1,0 +1,132 @@
+/home/ubuntu/projects/keti/mpquic-sched-lab/mpquic/bindings/python/wscript:321: SyntaxWarning: invalid escape sequence '\d'
+  m = re.match( "^castxml version (\d\.\d)(-)?(\w+)?", castxml_version_line)
+Waf: Entering directory `/home/ubuntu/projects/keti/mpquic-sched-lab/mpquic/build'
+[1349/1410] Compiling src/quic/model/quic-socket-rx-buffer.cc
+[1357/1410] Compiling src/quic/model/quic-socket-tx-buffer.cc
+[1369/1410] Compiling src/quic/model/quic-stream-base.cc
+[1376/1410] Compiling scratch/quic-rx-regression.cc
+In file included from ./ns3/mac48-address.h:27,
+                 from ./ns3/packet.h:32,
+                 from ../src/quic/model/quic-socket-rx-buffer.cc:25:
+./ns3/ipv4-address.h:438:37: warning: ‘template<class _Arg, class _Result> struct std::unary_function’ is deprecated [-Wdeprecated-declarations]
+  438 | class Ipv4AddressHash : public std::unary_function<Ipv4Address, size_t> {
+      |                                     ^~~~~~~~~~~~~~
+In file included from /usr/include/c++/13/bits/refwrap.h:39,
+                 from /usr/include/c++/13/vector:68,
+                 from ./ns3/buffer.h:24,
+                 from ./ns3/packet.h:24:
+/usr/include/c++/13/bits/stl_function.h:117:12: note: declared here
+  117 |     struct unary_function
+      |            ^~~~~~~~~~~~~~
+In file included from ./ns3/mac48-address.h:28:
+./ns3/ipv6-address.h:700:37: warning: ‘template<class _Arg, class _Result> struct std::unary_function’ is deprecated [-Wdeprecated-declarations]
+  700 | class Ipv6AddressHash : public std::unary_function<Ipv6Address, size_t>
+      |                                     ^~~~~~~~~~~~~~
+/usr/include/c++/13/bits/stl_function.h:117:12: note: declared here
+  117 |     struct unary_function
+      |            ^~~~~~~~~~~~~~
+
+In file included from ./ns3/mac48-address.h:27,
+                 from ./ns3/packet.h:32,
+                 from ./ns3/net-device.h:28,
+                 from ./ns3/node.h:29,
+                 from ../src/quic/model/quic-stream-base.cc:32:
+./ns3/ipv4-address.h:438:37: warning: ‘template<class _Arg, class _Result> struct std::unary_function’ is deprecated [-Wdeprecated-declarations]
+  438 | class Ipv4AddressHash : public std::unary_function<Ipv4Address, size_t> {
+      |                                     ^~~~~~~~~~~~~~
+In file included from /usr/include/c++/13/string:49,
+                 from /usr/include/c++/13/bits/locale_classes.h:40,
+                 from /usr/include/c++/13/bits/ios_base.h:41,
+                 from /usr/include/c++/13/ios:44,
+                 from /usr/include/c++/13/ostream:40,
+                 from /usr/include/c++/13/iostream:41,
+                 from ./ns3/fatal-error.h:24,
+                 from ./ns3/abort.h:24,
+                 from ../src/quic/model/quic-stream-base.cc:31:
+/usr/include/c++/13/bits/stl_function.h:117:12: note: declared here
+  117 |     struct unary_function
+      |            ^~~~~~~~~~~~~~
+In file included from ./ns3/mac48-address.h:28:
+./ns3/ipv6-address.h:700:37: warning: ‘template<class _Arg, class _Result> struct std::unary_function’ is deprecated [-Wdeprecated-declarations]
+  700 | class Ipv6AddressHash : public std::unary_function<Ipv6Address, size_t>
+      |                                     ^~~~~~~~~~~~~~
+/usr/include/c++/13/bits/stl_function.h:117:12: note: declared here
+  117 |     struct unary_function
+      |            ^~~~~~~~~~~~~~
+
+In file included from ./ns3/mac48-address.h:27,
+                 from ./ns3/packet.h:32,
+                 from ./ns3/net-device.h:28,
+                 from ./ns3/node.h:29,
+                 from ./ns3/quic-socket-base.h:30,
+                 from ../scratch/quic-rx-regression.cc:5:
+./ns3/ipv4-address.h:438:37: warning: ‘template<class _Arg, class _Result> struct std::unary_function’ is deprecated [-Wdeprecated-declarations]
+  438 | class Ipv4AddressHash : public std::unary_function<Ipv4Address, size_t> {
+      |                                     ^~~~~~~~~~~~~~
+In file included from /usr/include/c++/13/string:49,
+                 from /usr/include/c++/13/bits/locale_classes.h:40,
+                 from /usr/include/c++/13/bits/ios_base.h:41,
+                 from /usr/include/c++/13/ios:44,
+                 from /usr/include/c++/13/ostream:40,
+                 from /usr/include/c++/13/iostream:41,
+                 from ./ns3/fatal-error.h:24,
+                 from ./ns3/abort.h:24,
+                 from ./ns3/core-module.h:10,
+                 from ../scratch/quic-rx-regression.cc:4:
+/usr/include/c++/13/bits/stl_function.h:117:12: note: declared here
+  117 |     struct unary_function
+      |            ^~~~~~~~~~~~~~
+In file included from ./ns3/mac48-address.h:28:
+./ns3/ipv6-address.h:700:37: warning: ‘template<class _Arg, class _Result> struct std::unary_function’ is deprecated [-Wdeprecated-declarations]
+  700 | class Ipv6AddressHash : public std::unary_function<Ipv6Address, size_t>
+      |                                     ^~~~~~~~~~~~~~
+/usr/include/c++/13/bits/stl_function.h:117:12: note: declared here
+  117 |     struct unary_function
+      |            ^~~~~~~~~~~~~~
+
+In file included from ../src/quic/model/quic-subheader.h:31,
+                 from ../src/quic/model/quic-socket-tx-buffer.h:34,
+                 from ../src/quic/model/quic-socket-tx-buffer.cc:26:
+./ns3/ipv4-address.h:438:37: warning: ‘template<class _Arg, class _Result> struct std::unary_function’ is deprecated [-Wdeprecated-declarations]
+  438 | class Ipv4AddressHash : public std::unary_function<Ipv4Address, size_t> {
+      |                                     ^~~~~~~~~~~~~~
+In file included from /usr/include/c++/13/string:49,
+                 from ./ns3/object.h:25,
+                 from ../src/quic/model/quic-socket-tx-buffer.h:30:
+/usr/include/c++/13/bits/stl_function.h:117:12: note: declared here
+  117 |     struct unary_function
+      |            ^~~~~~~~~~~~~~
+In file included from ../src/quic/model/quic-subheader.h:32:
+./ns3/ipv6-address.h:700:37: warning: ‘template<class _Arg, class _Result> struct std::unary_function’ is deprecated [-Wdeprecated-declarations]
+  700 | class Ipv6AddressHash : public std::unary_function<Ipv6Address, size_t>
+      |                                     ^~~~~~~~~~~~~~
+/usr/include/c++/13/bits/stl_function.h:117:12: note: declared here
+  117 |     struct unary_function
+      |            ^~~~~~~~~~~~~~
+
+[1388/1410] Linking build/lib/libns3-dev-quic-optimized.so
+[1389/1410] Linking build/scratch/wns3-mpquic-two-path
+[1390/1410] Linking build/scratch/wns3-mpquic-four-path
+[1391/1410] Linking build/scratch/subdir/subdir
+[1392/1410] Linking build/scratch/quic-rx-regression
+[1393/1410] Linking build/scratch/mpquic-sched-lab
+[1394/1410] Linking build/scratch/quic-loss-regression
+[1395/1410] Linking build/scratch/wns3-mpquic-two-path-flip
+[1396/1410] Linking build/scratch/wns3-mpquic-two-path-cwnd
+[1397/1410] Linking build/scratch/wns3-mpquic-one-path
+[1398/1410] Linking build/utils/ns3-dev-test-runner-optimized
+[1399/1410] Linking build/utils/ns3-dev-print-introspected-doxygen-optimized
+Waf: Leaving directory `/home/ubuntu/projects/keti/mpquic-sched-lab/mpquic/build'
+Build commands will be stored in build/compile_commands.json
+'build' finished successfully (2.571s)
+
+Modules built:
+applications              bridge                    config-store
+core                      flow-monitor              internet
+network                   point-to-point            quic (no Python)
+stats                     traffic-control
+
+Modules not built (see ns-3 tutorial for explanation):
+brite                     click                     dpdk-net-device
+mpi                       openflow                  visualizer
+

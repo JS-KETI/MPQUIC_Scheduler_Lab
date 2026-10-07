@@ -1,0 +1,631 @@
+scenario,scheduler,seed,name,done_original,rx_app_original,fct_s_original,done_fixed,rx_app_fixed,fct_s_fixed,provided_reference,original_full,fixed_full,common_done_delta_s
+competing,0,1,RR,1,5242880,3.4679,1,5242880,3.4656,seed 1-10: original matches provided CSV,True,True,-0.0023
+competing,0,2,RR,1,5242880,3.3937,1,5242880,3.6086,seed 1-10: original matches provided CSV,True,True,0.2149
+competing,0,3,RR,1,5242880,3.4035,1,5242880,3.4058,seed 1-10: original matches provided CSV,True,True,0.0023
+competing,0,4,RR,1,5242812,3.4614,1,5242880,3.4613,seed 1-10: original matches provided CSV,False,True,-0.0001
+competing,0,5,RR,0,5211976,60.0,1,5242880,3.7652,seed 1-10: original matches provided CSV,False,True,
+competing,0,6,RR,0,5219776,60.0,1,5242880,4.6395,seed 1-10: original matches provided CSV,False,True,
+competing,0,7,RR,0,5236972,60.0,1,5242880,3.3846,seed 1-10: original matches provided CSV,False,True,
+competing,0,8,RR,0,5238144,60.0,1,5242880,3.5813,seed 1-10: original matches provided CSV,False,True,
+competing,0,9,RR,1,5242880,3.3944,1,5242880,3.3944,seed 1-10: original matches provided CSV,True,True,0.0
+competing,0,10,RR,1,5241336,3.599,1,5242880,3.592,seed 1-10: original matches provided CSV,False,True,-0.007
+competing,0,11,RR,0,5206138,60.0,1,5242880,3.5645,seed 11-30: no provided reference,False,True,
+competing,0,12,RR,0,5206778,60.0,1,5242880,3.4551,seed 11-30: no provided reference,False,True,
+competing,0,13,RR,0,5238548,60.0,1,5242880,3.5376,seed 11-30: no provided reference,False,True,
+competing,0,14,RR,0,5212556,60.0,1,5242880,3.4145,seed 11-30: no provided reference,False,True,
+competing,0,15,RR,0,5231328,60.0,1,5242880,3.7784,seed 11-30: no provided reference,False,True,
+competing,0,16,RR,0,5211915,60.0,1,5242880,3.9009,seed 11-30: no provided reference,False,True,
+competing,0,17,RR,0,5203890,60.0,1,5242880,3.384,seed 11-30: no provided reference,False,True,
+competing,0,18,RR,0,5199558,60.0,1,5242880,4.0592,seed 11-30: no provided reference,False,True,
+competing,0,19,RR,0,5191701,60.0,1,5242880,3.9322,seed 11-30: no provided reference,False,True,
+competing,0,20,RR,1,5242880,3.423,1,5242880,3.423,seed 11-30: no provided reference,True,True,0.0
+competing,0,21,RR,0,5226640,60.0,1,5242880,3.7833,seed 11-30: no provided reference,False,True,
+competing,0,22,RR,1,5242880,4.0985,1,5242880,4.0985,seed 11-30: no provided reference,True,True,0.0
+competing,0,23,RR,0,5221211,60.0,1,5242880,4.0271,seed 11-30: no provided reference,False,True,
+competing,0,24,RR,1,5242880,3.3828,1,5242880,3.3828,seed 11-30: no provided reference,True,True,0.0
+competing,0,25,RR,1,5242880,3.4139,1,5242880,3.4139,seed 11-30: no provided reference,True,True,0.0
+competing,0,26,RR,0,5209043,60.0,1,5242880,3.399,seed 11-30: no provided reference,False,True,
+competing,0,27,RR,1,5242880,3.4061,1,5242880,3.4061,seed 11-30: no provided reference,True,True,0.0
+competing,0,28,RR,0,5237104,60.0,1,5242880,3.8046,seed 11-30: no provided reference,False,True,
+competing,0,29,RR,1,5242880,3.4033,1,5242880,4.0356,seed 11-30: no provided reference,True,True,0.6323
+competing,0,30,RR,1,5242880,3.4079,1,5242880,4.0544,seed 11-30: no provided reference,True,True,0.6465
+competing,1,1,MinRTT,1,5242880,4.1408,1,5242880,4.1838,seed 1-10: original matches provided CSV,True,True,0.043
+competing,1,2,MinRTT,1,5242880,6.6423,1,5242880,7.1021,seed 1-10: original matches provided CSV,True,True,0.4598
+competing,1,3,MinRTT,1,5242880,5.3808,1,5242880,5.65,seed 1-10: original matches provided CSV,True,True,0.2692
+competing,1,4,MinRTT,1,5242880,6.7344,1,5242880,6.7344,seed 1-10: original matches provided CSV,True,True,0.0
+competing,1,5,MinRTT,1,5242880,5.7516,1,5242880,5.7516,seed 1-10: original matches provided CSV,True,True,0.0
+competing,1,6,MinRTT,1,5242880,6.4103,1,5242880,6.4103,seed 1-10: original matches provided CSV,True,True,0.0
+competing,1,7,MinRTT,1,5242880,4.0567,1,5242880,4.0689,seed 1-10: original matches provided CSV,True,True,0.0122
+competing,1,8,MinRTT,1,5242880,4.1663,1,5240806,4.9876,seed 1-10: original matches provided CSV,True,False,0.8213
+competing,1,9,MinRTT,1,5242880,7.1506,1,5242880,7.1506,seed 1-10: original matches provided CSV,True,True,0.0
+competing,1,10,MinRTT,1,5242880,7.3721,1,5242880,7.3721,seed 1-10: original matches provided CSV,True,True,0.0
+competing,1,11,MinRTT,1,5242880,7.504,1,5242880,7.504,seed 11-30: no provided reference,True,True,0.0
+competing,1,12,MinRTT,1,5242880,4.5961,1,5242880,4.3114,seed 11-30: no provided reference,True,True,-0.2847
+competing,1,13,MinRTT,1,5242880,8.0007,1,5242880,8.0007,seed 11-30: no provided reference,True,True,0.0
+competing,1,14,MinRTT,1,5241662,4.553,1,5242880,4.375,seed 11-30: no provided reference,False,True,-0.178
+competing,1,15,MinRTT,1,5242880,7.2622,1,5242880,7.2622,seed 11-30: no provided reference,True,True,0.0
+competing,1,16,MinRTT,1,5242880,5.6366,1,5242880,5.6366,seed 11-30: no provided reference,True,True,0.0
+competing,1,17,MinRTT,1,5241886,7.3152,1,5242880,7.3129,seed 11-30: no provided reference,False,True,-0.0023
+competing,1,18,MinRTT,1,5242880,7.9786,1,5242880,7.9786,seed 11-30: no provided reference,True,True,0.0
+competing,1,19,MinRTT,1,5242880,6.9158,1,5242880,6.9158,seed 11-30: no provided reference,True,True,0.0
+competing,1,20,MinRTT,1,5242880,4.0997,1,5242880,5.2882,seed 11-30: no provided reference,True,True,1.1885
+competing,1,21,MinRTT,1,5242250,5.4475,1,5242880,5.6706,seed 11-30: no provided reference,False,True,0.2231
+competing,1,22,MinRTT,1,5242880,7.6782,1,5242880,7.9806,seed 11-30: no provided reference,True,True,0.3024
+competing,1,23,MinRTT,0,5237092,60.0,1,5242880,5.2351,seed 11-30: no provided reference,False,True,
+competing,1,24,MinRTT,1,5242880,7.1921,1,5242880,6.4735,seed 11-30: no provided reference,True,True,-0.7186
+competing,1,25,MinRTT,1,5241353,4.618,1,5242880,4.6188,seed 11-30: no provided reference,False,True,0.0008
+competing,1,26,MinRTT,1,5242880,7.1263,1,5242880,6.9088,seed 11-30: no provided reference,True,True,-0.2175
+competing,1,27,MinRTT,1,5242880,5.301,1,5242880,5.7512,seed 11-30: no provided reference,True,True,0.4502
+competing,1,28,MinRTT,1,5242880,6.695,1,5242880,7.6504,seed 11-30: no provided reference,True,True,0.9554
+competing,1,29,MinRTT,1,5242880,6.8959,1,5242880,6.896,seed 11-30: no provided reference,True,True,0.0001
+competing,1,30,MinRTT,1,5239992,18.6596,1,5242880,22.769,seed 11-30: no provided reference,False,True,4.1094
+competing,2,1,BLEST,1,5242880,4.2356,1,5242880,4.2356,seed 1-10: original matches provided CSV,True,True,0.0
+competing,2,2,BLEST,1,5242880,6.6423,1,5242880,7.1021,seed 1-10: original matches provided CSV,True,True,0.4598
+competing,2,3,BLEST,1,5242880,4.1719,1,5242880,4.2084,seed 1-10: original matches provided CSV,True,True,0.0365
+competing,2,4,BLEST,1,5242880,7.145,1,5242880,7.1474,seed 1-10: original matches provided CSV,True,True,0.0024
+competing,2,5,BLEST,1,5241436,4.8096,1,5242880,4.8072,seed 1-10: original matches provided CSV,False,True,-0.0024
+competing,2,6,BLEST,1,5242880,6.4103,1,5242880,6.4103,seed 1-10: original matches provided CSV,True,True,0.0
+competing,2,7,BLEST,0,5235661,60.0,1,5242880,4.0797,seed 1-10: original matches provided CSV,False,True,
+competing,2,8,BLEST,1,5242880,5.2097,1,5242880,5.2097,seed 1-10: original matches provided CSV,True,True,0.0
+competing,2,9,BLEST,1,5242880,7.1506,1,5242880,7.1506,seed 1-10: original matches provided CSV,True,True,0.0
+competing,2,10,BLEST,1,5242880,7.3721,1,5242880,7.3721,seed 1-10: original matches provided CSV,True,True,0.0
+competing,2,11,BLEST,1,5242880,7.3899,1,5242880,7.3802,seed 11-30: no provided reference,True,True,-0.0097
+competing,2,12,BLEST,0,2239898,60.0,1,5242880,4.3463,seed 11-30: no provided reference,False,True,
+competing,2,13,BLEST,1,5242880,8.0007,1,5242880,8.0007,seed 11-30: no provided reference,True,True,0.0
+competing,2,14,BLEST,0,2173474,60.0,1,5242880,5.0113,seed 11-30: no provided reference,False,True,
+competing,2,15,BLEST,1,5242880,6.7151,1,5242880,6.7151,seed 11-30: no provided reference,True,True,0.0
+competing,2,16,BLEST,1,5242880,5.6571,1,5242250,9.4357,seed 11-30: no provided reference,True,False,3.7786
+competing,2,17,BLEST,1,5241886,7.3152,1,5242880,7.3129,seed 11-30: no provided reference,False,True,-0.0023
+competing,2,18,BLEST,1,5242880,7.8258,1,5242880,7.8258,seed 11-30: no provided reference,True,True,0.0
+competing,2,19,BLEST,1,5242880,6.9158,1,5242880,6.9158,seed 11-30: no provided reference,True,True,0.0
+competing,2,20,BLEST,0,5238598,60.0,1,5242880,6.0228,seed 11-30: no provided reference,False,True,
+competing,2,21,BLEST,1,5239992,6.073,1,5242880,6.0713,seed 11-30: no provided reference,False,True,-0.0017
+competing,2,22,BLEST,1,5242880,7.6514,1,5242880,7.6514,seed 11-30: no provided reference,True,True,0.0
+competing,2,23,BLEST,1,5242880,4.3991,1,5242880,5.9759,seed 11-30: no provided reference,True,True,1.5768
+competing,2,24,BLEST,1,5242880,6.9147,1,5242880,6.9147,seed 11-30: no provided reference,True,True,0.0
+competing,2,25,BLEST,1,5242880,4.3981,1,5242880,6.0084,seed 11-30: no provided reference,True,True,1.6103
+competing,2,26,BLEST,1,5242880,6.9335,1,5242880,6.9335,seed 11-30: no provided reference,True,True,0.0
+competing,2,27,BLEST,1,5242880,4.3444,1,5242880,6.0613,seed 11-30: no provided reference,True,True,1.7169
+competing,2,28,BLEST,1,5242880,6.695,1,5242880,7.1981,seed 11-30: no provided reference,True,True,0.5031
+competing,2,29,BLEST,1,5242880,6.8959,1,5242880,6.896,seed 11-30: no provided reference,True,True,0.0001
+competing,2,30,BLEST,1,5239992,18.6596,1,5242880,22.769,seed 11-30: no provided reference,False,True,4.1094
+competing,3,1,ECF,1,5242880,5.3506,1,5242880,5.057,seed 1-10: original matches provided CSV,True,True,-0.2936
+competing,3,2,ECF,1,5242880,4.1213,1,5242880,4.1218,seed 1-10: original matches provided CSV,True,True,0.0005
+competing,3,3,ECF,1,5242880,7.0579,1,5242880,7.0579,seed 1-10: original matches provided CSV,True,True,0.0
+competing,3,4,ECF,1,5242880,6.5219,1,5242880,6.5219,seed 1-10: original matches provided CSV,True,True,0.0
+competing,3,5,ECF,1,5242828,4.3144,1,5242880,4.3144,seed 1-10: original matches provided CSV,False,True,0.0
+competing,3,6,ECF,1,5242880,6.0816,1,5242880,5.9202,seed 1-10: original matches provided CSV,True,True,-0.1614
+competing,3,7,ECF,1,5242880,4.0377,1,5242880,4.1332,seed 1-10: original matches provided CSV,True,True,0.0955
+competing,3,8,ECF,1,5242844,6.9677,1,5242880,6.9677,seed 1-10: original matches provided CSV,False,True,0.0
+competing,3,9,ECF,1,5242880,7.088,1,5242880,7.088,seed 1-10: original matches provided CSV,True,True,0.0
+competing,3,10,ECF,1,5242880,6.1397,1,5242880,6.1397,seed 1-10: original matches provided CSV,True,True,0.0
+competing,3,11,ECF,1,5241436,7.0108,1,5242880,7.0106,seed 11-30: no provided reference,False,True,-0.0002
+competing,3,12,ECF,1,5242880,4.1223,1,5242880,4.1219,seed 11-30: no provided reference,True,True,-0.0004
+competing,3,13,ECF,1,5242880,7.0071,1,5242880,7.0071,seed 11-30: no provided reference,True,True,0.0
+competing,3,14,ECF,1,5242880,4.3195,1,5242880,4.3195,seed 11-30: no provided reference,True,True,0.0
+competing,3,15,ECF,1,5242880,7.0179,1,5242880,7.1817,seed 11-30: no provided reference,True,True,0.1638
+competing,3,16,ECF,1,5241436,6.8628,1,5242880,6.8879,seed 11-30: no provided reference,False,True,0.0251
+competing,3,17,ECF,1,5241790,7.114,1,5242880,7.1115,seed 11-30: no provided reference,False,True,-0.0025
+competing,3,18,ECF,1,5242880,7.5185,1,5242880,7.4025,seed 11-30: no provided reference,True,True,-0.116
+competing,3,19,ECF,1,5241437,7.4933,1,5242880,7.4909,seed 11-30: no provided reference,False,True,-0.0024
+competing,3,20,ECF,1,5242880,5.244,1,5242880,5.7792,seed 11-30: no provided reference,True,True,0.5352
+competing,3,21,ECF,1,5242880,5.7849,1,5242880,5.7921,seed 11-30: no provided reference,True,True,0.0072
+competing,3,22,ECF,1,5242880,7.2676,1,5242880,7.2676,seed 11-30: no provided reference,True,True,0.0
+competing,3,23,ECF,1,5242880,5.7874,1,5242250,5.7357,seed 11-30: no provided reference,True,False,-0.0517
+competing,3,24,ECF,1,5242880,6.5904,1,5242880,6.5904,seed 11-30: no provided reference,True,True,0.0
+competing,3,25,ECF,1,5242880,4.5575,1,5242880,4.172,seed 11-30: no provided reference,True,True,-0.3855
+competing,3,26,ECF,1,5242880,6.6322,1,5242880,6.6322,seed 11-30: no provided reference,True,True,0.0
+competing,3,27,ECF,1,5242880,5.7617,1,5242880,5.7617,seed 11-30: no provided reference,True,True,0.0
+competing,3,28,ECF,1,5242880,6.971,1,5242880,7.2369,seed 11-30: no provided reference,True,True,0.2659
+competing,3,29,ECF,1,5242880,6.977,1,5242880,6.977,seed 11-30: no provided reference,True,True,0.0
+competing,3,30,ECF,1,5242880,8.0992,1,5242880,8.0992,seed 11-30: no provided reference,True,True,0.0
+competing,4,1,Peekaboo,1,5242880,4.1408,1,5242880,4.1838,seed 1-10: original matches provided CSV,True,True,0.043
+competing,4,2,Peekaboo,1,5242880,6.6423,1,5242880,7.1021,seed 1-10: original matches provided CSV,True,True,0.4598
+competing,4,3,Peekaboo,1,5242880,5.7705,1,5242880,5.7705,seed 1-10: original matches provided CSV,True,True,0.0
+competing,4,4,Peekaboo,1,5242880,7.6608,1,5242880,7.6608,seed 1-10: original matches provided CSV,True,True,0.0
+competing,4,5,Peekaboo,1,5242880,6.0269,1,5242880,5.3119,seed 1-10: original matches provided CSV,True,True,-0.715
+competing,4,6,Peekaboo,1,5242880,7.297,1,5242880,7.297,seed 1-10: original matches provided CSV,True,True,0.0
+competing,4,7,Peekaboo,1,5242880,4.1421,1,5242880,4.1349,seed 1-10: original matches provided CSV,True,True,-0.0072
+competing,4,8,Peekaboo,1,5242880,4.9629,1,5242880,5.2193,seed 1-10: original matches provided CSV,True,True,0.2564
+competing,4,9,Peekaboo,1,5242880,7.2104,1,5242880,7.2104,seed 1-10: original matches provided CSV,True,True,0.0
+competing,4,10,Peekaboo,1,5242880,7.8257,1,5242880,7.8257,seed 1-10: original matches provided CSV,True,True,0.0
+competing,4,11,Peekaboo,1,5242880,7.8355,1,5242880,7.8355,seed 11-30: no provided reference,True,True,0.0
+competing,4,12,Peekaboo,1,5242880,5.6871,1,5242880,5.6934,seed 11-30: no provided reference,True,True,0.0063
+competing,4,13,Peekaboo,1,5242880,8.4447,1,5242880,8.4448,seed 11-30: no provided reference,True,True,0.0001
+competing,4,14,Peekaboo,1,5242878,4.6571,1,5242880,4.375,seed 11-30: no provided reference,False,True,-0.2821
+competing,4,15,Peekaboo,1,5242880,7.7795,1,5242880,7.7795,seed 11-30: no provided reference,True,True,0.0
+competing,4,16,Peekaboo,1,5242880,5.9427,1,5242880,5.9427,seed 11-30: no provided reference,True,True,0.0
+competing,4,17,Peekaboo,1,5242880,7.6806,1,5242880,7.6806,seed 11-30: no provided reference,True,True,0.0
+competing,4,18,Peekaboo,1,5242880,8.1818,1,5242880,8.1818,seed 11-30: no provided reference,True,True,0.0
+competing,4,19,Peekaboo,1,5242880,6.9158,1,5242880,6.9158,seed 11-30: no provided reference,True,True,0.0
+competing,4,20,Peekaboo,1,5242880,5.5102,1,5242880,5.7349,seed 11-30: no provided reference,True,True,0.2247
+competing,4,21,Peekaboo,1,5242880,5.7545,1,5242880,6.174,seed 11-30: no provided reference,True,True,0.4195
+competing,4,22,Peekaboo,1,5242880,8.226,1,5242880,8.226,seed 11-30: no provided reference,True,True,0.0
+competing,4,23,Peekaboo,1,5242879,4.3319,1,5242880,5.9515,seed 11-30: no provided reference,False,True,1.6196
+competing,4,24,Peekaboo,1,5242880,7.8593,1,5242880,7.8593,seed 11-30: no provided reference,True,True,0.0
+competing,4,25,Peekaboo,1,5241353,4.618,1,5242880,4.6188,seed 11-30: no provided reference,False,True,0.0008
+competing,4,26,Peekaboo,1,5242880,7.2234,1,5242880,7.2234,seed 11-30: no provided reference,True,True,0.0
+competing,4,27,Peekaboo,1,5242880,5.8075,1,5242880,5.8051,seed 11-30: no provided reference,True,True,-0.0024
+competing,4,28,Peekaboo,1,5242880,7.2163,1,5242880,8.2558,seed 11-30: no provided reference,True,True,1.0395
+competing,4,29,Peekaboo,1,5242880,6.8959,1,5242880,6.896,seed 11-30: no provided reference,True,True,0.0001
+competing,4,30,Peekaboo,1,5239992,18.6596,1,5242880,22.769,seed 11-30: no provided reference,False,True,4.1094
+competing,5,1,EAT(new),1,5242880,3.4418,1,5242880,3.4446,seed 1-10: original matches provided CSV,True,True,0.0028
+competing,5,2,EAT(new),0,5237104,60.0,1,5242880,3.5148,seed 1-10: original matches provided CSV,False,True,
+competing,5,3,EAT(new),1,5242880,3.4265,1,5242880,3.9414,seed 1-10: original matches provided CSV,True,True,0.5149
+competing,5,4,EAT(new),1,5241384,3.4681,1,5242880,3.4682,seed 1-10: original matches provided CSV,False,True,0.0001
+competing,5,5,EAT(new),0,5213998,60.0,1,5242880,3.4183,seed 1-10: original matches provided CSV,False,True,
+competing,5,6,EAT(new),0,5220897,60.0,1,5242880,3.8081,seed 1-10: original matches provided CSV,False,True,
+competing,5,7,EAT(new),0,5209668,60.0,1,5242880,3.6075,seed 1-10: original matches provided CSV,False,True,
+competing,5,8,EAT(new),0,5235400,60.0,1,5242880,3.5857,seed 1-10: original matches provided CSV,False,True,
+competing,5,9,EAT(new),1,5242880,3.3833,1,5242880,3.8655,seed 1-10: original matches provided CSV,True,True,0.4822
+competing,5,10,EAT(new),0,5219774,60.0,1,5242880,3.6146,seed 1-10: original matches provided CSV,False,True,
+competing,5,11,EAT(new),0,5203251,60.0,1,5242880,3.543,seed 11-30: no provided reference,False,True,
+competing,5,12,EAT(new),0,5206777,60.0,1,5242880,3.4276,seed 11-30: no provided reference,False,True,
+competing,5,13,EAT(new),1,5242880,3.4021,1,5242880,3.9317,seed 11-30: no provided reference,True,True,0.5296
+competing,5,14,EAT(new),1,5242880,3.3912,1,5242880,3.3912,seed 11-30: no provided reference,True,True,0.0
+competing,5,15,EAT(new),0,5235544,60.0,1,5242880,3.7339,seed 11-30: no provided reference,False,True,
+competing,5,16,EAT(new),0,5226354,60.0,1,5242880,4.1953,seed 11-30: no provided reference,False,True,
+competing,5,17,EAT(new),0,5205326,60.0,1,5242880,4.0471,seed 11-30: no provided reference,False,True,
+competing,5,18,EAT(new),0,5203890,60.0,1,5242880,3.5251,seed 11-30: no provided reference,False,True,
+competing,5,19,EAT(new),0,5195226,60.0,1,5242880,3.824,seed 11-30: no provided reference,False,True,
+competing,5,20,EAT(new),1,5242880,3.4164,1,5242880,3.4164,seed 11-30: no provided reference,True,True,0.0
+competing,5,21,EAT(new),0,5226986,60.0,1,5242880,4.5154,seed 11-30: no provided reference,False,True,
+competing,5,22,EAT(new),0,5194589,60.0,1,5242880,3.7954,seed 11-30: no provided reference,False,True,
+competing,5,23,EAT(new),0,5222084,60.0,1,5242880,3.6597,seed 11-30: no provided reference,False,True,
+competing,5,24,EAT(new),1,5242880,3.3991,1,5242880,3.3991,seed 11-30: no provided reference,True,True,0.0
+competing,5,25,EAT(new),1,5242880,3.3926,1,5242880,3.9075,seed 11-30: no provided reference,True,True,0.5149
+competing,5,26,EAT(new),0,5213532,60.0,1,5242880,3.4081,seed 11-30: no provided reference,False,True,
+competing,5,27,EAT(new),1,5242880,3.4057,1,5242880,4.0727,seed 11-30: no provided reference,True,True,0.667
+competing,5,28,EAT(new),1,5241436,3.593,1,5242880,4.0492,seed 11-30: no provided reference,False,True,0.4562
+competing,5,29,EAT(new),1,5242880,3.3707,1,5242880,3.9903,seed 11-30: no provided reference,True,True,0.6196
+competing,5,30,EAT(new),1,5241436,3.4587,1,5242880,3.4473,seed 11-30: no provided reference,False,True,-0.0114
+competing,6,1,MinRTT-multi(new),1,5242880,3.451,1,5242880,3.4514,seed 1-10: original matches provided CSV,True,True,0.0004
+competing,6,2,MinRTT-multi(new),0,5237104,60.0,1,5242880,3.501,seed 1-10: original matches provided CSV,False,True,
+competing,6,3,MinRTT-multi(new),1,5242880,3.4358,1,5242880,3.9461,seed 1-10: original matches provided CSV,True,True,0.5103
+competing,6,4,MinRTT-multi(new),1,5242880,3.448,1,5242880,3.4457,seed 1-10: original matches provided CSV,True,True,-0.0023
+competing,6,5,MinRTT-multi(new),0,5213368,60.0,1,5242880,3.4019,seed 1-10: original matches provided CSV,False,True,
+competing,6,6,MinRTT-multi(new),0,5219777,60.0,1,5242880,3.8081,seed 1-10: original matches provided CSV,False,True,
+competing,6,7,MinRTT-multi(new),0,5209038,60.0,1,5242880,3.594,seed 1-10: original matches provided CSV,False,True,
+competing,6,8,MinRTT-multi(new),0,5235660,60.0,1,5242880,3.5956,seed 1-10: original matches provided CSV,False,True,
+competing,6,9,MinRTT-multi(new),1,5242880,3.3683,1,5242880,3.8559,seed 1-10: original matches provided CSV,True,True,0.4876
+competing,6,10,MinRTT-multi(new),0,5218462,60.0,1,5242880,3.6032,seed 1-10: original matches provided CSV,False,True,
+competing,6,11,MinRTT-multi(new),0,5211916,60.0,1,5242880,3.5479,seed 11-30: no provided reference,False,True,
+competing,6,12,MinRTT-multi(new),0,5206777,60.0,1,5242880,3.4159,seed 11-30: no provided reference,False,True,
+competing,6,13,MinRTT-multi(new),1,5242880,3.4068,1,5242880,3.9365,seed 11-30: no provided reference,True,True,0.5297
+competing,6,14,MinRTT-multi(new),1,5242880,3.3772,1,5242880,3.3771,seed 11-30: no provided reference,True,True,-0.0001
+competing,6,15,MinRTT-multi(new),0,5235660,60.0,1,5242880,3.7116,seed 11-30: no provided reference,False,True,
+competing,6,16,MinRTT-multi(new),0,5226984,60.0,1,5242880,4.1953,seed 11-30: no provided reference,False,True,
+competing,6,17,MinRTT-multi(new),0,5204696,60.0,1,5242880,4.04,seed 11-30: no provided reference,False,True,
+competing,6,18,MinRTT-multi(new),0,5198918,60.0,1,5242880,3.5368,seed 11-30: no provided reference,False,True,
+competing,6,19,MinRTT-multi(new),0,5195226,60.0,1,5242880,3.824,seed 11-30: no provided reference,False,True,
+competing,6,20,MinRTT-multi(new),1,5242880,3.3992,1,5242880,3.3992,seed 11-30: no provided reference,True,True,0.0
+competing,6,21,MinRTT-multi(new),0,5225556,60.0,1,5242880,4.5084,seed 11-30: no provided reference,False,True,
+competing,6,22,MinRTT-multi(new),0,5206780,60.0,1,5242880,3.7827,seed 11-30: no provided reference,False,True,
+competing,6,23,MinRTT-multi(new),0,5222661,60.0,1,5242880,3.6721,seed 11-30: no provided reference,False,True,
+competing,6,24,MinRTT-multi(new),1,5242880,3.3831,1,5242880,3.5469,seed 11-30: no provided reference,True,True,0.1638
+competing,6,25,MinRTT-multi(new),1,5242880,3.3812,1,5242880,3.8934,seed 11-30: no provided reference,True,True,0.5122
+competing,6,26,MinRTT-multi(new),0,5212556,60.0,1,5242880,3.4157,seed 11-30: no provided reference,False,True,
+competing,6,27,MinRTT-multi(new),1,5242880,3.391,1,5242880,4.0636,seed 11-30: no provided reference,True,True,0.6726
+competing,6,28,MinRTT-multi(new),1,5241436,3.5794,1,5242880,4.0492,seed 11-30: no provided reference,False,True,0.4698
+competing,6,29,MinRTT-multi(new),1,5242880,3.3612,1,5242880,3.988,seed 11-30: no provided reference,True,True,0.6268
+competing,6,30,MinRTT-multi(new),1,5241436,3.4587,1,5242880,3.4335,seed 11-30: no provided reference,False,True,-0.0252
+degrade,0,1,RR,1,5242880,7.1455,1,5242880,7.1456,seed 1-10: original matches provided CSV,True,True,0.0001
+degrade,0,2,RR,1,5242880,6.3142,1,5242880,6.3019,seed 1-10: original matches provided CSV,True,True,-0.0123
+degrade,0,3,RR,1,5242880,6.3399,1,5242880,7.1209,seed 1-10: original matches provided CSV,True,True,0.781
+degrade,0,4,RR,1,5240806,6.3898,1,5240806,6.3898,seed 1-10: original matches provided CSV,False,False,0.0
+degrade,0,5,RR,1,5242880,6.3396,1,5242880,6.3395,seed 1-10: original matches provided CSV,True,True,-0.0001
+degrade,0,6,RR,1,5240806,6.3394,1,5240806,6.3394,seed 1-10: original matches provided CSV,False,False,0.0
+degrade,0,7,RR,1,5240806,6.3777,1,5242880,6.3648,seed 1-10: original matches provided CSV,False,True,-0.0129
+degrade,0,8,RR,1,5242880,6.4155,1,5242880,6.4155,seed 1-10: original matches provided CSV,True,True,0.0
+degrade,0,9,RR,1,5242880,6.3518,1,5242880,6.3518,seed 1-10: original matches provided CSV,True,True,0.0
+degrade,0,10,RR,1,5242880,6.3016,1,5242880,6.3016,seed 1-10: original matches provided CSV,True,True,0.0
+degrade,0,11,RR,1,5242880,6.4624,1,5242880,6.4624,seed 11-30: no provided reference,True,True,0.0
+degrade,0,12,RR,1,5242880,6.3651,1,5242880,6.3651,seed 11-30: no provided reference,True,True,0.0
+degrade,0,13,RR,1,5242880,6.4153,1,5242880,6.4153,seed 11-30: no provided reference,True,True,0.0
+degrade,0,14,RR,1,5242880,6.3773,1,5242880,6.3773,seed 11-30: no provided reference,True,True,0.0
+degrade,0,15,RR,1,5242880,6.4633,1,5242880,6.4633,seed 11-30: no provided reference,True,True,0.0
+degrade,0,16,RR,1,5242880,6.4144,1,5242880,6.4144,seed 11-30: no provided reference,True,True,0.0
+degrade,0,17,RR,1,5242880,6.3517,1,5242880,6.3517,seed 11-30: no provided reference,True,True,0.0
+degrade,0,18,RR,1,5242880,6.4265,1,5242880,6.4265,seed 11-30: no provided reference,True,True,0.0
+degrade,0,19,RR,1,5240806,6.3272,1,5240806,6.3143,seed 11-30: no provided reference,False,False,-0.0129
+degrade,0,20,RR,1,5242880,6.2263,1,5242880,6.2263,seed 11-30: no provided reference,True,True,0.0
+degrade,0,21,RR,1,5242880,6.4038,1,5242880,6.4038,seed 11-30: no provided reference,True,True,0.0
+degrade,0,22,RR,1,5242880,6.3904,1,5242880,6.3904,seed 11-30: no provided reference,True,True,0.0
+degrade,0,23,RR,1,5242880,6.3288,1,5242880,6.3288,seed 11-30: no provided reference,True,True,0.0
+degrade,0,24,RR,1,5242880,6.1246,1,5242880,6.1135,seed 11-30: no provided reference,True,True,-0.0111
+degrade,0,25,RR,1,5242880,6.402,1,5242880,6.402,seed 11-30: no provided reference,True,True,0.0
+degrade,0,26,RR,1,5242880,6.3635,1,5242880,6.3635,seed 11-30: no provided reference,True,True,0.0
+degrade,0,27,RR,1,5242880,6.4144,1,5242880,6.4144,seed 11-30: no provided reference,True,True,0.0
+degrade,0,28,RR,1,5242880,6.3749,1,5242880,6.3749,seed 11-30: no provided reference,True,True,0.0
+degrade,0,29,RR,1,5242880,6.3519,1,5242880,6.3519,seed 11-30: no provided reference,True,True,0.0
+degrade,0,30,RR,1,5242880,6.4405,1,5242880,6.4405,seed 11-30: no provided reference,True,True,0.0
+degrade,1,1,MinRTT,1,5242880,7.3272,1,5242880,7.4283,seed 1-10: original matches provided CSV,True,True,0.1011
+degrade,1,2,MinRTT,1,5242880,6.8821,1,5242880,6.4865,seed 1-10: original matches provided CSV,True,True,-0.3956
+degrade,1,3,MinRTT,1,5242880,6.5686,1,5242880,6.5686,seed 1-10: original matches provided CSV,True,True,0.0
+degrade,1,4,MinRTT,1,5242880,7.1181,1,5242880,7.3877,seed 1-10: original matches provided CSV,True,True,0.2696
+degrade,1,5,MinRTT,1,5242880,6.8468,1,5242880,7.1836,seed 1-10: original matches provided CSV,True,True,0.3368
+degrade,1,6,MinRTT,1,5242880,6.826,1,5242880,6.826,seed 1-10: original matches provided CSV,True,True,0.0
+degrade,1,7,MinRTT,1,5242430,9.1054,1,5242880,6.8832,seed 1-10: original matches provided CSV,False,True,-2.2222
+degrade,1,8,MinRTT,1,5242880,7.0808,1,5242880,7.0808,seed 1-10: original matches provided CSV,True,True,0.0
+degrade,1,9,MinRTT,1,5242880,7.3485,1,5242250,8.6882,seed 1-10: original matches provided CSV,True,False,1.3397
+degrade,1,10,MinRTT,1,5242880,6.5071,1,5242880,6.524,seed 1-10: original matches provided CSV,True,True,0.0169
+degrade,1,11,MinRTT,1,5242880,7.0372,1,5242880,7.0372,seed 11-30: no provided reference,True,True,0.0
+degrade,1,12,MinRTT,1,5242880,7.044,1,5242880,7.1227,seed 11-30: no provided reference,True,True,0.0787
+degrade,1,13,MinRTT,1,5242880,7.1482,1,5242880,7.1482,seed 11-30: no provided reference,True,True,0.0
+degrade,1,14,MinRTT,1,5242880,7.118,1,5242880,6.7,seed 11-30: no provided reference,True,True,-0.418
+degrade,1,15,MinRTT,1,5242880,7.2036,1,5242880,7.0822,seed 11-30: no provided reference,True,True,-0.1214
+degrade,1,16,MinRTT,1,5242880,6.6764,1,5242880,6.6764,seed 11-30: no provided reference,True,True,0.0
+degrade,1,17,MinRTT,1,5242880,7.3576,1,5242880,7.4509,seed 11-30: no provided reference,True,True,0.0933
+degrade,1,18,MinRTT,1,5242880,7.2043,1,5242880,7.0706,seed 11-30: no provided reference,True,True,-0.1337
+degrade,1,19,MinRTT,1,5242880,6.6692,1,5242880,6.4596,seed 11-30: no provided reference,True,True,-0.2096
+degrade,1,20,MinRTT,1,5242880,6.5527,1,5242880,6.5527,seed 11-30: no provided reference,True,True,0.0
+degrade,1,21,MinRTT,1,5242880,6.9254,1,5242880,7.0323,seed 11-30: no provided reference,True,True,0.1069
+degrade,1,22,MinRTT,1,5242880,6.6959,1,5242880,6.6959,seed 11-30: no provided reference,True,True,0.0
+degrade,1,23,MinRTT,1,5242880,7.0634,1,5242880,7.0634,seed 11-30: no provided reference,True,True,0.0
+degrade,1,24,MinRTT,1,5242880,6.6182,1,5242880,6.6182,seed 11-30: no provided reference,True,True,0.0
+degrade,1,25,MinRTT,1,5242880,7.0484,1,5242880,7.206,seed 11-30: no provided reference,True,True,0.1576
+degrade,1,26,MinRTT,1,5242880,6.4063,1,5242880,6.4857,seed 11-30: no provided reference,True,True,0.0794
+degrade,1,27,MinRTT,1,5242880,7.22,1,5242880,7.22,seed 11-30: no provided reference,True,True,0.0
+degrade,1,28,MinRTT,1,5242880,7.0701,1,5242880,6.7556,seed 11-30: no provided reference,True,True,-0.3145
+degrade,1,29,MinRTT,1,5242880,6.6274,1,5242880,6.5408,seed 11-30: no provided reference,True,True,-0.0866
+degrade,1,30,MinRTT,1,5242880,6.6416,1,5242880,6.6931,seed 11-30: no provided reference,True,True,0.0515
+degrade,2,1,BLEST,1,5242880,7.6505,1,5242880,7.8033,seed 1-10: original matches provided CSV,True,True,0.1528
+degrade,2,2,BLEST,1,5242880,7.141,1,5242880,7.1222,seed 1-10: original matches provided CSV,True,True,-0.0188
+degrade,2,3,BLEST,1,5242880,7.1907,1,5242880,7.1907,seed 1-10: original matches provided CSV,True,True,0.0
+degrade,2,4,BLEST,1,5242880,7.2719,1,5242880,7.1143,seed 1-10: original matches provided CSV,True,True,-0.1576
+degrade,2,5,BLEST,1,5242880,7.1482,1,5242880,7.1463,seed 1-10: original matches provided CSV,True,True,-0.0019
+degrade,2,6,BLEST,1,5242880,7.1698,1,5242880,7.2964,seed 1-10: original matches provided CSV,True,True,0.1266
+degrade,2,7,BLEST,1,5242880,7.6295,1,5242880,7.6295,seed 1-10: original matches provided CSV,True,True,0.0
+degrade,2,8,BLEST,1,5242880,7.2139,1,5242880,7.2055,seed 1-10: original matches provided CSV,True,True,-0.0084
+degrade,2,9,BLEST,1,5242880,7.643,1,5242880,9.8462,seed 1-10: original matches provided CSV,True,True,2.2032
+degrade,2,10,BLEST,1,5242880,7.6616,1,5242880,7.7924,seed 1-10: original matches provided CSV,True,True,0.1308
+degrade,2,11,BLEST,1,5242880,7.2017,1,5242880,7.2017,seed 11-30: no provided reference,True,True,0.0
+degrade,2,12,BLEST,1,5242880,7.7826,1,5242880,7.7825,seed 11-30: no provided reference,True,True,-0.0001
+degrade,2,13,BLEST,1,5242880,7.523,1,5242880,7.5211,seed 11-30: no provided reference,True,True,-0.0019
+degrade,2,14,BLEST,1,5242880,7.1012,1,5242880,7.0903,seed 11-30: no provided reference,True,True,-0.0109
+degrade,2,15,BLEST,1,5242880,8.4137,1,5242880,8.4171,seed 11-30: no provided reference,True,True,0.0034
+degrade,2,16,BLEST,1,5242880,7.1671,1,5242880,7.165,seed 11-30: no provided reference,True,True,-0.0021
+degrade,2,17,BLEST,1,5242880,7.5415,1,5242880,7.5415,seed 11-30: no provided reference,True,True,0.0
+degrade,2,18,BLEST,1,5242880,7.2377,1,5242880,7.4127,seed 11-30: no provided reference,True,True,0.175
+degrade,2,19,BLEST,1,5242880,7.1202,1,5242880,7.1158,seed 11-30: no provided reference,True,True,-0.0044
+degrade,2,20,BLEST,1,5242880,6.9147,1,5242880,7.0326,seed 11-30: no provided reference,True,True,0.1179
+degrade,2,21,BLEST,1,5242880,7.4424,1,5242880,7.4424,seed 11-30: no provided reference,True,True,0.0
+degrade,2,22,BLEST,1,5242880,7.7521,1,5242880,7.7496,seed 11-30: no provided reference,True,True,-0.0025
+degrade,2,23,BLEST,1,5242880,7.8075,1,5242880,7.6953,seed 11-30: no provided reference,True,True,-0.1122
+degrade,2,24,BLEST,1,5242880,7.1682,1,5242880,7.166,seed 11-30: no provided reference,True,True,-0.0022
+degrade,2,25,BLEST,1,5242880,7.8294,1,5242880,7.6615,seed 11-30: no provided reference,True,True,-0.1679
+degrade,2,26,BLEST,1,5242880,7.1823,1,5242880,7.1797,seed 11-30: no provided reference,True,True,-0.0026
+degrade,2,27,BLEST,1,5242880,7.1656,1,5242880,7.1629,seed 11-30: no provided reference,True,True,-0.0027
+degrade,2,28,BLEST,1,5242880,7.7653,1,5242880,7.7694,seed 11-30: no provided reference,True,True,0.0041
+degrade,2,29,BLEST,1,5242880,7.1363,1,5242880,7.1339,seed 11-30: no provided reference,True,True,-0.0024
+degrade,2,30,BLEST,1,5242880,7.7403,1,5242880,7.8771,seed 11-30: no provided reference,True,True,0.1368
+degrade,3,1,ECF,1,5242880,6.5488,1,5242880,6.5576,seed 1-10: original matches provided CSV,True,True,0.0088
+degrade,3,2,ECF,1,5242880,6.1552,1,5242880,6.1552,seed 1-10: original matches provided CSV,True,True,0.0
+degrade,3,3,ECF,1,5242880,6.5772,1,5242880,6.7522,seed 1-10: original matches provided CSV,True,True,0.175
+degrade,3,4,ECF,1,5242880,7.3221,1,5242880,7.3221,seed 1-10: original matches provided CSV,True,True,0.0
+degrade,3,5,ECF,1,5242880,7.3365,1,5242880,7.4703,seed 1-10: original matches provided CSV,True,True,0.1338
+degrade,3,6,ECF,1,5242880,6.6877,1,5242880,6.6874,seed 1-10: original matches provided CSV,True,True,-0.0003
+degrade,3,7,ECF,1,5242880,6.8569,1,5242880,6.9887,seed 1-10: original matches provided CSV,True,True,0.1318
+degrade,3,8,ECF,1,5242880,6.9092,1,5242880,7.1746,seed 1-10: original matches provided CSV,True,True,0.2654
+degrade,3,9,ECF,1,5242880,6.495,1,5242880,6.495,seed 1-10: original matches provided CSV,True,True,0.0
+degrade,3,10,ECF,1,5242880,7.5114,1,5242880,7.5114,seed 1-10: original matches provided CSV,True,True,0.0
+degrade,3,11,ECF,1,5242880,6.9318,1,5242880,6.4231,seed 11-30: no provided reference,True,True,-0.5087
+degrade,3,12,ECF,1,5242880,6.7651,1,5242880,6.7598,seed 11-30: no provided reference,True,True,-0.0053
+degrade,3,13,ECF,1,5242880,6.9866,1,5242880,6.9866,seed 11-30: no provided reference,True,True,0.0
+degrade,3,14,ECF,1,5242880,6.8457,1,5242880,6.8296,seed 11-30: no provided reference,True,True,-0.0161
+degrade,3,15,ECF,1,5242880,7.343,1,5242880,7.343,seed 11-30: no provided reference,True,True,0.0
+degrade,3,16,ECF,1,5242880,6.6687,1,5242880,6.6687,seed 11-30: no provided reference,True,True,0.0
+degrade,3,17,ECF,1,5242880,7.1054,1,5242880,7.1054,seed 11-30: no provided reference,True,True,0.0
+degrade,3,18,ECF,1,5242880,7.1141,1,5242880,7.1164,seed 11-30: no provided reference,True,True,0.0023
+degrade,3,19,ECF,1,5242880,7.079,1,5242880,6.3889,seed 11-30: no provided reference,True,True,-0.6901
+degrade,3,20,ECF,1,5242880,6.8974,1,5242880,6.7535,seed 11-30: no provided reference,True,True,-0.1439
+degrade,3,21,ECF,1,5242880,6.5653,1,5242880,6.5653,seed 11-30: no provided reference,True,True,0.0
+degrade,3,22,ECF,1,5242880,7.1624,1,5242880,7.1624,seed 11-30: no provided reference,True,True,0.0
+degrade,3,23,ECF,1,5242880,7.1353,1,5242880,7.1353,seed 11-30: no provided reference,True,True,0.0
+degrade,3,24,ECF,1,5242880,6.5218,1,5242880,6.5218,seed 11-30: no provided reference,True,True,0.0
+degrade,3,25,ECF,1,5242880,6.9385,1,5242880,6.9385,seed 11-30: no provided reference,True,True,0.0
+degrade,3,26,ECF,1,5242880,6.6814,1,5242880,6.5507,seed 11-30: no provided reference,True,True,-0.1307
+degrade,3,27,ECF,1,5242880,7.0398,1,5242880,7.182,seed 11-30: no provided reference,True,True,0.1422
+degrade,3,28,ECF,1,5242880,7.1404,1,5242880,7.157,seed 11-30: no provided reference,True,True,0.0166
+degrade,3,29,ECF,1,5242880,6.5253,1,5242880,6.7864,seed 11-30: no provided reference,True,True,0.2611
+degrade,3,30,ECF,1,5242880,6.8425,1,5242880,6.5049,seed 11-30: no provided reference,True,True,-0.3376
+degrade,4,1,Peekaboo,1,5242880,7.3272,1,5242880,7.4358,seed 1-10: original matches provided CSV,True,True,0.1086
+degrade,4,2,Peekaboo,1,5242880,6.722,1,5242880,6.7219,seed 1-10: original matches provided CSV,True,True,-0.0001
+degrade,4,3,Peekaboo,1,5242880,6.7978,1,5242880,6.7978,seed 1-10: original matches provided CSV,True,True,0.0
+degrade,4,4,Peekaboo,1,5242880,7.2558,1,5242880,7.5346,seed 1-10: original matches provided CSV,True,True,0.2788
+degrade,4,5,Peekaboo,1,5242880,7.171,1,5242880,7.2946,seed 1-10: original matches provided CSV,True,True,0.1236
+degrade,4,6,Peekaboo,1,5242880,7.1295,1,5242880,7.13,seed 1-10: original matches provided CSV,True,True,0.0005
+degrade,4,7,Peekaboo,1,5242880,7.3697,1,5242880,7.3697,seed 1-10: original matches provided CSV,True,True,0.0
+degrade,4,8,Peekaboo,1,5242880,7.3524,1,5242880,7.3524,seed 1-10: original matches provided CSV,True,True,0.0
+degrade,4,9,Peekaboo,1,5242880,9.4084,1,5242880,7.1535,seed 1-10: original matches provided CSV,True,True,-2.2549
+degrade,4,10,Peekaboo,1,5242880,6.8032,1,5242880,6.8002,seed 1-10: original matches provided CSV,True,True,-0.003
+degrade,4,11,Peekaboo,1,5242880,7.2017,1,5242880,7.2017,seed 11-30: no provided reference,True,True,0.0
+degrade,4,12,Peekaboo,1,5242880,7.314,1,5242880,7.314,seed 11-30: no provided reference,True,True,0.0
+degrade,4,13,Peekaboo,1,5242880,7.2747,1,5242880,7.2948,seed 11-30: no provided reference,True,True,0.0201
+degrade,4,14,Peekaboo,1,5242880,7.2492,1,5242880,6.8454,seed 11-30: no provided reference,True,True,-0.4038
+degrade,4,15,Peekaboo,1,5242880,7.4665,1,5242880,7.1817,seed 11-30: no provided reference,True,True,-0.2848
+degrade,4,16,Peekaboo,1,5242880,6.8261,1,5242880,6.8261,seed 11-30: no provided reference,True,True,0.0
+degrade,4,17,Peekaboo,1,5242880,7.3744,1,5242880,7.372,seed 11-30: no provided reference,True,True,-0.0024
+degrade,4,18,Peekaboo,1,5242880,7.4834,1,5242880,7.4836,seed 11-30: no provided reference,True,True,0.0002
+degrade,4,19,Peekaboo,1,5242880,6.761,1,5242880,6.761,seed 11-30: no provided reference,True,True,0.0
+degrade,4,20,Peekaboo,1,5242880,6.6727,1,5242880,6.6727,seed 11-30: no provided reference,True,True,0.0
+degrade,4,21,Peekaboo,1,5242880,7.1357,1,5242880,7.1356,seed 11-30: no provided reference,True,True,-0.0001
+degrade,4,22,Peekaboo,1,5242880,6.7844,1,5242880,6.7844,seed 11-30: no provided reference,True,True,0.0
+degrade,4,23,Peekaboo,1,5242880,7.4646,1,5242880,7.4062,seed 11-30: no provided reference,True,True,-0.0584
+degrade,4,24,Peekaboo,1,5242880,6.7671,1,5242880,6.7671,seed 11-30: no provided reference,True,True,0.0
+degrade,4,25,Peekaboo,1,5242880,7.1228,1,5242880,7.1248,seed 11-30: no provided reference,True,True,0.002
+degrade,4,26,Peekaboo,1,5242880,6.7694,1,5242880,6.77,seed 11-30: no provided reference,True,True,0.0006
+degrade,4,27,Peekaboo,1,5242880,7.2969,1,5242880,7.2969,seed 11-30: no provided reference,True,True,0.0
+degrade,4,28,Peekaboo,1,5242880,7.0503,1,5242880,10.8214,seed 11-30: no provided reference,True,True,3.7711
+degrade,4,29,Peekaboo,1,5242880,6.8478,1,5242880,6.8477,seed 11-30: no provided reference,True,True,-0.0001
+degrade,4,30,Peekaboo,1,5242880,6.8879,1,5242880,6.8879,seed 11-30: no provided reference,True,True,0.0
+degrade,5,1,EAT(new),1,5242880,6.089,1,5242880,6.089,seed 1-10: original matches provided CSV,True,True,0.0
+degrade,5,2,EAT(new),1,5242880,6.0125,1,5242880,6.0125,seed 1-10: original matches provided CSV,True,True,0.0
+degrade,5,3,EAT(new),1,5242880,6.7931,1,5242880,6.0627,seed 1-10: original matches provided CSV,True,True,-0.7304
+degrade,5,4,EAT(new),1,5242880,6.0501,1,5242880,6.0501,seed 1-10: original matches provided CSV,True,True,0.0
+degrade,5,5,EAT(new),1,5242880,6.037,1,5242880,6.037,seed 1-10: original matches provided CSV,True,True,0.0
+degrade,5,6,EAT(new),1,5242880,6.0629,1,5242880,6.0505,seed 1-10: original matches provided CSV,True,True,-0.0124
+degrade,5,7,EAT(new),1,5242880,5.987,1,5242880,5.987,seed 1-10: original matches provided CSV,True,True,0.0
+degrade,5,8,EAT(new),1,5242880,6.0764,1,5242880,6.0764,seed 1-10: original matches provided CSV,True,True,0.0
+degrade,5,9,EAT(new),1,5242880,7.5368,1,5242880,5.9574,seed 1-10: original matches provided CSV,True,True,-1.5794
+degrade,5,10,EAT(new),1,5242880,6.0637,1,5242880,6.0508,seed 1-10: original matches provided CSV,True,True,-0.0129
+degrade,5,11,EAT(new),1,5242880,6.0764,1,5242880,6.0764,seed 11-30: no provided reference,True,True,0.0
+degrade,5,12,EAT(new),1,5242880,6.0629,1,5242880,6.0629,seed 11-30: no provided reference,True,True,0.0
+degrade,5,13,EAT(new),1,5242880,6.0641,1,5242880,6.0374,seed 11-30: no provided reference,True,True,-0.0267
+degrade,5,14,EAT(new),1,5242880,6.0758,1,5242880,5.8876,seed 11-30: no provided reference,True,True,-0.1882
+degrade,5,15,EAT(new),1,5242880,6.0764,1,5242880,6.0765,seed 11-30: no provided reference,True,True,0.0001
+degrade,5,16,EAT(new),1,5242880,6.1013,1,5242880,6.1013,seed 11-30: no provided reference,True,True,0.0
+degrade,5,17,EAT(new),1,5242880,6.0245,1,5242880,6.0245,seed 11-30: no provided reference,True,True,0.0
+degrade,5,18,EAT(new),1,5242880,6.1268,1,5242880,6.6809,seed 11-30: no provided reference,True,True,0.5541
+degrade,5,19,EAT(new),1,5242880,6.0256,1,5242880,6.0256,seed 11-30: no provided reference,True,True,0.0
+degrade,5,20,EAT(new),1,5242880,5.9749,1,5242880,5.9749,seed 11-30: no provided reference,True,True,0.0
+degrade,5,21,EAT(new),1,5242880,5.9419,1,5242880,5.9301,seed 11-30: no provided reference,True,True,-0.0118
+degrade,5,22,EAT(new),1,5242880,6.0266,1,5242880,6.0266,seed 11-30: no provided reference,True,True,0.0
+degrade,5,23,EAT(new),1,5242880,6.0754,1,5242880,6.0754,seed 11-30: no provided reference,True,True,0.0
+degrade,5,24,EAT(new),1,5242880,6.0258,1,5242880,6.0259,seed 11-30: no provided reference,True,True,0.0001
+degrade,5,25,EAT(new),1,5242880,6.7562,1,5242880,6.0381,seed 11-30: no provided reference,True,True,-0.7181
+degrade,5,26,EAT(new),1,5242880,6.0377,1,5242880,6.0505,seed 11-30: no provided reference,True,True,0.0128
+degrade,5,27,EAT(new),1,5242880,6.0121,1,5242880,6.0121,seed 11-30: no provided reference,True,True,0.0
+degrade,5,28,EAT(new),1,5242880,6.0251,1,5242880,6.0251,seed 11-30: no provided reference,True,True,0.0
+degrade,5,29,EAT(new),1,5242880,6.0638,1,5242880,6.0638,seed 11-30: no provided reference,True,True,0.0
+degrade,5,30,EAT(new),1,5242880,6.0626,1,5242880,6.0626,seed 11-30: no provided reference,True,True,0.0
+degrade,6,1,MinRTT-multi(new),1,5242880,6.39,1,5242880,6.39,seed 1-10: original matches provided CSV,True,True,0.0
+degrade,6,2,MinRTT-multi(new),1,5242880,6.2895,1,5242880,6.2894,seed 1-10: original matches provided CSV,True,True,-0.0001
+degrade,6,3,MinRTT-multi(new),1,5242880,6.3146,1,5242880,6.9831,seed 1-10: original matches provided CSV,True,True,0.6685
+degrade,6,4,MinRTT-multi(new),1,5242880,6.3775,1,5242880,6.3775,seed 1-10: original matches provided CSV,True,True,0.0
+degrade,6,5,MinRTT-multi(new),1,5242880,6.314,1,5242880,6.314,seed 1-10: original matches provided CSV,True,True,0.0
+degrade,6,6,MinRTT-multi(new),1,5242880,6.3652,1,5242880,6.3652,seed 1-10: original matches provided CSV,True,True,0.0
+degrade,6,7,MinRTT-multi(new),1,5242880,6.2892,1,5242880,6.2892,seed 1-10: original matches provided CSV,True,True,0.0
+degrade,6,8,MinRTT-multi(new),1,5242880,6.3787,1,5242880,6.3787,seed 1-10: original matches provided CSV,True,True,0.0
+degrade,6,9,MinRTT-multi(new),1,5242880,6.2902,1,5242880,6.0329,seed 1-10: original matches provided CSV,True,True,-0.2573
+degrade,6,10,MinRTT-multi(new),1,5242880,6.2775,1,5242880,6.2775,seed 1-10: original matches provided CSV,True,True,0.0
+degrade,6,11,MinRTT-multi(new),1,5242880,6.3787,1,5242880,6.3787,seed 11-30: no provided reference,True,True,0.0
+degrade,6,12,MinRTT-multi(new),1,5242880,6.3149,1,5242880,6.3149,seed 11-30: no provided reference,True,True,0.0
+degrade,6,13,MinRTT-multi(new),1,5242880,6.3535,1,5242880,6.3535,seed 11-30: no provided reference,True,True,0.0
+degrade,6,14,MinRTT-multi(new),1,5242880,6.3025,1,5242880,6.033,seed 11-30: no provided reference,True,True,-0.2695
+degrade,6,15,MinRTT-multi(new),1,5242880,6.3535,1,5242880,7.109,seed 11-30: no provided reference,True,True,0.7555
+degrade,6,16,MinRTT-multi(new),1,5242880,6.3783,1,5242880,6.3784,seed 11-30: no provided reference,True,True,0.0001
+degrade,6,17,MinRTT-multi(new),1,5240806,6.3148,1,5240806,6.3148,seed 11-30: no provided reference,False,False,0.0
+degrade,6,18,MinRTT-multi(new),1,5242880,6.4291,1,5242880,6.4286,seed 11-30: no provided reference,True,True,-0.0005
+degrade,6,19,MinRTT-multi(new),1,5242880,6.3015,1,5242880,6.3015,seed 11-30: no provided reference,True,True,0.0
+degrade,6,20,MinRTT-multi(new),1,5242880,6.2891,1,5242880,6.2891,seed 11-30: no provided reference,True,True,0.0
+degrade,6,21,MinRTT-multi(new),1,5240806,6.1068,1,5242880,6.1083,seed 11-30: no provided reference,False,True,0.0015
+degrade,6,22,MinRTT-multi(new),1,5240806,6.3274,1,5240806,6.3145,seed 11-30: no provided reference,False,False,-0.0129
+degrade,6,23,MinRTT-multi(new),1,5242880,6.3535,1,5242880,6.3535,seed 11-30: no provided reference,True,True,0.0
+degrade,6,24,MinRTT-multi(new),1,5242880,6.2778,1,5242880,6.2778,seed 11-30: no provided reference,True,True,0.0
+degrade,6,25,MinRTT-multi(new),1,5242880,6.3775,1,5242880,6.3775,seed 11-30: no provided reference,True,True,0.0
+degrade,6,26,MinRTT-multi(new),1,5242880,6.3529,1,5242880,6.3529,seed 11-30: no provided reference,True,True,0.0
+degrade,6,27,MinRTT-multi(new),1,5242880,6.2892,1,5242880,6.2892,seed 11-30: no provided reference,True,True,0.0
+degrade,6,28,MinRTT-multi(new),1,5242880,6.3272,1,5242880,6.3272,seed 11-30: no provided reference,True,True,0.0
+degrade,6,29,MinRTT-multi(new),1,5242880,6.3525,1,5242880,6.3525,seed 11-30: no provided reference,True,True,0.0
+degrade,6,30,MinRTT-multi(new),1,5242880,6.3397,1,5242880,6.3397,seed 11-30: no provided reference,True,True,0.0
+dominating,0,1,RR,1,5242880,3.2904,1,5242880,3.2904,seed 1-10: original matches provided CSV,True,True,0.0
+dominating,0,2,RR,1,5242880,3.2758,1,5242880,3.2732,seed 1-10: original matches provided CSV,True,True,-0.0026
+dominating,0,3,RR,1,5242880,3.2904,1,5242880,3.3599,seed 1-10: original matches provided CSV,True,True,0.0695
+dominating,0,4,RR,1,5242880,3.2642,1,5242880,3.2642,seed 1-10: original matches provided CSV,True,True,0.0
+dominating,0,5,RR,1,5242880,3.2834,1,5242880,3.2812,seed 1-10: original matches provided CSV,True,True,-0.0022
+dominating,0,6,RR,1,5242880,3.2946,1,5242880,3.2947,seed 1-10: original matches provided CSV,True,True,0.0001
+dominating,0,7,RR,1,5242880,3.2427,1,5242880,3.2381,seed 1-10: original matches provided CSV,True,True,-0.0046
+dominating,0,8,RR,1,5242880,3.2535,1,5242880,3.2535,seed 1-10: original matches provided CSV,True,True,0.0
+dominating,0,9,RR,1,5242880,3.263,1,5242880,3.263,seed 1-10: original matches provided CSV,True,True,0.0
+dominating,0,10,RR,1,5242880,3.2751,1,5242880,3.2751,seed 1-10: original matches provided CSV,True,True,0.0
+dominating,0,11,RR,1,5242880,3.2786,1,5242880,3.2786,seed 11-30: no provided reference,True,True,0.0
+dominating,0,12,RR,1,5242880,3.2688,1,5242880,3.2688,seed 11-30: no provided reference,True,True,0.0
+dominating,0,13,RR,1,5242880,3.2588,1,5242880,3.2588,seed 11-30: no provided reference,True,True,0.0
+dominating,0,14,RR,1,5242880,3.259,1,5242880,3.259,seed 11-30: no provided reference,True,True,0.0
+dominating,0,15,RR,1,5242880,3.2848,1,5242880,3.286,seed 11-30: no provided reference,True,True,0.0012
+dominating,0,16,RR,1,5242880,3.2557,1,5242880,3.2559,seed 11-30: no provided reference,True,True,0.0002
+dominating,0,17,RR,1,5242880,3.2612,1,5242880,3.2612,seed 11-30: no provided reference,True,True,0.0
+dominating,0,18,RR,1,5242880,3.3286,1,5242880,3.3286,seed 11-30: no provided reference,True,True,0.0
+dominating,0,19,RR,1,5242880,3.2809,1,5242880,3.2786,seed 11-30: no provided reference,True,True,-0.0023
+dominating,0,20,RR,1,5242880,3.3029,1,5242880,3.3006,seed 11-30: no provided reference,True,True,-0.0023
+dominating,0,21,RR,1,5242880,3.2491,1,5242880,3.2503,seed 11-30: no provided reference,True,True,0.0012
+dominating,0,22,RR,1,5242880,3.248,1,5242880,3.248,seed 11-30: no provided reference,True,True,0.0
+dominating,0,23,RR,1,5242880,3.2734,1,5242880,3.2734,seed 11-30: no provided reference,True,True,0.0
+dominating,0,24,RR,1,5242880,3.2958,1,5242880,3.2959,seed 11-30: no provided reference,True,True,0.0001
+dominating,0,25,RR,1,5242880,3.2626,1,5242880,3.2626,seed 11-30: no provided reference,True,True,0.0
+dominating,0,26,RR,1,5242880,3.2925,1,5242880,3.2924,seed 11-30: no provided reference,True,True,-0.0001
+dominating,0,27,RR,1,5242880,3.2616,1,5242880,3.2628,seed 11-30: no provided reference,True,True,0.0012
+dominating,0,28,RR,1,5242880,3.2536,1,5242880,3.2536,seed 11-30: no provided reference,True,True,0.0
+dominating,0,29,RR,1,5242880,3.2731,1,5242880,3.2731,seed 11-30: no provided reference,True,True,0.0
+dominating,0,30,RR,1,5242880,3.2864,1,5242880,3.2864,seed 11-30: no provided reference,True,True,0.0
+dominating,1,1,MinRTT,1,5242880,4.3219,1,5242880,4.3633,seed 1-10: original matches provided CSV,True,True,0.0414
+dominating,1,2,MinRTT,1,5242880,3.9814,1,5242880,3.9814,seed 1-10: original matches provided CSV,True,True,0.0
+dominating,1,3,MinRTT,1,5242880,3.8458,1,5242880,3.8458,seed 1-10: original matches provided CSV,True,True,0.0
+dominating,1,4,MinRTT,1,5242880,4.2644,1,5242880,4.426,seed 1-10: original matches provided CSV,True,True,0.1616
+dominating,1,5,MinRTT,1,5242880,4.1362,1,5242880,4.2951,seed 1-10: original matches provided CSV,True,True,0.1589
+dominating,1,6,MinRTT,1,5242880,4.3293,1,5242880,4.3293,seed 1-10: original matches provided CSV,True,True,0.0
+dominating,1,7,MinRTT,1,5242880,4.3368,1,5242880,4.3368,seed 1-10: original matches provided CSV,True,True,0.0
+dominating,1,8,MinRTT,1,5242880,4.2744,1,5242880,4.2744,seed 1-10: original matches provided CSV,True,True,0.0
+dominating,1,9,MinRTT,1,5242880,4.1625,1,5242880,4.2096,seed 1-10: original matches provided CSV,True,True,0.0471
+dominating,1,10,MinRTT,1,5242880,3.9796,1,5242880,3.9313,seed 1-10: original matches provided CSV,True,True,-0.0483
+dominating,1,11,MinRTT,1,5242880,3.9972,1,5242880,3.9936,seed 11-30: no provided reference,True,True,-0.0036
+dominating,1,12,MinRTT,1,5242014,4.2763,1,5242880,4.2717,seed 11-30: no provided reference,False,True,-0.0046
+dominating,1,13,MinRTT,1,5242880,4.3441,1,5242880,4.3184,seed 11-30: no provided reference,True,True,-0.0257
+dominating,1,14,MinRTT,1,5242880,4.2704,1,5242880,3.9515,seed 11-30: no provided reference,True,True,-0.3189
+dominating,1,15,MinRTT,1,5242880,4.2606,1,5242880,4.2049,seed 11-30: no provided reference,True,True,-0.0557
+dominating,1,16,MinRTT,1,5242880,3.9238,1,5242880,3.9238,seed 11-30: no provided reference,True,True,0.0
+dominating,1,17,MinRTT,1,5242880,4.177,1,5242880,4.3138,seed 11-30: no provided reference,True,True,0.1368
+dominating,1,18,MinRTT,1,5242880,4.3997,1,5242880,4.3997,seed 11-30: no provided reference,True,True,0.0
+dominating,1,19,MinRTT,1,5242880,3.9131,1,5242880,3.9131,seed 11-30: no provided reference,True,True,0.0
+dominating,1,20,MinRTT,1,5242880,3.9801,1,5242880,3.9801,seed 11-30: no provided reference,True,True,0.0
+dominating,1,21,MinRTT,1,5242880,3.895,1,5242880,4.0513,seed 11-30: no provided reference,True,True,0.1563
+dominating,1,22,MinRTT,1,5242880,4.0954,1,5242880,4.0954,seed 11-30: no provided reference,True,True,0.0
+dominating,1,23,MinRTT,1,5242880,4.1669,1,5242880,4.1669,seed 11-30: no provided reference,True,True,0.0
+dominating,1,24,MinRTT,1,5242880,3.5115,1,5242880,3.5115,seed 11-30: no provided reference,True,True,0.0
+dominating,1,25,MinRTT,1,5242880,4.0288,1,5242880,4.1044,seed 11-30: no provided reference,True,True,0.0756
+dominating,1,26,MinRTT,1,5242880,3.7956,1,5242880,3.7956,seed 11-30: no provided reference,True,True,0.0
+dominating,1,27,MinRTT,1,5242880,4.2698,1,5242880,4.2698,seed 11-30: no provided reference,True,True,0.0
+dominating,1,28,MinRTT,1,5242880,4.0034,1,5242880,4.0034,seed 11-30: no provided reference,True,True,0.0
+dominating,1,29,MinRTT,1,5242880,3.6928,1,5242880,3.6928,seed 11-30: no provided reference,True,True,0.0
+dominating,1,30,MinRTT,1,5242880,3.8135,1,5242880,3.8135,seed 11-30: no provided reference,True,True,0.0
+dominating,2,1,BLEST,1,5242880,4.3587,1,5242880,4.5064,seed 1-10: original matches provided CSV,True,True,0.1477
+dominating,2,2,BLEST,1,5242880,4.2963,1,5242880,4.2893,seed 1-10: original matches provided CSV,True,True,-0.007
+dominating,2,3,BLEST,1,5242880,4.3233,1,5242880,4.3233,seed 1-10: original matches provided CSV,True,True,0.0
+dominating,2,4,BLEST,1,5242880,4.2767,1,5242880,4.2767,seed 1-10: original matches provided CSV,True,True,0.0
+dominating,2,5,BLEST,1,5242880,4.3068,1,5242880,4.3068,seed 1-10: original matches provided CSV,True,True,0.0
+dominating,2,6,BLEST,0,1551050,60.0,1,5242880,4.2985,seed 1-10: original matches provided CSV,False,True,
+dominating,2,7,BLEST,1,5242880,4.4723,1,5242880,4.4723,seed 1-10: original matches provided CSV,True,True,0.0
+dominating,2,8,BLEST,1,5242880,4.2983,1,5242880,4.2983,seed 1-10: original matches provided CSV,True,True,0.0
+dominating,2,9,BLEST,1,5242880,4.3922,1,5242880,4.507,seed 1-10: original matches provided CSV,True,True,0.1148
+dominating,2,10,BLEST,1,5242880,4.4964,1,5242880,4.4963,seed 1-10: original matches provided CSV,True,True,-0.0001
+dominating,2,11,BLEST,1,5242880,4.3246,1,5242880,4.3246,seed 11-30: no provided reference,True,True,0.0
+dominating,2,12,BLEST,1,5242880,4.5341,1,5242880,4.534,seed 11-30: no provided reference,True,True,-0.0001
+dominating,2,13,BLEST,1,5242880,4.4945,1,5242880,4.4946,seed 11-30: no provided reference,True,True,0.0001
+dominating,2,14,BLEST,0,1543830,60.0,1,5242880,4.2929,seed 11-30: no provided reference,False,True,
+dominating,2,15,BLEST,1,5242880,4.3495,1,5242880,4.3495,seed 11-30: no provided reference,True,True,0.0
+dominating,2,16,BLEST,1,5242880,4.304,1,5242880,4.304,seed 11-30: no provided reference,True,True,0.0
+dominating,2,17,BLEST,1,5242880,4.4943,1,5242880,4.4943,seed 11-30: no provided reference,True,True,0.0
+dominating,2,18,BLEST,0,1512062,60.0,1,5242880,4.3396,seed 11-30: no provided reference,False,True,
+dominating,2,19,BLEST,1,5242880,4.2808,1,5242880,4.2808,seed 11-30: no provided reference,True,True,0.0
+dominating,2,20,BLEST,1,5242880,4.2718,1,5242880,4.2695,seed 11-30: no provided reference,True,True,-0.0023
+dominating,2,21,BLEST,1,5242880,4.35,1,5242880,4.35,seed 11-30: no provided reference,True,True,0.0
+dominating,2,22,BLEST,0,1239122,60.0,1,5242880,4.5024,seed 11-30: no provided reference,False,True,
+dominating,2,23,BLEST,1,5242880,4.4922,1,5242880,4.4096,seed 11-30: no provided reference,True,True,-0.0826
+dominating,2,24,BLEST,1,5242880,4.3187,1,5242880,4.3187,seed 11-30: no provided reference,True,True,0.0
+dominating,2,25,BLEST,1,5242880,4.5133,1,5242880,4.5078,seed 11-30: no provided reference,True,True,-0.0055
+dominating,2,26,BLEST,1,5242880,4.3281,1,5242880,4.3281,seed 11-30: no provided reference,True,True,0.0
+dominating,2,27,BLEST,1,5242880,4.3264,1,5242880,4.3264,seed 11-30: no provided reference,True,True,0.0
+dominating,2,28,BLEST,1,5242880,4.4887,1,5242880,4.4887,seed 11-30: no provided reference,True,True,0.0
+dominating,2,29,BLEST,1,5242880,4.2809,1,5242880,4.2809,seed 11-30: no provided reference,True,True,0.0
+dominating,2,30,BLEST,1,5242880,4.5269,1,5242880,4.522,seed 11-30: no provided reference,True,True,-0.0049
+dominating,3,1,ECF,1,5242880,3.6344,1,5242880,3.6344,seed 1-10: original matches provided CSV,True,True,0.0
+dominating,3,2,ECF,1,5242880,3.8086,1,5242880,3.8086,seed 1-10: original matches provided CSV,True,True,0.0
+dominating,3,3,ECF,1,5242880,3.9236,1,5242880,3.8557,seed 1-10: original matches provided CSV,True,True,-0.0679
+dominating,3,4,ECF,1,5242880,4.2679,1,5242880,4.2679,seed 1-10: original matches provided CSV,True,True,0.0
+dominating,3,5,ECF,1,5242880,4.3798,1,5242880,4.4691,seed 1-10: original matches provided CSV,True,True,0.0893
+dominating,3,6,ECF,1,5242880,4.1559,1,5242880,4.0245,seed 1-10: original matches provided CSV,True,True,-0.1314
+dominating,3,7,ECF,1,5242880,3.8969,1,5242880,4.2779,seed 1-10: original matches provided CSV,True,True,0.381
+dominating,3,8,ECF,1,5242880,4.1307,1,5242880,4.436,seed 1-10: original matches provided CSV,True,True,0.3053
+dominating,3,9,ECF,0,1936634,60.0,1,5242880,3.992,seed 1-10: original matches provided CSV,False,True,
+dominating,3,10,ECF,1,5242880,4.3485,1,5242880,4.3485,seed 1-10: original matches provided CSV,True,True,0.0
+dominating,3,11,ECF,1,5242880,4.3301,1,5242880,4.0446,seed 11-30: no provided reference,True,True,-0.2855
+dominating,3,12,ECF,1,5242880,3.6487,1,5242880,4.2959,seed 11-30: no provided reference,True,True,0.6472
+dominating,3,13,ECF,1,5242880,4.3926,1,5242880,4.3926,seed 11-30: no provided reference,True,True,0.0
+dominating,3,14,ECF,1,5242880,4.0481,1,5242880,4.0481,seed 11-30: no provided reference,True,True,0.0
+dominating,3,15,ECF,1,5242880,4.2923,1,5242880,4.2923,seed 11-30: no provided reference,True,True,0.0
+dominating,3,16,ECF,0,4234242,60.0,1,5242880,3.9215,seed 11-30: no provided reference,False,True,
+dominating,3,17,ECF,1,5242880,4.2699,1,5242880,4.2699,seed 11-30: no provided reference,True,True,0.0
+dominating,3,18,ECF,1,5242880,4.3135,1,5242880,4.1993,seed 11-30: no provided reference,True,True,-0.1142
+dominating,3,19,ECF,1,5242880,4.2281,1,5242880,4.0375,seed 11-30: no provided reference,True,True,-0.1906
+dominating,3,20,ECF,1,5242880,4.2581,1,5242880,4.0326,seed 11-30: no provided reference,True,True,-0.2255
+dominating,3,21,ECF,1,5242880,4.0119,1,5242880,4.0119,seed 11-30: no provided reference,True,True,0.0
+dominating,3,22,ECF,1,5242880,4.3953,1,5242880,4.3953,seed 11-30: no provided reference,True,True,0.0
+dominating,3,23,ECF,1,5242880,4.3317,1,5242880,4.3317,seed 11-30: no provided reference,True,True,0.0
+dominating,3,24,ECF,1,5242880,3.9303,1,5242880,3.9303,seed 11-30: no provided reference,True,True,0.0
+dominating,3,25,ECF,1,5242880,4.3465,1,5242880,4.3465,seed 11-30: no provided reference,True,True,0.0
+dominating,3,26,ECF,1,5242880,4.0067,1,5242880,4.0091,seed 11-30: no provided reference,True,True,0.0024
+dominating,3,27,ECF,1,5242880,4.078,1,5242880,4.1371,seed 11-30: no provided reference,True,True,0.0591
+dominating,3,28,ECF,1,5242880,4.1928,1,5242880,4.313,seed 11-30: no provided reference,True,True,0.1202
+dominating,3,29,ECF,1,5242880,3.9073,1,5242880,3.9073,seed 11-30: no provided reference,True,True,0.0
+dominating,3,30,ECF,1,5242880,4.3977,1,5242880,4.5042,seed 11-30: no provided reference,True,True,0.1065
+dominating,4,1,Peekaboo,1,5242880,4.3219,1,5242880,4.3633,seed 1-10: original matches provided CSV,True,True,0.0414
+dominating,4,2,Peekaboo,1,5242880,3.9814,1,5242880,3.9814,seed 1-10: original matches provided CSV,True,True,0.0
+dominating,4,3,Peekaboo,1,5242880,3.8458,1,5242880,3.8458,seed 1-10: original matches provided CSV,True,True,0.0
+dominating,4,4,Peekaboo,1,5242880,4.2644,1,5242880,4.426,seed 1-10: original matches provided CSV,True,True,0.1616
+dominating,4,5,Peekaboo,1,5242880,4.1362,1,5242880,4.2951,seed 1-10: original matches provided CSV,True,True,0.1589
+dominating,4,6,Peekaboo,1,5242880,4.3293,1,5242880,4.3293,seed 1-10: original matches provided CSV,True,True,0.0
+dominating,4,7,Peekaboo,1,5242880,4.1308,1,5242880,4.1308,seed 1-10: original matches provided CSV,True,True,0.0
+dominating,4,8,Peekaboo,1,5242880,4.2744,1,5242880,4.2744,seed 1-10: original matches provided CSV,True,True,0.0
+dominating,4,9,Peekaboo,1,5242880,4.1625,1,5242880,4.2096,seed 1-10: original matches provided CSV,True,True,0.0471
+dominating,4,10,Peekaboo,1,5242880,3.9796,1,5242880,3.9313,seed 1-10: original matches provided CSV,True,True,-0.0483
+dominating,4,11,Peekaboo,1,5242880,3.9972,1,5242880,3.9936,seed 11-30: no provided reference,True,True,-0.0036
+dominating,4,12,Peekaboo,1,5242880,4.4121,1,5242880,4.4121,seed 11-30: no provided reference,True,True,0.0
+dominating,4,13,Peekaboo,1,5242880,4.2484,1,5242880,4.3483,seed 11-30: no provided reference,True,True,0.0999
+dominating,4,14,Peekaboo,1,5242880,4.2892,1,5242880,3.9515,seed 11-30: no provided reference,True,True,-0.3377
+dominating,4,15,Peekaboo,1,5242880,4.2606,1,5242880,4.2049,seed 11-30: no provided reference,True,True,-0.0557
+dominating,4,16,Peekaboo,1,5242880,3.9238,1,5242880,3.9238,seed 11-30: no provided reference,True,True,0.0
+dominating,4,17,Peekaboo,1,5242880,4.177,1,5242880,4.3138,seed 11-30: no provided reference,True,True,0.1368
+dominating,4,18,Peekaboo,1,5242880,4.3997,1,5242880,4.3997,seed 11-30: no provided reference,True,True,0.0
+dominating,4,19,Peekaboo,1,5242880,3.9131,1,5242880,3.9131,seed 11-30: no provided reference,True,True,0.0
+dominating,4,20,Peekaboo,1,5242880,3.9801,1,5242880,3.9801,seed 11-30: no provided reference,True,True,0.0
+dominating,4,21,Peekaboo,1,5242880,3.895,1,5242880,4.0513,seed 11-30: no provided reference,True,True,0.1563
+dominating,4,22,Peekaboo,1,5242880,4.1351,1,5242880,4.1351,seed 11-30: no provided reference,True,True,0.0
+dominating,4,23,Peekaboo,1,5242880,4.3784,1,5242880,4.2645,seed 11-30: no provided reference,True,True,-0.1139
+dominating,4,24,Peekaboo,1,5242880,3.5115,1,5242880,3.5115,seed 11-30: no provided reference,True,True,0.0
+dominating,4,25,Peekaboo,1,5242880,4.0288,1,5242880,4.1044,seed 11-30: no provided reference,True,True,0.0756
+dominating,4,26,Peekaboo,1,5242880,3.7956,1,5242880,3.7956,seed 11-30: no provided reference,True,True,0.0
+dominating,4,27,Peekaboo,1,5242880,4.2859,1,5242880,4.2859,seed 11-30: no provided reference,True,True,0.0
+dominating,4,28,Peekaboo,1,5242880,4.1423,1,5242880,4.0203,seed 11-30: no provided reference,True,True,-0.122
+dominating,4,29,Peekaboo,1,5242880,3.6928,1,5242880,3.6928,seed 11-30: no provided reference,True,True,0.0
+dominating,4,30,Peekaboo,1,5242880,3.8135,1,5242880,3.8135,seed 11-30: no provided reference,True,True,0.0
+dominating,5,1,EAT(new),1,5242880,3.264,1,5242880,3.264,seed 1-10: original matches provided CSV,True,True,0.0
+dominating,5,2,EAT(new),1,5242880,3.2473,1,5242880,3.2473,seed 1-10: original matches provided CSV,True,True,0.0
+dominating,5,3,EAT(new),1,5242880,3.3839,1,5242880,3.2607,seed 1-10: original matches provided CSV,True,True,-0.1232
+dominating,5,4,EAT(new),1,5242880,3.2574,1,5242880,3.2574,seed 1-10: original matches provided CSV,True,True,0.0
+dominating,5,5,EAT(new),1,5242880,3.2493,1,5242880,3.2505,seed 1-10: original matches provided CSV,True,True,0.0012
+dominating,5,6,EAT(new),1,5242880,3.2641,1,5242880,3.2641,seed 1-10: original matches provided CSV,True,True,0.0
+dominating,5,7,EAT(new),1,5242880,3.2301,1,5242880,3.2301,seed 1-10: original matches provided CSV,True,True,0.0
+dominating,5,8,EAT(new),1,5242880,3.252,1,5242880,3.252,seed 1-10: original matches provided CSV,True,True,0.0
+dominating,5,9,EAT(new),1,5242880,3.2729,1,5242880,3.2683,seed 1-10: original matches provided CSV,True,True,-0.0046
+dominating,5,10,EAT(new),1,5242880,3.2639,1,5242880,3.273,seed 1-10: original matches provided CSV,True,True,0.0091
+dominating,5,11,EAT(new),1,5242880,3.264,1,5242880,3.2639,seed 11-30: no provided reference,True,True,-0.0001
+dominating,5,12,EAT(new),1,5242880,3.2712,1,5242880,3.2688,seed 11-30: no provided reference,True,True,-0.0024
+dominating,5,13,EAT(new),1,5242880,3.2558,1,5242880,3.2558,seed 11-30: no provided reference,True,True,0.0
+dominating,5,14,EAT(new),1,5242880,3.2561,1,5242880,3.2672,seed 11-30: no provided reference,True,True,0.0111
+dominating,5,15,EAT(new),1,5242880,3.268,1,5242880,3.2692,seed 11-30: no provided reference,True,True,0.0012
+dominating,5,16,EAT(new),1,5242880,3.267,1,5242880,3.2658,seed 11-30: no provided reference,True,True,-0.0012
+dominating,5,17,EAT(new),1,5242880,3.2489,1,5242880,3.2478,seed 11-30: no provided reference,True,True,-0.0011
+dominating,5,18,EAT(new),1,5242880,3.2899,1,5242880,3.3829,seed 11-30: no provided reference,True,True,0.093
+dominating,5,19,EAT(new),1,5242880,3.2478,1,5242880,3.2478,seed 11-30: no provided reference,True,True,0.0
+dominating,5,20,EAT(new),1,5242880,3.246,1,5242880,3.2472,seed 11-30: no provided reference,True,True,0.0012
+dominating,5,21,EAT(new),1,5242880,3.2386,1,5242880,3.2386,seed 11-30: no provided reference,True,True,0.0
+dominating,5,22,EAT(new),1,5242880,3.2457,1,5242880,3.2457,seed 11-30: no provided reference,True,True,0.0
+dominating,5,23,EAT(new),1,5242880,3.2501,1,5242880,3.2501,seed 11-30: no provided reference,True,True,0.0
+dominating,5,24,EAT(new),1,5242880,3.2485,1,5242880,3.2513,seed 11-30: no provided reference,True,True,0.0028
+dominating,5,25,EAT(new),1,5242880,3.3673,1,5242880,3.255,seed 11-30: no provided reference,True,True,-0.1123
+dominating,5,26,EAT(new),1,5242880,3.2607,1,5242880,3.2607,seed 11-30: no provided reference,True,True,0.0
+dominating,5,27,EAT(new),1,5242880,3.2525,1,5242880,3.2513,seed 11-30: no provided reference,True,True,-0.0012
+dominating,5,28,EAT(new),1,5242880,3.2552,1,5242880,3.3892,seed 11-30: no provided reference,True,True,0.134
+dominating,5,29,EAT(new),1,5242880,3.2536,1,5242880,3.2536,seed 11-30: no provided reference,True,True,0.0
+dominating,5,30,EAT(new),1,5242880,3.2714,1,5242880,3.2714,seed 11-30: no provided reference,True,True,0.0
+dominating,6,1,MinRTT-multi(new),1,5242880,3.2572,1,5242880,3.2572,seed 1-10: original matches provided CSV,True,True,0.0
+dominating,6,2,MinRTT-multi(new),1,5242880,3.2703,1,5242880,3.2704,seed 1-10: original matches provided CSV,True,True,0.0001
+dominating,6,3,MinRTT-multi(new),1,5242880,3.282,1,5242880,3.3598,seed 1-10: original matches provided CSV,True,True,0.0778
+dominating,6,4,MinRTT-multi(new),1,5242880,3.2561,1,5242880,3.2561,seed 1-10: original matches provided CSV,True,True,0.0
+dominating,6,5,MinRTT-multi(new),1,5242880,3.2791,1,5242880,3.2768,seed 1-10: original matches provided CSV,True,True,-0.0023
+dominating,6,6,MinRTT-multi(new),1,5242880,3.2653,1,5242880,3.2665,seed 1-10: original matches provided CSV,True,True,0.0012
+dominating,6,7,MinRTT-multi(new),1,5242880,3.251,1,5242880,3.2558,seed 1-10: original matches provided CSV,True,True,0.0048
+dominating,6,8,MinRTT-multi(new),1,5242880,3.2495,1,5242880,3.2508,seed 1-10: original matches provided CSV,True,True,0.0013
+dominating,6,9,MinRTT-multi(new),1,5242880,3.2856,1,5242880,3.292,seed 1-10: original matches provided CSV,True,True,0.0064
+dominating,6,10,MinRTT-multi(new),1,5242880,3.2708,1,5242880,3.2729,seed 1-10: original matches provided CSV,True,True,0.0021
+dominating,6,11,MinRTT-multi(new),1,5242880,3.2698,1,5242880,3.2686,seed 11-30: no provided reference,True,True,-0.0012
+dominating,6,12,MinRTT-multi(new),1,5242880,3.2885,1,5242880,3.2884,seed 11-30: no provided reference,True,True,-0.0001
+dominating,6,13,MinRTT-multi(new),1,5242880,3.2488,1,5242880,3.2487,seed 11-30: no provided reference,True,True,-0.0001
+dominating,6,14,MinRTT-multi(new),1,5242880,3.2817,1,5242880,3.2968,seed 11-30: no provided reference,True,True,0.0151
+dominating,6,15,MinRTT-multi(new),1,5242880,3.2879,1,5242880,3.3734,seed 11-30: no provided reference,True,True,0.0855
+dominating,6,16,MinRTT-multi(new),1,5242880,3.2559,1,5242880,3.2559,seed 11-30: no provided reference,True,True,0.0
+dominating,6,17,MinRTT-multi(new),1,5242880,3.2698,1,5242880,3.2698,seed 11-30: no provided reference,True,True,0.0
+dominating,6,18,MinRTT-multi(new),1,5242880,3.2912,1,5242880,3.2913,seed 11-30: no provided reference,True,True,0.0001
+dominating,6,19,MinRTT-multi(new),1,5242880,3.2735,1,5242880,3.2714,seed 11-30: no provided reference,True,True,-0.0021
+dominating,6,20,MinRTT-multi(new),1,5242880,3.2449,1,5242880,3.2449,seed 11-30: no provided reference,True,True,0.0
+dominating,6,21,MinRTT-multi(new),1,5242880,3.2903,1,5242880,3.2879,seed 11-30: no provided reference,True,True,-0.0024
+dominating,6,22,MinRTT-multi(new),1,5242880,3.2383,1,5242880,3.2346,seed 11-30: no provided reference,True,True,-0.0037
+dominating,6,23,MinRTT-multi(new),1,5242880,3.2464,1,5242880,3.2464,seed 11-30: no provided reference,True,True,0.0
+dominating,6,24,MinRTT-multi(new),1,5242880,3.2753,1,5242880,3.2733,seed 11-30: no provided reference,True,True,-0.002
+dominating,6,25,MinRTT-multi(new),1,5242880,3.2587,1,5242880,3.2587,seed 11-30: no provided reference,True,True,0.0
+dominating,6,26,MinRTT-multi(new),1,5242880,3.2906,1,5242880,3.2927,seed 11-30: no provided reference,True,True,0.0021
+dominating,6,27,MinRTT-multi(new),1,5242880,3.2729,1,5242880,3.2733,seed 11-30: no provided reference,True,True,0.0004
+dominating,6,28,MinRTT-multi(new),1,5242880,3.2415,1,5242880,3.3648,seed 11-30: no provided reference,True,True,0.1233
+dominating,6,29,MinRTT-multi(new),1,5242880,3.2445,1,5242880,3.2445,seed 11-30: no provided reference,True,True,0.0
+dominating,6,30,MinRTT-multi(new),1,5242880,3.2979,1,5242880,3.298,seed 11-30: no provided reference,True,True,0.0001

@@ -1,0 +1,1 @@
+competing:1:8,competing:2:16,competing:3:23,degrade:0:4,degrade:0:6,degrade:0:19,degrade:1:9,degrade:6:17,degrade:6:22

@@ -1,0 +1,17 @@
+{
+  "socket": {
+    "returncode": 127,
+    "stdout": "",
+    "stderr": "build/scratch/quic-rx-regression: error while loading shared libraries: libns3-dev-quic-optimized.so: cannot open shared object file: No such file or directory\n"
+  },
+  "stream": {
+    "returncode": 127,
+    "stdout": "",
+    "stderr": "build/scratch/quic-rx-regression: error while loading shared libraries: libns3-dev-quic-optimized.so: cannot open shared object file: No such file or directory\n"
+  },
+  "loss": {
+    "returncode": 127,
+    "stdout": "",
+    "stderr": "build/scratch/quic-loss-regression: error while loading shared libraries: libns3-dev-quic-optimized.so: cannot open shared object file: No such file or directory\n"
+  }
+}

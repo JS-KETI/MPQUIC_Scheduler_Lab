@@ -1,0 +1,26 @@
+{
+  "created_at": "2026-10-07T18:56:17+0900",
+  "head": "1dfe61122940afb7bcf0da6537a8f4dfeafad343",
+  "baseline_sha256": "2a0e48432404913d484a24a91ca6498fc83ce402dad7e54c34534883f9b24ae5",
+  "source_patch_sha256": "44e4907c17fa936a9ae89b299b1b727e8fdd3d38e6ea6cf596ad51cdfa1aeb03",
+  "selection": "incomplete",
+  "cases": "dominating:2:6,dominating:2:14,dominating:2:18,dominating:2:22,dominating:3:9,dominating:3:16,competing:2:12,competing:2:14",
+  "sim_end": 60,
+  "extra": "--Observe=1",
+  "planned_runs": 8,
+  "binary_sha256": "ce600c272c0acd05727a1349e4105a05bf6eb55a1007c58514e9f41aaf03e701",
+  "quic_library_sha256": {
+    "libns3-dev-quic-optimized.so": "3d19aac6de0dd59f9ef2a909c147ad59b5c188970e1cc93d52627f168a21d0a8"
+  },
+  "runner_sha256": "332367bf0554fbe59e22d8337922a667fd02519dfc56cf9feb75fc35ab720c20",
+  "runner_command": [
+    "sched-lab/incomplete-investigate.py",
+    "--baseline-dir",
+    "artifacts/week2-2026-10-02/run-01",
+    "--out",
+    "artifacts/week2-incomplete-2026-10-07/06-loss-detection-only",
+    "--cases",
+    "dominating:2:6,dominating:2:14,dominating:2:18,dominating:2:22,dominating:3:9,dominating:3:16,competing:2:12,competing:2:14",
+    "--extra=--Observe=1"
+  ]
+}
