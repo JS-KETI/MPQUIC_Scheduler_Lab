@@ -1,5 +1,5 @@
 {
-  "date_kst": "2026-10-04",
+  "date_kst": "2026-10-07",
   "file_count": 15,
   "files": [
     {
@@ -44,8 +44,8 @@
     },
     {
       "path": "week2/2주차 기준 데이터 사용 문의.md",
-      "bytes": 2597,
-      "sha256": "def14188c67f2a38b53b17fa909dc6b462041a98cab5c406b0139504dfd9ef42"
+      "bytes": 3339,
+      "sha256": "884bf3fb88bb9f2f050b613c4c0047784c49a6ee5452c8962f3442afc3379886"
     },
     {
       "path": "week2/2주차 진행상황.html",
