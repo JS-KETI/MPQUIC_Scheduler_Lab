@@ -1,11 +1,11 @@
 {
   "date_kst": "2026-10-08",
-  "file_count": 34,
+  "file_count": 36,
   "files": [
     {
       "path": "README.md",
-      "bytes": 1503,
-      "sha256": "e690f52549dfab2f4626c7bf46a4bd274758574c40f52e5d4590e400f6b2a2cf"
+      "bytes": 1519,
+      "sha256": "8831b1d2dc3403e35ec7eda918cad70a6435ce105c05d8023aa4451f975a05de"
     },
     {
       "path": "week1/1주차 상세 실험 기록.md",
@@ -23,6 +23,11 @@
       "sha256": "8e129e1bb3186b7ad7e3d7ad6ebfbb7d551fd3df47554186388e2db1196999de"
     },
     {
+      "path": "week1/README.md",
+      "bytes": 1137,
+      "sha256": "385f748af1a6acedb8a39415c2c42719e4ededaae7d85aa15eb722782b1c3739"
+    },
+    {
       "path": "week1/figures/completion_counts.png",
       "bytes": 113759,
       "sha256": "8471900c129f38ab351115ec071d9fbf74187821b140c7a082a003a4374c3ae0"
@@ -36,11 +41,6 @@
       "path": "week1/figures/w1_fct.png",
       "bytes": 106880,
       "sha256": "580b8785a849bf80ec3f4a4de3e01ab1aac746d2eb7389b68af20ba273290643"
-    },
-    {
-      "path": "week1/README.md",
-      "bytes": 1137,
-      "sha256": "385f748af1a6acedb8a39415c2c42719e4ededaae7d85aa15eb722782b1c3739"
     },
     {
       "path": "week2/2주차 미완료 원인 분석.html",
@@ -68,6 +68,11 @@
       "sha256": "59fa691838604525bf7de58b385e8a48bdac30f066b2dac83201de934e414695"
     },
     {
+      "path": "week2/README.md",
+      "bytes": 1929,
+      "sha256": "6c7e423f6b3c37bd15a1e3d90fb8d7fb96b60d8d84d0ac4b9fb8242aff5f8f71"
+    },
+    {
       "path": "week2/figures/completion_rates.png",
       "bytes": 74559,
       "sha256": "76c0e9e3f3dca3cb169e92ada5976f77984bd9bcf3fc7c1303597d44b08d6527"
@@ -93,24 +98,24 @@
       "sha256": "3e94bf3f56b656a184a44b7f35cb8a546b2c2edaf8917cd42d23976740d605af"
     },
     {
-      "path": "week2/README.md",
-      "bytes": 1913,
-      "sha256": "52e19cad9d7d3b38e55c660b1ddad52c65af7e1be8fc83c338a60f6eca2ccbf2"
-    },
-    {
       "path": "week2/summary/2주차 진행상황.html",
-      "bytes": 428668,
-      "sha256": "c413dd072fcd44193f039f4da1000c4b6581855819cd37abaeccb01a76df5d7f"
+      "bytes": 560007,
+      "sha256": "2fe38d1f0b141d15f6cca9587805400bb21c8c8560f2500d38c2755a46839ce7"
     },
     {
       "path": "week2/summary/2주차 진행상황.md",
-      "bytes": 5812,
-      "sha256": "9c76638e2a9b4b6905149d44f044f3277aa64b1ba91f8732ed23ee9b854b23a0"
+      "bytes": 7327,
+      "sha256": "d451c153011b6bdc3f74eca66e21c0d341b1ed8001a4e0c4c3eef2b3d37e161b"
     },
     {
       "path": "week2/summary/2주차 진행상황.pdf",
       "bytes": 473795,
       "sha256": "fa75dc9324df474a94ada200663dfcc556d370b2deb5d58cf244425000313d4c"
+    },
+    {
+      "path": "week2/summary/README.md",
+      "bytes": 1782,
+      "sha256": "2e427d988d3933eaf3db2bd83098b661b56ab4c69f9797cd240d7f9495fd1be0"
     },
     {
       "path": "week2/summary/figures/baseline_fct.png",
@@ -131,6 +136,16 @@
       "path": "week2/summary/figures/baseline_performance.svg",
       "bytes": 97762,
       "sha256": "5dcc3ecbd10ac77977bc1273c656130d0bc15a1694ea96c0564e4c33957ebe61"
+    },
+    {
+      "path": "week2/summary/figures/completion_grace_counts.png",
+      "bytes": 97228,
+      "sha256": "9cda793d81e4d2707003473fc7478be5cdc2a77e2637095f53b98b35e4b4a98f"
+    },
+    {
+      "path": "week2/summary/figures/completion_grace_counts.svg",
+      "bytes": 43803,
+      "sha256": "8311e4b895521db72191c313edb61e858557e7256e9dfdc8ba01e4611cf1c976"
     },
     {
       "path": "week2/summary/figures/completion_rates.png",
@@ -163,14 +178,9 @@
       "sha256": "0050254e4c2ba6f59c92f2d21c2b03f68d84145e857d034b6fb76fb26ed655cf"
     },
     {
-      "path": "week2/summary/README.md",
-      "bytes": 1573,
-      "sha256": "dd9fcd12e44c1d8634a73883069bde16cc06eb9d04615c1acf7c25add376e525"
-    },
-    {
       "path": "week2/summary/source.json",
-      "bytes": 749,
-      "sha256": "fd509879a363ea769f70b4546533573bc0c52090d86d9d6ef4ab8698a323b1a1"
+      "bytes": 1346,
+      "sha256": "7d8807a0c02cdf9b5f2f8d988bec613dac17012abd7eeeb4fbcd7192b14a40b2"
     }
   ]
 }

@@ -1,4 +1,4 @@
-"""Render a two-page week-2 summary from preserved measurement CSVs.
+"""Render a week-2 summary from preserved measurement CSVs.
 
 Charts: Ubuntu Python with matplotlib. Documents: bundled Windows Python
 with reportlab. Both commands take --repo; output is reports/week2/summary.
@@ -15,6 +15,7 @@ from pathlib import Path
 
 BASE = 'artifacts/week2-2026-10-02/run-01/baseline.csv'
 FIXED = 'artifacts/week2-incomplete-2026-10-07/14-fin-preservation-full-630/results.csv'
+COMPLETED = 'artifacts/week2-completion-2026-10-08/run-01/results.csv'
 ORDER = [0, 1, 2, 3, 4, 6, 5]
 NAMES = ['RR', 'MinRTT', 'BLEST', 'ECF', 'Peekaboo', 'MinRTT-multi', 'EAT']
 SCENARIOS = ['dominating', 'competing', 'degrade']
@@ -143,19 +144,59 @@ def make_charts(repo, out, original, fixed):
     plt.close(fig)
 
 
-def blocks(original, fixed):
+def make_completion_chart(out, original, fixed, completed):
+    """Preserve prior figures and add the three measured receipt states."""
+    import matplotlib
+    matplotlib.use('Agg')
+    import matplotlib.pyplot as plt
+    from matplotlib import font_manager
+    from matplotlib.font_manager import FontProperties
+    font_manager.fontManager.addfont('/mnt/c/Windows/Fonts/malgun.ttf')
+    font = FontProperties(fname='/mnt/c/Windows/Fonts/malgun.ttf')
+    plt.rcParams.update({'font.family': font.get_name(), 'font.size': 11,
+                         'axes.unicode_minus': False, 'svg.fonttype': 'path'})
+    fig, ax = plt.subplots(figsize=(10.8, 3.15))
+    labels = ['기존 측정 · 종료 대기 10ms', '수신·재전송 수정 · 종료 대기 10ms', '수정 코드 · 종료 대기 250ms']
+    for y, label, rows in zip([2, 1, 0], labels, [original, fixed, completed]):
+        done, full = counts(rows)
+        left = 0
+        for n, color in [(full, '#246b78'), (done-full, '#e6b84d'), (630-done, '#a7b4be')]:
+            ax.barh(y, n, left=left, height=.57, color=color)
+            if n >= 20:
+                ax.text(left+n/2, y, str(n), va='center', ha='center', color='white', fontweight='bold')
+            left += n
+        ax.text(642, y, f'완료 {done}/630 · 전체 수신 {full}/630', va='center', fontsize=10)
+    ax.set_yticks([2, 1, 0], labels)
+    ax.set_xlim(0, 1040)
+    ax.set_xticks([0, 210, 420, 630])
+    ax.set_xlabel('실행 횟수')
+    ax.set_title('초록: 목표량 전체 수신 · 노랑: 완료 후 부족 · 회색: 미완료', loc='left', fontsize=11, pad=15)
+    ax.grid(axis='x', alpha=.2)
+    ax.set_axisbelow(True)
+    for side in ['top', 'right', 'left']:
+        ax.spines[side].set_visible(False)
+    ax.tick_params(axis='y', length=0)
+    fig.subplots_adjust(left=.34, right=.985, top=.8, bottom=.2)
+    for ext in ['png', 'svg']:
+        fig.savefig(out/'figures'/f'completion_grace_counts.{ext}', dpi=220)
+    plt.close(fig)
+
+
+def blocks(original, fixed, completed):
     assert counts(original) == (568, 533)
     assert counts(fixed) == (630, 621)
+    assert counts(completed) == (630, 630)
     return [
         ('h2', '1. 2주차 작업 내용'),
-        ('h3', '1-1. 멀티 경로 스케줄러 630회 측정 (제공 seed 1~10 결과와 모두 일치)'),
+        ('h3', '1-1. 기존 기준 스택의 멀티 경로 630회 측정 (제공 seed 1~10 결과와 모두 일치)'),
         ('bullet', '**반복 측정 (시나리오·스케줄러별 전송 성능 확인)**'),
         ('sub', '사용 도구: run_sweep.py·mpquic-sched-lab.cc'),
         ('sub', '실행 규모: 3시나리오 × 7스케줄러 × 30seed = 630회. 누락·중복·실행 오류 0건'),
+        ('sub', '측정 구성: 제공 01+02 패치를 적용한 기준 스택'),
         ('bullet', '**측정 조건 (스케줄러 비교에서 동일하게 유지한 설정)**'),
         ('sub', '목표 전송량: 5,242,880B. 혼잡 제어 OLIA, 설정 손실률 0, 시뮬레이션 종료 시각 60초'),
         ('sub', 'seed: 링크 속도·지연의 변화를 재현하는 난수 번호. 같은 번호끼리 비교'),
-        ('image', 'baseline_fct.png', '그림 1. 제공 analyze.py의 전송 시간 분포·완료 횟수 (630회 기준 데이터)'),
+        ('image', 'baseline_fct.png', '그림 1. 제공 analyze.py의 전송 시간 분포·완료 횟수 (기존 기준 스택 630회)'),
         ('bullet', '**그림 읽는 방법 (완료한 실행의 전송 시간 분포)**'),
         ('sub', '세모: 평균. 상자: 가운데 50% 구간. 이름 아래 숫자: 완료/전체 실행 수'),
         ('bullet', '**시나리오 (두 경로의 속도·지연 설정)**'),
@@ -167,7 +208,7 @@ def blocks(original, fixed):
             ['seed 11~30 · 420회', '377/420', '352/420', '제공 기준 없음 · 추가 측정'],
             ['seed 1~30 · 630회', '568/630', '533/630', '전체 바이트 미달 97회'],
         ], [1.18, .76, .90, 2.66]),
-        ('h3', '1-2. 완료율·목표 바이트 수신 테스트 (완료 568회·전체 수신 533회)'),
+        ('h3', '1-2. 기존 기준 스택의 완료율·목표 바이트 수신 테스트 (완료 568회·전체 수신 533회)'),
         ('image', 'completion_rates.png', '그림 2. 요청서에서 요구한 완료율 분석 · 추가 작성한 plot_baseline.py로 생성'),
         ('bullet', '**수신 판정 (완료 처리와 목표량 전체 수신 구분)**'),
         ('sub', '완료 처리: 목표보다 최대 3,000B 부족해도 코드 기준 충족'),
@@ -178,7 +219,7 @@ def blocks(original, fixed):
         ('sub', '**회색: 완료 기준 미충족 62회**'),
         ('sub', 'seed 1~10의 바이트 미달 29회는 제공 기준과 동일. 추가 seed 11~30에는 제공 기준 없음'),
         ('break',),
-        ('h3', '1-3. 두 경로의 전송 분배 테스트 (시나리오별 경로 사용 비율 확인)'),
+        ('h3', '1-3. 기존 기준 스택의 전송 분배 테스트 (시나리오별 경로 사용 비율 확인)'),
         ('image', 'path_shares.png', '그림 3. 요청서에서 요구한 경로별 전송 비율 분석 · 추가 작성한 plot_baseline.py로 생성'),
         ('bullet', '**경로별 전송 비율 (완료한 실행에서 두 경로를 사용한 비중)**'),
         ('sub', 'IP 계층 수신 바이트 기준. 헤더·재전송 포함'),
@@ -197,25 +238,37 @@ def blocks(original, fixed):
         ('sub', '수정: ACK(수신 확인) 번호가 송신 목록에 없어도 번호 차이로 손실 검사 수행'),
         ('sub', '**결과: 해당 8회 모두 완료 처리·목표량 전체 수신**'),
         ('image', 'recovery_counts.png', '그림 4. 동일 조건 630회 수정 전후 결과 (완료 후 10ms 종료 유지)'),
-        ('bullet', '**수정 통합 결과 (동일 조건 630회 재실험)**'),
+        ('bullet', '**수정 통합 결과 (종료 대기 10ms로 630회 재실험)**'),
         ('sub', '**완료 처리 630/630회. 목표량 전체 수신 621/630회**'),
         ('sub', '기존 미완료 62회: 제공 seed 1~10의 19회는 기준과 동일. 추가 seed 11~30의 43회는 제공 기준 없음'),
-        ('h3', '2-2. 남은 확인·다음 작업 (전체 수신 미달 9회·시간 증가 검토)'),
-        ('bullet', '**종료 대기 검증 (완료 처리 이후 남은 바이트 수신 확인)**'),
-        ('sub', '원인: 완료 후 10ms에 종료해 후속 바이트 수신 전에 측정 종료. 목표량 미달 9회 유지'),
+        ('h3', '2-2. 종료 대기 250ms 적용 테스트 (630회 모두 완료·목표량 전체 수신)'),
+        ('image', 'completion_grace_counts.png', '그림 5. 기존 측정·수신 및 재전송 수정·종료 대기 250ms 적용 결과 (각 630회)'),
+        ('bullet', '**종료 대기 검증 (미달 9회 원인 확인·전체 630회 검증 완료)**'),
+        ('sub', '원인: 완료 후 10ms에 종료해 후속 바이트 수신 전에 측정 종료. 기존 10ms 결과에서 목표량 미달 9회 발생'),
         ('sub', '별도 실험: 대기 10ms → 250ms 변경 후 9/9회 전체 수신. 기록된 완료 시각 동일'),
         ('sub', '기본 10ms 결과의 미달 9회: 기존 미달 5회 + 수정 후 신규 미달 4회'),
+        ('sub', '전체 재검증: CompletionGraceMs=250 적용, 3시나리오 × 7스케줄러 × 30seed = 630회'),
+        ('sub', '**결과: 완료 처리 630/630회·목표 5,242,880B 전체 수신 630/630회. 누락·중복·실행 오류 0건**'),
+        ('sub', '조합별 결과: 21개 스케줄러–시나리오 조합 각각 30/30회 완료 처리·전체 수신'),
+        ('sub', '대조: 기존 10ms 결과와 630회 모두 기록된 완료 시각 동일. 종료 대기만 변경'),
         ('bullet', '**전송 시간 변화 (수정 전후 모두 완료한 같은 seed끼리 비교)**'),
         ('sub', '대상: competing·MinRTT-multi의 공통 완료 seed 13개'),
         ('sub', '평균 시간: 3.4185초 → 3.7220초. **0.3035초 증가**'),
-        ('sub', '다음 확인: 전송 시간 증가 원인과 남은 9회의 종료 처리'),
+        ('sub', '비교 조건: 수정 전후 모두 완료 처리 후 10ms 종료. 종료 대기 250ms 검증에서도 기록된 완료 시각 동일'),
         ('bullet', '**게이트 2 (2주차 기준 데이터 확정 조건)**'),
         ('sub', '통과 기준: dominating 평균 전송 완료 시간의 95% 신뢰구간 폭 0.1초 이하'),
         ('sub', '신뢰구간 폭: 반복 측정으로 추정한 평균의 불확실성 범위. 상한에서 하한을 뺀 값'),
         ('sub', 'MinRTT-multi: 기존 0.0130초 → 수정 0.0257초. 기준 충족'),
         ('sub', 'MinRTT·ECF·Peekaboo: 수정 후 0.1647~0.1751초. 기준 초과'),
-        ('sub', '다음 조치: 기준 적용 대상·사용할 기준선 확정 → 통과 여부 판정 → 3주차 진입 결정'),
+        ('sub', '기준 적용 대상·사용할 기준선은 확인 필요. 재검증 결과와 기존 동결 기준 데이터를 구분해 보존'),
+        ('h2', '3. 다음 작업 - 3주차 스케줄러 연결·고정 비율 검증'),
+        ('bullet', '**스케줄러 연결 (ID 7에 신규 실험 슬롯 추가)**'),
+        ('sub', 'MinRTT-multi와 같은 초기 동작을 연결하고 호출·결정 로그 확인'),
+        ('bullet', '**고정 비율 검증 (두 경로에 지정한 전송량 비율 확인)**'),
+        ('sub', 'BytesToRatio 유틸과 선택형 계측 추가. 분배 비율 0.3/0.7·0.1/0.9·0.5/0.5 테스트'),
+        ('sub', '검증 항목: 경로 제약 구간 제외 실제 분배 오차 ±5%, 결정 로그·두 경로 도착 시차 확인'),
         ('link', '수정 코드·측정 자료', 'https://github.com/JS-KETI/MPQUIC_Scheduler_Lab/pull/10'),
+        ('link', '종료 대기 250ms 전체 재검증 자료', BRANCH+'/artifacts/week2-completion-2026-10-08/run-01'),
         ('link', '기존 630회 기준 자료', 'https://github.com/JS-KETI/MPQUIC_Scheduler_Lab/tree/main/artifacts/week2-2026-10-02/run-01'),
     ]
 
@@ -354,20 +407,41 @@ def main():
     parser = argparse.ArgumentParser()
     parser.add_argument('--repo', type=Path, required=True)
     parser.add_argument('--charts', action='store_true')
+    parser.add_argument('--completion-chart', action='store_true')
     parser.add_argument('--pdf', action='store_true', help='Export PDF only when explicitly requested after reviewing Markdown/HTML')
     args = parser.parse_args()
     out = args.repo/'reports/week2/summary'
     (out/'figures').mkdir(parents=True, exist_ok=True)
     original, fixed = read_rows(args.repo/BASE), read_rows(args.repo/FIXED)
+    completed = read_rows(args.repo/COMPLETED)
+    if args.completion_chart:
+        make_completion_chart(out, original, fixed, completed)
+        print(out)
+        return
     if args.charts:
         make_charts(args.repo, out, original, fixed)
         prepare_basic_figures(args.repo, out)
     else:
-        data = blocks(original, fixed)
+        data = blocks(original, fixed, completed)
         documents(out, data)
         if args.pdf:
             pdf(out, data)
-        (out/'source.json').write_text(json.dumps({'original':BASE,'modified':FIXED,'original_counts':counts(original),'modified_counts':counts(fixed),'modified_source_commit':'856af610bc34cf3aeefe57bc6843c5480658fbe7','basic_visuals':BASIC,'provided_analyzer':'sched-lab/analyze.py','report_figures':['baseline_fct','completion_rates','path_shares','recovery_counts'],'current_formats':['md','html'],'pdf_status':'previous version retained; not regenerated' if not args.pdf else 'explicitly exported','report_scope':'2주차 기본 시각화 3종 및 유효 수정 원인·결과 요약'}, ensure_ascii=False, indent=2)+'\n', encoding='utf-8', newline='\n')
+        provenance = json.loads((args.repo/COMPLETED).with_name('provenance.json').read_text())
+        source = {
+            'original': BASE, 'modified': FIXED, 'completion_grace_recheck': COMPLETED,
+            'original_counts': counts(original), 'modified_counts': counts(fixed),
+            'completion_grace_recheck_counts': counts(completed),
+            'modified_source_commit': '856af610bc34cf3aeefe57bc6843c5480658fbe7',
+            'recheck_execution_head': provenance['head'],
+            'recheck_completion_grace_ms': 250,
+            'recheck_runner_command': provenance['runner_command'],
+            'basic_visuals': BASIC, 'provided_analyzer': 'sched-lab/analyze.py',
+            'report_figures': ['baseline_fct', 'completion_rates', 'path_shares', 'recovery_counts', 'completion_grace_counts'],
+            'current_formats': ['md', 'html'],
+            'pdf_status': 'previous version retained; not regenerated' if not args.pdf else 'explicitly exported',
+            'report_scope': '2주차 기본 시각화·유효 수정 결과·종료 대기 250ms 전체 재검증·3주차 계획',
+        }
+        (out/'source.json').write_text(json.dumps(source, ensure_ascii=False, indent=2)+'\n', encoding='utf-8', newline='\n')
     print(out)
 
 

@@ -1,7 +1,12 @@
 {
   "date_kst": "2026-10-08",
-  "file_count": 2433,
+  "file_count": 3079,
   "files": [
+    {
+      "path": "README.md",
+      "bytes": 7431,
+      "sha256": "ca37cb11dc588d553e30e15eb98c39249a16d30dff0f379b2732b0deb982deb5"
+    },
     {
       "path": "one-path-analysis-2026-10-01/05-one-path-diagnosis.patch",
       "bytes": 21452,
@@ -11,6 +16,11 @@
       "path": "one-path-analysis-2026-10-01/05-one-path-passive-diagnostics.patch",
       "bytes": 3243,
       "sha256": "d3dd6c160a9d3ba52a69da17818fa95243f9fd090541ca526b869cbbdeae9e50"
+    },
+    {
+      "path": "one-path-analysis-2026-10-01/REPORT.md",
+      "bytes": 11296,
+      "sha256": "7f1b5e8d25bb978c89546a51a35748d041d4e378003a40fe07b38a709ad7f858"
     },
     {
       "path": "one-path-analysis-2026-10-01/all_experiments.csv",
@@ -1248,11 +1258,6 @@
       "sha256": "c0ae831018bb418464b1044e2d66225f235c0cc6faef7a248ae9c6fd45bc14ce"
     },
     {
-      "path": "one-path-analysis-2026-10-01/REPORT.md",
-      "bytes": 11296,
-      "sha256": "7f1b5e8d25bb978c89546a51a35748d041d4e378003a40fe07b38a709ad7f858"
-    },
-    {
       "path": "one-path-analysis-2026-10-01/reproduction-tools/AGENTS.md",
       "bytes": 8808,
       "sha256": "a43dc7775156a2611c876a5ea207d66ab33f81ab3516a531f661c36f3fba3280"
@@ -1288,19 +1293,19 @@
       "sha256": "05fa4deaa4c37148d3823a2bce25e5edbd83dd1889ad52d04bbd81c7036e4b32"
     },
     {
-      "path": "README.md",
-      "bytes": 7415,
-      "sha256": "1debb2cb9a31dd9ead20087fa6778f2ff8ad593f50f57795b7b4ea2b179a0958"
-    },
-    {
       "path": "report-tools/render_weekly_report.py",
       "bytes": 6611,
       "sha256": "a84ce709b15b5816c7b4ade62d4686df3d118ce888836857b2799b35e72bd284"
     },
     {
       "path": "report-tools/week2_compact_report.py",
-      "bytes": 24168,
-      "sha256": "54fd6fdb31f42c86c16c8d132f9eeb1afa23bc67dfb9311f5bb2f3c711f22d65"
+      "bytes": 28757,
+      "sha256": "94271238d4a487ebc5e8bb804f5a5d0ae40fda4a158e8129288c6380c120e5bf"
+    },
+    {
+      "path": "report-visuals-2026-10-01/README.md",
+      "bytes": 1745,
+      "sha256": "4608c9e1bd3102b11d5fcbbabf773c4fb00b38889d0c9d56ff88cb958d47744b"
     },
     {
       "path": "report-visuals-2026-10-01/completion_counts.png",
@@ -1331,11 +1336,6 @@
       "path": "report-visuals-2026-10-01/one_path_comparison.svg",
       "bytes": 17656,
       "sha256": "3648c672beb504e683a46789dd7de48e61c9fc146f72be49bdc87089c3ab44f0"
-    },
-    {
-      "path": "report-visuals-2026-10-01/README.md",
-      "bytes": 1745,
-      "sha256": "4608c9e1bd3102b11d5fcbbabf773c4fb00b38889d0c9d56ff88cb958d47744b"
     },
     {
       "path": "setup-test-2026-10-01/03-matplotlib-compat.patch",
@@ -1408,6 +1408,11 @@
       "sha256": "a7d926e781c24f3483b4f48c4855ca23c0436b7280565445b23cde06555df2bb"
     },
     {
+      "path": "week1-2026-10-01/README_산출물.md",
+      "bytes": 1082,
+      "sha256": "6a054974049ba3cb03e31dac945de3d886dd7f171427298dca9f5c834958d378"
+    },
+    {
       "path": "week1-2026-10-01/analysis.log",
       "bytes": 2417,
       "sha256": "b1024c98aff5c1943251e6560daf517d3328d2ad7b5ef5602d30b7e9cea24d2a"
@@ -1461,11 +1466,6 @@
       "path": "week1-2026-10-01/provenance.json",
       "bytes": 708,
       "sha256": "9b0363db8ced1f717484315fff2914b5b33094d05b48bb6ef04879385b65f64b"
-    },
-    {
-      "path": "week1-2026-10-01/README_산출물.md",
-      "bytes": 1082,
-      "sha256": "6a054974049ba3cb03e31dac945de3d886dd7f171427298dca9f5c834958d378"
     },
     {
       "path": "week1-2026-10-01/reference_comparison.csv",
@@ -1733,6 +1733,21 @@
       "sha256": "2f10ccad43a41213a8f0d4d0a7c7663e1d51c3119d74993ecc378059590e78b3"
     },
     {
+      "path": "week2-2026-10-02/run-01/FROZEN.json",
+      "bytes": 508,
+      "sha256": "eea505d4b4205b9c2164ededd06766a9d99085113bada057953815f6dfaac1a2"
+    },
+    {
+      "path": "week2-2026-10-02/run-01/README.md",
+      "bytes": 5443,
+      "sha256": "be555ae7b01ba0bdb690bf1d39d7a386a4810f984dd750d4dc5e7e99c28acbf2"
+    },
+    {
+      "path": "week2-2026-10-02/run-01/SHA256SUMS",
+      "bytes": 2402,
+      "sha256": "813b5f41c290b1ecbb7f544705a3e20ff7deef48463132fe733014629ea72738"
+    },
+    {
       "path": "week2-2026-10-02/run-01/analysis/below_target_runs.csv",
       "bytes": 8761,
       "sha256": "f273cfdad3ecf245b0b7fdb0b816dc9fdeac89577419a0c2a57a66351082875a"
@@ -1818,11 +1833,6 @@
       "sha256": "64de583afe5493e3c847f07de4ec6e3cbd2a71ea7bca581d2f3bcae52e5959a6"
     },
     {
-      "path": "week2-2026-10-02/run-01/FROZEN.json",
-      "bytes": 508,
-      "sha256": "eea505d4b4205b9c2164ededd06766a9d99085113bada057953815f6dfaac1a2"
-    },
-    {
       "path": "week2-2026-10-02/run-01/package-validation.json",
       "bytes": 475,
       "sha256": "3ec1cf0aaa69746b2cf1ecf863773e6001746c2f7aa007e02808b9518f46a0f3"
@@ -1836,16 +1846,6 @@
       "path": "week2-2026-10-02/run-01/provenance.json",
       "bytes": 390364,
       "sha256": "289d1030f7b64d05a5c6ea16e2eb88499c2e7b3fb6c6ebbdffa52afed20b5c32"
-    },
-    {
-      "path": "week2-2026-10-02/run-01/README.md",
-      "bytes": 5443,
-      "sha256": "be555ae7b01ba0bdb690bf1d39d7a386a4810f984dd750d4dc5e7e99c28acbf2"
-    },
-    {
-      "path": "week2-2026-10-02/run-01/SHA256SUMS",
-      "bytes": 2402,
-      "sha256": "813b5f41c290b1ecbb7f544705a3e20ff7deef48463132fe733014629ea72738"
     },
     {
       "path": "week2-2026-10-02/run-01/simulation-source-vs-upstream.patch",
@@ -1873,6 +1873,11 @@
       "sha256": "504265788c34a5d73d49f8f4144cce91ac521952df154ff6a5c54db53930b5db"
     },
     {
+      "path": "week2-baseline-usability-2026-10-02/README.md",
+      "bytes": 3956,
+      "sha256": "0170b5756357d1da112381f2f6ca942192c31895238af5864453503595508a6b"
+    },
+    {
       "path": "week2-baseline-usability-2026-10-02/completion_and_progress.csv",
       "bytes": 1641,
       "sha256": "133f9588baf9dc6f8c5b259ea2bbc87f3bc4655c60c1a90a27cecbebcb1950a8"
@@ -1883,11 +1888,6 @@
       "sha256": "d9b3cc4a425b587b67af784664e24bc30e990a1995ffb04ccc23d5853ca44456"
     },
     {
-      "path": "week2-baseline-usability-2026-10-02/README.md",
-      "bytes": 3956,
-      "sha256": "0170b5756357d1da112381f2f6ca942192c31895238af5864453503595508a6b"
-    },
-    {
       "path": "week2-baseline-usability-2026-10-02/seed_block_counts.csv",
       "bytes": 3857,
       "sha256": "6da1544d0dca2fe8503a1ff8da28de9fc4c25b7cd87ffa0535ef6bca3db86b1c"
@@ -1896,6 +1896,11 @@
       "path": "week2-baseline-usability-2026-10-02/validation.json",
       "bytes": 725,
       "sha256": "39a6abfdba5d4008f7951b964a16c7d77a1eabe373b7bc02d655ae2caeab5bab"
+    },
+    {
+      "path": "week2-basic-visuals-2026-10-08/README.md",
+      "bytes": 560,
+      "sha256": "2cc70ad107b9c6400cdbb48ae7726f97051a802603de586ee183af9c4046ba59"
     },
     {
       "path": "week2-basic-visuals-2026-10-08/analyze.log",
@@ -1928,9 +1933,3234 @@
       "sha256": "54b77091b756866c316e14a2c740d3aab2bbb88a16684b8d2a5d0e67be2033d4"
     },
     {
-      "path": "week2-basic-visuals-2026-10-08/README.md",
-      "bytes": 560,
-      "sha256": "2cc70ad107b9c6400cdbb48ae7726f97051a802603de586ee183af9c4046ba59"
+      "path": "week2-completion-2026-10-08/README.md",
+      "bytes": 1894,
+      "sha256": "37391bb24b5d23cf25231963316349e771df910a04fc60ed62ab6b0cbdd2fc5b"
+    },
+    {
+      "path": "week2-completion-2026-10-08/run-01/analysis/below_target_runs.csv",
+      "bytes": 103,
+      "sha256": "d4bb5c1db3c3b0f1d70e9849a144d668309813e66cc56b6968e875499aa44ad8"
+    },
+    {
+      "path": "week2-completion-2026-10-08/run-01/analysis/dominating_ci_gate.csv",
+      "bytes": 303,
+      "sha256": "aaa8fa3a07bbba19f12aca6bb339f6cedc2d65e3c98da2b6e428a1119b2a22bf"
+    },
+    {
+      "path": "week2-completion-2026-10-08/run-01/analysis/paired_comparisons.csv",
+      "bytes": 14414,
+      "sha256": "5ac8a11b933b1b1bada77e6e57d673bde43f5ae789e6a4d3ae9a707ae47f202c"
+    },
+    {
+      "path": "week2-completion-2026-10-08/run-01/analysis/paired_observations.csv",
+      "bytes": 70510,
+      "sha256": "47a57a58e5047dcc16c4d7d4afddc83bb5c51e655c5fc29b24e6c4a54ffc512c"
+    },
+    {
+      "path": "week2-completion-2026-10-08/run-01/analysis/summary.csv",
+      "bytes": 3002,
+      "sha256": "1e069d1eb8ec1e4f5506d298a45dc6d9304a75f32b85fb0f0fc19f572c2af989"
+    },
+    {
+      "path": "week2-completion-2026-10-08/run-01/analysis/validation.json",
+      "bytes": 426,
+      "sha256": "701ac22eba16363cbf4cd4846eb4327f71c79c23d5603b95a2cdb405ad61c146"
+    },
+    {
+      "path": "week2-completion-2026-10-08/run-01/commands.json",
+      "bytes": 344655,
+      "sha256": "b056511daf6bcab063eed07182ada34fc32ccc8cdd65fb184b4c121c8f695c17"
+    },
+    {
+      "path": "week2-completion-2026-10-08/run-01/comparison.json",
+      "bytes": 366,
+      "sha256": "e3556430fb445d393029820eca8f06429641601ac945c3625d0e07b5ed4782f6"
+    },
+    {
+      "path": "week2-completion-2026-10-08/run-01/effective-code.patch",
+      "bytes": 32601,
+      "sha256": "0c06568f546904d553ca9e5193ada46d69b335a979ad3af5cd1213624f5d68ba"
+    },
+    {
+      "path": "week2-completion-2026-10-08/run-01/environment.json",
+      "bytes": 282,
+      "sha256": "550c4b03b2a0d3464553519a1192eb21612822c789a66097cf3e159f834c61bc"
+    },
+    {
+      "path": "week2-completion-2026-10-08/run-01/logs/competing-0-seed01.stdout.gz",
+      "bytes": 63517,
+      "sha256": "b704bacf070cd0831fb87b165874e2e41468c539b1f0ab9a0aeb68f172294db1"
+    },
+    {
+      "path": "week2-completion-2026-10-08/run-01/logs/competing-0-seed02.stdout.gz",
+      "bytes": 62370,
+      "sha256": "4ae7151378419a38fd6c51e01b49afb7ffd460ab538b2966ab8042c230d9c674"
+    },
+    {
+      "path": "week2-completion-2026-10-08/run-01/logs/competing-0-seed03.stdout.gz",
+      "bytes": 60987,
+      "sha256": "43e20503eae8ea926f4e8f34827359c2e449dc7b7449476ada6e368256309603"
+    },
+    {
+      "path": "week2-completion-2026-10-08/run-01/logs/competing-0-seed04.stdout.gz",
+      "bytes": 62232,
+      "sha256": "bbdb98d1bf0a6ed22e691cc0c97f8033a1f06aa85aa18b6fff7d0b3d62b27e27"
+    },
+    {
+      "path": "week2-completion-2026-10-08/run-01/logs/competing-0-seed05.stdout.gz",
+      "bytes": 63336,
+      "sha256": "1223038e63079d45d1a90b970b8d1ac9e904564799c54f408496527747372e87"
+    },
+    {
+      "path": "week2-completion-2026-10-08/run-01/logs/competing-0-seed06.stdout.gz",
+      "bytes": 60602,
+      "sha256": "55c64ae871e61a39f98800539bdcebd26cd54ae0f6b6e0a0a321149a2e621999"
+    },
+    {
+      "path": "week2-completion-2026-10-08/run-01/logs/competing-0-seed07.stdout.gz",
+      "bytes": 63409,
+      "sha256": "48cb33dc3064b0e29dfcf448cad6c2e9933b25adc1f59b69141b0e2f94320d80"
+    },
+    {
+      "path": "week2-completion-2026-10-08/run-01/logs/competing-0-seed08.stdout.gz",
+      "bytes": 61410,
+      "sha256": "768692066dcb74893a92213b34e3165e4e5d53676ab2cb32d4eba14275e24e71"
+    },
+    {
+      "path": "week2-completion-2026-10-08/run-01/logs/competing-0-seed09.stdout.gz",
+      "bytes": 61986,
+      "sha256": "4e23a706aacc829f93557635ea6b89440fd80d9a79bbde43b63baeb250df792f"
+    },
+    {
+      "path": "week2-completion-2026-10-08/run-01/logs/competing-0-seed10.stdout.gz",
+      "bytes": 61012,
+      "sha256": "a5e6129420550de6dbc993a363ef993e89ef22a707feb85330beb19790338157"
+    },
+    {
+      "path": "week2-completion-2026-10-08/run-01/logs/competing-0-seed11.stdout.gz",
+      "bytes": 61642,
+      "sha256": "3c85e1610e2eeee4e8dd05b4ac92fb34a0a15c054c4799e5d06f276e34d790df"
+    },
+    {
+      "path": "week2-completion-2026-10-08/run-01/logs/competing-0-seed12.stdout.gz",
+      "bytes": 63215,
+      "sha256": "43ca2fb6d99634fea11ba623f2f0a2f4930187c1bc4502ded88edabb284f8631"
+    },
+    {
+      "path": "week2-completion-2026-10-08/run-01/logs/competing-0-seed13.stdout.gz",
+      "bytes": 60609,
+      "sha256": "fe24ac00d7cb6dfa2dac4fd480cc6be88f1197286b445d9618b50f432d2463ad"
+    },
+    {
+      "path": "week2-completion-2026-10-08/run-01/logs/competing-0-seed14.stdout.gz",
+      "bytes": 63112,
+      "sha256": "2e79944c24c49c8a467d783d32bb6530f1cc19bf5eff850805ab33aa179d5a3e"
+    },
+    {
+      "path": "week2-completion-2026-10-08/run-01/logs/competing-0-seed15.stdout.gz",
+      "bytes": 62378,
+      "sha256": "432e95cbae4b42938c095ec98f637593a76aff50f56f4b1a299a584d53c51b63"
+    },
+    {
+      "path": "week2-completion-2026-10-08/run-01/logs/competing-0-seed16.stdout.gz",
+      "bytes": 61568,
+      "sha256": "66f0792dc2d1c8bf5ec5e0e4ee2f2ca9c600346ef67fc66cac6646118804cf46"
+    },
+    {
+      "path": "week2-completion-2026-10-08/run-01/logs/competing-0-seed17.stdout.gz",
+      "bytes": 60612,
+      "sha256": "ab504a0dbd00375a9fd2997f71ea56882c33f201595082b5947038262bfbea22"
+    },
+    {
+      "path": "week2-completion-2026-10-08/run-01/logs/competing-0-seed18.stdout.gz",
+      "bytes": 59403,
+      "sha256": "b98e4c09ffa81a17b8af25d868da8ccc87f373db9531692916d67c5ac858645b"
+    },
+    {
+      "path": "week2-completion-2026-10-08/run-01/logs/competing-0-seed19.stdout.gz",
+      "bytes": 58025,
+      "sha256": "943f42b73a4817c67a2f6f6a3e3c41d40d5ecabbe2e5a737b7a16be1b90d8282"
+    },
+    {
+      "path": "week2-completion-2026-10-08/run-01/logs/competing-0-seed20.stdout.gz",
+      "bytes": 62958,
+      "sha256": "75249b6d647f95606487e5bc2cc6cddfe20f58cb088cd662c9926d57cdaa86c7"
+    },
+    {
+      "path": "week2-completion-2026-10-08/run-01/logs/competing-0-seed21.stdout.gz",
+      "bytes": 62757,
+      "sha256": "031827beca36c66921232716026f67816cdfd60c9777c4fcc90e11966a84ffe1"
+    },
+    {
+      "path": "week2-completion-2026-10-08/run-01/logs/competing-0-seed22.stdout.gz",
+      "bytes": 61613,
+      "sha256": "ee3cd83664ecffbc8fe8f8f7e189a0587620bb54b54f96f7fcc6e2904b582217"
+    },
+    {
+      "path": "week2-completion-2026-10-08/run-01/logs/competing-0-seed23.stdout.gz",
+      "bytes": 63088,
+      "sha256": "b47871df1f2136a05211c8855258999527f430f8d3b92c97eb7ead15cd7e1a60"
+    },
+    {
+      "path": "week2-completion-2026-10-08/run-01/logs/competing-0-seed24.stdout.gz",
+      "bytes": 60617,
+      "sha256": "e0c58bf3e1eae9e93335231aa8c7cc624b16d9add5af9ad2cfb0909b22e23e85"
+    },
+    {
+      "path": "week2-completion-2026-10-08/run-01/logs/competing-0-seed25.stdout.gz",
+      "bytes": 62923,
+      "sha256": "4179edf6d4bb8e4f220d9d561ac0cc7e68efd83b34d45764eb9ddbaafa4c6813"
+    },
+    {
+      "path": "week2-completion-2026-10-08/run-01/logs/competing-0-seed26.stdout.gz",
+      "bytes": 60861,
+      "sha256": "405167224fce8b0d16524acc6d6f4e56ffb51e02c1efd4702fe5311427e7741e"
+    },
+    {
+      "path": "week2-completion-2026-10-08/run-01/logs/competing-0-seed27.stdout.gz",
+      "bytes": 61574,
+      "sha256": "01d74ca892d2c0e438db59c2311209331bbe423f6bd66b5a92f4ab6ba3b206f2"
+    },
+    {
+      "path": "week2-completion-2026-10-08/run-01/logs/competing-0-seed28.stdout.gz",
+      "bytes": 60427,
+      "sha256": "428dfd8c5ffe60543a6cd185ce6d5cfeb523d2ae64a8e1a0ad39e2f45e14ddb0"
+    },
+    {
+      "path": "week2-completion-2026-10-08/run-01/logs/competing-0-seed29.stdout.gz",
+      "bytes": 63314,
+      "sha256": "4ca804240da195a62e78004580dfc411bcc2045ef8a598dfbd0cfc48cf3cb6e7"
+    },
+    {
+      "path": "week2-completion-2026-10-08/run-01/logs/competing-0-seed30.stdout.gz",
+      "bytes": 61294,
+      "sha256": "39e918169e85e05fac9ebdc6e98cb923398fc8a98b6806089a262f2570833f9d"
+    },
+    {
+      "path": "week2-completion-2026-10-08/run-01/logs/competing-1-seed01.stdout.gz",
+      "bytes": 59371,
+      "sha256": "c2a17324c8d208e7e3739e94a83f2d91c3eb47b69bbe1b24c05de96c244221ba"
+    },
+    {
+      "path": "week2-completion-2026-10-08/run-01/logs/competing-1-seed02.stdout.gz",
+      "bytes": 55186,
+      "sha256": "6c5e24d83fd5dfe1a78bf9892d140f85851f7c361ad4b261115a45632024144b"
+    },
+    {
+      "path": "week2-completion-2026-10-08/run-01/logs/competing-1-seed03.stdout.gz",
+      "bytes": 60036,
+      "sha256": "e0d455e2c4543a715e1d4f9f65a90d787264e20b675f174f090ba1d83aa39ccb"
+    },
+    {
+      "path": "week2-completion-2026-10-08/run-01/logs/competing-1-seed04.stdout.gz",
+      "bytes": 55674,
+      "sha256": "0ed0182af9272e9419d4bbf1a727fbb54969398c45e5ce726d41ea221d784fbb"
+    },
+    {
+      "path": "week2-completion-2026-10-08/run-01/logs/competing-1-seed05.stdout.gz",
+      "bytes": 58244,
+      "sha256": "66242834f0610c03d262333869580e2e2e648b2044f5827dbaab6b3f770d008c"
+    },
+    {
+      "path": "week2-completion-2026-10-08/run-01/logs/competing-1-seed06.stdout.gz",
+      "bytes": 54764,
+      "sha256": "f7194183ecfa1515cc433e71b8517ed724235fb1a5aebdbf38168c274a0b84c9"
+    },
+    {
+      "path": "week2-completion-2026-10-08/run-01/logs/competing-1-seed07.stdout.gz",
+      "bytes": 60783,
+      "sha256": "efd9d8831168ae7eadefe79e9eb358a4ae534bec8cae696f0514bf8a93e5c327"
+    },
+    {
+      "path": "week2-completion-2026-10-08/run-01/logs/competing-1-seed08.stdout.gz",
+      "bytes": 60671,
+      "sha256": "01d9546216725b7cd59e4bb56fec129785f34a1e6fe60eed469834d0eb208e5a"
+    },
+    {
+      "path": "week2-completion-2026-10-08/run-01/logs/competing-1-seed09.stdout.gz",
+      "bytes": 54642,
+      "sha256": "bac2ed3daceb9b13dfcefa4663c7850c1c55356d8864e7ae71ae09bfdd4591f6"
+    },
+    {
+      "path": "week2-completion-2026-10-08/run-01/logs/competing-1-seed10.stdout.gz",
+      "bytes": 53282,
+      "sha256": "c38c36770003f3a0e04b5c352b477f93a4c8ad0ad24a524981f5983d90bcb835"
+    },
+    {
+      "path": "week2-completion-2026-10-08/run-01/logs/competing-1-seed11.stdout.gz",
+      "bytes": 53826,
+      "sha256": "1f25e4bad6e2d158e4104c2909729cff4f30bed1965cdb138ab8744aa7535710"
+    },
+    {
+      "path": "week2-completion-2026-10-08/run-01/logs/competing-1-seed12.stdout.gz",
+      "bytes": 58875,
+      "sha256": "fd2f119b54c131e2154a66fe345a9b0bd8115125de382e79c5d5cb1e96f2c400"
+    },
+    {
+      "path": "week2-completion-2026-10-08/run-01/logs/competing-1-seed13.stdout.gz",
+      "bytes": 51896,
+      "sha256": "59f551a72e233d125766b87cde993fe55df2fda8eeb1806231c71dd515389132"
+    },
+    {
+      "path": "week2-completion-2026-10-08/run-01/logs/competing-1-seed14.stdout.gz",
+      "bytes": 59529,
+      "sha256": "9b55f1c16f1391b92821cfad69fb8a3d8030cd010bbde6a28855a7ef218cf656"
+    },
+    {
+      "path": "week2-completion-2026-10-08/run-01/logs/competing-1-seed15.stdout.gz",
+      "bytes": 53764,
+      "sha256": "01e0e2732df428e28969004567b0dd2b6b4557d577da93d6ebd71191b95c7c6e"
+    },
+    {
+      "path": "week2-completion-2026-10-08/run-01/logs/competing-1-seed16.stdout.gz",
+      "bytes": 59860,
+      "sha256": "04e7cb2e562945b41ed74d82cd1287eac6a021d6a10431c34c01127c833b9d33"
+    },
+    {
+      "path": "week2-completion-2026-10-08/run-01/logs/competing-1-seed17.stdout.gz",
+      "bytes": 53291,
+      "sha256": "044b6b38dc5d9c05d8d45e8cb0ce960b48d5b98b89f6f9e27d5c1c6e7775e30d"
+    },
+    {
+      "path": "week2-completion-2026-10-08/run-01/logs/competing-1-seed18.stdout.gz",
+      "bytes": 52573,
+      "sha256": "17d87c2db7c12e41af13003bdacfed896feff7db457f07269927f217a633762b"
+    },
+    {
+      "path": "week2-completion-2026-10-08/run-01/logs/competing-1-seed19.stdout.gz",
+      "bytes": 54078,
+      "sha256": "0bd6bf78ef2d34ed305f3aebc8478881f760ac525648d957587ed03a38cdb313"
+    },
+    {
+      "path": "week2-completion-2026-10-08/run-01/logs/competing-1-seed20.stdout.gz",
+      "bytes": 60052,
+      "sha256": "e4cdfc5622a4e1178041461617f97dd5793a704605c96a241bce0c9f73603160"
+    },
+    {
+      "path": "week2-completion-2026-10-08/run-01/logs/competing-1-seed21.stdout.gz",
+      "bytes": 60549,
+      "sha256": "ff947f9c8e49425692169455e135eebf881557f4ef638194491789c3ee25b7c4"
+    },
+    {
+      "path": "week2-completion-2026-10-08/run-01/logs/competing-1-seed22.stdout.gz",
+      "bytes": 52263,
+      "sha256": "0833f94cf639693d7655eefa21de606b5e66c6870d4d3fb95e43114347bcf8e7"
+    },
+    {
+      "path": "week2-completion-2026-10-08/run-01/logs/competing-1-seed23.stdout.gz",
+      "bytes": 61308,
+      "sha256": "41bad2da9e0df9fda01314cfc3d9349243e69d8d7a8d865c8370b4f3e8421182"
+    },
+    {
+      "path": "week2-completion-2026-10-08/run-01/logs/competing-1-seed24.stdout.gz",
+      "bytes": 56175,
+      "sha256": "ce90b054ad41d57f7f92d8411adab17cc7dcfd3213d7aa9eb3c98c169d180c3b"
+    },
+    {
+      "path": "week2-completion-2026-10-08/run-01/logs/competing-1-seed25.stdout.gz",
+      "bytes": 59171,
+      "sha256": "772e3bb152d88ca15647a4429dcfd4f025078372219c5883fcf12bc9a52c1178"
+    },
+    {
+      "path": "week2-completion-2026-10-08/run-01/logs/competing-1-seed26.stdout.gz",
+      "bytes": 55530,
+      "sha256": "ffdbbbe165328e4b0fd7664b6ce8d251bef98e170f50f06f8553d71272ec826f"
+    },
+    {
+      "path": "week2-completion-2026-10-08/run-01/logs/competing-1-seed27.stdout.gz",
+      "bytes": 59991,
+      "sha256": "d01305eb01408da5403a71de1bd8c61d343066e219ff809e885c3b8835e8af8c"
+    },
+    {
+      "path": "week2-completion-2026-10-08/run-01/logs/competing-1-seed28.stdout.gz",
+      "bytes": 52308,
+      "sha256": "658fe5f614f63fb7ec1d1eecb7c703803d43f39bb9f650fda9ca84a18bdda795"
+    },
+    {
+      "path": "week2-completion-2026-10-08/run-01/logs/competing-1-seed29.stdout.gz",
+      "bytes": 55168,
+      "sha256": "020f0f021c130e6e10b6ea26e7d00591d9385fd307e1cdb96d059f7c959ce8d4"
+    },
+    {
+      "path": "week2-completion-2026-10-08/run-01/logs/competing-1-seed30.stdout.gz",
+      "bytes": 50383,
+      "sha256": "b2aa2eaa264dbf22ca7885e8e70da494b50e19027da63347b9c3ae70b6498a99"
+    },
+    {
+      "path": "week2-completion-2026-10-08/run-01/logs/competing-2-seed01.stdout.gz",
+      "bytes": 60291,
+      "sha256": "ded88db255a3bd110a5533658dde3f21573cc3fbd0151553bb6a06e81771ca35"
+    },
+    {
+      "path": "week2-completion-2026-10-08/run-01/logs/competing-2-seed02.stdout.gz",
+      "bytes": 55186,
+      "sha256": "634c821673942b98332bf9be29f256b6ad2b6dadcf36ce03a75af81f523cad70"
+    },
+    {
+      "path": "week2-completion-2026-10-08/run-01/logs/competing-2-seed03.stdout.gz",
+      "bytes": 61920,
+      "sha256": "4861c9d5bad06857e3b755e269974ba1ba580dc4bafb432ed7ae02be9d43acc9"
+    },
+    {
+      "path": "week2-completion-2026-10-08/run-01/logs/competing-2-seed04.stdout.gz",
+      "bytes": 54998,
+      "sha256": "715a7478b74159044e034819f2b4154965f7252778d11fce47cee264bd16464d"
+    },
+    {
+      "path": "week2-completion-2026-10-08/run-01/logs/competing-2-seed05.stdout.gz",
+      "bytes": 57530,
+      "sha256": "d969202f5b677aca4a732a12093afe41d940ea7fc10a2597d7c48e9fc412d80f"
+    },
+    {
+      "path": "week2-completion-2026-10-08/run-01/logs/competing-2-seed06.stdout.gz",
+      "bytes": 54802,
+      "sha256": "fe36ec4fd39bba1aeb0b6f8fecc363b31b8ba17a531b370188974b9e3b17895b"
+    },
+    {
+      "path": "week2-completion-2026-10-08/run-01/logs/competing-2-seed07.stdout.gz",
+      "bytes": 62550,
+      "sha256": "61a8319d1934c56c64132cbe9d77edd5b2f553bbf790792e45df340083f1e390"
+    },
+    {
+      "path": "week2-completion-2026-10-08/run-01/logs/competing-2-seed08.stdout.gz",
+      "bytes": 60455,
+      "sha256": "b781dc4b7c177d65e18687937fe5ee2f54bbf9cb5a0cffd09466e8e7002dbf47"
+    },
+    {
+      "path": "week2-completion-2026-10-08/run-01/logs/competing-2-seed09.stdout.gz",
+      "bytes": 54642,
+      "sha256": "1824cfa2bda4f47c0a47b423b9ffb3e52031ff86f6f0758c98c99bf7af6feb6f"
+    },
+    {
+      "path": "week2-completion-2026-10-08/run-01/logs/competing-2-seed10.stdout.gz",
+      "bytes": 53749,
+      "sha256": "622c71bb1ecb7187244a3a08da7be62b5ade0fa08c67557e89abc8860e40e771"
+    },
+    {
+      "path": "week2-completion-2026-10-08/run-01/logs/competing-2-seed11.stdout.gz",
+      "bytes": 54252,
+      "sha256": "114c04bdf6aaf2977e3254344826234f36c0dce9c86913e43d14d8010f39d494"
+    },
+    {
+      "path": "week2-completion-2026-10-08/run-01/logs/competing-2-seed12.stdout.gz",
+      "bytes": 59014,
+      "sha256": "7b876799d17fd37d32e12f4ca5b2a49353d47b84f8c07c940bc1d151db75548c"
+    },
+    {
+      "path": "week2-completion-2026-10-08/run-01/logs/competing-2-seed13.stdout.gz",
+      "bytes": 51896,
+      "sha256": "8cf0c5105dfb2c8ab2bd1d48c1d69d025186a896e06c20372cacfed47b7e383c"
+    },
+    {
+      "path": "week2-completion-2026-10-08/run-01/logs/competing-2-seed14.stdout.gz",
+      "bytes": 58167,
+      "sha256": "8a7fa5413300d2e32337965c9bccf63f2aa27d2043b9dcee3a1dc842a5469f39"
+    },
+    {
+      "path": "week2-completion-2026-10-08/run-01/logs/competing-2-seed15.stdout.gz",
+      "bytes": 55610,
+      "sha256": "3c64a57fa2c2cbcad4d30fd9b324dcc753b256983a4ff60bbd186503d81c1b29"
+    },
+    {
+      "path": "week2-completion-2026-10-08/run-01/logs/competing-2-seed16.stdout.gz",
+      "bytes": 59390,
+      "sha256": "9b33ad9490d28dcc1c2431d3cdf72799cd4a5186fba25a0370cb36c33ef79f18"
+    },
+    {
+      "path": "week2-completion-2026-10-08/run-01/logs/competing-2-seed17.stdout.gz",
+      "bytes": 53291,
+      "sha256": "1b5e6046bcb9597b5cf1874ee9b4d5b6e0d50209cb0bb342c49bf902b088c090"
+    },
+    {
+      "path": "week2-completion-2026-10-08/run-01/logs/competing-2-seed18.stdout.gz",
+      "bytes": 52862,
+      "sha256": "da0283a1d1334db579d02a0b73f7ef2bbd3b52add6b41891345244a82a93697c"
+    },
+    {
+      "path": "week2-completion-2026-10-08/run-01/logs/competing-2-seed19.stdout.gz",
+      "bytes": 54078,
+      "sha256": "918a31c208d4c6a8ba0feb7c3443f197a0b574aa401731e71924bcd07e1494c6"
+    },
+    {
+      "path": "week2-completion-2026-10-08/run-01/logs/competing-2-seed20.stdout.gz",
+      "bytes": 58155,
+      "sha256": "d496c41eda24e5b57eb3a525b59fcca17c51fdfb02ebcabc5478504ea1718fb7"
+    },
+    {
+      "path": "week2-completion-2026-10-08/run-01/logs/competing-2-seed21.stdout.gz",
+      "bytes": 59246,
+      "sha256": "6184f966beae518b8439f35984122bd6378ddd43256b54c31172131d3b5843a0"
+    },
+    {
+      "path": "week2-completion-2026-10-08/run-01/logs/competing-2-seed22.stdout.gz",
+      "bytes": 52310,
+      "sha256": "8fec76601299b78999c8387ac3c8b22a219d8b5ce806dc76d7a11d54809ccb18"
+    },
+    {
+      "path": "week2-completion-2026-10-08/run-01/logs/competing-2-seed23.stdout.gz",
+      "bytes": 59098,
+      "sha256": "d7ec42c05d57dd4f27fdc57ad3176c59af1a54bfccac27006a376a56072960f7"
+    },
+    {
+      "path": "week2-completion-2026-10-08/run-01/logs/competing-2-seed24.stdout.gz",
+      "bytes": 55390,
+      "sha256": "490b80cbdf2aca0e353f126c91a0c12d05173101834440f87894b6bd71b84c60"
+    },
+    {
+      "path": "week2-completion-2026-10-08/run-01/logs/competing-2-seed25.stdout.gz",
+      "bytes": 60606,
+      "sha256": "31fd0426b6ec304238ad693ad6fbdc959764e5193870ad1cb6bd41b51638cea7"
+    },
+    {
+      "path": "week2-completion-2026-10-08/run-01/logs/competing-2-seed26.stdout.gz",
+      "bytes": 55537,
+      "sha256": "adc16e62527cbbb10d7ca0cf4b03357a6b3f0c5f1e85cde2e48fb64b7a7105ef"
+    },
+    {
+      "path": "week2-completion-2026-10-08/run-01/logs/competing-2-seed27.stdout.gz",
+      "bytes": 60044,
+      "sha256": "4de06c8c7b72292638c75109f2cee05debfd87d4dceb4d54e9039c569f5982b6"
+    },
+    {
+      "path": "week2-completion-2026-10-08/run-01/logs/competing-2-seed28.stdout.gz",
+      "bytes": 53567,
+      "sha256": "6b4413fe2e18c623f1c83874d9b97007e90a9e749b927fc4282d121e8224b040"
+    },
+    {
+      "path": "week2-completion-2026-10-08/run-01/logs/competing-2-seed29.stdout.gz",
+      "bytes": 55168,
+      "sha256": "c2e6fa6feab8aaa7986ed26e44ee7a030b7204dba410b9b352fcb69357a90dbb"
+    },
+    {
+      "path": "week2-completion-2026-10-08/run-01/logs/competing-2-seed30.stdout.gz",
+      "bytes": 50383,
+      "sha256": "9df9378276a390a616cd973fdd72aab9309c0e1792222156a2ebd57e196dd937"
+    },
+    {
+      "path": "week2-completion-2026-10-08/run-01/logs/competing-3-seed01.stdout.gz",
+      "bytes": 60812,
+      "sha256": "2b9d57f6b4ed8e9b13436865f6ba8f4ef578ec734ed18f70db6fa892230a61cd"
+    },
+    {
+      "path": "week2-completion-2026-10-08/run-01/logs/competing-3-seed02.stdout.gz",
+      "bytes": 61685,
+      "sha256": "f5055dca8239a6bb639bc1844e5afaea68e84f2bd0ed85d14b4e49ad805d9cb4"
+    },
+    {
+      "path": "week2-completion-2026-10-08/run-01/logs/competing-3-seed03.stdout.gz",
+      "bytes": 54596,
+      "sha256": "9ce87740e87d2436238ca88d9107d653022c96015ee1389754e8fa52fca8e2db"
+    },
+    {
+      "path": "week2-completion-2026-10-08/run-01/logs/competing-3-seed04.stdout.gz",
+      "bytes": 56836,
+      "sha256": "5f8fc9f3fd99148903303b5491164224fd9741e94d5ed45c225dbcac057fb499"
+    },
+    {
+      "path": "week2-completion-2026-10-08/run-01/logs/competing-3-seed05.stdout.gz",
+      "bytes": 59442,
+      "sha256": "987b8a2c4843f5636902bbebe2f909b5247f7c47503e34f173ee0776a9110fc7"
+    },
+    {
+      "path": "week2-completion-2026-10-08/run-01/logs/competing-3-seed06.stdout.gz",
+      "bytes": 57308,
+      "sha256": "81cf95454235c29b9114adfdeda2b79f3b541860cf1214ecdfc5c3d120d8bb9d"
+    },
+    {
+      "path": "week2-completion-2026-10-08/run-01/logs/competing-3-seed07.stdout.gz",
+      "bytes": 61734,
+      "sha256": "627f96fb277879b6f0afce90991a0eae16be73278f01a803119228e147d2aa71"
+    },
+    {
+      "path": "week2-completion-2026-10-08/run-01/logs/competing-3-seed08.stdout.gz",
+      "bytes": 54800,
+      "sha256": "34c1e407a91aca51c9b8364726e900234841f4ee69e6962dadcaab9f2baca237"
+    },
+    {
+      "path": "week2-completion-2026-10-08/run-01/logs/competing-3-seed09.stdout.gz",
+      "bytes": 54699,
+      "sha256": "d760dc2ab58cc25d9632d6cc1c3c88cec6c8e8ba421e888ca83a1033e195053a"
+    },
+    {
+      "path": "week2-completion-2026-10-08/run-01/logs/competing-3-seed10.stdout.gz",
+      "bytes": 56233,
+      "sha256": "d3b0dcd167cedf91b7602370aefb95f11911319ebe4cd2bfd7eb5d5d4657ea28"
+    },
+    {
+      "path": "week2-completion-2026-10-08/run-01/logs/competing-3-seed11.stdout.gz",
+      "bytes": 53239,
+      "sha256": "76d6e27263c8f62208046cfca472f05aa94955aa8ce00f7fb5973cab4dca1f4a"
+    },
+    {
+      "path": "week2-completion-2026-10-08/run-01/logs/competing-3-seed12.stdout.gz",
+      "bytes": 61344,
+      "sha256": "ad23f0d96a8138f90fe0041307b3bcc9d02522e159954fc997fa166ee7863bcd"
+    },
+    {
+      "path": "week2-completion-2026-10-08/run-01/logs/competing-3-seed13.stdout.gz",
+      "bytes": 54684,
+      "sha256": "ac88bfece44b064d8d961372f96294b8d7a49546486d8b20b1f846a913473f04"
+    },
+    {
+      "path": "week2-completion-2026-10-08/run-01/logs/competing-3-seed14.stdout.gz",
+      "bytes": 60807,
+      "sha256": "84a74bdf71051d974ca966fcf38514b7444e92c0b39052cb4b426db78bddd5a3"
+    },
+    {
+      "path": "week2-completion-2026-10-08/run-01/logs/competing-3-seed15.stdout.gz",
+      "bytes": 54550,
+      "sha256": "498717704f94454273de34affad6f0deacbf21c4c992c45907020f21f9d4f69b"
+    },
+    {
+      "path": "week2-completion-2026-10-08/run-01/logs/competing-3-seed16.stdout.gz",
+      "bytes": 54923,
+      "sha256": "bcb18be75b0208b7e8fe98de1f96b34de8dd17aae7de578664fdf731eef8ba6f"
+    },
+    {
+      "path": "week2-completion-2026-10-08/run-01/logs/competing-3-seed17.stdout.gz",
+      "bytes": 54473,
+      "sha256": "cb907cad7a79651838b90008dfd6479b143bc1e77d3ea1c39a9dacc3f4579548"
+    },
+    {
+      "path": "week2-completion-2026-10-08/run-01/logs/competing-3-seed18.stdout.gz",
+      "bytes": 53243,
+      "sha256": "7e20546510a2b4b0577397962ccf2ade83510842231fd2cf915849bc590b959f"
+    },
+    {
+      "path": "week2-completion-2026-10-08/run-01/logs/competing-3-seed19.stdout.gz",
+      "bytes": 52795,
+      "sha256": "bf03a9d9f20624b7384e2cca1a01516a0af459608236b60ecaea56cb0b74eb05"
+    },
+    {
+      "path": "week2-completion-2026-10-08/run-01/logs/competing-3-seed20.stdout.gz",
+      "bytes": 59336,
+      "sha256": "8e525d66318779270522fc09b114cc3389ad2a060ede5da28f23559ec57f99c4"
+    },
+    {
+      "path": "week2-completion-2026-10-08/run-01/logs/competing-3-seed21.stdout.gz",
+      "bytes": 59378,
+      "sha256": "123895866bb454b4c212323d0948c856ef6157997b7bfa8311a63e1ba0cc43fd"
+    },
+    {
+      "path": "week2-completion-2026-10-08/run-01/logs/competing-3-seed22.stdout.gz",
+      "bytes": 53716,
+      "sha256": "55cce4b9317e286fc9710bc6a40c62e3ce003ebc68896c2f1795da962323780c"
+    },
+    {
+      "path": "week2-completion-2026-10-08/run-01/logs/competing-3-seed23.stdout.gz",
+      "bytes": 59267,
+      "sha256": "5692521cf848709961f20f9969cfa8801e20dff1eb69208715b617d85daed5bc"
+    },
+    {
+      "path": "week2-completion-2026-10-08/run-01/logs/competing-3-seed24.stdout.gz",
+      "bytes": 55575,
+      "sha256": "6429c33f45772cd80bcfdf22bf9221dc0191e50c1cfdf8934ad2d729ae5c5125"
+    },
+    {
+      "path": "week2-completion-2026-10-08/run-01/logs/competing-3-seed25.stdout.gz",
+      "bytes": 61301,
+      "sha256": "1fd49d9a2a722dbe210ed0aac8f3cf0ab2de7401db10a86c922cc37433230123"
+    },
+    {
+      "path": "week2-completion-2026-10-08/run-01/logs/competing-3-seed26.stdout.gz",
+      "bytes": 55996,
+      "sha256": "709fce853201941edfecdc768081d11aace409ce9b3c83082926699bebf45965"
+    },
+    {
+      "path": "week2-completion-2026-10-08/run-01/logs/competing-3-seed27.stdout.gz",
+      "bytes": 58661,
+      "sha256": "cb3aa79a7be686c5fdcbf4eed8d21f517def281ce80f9ef3aacb9d2e02b3bd7f"
+    },
+    {
+      "path": "week2-completion-2026-10-08/run-01/logs/competing-3-seed28.stdout.gz",
+      "bytes": 54585,
+      "sha256": "5b0dd2307526a3c53e6ac354f91515537434e598050dd5ab76a8b9bf39e2e8b6"
+    },
+    {
+      "path": "week2-completion-2026-10-08/run-01/logs/competing-3-seed29.stdout.gz",
+      "bytes": 54494,
+      "sha256": "4782a6102f14b17485dc83e0ce0740fb8e4a624d8500d22ab480c7a425d9b039"
+    },
+    {
+      "path": "week2-completion-2026-10-08/run-01/logs/competing-3-seed30.stdout.gz",
+      "bytes": 51451,
+      "sha256": "4b6f63e59ca4e655026d6f132dc6d63b77658afeb4ea4e48d647ab9d65a289e1"
+    },
+    {
+      "path": "week2-completion-2026-10-08/run-01/logs/competing-4-seed01.stdout.gz",
+      "bytes": 59370,
+      "sha256": "acf750336469cc15fcfb82589a3a364dc61f69ac205a7f64c0ad9c00e70d0e29"
+    },
+    {
+      "path": "week2-completion-2026-10-08/run-01/logs/competing-4-seed02.stdout.gz",
+      "bytes": 55186,
+      "sha256": "4a4b3b806be19bed2baa101ab10a417ec14fdee1b5f74c1919816968970c4d20"
+    },
+    {
+      "path": "week2-completion-2026-10-08/run-01/logs/competing-4-seed03.stdout.gz",
+      "bytes": 59682,
+      "sha256": "28745e2de0d99c78b269d46a7c79eb2d6110a9a1e5563ae86a3687e2423d4be7"
+    },
+    {
+      "path": "week2-completion-2026-10-08/run-01/logs/competing-4-seed04.stdout.gz",
+      "bytes": 53674,
+      "sha256": "1d5d253114651daa6cd861f0666f97a33ba155d6af3171430574c244fa73c334"
+    },
+    {
+      "path": "week2-completion-2026-10-08/run-01/logs/competing-4-seed05.stdout.gz",
+      "bytes": 58370,
+      "sha256": "64b4d55039b6edda70d62e037eda5e856734b6557244f1df1b58cdb50ad1bd23"
+    },
+    {
+      "path": "week2-completion-2026-10-08/run-01/logs/competing-4-seed06.stdout.gz",
+      "bytes": 53354,
+      "sha256": "392176ebbd972dcc214e09400b34c08ff0d5e2d49667d683bf9809c7195c9c7a"
+    },
+    {
+      "path": "week2-completion-2026-10-08/run-01/logs/competing-4-seed07.stdout.gz",
+      "bytes": 59851,
+      "sha256": "23f5a98df49d450082347a6e4e24b14ea08dac732a4355b50893cc8a2bdd1de9"
+    },
+    {
+      "path": "week2-completion-2026-10-08/run-01/logs/competing-4-seed08.stdout.gz",
+      "bytes": 60248,
+      "sha256": "cfe81bbb4fe1d538ed89cf3b2e0d8f6e10eccb88f8a59dee6c409e3517c31963"
+    },
+    {
+      "path": "week2-completion-2026-10-08/run-01/logs/competing-4-seed09.stdout.gz",
+      "bytes": 54399,
+      "sha256": "5e5082c135a4c177feaa26c8246382a1ca3c5bc1d540687c959e3111ae0e4533"
+    },
+    {
+      "path": "week2-completion-2026-10-08/run-01/logs/competing-4-seed10.stdout.gz",
+      "bytes": 52799,
+      "sha256": "2ec7ab4432cab6621a91e5516964c3d292a2cd3207e4bcabe8915dc57cbffb6d"
+    },
+    {
+      "path": "week2-completion-2026-10-08/run-01/logs/competing-4-seed11.stdout.gz",
+      "bytes": 53077,
+      "sha256": "4b769162f44a719aa4e379abba796bce3352081410154f3a6c9268d4966e0745"
+    },
+    {
+      "path": "week2-completion-2026-10-08/run-01/logs/competing-4-seed12.stdout.gz",
+      "bytes": 59290,
+      "sha256": "b3015cec47e697dfd183b32722175626f9c441acd29c709cc0f59d5ac2645df1"
+    },
+    {
+      "path": "week2-completion-2026-10-08/run-01/logs/competing-4-seed13.stdout.gz",
+      "bytes": 51024,
+      "sha256": "774dcd1c2afd858d75b68ec3fa61f0349688318b9f628a97d6ba0682721b6ae5"
+    },
+    {
+      "path": "week2-completion-2026-10-08/run-01/logs/competing-4-seed14.stdout.gz",
+      "bytes": 59529,
+      "sha256": "965bcb7c1512484503dd8d4c44f41f194e6b1f5c9b830561c543b35665187cec"
+    },
+    {
+      "path": "week2-completion-2026-10-08/run-01/logs/competing-4-seed15.stdout.gz",
+      "bytes": 52838,
+      "sha256": "97140516534d8ef287db8c0a8e3a00fd99d0335fe33628b89afc974be534b265"
+    },
+    {
+      "path": "week2-completion-2026-10-08/run-01/logs/competing-4-seed16.stdout.gz",
+      "bytes": 59531,
+      "sha256": "21b687a8cac6b7e2466e737912a2aa59913b9dcf86110f455137fa8e575c0a98"
+    },
+    {
+      "path": "week2-completion-2026-10-08/run-01/logs/competing-4-seed17.stdout.gz",
+      "bytes": 52729,
+      "sha256": "e508f4bbff37c7188c94c89bf10937fc2ba1fc7b0f9dc4bad7487fef59eac712"
+    },
+    {
+      "path": "week2-completion-2026-10-08/run-01/logs/competing-4-seed18.stdout.gz",
+      "bytes": 52155,
+      "sha256": "a6bef1dfbcec09d87ca2ac9e0a277e1c93d1bbfa3d958e7daa2632fbd47afca5"
+    },
+    {
+      "path": "week2-completion-2026-10-08/run-01/logs/competing-4-seed19.stdout.gz",
+      "bytes": 54078,
+      "sha256": "ded6a89851fa7ecc73fea1825e386b702a7b3459d5d11985daf18bf4b266d365"
+    },
+    {
+      "path": "week2-completion-2026-10-08/run-01/logs/competing-4-seed20.stdout.gz",
+      "bytes": 59734,
+      "sha256": "ba062f088a9c6fdc83685b4b4635d42668d0971262367f849269ce18229082bb"
+    },
+    {
+      "path": "week2-completion-2026-10-08/run-01/logs/competing-4-seed21.stdout.gz",
+      "bytes": 59086,
+      "sha256": "5d5ac3a4d6307ffad34411b2c1f98e8d021a3379065dad0be2283cdf48a9d59d"
+    },
+    {
+      "path": "week2-completion-2026-10-08/run-01/logs/competing-4-seed22.stdout.gz",
+      "bytes": 51752,
+      "sha256": "2042216ba1392daa615dbfe44195f407f975cfd6aef9b03366c9bb45c5497b2e"
+    },
+    {
+      "path": "week2-completion-2026-10-08/run-01/logs/competing-4-seed23.stdout.gz",
+      "bytes": 59504,
+      "sha256": "a2f872e28960fdceb551ed25220e4d67530237574d865d6fc25ebd0211f3fc5d"
+    },
+    {
+      "path": "week2-completion-2026-10-08/run-01/logs/competing-4-seed24.stdout.gz",
+      "bytes": 52796,
+      "sha256": "5fdc8c516edc2452c4cc0d46eda99badafbe6a411e3d591f5a119be509b3f6e1"
+    },
+    {
+      "path": "week2-completion-2026-10-08/run-01/logs/competing-4-seed25.stdout.gz",
+      "bytes": 59171,
+      "sha256": "38bf22a3d1712adc844981ab119b69a8a799f01784ceb779f83749db39029b91"
+    },
+    {
+      "path": "week2-completion-2026-10-08/run-01/logs/competing-4-seed26.stdout.gz",
+      "bytes": 54347,
+      "sha256": "7095a94b08ac5208920d410e211199842478416453b4bfad4dda27d4252ba772"
+    },
+    {
+      "path": "week2-completion-2026-10-08/run-01/logs/competing-4-seed27.stdout.gz",
+      "bytes": 59864,
+      "sha256": "82831f517d0c6823bf0d7decaaeed7825a7d1d48e14868ba4a64e50ee8ceac8d"
+    },
+    {
+      "path": "week2-completion-2026-10-08/run-01/logs/competing-4-seed28.stdout.gz",
+      "bytes": 50943,
+      "sha256": "01e0ac24a2a15716f3df06f9e2546ac786f85408ed121a13b405ed9b9a7de5aa"
+    },
+    {
+      "path": "week2-completion-2026-10-08/run-01/logs/competing-4-seed29.stdout.gz",
+      "bytes": 55168,
+      "sha256": "8c41141c5efb4e2447acfc0b7945641491af4394d3da695f9803de67b262a09c"
+    },
+    {
+      "path": "week2-completion-2026-10-08/run-01/logs/competing-4-seed30.stdout.gz",
+      "bytes": 50383,
+      "sha256": "fb8697a9651ea8a68381e7a1f4e2ea3538ea063054f5567b35528ff5e9599b93"
+    },
+    {
+      "path": "week2-completion-2026-10-08/run-01/logs/competing-5-seed01.stdout.gz",
+      "bytes": 63393,
+      "sha256": "3c16a46ed82c931dabc46ec80dadf8db02a397a6f725ca0cccb9a35ec8f560bb"
+    },
+    {
+      "path": "week2-completion-2026-10-08/run-01/logs/competing-5-seed02.stdout.gz",
+      "bytes": 62382,
+      "sha256": "9b73ee2674253eaf750c5574f6912752cbbbcb8a34a62a1caf9767b57ba01bd5"
+    },
+    {
+      "path": "week2-completion-2026-10-08/run-01/logs/competing-5-seed03.stdout.gz",
+      "bytes": 62995,
+      "sha256": "6329bf8e719d067aee0a60584fd4c562b11d2ee04d5a4767b20f03f8bf1f1b57"
+    },
+    {
+      "path": "week2-completion-2026-10-08/run-01/logs/competing-5-seed04.stdout.gz",
+      "bytes": 63387,
+      "sha256": "a52254789a025a9a9d54daef67014901b89bbdcfa6cff443ae29551c1fd25056"
+    },
+    {
+      "path": "week2-completion-2026-10-08/run-01/logs/competing-5-seed05.stdout.gz",
+      "bytes": 61254,
+      "sha256": "3177f7ac78bb09f1166fa5eca0292da392d704286c36689a4662ca3fb08ab9d5"
+    },
+    {
+      "path": "week2-completion-2026-10-08/run-01/logs/competing-5-seed06.stdout.gz",
+      "bytes": 64336,
+      "sha256": "c86b294d243a8e7ee65763e14c09f25397091acfa9a22f2a14c6d5d70eba7d68"
+    },
+    {
+      "path": "week2-completion-2026-10-08/run-01/logs/competing-5-seed07.stdout.gz",
+      "bytes": 60468,
+      "sha256": "4a8cd2d64c9da59a46860bdd144ccd56ac5bd96833514f8adaa91966e6ed16c4"
+    },
+    {
+      "path": "week2-completion-2026-10-08/run-01/logs/competing-5-seed08.stdout.gz",
+      "bytes": 63038,
+      "sha256": "5afdc4d877d0fb3cbeae9e247499586b12eb468fe4b74990490d09ef92fcf55a"
+    },
+    {
+      "path": "week2-completion-2026-10-08/run-01/logs/competing-5-seed09.stdout.gz",
+      "bytes": 60767,
+      "sha256": "9c3e0d0895265b96383dcb37b5b6756645a9013763266f66f7d2738f8fde6c20"
+    },
+    {
+      "path": "week2-completion-2026-10-08/run-01/logs/competing-5-seed10.stdout.gz",
+      "bytes": 61703,
+      "sha256": "5eacd5a2f848f95f502d692c06f24c3a3e8549e8185958755c299944eb940ce3"
+    },
+    {
+      "path": "week2-completion-2026-10-08/run-01/logs/competing-5-seed11.stdout.gz",
+      "bytes": 63012,
+      "sha256": "6ca81d4546d87836e600c2d556dc39dfea96f5d79fa9e320adf0494e1656568d"
+    },
+    {
+      "path": "week2-completion-2026-10-08/run-01/logs/competing-5-seed12.stdout.gz",
+      "bytes": 61083,
+      "sha256": "1dd43ba5af4a9e189022716d0810ff2f2fc8062300a90e240baa504fc505425d"
+    },
+    {
+      "path": "week2-completion-2026-10-08/run-01/logs/competing-5-seed13.stdout.gz",
+      "bytes": 63290,
+      "sha256": "0fdf28cd2d152909019830df64ba445baea4e9e769562f1bbc2e9132fe8260ee"
+    },
+    {
+      "path": "week2-completion-2026-10-08/run-01/logs/competing-5-seed14.stdout.gz",
+      "bytes": 61149,
+      "sha256": "5005f12a7c8e5efc484e39e312bb8d58fb8f22184104e7c7af0d3a8da0ad630e"
+    },
+    {
+      "path": "week2-completion-2026-10-08/run-01/logs/competing-5-seed15.stdout.gz",
+      "bytes": 63148,
+      "sha256": "6bb0a62e5668c365c094047910c27eaf089ea774da9f95fb40a43c224d3a9733"
+    },
+    {
+      "path": "week2-completion-2026-10-08/run-01/logs/competing-5-seed16.stdout.gz",
+      "bytes": 63009,
+      "sha256": "b7d9c8a382b19b8503e45f5663737c06e9c86cd81c399b68aa7e133c293f96d3"
+    },
+    {
+      "path": "week2-completion-2026-10-08/run-01/logs/competing-5-seed17.stdout.gz",
+      "bytes": 61602,
+      "sha256": "815d6a932c83f9021dfdee104edb14b4cbd7672816267a2447f21143681a1901"
+    },
+    {
+      "path": "week2-completion-2026-10-08/run-01/logs/competing-5-seed18.stdout.gz",
+      "bytes": 59941,
+      "sha256": "1816d72ef10f678aa85b37f737e810db4a3bc1524d50b12cf98841c3e797024f"
+    },
+    {
+      "path": "week2-completion-2026-10-08/run-01/logs/competing-5-seed19.stdout.gz",
+      "bytes": 57650,
+      "sha256": "bf88f9bab2a046e2d51d1facadee70fae36c08dd9c31913f124aeaa321ad99e5"
+    },
+    {
+      "path": "week2-completion-2026-10-08/run-01/logs/competing-5-seed20.stdout.gz",
+      "bytes": 61958,
+      "sha256": "554808981b31172f73e8ddedd8011483bb6dcab1af62e5cfb045f0d16a4a8814"
+    },
+    {
+      "path": "week2-completion-2026-10-08/run-01/logs/competing-5-seed21.stdout.gz",
+      "bytes": 60903,
+      "sha256": "48ef19f07af857c52e030e8ca14d27a1cce2c3b20473826865440e4858277326"
+    },
+    {
+      "path": "week2-completion-2026-10-08/run-01/logs/competing-5-seed22.stdout.gz",
+      "bytes": 60854,
+      "sha256": "a8070ca42df95c7586456d8669432e4b9616c3701efa2239371703fa11dad737"
+    },
+    {
+      "path": "week2-completion-2026-10-08/run-01/logs/competing-5-seed23.stdout.gz",
+      "bytes": 64311,
+      "sha256": "d535be1893808782e63b0eb4d610403f97d16db995610f8fafc7ffface22be00"
+    },
+    {
+      "path": "week2-completion-2026-10-08/run-01/logs/competing-5-seed24.stdout.gz",
+      "bytes": 61029,
+      "sha256": "433400f21199579078d1588b6787f2fe534aeb4f0489beea1a779995be7a79c1"
+    },
+    {
+      "path": "week2-completion-2026-10-08/run-01/logs/competing-5-seed25.stdout.gz",
+      "bytes": 60901,
+      "sha256": "8a5d2ba872138440c8385f2e5757cf78cb92893cde9f643c9ccccd3c7aba7b9e"
+    },
+    {
+      "path": "week2-completion-2026-10-08/run-01/logs/competing-5-seed26.stdout.gz",
+      "bytes": 63058,
+      "sha256": "291b503c3e42bfa82380f669fca1707b5a07cb00056c85ef0ff716ee7efa9d7c"
+    },
+    {
+      "path": "week2-completion-2026-10-08/run-01/logs/competing-5-seed27.stdout.gz",
+      "bytes": 60791,
+      "sha256": "b6f2f71f4d68984399aa431f83846ae95dc1eeb60927afabd5e92d99e96a9ec9"
+    },
+    {
+      "path": "week2-completion-2026-10-08/run-01/logs/competing-5-seed28.stdout.gz",
+      "bytes": 61204,
+      "sha256": "6971ecbcf299ce66eea3092e915f613b2947da195c4230c7e81d382b9ecfd53d"
+    },
+    {
+      "path": "week2-completion-2026-10-08/run-01/logs/competing-5-seed29.stdout.gz",
+      "bytes": 61818,
+      "sha256": "066173bedaa22e060a63df3e2414b3160205b7fd9ceab053cc86d29b526e5219"
+    },
+    {
+      "path": "week2-completion-2026-10-08/run-01/logs/competing-5-seed30.stdout.gz",
+      "bytes": 61438,
+      "sha256": "ef751bfcc4dbcbbaf93782e65af6fa6822969073686f6dab6826929c5ae77498"
+    },
+    {
+      "path": "week2-completion-2026-10-08/run-01/logs/competing-6-seed01.stdout.gz",
+      "bytes": 63393,
+      "sha256": "ca8ece06083198a8c1392f7bd45a56722243f8eaa7c5e5673eb3a23267a87128"
+    },
+    {
+      "path": "week2-completion-2026-10-08/run-01/logs/competing-6-seed02.stdout.gz",
+      "bytes": 62407,
+      "sha256": "94d04b0b298513deb44736283a8711242b11f5d8ddad9aaf2df7d5d0bd3c6eeb"
+    },
+    {
+      "path": "week2-completion-2026-10-08/run-01/logs/competing-6-seed03.stdout.gz",
+      "bytes": 62989,
+      "sha256": "953d3e1a143c517b7d98369368aa44687823d3dac7f097bb53c58d3ff593381e"
+    },
+    {
+      "path": "week2-completion-2026-10-08/run-01/logs/competing-6-seed04.stdout.gz",
+      "bytes": 60610,
+      "sha256": "5183ce46f20330c5a33b5825868364fc3be1ac487309a255b0607c9dc0b09387"
+    },
+    {
+      "path": "week2-completion-2026-10-08/run-01/logs/competing-6-seed05.stdout.gz",
+      "bytes": 61256,
+      "sha256": "9c348aece72a2cab0d25e166c3e541d9da233c831edeba7746b0ace7f1432fa3"
+    },
+    {
+      "path": "week2-completion-2026-10-08/run-01/logs/competing-6-seed06.stdout.gz",
+      "bytes": 64329,
+      "sha256": "57a227bc9e89d9cdf372ca8f0d84fb555341cc6ffd424b0fa435eac6deed46f0"
+    },
+    {
+      "path": "week2-completion-2026-10-08/run-01/logs/competing-6-seed07.stdout.gz",
+      "bytes": 60481,
+      "sha256": "118ca2bb6e1ad759fbaa0ba0e7529be94ddd1e3abe519eab531535883cffd2e5"
+    },
+    {
+      "path": "week2-completion-2026-10-08/run-01/logs/competing-6-seed08.stdout.gz",
+      "bytes": 63016,
+      "sha256": "e6c96d8a93eecf3985b887afdab43e9a25a2d7528cdff909e3f98372c44cc1cb"
+    },
+    {
+      "path": "week2-completion-2026-10-08/run-01/logs/competing-6-seed09.stdout.gz",
+      "bytes": 60784,
+      "sha256": "97b50bca699680aced16b07d9a2c100163ae732baf06035e4c5132f1e0bc13db"
+    },
+    {
+      "path": "week2-completion-2026-10-08/run-01/logs/competing-6-seed10.stdout.gz",
+      "bytes": 61732,
+      "sha256": "c2416c0fb8a087058290da80ee8e50a25b3c02269a1c3e513bfe05636ed7509d"
+    },
+    {
+      "path": "week2-completion-2026-10-08/run-01/logs/competing-6-seed11.stdout.gz",
+      "bytes": 61165,
+      "sha256": "841814ac6bc06f27d524cffd52467bd4432fb655d83a8ec3e9a27feaaf532391"
+    },
+    {
+      "path": "week2-completion-2026-10-08/run-01/logs/competing-6-seed12.stdout.gz",
+      "bytes": 61085,
+      "sha256": "5267d8bbe24049530c991030b4a686de0df5f85040bb1958155b18ad420c2ca7"
+    },
+    {
+      "path": "week2-completion-2026-10-08/run-01/logs/competing-6-seed13.stdout.gz",
+      "bytes": 63279,
+      "sha256": "1511b49e8e9305200bfdbebd2f4151453bd85e29941e2f8a7cdd8cbc63e39bc1"
+    },
+    {
+      "path": "week2-completion-2026-10-08/run-01/logs/competing-6-seed14.stdout.gz",
+      "bytes": 61147,
+      "sha256": "fdcbc646a93ff0bad4711da0bb83e9977e7e172d34be38b452988680ffe38feb"
+    },
+    {
+      "path": "week2-completion-2026-10-08/run-01/logs/competing-6-seed15.stdout.gz",
+      "bytes": 60258,
+      "sha256": "a6347a61f0329ef4d4c90b32419141fd4acc014fe253f8985a8e180a70cb7692"
+    },
+    {
+      "path": "week2-completion-2026-10-08/run-01/logs/competing-6-seed16.stdout.gz",
+      "bytes": 63004,
+      "sha256": "cb7f34a9acc03c25d1b04b1db1b041e7a25698d27e48741807eb02c55421a989"
+    },
+    {
+      "path": "week2-completion-2026-10-08/run-01/logs/competing-6-seed17.stdout.gz",
+      "bytes": 61621,
+      "sha256": "a410543faae13e28e49377b171376472d04a4b0132c5729665aa73ec2c3779a3"
+    },
+    {
+      "path": "week2-completion-2026-10-08/run-01/logs/competing-6-seed18.stdout.gz",
+      "bytes": 59908,
+      "sha256": "a45f3256749d76c675a82bb88d55c5af6f342bffbc854b86141b2d047cc3ce91"
+    },
+    {
+      "path": "week2-completion-2026-10-08/run-01/logs/competing-6-seed19.stdout.gz",
+      "bytes": 57658,
+      "sha256": "aef1e860a4c07bc51ef815023e2b35ff90645c56768cc6c0e6e5b28b52c21148"
+    },
+    {
+      "path": "week2-completion-2026-10-08/run-01/logs/competing-6-seed20.stdout.gz",
+      "bytes": 61985,
+      "sha256": "5524b8081ee039652582eab9bedf475415b49d371521a5b96b32c6d0c4e54e41"
+    },
+    {
+      "path": "week2-completion-2026-10-08/run-01/logs/competing-6-seed21.stdout.gz",
+      "bytes": 60906,
+      "sha256": "84910648377cd441b882ce3340375158ec0062351718c07de2951dfcba432c9b"
+    },
+    {
+      "path": "week2-completion-2026-10-08/run-01/logs/competing-6-seed22.stdout.gz",
+      "bytes": 59345,
+      "sha256": "9e78975a28bed0f856dfd48b659f4d3df221648c8329563d12f4859b2b566d64"
+    },
+    {
+      "path": "week2-completion-2026-10-08/run-01/logs/competing-6-seed23.stdout.gz",
+      "bytes": 64304,
+      "sha256": "44cd0ac89e2d27e501cc48b968a309133e1103c9419b0afcbbbb758bcb431ca7"
+    },
+    {
+      "path": "week2-completion-2026-10-08/run-01/logs/competing-6-seed24.stdout.gz",
+      "bytes": 60880,
+      "sha256": "5f69216cdcb2da21b345e61584ee54ad5494f83486fbc8945dbc667e815d59db"
+    },
+    {
+      "path": "week2-completion-2026-10-08/run-01/logs/competing-6-seed25.stdout.gz",
+      "bytes": 60918,
+      "sha256": "dab0d0e63cbdccace6ab876657f34c7953e600920d672e243d79bf1b8af9ea51"
+    },
+    {
+      "path": "week2-completion-2026-10-08/run-01/logs/competing-6-seed26.stdout.gz",
+      "bytes": 63078,
+      "sha256": "aea623d40c0092aeb5dfb1eaa0a52b7194719af603517732dba330d2d06746be"
+    },
+    {
+      "path": "week2-completion-2026-10-08/run-01/logs/competing-6-seed27.stdout.gz",
+      "bytes": 60802,
+      "sha256": "1a9357ffb639f0bd60b24d726a0c40752861484442a8038af3338a08930049f5"
+    },
+    {
+      "path": "week2-completion-2026-10-08/run-01/logs/competing-6-seed28.stdout.gz",
+      "bytes": 61201,
+      "sha256": "4bac96e9b9898f8e5bdd207d87d071b2f65685640cdfbe1503d0182c7fb7dddc"
+    },
+    {
+      "path": "week2-completion-2026-10-08/run-01/logs/competing-6-seed29.stdout.gz",
+      "bytes": 61833,
+      "sha256": "cf934388793f91313f44a70fb7f5800c79a9f3739d2ffbcdd81dc7ed7cee46e6"
+    },
+    {
+      "path": "week2-completion-2026-10-08/run-01/logs/competing-6-seed30.stdout.gz",
+      "bytes": 61441,
+      "sha256": "6cc98254151c892c9067362937805cc71e223222cb85ed111c294d7455348c27"
+    },
+    {
+      "path": "week2-completion-2026-10-08/run-01/logs/degrade-0-seed01.stdout.gz",
+      "bytes": 63805,
+      "sha256": "eee6fa2df26e39491f396139f3b7a1f2943bb6cd37bedaa35919a004271f710f"
+    },
+    {
+      "path": "week2-completion-2026-10-08/run-01/logs/degrade-0-seed02.stdout.gz",
+      "bytes": 63590,
+      "sha256": "82a92748e4230b45b8c1a518f9101220fe4352ac6f56c862e93842265c63c25d"
+    },
+    {
+      "path": "week2-completion-2026-10-08/run-01/logs/degrade-0-seed03.stdout.gz",
+      "bytes": 64078,
+      "sha256": "f49880549e67d22052253c0d15446b91685f839c225ab0f1c523d3fe678d3bf2"
+    },
+    {
+      "path": "week2-completion-2026-10-08/run-01/logs/degrade-0-seed04.stdout.gz",
+      "bytes": 62753,
+      "sha256": "e18136cd1b96862bebcf43e1a22e20cbeee051d2da362582aaef4d64fbecc0c2"
+    },
+    {
+      "path": "week2-completion-2026-10-08/run-01/logs/degrade-0-seed05.stdout.gz",
+      "bytes": 63613,
+      "sha256": "646ed35f2ec36add793b4965545586722a090d3f29c3d8384ead1e9a2f0ec00f"
+    },
+    {
+      "path": "week2-completion-2026-10-08/run-01/logs/degrade-0-seed06.stdout.gz",
+      "bytes": 63352,
+      "sha256": "e35ac56a5d7258001a0eec9b8636a8c58884e1dca4bc59c895edcc6591adfbb5"
+    },
+    {
+      "path": "week2-completion-2026-10-08/run-01/logs/degrade-0-seed07.stdout.gz",
+      "bytes": 62814,
+      "sha256": "6c01d05c16fd5f4b8f73dfe462a7d4cec674251bcbe2b91dad7275c1960cc16f"
+    },
+    {
+      "path": "week2-completion-2026-10-08/run-01/logs/degrade-0-seed08.stdout.gz",
+      "bytes": 62949,
+      "sha256": "bf0d69437bd2821e5da3c912ff3223ed4b1bb863cfc868bed8c6608263d8e449"
+    },
+    {
+      "path": "week2-completion-2026-10-08/run-01/logs/degrade-0-seed09.stdout.gz",
+      "bytes": 62710,
+      "sha256": "ec4641f430ac3c45a46c2d7a6fe6a8f1123ef82f7427823a25918a26dc788605"
+    },
+    {
+      "path": "week2-completion-2026-10-08/run-01/logs/degrade-0-seed10.stdout.gz",
+      "bytes": 63397,
+      "sha256": "ed08439d46393ca6589580db62e2623f11031ca37b60da007ae6917df8fce6dd"
+    },
+    {
+      "path": "week2-completion-2026-10-08/run-01/logs/degrade-0-seed11.stdout.gz",
+      "bytes": 62994,
+      "sha256": "c92d55ca1434f9e45475f66e5df1a54fc3a22e3cd936db46d98f9ed7d8eda317"
+    },
+    {
+      "path": "week2-completion-2026-10-08/run-01/logs/degrade-0-seed12.stdout.gz",
+      "bytes": 63061,
+      "sha256": "131aad48bf421de668fa920cf159cf2645c266994da73e34b6b58513098cc81a"
+    },
+    {
+      "path": "week2-completion-2026-10-08/run-01/logs/degrade-0-seed13.stdout.gz",
+      "bytes": 63050,
+      "sha256": "2c65cf457810de9946efabc2497b1bbcb4410468cf4442667cd3a18c47b855c2"
+    },
+    {
+      "path": "week2-completion-2026-10-08/run-01/logs/degrade-0-seed14.stdout.gz",
+      "bytes": 62958,
+      "sha256": "07bc4589a10476d5695c8675abcaefb8e03723158ac7bc78e574db599e29cf71"
+    },
+    {
+      "path": "week2-completion-2026-10-08/run-01/logs/degrade-0-seed15.stdout.gz",
+      "bytes": 62968,
+      "sha256": "e6a181400c77f28f2d9b85e6e704cf389afe67a1ede5aaa5e8192c5010bb2ec7"
+    },
+    {
+      "path": "week2-completion-2026-10-08/run-01/logs/degrade-0-seed16.stdout.gz",
+      "bytes": 62930,
+      "sha256": "f85ffb4272e6bfe404da5eddbbf217d35086ee6bfd42d5c6478588ef01eb85c4"
+    },
+    {
+      "path": "week2-completion-2026-10-08/run-01/logs/degrade-0-seed17.stdout.gz",
+      "bytes": 63264,
+      "sha256": "f4a60f88692c6ad2ecc9a39e07ed27ae4ba429caad34aa03b1b8e46be5a68372"
+    },
+    {
+      "path": "week2-completion-2026-10-08/run-01/logs/degrade-0-seed18.stdout.gz",
+      "bytes": 63429,
+      "sha256": "2b5384f2523af06fcdd5029b7da8f91e454f4e86c74a7e9de2a5c6105e772610"
+    },
+    {
+      "path": "week2-completion-2026-10-08/run-01/logs/degrade-0-seed19.stdout.gz",
+      "bytes": 63258,
+      "sha256": "f0559c551ddd3ae3f2eca045a3d7376a1075607e82704a945d6179c1b5a39a18"
+    },
+    {
+      "path": "week2-completion-2026-10-08/run-01/logs/degrade-0-seed20.stdout.gz",
+      "bytes": 64067,
+      "sha256": "0fab0d95ae97b921d00ef6a23949b6792837ff385c55fae42dc67750c857c216"
+    },
+    {
+      "path": "week2-completion-2026-10-08/run-01/logs/degrade-0-seed21.stdout.gz",
+      "bytes": 62679,
+      "sha256": "60ddbd5cd81d5cd6e01e9ac04b87dfe5f528d14ee7c05ed8e7510e7710c8fa37"
+    },
+    {
+      "path": "week2-completion-2026-10-08/run-01/logs/degrade-0-seed22.stdout.gz",
+      "bytes": 62902,
+      "sha256": "4aef90e4a4a78bea27041aed90a13c1c8c3bff064ba5f82dc79a831a2aefe6ab"
+    },
+    {
+      "path": "week2-completion-2026-10-08/run-01/logs/degrade-0-seed23.stdout.gz",
+      "bytes": 63216,
+      "sha256": "81f43ff380e8c335b0775a4889291baf76aeb7fc49703c228f2151c4f9fccce8"
+    },
+    {
+      "path": "week2-completion-2026-10-08/run-01/logs/degrade-0-seed24.stdout.gz",
+      "bytes": 64443,
+      "sha256": "b48c6ff0940d4415af4759254ebeb06954f5b8b4ae182f9a0f1e3adb22b93669"
+    },
+    {
+      "path": "week2-completion-2026-10-08/run-01/logs/degrade-0-seed25.stdout.gz",
+      "bytes": 62881,
+      "sha256": "56d77b4ec8b57da9520402f078f3730984187ef9fd9ff572dfc0ee72eaa9a0aa"
+    },
+    {
+      "path": "week2-completion-2026-10-08/run-01/logs/degrade-0-seed26.stdout.gz",
+      "bytes": 63353,
+      "sha256": "14c355a46f05ac95fa58cf27500d23eead5462a2b087c6574f80c28ddf77c09e"
+    },
+    {
+      "path": "week2-completion-2026-10-08/run-01/logs/degrade-0-seed27.stdout.gz",
+      "bytes": 62888,
+      "sha256": "9265916bbec333e1779b10f2f69165927a84f2563b3cd5b428485a748dd2db7f"
+    },
+    {
+      "path": "week2-completion-2026-10-08/run-01/logs/degrade-0-seed28.stdout.gz",
+      "bytes": 63350,
+      "sha256": "98538666227a8f948a7b6adb2ce22607e3f638c0a066ea1e750ca15329b371c1"
+    },
+    {
+      "path": "week2-completion-2026-10-08/run-01/logs/degrade-0-seed29.stdout.gz",
+      "bytes": 63527,
+      "sha256": "c4a5f8a5e5bc972a8458b432c8c6919a235222490cee6559c7cffea3e2139178"
+    },
+    {
+      "path": "week2-completion-2026-10-08/run-01/logs/degrade-0-seed30.stdout.gz",
+      "bytes": 62521,
+      "sha256": "85346dd3801a7ff6c91c5ef61e26985f26560e873c83f1f326b17cd0b8688361"
+    },
+    {
+      "path": "week2-completion-2026-10-08/run-01/logs/degrade-1-seed01.stdout.gz",
+      "bytes": 59008,
+      "sha256": "3ec06e42d3a46e8ac89e3ec118b9f1abaa94b3d5aa384b6dfc36574b377f3e21"
+    },
+    {
+      "path": "week2-completion-2026-10-08/run-01/logs/degrade-1-seed02.stdout.gz",
+      "bytes": 60565,
+      "sha256": "ca730b361a96fd9611225e917d075f5bc533300a47bf0d78f4c2fa6362cdb0cf"
+    },
+    {
+      "path": "week2-completion-2026-10-08/run-01/logs/degrade-1-seed03.stdout.gz",
+      "bytes": 59960,
+      "sha256": "f5086d97292bd4931734b7275522c3f20d2342b125f7d6196d00d6a4e80bae7e"
+    },
+    {
+      "path": "week2-completion-2026-10-08/run-01/logs/degrade-1-seed04.stdout.gz",
+      "bytes": 58222,
+      "sha256": "834e5106275f0fb0b306051c1359f04f2f0f28ea860e97973e9f03e8a1602977"
+    },
+    {
+      "path": "week2-completion-2026-10-08/run-01/logs/degrade-1-seed05.stdout.gz",
+      "bytes": 57438,
+      "sha256": "96f5009d4755f54b9c284240b2604bbb5c8ed238cf763be440724e84f0e55e4e"
+    },
+    {
+      "path": "week2-completion-2026-10-08/run-01/logs/degrade-1-seed06.stdout.gz",
+      "bytes": 61980,
+      "sha256": "9355999cde551479bf71a4033ca0081c048f70b91b0b48f1be50d4718960a1a6"
+    },
+    {
+      "path": "week2-completion-2026-10-08/run-01/logs/degrade-1-seed07.stdout.gz",
+      "bytes": 61254,
+      "sha256": "54c7f2066d26d33e15e7a444870dea053ac6ef2fb5d466ab09a1fe16a30fdf72"
+    },
+    {
+      "path": "week2-completion-2026-10-08/run-01/logs/degrade-1-seed08.stdout.gz",
+      "bytes": 59823,
+      "sha256": "4504a73ded29b4bf3f2440a8420fe277d3c723e6f39c3dcde9c4d8143d456e07"
+    },
+    {
+      "path": "week2-completion-2026-10-08/run-01/logs/degrade-1-seed09.stdout.gz",
+      "bytes": 58637,
+      "sha256": "52469874877a350027ea117e9decf0035efe2bd576a00440ea58fe0397537985"
+    },
+    {
+      "path": "week2-completion-2026-10-08/run-01/logs/degrade-1-seed10.stdout.gz",
+      "bytes": 59559,
+      "sha256": "9fb5bb4cbd34c63659e1e2505bfdf7104c760dbcf905bb32be1b563e6a7d6a20"
+    },
+    {
+      "path": "week2-completion-2026-10-08/run-01/logs/degrade-1-seed11.stdout.gz",
+      "bytes": 60280,
+      "sha256": "213cd93d47986d0cfce8b15dba911b54a17ae0e8b1bb6b97fb475925464dc216"
+    },
+    {
+      "path": "week2-completion-2026-10-08/run-01/logs/degrade-1-seed12.stdout.gz",
+      "bytes": 56967,
+      "sha256": "4c1c47d971e6c911b52106d7b7b2a91057283a50701e81192c7918dc5ab6f341"
+    },
+    {
+      "path": "week2-completion-2026-10-08/run-01/logs/degrade-1-seed13.stdout.gz",
+      "bytes": 58378,
+      "sha256": "ca6747ad650f343c15ae1c1031c56e58e9dbff4b1730f00854a3a166efe39c8c"
+    },
+    {
+      "path": "week2-completion-2026-10-08/run-01/logs/degrade-1-seed14.stdout.gz",
+      "bytes": 58979,
+      "sha256": "595702380d24790215da5fe59951b935fa58eea7594ee5d8eb3f7535811375b3"
+    },
+    {
+      "path": "week2-completion-2026-10-08/run-01/logs/degrade-1-seed15.stdout.gz",
+      "bytes": 57192,
+      "sha256": "242ac2dbd208e97b7047f01538eedcd129bf9fb71af49c3d471fb676315f223b"
+    },
+    {
+      "path": "week2-completion-2026-10-08/run-01/logs/degrade-1-seed16.stdout.gz",
+      "bytes": 58779,
+      "sha256": "fd8512feb4ca15ecbe3945a2a9fe63c806589666b56d99f0276da36170a9df45"
+    },
+    {
+      "path": "week2-completion-2026-10-08/run-01/logs/degrade-1-seed17.stdout.gz",
+      "bytes": 60436,
+      "sha256": "302e627d7e8b8f73a59977c91d554869a7fc0ab6a6fadd23f66d8234fc72c745"
+    },
+    {
+      "path": "week2-completion-2026-10-08/run-01/logs/degrade-1-seed18.stdout.gz",
+      "bytes": 60505,
+      "sha256": "2d93011777bd52373dfbe090a91c9489f7462d7b39c65efa257d6d488e106bc8"
+    },
+    {
+      "path": "week2-completion-2026-10-08/run-01/logs/degrade-1-seed19.stdout.gz",
+      "bytes": 61470,
+      "sha256": "f5c220dca18fe951afbc578056a195aaac0bd89887e4adfe7f93e2fbb23bf606"
+    },
+    {
+      "path": "week2-completion-2026-10-08/run-01/logs/degrade-1-seed20.stdout.gz",
+      "bytes": 59788,
+      "sha256": "7b2687cd3cfcb181094a1662848010eccfcb964210eb6e472693e409bd02a152"
+    },
+    {
+      "path": "week2-completion-2026-10-08/run-01/logs/degrade-1-seed21.stdout.gz",
+      "bytes": 59259,
+      "sha256": "8b2f5999915f28b74160b180d43b6c0c5b4b11307043a7f55c07d44f8fc40d66"
+    },
+    {
+      "path": "week2-completion-2026-10-08/run-01/logs/degrade-1-seed22.stdout.gz",
+      "bytes": 58739,
+      "sha256": "911be558af045ffdffedd3c6d5264cb1fbdde7b3ebad2d1fa4faefccc35bb457"
+    },
+    {
+      "path": "week2-completion-2026-10-08/run-01/logs/degrade-1-seed23.stdout.gz",
+      "bytes": 58303,
+      "sha256": "ca9c1c5eaa5881112285c1fd1ecd2dfeff0536e9bc4b8bad23efdae03fd7030f"
+    },
+    {
+      "path": "week2-completion-2026-10-08/run-01/logs/degrade-1-seed24.stdout.gz",
+      "bytes": 60136,
+      "sha256": "cefccb4b3a611b1f529ecf37ab34eafcf72cf3aa78dc42897d9eef1e9fc565c9"
+    },
+    {
+      "path": "week2-completion-2026-10-08/run-01/logs/degrade-1-seed25.stdout.gz",
+      "bytes": 60037,
+      "sha256": "fd6f7d6545cd6394e064d5d5a81730d6660ad7adb86c5d88ad7f0370c2c91001"
+    },
+    {
+      "path": "week2-completion-2026-10-08/run-01/logs/degrade-1-seed26.stdout.gz",
+      "bytes": 60570,
+      "sha256": "11db3f5a5d84f1335ce98c3cbaba03ea20d75bdd5fc7cea0aaef55d5af9a0928"
+    },
+    {
+      "path": "week2-completion-2026-10-08/run-01/logs/degrade-1-seed27.stdout.gz",
+      "bytes": 58704,
+      "sha256": "ff9c6d97a00850aecca8e08763972979494fa3ea0f9778dfe161124e6cb139e8"
+    },
+    {
+      "path": "week2-completion-2026-10-08/run-01/logs/degrade-1-seed28.stdout.gz",
+      "bytes": 60563,
+      "sha256": "eb56583347d5b126097b0b7b438d3d4171f72c2f3c4353c879512b06c1c7e396"
+    },
+    {
+      "path": "week2-completion-2026-10-08/run-01/logs/degrade-1-seed29.stdout.gz",
+      "bytes": 62606,
+      "sha256": "8bec319b054c4a1827a0aeee008e9b867699616a29c48096c2f14aa390163fd6"
+    },
+    {
+      "path": "week2-completion-2026-10-08/run-01/logs/degrade-1-seed30.stdout.gz",
+      "bytes": 58781,
+      "sha256": "3f08b4cbcc9648fe9ebf09a2ca3ff318a5d5e1cfb56c01e9f8a2e47ae325966c"
+    },
+    {
+      "path": "week2-completion-2026-10-08/run-01/logs/degrade-2-seed01.stdout.gz",
+      "bytes": 55736,
+      "sha256": "3e7e3618969285a73272a9232d024a72d62dccd2c165df9c545f2f1e6256c16e"
+    },
+    {
+      "path": "week2-completion-2026-10-08/run-01/logs/degrade-2-seed02.stdout.gz",
+      "bytes": 60312,
+      "sha256": "25d8e43f028a7da7ddb647fac3f59badbff6390f2699e8e43ec87cc25b24b044"
+    },
+    {
+      "path": "week2-completion-2026-10-08/run-01/logs/degrade-2-seed03.stdout.gz",
+      "bytes": 59982,
+      "sha256": "50c4d76fdf3ee6a13c7ce077231aeccdd4f4022edb1d285f53dd49bb0de5f76a"
+    },
+    {
+      "path": "week2-completion-2026-10-08/run-01/logs/degrade-2-seed04.stdout.gz",
+      "bytes": 57410,
+      "sha256": "9254d811c6f67dbf3f35d0386234e7fb4ee43087270de2b3d1ba909eff8f5bc3"
+    },
+    {
+      "path": "week2-completion-2026-10-08/run-01/logs/degrade-2-seed05.stdout.gz",
+      "bytes": 59543,
+      "sha256": "ccfc6a734b6ef320f3f1356bb27391b452da6dd00fa3b0193d5cbfe4d728c229"
+    },
+    {
+      "path": "week2-completion-2026-10-08/run-01/logs/degrade-2-seed06.stdout.gz",
+      "bytes": 56402,
+      "sha256": "4c3ed26d0b7a64df0011413ee51f17df54ea2939658578289b371b84d7d22c88"
+    },
+    {
+      "path": "week2-completion-2026-10-08/run-01/logs/degrade-2-seed07.stdout.gz",
+      "bytes": 55606,
+      "sha256": "e90235f457e0537aa58ff7c68979ed837d0af1e3dc91d2849f7cb39b945cbd8d"
+    },
+    {
+      "path": "week2-completion-2026-10-08/run-01/logs/degrade-2-seed08.stdout.gz",
+      "bytes": 59219,
+      "sha256": "d7e730fae6fecb05d316c7e3ce793ca2cb1bc19d5b78660a315bc7e1af7d0c86"
+    },
+    {
+      "path": "week2-completion-2026-10-08/run-01/logs/degrade-2-seed09.stdout.gz",
+      "bytes": 55186,
+      "sha256": "64813bd128a894919b395c953473fde2d889d083949f75e565a77d041965c812"
+    },
+    {
+      "path": "week2-completion-2026-10-08/run-01/logs/degrade-2-seed10.stdout.gz",
+      "bytes": 55811,
+      "sha256": "054c0a91cfa871560e9de49fd71156187d7e644d3fbce2fc8e6a978ca676db84"
+    },
+    {
+      "path": "week2-completion-2026-10-08/run-01/logs/degrade-2-seed11.stdout.gz",
+      "bytes": 59179,
+      "sha256": "29ac25bda146a16588745f3f427d0490edc79e5f6da587c40652f9f7d395c7d0"
+    },
+    {
+      "path": "week2-completion-2026-10-08/run-01/logs/degrade-2-seed12.stdout.gz",
+      "bytes": 55427,
+      "sha256": "8f83c01a48abb32a8b1e7666eef27bce8b3343e784efdcec2758a3f684952241"
+    },
+    {
+      "path": "week2-completion-2026-10-08/run-01/logs/degrade-2-seed13.stdout.gz",
+      "bytes": 56074,
+      "sha256": "a27129cec8fe0dba7e22f620e5d3e41cb7186584b6c82bd50bc6ff09b5e9f4bf"
+    },
+    {
+      "path": "week2-completion-2026-10-08/run-01/logs/degrade-2-seed14.stdout.gz",
+      "bytes": 57765,
+      "sha256": "7511d6fc458f6dc9a2bf84313c38ca1dc78dbef8e8ede73c9a1420541747b79a"
+    },
+    {
+      "path": "week2-completion-2026-10-08/run-01/logs/degrade-2-seed15.stdout.gz",
+      "bytes": 56893,
+      "sha256": "6dc01bc07391e07c5d36d7570afe150a2b4953478c515ea30a8e6088d28929f5"
+    },
+    {
+      "path": "week2-completion-2026-10-08/run-01/logs/degrade-2-seed16.stdout.gz",
+      "bytes": 59552,
+      "sha256": "d0b618892ceb2d7abf265ac55f0929cac7484bdb74aa630ccc0fe8a019024db0"
+    },
+    {
+      "path": "week2-completion-2026-10-08/run-01/logs/degrade-2-seed17.stdout.gz",
+      "bytes": 57346,
+      "sha256": "e590475bf0ac07db114a0918f14ce9ea7b403822e2d4227b4eadea3d60ed5173"
+    },
+    {
+      "path": "week2-completion-2026-10-08/run-01/logs/degrade-2-seed18.stdout.gz",
+      "bytes": 56116,
+      "sha256": "3524fda94e14972b6a574ab0d4bc194b8ed0001684a5a67142b282a239b2aad2"
+    },
+    {
+      "path": "week2-completion-2026-10-08/run-01/logs/degrade-2-seed19.stdout.gz",
+      "bytes": 60395,
+      "sha256": "99536abc7a064800faad6df68043e75aa4830d0fcbde87a85f82ebfd2efb95ff"
+    },
+    {
+      "path": "week2-completion-2026-10-08/run-01/logs/degrade-2-seed20.stdout.gz",
+      "bytes": 59812,
+      "sha256": "2ea17b26090598007201d6333a5b07f3e928002275cf7a329e85504a1cd715d3"
+    },
+    {
+      "path": "week2-completion-2026-10-08/run-01/logs/degrade-2-seed21.stdout.gz",
+      "bytes": 56811,
+      "sha256": "4cd22bfb2fa4ff4e2cf66969332dd14989dcee8039f58aa75e95b746364aea2b"
+    },
+    {
+      "path": "week2-completion-2026-10-08/run-01/logs/degrade-2-seed22.stdout.gz",
+      "bytes": 55288,
+      "sha256": "60e49b7a1cbceccf1999830ea46e1fc87d59551fb27229bd765832750b073dae"
+    },
+    {
+      "path": "week2-completion-2026-10-08/run-01/logs/degrade-2-seed23.stdout.gz",
+      "bytes": 55007,
+      "sha256": "39d4900a1ac1297f963be74a178897f1caada41be45dd2a46d8945a5dfc4cb94"
+    },
+    {
+      "path": "week2-completion-2026-10-08/run-01/logs/degrade-2-seed24.stdout.gz",
+      "bytes": 59453,
+      "sha256": "01fa8da8ee27fe8639dfc33119c1621309bba96848646d6c1cdff2af5ca2a625"
+    },
+    {
+      "path": "week2-completion-2026-10-08/run-01/logs/degrade-2-seed25.stdout.gz",
+      "bytes": 55556,
+      "sha256": "4353f31458f283f27c9b1342153fe32d6956d98881d84573075eecfe079a5926"
+    },
+    {
+      "path": "week2-completion-2026-10-08/run-01/logs/degrade-2-seed26.stdout.gz",
+      "bytes": 59112,
+      "sha256": "71915d4eb9f4aded5979709546f090092399f41a4b3934453626e31637979587"
+    },
+    {
+      "path": "week2-completion-2026-10-08/run-01/logs/degrade-2-seed27.stdout.gz",
+      "bytes": 59575,
+      "sha256": "48d802e104dd6dcd3245c46725bb311bf01e7072bc0461ba042398fca6c9e6b6"
+    },
+    {
+      "path": "week2-completion-2026-10-08/run-01/logs/degrade-2-seed28.stdout.gz",
+      "bytes": 55268,
+      "sha256": "5e8cb737f3903e061dbdbda6e250b6db8838a7889b73df9102071eaeae04bda3"
+    },
+    {
+      "path": "week2-completion-2026-10-08/run-01/logs/degrade-2-seed29.stdout.gz",
+      "bytes": 59619,
+      "sha256": "def40c44c55bb8949c7bd201ef2fe0b22c88e233ce99898ab634f4160c35c39d"
+    },
+    {
+      "path": "week2-completion-2026-10-08/run-01/logs/degrade-2-seed30.stdout.gz",
+      "bytes": 55885,
+      "sha256": "261e2aaf0b75847afe522ab7532a415619ba810d6f7d87e526facb26ee68f357"
+    },
+    {
+      "path": "week2-completion-2026-10-08/run-01/logs/degrade-3-seed01.stdout.gz",
+      "bytes": 59738,
+      "sha256": "27966b22326f3fb04d945bfe37915eedf577845d6794595b8db60fd721a15361"
+    },
+    {
+      "path": "week2-completion-2026-10-08/run-01/logs/degrade-3-seed02.stdout.gz",
+      "bytes": 63011,
+      "sha256": "496c9a41f0b127b0aa6fcc5f043096e8972aab68961b46cee840a2b3c1a9ef2d"
+    },
+    {
+      "path": "week2-completion-2026-10-08/run-01/logs/degrade-3-seed03.stdout.gz",
+      "bytes": 57880,
+      "sha256": "8df3af1829ebf5adc4a149da7a2ddbc57d3f0dbff956051d262e3da7bc3799bd"
+    },
+    {
+      "path": "week2-completion-2026-10-08/run-01/logs/degrade-3-seed04.stdout.gz",
+      "bytes": 58006,
+      "sha256": "bf9eedf936bbbfbb29b120504ae023d884533f3adc6022cb0a403c5c45b0fcbf"
+    },
+    {
+      "path": "week2-completion-2026-10-08/run-01/logs/degrade-3-seed05.stdout.gz",
+      "bytes": 57712,
+      "sha256": "d7ff00df91811111d4047f7c65ea622b68e0c165d444f6bf9fc60672ee54550d"
+    },
+    {
+      "path": "week2-completion-2026-10-08/run-01/logs/degrade-3-seed06.stdout.gz",
+      "bytes": 58853,
+      "sha256": "be494aa8b736fd862736539bd594a2efdd976229746529a8cb98b39d1d3f52d0"
+    },
+    {
+      "path": "week2-completion-2026-10-08/run-01/logs/degrade-3-seed07.stdout.gz",
+      "bytes": 57931,
+      "sha256": "c588efe2d51c841a186e69a4d812424e7bab99281f1b39c15cddc820055b5735"
+    },
+    {
+      "path": "week2-completion-2026-10-08/run-01/logs/degrade-3-seed08.stdout.gz",
+      "bytes": 57926,
+      "sha256": "9e43467051dea0ee71b1d5fa3155f97c79f2389c87c3d93e078b1d3a548a5cb9"
+    },
+    {
+      "path": "week2-completion-2026-10-08/run-01/logs/degrade-3-seed09.stdout.gz",
+      "bytes": 59527,
+      "sha256": "abd820b48919197e055c78946de2bddb3c162db143268e9a1c60b3913a6f5110"
+    },
+    {
+      "path": "week2-completion-2026-10-08/run-01/logs/degrade-3-seed10.stdout.gz",
+      "bytes": 55328,
+      "sha256": "e32823e89e927eeeb36b213531af5a5da4fa030dd5d77b732932651e7b3be245"
+    },
+    {
+      "path": "week2-completion-2026-10-08/run-01/logs/degrade-3-seed11.stdout.gz",
+      "bytes": 61401,
+      "sha256": "63fc0320b6fe5d881ab63511aa09d0a685cca9c7374e95d63792e84c7db17622"
+    },
+    {
+      "path": "week2-completion-2026-10-08/run-01/logs/degrade-3-seed12.stdout.gz",
+      "bytes": 58877,
+      "sha256": "6e9a9060a3b0d310fdafb64ef2719aaf8d979aa81e42152df6e91ccad190f7b6"
+    },
+    {
+      "path": "week2-completion-2026-10-08/run-01/logs/degrade-3-seed13.stdout.gz",
+      "bytes": 59837,
+      "sha256": "d2226cd34860281dcae50a313593a2ee046494e3ee8661467545b4a0b0a55415"
+    },
+    {
+      "path": "week2-completion-2026-10-08/run-01/logs/degrade-3-seed14.stdout.gz",
+      "bytes": 57350,
+      "sha256": "af3f27630106a2d70b2e50292ddd2b34c1b734f09995d9a39d5334f15c5145c0"
+    },
+    {
+      "path": "week2-completion-2026-10-08/run-01/logs/degrade-3-seed15.stdout.gz",
+      "bytes": 57844,
+      "sha256": "d00688a271cbe5326ebccd9efa082f1a517f8ce79ae4a0df1baa6d20bac11833"
+    },
+    {
+      "path": "week2-completion-2026-10-08/run-01/logs/degrade-3-seed16.stdout.gz",
+      "bytes": 58274,
+      "sha256": "7567fe486944a342d3d5c9409ca168d8d5ae2911fabe3c0215f1b6c35fd87611"
+    },
+    {
+      "path": "week2-completion-2026-10-08/run-01/logs/degrade-3-seed17.stdout.gz",
+      "bytes": 58924,
+      "sha256": "3b60064391202b622616faf24e0787ec5185dd777e7fee7934bf40f21329bb39"
+    },
+    {
+      "path": "week2-completion-2026-10-08/run-01/logs/degrade-3-seed18.stdout.gz",
+      "bytes": 59650,
+      "sha256": "0fcd7ac227bc793234b58621609e287573b33041af165ac079c69d238b70104e"
+    },
+    {
+      "path": "week2-completion-2026-10-08/run-01/logs/degrade-3-seed19.stdout.gz",
+      "bytes": 61461,
+      "sha256": "f37de2770dc6e16294502385fe4346b5ff24a314ea33ea9ff417fa7368c9dec5"
+    },
+    {
+      "path": "week2-completion-2026-10-08/run-01/logs/degrade-3-seed20.stdout.gz",
+      "bytes": 59744,
+      "sha256": "6f8ae120d453b4af2548f63d7ee86ec823f7d5cbb6705e052e1dd2e5808905ec"
+    },
+    {
+      "path": "week2-completion-2026-10-08/run-01/logs/degrade-3-seed21.stdout.gz",
+      "bytes": 60822,
+      "sha256": "aada83002f1b036cd6e88de00897e9ae8ef271e1a8346c593b721a85621039ea"
+    },
+    {
+      "path": "week2-completion-2026-10-08/run-01/logs/degrade-3-seed22.stdout.gz",
+      "bytes": 57888,
+      "sha256": "ed61b2b6c496fbb5e3acc41c66c9f8e687c2bc9f46fbf888a76a5956d38c6cd6"
+    },
+    {
+      "path": "week2-completion-2026-10-08/run-01/logs/degrade-3-seed23.stdout.gz",
+      "bytes": 60096,
+      "sha256": "32c921c7f7a0a89f0fe2ba3f2c07c39d7f467de512dad36ae5355b0db67c5ecf"
+    },
+    {
+      "path": "week2-completion-2026-10-08/run-01/logs/degrade-3-seed24.stdout.gz",
+      "bytes": 60516,
+      "sha256": "019ac15e277d597fa7aed2a577548c1ca81b993ec7a9d57aa9076263ee9726fb"
+    },
+    {
+      "path": "week2-completion-2026-10-08/run-01/logs/degrade-3-seed25.stdout.gz",
+      "bytes": 59728,
+      "sha256": "25cc6932d298db940764feb3386b16f6345c9ce3e72bd9d4fc203c6f13d48228"
+    },
+    {
+      "path": "week2-completion-2026-10-08/run-01/logs/degrade-3-seed26.stdout.gz",
+      "bytes": 60607,
+      "sha256": "b81210adc5890450345ad707888a5f5d460346dddb2c536f6723fc75c4b52fef"
+    },
+    {
+      "path": "week2-completion-2026-10-08/run-01/logs/degrade-3-seed27.stdout.gz",
+      "bytes": 58506,
+      "sha256": "45bb80b530d72cbe68bc365ab1a1e32e33281b63d804dc7505a7a710550e2423"
+    },
+    {
+      "path": "week2-completion-2026-10-08/run-01/logs/degrade-3-seed28.stdout.gz",
+      "bytes": 57462,
+      "sha256": "13ad21593d028cf65cf76c55f52d6f35c4800084a635918ab4068c4f3cb8fea0"
+    },
+    {
+      "path": "week2-completion-2026-10-08/run-01/logs/degrade-3-seed29.stdout.gz",
+      "bytes": 60573,
+      "sha256": "b784e9fbd047df01d301288dfd678bd8270a2809c9bcca05b66cad8f22217b70"
+    },
+    {
+      "path": "week2-completion-2026-10-08/run-01/logs/degrade-3-seed30.stdout.gz",
+      "bytes": 61156,
+      "sha256": "7d0d9edbcc96581670d7213019d3c0b8f0fd777dda27ba1b5d39ce809deb6d2d"
+    },
+    {
+      "path": "week2-completion-2026-10-08/run-01/logs/degrade-4-seed01.stdout.gz",
+      "bytes": 56503,
+      "sha256": "9a6afcfd228197ae1a59514abecee315450b445d87e81cd8b4b1428189187a91"
+    },
+    {
+      "path": "week2-completion-2026-10-08/run-01/logs/degrade-4-seed02.stdout.gz",
+      "bytes": 58037,
+      "sha256": "eb929c39899c0d6b524d00385280193c764efaa408460a4734476ee2026a3db8"
+    },
+    {
+      "path": "week2-completion-2026-10-08/run-01/logs/degrade-4-seed03.stdout.gz",
+      "bytes": 58481,
+      "sha256": "dcc335cf8c928bba66f1673b08701dceb540e04037c39a1818d96b3b38cf8bf2"
+    },
+    {
+      "path": "week2-completion-2026-10-08/run-01/logs/degrade-4-seed04.stdout.gz",
+      "bytes": 56072,
+      "sha256": "008f38d10ceac364f8d608af5700debfb72c36faf0834b6a845c8c780c4b8d18"
+    },
+    {
+      "path": "week2-completion-2026-10-08/run-01/logs/degrade-4-seed05.stdout.gz",
+      "bytes": 56248,
+      "sha256": "04c7675a83f363ac0698b92f830d6d5eae8bba0f2e1e0cdec92778d527897a84"
+    },
+    {
+      "path": "week2-completion-2026-10-08/run-01/logs/degrade-4-seed06.stdout.gz",
+      "bytes": 59476,
+      "sha256": "2dad80920898d21763d1d05c163d69223ffb080b96f2b4398fe911a562da98e4"
+    },
+    {
+      "path": "week2-completion-2026-10-08/run-01/logs/degrade-4-seed07.stdout.gz",
+      "bytes": 56384,
+      "sha256": "28008674515328fb1d6118554cb29e8ceb673d162db24c5e2d61aa2039e3caeb"
+    },
+    {
+      "path": "week2-completion-2026-10-08/run-01/logs/degrade-4-seed08.stdout.gz",
+      "bytes": 56511,
+      "sha256": "63da01126545fa19b7a64f1949fb26a3ecbfd48b51f0c372eea0d55a0f78d6c8"
+    },
+    {
+      "path": "week2-completion-2026-10-08/run-01/logs/degrade-4-seed09.stdout.gz",
+      "bytes": 56547,
+      "sha256": "84a4f6c53d1fad5e286b7d4d321710128a48474b7bf1cefdf1ab662fe6725bc8"
+    },
+    {
+      "path": "week2-completion-2026-10-08/run-01/logs/degrade-4-seed10.stdout.gz",
+      "bytes": 57537,
+      "sha256": "67d1563c655ef704df40324680903004d54492e2640cd34d600dd595e0136afc"
+    },
+    {
+      "path": "week2-completion-2026-10-08/run-01/logs/degrade-4-seed11.stdout.gz",
+      "bytes": 59179,
+      "sha256": "41a0a73db11c0eab7f2d7fcf4bc037d30a948f041d63888d8efc218d2c0c5a8b"
+    },
+    {
+      "path": "week2-completion-2026-10-08/run-01/logs/degrade-4-seed12.stdout.gz",
+      "bytes": 54643,
+      "sha256": "da591d0782b3a03827094262ee52e36243dfb5995c984a78a4e8b0b8b9c40ca1"
+    },
+    {
+      "path": "week2-completion-2026-10-08/run-01/logs/degrade-4-seed13.stdout.gz",
+      "bytes": 56366,
+      "sha256": "1fe133172804bd43ab348b4dfd5bdde976cb0f00fd7c66d211e37046f8633166"
+    },
+    {
+      "path": "week2-completion-2026-10-08/run-01/logs/degrade-4-seed14.stdout.gz",
+      "bytes": 57337,
+      "sha256": "42dea94bea0b51c5930ffc8b23946d07e716a9c1e36d9beb0c4eca5db6c6dc46"
+    },
+    {
+      "path": "week2-completion-2026-10-08/run-01/logs/degrade-4-seed15.stdout.gz",
+      "bytes": 55958,
+      "sha256": "e1a5c6c05e3bf027ce53395f8109b05eac33b45329493f68511e8e09492917a1"
+    },
+    {
+      "path": "week2-completion-2026-10-08/run-01/logs/degrade-4-seed16.stdout.gz",
+      "bytes": 57789,
+      "sha256": "c3ef75be0c21124a35968f24e24cf2d45722df8e30944e1c6a534722eaa316fd"
+    },
+    {
+      "path": "week2-completion-2026-10-08/run-01/logs/degrade-4-seed17.stdout.gz",
+      "bytes": 56503,
+      "sha256": "6bb5983bfb8026d98014e707d09aee1cd8540bd1d1120180fd21bcdbe57d6862"
+    },
+    {
+      "path": "week2-completion-2026-10-08/run-01/logs/degrade-4-seed18.stdout.gz",
+      "bytes": 56038,
+      "sha256": "59f48843f9a834b89032b728a9fd23b8a595b1e8c93e957fb12165d258790167"
+    },
+    {
+      "path": "week2-completion-2026-10-08/run-01/logs/degrade-4-seed19.stdout.gz",
+      "bytes": 57953,
+      "sha256": "8cc63a5a68a5ff7a8479fd2acb8c4fa4f675618bc5937ce33bb6a8223e5d2b14"
+    },
+    {
+      "path": "week2-completion-2026-10-08/run-01/logs/degrade-4-seed20.stdout.gz",
+      "bytes": 58847,
+      "sha256": "5c465e2010602ef87e2f8799fa6d8a4d30944cd639c56af2af2497c6880382db"
+    },
+    {
+      "path": "week2-completion-2026-10-08/run-01/logs/degrade-4-seed21.stdout.gz",
+      "bytes": 57434,
+      "sha256": "11c8312be77d99e1746cd80ee88fdc3311e28978214fc714c9d24d153a5bcd0c"
+    },
+    {
+      "path": "week2-completion-2026-10-08/run-01/logs/degrade-4-seed22.stdout.gz",
+      "bytes": 57781,
+      "sha256": "ffa435d01266ba53aabfdc81d4501699c2546e0648626e8b162474a624ab7cb9"
+    },
+    {
+      "path": "week2-completion-2026-10-08/run-01/logs/degrade-4-seed23.stdout.gz",
+      "bytes": 55949,
+      "sha256": "06ab34b0aa46f026e698ab08a4c26b2f51e8b80f5808e2af95b6b98f2efca315"
+    },
+    {
+      "path": "week2-completion-2026-10-08/run-01/logs/degrade-4-seed24.stdout.gz",
+      "bytes": 59132,
+      "sha256": "1a809cea3149691e9c819e1f42ed0d057c8937a01f2bb264b4cb6f4e7f78501e"
+    },
+    {
+      "path": "week2-completion-2026-10-08/run-01/logs/degrade-4-seed25.stdout.gz",
+      "bytes": 56663,
+      "sha256": "b29b1b45adb6bef817c2310e511f3d15b919688e07caf1e2e93035145b376fd5"
+    },
+    {
+      "path": "week2-completion-2026-10-08/run-01/logs/degrade-4-seed26.stdout.gz",
+      "bytes": 58591,
+      "sha256": "c082adba38ecfadb4701c7db2715b56a17c3c7087b0b4365f91a2d4bed2127de"
+    },
+    {
+      "path": "week2-completion-2026-10-08/run-01/logs/degrade-4-seed27.stdout.gz",
+      "bytes": 56512,
+      "sha256": "613bf81de8611b094bbaef13dc3443855e7208d0e6510eca2b153b85beb4eb76"
+    },
+    {
+      "path": "week2-completion-2026-10-08/run-01/logs/degrade-4-seed28.stdout.gz",
+      "bytes": 56465,
+      "sha256": "3e89177737aec04f13b6fa98a80d37518c6616946aa2f2baa4c12aa1ebec1069"
+    },
+    {
+      "path": "week2-completion-2026-10-08/run-01/logs/degrade-4-seed29.stdout.gz",
+      "bytes": 60146,
+      "sha256": "8dc0ed44e1b64763aa75f41892a010b171276a88cee2cfb6fd438c4b09662f31"
+    },
+    {
+      "path": "week2-completion-2026-10-08/run-01/logs/degrade-4-seed30.stdout.gz",
+      "bytes": 57050,
+      "sha256": "bcf70129df75e2b9e2794531345fb7a9b0afbcd09ca90ee6fa75741c2c635e0b"
+    },
+    {
+      "path": "week2-completion-2026-10-08/run-01/logs/degrade-5-seed01.stdout.gz",
+      "bytes": 62904,
+      "sha256": "6cabf1bc6268804093f648a1701adcbaab4996f00c712815d9184e4af36c7184"
+    },
+    {
+      "path": "week2-completion-2026-10-08/run-01/logs/degrade-5-seed02.stdout.gz",
+      "bytes": 63292,
+      "sha256": "9c7675ead84bdf2d0b3350fcc69eb346a32a5c1ab17863970a0004494576cdf6"
+    },
+    {
+      "path": "week2-completion-2026-10-08/run-01/logs/degrade-5-seed03.stdout.gz",
+      "bytes": 63834,
+      "sha256": "c711f8e1d26a887956eb07140a6cb2bf7b2fc995fa21101f86e39617cf87eecb"
+    },
+    {
+      "path": "week2-completion-2026-10-08/run-01/logs/degrade-5-seed04.stdout.gz",
+      "bytes": 63155,
+      "sha256": "81b3f32ae4e9bacc67b441484e9356d83a75586c8a1edb355d689f2de37f18db"
+    },
+    {
+      "path": "week2-completion-2026-10-08/run-01/logs/degrade-5-seed05.stdout.gz",
+      "bytes": 63348,
+      "sha256": "3dbb8c5389e39a985b7257d1f811cb4efd9bf931ffbb9ac7ec5ec0fbfc9276ee"
+    },
+    {
+      "path": "week2-completion-2026-10-08/run-01/logs/degrade-5-seed06.stdout.gz",
+      "bytes": 63483,
+      "sha256": "076ab14a22aa153a873ebc73b15d444c1750a9d68d1a332fddd59ba42ffef971"
+    },
+    {
+      "path": "week2-completion-2026-10-08/run-01/logs/degrade-5-seed07.stdout.gz",
+      "bytes": 63477,
+      "sha256": "643f7eac5be4681f8957bad40803b15fb6a7963e2d30ed9a78fcc4243a6ef160"
+    },
+    {
+      "path": "week2-completion-2026-10-08/run-01/logs/degrade-5-seed08.stdout.gz",
+      "bytes": 63756,
+      "sha256": "15a538d9d411d989a281fe32fa79c07d230053597e7cccead9254d663ab2d432"
+    },
+    {
+      "path": "week2-completion-2026-10-08/run-01/logs/degrade-5-seed09.stdout.gz",
+      "bytes": 61919,
+      "sha256": "51fc07ce9bdae8ff525e00b7d3ea484c80799440c55d1cd02aeeb99c1d7ca236"
+    },
+    {
+      "path": "week2-completion-2026-10-08/run-01/logs/degrade-5-seed10.stdout.gz",
+      "bytes": 62785,
+      "sha256": "58e7682b055602ea14c5640cdd88347f67e19dcbb8ec926e6ca7021332aaf281"
+    },
+    {
+      "path": "week2-completion-2026-10-08/run-01/logs/degrade-5-seed11.stdout.gz",
+      "bytes": 63348,
+      "sha256": "1de325e5bedd815f75fe3c8d702fd4fa3b9fe00097e993f8fe458111c488db1a"
+    },
+    {
+      "path": "week2-completion-2026-10-08/run-01/logs/degrade-5-seed12.stdout.gz",
+      "bytes": 63332,
+      "sha256": "cdb05bae03e81bf24d4d796a05bbd49bb375dca2bc1450a084f42af129127a0f"
+    },
+    {
+      "path": "week2-completion-2026-10-08/run-01/logs/degrade-5-seed13.stdout.gz",
+      "bytes": 63198,
+      "sha256": "8344673d480e7e329c25dfa35285b1f3093b0c51739c83e79200cae55e8c3145"
+    },
+    {
+      "path": "week2-completion-2026-10-08/run-01/logs/degrade-5-seed14.stdout.gz",
+      "bytes": 63016,
+      "sha256": "886dcec8051808715637e3f0a7d5f3ce70ce17e63ecb6c7042bb24eaac9f2161"
+    },
+    {
+      "path": "week2-completion-2026-10-08/run-01/logs/degrade-5-seed15.stdout.gz",
+      "bytes": 63719,
+      "sha256": "055432bec89db1587244f9fb628b60745e4112634648531ad2ffc75bcd970410"
+    },
+    {
+      "path": "week2-completion-2026-10-08/run-01/logs/degrade-5-seed16.stdout.gz",
+      "bytes": 62929,
+      "sha256": "d97d49461011e8a3efe923d0f9209c525175b61118b2f6413589abd7eb7afe7e"
+    },
+    {
+      "path": "week2-completion-2026-10-08/run-01/logs/degrade-5-seed17.stdout.gz",
+      "bytes": 63447,
+      "sha256": "9bc6e260d9a2851a785f2e7c6ab8fc91d6b7a1f399a1db9e4a9b47b95a774528"
+    },
+    {
+      "path": "week2-completion-2026-10-08/run-01/logs/degrade-5-seed18.stdout.gz",
+      "bytes": 63852,
+      "sha256": "ac4b7ec581779d80298e052e5b1f9b5df04e25d14b75a220cd0af793d7484938"
+    },
+    {
+      "path": "week2-completion-2026-10-08/run-01/logs/degrade-5-seed19.stdout.gz",
+      "bytes": 63468,
+      "sha256": "5c525d881fb7524ab7addacdc810f81a7d6022e1a9e7d5d1cc6332f955166edb"
+    },
+    {
+      "path": "week2-completion-2026-10-08/run-01/logs/degrade-5-seed20.stdout.gz",
+      "bytes": 63628,
+      "sha256": "c51ac9332f56007f6c56a58ca29397e94a2e2420d569243498376717a1d9844b"
+    },
+    {
+      "path": "week2-completion-2026-10-08/run-01/logs/degrade-5-seed21.stdout.gz",
+      "bytes": 64531,
+      "sha256": "cb13fdc306128faca693c54e3801f4c626b3c9d42a19a36d1bccd86f7a03f9b5"
+    },
+    {
+      "path": "week2-completion-2026-10-08/run-01/logs/degrade-5-seed22.stdout.gz",
+      "bytes": 62752,
+      "sha256": "67f4c074599df4da17d4845a3de6c48acdc11f5a5a474d25719bb56a5fc397af"
+    },
+    {
+      "path": "week2-completion-2026-10-08/run-01/logs/degrade-5-seed23.stdout.gz",
+      "bytes": 62769,
+      "sha256": "7d00b04a275d06b407b43650d9bfbe2d97f23c9dd66883f88a82a2b99fc1db19"
+    },
+    {
+      "path": "week2-completion-2026-10-08/run-01/logs/degrade-5-seed24.stdout.gz",
+      "bytes": 61968,
+      "sha256": "9054a6a1e5e09a2e6c09cb3a00a5aac2b6e23a9d37c4d6e52358135b62be4b2a"
+    },
+    {
+      "path": "week2-completion-2026-10-08/run-01/logs/degrade-5-seed25.stdout.gz",
+      "bytes": 63487,
+      "sha256": "c2d88461e0baa7558c0e703ac80147fa1abce6ecb1dfd2a18e920825cf6896a8"
+    },
+    {
+      "path": "week2-completion-2026-10-08/run-01/logs/degrade-5-seed26.stdout.gz",
+      "bytes": 63324,
+      "sha256": "98b475ecb6b7b0ae64df60582b63168b25dc4e9d03212b6853120abbc7bcb31f"
+    },
+    {
+      "path": "week2-completion-2026-10-08/run-01/logs/degrade-5-seed27.stdout.gz",
+      "bytes": 63745,
+      "sha256": "81c75ff68d3ec59aeb6b0069aaa0910c803eadb0568d7e9afc174407b9a93229"
+    },
+    {
+      "path": "week2-completion-2026-10-08/run-01/logs/degrade-5-seed28.stdout.gz",
+      "bytes": 62898,
+      "sha256": "32d26582dac6ce7f4489c32406e3459b132b11e85a25a9a807a3f10ffecce060"
+    },
+    {
+      "path": "week2-completion-2026-10-08/run-01/logs/degrade-5-seed29.stdout.gz",
+      "bytes": 63060,
+      "sha256": "9e6c43aed814137c38445fc2c01398a94e52a57366246b6bf26fdc365d4a6206"
+    },
+    {
+      "path": "week2-completion-2026-10-08/run-01/logs/degrade-5-seed30.stdout.gz",
+      "bytes": 63321,
+      "sha256": "639ba244f58452e96e7fe29829e62a64bba0fe60520002199646015eb457ba3d"
+    },
+    {
+      "path": "week2-completion-2026-10-08/run-01/logs/degrade-6-seed01.stdout.gz",
+      "bytes": 62782,
+      "sha256": "05019b0b833ca21a7b98b30377246c287e096f23eeaf87059e8e1a57e5faee7b"
+    },
+    {
+      "path": "week2-completion-2026-10-08/run-01/logs/degrade-6-seed02.stdout.gz",
+      "bytes": 63345,
+      "sha256": "9d30b339d985e28bf8f373429bf0837ddf33e55f23beee0cb90703c876e0059d"
+    },
+    {
+      "path": "week2-completion-2026-10-08/run-01/logs/degrade-6-seed03.stdout.gz",
+      "bytes": 64045,
+      "sha256": "f851a4d300559b8a8511e9a4a76bd16be3372fa72f97024970a968feb6a41f6e"
+    },
+    {
+      "path": "week2-completion-2026-10-08/run-01/logs/degrade-6-seed04.stdout.gz",
+      "bytes": 62878,
+      "sha256": "87c5b9710b750ad807b5e7c0e388a96278a4d83b8fb3de6f36d32d1d9ef194c6"
+    },
+    {
+      "path": "week2-completion-2026-10-08/run-01/logs/degrade-6-seed05.stdout.gz",
+      "bytes": 63347,
+      "sha256": "0f30fa8e4ab3c83d543243cac019fc36f95128cb4b785699cf6ca4219b84125b"
+    },
+    {
+      "path": "week2-completion-2026-10-08/run-01/logs/degrade-6-seed06.stdout.gz",
+      "bytes": 62766,
+      "sha256": "9bc925065187d67b44a3c1311bf8fc31b71d4292598e662788eea08ec499b1ef"
+    },
+    {
+      "path": "week2-completion-2026-10-08/run-01/logs/degrade-6-seed07.stdout.gz",
+      "bytes": 63396,
+      "sha256": "bd60f258d30b90d98dcf4863704e50dbe5e6f4d94b8b0a3c48ee616de1557e6a"
+    },
+    {
+      "path": "week2-completion-2026-10-08/run-01/logs/degrade-6-seed08.stdout.gz",
+      "bytes": 62629,
+      "sha256": "ce1716bee467f69336fbeea405503fc5155a1ae7d1f5997a5fb534873fd77317"
+    },
+    {
+      "path": "week2-completion-2026-10-08/run-01/logs/degrade-6-seed09.stdout.gz",
+      "bytes": 62571,
+      "sha256": "ed985d85ef83e163e2aed12da96252fd63188ac5155a667fcd55475c3ca749a1"
+    },
+    {
+      "path": "week2-completion-2026-10-08/run-01/logs/degrade-6-seed10.stdout.gz",
+      "bytes": 63301,
+      "sha256": "99734fec5a370c9bccd2feec2906a16e86cda981043aef95466242dadbc018e4"
+    },
+    {
+      "path": "week2-completion-2026-10-08/run-01/logs/degrade-6-seed11.stdout.gz",
+      "bytes": 62758,
+      "sha256": "4683999eef68a8ac7d4d3d04ad6947242f95abc5caf7182b2f0a5554183dba08"
+    },
+    {
+      "path": "week2-completion-2026-10-08/run-01/logs/degrade-6-seed12.stdout.gz",
+      "bytes": 63437,
+      "sha256": "86d90cede5e5f6a66b2a8ba2a672f47b0c13f6b03e6e63d490ba5ebe4683b83d"
+    },
+    {
+      "path": "week2-completion-2026-10-08/run-01/logs/degrade-6-seed13.stdout.gz",
+      "bytes": 63241,
+      "sha256": "24431b2550f2dca018f1f89f9fbc301ebb34d2a0e5b05faf9c3f16a26408cd1c"
+    },
+    {
+      "path": "week2-completion-2026-10-08/run-01/logs/degrade-6-seed14.stdout.gz",
+      "bytes": 62489,
+      "sha256": "616204892eb730449fd0ffad83d2c8a5f1bd49ff742d8cf6c270144e6b8ea814"
+    },
+    {
+      "path": "week2-completion-2026-10-08/run-01/logs/degrade-6-seed15.stdout.gz",
+      "bytes": 63989,
+      "sha256": "bb0283ffb52c7f15cb07db7a4b85c2b2e28929649da1255dd9d3eb3a2d55ece1"
+    },
+    {
+      "path": "week2-completion-2026-10-08/run-01/logs/degrade-6-seed16.stdout.gz",
+      "bytes": 62968,
+      "sha256": "9f9959bb8f92471814940b944cfdc0b48b841e13d11872cda5c5243c8af405cb"
+    },
+    {
+      "path": "week2-completion-2026-10-08/run-01/logs/degrade-6-seed17.stdout.gz",
+      "bytes": 63505,
+      "sha256": "17b2c78e8fcc482643e4e1a9a74c305d1e697781943fd3e63907cf92714330a6"
+    },
+    {
+      "path": "week2-completion-2026-10-08/run-01/logs/degrade-6-seed18.stdout.gz",
+      "bytes": 62713,
+      "sha256": "5e0f307a2a61d1cb9f78fa92bf075ec1ec65a0e8a07a0842fa7d6415b3670f30"
+    },
+    {
+      "path": "week2-completion-2026-10-08/run-01/logs/degrade-6-seed19.stdout.gz",
+      "bytes": 63416,
+      "sha256": "a759327c1915c4d5f1ff112aaada192831ce5e76da597972b2423fc2aea3d2ad"
+    },
+    {
+      "path": "week2-completion-2026-10-08/run-01/logs/degrade-6-seed20.stdout.gz",
+      "bytes": 62653,
+      "sha256": "baef9beaca2da0343b1f9a4044d57d560e0ed26f82ea16543809e6297adb4b59"
+    },
+    {
+      "path": "week2-completion-2026-10-08/run-01/logs/degrade-6-seed21.stdout.gz",
+      "bytes": 64534,
+      "sha256": "287045c39c4c624a91a4198305acad3e5f4721c24e5ba6ad9b9c90c6069ad4db"
+    },
+    {
+      "path": "week2-completion-2026-10-08/run-01/logs/degrade-6-seed22.stdout.gz",
+      "bytes": 62689,
+      "sha256": "db86f139e2a398d7ff20452458fb909abf2b1e488f621cd6660c33ba22a5a287"
+    },
+    {
+      "path": "week2-completion-2026-10-08/run-01/logs/degrade-6-seed23.stdout.gz",
+      "bytes": 63041,
+      "sha256": "9a1189babbbf719b8146f3729efe4bd7ec5cc3a17be1c67fae36a1f15edbb178"
+    },
+    {
+      "path": "week2-completion-2026-10-08/run-01/logs/degrade-6-seed24.stdout.gz",
+      "bytes": 63692,
+      "sha256": "dc7fbba0098fab81710d7b7cdc5ead3d0398aec97545777a971365899e95cd60"
+    },
+    {
+      "path": "week2-completion-2026-10-08/run-01/logs/degrade-6-seed25.stdout.gz",
+      "bytes": 62678,
+      "sha256": "98cf5a26669391bcfdc1dc8f36aad634b9762d59c925984e27863df7717efd58"
+    },
+    {
+      "path": "week2-completion-2026-10-08/run-01/logs/degrade-6-seed26.stdout.gz",
+      "bytes": 63500,
+      "sha256": "4fe2c9ad41ab8953f90ca52152f47e192709c811ed8c274eadcfbc15988cdd66"
+    },
+    {
+      "path": "week2-completion-2026-10-08/run-01/logs/degrade-6-seed27.stdout.gz",
+      "bytes": 63522,
+      "sha256": "830e8a78c959de4c1ff7b31d3d86456f3ac3ddf5a58905a3cd08f7baf8f63473"
+    },
+    {
+      "path": "week2-completion-2026-10-08/run-01/logs/degrade-6-seed28.stdout.gz",
+      "bytes": 63155,
+      "sha256": "c8b8bc0fa3db2cdf75e01319939f75e6c87039a149541f3ed46d771339321c61"
+    },
+    {
+      "path": "week2-completion-2026-10-08/run-01/logs/degrade-6-seed29.stdout.gz",
+      "bytes": 62586,
+      "sha256": "c67227451902d4823c7c1ac7885c95d430fda73771254d5c806a21d80b8954a1"
+    },
+    {
+      "path": "week2-completion-2026-10-08/run-01/logs/degrade-6-seed30.stdout.gz",
+      "bytes": 63380,
+      "sha256": "d5bcae77c0ec2ac719da5d127e0d56d865f79ae5c9511632afe5c6c0eac7f7be"
+    },
+    {
+      "path": "week2-completion-2026-10-08/run-01/logs/dominating-0-seed01.stdout.gz",
+      "bytes": 64558,
+      "sha256": "bcf896e5e629d3559740949024486fb6a964af9a6b9115b8cb97b19d60b7dd43"
+    },
+    {
+      "path": "week2-completion-2026-10-08/run-01/logs/dominating-0-seed02.stdout.gz",
+      "bytes": 64525,
+      "sha256": "2516b2e10bbc61381c694a79b3d0c280af77cafcfe89b0189430e0321f07e8a8"
+    },
+    {
+      "path": "week2-completion-2026-10-08/run-01/logs/dominating-0-seed03.stdout.gz",
+      "bytes": 63117,
+      "sha256": "5d98aaf0894a2395c0f47364f8c0272017b85a013566c13ec105510a45d49c68"
+    },
+    {
+      "path": "week2-completion-2026-10-08/run-01/logs/dominating-0-seed04.stdout.gz",
+      "bytes": 61831,
+      "sha256": "720ab5038d51ce04d1642af1f444da6a09f78bd90cfe988785cf2eea345c7c4e"
+    },
+    {
+      "path": "week2-completion-2026-10-08/run-01/logs/dominating-0-seed05.stdout.gz",
+      "bytes": 64601,
+      "sha256": "9ce871a75bfbb3eac44e496eb4e609ec42015ac4a9f3e94ff40177f33c52701c"
+    },
+    {
+      "path": "week2-completion-2026-10-08/run-01/logs/dominating-0-seed06.stdout.gz",
+      "bytes": 64547,
+      "sha256": "942889835560090b69481f58f29c9483623996be5a0621933fa3a68fc33fa833"
+    },
+    {
+      "path": "week2-completion-2026-10-08/run-01/logs/dominating-0-seed07.stdout.gz",
+      "bytes": 61423,
+      "sha256": "2845a89cc1e8b6be44fef5c96d969f9addbbb2c1ebef349be20913b38e80a6ba"
+    },
+    {
+      "path": "week2-completion-2026-10-08/run-01/logs/dominating-0-seed08.stdout.gz",
+      "bytes": 62186,
+      "sha256": "e969d8082c8cec6da758d25a1d1f887dad9c33ef7b6eced4c779213fc208fd7f"
+    },
+    {
+      "path": "week2-completion-2026-10-08/run-01/logs/dominating-0-seed09.stdout.gz",
+      "bytes": 62660,
+      "sha256": "6d84d3027db48d9a3b16822c51383c1f7cc13d0842c209095376e44cb1949e8b"
+    },
+    {
+      "path": "week2-completion-2026-10-08/run-01/logs/dominating-0-seed10.stdout.gz",
+      "bytes": 64508,
+      "sha256": "dc386940581f01dd3919551c90d44eb18e4e6aef0437916f083fd596b47c27ca"
+    },
+    {
+      "path": "week2-completion-2026-10-08/run-01/logs/dominating-0-seed11.stdout.gz",
+      "bytes": 60288,
+      "sha256": "33f45b07bf477189157833c3d719933a833f9c1a1add9396febf79e4bc0b616a"
+    },
+    {
+      "path": "week2-completion-2026-10-08/run-01/logs/dominating-0-seed12.stdout.gz",
+      "bytes": 62270,
+      "sha256": "2fcb901d25ce10c9d1542ed0b881a7d9123118e9f0ede9e4702a161c7f8170e1"
+    },
+    {
+      "path": "week2-completion-2026-10-08/run-01/logs/dominating-0-seed13.stdout.gz",
+      "bytes": 60795,
+      "sha256": "f77a28f1b281d92b0883748ddebbf388f35c3d2d67af6e4044ed327e9cbfe8f5"
+    },
+    {
+      "path": "week2-completion-2026-10-08/run-01/logs/dominating-0-seed14.stdout.gz",
+      "bytes": 60859,
+      "sha256": "67e00fd523d7ceb84577ddd0f1025e6cb1dce267da09fcd8f3b71cbc7c183892"
+    },
+    {
+      "path": "week2-completion-2026-10-08/run-01/logs/dominating-0-seed15.stdout.gz",
+      "bytes": 61778,
+      "sha256": "164f7298550919e824792a697833e951003af6d09b8a0683b49b423e054c2c03"
+    },
+    {
+      "path": "week2-completion-2026-10-08/run-01/logs/dominating-0-seed16.stdout.gz",
+      "bytes": 62769,
+      "sha256": "466f1af2d7ece4426ce33d3cb5f1281fc6431370e1560de79271bde2f20cf063"
+    },
+    {
+      "path": "week2-completion-2026-10-08/run-01/logs/dominating-0-seed17.stdout.gz",
+      "bytes": 63648,
+      "sha256": "a334121b0d91eaed1c698028b44153d83ca38d159f416bb44ceb98c4e0d1c0aa"
+    },
+    {
+      "path": "week2-completion-2026-10-08/run-01/logs/dominating-0-seed18.stdout.gz",
+      "bytes": 64471,
+      "sha256": "3e5e1b6f649fc944405b2b734bfa1570bf1693f81b349c632cfa81db79d531ea"
+    },
+    {
+      "path": "week2-completion-2026-10-08/run-01/logs/dominating-0-seed19.stdout.gz",
+      "bytes": 64441,
+      "sha256": "35ecdfd6d373f808dc8c195e8a34f15e53419483cce41c01e6c6f14447831d06"
+    },
+    {
+      "path": "week2-completion-2026-10-08/run-01/logs/dominating-0-seed20.stdout.gz",
+      "bytes": 65731,
+      "sha256": "557c7059f420f5494fd00fd091afa00b4c85b76bb1048fc49763775179ba1323"
+    },
+    {
+      "path": "week2-completion-2026-10-08/run-01/logs/dominating-0-seed21.stdout.gz",
+      "bytes": 61328,
+      "sha256": "1a544c1345dc47ab102f020637a710492c32f0e4557f382ad7d20d377979f4b9"
+    },
+    {
+      "path": "week2-completion-2026-10-08/run-01/logs/dominating-0-seed22.stdout.gz",
+      "bytes": 60774,
+      "sha256": "f7844d6635cb58c0ef942c2bf889cb40b1a759970e35ac83c833e4625cfd6825"
+    },
+    {
+      "path": "week2-completion-2026-10-08/run-01/logs/dominating-0-seed23.stdout.gz",
+      "bytes": 64387,
+      "sha256": "bd36bc56a54dfdae1931c7ef62f4dd7a35bdf584949fe7731fbe39ba1f191d6a"
+    },
+    {
+      "path": "week2-completion-2026-10-08/run-01/logs/dominating-0-seed24.stdout.gz",
+      "bytes": 64486,
+      "sha256": "cbb0628f7ac4d87575cd25df25131b378354b40fd6f9e003444a7d026d8e4889"
+    },
+    {
+      "path": "week2-completion-2026-10-08/run-01/logs/dominating-0-seed25.stdout.gz",
+      "bytes": 61510,
+      "sha256": "b4efd79249b0e9d0309a3f537630f34a9434f13e030c42d183d7bf130044b830"
+    },
+    {
+      "path": "week2-completion-2026-10-08/run-01/logs/dominating-0-seed26.stdout.gz",
+      "bytes": 64069,
+      "sha256": "01b260acea4493ec00e780fbae07c80c360f24e6bbdc326f5616a316fd1c576c"
+    },
+    {
+      "path": "week2-completion-2026-10-08/run-01/logs/dominating-0-seed27.stdout.gz",
+      "bytes": 61261,
+      "sha256": "9d9d0fcf78cd7b2f3a4741e0f88925260de04a53043efddc3c699c9661061ab2"
+    },
+    {
+      "path": "week2-completion-2026-10-08/run-01/logs/dominating-0-seed28.stdout.gz",
+      "bytes": 61373,
+      "sha256": "12720cd9f1a6c476da5aadf03c273b6784e993c5e73890074b77ee07856952a2"
+    },
+    {
+      "path": "week2-completion-2026-10-08/run-01/logs/dominating-0-seed29.stdout.gz",
+      "bytes": 64253,
+      "sha256": "16b9cf0152abf849548fcede2a915ec95d45b6fe436562424a39a0e3506e9da9"
+    },
+    {
+      "path": "week2-completion-2026-10-08/run-01/logs/dominating-0-seed30.stdout.gz",
+      "bytes": 60390,
+      "sha256": "80e5c4b629bdc2e9dcdcdaae2f533ac351603b1e2b3e32ee169754234aa862ed"
+    },
+    {
+      "path": "week2-completion-2026-10-08/run-01/logs/dominating-1-seed01.stdout.gz",
+      "bytes": 55000,
+      "sha256": "1d494d9b2f24b7a7fb46627fb4b56c3d08333610d1778a50ad079ce9834361ac"
+    },
+    {
+      "path": "week2-completion-2026-10-08/run-01/logs/dominating-1-seed02.stdout.gz",
+      "bytes": 58047,
+      "sha256": "fa976734c9b8e492af290e407a78d15e62cfa4aaa5b9263591f6dee2f05294ba"
+    },
+    {
+      "path": "week2-completion-2026-10-08/run-01/logs/dominating-1-seed03.stdout.gz",
+      "bytes": 62893,
+      "sha256": "977f37610c4faf4863e8ed4ee843c473fcb7a9511d29c5c152c33bcbe8d66cf8"
+    },
+    {
+      "path": "week2-completion-2026-10-08/run-01/logs/dominating-1-seed04.stdout.gz",
+      "bytes": 54413,
+      "sha256": "5dcbb526ab63c81cbf53445390f9d8a4f473a9c86a2b2f6c8518d58955f8cb59"
+    },
+    {
+      "path": "week2-completion-2026-10-08/run-01/logs/dominating-1-seed05.stdout.gz",
+      "bytes": 55659,
+      "sha256": "1a20de198cff4ba17d76cf69c18871c6c84c68b152aa2664a64ba68f85e9f58b"
+    },
+    {
+      "path": "week2-completion-2026-10-08/run-01/logs/dominating-1-seed06.stdout.gz",
+      "bytes": 57264,
+      "sha256": "a6e221c4b116ba22d64c3c2b7a532bdce1881c11cc83b0342af5a59cade64e3f"
+    },
+    {
+      "path": "week2-completion-2026-10-08/run-01/logs/dominating-1-seed07.stdout.gz",
+      "bytes": 54525,
+      "sha256": "cf09955a026c9e1cdadb580fcd737e952b5c9cb01147792355a6e3f0ac8a65bd"
+    },
+    {
+      "path": "week2-completion-2026-10-08/run-01/logs/dominating-1-seed08.stdout.gz",
+      "bytes": 55952,
+      "sha256": "5d51db1e1c44997b54836477d708f19a95e11043c3ae770b3480877e9b03698b"
+    },
+    {
+      "path": "week2-completion-2026-10-08/run-01/logs/dominating-1-seed09.stdout.gz",
+      "bytes": 56696,
+      "sha256": "c04bf62413cca7d0066188337a3f9ceb53f5590f3494219b0e2f18951939de4a"
+    },
+    {
+      "path": "week2-completion-2026-10-08/run-01/logs/dominating-1-seed10.stdout.gz",
+      "bytes": 60207,
+      "sha256": "2b46b09ec5338d33462fb5f4d5e40f06934b900b2ac8f5035bff38b911564fb5"
+    },
+    {
+      "path": "week2-completion-2026-10-08/run-01/logs/dominating-1-seed11.stdout.gz",
+      "bytes": 60754,
+      "sha256": "30e7f45bb7dd522338e84dacf356589c73d024cb430085ad56a5b468b30e11f7"
+    },
+    {
+      "path": "week2-completion-2026-10-08/run-01/logs/dominating-1-seed12.stdout.gz",
+      "bytes": 54556,
+      "sha256": "0a57dd77a7e5bd77687ecb9637df389f728903eb94cdc3c9c1f8b12ba5c5afe6"
+    },
+    {
+      "path": "week2-completion-2026-10-08/run-01/logs/dominating-1-seed13.stdout.gz",
+      "bytes": 55590,
+      "sha256": "e62f836f9cb3f8db76f2f15465573e7913f1a9d7709a67c10b217bf01961be98"
+    },
+    {
+      "path": "week2-completion-2026-10-08/run-01/logs/dominating-1-seed14.stdout.gz",
+      "bytes": 58425,
+      "sha256": "e11375e18e9bdf2cbf65072312c11c4ce9b16c85e6542f65f43f29add45a72ee"
+    },
+    {
+      "path": "week2-completion-2026-10-08/run-01/logs/dominating-1-seed15.stdout.gz",
+      "bytes": 56184,
+      "sha256": "5f57dd3071587735f0b7d5f85c8b4a0aa5b368314cd272c3c964fa526f60256a"
+    },
+    {
+      "path": "week2-completion-2026-10-08/run-01/logs/dominating-1-seed16.stdout.gz",
+      "bytes": 58571,
+      "sha256": "d6d6bbb26327595fd013aa08e78d5b8ba66ec69e1bd33053c0400d1f41acdf40"
+    },
+    {
+      "path": "week2-completion-2026-10-08/run-01/logs/dominating-1-seed17.stdout.gz",
+      "bytes": 55755,
+      "sha256": "704ca306cf30622758f63689e4c2f43e177429e0bbc4fa2fbf5712398f6be9f3"
+    },
+    {
+      "path": "week2-completion-2026-10-08/run-01/logs/dominating-1-seed18.stdout.gz",
+      "bytes": 54066,
+      "sha256": "e07a5101081bbe5cf5cf36df08fca566bc7e776d0766e0cfd43ae2c0b8f8c247"
+    },
+    {
+      "path": "week2-completion-2026-10-08/run-01/logs/dominating-1-seed19.stdout.gz",
+      "bytes": 58840,
+      "sha256": "146c39ab30410e550996c0edebced84b8fa08cbc0693feecee1f8d1a4074a852"
+    },
+    {
+      "path": "week2-completion-2026-10-08/run-01/logs/dominating-1-seed20.stdout.gz",
+      "bytes": 59490,
+      "sha256": "72cf383be9cc1cbee059eacaf6ca2583c96e485c1e46d57aaf1c262ab88d9394"
+    },
+    {
+      "path": "week2-completion-2026-10-08/run-01/logs/dominating-1-seed21.stdout.gz",
+      "bytes": 58342,
+      "sha256": "ea06a2d8da5bd527ecc801089fa8af345ed5aba25b036b410bf7bf4f60045c5a"
+    },
+    {
+      "path": "week2-completion-2026-10-08/run-01/logs/dominating-1-seed22.stdout.gz",
+      "bytes": 57185,
+      "sha256": "b2fc2b669308a0bb994f68517fc3716ebd187528bc888d494f7c732d15335429"
+    },
+    {
+      "path": "week2-completion-2026-10-08/run-01/logs/dominating-1-seed23.stdout.gz",
+      "bytes": 56634,
+      "sha256": "8df10547a07fbddf116994f9eb56b7ca5c3aaba298dad96e46731c2b7b400db5"
+    },
+    {
+      "path": "week2-completion-2026-10-08/run-01/logs/dominating-1-seed24.stdout.gz",
+      "bytes": 64044,
+      "sha256": "866eeb9186934693f0831a3955d8c9fc230af8bcd65c336087bc820b7a740f08"
+    },
+    {
+      "path": "week2-completion-2026-10-08/run-01/logs/dominating-1-seed25.stdout.gz",
+      "bytes": 58113,
+      "sha256": "8df0c011c9f3ff5e03610bf0e9f5281c79ec5e4535793d508b70b93140ae386e"
+    },
+    {
+      "path": "week2-completion-2026-10-08/run-01/logs/dominating-1-seed26.stdout.gz",
+      "bytes": 60647,
+      "sha256": "6006764b3b5b42f197efaa3168c8ec0e8ac5d8d879697b215705040322be927c"
+    },
+    {
+      "path": "week2-completion-2026-10-08/run-01/logs/dominating-1-seed27.stdout.gz",
+      "bytes": 56190,
+      "sha256": "014cb8929e30e307b351053518162e5dbe459cc53e28d70f716fdebff673c6db"
+    },
+    {
+      "path": "week2-completion-2026-10-08/run-01/logs/dominating-1-seed28.stdout.gz",
+      "bytes": 58150,
+      "sha256": "a6ed600c136d15334fb21c5165c87d6b72aca05337f1d6b0a094e79f0a8f5c43"
+    },
+    {
+      "path": "week2-completion-2026-10-08/run-01/logs/dominating-1-seed29.stdout.gz",
+      "bytes": 61751,
+      "sha256": "8c6576c80802711d2487a1498864c4201484609e9e9816b10079abfb50b19107"
+    },
+    {
+      "path": "week2-completion-2026-10-08/run-01/logs/dominating-1-seed30.stdout.gz",
+      "bytes": 59213,
+      "sha256": "84d478fc47f7443fa59bc5e2c9fa69681e1c383f1a53c74dbea89e52e3426f07"
+    },
+    {
+      "path": "week2-completion-2026-10-08/run-01/logs/dominating-2-seed01.stdout.gz",
+      "bytes": 54461,
+      "sha256": "10cf637c717cc79bd6855e14f50075a9bd6416c8e7efb5ed17502608f1b3e6f5"
+    },
+    {
+      "path": "week2-completion-2026-10-08/run-01/logs/dominating-2-seed02.stdout.gz",
+      "bytes": 54124,
+      "sha256": "8f84a2a792c5c2e28b8f46335e25d5b62a8e529ecf4a7b8d5ec185e991089a8e"
+    },
+    {
+      "path": "week2-completion-2026-10-08/run-01/logs/dominating-2-seed03.stdout.gz",
+      "bytes": 54066,
+      "sha256": "4a05e9b2d9962ca0abefd64505bf738af77e5974de63761194a337343d83b2b7"
+    },
+    {
+      "path": "week2-completion-2026-10-08/run-01/logs/dominating-2-seed04.stdout.gz",
+      "bytes": 54907,
+      "sha256": "5abd5a3b472d70997454a8374be63e9865304b959f4ed430ed13cac8af5c1b88"
+    },
+    {
+      "path": "week2-completion-2026-10-08/run-01/logs/dominating-2-seed05.stdout.gz",
+      "bytes": 54056,
+      "sha256": "ccadf58b61d19c94dae7dbc0dd409204485299b2a4eb3395123dc63663742d87"
+    },
+    {
+      "path": "week2-completion-2026-10-08/run-01/logs/dominating-2-seed06.stdout.gz",
+      "bytes": 54821,
+      "sha256": "2ae3d8eec41a20e5d4f87516f87cc1d665bc01fed499f279bae9fc1d470f80f4"
+    },
+    {
+      "path": "week2-completion-2026-10-08/run-01/logs/dominating-2-seed07.stdout.gz",
+      "bytes": 54350,
+      "sha256": "096caae4b744c6ed307d683f3fdeda9087a8b5ae875a487c304c6eac8ec7bfc1"
+    },
+    {
+      "path": "week2-completion-2026-10-08/run-01/logs/dominating-2-seed08.stdout.gz",
+      "bytes": 54144,
+      "sha256": "a73bccef73207f55ae19aab51e182f7e170b37c8b28bc2b5b8f222b83cabb71a"
+    },
+    {
+      "path": "week2-completion-2026-10-08/run-01/logs/dominating-2-seed09.stdout.gz",
+      "bytes": 54276,
+      "sha256": "f0240ed109112f8ccd90076fe760f12e9b0244e969d332722383136722f6c6ee"
+    },
+    {
+      "path": "week2-completion-2026-10-08/run-01/logs/dominating-2-seed10.stdout.gz",
+      "bytes": 54382,
+      "sha256": "39e1cc1991987f88533e4ffe918167285b5739e5b06520a46728089934e7cd3f"
+    },
+    {
+      "path": "week2-completion-2026-10-08/run-01/logs/dominating-2-seed11.stdout.gz",
+      "bytes": 54023,
+      "sha256": "c8b2ad53e17f4a68a0ff42281a5fad9b49c3377f374c3d6640f64d8598ecc9f1"
+    },
+    {
+      "path": "week2-completion-2026-10-08/run-01/logs/dominating-2-seed12.stdout.gz",
+      "bytes": 54666,
+      "sha256": "b1b1e6da3c0e0eed6d16d0d1d668043bb5c81be7f1e2fca92b2af3159bf8365f"
+    },
+    {
+      "path": "week2-completion-2026-10-08/run-01/logs/dominating-2-seed13.stdout.gz",
+      "bytes": 54539,
+      "sha256": "332da872c39403bcb8a9e7f7672c5da5f6489b04088d0602369d65e1611c08ed"
+    },
+    {
+      "path": "week2-completion-2026-10-08/run-01/logs/dominating-2-seed14.stdout.gz",
+      "bytes": 54561,
+      "sha256": "57754236dbd052fed151381283d4a2e7567bbd84685795eb99571e2494838c9f"
+    },
+    {
+      "path": "week2-completion-2026-10-08/run-01/logs/dominating-2-seed15.stdout.gz",
+      "bytes": 56512,
+      "sha256": "995f5e4f6e7aed563f4802145badee7adf3ace72fc3a32509e3bacda14ce09c7"
+    },
+    {
+      "path": "week2-completion-2026-10-08/run-01/logs/dominating-2-seed16.stdout.gz",
+      "bytes": 54141,
+      "sha256": "f0707ca09d1dafba3346b7947479fb53739b9f2002efb724be80d7ec690b46bb"
+    },
+    {
+      "path": "week2-completion-2026-10-08/run-01/logs/dominating-2-seed17.stdout.gz",
+      "bytes": 54531,
+      "sha256": "27c13312edbcf2a13a23805c45b2d5441f093490629653c82568c0d699d0a1ec"
+    },
+    {
+      "path": "week2-completion-2026-10-08/run-01/logs/dominating-2-seed18.stdout.gz",
+      "bytes": 54285,
+      "sha256": "6a1a259cc7f2651645e6581578fdc9051d4ac51c9606a329860e27c297ba1329"
+    },
+    {
+      "path": "week2-completion-2026-10-08/run-01/logs/dominating-2-seed19.stdout.gz",
+      "bytes": 54434,
+      "sha256": "05a9aab252d770e1b7274e38a52953728e2b9472735e4f462b14c6e2a8db697d"
+    },
+    {
+      "path": "week2-completion-2026-10-08/run-01/logs/dominating-2-seed20.stdout.gz",
+      "bytes": 54274,
+      "sha256": "b7c97026b4ddfc7c1c9a317e44374a006529fcc2a6113541a5ae4a3c41145c33"
+    },
+    {
+      "path": "week2-completion-2026-10-08/run-01/logs/dominating-2-seed21.stdout.gz",
+      "bytes": 55999,
+      "sha256": "f75a8528f5d7068a35c0c7ab52a35035a2ccaa8c43e0917d8fc0db4e42e5b147"
+    },
+    {
+      "path": "week2-completion-2026-10-08/run-01/logs/dominating-2-seed22.stdout.gz",
+      "bytes": 54388,
+      "sha256": "b6a075f8fbde7a80ad15fb9024621d5ca582ac25dc62766b9f32f49fe0aa1bf0"
+    },
+    {
+      "path": "week2-completion-2026-10-08/run-01/logs/dominating-2-seed23.stdout.gz",
+      "bytes": 55513,
+      "sha256": "e48755c723e2b3155f70d694c3c3c5953e59fec9074e75f2e577057661f5e743"
+    },
+    {
+      "path": "week2-completion-2026-10-08/run-01/logs/dominating-2-seed24.stdout.gz",
+      "bytes": 54224,
+      "sha256": "18eda0b9eadbb4ce8a73619ca294d93e9521d54646c811246811751cb82f1920"
+    },
+    {
+      "path": "week2-completion-2026-10-08/run-01/logs/dominating-2-seed25.stdout.gz",
+      "bytes": 54079,
+      "sha256": "24edc479b0c60a784d731abf58ee654336b28a395412621105b7a72b8f105d18"
+    },
+    {
+      "path": "week2-completion-2026-10-08/run-01/logs/dominating-2-seed26.stdout.gz",
+      "bytes": 53969,
+      "sha256": "0aa7d3334b97bb7eea4dd21a3744afa823efbe16ca7d897c2049d199ca6cb127"
+    },
+    {
+      "path": "week2-completion-2026-10-08/run-01/logs/dominating-2-seed27.stdout.gz",
+      "bytes": 54086,
+      "sha256": "68daccb322e7fb53b19bb0acbf576d173d5113eecb96fdbbd59f8902aca6da80"
+    },
+    {
+      "path": "week2-completion-2026-10-08/run-01/logs/dominating-2-seed28.stdout.gz",
+      "bytes": 54030,
+      "sha256": "18191c5db7172682068c18973c925e6e8e990837b698220c4aea1ebd101913bd"
+    },
+    {
+      "path": "week2-completion-2026-10-08/run-01/logs/dominating-2-seed29.stdout.gz",
+      "bytes": 54221,
+      "sha256": "d2a780fbd6ab3fe11298026b864df48bd589cc50cb16700d195909fca32bde6c"
+    },
+    {
+      "path": "week2-completion-2026-10-08/run-01/logs/dominating-2-seed30.stdout.gz",
+      "bytes": 54187,
+      "sha256": "3a77d15c9bc8891aefd0510f7ca409a990f1e9003607a4063b7c868b5a0dacf9"
+    },
+    {
+      "path": "week2-completion-2026-10-08/run-01/logs/dominating-3-seed01.stdout.gz",
+      "bytes": 61975,
+      "sha256": "b55d0d5d0a2d511eac5c606333ddc745911fe61f13857e67f808fc2ecd21537d"
+    },
+    {
+      "path": "week2-completion-2026-10-08/run-01/logs/dominating-3-seed02.stdout.gz",
+      "bytes": 60155,
+      "sha256": "28802eef79939f8f13afbab6a1e9f8fe82f868ac3f4dcd0d2b26c1352d7de5b8"
+    },
+    {
+      "path": "week2-completion-2026-10-08/run-01/logs/dominating-3-seed03.stdout.gz",
+      "bytes": 58726,
+      "sha256": "caf342284e02c094d2c29d7d1c71771420dfc35f6d43b0d9157dc5a6837a93f3"
+    },
+    {
+      "path": "week2-completion-2026-10-08/run-01/logs/dominating-3-seed04.stdout.gz",
+      "bytes": 55713,
+      "sha256": "f174ce6b78324b5bc23401321257bac488dab3140ff99ae38d558d1bcde9185a"
+    },
+    {
+      "path": "week2-completion-2026-10-08/run-01/logs/dominating-3-seed05.stdout.gz",
+      "bytes": 54000,
+      "sha256": "dcb0975f3e2be565c3399530558c30c54e107b631b8499babd2e61a5f77c1b11"
+    },
+    {
+      "path": "week2-completion-2026-10-08/run-01/logs/dominating-3-seed06.stdout.gz",
+      "bytes": 57644,
+      "sha256": "50abb8b62e0c799bd2911555926ba9b096d995ee1b2763f780caaa4ccbc4e928"
+    },
+    {
+      "path": "week2-completion-2026-10-08/run-01/logs/dominating-3-seed07.stdout.gz",
+      "bytes": 54930,
+      "sha256": "28a1f32fd0cb3b885c120fadb3bc2b133f8bf91d3c57ae51537479c85443179c"
+    },
+    {
+      "path": "week2-completion-2026-10-08/run-01/logs/dominating-3-seed08.stdout.gz",
+      "bytes": 54274,
+      "sha256": "fec0e72f4f69816e19ca90084309221eaa2b0dd2c030a2804d4987793724fb85"
+    },
+    {
+      "path": "week2-completion-2026-10-08/run-01/logs/dominating-3-seed09.stdout.gz",
+      "bytes": 57720,
+      "sha256": "21fea751904db880664d871e618f696248050f060f98414cf491602ecb967485"
+    },
+    {
+      "path": "week2-completion-2026-10-08/run-01/logs/dominating-3-seed10.stdout.gz",
+      "bytes": 56228,
+      "sha256": "b7ca2d420b07e6b17326f27b0dd07d0a3e91de21f44fc2364de18f9cd166c447"
+    },
+    {
+      "path": "week2-completion-2026-10-08/run-01/logs/dominating-3-seed11.stdout.gz",
+      "bytes": 57358,
+      "sha256": "0d17644f722c2a6f8d3517380bb6003f69232e520e67ecee7285419cc9f3df23"
+    },
+    {
+      "path": "week2-completion-2026-10-08/run-01/logs/dominating-3-seed12.stdout.gz",
+      "bytes": 56551,
+      "sha256": "8a8fb0cfb3454a7b1797d06cea19683fb218e70627b4ba71c487782c27907af6"
+    },
+    {
+      "path": "week2-completion-2026-10-08/run-01/logs/dominating-3-seed13.stdout.gz",
+      "bytes": 54451,
+      "sha256": "401806df96ccc7a0411e3e9e3960b42bedfa380655cd3a78700e6f3ac49d582b"
+    },
+    {
+      "path": "week2-completion-2026-10-08/run-01/logs/dominating-3-seed14.stdout.gz",
+      "bytes": 57014,
+      "sha256": "7f3a45becf007a18819ab367225b245859268d4a7cdcf9f19ccf3e6861dabedd"
+    },
+    {
+      "path": "week2-completion-2026-10-08/run-01/logs/dominating-3-seed15.stdout.gz",
+      "bytes": 55688,
+      "sha256": "414b803b3bfdb85eb0efe0505a7229d574be99da0ad0ec0df1c3f0b6ac1ed702"
+    },
+    {
+      "path": "week2-completion-2026-10-08/run-01/logs/dominating-3-seed16.stdout.gz",
+      "bytes": 58655,
+      "sha256": "f26ba8d0e322532226c4959139169e79bc8f88970bdbbbd834cac88bfb66517a"
+    },
+    {
+      "path": "week2-completion-2026-10-08/run-01/logs/dominating-3-seed17.stdout.gz",
+      "bytes": 55584,
+      "sha256": "a5f89b6a50e8960404bcb81333ca9bd161c05720fc85bf023568f2d21c30cfb9"
+    },
+    {
+      "path": "week2-completion-2026-10-08/run-01/logs/dominating-3-seed18.stdout.gz",
+      "bytes": 56802,
+      "sha256": "479a66d1c045aefd7431dfc5889bfb74e964d6e40eab6f21894f1c058ac3c842"
+    },
+    {
+      "path": "week2-completion-2026-10-08/run-01/logs/dominating-3-seed19.stdout.gz",
+      "bytes": 57435,
+      "sha256": "37b83663ca09e93af00bb97ba531306a70d33834cd95f8c2b6384da27b925b88"
+    },
+    {
+      "path": "week2-completion-2026-10-08/run-01/logs/dominating-3-seed20.stdout.gz",
+      "bytes": 57457,
+      "sha256": "df80cab542e1475d7fe2ef895b53ac9f37d478741fa4fb1a058fbe692c4eb3f0"
+    },
+    {
+      "path": "week2-completion-2026-10-08/run-01/logs/dominating-3-seed21.stdout.gz",
+      "bytes": 57127,
+      "sha256": "2dea2c0fc551391421b4ed5aa0a04af12a722efea8d7986055bffa58b1721a81"
+    },
+    {
+      "path": "week2-completion-2026-10-08/run-01/logs/dominating-3-seed22.stdout.gz",
+      "bytes": 54566,
+      "sha256": "19fe9998cb353e068893c701f58b357904853761181bb388dc6514c79624a887"
+    },
+    {
+      "path": "week2-completion-2026-10-08/run-01/logs/dominating-3-seed23.stdout.gz",
+      "bytes": 54646,
+      "sha256": "b46477fe4d2514fdbdb57019f22585589482a5a448db0b6da2726242268d7167"
+    },
+    {
+      "path": "week2-completion-2026-10-08/run-01/logs/dominating-3-seed24.stdout.gz",
+      "bytes": 58713,
+      "sha256": "568005bcc13b4570c9df9f02d35e3727b4b3f9929ce7d52805ea7d8c7f3340d7"
+    },
+    {
+      "path": "week2-completion-2026-10-08/run-01/logs/dominating-3-seed25.stdout.gz",
+      "bytes": 54746,
+      "sha256": "e369b4b0f3b855b46b7271bf320e5e0d11a98700c778173dc9d4a18d50d3a467"
+    },
+    {
+      "path": "week2-completion-2026-10-08/run-01/logs/dominating-3-seed26.stdout.gz",
+      "bytes": 57890,
+      "sha256": "c758393de67399fe3aedc21744e6c3e85d2b154dd7b41cffcf2dc46f4b6278b5"
+    },
+    {
+      "path": "week2-completion-2026-10-08/run-01/logs/dominating-3-seed27.stdout.gz",
+      "bytes": 57288,
+      "sha256": "949c59bb7c59a09f0dd4be9222fdb0aa8537f4ef726c893a9a47bf2079a867a1"
+    },
+    {
+      "path": "week2-completion-2026-10-08/run-01/logs/dominating-3-seed28.stdout.gz",
+      "bytes": 55814,
+      "sha256": "224b14fd5e0265bd608f2d74724902f0c9ba5e7bbb42d39453aa3e07516c65d1"
+    },
+    {
+      "path": "week2-completion-2026-10-08/run-01/logs/dominating-3-seed29.stdout.gz",
+      "bytes": 59307,
+      "sha256": "09c5e1266b132eb13378075c3693c10ceab7af99564671c3571528025947e791"
+    },
+    {
+      "path": "week2-completion-2026-10-08/run-01/logs/dominating-3-seed30.stdout.gz",
+      "bytes": 57138,
+      "sha256": "4b6ff3f4cf887cb506f6c1ca4f16a067068651c771473c024faf88ee308ce984"
+    },
+    {
+      "path": "week2-completion-2026-10-08/run-01/logs/dominating-4-seed01.stdout.gz",
+      "bytes": 55002,
+      "sha256": "0198d6fb69dd64ef218f7e0a250e3b1766027725dcc59d71a010f4501ac1ca7f"
+    },
+    {
+      "path": "week2-completion-2026-10-08/run-01/logs/dominating-4-seed02.stdout.gz",
+      "bytes": 58047,
+      "sha256": "cc258c78b0303916ee622f6c1affcaf2667ef1913c6e29dee4df3efd6a46c59e"
+    },
+    {
+      "path": "week2-completion-2026-10-08/run-01/logs/dominating-4-seed03.stdout.gz",
+      "bytes": 62893,
+      "sha256": "d1f4153bc95357fa299e28036ab2ac291eec1ead77c6e5778cf3a11ceefa0b8f"
+    },
+    {
+      "path": "week2-completion-2026-10-08/run-01/logs/dominating-4-seed04.stdout.gz",
+      "bytes": 54413,
+      "sha256": "5f589d8f9ff630a30fec085c0f79d602fb1e0b848f582c7f50b9f4e1fa073de2"
+    },
+    {
+      "path": "week2-completion-2026-10-08/run-01/logs/dominating-4-seed05.stdout.gz",
+      "bytes": 55659,
+      "sha256": "4c4a111ef78c554ec30bd75c872c1c986c5dcb004dd75668bc5d2ec16fe11116"
+    },
+    {
+      "path": "week2-completion-2026-10-08/run-01/logs/dominating-4-seed06.stdout.gz",
+      "bytes": 57264,
+      "sha256": "3861b9618ee1f52a8653b161cbb69d4cbfdabfb9e1f277ea15284652934d767c"
+    },
+    {
+      "path": "week2-completion-2026-10-08/run-01/logs/dominating-4-seed07.stdout.gz",
+      "bytes": 57211,
+      "sha256": "bea6ce2bb8c02c07decf31fbd1071f329f8c92b7e0f47145b218859895d158f7"
+    },
+    {
+      "path": "week2-completion-2026-10-08/run-01/logs/dominating-4-seed08.stdout.gz",
+      "bytes": 55952,
+      "sha256": "950216bfc6f6422de9befa8af1ed850a9ae54ad64a554a8008db9c79605a463b"
+    },
+    {
+      "path": "week2-completion-2026-10-08/run-01/logs/dominating-4-seed09.stdout.gz",
+      "bytes": 56696,
+      "sha256": "28803c0102b48bf4bc664bde49f8756093613c479b7e794e57d62fb5ad0b4c59"
+    },
+    {
+      "path": "week2-completion-2026-10-08/run-01/logs/dominating-4-seed10.stdout.gz",
+      "bytes": 60207,
+      "sha256": "499e1aeb9294f88d196211251b330cc2933adaa6caaa9969675d559a0c04580f"
+    },
+    {
+      "path": "week2-completion-2026-10-08/run-01/logs/dominating-4-seed11.stdout.gz",
+      "bytes": 60755,
+      "sha256": "d97893d3095b049a72c25debbe9a90bd80ca98353c8765cd5bb10dead054563f"
+    },
+    {
+      "path": "week2-completion-2026-10-08/run-01/logs/dominating-4-seed12.stdout.gz",
+      "bytes": 53120,
+      "sha256": "af557e744b8254f2a153561274104c2e5d6167c3ec246fb3ef55d2403ef3fadd"
+    },
+    {
+      "path": "week2-completion-2026-10-08/run-01/logs/dominating-4-seed13.stdout.gz",
+      "bytes": 55154,
+      "sha256": "a3232858d544961fe9387eaef1a99281d8eeb67e00dcc1f0df4f4a7d2613ed2b"
+    },
+    {
+      "path": "week2-completion-2026-10-08/run-01/logs/dominating-4-seed14.stdout.gz",
+      "bytes": 58425,
+      "sha256": "016f55e6acf6c4fe77e829c4db84c43162f8bebde1387b5d648cd6a70f54d33d"
+    },
+    {
+      "path": "week2-completion-2026-10-08/run-01/logs/dominating-4-seed15.stdout.gz",
+      "bytes": 56184,
+      "sha256": "b4d32623d580dd41cc0028a1f55ba84a69c8225922550e0987706c85230634ed"
+    },
+    {
+      "path": "week2-completion-2026-10-08/run-01/logs/dominating-4-seed16.stdout.gz",
+      "bytes": 58571,
+      "sha256": "8e096430cfb72c2b64b515b602f76912278888ec31369700a1683f2ddda2666a"
+    },
+    {
+      "path": "week2-completion-2026-10-08/run-01/logs/dominating-4-seed17.stdout.gz",
+      "bytes": 55755,
+      "sha256": "71591b3e7149d23ee3e27b3c13e08791a416f43e9f3a4d185c77a1f2e48ac89c"
+    },
+    {
+      "path": "week2-completion-2026-10-08/run-01/logs/dominating-4-seed18.stdout.gz",
+      "bytes": 54066,
+      "sha256": "d586a8c6d66fffd08c861e53d31972f24a0a6960b0a74251eb081fcc177b6c8e"
+    },
+    {
+      "path": "week2-completion-2026-10-08/run-01/logs/dominating-4-seed19.stdout.gz",
+      "bytes": 58839,
+      "sha256": "37191491e9aca97b23268c0ccf5fe25ff27edcdb9879b0aadaaa158c060f5e63"
+    },
+    {
+      "path": "week2-completion-2026-10-08/run-01/logs/dominating-4-seed20.stdout.gz",
+      "bytes": 59490,
+      "sha256": "c496450fe225e8643bf9c1e8d388d3d9050e8a611a69a0f800474ee0a412303d"
+    },
+    {
+      "path": "week2-completion-2026-10-08/run-01/logs/dominating-4-seed21.stdout.gz",
+      "bytes": 58342,
+      "sha256": "dd9c0e3376beed8cc3e2e5959f201fd2ff83e091bda08f65edf12f8276a1dd5e"
+    },
+    {
+      "path": "week2-completion-2026-10-08/run-01/logs/dominating-4-seed22.stdout.gz",
+      "bytes": 55740,
+      "sha256": "08309e08c213bb5aa8a5d32ffe17a7105a09c7399ca5ba2ea848a328cafe2f26"
+    },
+    {
+      "path": "week2-completion-2026-10-08/run-01/logs/dominating-4-seed23.stdout.gz",
+      "bytes": 56222,
+      "sha256": "839c4a928a7708b93536998adec5aa66c8981324e61e8be1f617bca04621b68e"
+    },
+    {
+      "path": "week2-completion-2026-10-08/run-01/logs/dominating-4-seed24.stdout.gz",
+      "bytes": 64044,
+      "sha256": "af09d2c8039051c2c78a50d7f6fb3cf912c8541b3791f2bdb5b2f84c61b79b96"
+    },
+    {
+      "path": "week2-completion-2026-10-08/run-01/logs/dominating-4-seed25.stdout.gz",
+      "bytes": 58113,
+      "sha256": "6eb5c3f3936f79deae2b00d8e2c2ec1bee6b6c5994b65a2036455ec8720fde5f"
+    },
+    {
+      "path": "week2-completion-2026-10-08/run-01/logs/dominating-4-seed26.stdout.gz",
+      "bytes": 60647,
+      "sha256": "d830d6499d6a4395b258f83fde05bbb7943ba0c8b7a3d37459b0958d28dcf627"
+    },
+    {
+      "path": "week2-completion-2026-10-08/run-01/logs/dominating-4-seed27.stdout.gz",
+      "bytes": 55931,
+      "sha256": "349437a5422970173e89102de046ad94e39e20e428d368fc1e30ac4f1409991e"
+    },
+    {
+      "path": "week2-completion-2026-10-08/run-01/logs/dominating-4-seed28.stdout.gz",
+      "bytes": 58503,
+      "sha256": "464b8644a95b285352d40552f5b27b74cdfe0499f7dba8fc59147d9b1b578ab2"
+    },
+    {
+      "path": "week2-completion-2026-10-08/run-01/logs/dominating-4-seed29.stdout.gz",
+      "bytes": 61751,
+      "sha256": "de2c6cc6ca962fdc72cf8f4021259f569b3a016b6a295c70961dc12b08e122d4"
+    },
+    {
+      "path": "week2-completion-2026-10-08/run-01/logs/dominating-4-seed30.stdout.gz",
+      "bytes": 59213,
+      "sha256": "021319d3724a32d599c0c0264c9c53725f1f486d7ea9acc78834d8f37573d97b"
+    },
+    {
+      "path": "week2-completion-2026-10-08/run-01/logs/dominating-5-seed01.stdout.gz",
+      "bytes": 61422,
+      "sha256": "239571517ff9328707f580c6c170d2de03e6fb1d92ebf6a0e2b3eda8b65c9561"
+    },
+    {
+      "path": "week2-completion-2026-10-08/run-01/logs/dominating-5-seed02.stdout.gz",
+      "bytes": 64179,
+      "sha256": "e3fc1e8f91ec41c821dd325f6b0df8ae0a00b96ac8ca1693e9d6e48295f64564"
+    },
+    {
+      "path": "week2-completion-2026-10-08/run-01/logs/dominating-5-seed03.stdout.gz",
+      "bytes": 64677,
+      "sha256": "639edc02bfe5c0eee5e7d20117ab6e9ed7b1994e7e7096eeeedebbf4dd80e1d4"
+    },
+    {
+      "path": "week2-completion-2026-10-08/run-01/logs/dominating-5-seed04.stdout.gz",
+      "bytes": 62167,
+      "sha256": "411856cbe7beaa542c676267c70611a5fc2ee12a66655cf2721ac6e4d5e5fee6"
+    },
+    {
+      "path": "week2-completion-2026-10-08/run-01/logs/dominating-5-seed05.stdout.gz",
+      "bytes": 64536,
+      "sha256": "35c7998145e5d5c1b63b2be00018a85de92f1c209579b7e9a175666324c58bbc"
+    },
+    {
+      "path": "week2-completion-2026-10-08/run-01/logs/dominating-5-seed06.stdout.gz",
+      "bytes": 64666,
+      "sha256": "58e5cc3d0bf223d4b2eb7556d36bf1434dbe2ec2b192eabbdde6e31121c51e67"
+    },
+    {
+      "path": "week2-completion-2026-10-08/run-01/logs/dominating-5-seed07.stdout.gz",
+      "bytes": 64447,
+      "sha256": "b061ec1233dc5d1eff9df8fbf27ce9c028e24dbbd8099454b4aaaba37830b4f6"
+    },
+    {
+      "path": "week2-completion-2026-10-08/run-01/logs/dominating-5-seed08.stdout.gz",
+      "bytes": 64737,
+      "sha256": "3b21181eee7de5b56af88cd729ecd41670e46e9879a82e7c1cce0c4b22c61139"
+    },
+    {
+      "path": "week2-completion-2026-10-08/run-01/logs/dominating-5-seed09.stdout.gz",
+      "bytes": 62669,
+      "sha256": "95a75499c46a274f7510afb4f859e9f43d8a5be0c5f672274d3c4e004d3136ef"
+    },
+    {
+      "path": "week2-completion-2026-10-08/run-01/logs/dominating-5-seed10.stdout.gz",
+      "bytes": 59151,
+      "sha256": "56180fdd52f6125fb57469d7ac7630ae7b0375e8cc7540e97104f93f811f2d53"
+    },
+    {
+      "path": "week2-completion-2026-10-08/run-01/logs/dominating-5-seed11.stdout.gz",
+      "bytes": 64536,
+      "sha256": "c606d60702e74d05dad0634442e78177785b65cd61a37d78ee29d8c38697d026"
+    },
+    {
+      "path": "week2-completion-2026-10-08/run-01/logs/dominating-5-seed12.stdout.gz",
+      "bytes": 64639,
+      "sha256": "2c45eaea48ddc6403eab3334fda723e2822d678c3b4530ecf7d498015958d54f"
+    },
+    {
+      "path": "week2-completion-2026-10-08/run-01/logs/dominating-5-seed13.stdout.gz",
+      "bytes": 61743,
+      "sha256": "0b627fe5e156b7431f63da7b0810d0d223f3acc20878fd2e599b7b2e83e408f2"
+    },
+    {
+      "path": "week2-completion-2026-10-08/run-01/logs/dominating-5-seed14.stdout.gz",
+      "bytes": 65925,
+      "sha256": "315834bad81106d027cad728c69513ad9840daee7430ef95dd6cdb69e0a3b30e"
+    },
+    {
+      "path": "week2-completion-2026-10-08/run-01/logs/dominating-5-seed15.stdout.gz",
+      "bytes": 64585,
+      "sha256": "f9e79fa495c2127a0cf001fe6f17490405f34660ab68b46376da6242bbed18e2"
+    },
+    {
+      "path": "week2-completion-2026-10-08/run-01/logs/dominating-5-seed16.stdout.gz",
+      "bytes": 61917,
+      "sha256": "b26c394eee4edb93a9b39aed9eb89782a0700de074a4d65f2de73f70b0747178"
+    },
+    {
+      "path": "week2-completion-2026-10-08/run-01/logs/dominating-5-seed17.stdout.gz",
+      "bytes": 64181,
+      "sha256": "821f525cf49be40206f62eb58dbc34602cf4c0dbb4c638b30ad0aa7cd79fdf39"
+    },
+    {
+      "path": "week2-completion-2026-10-08/run-01/logs/dominating-5-seed18.stdout.gz",
+      "bytes": 63112,
+      "sha256": "a18b936a547d20ba8a3bc68182979018262022049d91bf201c3d90954c1370f5"
+    },
+    {
+      "path": "week2-completion-2026-10-08/run-01/logs/dominating-5-seed19.stdout.gz",
+      "bytes": 64589,
+      "sha256": "725df32ee53fc2928943bc70a3dee4c7810efc26a130156a156e902d8b677fe8"
+    },
+    {
+      "path": "week2-completion-2026-10-08/run-01/logs/dominating-5-seed20.stdout.gz",
+      "bytes": 64620,
+      "sha256": "77bf3a83e30f873d3cabd9eeb624de1a5d3553aa859966d06805ad361bfb56ea"
+    },
+    {
+      "path": "week2-completion-2026-10-08/run-01/logs/dominating-5-seed21.stdout.gz",
+      "bytes": 64222,
+      "sha256": "68d71424351bd08f9361c07d9ac77323c96e25033c49b93591e1bb304019736c"
+    },
+    {
+      "path": "week2-completion-2026-10-08/run-01/logs/dominating-5-seed22.stdout.gz",
+      "bytes": 61637,
+      "sha256": "cb76d0184e885cf1d42fb0e86bdcff8e47fe35b78c2f3d4f291b964556467b1f"
+    },
+    {
+      "path": "week2-completion-2026-10-08/run-01/logs/dominating-5-seed23.stdout.gz",
+      "bytes": 61362,
+      "sha256": "38aae4e155e4d9fa43f674cfd468f6eff9b7db609f6b256fa8676eb56751c15d"
+    },
+    {
+      "path": "week2-completion-2026-10-08/run-01/logs/dominating-5-seed24.stdout.gz",
+      "bytes": 61002,
+      "sha256": "d61f15eeadc4e955bb804243a98a4817d5ff42e2252aad9cf8967e653e4c7cf0"
+    },
+    {
+      "path": "week2-completion-2026-10-08/run-01/logs/dominating-5-seed25.stdout.gz",
+      "bytes": 64464,
+      "sha256": "2cc9059a2fa5efba68296aea42b09e46968f816c9e38dfb04d40de618c33b76b"
+    },
+    {
+      "path": "week2-completion-2026-10-08/run-01/logs/dominating-5-seed26.stdout.gz",
+      "bytes": 64343,
+      "sha256": "7b38bfc8dd0e198687a50c24845f2d5add9fcfb88e99f4bf995ac5c0d5c40403"
+    },
+    {
+      "path": "week2-completion-2026-10-08/run-01/logs/dominating-5-seed27.stdout.gz",
+      "bytes": 64608,
+      "sha256": "fe4fe725a1fec0d2645ecef4925e21ba1d6b2fd10be35c0ce09d510cf6e781c8"
+    },
+    {
+      "path": "week2-completion-2026-10-08/run-01/logs/dominating-5-seed28.stdout.gz",
+      "bytes": 60930,
+      "sha256": "6c19b3e6ba380ef48d19cb36c145fea40f023a00c869acba5a1dd5cb9fb3313a"
+    },
+    {
+      "path": "week2-completion-2026-10-08/run-01/logs/dominating-5-seed29.stdout.gz",
+      "bytes": 60718,
+      "sha256": "a2c00aa9385a2a0094228ad667e91b18af774d37d89e8a93cf48b8f61f5d35b0"
+    },
+    {
+      "path": "week2-completion-2026-10-08/run-01/logs/dominating-5-seed30.stdout.gz",
+      "bytes": 64225,
+      "sha256": "e287b3919d7a27eb6961fc5f575a504da02b4c77b6bf56154bc3846b5e33e92c"
+    },
+    {
+      "path": "week2-completion-2026-10-08/run-01/logs/dominating-6-seed01.stdout.gz",
+      "bytes": 62056,
+      "sha256": "17a99f930f752077f967c92f11d76a9ed8cd4b4496c926df2a22f9f7c2ddea22"
+    },
+    {
+      "path": "week2-completion-2026-10-08/run-01/logs/dominating-6-seed02.stdout.gz",
+      "bytes": 64463,
+      "sha256": "5676e9187f34a7e575c84c48d31b93103cdd1a133f8de8d6938462b9256276e4"
+    },
+    {
+      "path": "week2-completion-2026-10-08/run-01/logs/dominating-6-seed03.stdout.gz",
+      "bytes": 62910,
+      "sha256": "020bfb45e9db6b6b8faa2701864eda7ee3ccdb82917e4a4de04d924a40daf759"
+    },
+    {
+      "path": "week2-completion-2026-10-08/run-01/logs/dominating-6-seed04.stdout.gz",
+      "bytes": 61849,
+      "sha256": "f6a0dc373104f8878f95f679275f2f64bc728f55ada09c6d772c54fb07f4e33b"
+    },
+    {
+      "path": "week2-completion-2026-10-08/run-01/logs/dominating-6-seed05.stdout.gz",
+      "bytes": 64473,
+      "sha256": "8afe8a78694a2458ee969be52a33395be6f97c42bc69718def59fdf90657fcba"
+    },
+    {
+      "path": "week2-completion-2026-10-08/run-01/logs/dominating-6-seed06.stdout.gz",
+      "bytes": 61068,
+      "sha256": "76e6fedd741bbaec45181a1d6ea161ce18211545ac137f2b8182580afa90434f"
+    },
+    {
+      "path": "week2-completion-2026-10-08/run-01/logs/dominating-6-seed07.stdout.gz",
+      "bytes": 64555,
+      "sha256": "d56ac04f537d6ff5411ee4ec980a08f804df575189326a2531690b2fbd78366b"
+    },
+    {
+      "path": "week2-completion-2026-10-08/run-01/logs/dominating-6-seed08.stdout.gz",
+      "bytes": 60839,
+      "sha256": "7278d3910fe43c889bd34aeab336381520358d33b9ba9b36fd29f94f9c8d14da"
+    },
+    {
+      "path": "week2-completion-2026-10-08/run-01/logs/dominating-6-seed09.stdout.gz",
+      "bytes": 64558,
+      "sha256": "654eddfc2f8e199ff382f9d11726265fd26f64fba5c03d3544f338e4dbd1af6b"
+    },
+    {
+      "path": "week2-completion-2026-10-08/run-01/logs/dominating-6-seed10.stdout.gz",
+      "bytes": 64656,
+      "sha256": "4e906a57048e7fc7c84b9b6101024be751ad117f133c63591aa9013e163e0d6a"
+    },
+    {
+      "path": "week2-completion-2026-10-08/run-01/logs/dominating-6-seed11.stdout.gz",
+      "bytes": 60933,
+      "sha256": "49dacc5b68c5b654f7102129b5e84f514ee660ab958d5b456e164579133db702"
+    },
+    {
+      "path": "week2-completion-2026-10-08/run-01/logs/dominating-6-seed12.stdout.gz",
+      "bytes": 64796,
+      "sha256": "a9d23f886f0e139d8f96bc53675e5c0a090a27a320d899b5507c19515cee0449"
+    },
+    {
+      "path": "week2-completion-2026-10-08/run-01/logs/dominating-6-seed13.stdout.gz",
+      "bytes": 61332,
+      "sha256": "a6ae5ac0f4a2ef4dfd1c694976526110ab518f8d92119a9f4b66274d3c3c16e0"
+    },
+    {
+      "path": "week2-completion-2026-10-08/run-01/logs/dominating-6-seed14.stdout.gz",
+      "bytes": 64417,
+      "sha256": "6f91ef4d75c3e9cc2ede869ec879e74d97c63e1923b0a2c88badd765f1a898cd"
+    },
+    {
+      "path": "week2-completion-2026-10-08/run-01/logs/dominating-6-seed15.stdout.gz",
+      "bytes": 62860,
+      "sha256": "3390639749149087d977fd19ecb1f8cb1ff4cbe720990c36175e6235b84a888e"
+    },
+    {
+      "path": "week2-completion-2026-10-08/run-01/logs/dominating-6-seed16.stdout.gz",
+      "bytes": 61957,
+      "sha256": "9126d5e266bfc38b905862c9212c1bc6f7a061dcd40d60956bf4c5e1d445f5ca"
+    },
+    {
+      "path": "week2-completion-2026-10-08/run-01/logs/dominating-6-seed17.stdout.gz",
+      "bytes": 64307,
+      "sha256": "f6ff3df451097cc8a2985fae549ab0ae8e95937429bec0f0ca4e19e265583e58"
+    },
+    {
+      "path": "week2-completion-2026-10-08/run-01/logs/dominating-6-seed18.stdout.gz",
+      "bytes": 60979,
+      "sha256": "cf57ed480c9ef774aa4a326a088ac3cc25849275262eb4793828f8bf2fd1e00b"
+    },
+    {
+      "path": "week2-completion-2026-10-08/run-01/logs/dominating-6-seed19.stdout.gz",
+      "bytes": 64398,
+      "sha256": "e4c6ae768ab817ba8a52127248cb84162a98f3ec8f8997df7dab4e99f35a69fa"
+    },
+    {
+      "path": "week2-completion-2026-10-08/run-01/logs/dominating-6-seed20.stdout.gz",
+      "bytes": 60503,
+      "sha256": "2a12dee1f1ca3129db983b5ab72fbbf74ef65beec5f0be19a4917794a014c7a9"
+    },
+    {
+      "path": "week2-completion-2026-10-08/run-01/logs/dominating-6-seed21.stdout.gz",
+      "bytes": 64553,
+      "sha256": "cf92805ff225eecdbd7b6b405fdeaa3606083e59491ce1af1ef7f72d15978b6c"
+    },
+    {
+      "path": "week2-completion-2026-10-08/run-01/logs/dominating-6-seed22.stdout.gz",
+      "bytes": 62028,
+      "sha256": "82b4c9435cbdba18d2b3f00971d0d3a4c469549e640c1507402e1335e3527361"
+    },
+    {
+      "path": "week2-completion-2026-10-08/run-01/logs/dominating-6-seed23.stdout.gz",
+      "bytes": 62267,
+      "sha256": "b4751ea983439b900f74007947e263023baf820d0bcefb7adc2463b12c843975"
+    },
+    {
+      "path": "week2-completion-2026-10-08/run-01/logs/dominating-6-seed24.stdout.gz",
+      "bytes": 64510,
+      "sha256": "41bfc34a670fb6c5e2ccc12e87d514fe63bd12065e072c024ce630a6c2956b47"
+    },
+    {
+      "path": "week2-completion-2026-10-08/run-01/logs/dominating-6-seed25.stdout.gz",
+      "bytes": 60419,
+      "sha256": "e006349ebe2072ddac03aed180722fa5e8b3a142dddafed3711a7366f303d8e4"
+    },
+    {
+      "path": "week2-completion-2026-10-08/run-01/logs/dominating-6-seed26.stdout.gz",
+      "bytes": 64565,
+      "sha256": "c3ae3ee6d3bae96d83bb89da6883bdc812df3036abf33523aec4dcb8f0264841"
+    },
+    {
+      "path": "week2-completion-2026-10-08/run-01/logs/dominating-6-seed27.stdout.gz",
+      "bytes": 64484,
+      "sha256": "4f4a23f99b6e79327162bc1ff1f7012f34d178c7a59f2737e005b28af0d9f18b"
+    },
+    {
+      "path": "week2-completion-2026-10-08/run-01/logs/dominating-6-seed28.stdout.gz",
+      "bytes": 61033,
+      "sha256": "a249a5b4a3b0081c1b6e428a47a63b196f1c08a9ec47154ea6c8611b8b8b07f6"
+    },
+    {
+      "path": "week2-completion-2026-10-08/run-01/logs/dominating-6-seed29.stdout.gz",
+      "bytes": 60405,
+      "sha256": "6d407affa2cd68ec9237fd5611a0938615b1e21eb3a39a1729a8e8bdbd8187e0"
+    },
+    {
+      "path": "week2-completion-2026-10-08/run-01/logs/dominating-6-seed30.stdout.gz",
+      "bytes": 64664,
+      "sha256": "75f132c9ee2b8263b94347fafb94ba74e1eaeaac95f2e7cab87495820b62e2bd"
+    },
+    {
+      "path": "week2-completion-2026-10-08/run-01/provenance.json",
+      "bytes": 7119,
+      "sha256": "46fba5f3c5dfc212be924a0b6670c41e0afc843e30ce07667bdde3ea93da7182"
+    },
+    {
+      "path": "week2-completion-2026-10-08/run-01/results.csv",
+      "bytes": 59616,
+      "sha256": "f58931aa387de2e04a1da655f6bcfcd3da69a85ff0bf7e94fb31ef266c77d94b"
+    },
+    {
+      "path": "week2-completion-2026-10-08/run-01/source.patch",
+      "bytes": 0,
+      "sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855"
+    },
+    {
+      "path": "week2-completion-2026-10-08/run-01/validation.json",
+      "bytes": 221,
+      "sha256": "d26766c1e65bc130276ec40ce554480117b372103c6821716cc98c32a27ff346"
+    },
+    {
+      "path": "week2-completion-2026-10-08/run-01-runner.log",
+      "bytes": 36431,
+      "sha256": "fd43cec81a659b78a22460c5d200df8ad6437a3873fa319feb3193fcfdfb0d7c"
     },
     {
       "path": "week2-incomplete-2026-10-07/01-extended-300s/commands.json",
@@ -11863,6 +15093,21 @@
       "sha256": "db46cec6f8f91b364becfb1af841675fc69de89b15f4f75a30063765fe1a9459"
     },
     {
+      "path": "week2-incomplete-2026-10-07/FINAL_SOURCE.json",
+      "bytes": 1508,
+      "sha256": "93a800c3f053b4a04f81e8f8576a3ef8f209cfa6b3f44da6affb6ea866dd1c8e"
+    },
+    {
+      "path": "week2-incomplete-2026-10-07/README.md",
+      "bytes": 3787,
+      "sha256": "d69a85eedfa6384368e9c6bd4b98d367823cd02bcdc9a8198c3f58b7ce05e0ed"
+    },
+    {
+      "path": "week2-incomplete-2026-10-07/SHA256SUMS",
+      "bytes": 248362,
+      "sha256": "25b8bfd71a22fcde6f6edcb53a80ced83b49c5dc8d10c45c76465a6bdda84135"
+    },
+    {
       "path": "week2-incomplete-2026-10-07/analysis/all630_before_after.csv",
       "bytes": 68076,
       "sha256": "7a805bf8875af140f23d5efd021c6610b4f94531eacf159c6d08770591240f76"
@@ -12018,11 +15263,6 @@
       "sha256": "74be05b029979238e343d39d2f84ec5a00fd1def8858a741b8ff13d875262e44"
     },
     {
-      "path": "week2-incomplete-2026-10-07/FINAL_SOURCE.json",
-      "bytes": 1508,
-      "sha256": "93a800c3f053b4a04f81e8f8576a3ef8f209cfa6b3f44da6affb6ea866dd1c8e"
-    },
-    {
       "path": "week2-incomplete-2026-10-07/generate_analysis.py",
       "bytes": 25279,
       "sha256": "292af0df1ca6647abbef76a772abaed9391fd9575d8f1d8ec9de4979f1a3e750"
@@ -12036,11 +15276,6 @@
       "path": "week2-incomplete-2026-10-07/observation-validation.json",
       "bytes": 50,
       "sha256": "d97eba5968624d06a802863b6e5030e4b22d604589cdaf52cf09ee01d2536450"
-    },
-    {
-      "path": "week2-incomplete-2026-10-07/README.md",
-      "bytes": 3787,
-      "sha256": "d69a85eedfa6384368e9c6bd4b98d367823cd02bcdc9a8198c3f58b7ce05e0ed"
     },
     {
       "path": "week2-incomplete-2026-10-07/regression-byte-order-fixed-argument-error.json",
@@ -12113,11 +15348,6 @@
       "sha256": "cdd59156ba55bcd6fd40d0543ec58dcf1e336a0b8a82d46b2f05706558715bfc"
     },
     {
-      "path": "week2-incomplete-2026-10-07/SHA256SUMS",
-      "bytes": 248362,
-      "sha256": "25b8bfd71a22fcde6f6edcb53a80ced83b49c5dc8d10c45c76465a6bdda84135"
-    },
-    {
       "path": "week2-incomplete-2026-10-07/short-cases.txt",
       "bytes": 119,
       "sha256": "ca1c5e1e45ecb101966c046ee4757e618f5b055d7f594f6182e0f00bd16e7182"
@@ -12138,6 +15368,11 @@
       "sha256": "6c9382b9f486d407957b76558c445112fb5cf95754949864b61c18f7834ab964"
     },
     {
+      "path": "week2-reference-review-2026-10-02/README.md",
+      "bytes": 1562,
+      "sha256": "5c8c44ea2d65c47fa1123663d46419a01a6bbc293943bdb2dbbbc905aad0fc64"
+    },
+    {
       "path": "week2-reference-review-2026-10-02/provided_results_fixed_stack.csv",
       "bytes": 19451,
       "sha256": "9aa9b9ccafa11b3e3836a553eeecc51a3b1647b5ac324e25d63d0c72014c0404"
@@ -12146,11 +15381,6 @@
       "path": "week2-reference-review-2026-10-02/provided_seed1_10_comparison.csv",
       "bytes": 31443,
       "sha256": "99609577455c23892778a92617ae21b317b88cc65d67fe65563caa04e94f7bd1"
-    },
-    {
-      "path": "week2-reference-review-2026-10-02/README.md",
-      "bytes": 1562,
-      "sha256": "5c8c44ea2d65c47fa1123663d46419a01a6bbc293943bdb2dbbbc905aad0fc64"
     },
     {
       "path": "week2-reference-review-2026-10-02/reference_scope_summary.csv",
