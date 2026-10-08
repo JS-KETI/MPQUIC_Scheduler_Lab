@@ -1,6 +1,6 @@
 {
   "date_kst": "2026-10-08",
-  "file_count": 36,
+  "file_count": 38,
   "files": [
     {
       "path": "README.md",
@@ -96,6 +96,16 @@
       "path": "week2/figures/path_shares.png",
       "bytes": 88866,
       "sha256": "3e94bf3f56b656a184a44b7f35cb8a546b2c2edaf8917cd42d23976740d605af"
+    },
+    {
+      "path": "week2/pdf/2주차 진행상황.pdf",
+      "bytes": 549980,
+      "sha256": "8bbc8e47f56ef0b72bdb3ef7a99e64022daf279de9021b47a0917b8e1b0c094c"
+    },
+    {
+      "path": "week2/pdf/source.json",
+      "bytes": 607,
+      "sha256": "cd9696267819c8c22683d906ba6089d977def946909db70d0ce59d9a0af65a2b"
     },
     {
       "path": "week2/summary/2주차 진행상황.html",

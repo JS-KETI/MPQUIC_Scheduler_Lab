@@ -1,0 +1,15 @@
+{
+  "source_markdown": "reports/week2/summary/2주차 진행상황.md",
+  "source_markdown_sha256": "06ccfdb7705141659ad1073e28437eef4913a5414def3750885fb2d0fd686d11",
+  "source_commit": "0ff94004e122ee783e094c07ff01f3f291c4acc5",
+  "pdf_sha256": "8bbc8e47f56ef0b72bdb3ef7a99e64022daf279de9021b47a0917b8e1b0c094c",
+  "conversion": "Existing Markdown structure retained, rendered to HTML and printed to PDF",
+  "pages": 5,
+  "headings": 8,
+  "images": 5,
+  "tables": 1,
+  "all_urls_clickable": true,
+  "numeric_ranges_preserved": true,
+  "full_body_text_match": true,
+  "all_pages_visually_reviewed": true
+}
