@@ -38,10 +38,13 @@
   ],
   "current_formats": [
     "md",
-    "html"
+    "html",
+    "pdf"
   ],
-  "pdf_status": "previous version retained; not regenerated",
-  "report_scope": "2주차 기본 시각화·유효 수정 결과·종료 대기 250ms 전체 재검증·공식 기준값 확정·3주차 계획",
+  "pdf_status": "Current Markdown conversion at reports/week2/pdf/2주차 진행상황.pdf; earlier summary PDF retained",
+  "report_scope": "2주차 측정·유효 수정 결과·종료 대기 250ms 전체 검증·3주차 계획·독립 참고 자료",
   "active_baseline": "artifacts/BASELINE.json",
-  "accepted_baseline_summary": "artifacts/week2-completion-2026-10-08/run-01/analysis/summary.csv"
+  "accepted_baseline_summary": "artifacts/week2-completion-2026-10-08/run-01/analysis/summary.csv",
+  "source_markdown_sha256": "ee819c0ba687e831cab40a087e8fa13cfcc02ff7cea2e2aad6377cdc7b8b3255",
+  "report_edit_policy": "Preserve latest edited Markdown, removed gate section, three-level bullet hierarchy and separate references"
 }

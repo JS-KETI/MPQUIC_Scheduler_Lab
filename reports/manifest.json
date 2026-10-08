@@ -4,8 +4,8 @@
   "files": [
     {
       "path": "README.md",
-      "bytes": 2394,
-      "sha256": "b9564852f01c813aac5a50021e68a3b65a1e037ebf7493261c02d46755df10d9"
+      "bytes": 2624,
+      "sha256": "69a2e79504d76d74d2a407e485d71f16ca5db20d08aba2e0f9f1cdaf8d4fa6da"
     },
     {
       "path": "week1/1주차 상세 실험 기록.md",
@@ -69,8 +69,8 @@
     },
     {
       "path": "week2/README.md",
-      "bytes": 2858,
-      "sha256": "190baa3bec5254f7902f4273fff6614a6840eaf441a3e8db24910867ff778b93"
+      "bytes": 3088,
+      "sha256": "a889946b5ae67490f223ba357739369f7dbb5f5f23ba62ae6f61bbb47e99c571"
     },
     {
       "path": "week2/figures/completion_rates.png",
@@ -99,23 +99,23 @@
     },
     {
       "path": "week2/pdf/2주차 진행상황.pdf",
-      "bytes": 549980,
-      "sha256": "8bbc8e47f56ef0b72bdb3ef7a99e64022daf279de9021b47a0917b8e1b0c094c"
+      "bytes": 564721,
+      "sha256": "009b932d769b3b790d6c1ad13bf17b677dd954660d3db2ea205317746a62af14"
     },
     {
       "path": "week2/pdf/source.json",
-      "bytes": 607,
-      "sha256": "cd9696267819c8c22683d906ba6089d977def946909db70d0ce59d9a0af65a2b"
+      "bytes": 731,
+      "sha256": "0624bcc8ae6f48f15659eefdd35cae6cafc07686898027d52009e0a67b0beff8"
     },
     {
       "path": "week2/summary/2주차 진행상황.html",
-      "bytes": 561404,
-      "sha256": "85e6a26dc441e11de4c10e79e25eccb53c12023c348a0752444e0e2ee8a04ae1"
+      "bytes": 562592,
+      "sha256": "210ad2b524c4a8de8f5cdf34a93db453926becb502dbba4c3f54f3f267dcdefc"
     },
     {
       "path": "week2/summary/2주차 진행상황.md",
-      "bytes": 8427,
-      "sha256": "06ccfdb7705141659ad1073e28437eef4913a5414def3750885fb2d0fd686d11"
+      "bytes": 8095,
+      "sha256": "ee819c0ba687e831cab40a087e8fa13cfcc02ff7cea2e2aad6377cdc7b8b3255"
     },
     {
       "path": "week2/summary/2주차 진행상황.pdf",
@@ -124,8 +124,8 @@
     },
     {
       "path": "week2/summary/README.md",
-      "bytes": 2657,
-      "sha256": "c4b65cf266b81c715c19f8be936bba535605bf34848ef4d0201799bb20a60de4"
+      "bytes": 2860,
+      "sha256": "f383b4693d1de612ef212a2494cf234a53847fb371322f9691d78c0e6cba2316"
     },
     {
       "path": "week2/summary/figures/baseline_fct.png",
@@ -189,8 +189,8 @@
     },
     {
       "path": "week2/summary/source.json",
-      "bytes": 1519,
-      "sha256": "0dc3b376cb142ad35f11143d891fdc4d58dd54c93f81d8cd8a3b3cac77b3e6cf"
+      "bytes": 1806,
+      "sha256": "8aca9be0979ac4c7f765feb62c482df3f35b1fb2baa5598a1f9dd48a68835eee"
     }
   ]
 }
