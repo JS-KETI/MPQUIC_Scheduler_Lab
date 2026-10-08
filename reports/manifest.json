@@ -4,8 +4,8 @@
   "files": [
     {
       "path": "README.md",
-      "bytes": 1519,
-      "sha256": "8831b1d2dc3403e35ec7eda918cad70a6435ce105c05d8023aa4451f975a05de"
+      "bytes": 2394,
+      "sha256": "b9564852f01c813aac5a50021e68a3b65a1e037ebf7493261c02d46755df10d9"
     },
     {
       "path": "week1/1주차 상세 실험 기록.md",
@@ -69,8 +69,8 @@
     },
     {
       "path": "week2/README.md",
-      "bytes": 1929,
-      "sha256": "6c7e423f6b3c37bd15a1e3d90fb8d7fb96b60d8d84d0ac4b9fb8242aff5f8f71"
+      "bytes": 2858,
+      "sha256": "190baa3bec5254f7902f4273fff6614a6840eaf441a3e8db24910867ff778b93"
     },
     {
       "path": "week2/figures/completion_rates.png",
@@ -99,13 +99,13 @@
     },
     {
       "path": "week2/summary/2주차 진행상황.html",
-      "bytes": 560007,
-      "sha256": "2fe38d1f0b141d15f6cca9587805400bb21c8c8560f2500d38c2755a46839ce7"
+      "bytes": 561404,
+      "sha256": "85e6a26dc441e11de4c10e79e25eccb53c12023c348a0752444e0e2ee8a04ae1"
     },
     {
       "path": "week2/summary/2주차 진행상황.md",
-      "bytes": 7327,
-      "sha256": "d451c153011b6bdc3f74eca66e21c0d341b1ed8001a4e0c4c3eef2b3d37e161b"
+      "bytes": 8427,
+      "sha256": "06ccfdb7705141659ad1073e28437eef4913a5414def3750885fb2d0fd686d11"
     },
     {
       "path": "week2/summary/2주차 진행상황.pdf",
@@ -114,8 +114,8 @@
     },
     {
       "path": "week2/summary/README.md",
-      "bytes": 1782,
-      "sha256": "2e427d988d3933eaf3db2bd83098b661b56ab4c69f9797cd240d7f9495fd1be0"
+      "bytes": 2657,
+      "sha256": "c4b65cf266b81c715c19f8be936bba535605bf34848ef4d0201799bb20a60de4"
     },
     {
       "path": "week2/summary/figures/baseline_fct.png",
@@ -179,8 +179,8 @@
     },
     {
       "path": "week2/summary/source.json",
-      "bytes": 1346,
-      "sha256": "7d8807a0c02cdf9b5f2f8d988bec613dac17012abd7eeeb4fbcd7192b14a40b2"
+      "bytes": 1519,
+      "sha256": "0dc3b376cb142ad35f11143d891fdc4d58dd54c93f81d8cd8a3b3cac77b3e6cf"
     }
   ]
 }

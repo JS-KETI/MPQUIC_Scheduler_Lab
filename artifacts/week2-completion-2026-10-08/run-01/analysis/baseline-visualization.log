@@ -1,0 +1,28 @@
+usage: plot_baseline.py [-h] --csv CSV --out OUT [--seeds SEEDS]
+plot_baseline.py: error: unrecognized arguments: --summary artifacts/week2-completion-2026-10-08/run-01/analysis/summary.csv
+
+Corrected invocation: ["python3", "sched-lab/plot_baseline.py", "--csv", "artifacts/week2-completion-2026-10-08/run-01/baseline.csv", "--out", "artifacts/week2-completion-2026-10-08/run-01/figures", "--seeds", "30"]
+Created 3 figures in PNG and SVG: artifacts/week2-completion-2026-10-08/run-01/figures
+  scenario         scheduler  runs  completed  fct_mean  fct_std  fct_median  fct_p90  fct95_mean  share_p1
+ competing                RR    30         30     3.672    0.309       3.573    4.055       3.481     0.580
+ competing            MinRTT    30         30     6.798    3.254       6.604    7.979       6.414     0.393
+ competing             BLEST    30         30     6.972    3.245       6.905    7.843       6.553     0.449
+ competing               ECF    30         30     6.197    1.202       6.611    7.281       5.829     0.371
+ competing          Peekaboo    30         30     7.136    3.229       7.009    8.229       6.736     0.340
+ competing MinRTT-multi(new)    30         30     3.718    0.284       3.638    4.051       3.513     0.575
+ competing          EAT(new)    30         30     3.718    0.287       3.637    4.052       3.512     0.575
+   degrade                RR    30         30     6.416    0.207       6.376    6.462       6.057     0.378
+   degrade            MinRTT    30         30     6.956    0.447       6.958    7.392       6.541     0.289
+   degrade             BLEST    30         30     7.509    0.551       7.355    7.811       7.080     0.264
+   degrade               ECF    30         30     6.866    0.349       6.808    7.324       6.445     0.283
+   degrade          Peekaboo    30         30     7.213    0.733       7.145    7.441       6.779     0.261
+   degrade MinRTT-multi(new)    30         30     6.356    0.210       6.333    6.394       5.996     0.378
+   degrade          EAT(new)    30         30     6.054    0.127       6.044    6.078       5.963     0.371
+dominating                RR    30         30     3.276    0.025       3.273    3.296       3.134     0.676
+dominating            MinRTT    30         30     4.092    0.230       4.100    4.339       3.909     0.828
+dominating             BLEST    30         30     4.383    0.096       4.334    4.507       4.169     0.898
+dominating               ECF    30         30     4.151    0.221       4.168    4.399       3.953     0.844
+dominating          Peekaboo    30         30     4.097    0.234       4.118    4.367       3.917     0.829
+dominating MinRTT-multi(new)    30         30     3.278    0.034       3.271    3.304       3.133     0.678
+dominating          EAT(new)    30         30     3.265    0.034       3.257    3.272       3.137     0.680
+saved /home/ubuntu/projects/keti/mpquic-sched-lab/mpquic/artifacts/week2-completion-2026-10-08/run-01/baseline_fct.png

@@ -1,11 +1,16 @@
 {
   "date_kst": "2026-10-08",
-  "file_count": 3079,
+  "file_count": 3095,
   "files": [
     {
+      "path": "BASELINE.json",
+      "bytes": 968,
+      "sha256": "a5add912793e19d2d523967a51861e71ebc76ff53c1bb170f803326666a9d8b6"
+    },
+    {
       "path": "README.md",
-      "bytes": 7431,
-      "sha256": "ca37cb11dc588d553e30e15eb98c39249a16d30dff0f379b2732b0deb982deb5"
+      "bytes": 8297,
+      "sha256": "445123033ec75014046f475f019e23364da8b90e9d9d3b896b0794af64b8708c"
     },
     {
       "path": "one-path-analysis-2026-10-01/05-one-path-diagnosis.patch",
@@ -1299,8 +1304,8 @@
     },
     {
       "path": "report-tools/week2_compact_report.py",
-      "bytes": 28757,
-      "sha256": "94271238d4a487ebc5e8bb804f5a5d0ae40fda4a158e8129288c6380c120e5bf"
+      "bytes": 29708,
+      "sha256": "593211e8648fbefcf8ba9c6caa454b91a877b7b886261aba4ff7015afefcda60"
     },
     {
       "path": "report-visuals-2026-10-01/README.md",
@@ -1934,8 +1939,33 @@
     },
     {
       "path": "week2-completion-2026-10-08/README.md",
-      "bytes": 1894,
-      "sha256": "37391bb24b5d23cf25231963316349e771df910a04fc60ed62ab6b0cbdd2fc5b"
+      "bytes": 2132,
+      "sha256": "6255d40593b621b392c30077b5e3bceac038a4c8e5c0e1832598ab844faf37fe"
+    },
+    {
+      "path": "week2-completion-2026-10-08/run-01/FROZEN.json",
+      "bytes": 1713,
+      "sha256": "9e07e524f254bb096b30b5ff03b9ab36a6122ff256c684d5bd8ca26f2b3fc069"
+    },
+    {
+      "path": "week2-completion-2026-10-08/run-01/README.md",
+      "bytes": 3416,
+      "sha256": "3971a4d4461c8ef7dab626c0c0422fbed29187f4ce6072610e5da5b6d7b5b4d9"
+    },
+    {
+      "path": "week2-completion-2026-10-08/run-01/SHA256SUMS",
+      "bytes": 65302,
+      "sha256": "294ed5db70d0394c7960e9b01b5f5cb71e9e20962b0548485dafdc894559e50c"
+    },
+    {
+      "path": "week2-completion-2026-10-08/run-01/analysis/baseline-visualization-provenance.json",
+      "bytes": 1469,
+      "sha256": "12b9abb00a32f4bed9bf1d9ecac342722c00001fe058c8726cf42bcc43b8608c"
+    },
+    {
+      "path": "week2-completion-2026-10-08/run-01/analysis/baseline-visualization.log",
+      "bytes": 2989,
+      "sha256": "07bc47f229bbe401c7a496adcdadf72bfe2d28b3b1ef3966816e53dc5dba9f70"
     },
     {
       "path": "week2-completion-2026-10-08/run-01/analysis/below_target_runs.csv",
@@ -1958,6 +1988,11 @@
       "sha256": "47a57a58e5047dcc16c4d7d4afddc83bb5c51e655c5fc29b24e6c4a54ffc512c"
     },
     {
+      "path": "week2-completion-2026-10-08/run-01/analysis/provided_summary.csv",
+      "bytes": 2562,
+      "sha256": "2637fb3554c363fe9a8282a396ab3d9052a2c0a6c4529bff82c3d6f92b434c92"
+    },
+    {
       "path": "week2-completion-2026-10-08/run-01/analysis/summary.csv",
       "bytes": 3002,
       "sha256": "1e069d1eb8ec1e4f5506d298a45dc6d9304a75f32b85fb0f0fc19f572c2af989"
@@ -1966,6 +2001,11 @@
       "path": "week2-completion-2026-10-08/run-01/analysis/validation.json",
       "bytes": 426,
       "sha256": "701ac22eba16363cbf4cd4846eb4327f71c79c23d5603b95a2cdb405ad61c146"
+    },
+    {
+      "path": "week2-completion-2026-10-08/run-01/baseline.csv",
+      "bytes": 59616,
+      "sha256": "f58931aa387de2e04a1da655f6bcfcd3da69a85ff0bf7e94fb31ef266c77d94b"
     },
     {
       "path": "week2-completion-2026-10-08/run-01/commands.json",
@@ -1986,6 +2026,46 @@
       "path": "week2-completion-2026-10-08/run-01/environment.json",
       "bytes": 282,
       "sha256": "550c4b03b2a0d3464553519a1192eb21612822c789a66097cf3e159f834c61bc"
+    },
+    {
+      "path": "week2-completion-2026-10-08/run-01/figures/baseline_fct.png",
+      "bytes": 101711,
+      "sha256": "4cde81074b3cd6cce1902ce91c5b3bea7ae7753c0fb5785d5123ece667ee1613"
+    },
+    {
+      "path": "week2-completion-2026-10-08/run-01/figures/baseline_fct.svg",
+      "bytes": 104676,
+      "sha256": "347a4c84dfbdfe05eb73569342157dd34ba40c3e53296a129f7c847dee1ad0c4"
+    },
+    {
+      "path": "week2-completion-2026-10-08/run-01/figures/completion_rates.png",
+      "bytes": 71775,
+      "sha256": "af5aa3381712b13b7e43cff11d4b64ac17febdf08444876b4c28d22c1466ece3"
+    },
+    {
+      "path": "week2-completion-2026-10-08/run-01/figures/completion_rates.svg",
+      "bytes": 48572,
+      "sha256": "cdf6f653b16c942ca4a6b6cb560fe43d2956333ef87a3d0fb1b6346cfd88d8a4"
+    },
+    {
+      "path": "week2-completion-2026-10-08/run-01/figures/fct_distributions.png",
+      "bytes": 114306,
+      "sha256": "4e39d3f2a029d70eba8d1ca9ca81f379850208b1cd2fd11efbc38bc8c777011b"
+    },
+    {
+      "path": "week2-completion-2026-10-08/run-01/figures/fct_distributions.svg",
+      "bytes": 74768,
+      "sha256": "cd25e2791f57b577d58f9e8c057d0e889d7dd4b3b9290b5e30618e68aa381c08"
+    },
+    {
+      "path": "week2-completion-2026-10-08/run-01/figures/path_shares.png",
+      "bytes": 86844,
+      "sha256": "53d667df184cac990ff99d92a7435d0d8971553f20494300e1f2b18ae7f75147"
+    },
+    {
+      "path": "week2-completion-2026-10-08/run-01/figures/path_shares.svg",
+      "bytes": 47419,
+      "sha256": "d390a7a4b1df72d561e213b08934a4a15228ef0d984b24bc98110517e07efd54"
     },
     {
       "path": "week2-completion-2026-10-08/run-01/logs/competing-0-seed01.stdout.gz",

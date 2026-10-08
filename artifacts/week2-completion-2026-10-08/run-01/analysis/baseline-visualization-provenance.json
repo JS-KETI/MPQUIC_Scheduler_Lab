@@ -1,0 +1,39 @@
+{
+  "created_at_kst": "2026-10-08T12:24:42.604966+09:00",
+  "input": "baseline.csv",
+  "input_sha256": "f58931aa387de2e04a1da655f6bcfcd3da69a85ff0bf7e94fb31ef266c77d94b",
+  "summary": "analysis/summary.csv",
+  "summary_sha256": "1e069d1eb8ec1e4f5506d298a45dc6d9304a75f32b85fb0f0fc19f572c2af989",
+  "commands": [
+    [
+      "python3",
+      "sched-lab/plot_baseline.py",
+      "--csv",
+      "artifacts/week2-completion-2026-10-08/run-01/baseline.csv",
+      "--out",
+      "artifacts/week2-completion-2026-10-08/run-01/figures",
+      "--seeds",
+      "30"
+    ],
+    {
+      "tool": "sched-lab/analyze.py",
+      "argv": [
+        "sched-lab/analyze.py",
+        "/home/ubuntu/projects/keti/mpquic-sched-lab/mpquic/artifacts/week2-completion-2026-10-08/run-01/baseline.csv"
+      ],
+      "svg_export": "matplotlib.pyplot.gcf().savefig(figures/baseline_fct.svg)",
+      "outputs_relocated": {
+        "baseline_fct.png": "figures/baseline_fct.png",
+        "baseline_summary.csv": "analysis/provided_summary.csv"
+      }
+    }
+  ],
+  "tools": {
+    "sched-lab/analyze.py": "4eaf1f038ced6972e241fc058e7baa9917ac0ea11e4a8d9e9e973207816be29f",
+    "sched-lab/plot_baseline.py": "d4e183aff862c7a05910b43280a57be9bd2742b0bcbab899ea21dc83afc89135",
+    "sched-lab/stats.py": "092d879d1986a30dead901f41183244a8cfd1e0add16f67a07eb56be09d577b9"
+  },
+  "existing_run_files_verified_unchanged": 644,
+  "old_frozen_files_verified": 27,
+  "simulation_runs_in_this_operation": 0
+}

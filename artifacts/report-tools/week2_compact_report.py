@@ -230,13 +230,19 @@ def blocks(original, fixed, completed):
         ('h2', '2. 문제 상황 - 미완료 62회 원인 분석·수정'),
         ('h3', '2-1. 원인별 유효 수정 결과 (미완료 62회 모두 전체 수신)'),
         ('bullet', '**중복 수신 처리 수정 (이미 전달한 데이터의 중복 반영 방지)**'),
-        ('sub', '원인: 전달이 끝난 중복 데이터로 수신 위치 계산과 실제 전달량 불일치. 미완료 54회 발생'),
-        ('sub', '수정: 이미 전달한 범위 제외·실제 추출량만 수신 위치에 반영'),
-        ('sub', '**결과: 해당 54회 모두 완료 처리·목표량 전체 수신**'),
+        ('sub', '원인'),
+        ('detail', '전달이 끝난 중복 데이터로 수신 위치 계산과 실제 전달량 불일치. 미완료 54회 발생'),
+        ('sub', '수정'),
+        ('detail', '이미 전달한 범위 제외·실제 추출량만 수신 위치에 반영'),
+        ('sub', '**결과**'),
+        ('detail', '**해당 54회 모두 완료 처리·목표량 전체 수신**'),
         ('bullet', '**재전송 판단 수정 (유실된 데이터의 재전송 누락 방지)**'),
-        ('sub', '원인: 네트워크 큐(FqCoDel)의 지연 목표 초과로 IPv4 조각 폐기. 재전송 판단이 누락돼 8회 미완료'),
-        ('sub', '수정: ACK(수신 확인) 번호가 송신 목록에 없어도 번호 차이로 손실 검사 수행'),
-        ('sub', '**결과: 해당 8회 모두 완료 처리·목표량 전체 수신**'),
+        ('sub', '원인'),
+        ('detail', '네트워크 큐(FqCoDel)의 지연 목표 초과로 IPv4 조각 폐기. 재전송 판단이 누락돼 8회 미완료'),
+        ('sub', '수정'),
+        ('detail', 'ACK(수신 확인) 번호가 송신 목록에 없어도 번호 차이로 손실 검사 수행'),
+        ('sub', '**결과**'),
+        ('detail', '**해당 8회 모두 완료 처리·목표량 전체 수신**'),
         ('image', 'recovery_counts.png', '그림 4. 동일 조건 630회 수정 전후 결과 (완료 후 10ms 종료 유지)'),
         ('bullet', '**수정 통합 결과 (종료 대기 10ms로 630회 재실험)**'),
         ('sub', '**완료 처리 630/630회. 목표량 전체 수신 621/630회**'),
@@ -260,7 +266,7 @@ def blocks(original, fixed, completed):
         ('sub', '신뢰구간 폭: 반복 측정으로 추정한 평균의 불확실성 범위. 상한에서 하한을 뺀 값'),
         ('sub', 'MinRTT-multi: 기존 0.0130초 → 수정 0.0257초. 기준 충족'),
         ('sub', 'MinRTT·ECF·Peekaboo: 수정 후 0.1647~0.1751초. 기준 초과'),
-        ('sub', '기준 적용 대상·사용할 기준선은 확인 필요. 재검증 결과와 기존 동결 기준 데이터를 구분해 보존'),
+        ('sub', '공식 기준값: 수정 코드·종료 대기 250ms의 630회 자료로 확정·동결. 신뢰구간 기준 적용 대상은 확인 필요'),
         ('h2', '3. 다음 작업 - 3주차 스케줄러 연결·고정 비율 검증'),
         ('bullet', '**스케줄러 연결 (ID 7에 신규 실험 슬롯 추가)**'),
         ('sub', 'MinRTT-multi와 같은 초기 동작을 연결하고 호출·결정 로그 확인'),
@@ -270,6 +276,13 @@ def blocks(original, fixed, completed):
         ('link', '수정 코드·측정 자료', 'https://github.com/JS-KETI/MPQUIC_Scheduler_Lab/pull/10'),
         ('link', '종료 대기 250ms 전체 재검증 자료', BRANCH+'/artifacts/week2-completion-2026-10-08/run-01'),
         ('link', '기존 630회 기준 자료', 'https://github.com/JS-KETI/MPQUIC_Scheduler_Lab/tree/main/artifacts/week2-2026-10-02/run-01'),
+        ('bullet', '**630개 시행 테스트 결과**'),
+        ('sub', '**각 시행 원본 (시나리오·스케줄러·seed별 측정값 630개)**'),
+        ('detail', '원본 측정 CSV : '+BRANCH.replace('/tree/', '/blob/')+'/artifacts/week2-completion-2026-10-08/run-01/results.csv'),
+        ('sub', '**이후 작업에 사용할 기준값 SET (완료 처리·전체 수신 각각 630/630회)**'),
+        ('detail', '기준값 SET (측정값·통계·그림 묶음) : '+BRANCH+'/artifacts/week2-completion-2026-10-08/run-01'),
+        ('detail', '기준값 통계 CSV (21개 조합별 평균·중앙값·p90·완료율·신뢰구간) : '+BRANCH.replace('/tree/', '/blob/')+'/artifacts/week2-completion-2026-10-08/run-01/analysis/summary.csv'),
+        ('detail', '기준값 시각화 3종 (전송 시간 분포·완료율·경로 비율) : '+BRANCH+'/artifacts/week2-completion-2026-10-08/run-01/figures'),
     ]
 
 
@@ -281,43 +294,34 @@ def inline(text, kind='html'):
 
 def documents(out, data):
     md, parts = [], []
-    parent_open = False
-    children_open = False
+    depth = -1
 
     def close_list():
-        nonlocal parent_open, children_open
-        if children_open:
-            parts.append('</ul>')
-            children_open = False
-        if parent_open:
+        nonlocal depth
+        while depth >= 0:
             parts.append('</li></ul>')
-            parent_open = False
+            depth -= 1
 
     for b in data:
         kind = b[0]
-        if kind not in ('bullet', 'sub'):
+        if kind not in ('bullet', 'sub', 'detail'):
             close_list()
         if kind in ('h2', 'h3'):
             md += ['', ('#' * int(kind[1])) + ' ' + b[1], '']
             parts += [f'<{kind}>{html.escape(b[1])}</{kind}>']
-        elif kind in ('bullet', 'sub'):
-            md += [('  ' if kind == 'sub' else '') + '- ' + b[1]]
-            if kind == 'bullet':
-                if children_open:
-                    parts.append('</ul>')
-                    children_open = False
-                if parent_open:
-                    parts.append('</li>')
-                else:
-                    parts.append('<ul class="items">')
-                    parent_open = True
-                parts.append('<li>'+inline(b[1]))
+        elif kind in ('bullet', 'sub', 'detail'):
+            target = {'bullet': 0, 'sub': 1, 'detail': 2}[kind]
+            md += ['  '*target + '- ' + b[1]]
+            if target > depth:
+                assert target == depth + 1, 'A child item must belong to an immediate parent'
+                cls = 'items' if target == 0 else 'details'
+                parts.append('<ul class="'+cls+'"><li>'+inline(b[1]))
             else:
-                if not children_open:
-                    assert parent_open, 'A child item must belong to a parent item'
-                    parts.append('<ul class="details">')
-                    children_open = True
-                parts.append('<li>'+inline(b[1])+'</li>')
+                while depth > target:
+                    parts.append('</li></ul>')
+                    depth -= 1
+                parts.append('</li><li>'+inline(b[1]))
+            depth = target
         elif kind == 'note':
             md += ['', b[1], '']
             parts += [f'<p class="note">{inline(b[1])}</p>']
@@ -439,7 +443,9 @@ def main():
             'report_figures': ['baseline_fct', 'completion_rates', 'path_shares', 'recovery_counts', 'completion_grace_counts'],
             'current_formats': ['md', 'html'],
             'pdf_status': 'previous version retained; not regenerated' if not args.pdf else 'explicitly exported',
-            'report_scope': '2주차 기본 시각화·유효 수정 결과·종료 대기 250ms 전체 재검증·3주차 계획',
+            'report_scope': '2주차 기본 시각화·유효 수정 결과·종료 대기 250ms 전체 재검증·공식 기준값 확정·3주차 계획',
+            'active_baseline': 'artifacts/BASELINE.json',
+            'accepted_baseline_summary': 'artifacts/week2-completion-2026-10-08/run-01/analysis/summary.csv',
         }
         (out/'source.json').write_text(json.dumps(source, ensure_ascii=False, indent=2)+'\n', encoding='utf-8', newline='\n')
     print(out)

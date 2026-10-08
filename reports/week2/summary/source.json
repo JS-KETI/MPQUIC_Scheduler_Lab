@@ -41,5 +41,7 @@
     "html"
   ],
   "pdf_status": "previous version retained; not regenerated",
-  "report_scope": "2주차 기본 시각화·유효 수정 결과·종료 대기 250ms 전체 재검증·3주차 계획"
+  "report_scope": "2주차 기본 시각화·유효 수정 결과·종료 대기 250ms 전체 재검증·공식 기준값 확정·3주차 계획",
+  "active_baseline": "artifacts/BASELINE.json",
+  "accepted_baseline_summary": "artifacts/week2-completion-2026-10-08/run-01/analysis/summary.csv"
 }
