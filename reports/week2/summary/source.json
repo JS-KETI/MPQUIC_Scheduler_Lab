@@ -1,0 +1,50 @@
+{
+  "original": "artifacts/week2-2026-10-02/run-01/baseline.csv",
+  "modified": "artifacts/week2-incomplete-2026-10-07/14-fin-preservation-full-630/results.csv",
+  "completion_grace_recheck": "artifacts/week2-completion-2026-10-08/run-01/results.csv",
+  "original_counts": [
+    568,
+    533
+  ],
+  "modified_counts": [
+    630,
+    621
+  ],
+  "completion_grace_recheck_counts": [
+    630,
+    630
+  ],
+  "modified_source_commit": "856af610bc34cf3aeefe57bc6843c5480658fbe7",
+  "recheck_execution_head": "50076608950738c163466a1f0fc8e6a1cb5e26bb",
+  "recheck_completion_grace_ms": 250,
+  "recheck_runner_command": [
+    "sched-lab/incomplete-investigate.py",
+    "--baseline-dir",
+    "artifacts/week2-2026-10-02/run-01",
+    "--out",
+    "artifacts/week2-completion-2026-10-08/run-01",
+    "--selection",
+    "all",
+    "--extra=--CompletionGraceMs=250"
+  ],
+  "basic_visuals": "artifacts/week2-basic-visuals-2026-10-08",
+  "provided_analyzer": "sched-lab/analyze.py",
+  "report_figures": [
+    "baseline_fct",
+    "completion_rates",
+    "path_shares",
+    "recovery_counts",
+    "completion_grace_counts"
+  ],
+  "current_formats": [
+    "md",
+    "html",
+    "pdf"
+  ],
+  "pdf_status": "Current Markdown conversion at reports/week2/pdf/2주차 진행상황.pdf; earlier summary PDF retained",
+  "report_scope": "2주차 측정·유효 수정 결과·종료 대기 250ms 전체 검증·3주차 계획·독립 참고 자료",
+  "active_baseline": "artifacts/BASELINE.json",
+  "accepted_baseline_summary": "artifacts/week2-completion-2026-10-08/run-01/analysis/summary.csv",
+  "source_markdown_sha256": "ee819c0ba687e831cab40a087e8fa13cfcc02ff7cea2e2aad6377cdc7b8b3255",
+  "report_edit_policy": "Preserve latest edited Markdown, removed gate section, three-level bullet hierarchy and separate references"
+}

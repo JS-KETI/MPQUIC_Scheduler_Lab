@@ -1,0 +1,63 @@
+scenario,scheduler,seed,name,done_original,rx_app_original,fct_s_original,done_fixed,rx_app_fixed,fct_s_fixed,provided_reference,original_full,fixed_full,common_done_delta_s,cause
+competing,0,5,RR,0,5211976,60.0,1,5242880,3.7652,seed 1-10: original matches provided CSV,False,True,,B: stale delivered stream data
+competing,0,6,RR,0,5219776,60.0,1,5242880,4.6395,seed 1-10: original matches provided CSV,False,True,,B: stale delivered stream data
+competing,0,7,RR,0,5236972,60.0,1,5242880,3.3846,seed 1-10: original matches provided CSV,False,True,,B: stale delivered stream data
+competing,0,8,RR,0,5238144,60.0,1,5242880,3.5813,seed 1-10: original matches provided CSV,False,True,,B: stale delivered stream data
+competing,0,11,RR,0,5206138,60.0,1,5242880,3.5645,seed 11-30: no provided reference,False,True,,B: stale delivered stream data
+competing,0,12,RR,0,5206778,60.0,1,5242880,3.4551,seed 11-30: no provided reference,False,True,,B: stale delivered stream data
+competing,0,13,RR,0,5238548,60.0,1,5242880,3.5376,seed 11-30: no provided reference,False,True,,B: stale delivered stream data
+competing,0,14,RR,0,5212556,60.0,1,5242880,3.4145,seed 11-30: no provided reference,False,True,,B: stale delivered stream data
+competing,0,15,RR,0,5231328,60.0,1,5242880,3.7784,seed 11-30: no provided reference,False,True,,B: stale delivered stream data
+competing,0,16,RR,0,5211915,60.0,1,5242880,3.9009,seed 11-30: no provided reference,False,True,,B: stale delivered stream data
+competing,0,17,RR,0,5203890,60.0,1,5242880,3.384,seed 11-30: no provided reference,False,True,,B: stale delivered stream data
+competing,0,18,RR,0,5199558,60.0,1,5242880,4.0592,seed 11-30: no provided reference,False,True,,B: stale delivered stream data
+competing,0,19,RR,0,5191701,60.0,1,5242880,3.9322,seed 11-30: no provided reference,False,True,,B: stale delivered stream data
+competing,0,21,RR,0,5226640,60.0,1,5242880,3.7833,seed 11-30: no provided reference,False,True,,B: stale delivered stream data
+competing,0,23,RR,0,5221211,60.0,1,5242880,4.0271,seed 11-30: no provided reference,False,True,,B: stale delivered stream data
+competing,0,26,RR,0,5209043,60.0,1,5242880,3.399,seed 11-30: no provided reference,False,True,,B: stale delivered stream data
+competing,0,28,RR,0,5237104,60.0,1,5242880,3.8046,seed 11-30: no provided reference,False,True,,B: stale delivered stream data
+competing,1,23,MinRTT,0,5237092,60.0,1,5242880,5.2351,seed 11-30: no provided reference,False,True,,B: stale delivered stream data
+competing,2,7,BLEST,0,5235661,60.0,1,5242880,4.0797,seed 1-10: original matches provided CSV,False,True,,B: stale delivered stream data
+competing,2,12,BLEST,0,2239898,60.0,1,5242880,4.3463,seed 11-30: no provided reference,False,True,,C: loss detection skips ACK-only largest packet
+competing,2,14,BLEST,0,2173474,60.0,1,5242880,5.0113,seed 11-30: no provided reference,False,True,,C: loss detection skips ACK-only largest packet
+competing,2,20,BLEST,0,5238598,60.0,1,5242880,6.0228,seed 11-30: no provided reference,False,True,,B: stale delivered stream data
+competing,5,2,EAT(new),0,5237104,60.0,1,5242880,3.5148,seed 1-10: original matches provided CSV,False,True,,B: stale delivered stream data
+competing,5,5,EAT(new),0,5213998,60.0,1,5242880,3.4183,seed 1-10: original matches provided CSV,False,True,,B: stale delivered stream data
+competing,5,6,EAT(new),0,5220897,60.0,1,5242880,3.8081,seed 1-10: original matches provided CSV,False,True,,B: stale delivered stream data
+competing,5,7,EAT(new),0,5209668,60.0,1,5242880,3.6075,seed 1-10: original matches provided CSV,False,True,,B: stale delivered stream data
+competing,5,8,EAT(new),0,5235400,60.0,1,5242880,3.5857,seed 1-10: original matches provided CSV,False,True,,B: stale delivered stream data
+competing,5,10,EAT(new),0,5219774,60.0,1,5242880,3.6146,seed 1-10: original matches provided CSV,False,True,,B: stale delivered stream data
+competing,5,11,EAT(new),0,5203251,60.0,1,5242880,3.543,seed 11-30: no provided reference,False,True,,B: stale delivered stream data
+competing,5,12,EAT(new),0,5206777,60.0,1,5242880,3.4276,seed 11-30: no provided reference,False,True,,B: stale delivered stream data
+competing,5,15,EAT(new),0,5235544,60.0,1,5242880,3.7339,seed 11-30: no provided reference,False,True,,B: stale delivered stream data
+competing,5,16,EAT(new),0,5226354,60.0,1,5242880,4.1953,seed 11-30: no provided reference,False,True,,B: stale delivered stream data
+competing,5,17,EAT(new),0,5205326,60.0,1,5242880,4.0471,seed 11-30: no provided reference,False,True,,B: stale delivered stream data
+competing,5,18,EAT(new),0,5203890,60.0,1,5242880,3.5251,seed 11-30: no provided reference,False,True,,B: stale delivered stream data
+competing,5,19,EAT(new),0,5195226,60.0,1,5242880,3.824,seed 11-30: no provided reference,False,True,,B: stale delivered stream data
+competing,5,21,EAT(new),0,5226986,60.0,1,5242880,4.5154,seed 11-30: no provided reference,False,True,,B: stale delivered stream data
+competing,5,22,EAT(new),0,5194589,60.0,1,5242880,3.7954,seed 11-30: no provided reference,False,True,,B: stale delivered stream data
+competing,5,23,EAT(new),0,5222084,60.0,1,5242880,3.6597,seed 11-30: no provided reference,False,True,,B: stale delivered stream data
+competing,5,26,EAT(new),0,5213532,60.0,1,5242880,3.4081,seed 11-30: no provided reference,False,True,,B: stale delivered stream data
+competing,6,2,MinRTT-multi(new),0,5237104,60.0,1,5242880,3.501,seed 1-10: original matches provided CSV,False,True,,B: stale delivered stream data
+competing,6,5,MinRTT-multi(new),0,5213368,60.0,1,5242880,3.4019,seed 1-10: original matches provided CSV,False,True,,B: stale delivered stream data
+competing,6,6,MinRTT-multi(new),0,5219777,60.0,1,5242880,3.8081,seed 1-10: original matches provided CSV,False,True,,B: stale delivered stream data
+competing,6,7,MinRTT-multi(new),0,5209038,60.0,1,5242880,3.594,seed 1-10: original matches provided CSV,False,True,,B: stale delivered stream data
+competing,6,8,MinRTT-multi(new),0,5235660,60.0,1,5242880,3.5956,seed 1-10: original matches provided CSV,False,True,,B: stale delivered stream data
+competing,6,10,MinRTT-multi(new),0,5218462,60.0,1,5242880,3.6032,seed 1-10: original matches provided CSV,False,True,,B: stale delivered stream data
+competing,6,11,MinRTT-multi(new),0,5211916,60.0,1,5242880,3.5479,seed 11-30: no provided reference,False,True,,B: stale delivered stream data
+competing,6,12,MinRTT-multi(new),0,5206777,60.0,1,5242880,3.4159,seed 11-30: no provided reference,False,True,,B: stale delivered stream data
+competing,6,15,MinRTT-multi(new),0,5235660,60.0,1,5242880,3.7116,seed 11-30: no provided reference,False,True,,B: stale delivered stream data
+competing,6,16,MinRTT-multi(new),0,5226984,60.0,1,5242880,4.1953,seed 11-30: no provided reference,False,True,,B: stale delivered stream data
+competing,6,17,MinRTT-multi(new),0,5204696,60.0,1,5242880,4.04,seed 11-30: no provided reference,False,True,,B: stale delivered stream data
+competing,6,18,MinRTT-multi(new),0,5198918,60.0,1,5242880,3.5368,seed 11-30: no provided reference,False,True,,B: stale delivered stream data
+competing,6,19,MinRTT-multi(new),0,5195226,60.0,1,5242880,3.824,seed 11-30: no provided reference,False,True,,B: stale delivered stream data
+competing,6,21,MinRTT-multi(new),0,5225556,60.0,1,5242880,4.5084,seed 11-30: no provided reference,False,True,,B: stale delivered stream data
+competing,6,22,MinRTT-multi(new),0,5206780,60.0,1,5242880,3.7827,seed 11-30: no provided reference,False,True,,B: stale delivered stream data
+competing,6,23,MinRTT-multi(new),0,5222661,60.0,1,5242880,3.6721,seed 11-30: no provided reference,False,True,,B: stale delivered stream data
+competing,6,26,MinRTT-multi(new),0,5212556,60.0,1,5242880,3.4157,seed 11-30: no provided reference,False,True,,B: stale delivered stream data
+dominating,2,6,BLEST,0,1551050,60.0,1,5242880,4.2985,seed 1-10: original matches provided CSV,False,True,,C: loss detection skips ACK-only largest packet
+dominating,2,14,BLEST,0,1543830,60.0,1,5242880,4.2929,seed 11-30: no provided reference,False,True,,C: loss detection skips ACK-only largest packet
+dominating,2,18,BLEST,0,1512062,60.0,1,5242880,4.3396,seed 11-30: no provided reference,False,True,,C: loss detection skips ACK-only largest packet
+dominating,2,22,BLEST,0,1239122,60.0,1,5242880,4.5024,seed 11-30: no provided reference,False,True,,C: loss detection skips ACK-only largest packet
+dominating,3,9,ECF,0,1936634,60.0,1,5242880,3.992,seed 1-10: original matches provided CSV,False,True,,C: loss detection skips ACK-only largest packet
+dominating,3,16,ECF,0,4234242,60.0,1,5242880,3.9215,seed 11-30: no provided reference,False,True,,C: loss detection skips ACK-only largest packet

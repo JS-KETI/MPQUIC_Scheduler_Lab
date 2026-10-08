@@ -1,0 +1,180 @@
+{
+  "rows": 630,
+  "keys_equal": true,
+  "duplicates": 0,
+  "original_done": 568,
+  "fixed_done": 630,
+  "original_full": 533,
+  "fixed_full": 621,
+  "original_incomplete_recovered": 62,
+  "fin_final_full630_metric_differences": 0,
+  "observer_cases": 62,
+  "observer_metric_differences": 0,
+  "grace_diagnostic_cases": 9,
+  "grace_full_received": 9,
+  "grace_fct_differences": 0,
+  "frozen_hash_checks": [
+    {
+      "path": "FROZEN.json",
+      "expected": "eea505d4b4205b9c2164ededd06766a9d99085113bada057953815f6dfaac1a2",
+      "actual": "eea505d4b4205b9c2164ededd06766a9d99085113bada057953815f6dfaac1a2",
+      "unchanged": true
+    },
+    {
+      "path": "README.md",
+      "expected": "be555ae7b01ba0bdb690bf1d39d7a386a4810f984dd750d4dc5e7e99c28acbf2",
+      "actual": "be555ae7b01ba0bdb690bf1d39d7a386a4810f984dd750d4dc5e7e99c28acbf2",
+      "unchanged": true
+    },
+    {
+      "path": "analysis/below_target_runs.csv",
+      "expected": "f273cfdad3ecf245b0b7fdb0b816dc9fdeac89577419a0c2a57a66351082875a",
+      "actual": "f273cfdad3ecf245b0b7fdb0b816dc9fdeac89577419a0c2a57a66351082875a",
+      "unchanged": true
+    },
+    {
+      "path": "analysis/dominating_ci_gate.csv",
+      "expected": "47b75821e4f5a163b128206a8eb0bcc7b81f1bd2dbbb5470bd450ca9d4ba708a",
+      "actual": "47b75821e4f5a163b128206a8eb0bcc7b81f1bd2dbbb5470bd450ca9d4ba708a",
+      "unchanged": true
+    },
+    {
+      "path": "analysis/paired_comparisons.csv",
+      "expected": "4c60d4e0f6d53cd12ea0a18e96151f3886f04b9809796cb8755a4ced0d7132ba",
+      "actual": "4c60d4e0f6d53cd12ea0a18e96151f3886f04b9809796cb8755a4ced0d7132ba",
+      "unchanged": true
+    },
+    {
+      "path": "analysis/paired_observations.csv",
+      "expected": "05169bef7d64b223b41cc512c79efc42bdddc2d836c7826249007729ff937ebd",
+      "actual": "05169bef7d64b223b41cc512c79efc42bdddc2d836c7826249007729ff937ebd",
+      "unchanged": true
+    },
+    {
+      "path": "analysis/summary.csv",
+      "expected": "e846ee14c10128c8adc5da527f7561a4d2755dcfedaf8889c5fa1dc5aaee159f",
+      "actual": "e846ee14c10128c8adc5da527f7561a4d2755dcfedaf8889c5fa1dc5aaee159f",
+      "unchanged": true
+    },
+    {
+      "path": "analysis/validation.json",
+      "expected": "3591a73c2e940623f4f0c9ae506294be12066d6f5a750bc8891e3f97394a8b9c",
+      "actual": "3591a73c2e940623f4f0c9ae506294be12066d6f5a750bc8891e3f97394a8b9c",
+      "unchanged": true
+    },
+    {
+      "path": "analysis/week1_comparison_cells.csv",
+      "expected": "c19f48cdc8f56e35b43762f8ea670542ff74e08adf6e1e97318ab56469ab551b",
+      "actual": "c19f48cdc8f56e35b43762f8ea670542ff74e08adf6e1e97318ab56469ab551b",
+      "unchanged": true
+    },
+    {
+      "path": "analysis-commands.txt",
+      "expected": "74109d1356dd992041d30bc3cbc5188c56d7681cdff94ff337f0ba6c4834f4b3",
+      "actual": "74109d1356dd992041d30bc3cbc5188c56d7681cdff94ff337f0ba6c4834f4b3",
+      "unchanged": true
+    },
+    {
+      "path": "baseline.csv",
+      "expected": "2a0e48432404913d484a24a91ca6498fc83ce402dad7e54c34534883f9b24ae5",
+      "actual": "2a0e48432404913d484a24a91ca6498fc83ce402dad7e54c34534883f9b24ae5",
+      "unchanged": true
+    },
+    {
+      "path": "command.txt",
+      "expected": "7edbf5c9a16af4ad6a86dd91f85f58c5bc47c6f05322c76aeab6708738d7ffb3",
+      "actual": "7edbf5c9a16af4ad6a86dd91f85f58c5bc47c6f05322c76aeab6708738d7ffb3",
+      "unchanged": true
+    },
+    {
+      "path": "commands.json",
+      "expected": "2954f1ab8bd2b2d004d0978bfff4449648b5eefd508c65d1d0ededb2716d0caa",
+      "actual": "2954f1ab8bd2b2d004d0978bfff4449648b5eefd508c65d1d0ededb2716d0caa",
+      "unchanged": true
+    },
+    {
+      "path": "figures/completion_rates.png",
+      "expected": "76c0e9e3f3dca3cb169e92ada5976f77984bd9bcf3fc7c1303597d44b08d6527",
+      "actual": "76c0e9e3f3dca3cb169e92ada5976f77984bd9bcf3fc7c1303597d44b08d6527",
+      "unchanged": true
+    },
+    {
+      "path": "figures/completion_rates.svg",
+      "expected": "cedbe178c3bd371230f411ed31a6505d3500e8a4732d297766e95405c7b203c3",
+      "actual": "cedbe178c3bd371230f411ed31a6505d3500e8a4732d297766e95405c7b203c3",
+      "unchanged": true
+    },
+    {
+      "path": "figures/fct_distributions.png",
+      "expected": "8b7550b15dbea5a5daf68295c94531e0d74f60cf72848286db4f1b3a2a004f46",
+      "actual": "8b7550b15dbea5a5daf68295c94531e0d74f60cf72848286db4f1b3a2a004f46",
+      "unchanged": true
+    },
+    {
+      "path": "figures/fct_distributions.svg",
+      "expected": "01e5d56a3b2f97c524c6ec127d7d92324b3a0fa53dfcaf2ca3b12a14db46cfef",
+      "actual": "01e5d56a3b2f97c524c6ec127d7d92324b3a0fa53dfcaf2ca3b12a14db46cfef",
+      "unchanged": true
+    },
+    {
+      "path": "figures/path_shares.png",
+      "expected": "3e94bf3f56b656a184a44b7f35cb8a546b2c2edaf8917cd42d23976740d605af",
+      "actual": "3e94bf3f56b656a184a44b7f35cb8a546b2c2edaf8917cd42d23976740d605af",
+      "unchanged": true
+    },
+    {
+      "path": "figures/path_shares.svg",
+      "expected": "64de583afe5493e3c847f07de4ec6e3cbd2a71ea7bca581d2f3bcae52e5959a6",
+      "actual": "64de583afe5493e3c847f07de4ec6e3cbd2a71ea7bca581d2f3bcae52e5959a6",
+      "unchanged": true
+    },
+    {
+      "path": "package-validation.json",
+      "expected": "3ec1cf0aaa69746b2cf1ecf863773e6001746c2f7aa007e02808b9518f46a0f3",
+      "actual": "3ec1cf0aaa69746b2cf1ecf863773e6001746c2f7aa007e02808b9518f46a0f3",
+      "unchanged": true
+    },
+    {
+      "path": "plot_baseline.log",
+      "expected": "46b258c95e2a36386068821171b2a70c48a66571fd4dff423fb5c402eb93ea58",
+      "actual": "46b258c95e2a36386068821171b2a70c48a66571fd4dff423fb5c402eb93ea58",
+      "unchanged": true
+    },
+    {
+      "path": "provenance.json",
+      "expected": "289d1030f7b64d05a5c6ea16e2eb88499c2e7b3fb6c6ebbdffa52afed20b5c32",
+      "actual": "289d1030f7b64d05a5c6ea16e2eb88499c2e7b3fb6c6ebbdffa52afed20b5c32",
+      "unchanged": true
+    },
+    {
+      "path": "simulation-source-vs-upstream.patch",
+      "expected": "c028935e4ecd6d095a5f44cf415273917915f8a9d6710c715e8ba00bef1e70a4",
+      "actual": "c028935e4ecd6d095a5f44cf415273917915f8a9d6710c715e8ba00bef1e70a4",
+      "unchanged": true
+    },
+    {
+      "path": "source-working-tree.patch",
+      "expected": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+      "actual": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+      "unchanged": true
+    },
+    {
+      "path": "statistics-tests.log",
+      "expected": "1bbddebc023ecaefec668bc32e97dec8af3ade9e728d39dc6aec18c7abca54f4",
+      "actual": "1bbddebc023ecaefec668bc32e97dec8af3ade9e728d39dc6aec18c7abca54f4",
+      "unchanged": true
+    },
+    {
+      "path": "stats.log",
+      "expected": "b5795a0e1ca8d52ecafdf2d0e66813071b7d97569778c6fd077305c9a394a54d",
+      "actual": "b5795a0e1ca8d52ecafdf2d0e66813071b7d97569778c6fd077305c9a394a54d",
+      "unchanged": true
+    },
+    {
+      "path": "sweep.log",
+      "expected": "504265788c34a5d73d49f8f4144cce91ac521952df154ff6a5c54db53930b5db",
+      "actual": "504265788c34a5d73d49f8f4144cce91ac521952df154ff6a5c54db53930b5db",
+      "unchanged": true
+    }
+  ]
+}

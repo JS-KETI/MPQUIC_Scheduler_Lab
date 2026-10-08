@@ -1,0 +1,10 @@
+scenario,scheduler_id,scheduler,seed,original_done,original_rx_app_bytes,original_exact_full,fixed_done,fixed_rx_app_bytes,shortfall_bytes,original_fct_s,fixed_fct_s,provided_reference_scope
+competing,1,MinRTT,8,1,5242880,True,1,5240806,2074,4.1663,4.9876,"seed1-10 supplied, original matches"
+competing,2,BLEST,16,1,5242880,True,1,5242250,630,5.6571,9.4357,seed11-30 no supplied reference
+competing,3,ECF,23,1,5242880,True,1,5242250,630,5.7874,5.7357,seed11-30 no supplied reference
+degrade,0,RR,4,1,5240806,False,1,5240806,2074,6.3898,6.3898,"seed1-10 supplied, original matches"
+degrade,0,RR,6,1,5240806,False,1,5240806,2074,6.3394,6.3394,"seed1-10 supplied, original matches"
+degrade,0,RR,19,1,5240806,False,1,5240806,2074,6.3272,6.3143,seed11-30 no supplied reference
+degrade,1,MinRTT,9,1,5242880,True,1,5242250,630,7.3485,8.6882,"seed1-10 supplied, original matches"
+degrade,6,MinRTT-multi(new),17,1,5240806,False,1,5240806,2074,6.3148,6.3148,seed11-30 no supplied reference
+degrade,6,MinRTT-multi(new),22,1,5240806,False,1,5240806,2074,6.3274,6.3145,seed11-30 no supplied reference

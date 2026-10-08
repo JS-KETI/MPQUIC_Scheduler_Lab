@@ -1,0 +1,26 @@
+{
+  "created_at": "2026-10-07T19:12:20+0900",
+  "head": "1dfe61122940afb7bcf0da6537a8f4dfeafad343",
+  "baseline_sha256": "2a0e48432404913d484a24a91ca6498fc83ce402dad7e54c34534883f9b24ae5",
+  "source_patch_sha256": "e1b40f9187d2877b64281b1143d4a0323f199494c3d189e6620f05f1797dc797",
+  "selection": "incomplete",
+  "cases": "dominating:2:6,dominating:2:14,dominating:2:18,dominating:2:22,dominating:3:9,dominating:3:16,competing:2:12,competing:2:14",
+  "sim_end": 60,
+  "extra": "--Observe=1",
+  "planned_runs": 8,
+  "binary_sha256": "e9c3233c5e757905f2eae6045823baabad7df7ab3d92f5011b3aa99365642fee",
+  "quic_library_sha256": {
+    "libns3-dev-quic-optimized.so": "d34bf34f2e6bffc89ed4022e809bd28c8a91e47da389f49330d53a3c26477ccb"
+  },
+  "runner_sha256": "332367bf0554fbe59e22d8337922a667fd02519dfc56cf9feb75fc35ab720c20",
+  "runner_command": [
+    "sched-lab/incomplete-investigate.py",
+    "--baseline-dir",
+    "artifacts/week2-2026-10-02/run-01",
+    "--out",
+    "artifacts/week2-incomplete-2026-10-07/12-original-qdisc-observe",
+    "--cases",
+    "dominating:2:6,dominating:2:14,dominating:2:18,dominating:2:22,dominating:3:9,dominating:3:16,competing:2:12,competing:2:14",
+    "--extra=--Observe=1"
+  ]
+}

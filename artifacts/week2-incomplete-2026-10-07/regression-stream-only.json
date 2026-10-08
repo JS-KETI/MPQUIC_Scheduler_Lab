@@ -1,0 +1,12 @@
+{
+  "socket": {
+    "returncode": 1,
+    "stdout": "REGRESSION,socket-add-13,PASS\nREGRESSION,socket-add-7,PASS\nREGRESSION,socket-add-31,PASS\nREGRESSION,socket-large-read-keeps-all-51-bytes-in-order,FAIL\nREGRESSION,socket-large-read-remaining-size-zero,FAIL\nREGRESSION,socket-add-13,PASS\nREGRESSION,socket-add-7,PASS\nREGRESSION,socket-add-31,PASS\nREGRESSION,socket-read-limit-20-consumes-two-frames,FAIL\nREGRESSION,socket-after-20-read-31-bytes-remain,FAIL\nREGRESSION,socket-next-read-consumes-31-bytes,FAIL\nREGRESSION,socket-bounded-reads-preserve-byte-sequence,FAIL\nREGRESSION,socket-bounded-reads-drain-buffer,FAIL\nREGRESSION_SUMMARY,failures=7\n",
+    "stderr": ""
+  },
+  "stream": {
+    "returncode": 1,
+    "stdout": "0\t1\t0\t0\t0\t\nREGRESSION,stream-receive-offset-0,PASS\nREGRESSION,stream-receive-offset-0,PASS\n0\t1\t200\t250\t0\t\nREGRESSION,stream-receive-offset-250,PASS\n0\t1\t200\t200\t50\t\nREGRESSION,stream-receive-offset-200,PASS\nREGRESSION,stream-old-duplicate-does-not-prevent-delivery-of-300-bytes,FAIL\n0\t1\t0\t0\t0\t\nREGRESSION,stream-receive-offset-0,PASS\n0\t1\t200\t250\t0\t\nREGRESSION,stream-receive-offset-250,PASS\n0\t1\t200\t200\t50\t\nREGRESSION,stream-receive-offset-190,PASS\nREGRESSION,stream-partial-overlap-delivers-300-unique-bytes,FAIL\n0\t1\t0\t100\t0\t\nREGRESSION,stream-receive-offset-100,PASS\n0\t1\t0\t100\t50\t\nREGRESSION,stream-receive-offset-100,PASS\n0\t1\t0\t0\t50\t\nREGRESSION,stream-receive-offset-0,PASS\nREGRESSION,stream-buffered-duplicate-is-not-counted-twice,FAIL\n0\t1\t0\t200\t0\t\nREGRESSION,stream-receive-offset-200,PASS\n0\t1\t0\t100\t100\t\nREGRESSION,stream-receive-offset-100,PASS\n0\t1\t0\t0\t200\t\nREGRESSION,stream-receive-offset-0,PASS\nREGRESSION,stream-reversed-frames-deliver-300-bytes-after-hole-filled,FAIL\nREGRESSION_SUMMARY,failures=4\n",
+    "stderr": ""
+  }
+}

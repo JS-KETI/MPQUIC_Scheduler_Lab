@@ -1,0 +1,795 @@
+diff --git a/scratch/mpquic-sched-lab.cc b/scratch/mpquic-sched-lab.cc
+index 56b8b84..740d75e 100644
+--- a/scratch/mpquic-sched-lab.cc
++++ b/scratch/mpquic-sched-lab.cc
+@@ -22,25 +22,29 @@
+ #include "ns3/internet-module.h"
+ #include "ns3/quic-module.h"
+ #include "ns3/point-to-point-module.h"
++#include "ns3/mpquic-bulk-send-application.h"
+ #include "ns3/applications-module.h"
+ #include "ns3/flow-monitor-module.h"
++#include "ns3/traffic-control-module.h"
+ #include <iostream>
+ #include <iomanip>
++#include <set>
+ 
+ using namespace ns3;
+ 
+ NS_LOG_COMPONENT_DEFINE ("mpquic-sched-lab");
+ 
+ static uint64_t g_rxTotal = 0;
+-static uint64_t g_target = 0;     // "complete": size minus the last partial segment (see note)
++static uint64_t g_target = 0;     // Original benchmark done threshold: size - 3000 bytes
+ static uint64_t g_target95 = 0;   // paper-style criterion (WNS3 notebooks use > 5,000,000 B of 5,242,800 B)
+ static double g_fct = -1.0;
+ static double g_fct95 = -1.0;
+ static double g_start = 1.0;
++static double g_completionGraceMs = 10.0;
+ 
+-// NOTE: in this code base the last few hundred bytes of a bulk transfer are often
+-// never delivered to the sink (the paper's plotting scripts therefore count a run as
+-// finished at > 5,000,000 B).  We treat "size - 3000 B" as complete.
++// Keep the supplied benchmark's completion threshold for comparable FCTs.
++// Exact receipt is reported separately as rx_app == size. CompletionGraceMs
++// controls only the observation window after this threshold (default 10 ms).
+ static void
+ SinkRx (Ptr<const Packet> p, const Address &from)
+ {
+@@ -53,7 +57,7 @@ SinkRx (Ptr<const Packet> p, const Address &from)
+   if (g_fct < 0 && g_rxTotal >= g_target)
+     {
+       g_fct = t;
+-      Simulator::Stop (MilliSeconds (10));
++      Simulator::Stop (Seconds (g_completionGraceMs / 1000.0));
+     }
+ }
+ 
+@@ -65,6 +69,140 @@ ModifyLinkRate (NetDeviceContainer *ptp, DataRate lr, Time delay)
+       ->SetAttribute ("Delay", TimeValue (delay));
+ }
+ 
++// Optional observers only read state; they do not change buffers, timers, or RNG.
++static void
++ObservePacket (std::string context, Ptr<const Packet> packet,
++               const QuicHeader &header, Ptr<const QuicSocketBase> socket)
++{
++  std::cerr << "OBS,packet," << Simulator::Now ().GetSeconds () << "," << context << ","
++            << socket->GetNode ()->GetId () << "," << unsigned (header.GetPathId ()) << ","
++            << header.GetPacketNumber () << "," << packet->GetUid () << "," << packet->GetSize () << std::endl;
++  Ptr<Packet> copy = packet->Copy ();
++  while (copy->GetSize () > 0)
++    {
++      QuicSubheader sub;
++      uint32_t n = copy->RemoveHeader (sub);
++      if (n == 0) break;
++      std::cerr << "OBS,frame," << Simulator::Now ().GetSeconds () << ","
++                << context << "," << socket->GetNode ()->GetId () << ","
++                << unsigned (header.GetPathId ()) << "," << header.GetPacketNumber () << ","
++                << unsigned (sub.GetFrameType ());
++      if (sub.IsStream ())
++        {
++          std::cerr << "," << sub.GetStreamId () << "," << sub.GetOffset ()
++                    << "," << sub.GetLength () << std::endl;
++          uint32_t length = sub.GetLength ();
++          if (length > copy->GetSize ()) break;
++          copy->RemoveAtStart (length);
++        }
++      else if (sub.IsAck ())
++        {
++          std::cerr << ",ack," << sub.GetLargestAcknowledged () << std::endl;
++        }
++      else std::cerr << std::endl;
++    }
++}
++
++static void
++ObserveState (Ptr<MpquicBulkSendApplication> app)
++{
++  Ptr<QuicSocketBase> socket = DynamicCast<QuicSocketBase> (app->GetSocket ());
++  if (!socket) return;
++  std::cerr << "OBS,state," << Simulator::Now ().GetSeconds () << ","
++            << socket->GetSocketState () << "," << g_rxTotal << ","
++            << socket->GetBytesInBuffer () << std::endl;
++  uint32_t pathId = 0;
++  for (auto flow : socket->GetActiveSubflows ())
++    {
++      auto tcb = flow->m_tcb;
++      std::cerr << "OBS,path," << Simulator::Now ().GetSeconds () << "," << pathId++ << ","
++                << tcb->m_bytesInFlight.Get () << "," << tcb->m_cWnd.Get () << ","
++                << tcb->m_highTxMark.Get () << "," << tcb->m_lastAckedSeq << ","
++                << tcb->m_lossDetectionAlarm.IsRunning () << ","
++                << tcb->m_tlpCount << "," << tcb->m_rtoCount << std::endl;
++    }
++}
++
++static void
++ObserveDrop (std::string context, Ptr<const Packet> packet)
++{
++  std::cerr << "OBS,drop," << Simulator::Now ().GetSeconds () << "," << context << ","
++            << packet->GetUid () << "," << packet->GetSize () << std::endl;
++}
++
++static void
++ObserveQueueDrop (std::string context, Ptr<const QueueDiscItem> item, const char *reason)
++{
++  Ptr<const Ipv4QueueDiscItem> ip = DynamicCast<const Ipv4QueueDiscItem> (item);
++  if (!ip) return;
++  Ipv4Header header = ip->GetHeader ();
++  std::cerr << "OBS,qdrop," << Simulator::Now ().GetSeconds () << "," << context << ","
++            << reason << "," << header.GetSource () << "," << header.GetDestination () << ","
++            << header.GetIdentification () << "," << header.GetFragmentOffset () << ","
++            << item->GetPacket ()->GetSize ();
++  if (header.GetFragmentOffset () == 0 && header.GetProtocol () == 17
++      && item->GetPacket ()->GetSize () > 40)
++    {
++      Ptr<Packet> copy = item->GetPacket ()->Copy ();
++      UdpHeader udp;
++      QuicHeader quic;
++      copy->RemoveHeader (udp);
++      copy->RemoveHeader (quic);
++      std::cerr << "," << unsigned (quic.GetPathId ()) << "," << quic.GetPacketNumber ();
++    }
++  std::cerr << std::endl;
++}
++
++static void
++ObserveIpFragment (std::string context, Ptr<const Packet> packet, Ptr<Ipv4> ipv4, uint32_t interface)
++{
++  Ptr<Packet> copy = packet->Copy ();
++  Ipv4Header header;
++  copy->RemoveHeader (header);
++  if (header.GetFragmentOffset () == 0 && header.IsLastFragment ()) return;
++  std::cerr << "OBS,ipfrag," << Simulator::Now ().GetSeconds () << "," << context << ","
++            << ipv4->GetObject<Node> ()->GetId () << "," << interface << ","
++            << header.GetSource () << "," << header.GetDestination () << ","
++            << header.GetIdentification () << "," << header.GetFragmentOffset () << ","
++            << header.IsLastFragment () << "," << copy->GetSize ();
++  if (header.GetFragmentOffset () == 0 && header.GetProtocol () == 17 && copy->GetSize () > 40)
++    {
++      UdpHeader udp;
++      QuicHeader quic;
++      copy->RemoveHeader (udp);
++      copy->RemoveHeader (quic);
++      std::cerr << "," << unsigned (quic.GetPathId ()) << "," << quic.GetPacketNumber ();
++    }
++  std::cerr << std::endl;
++}
++
++static void
++ObserveIpDrop (std::string context, const Ipv4Header &header, Ptr<const Packet> packet,
++               Ipv4L3Protocol::DropReason reason, Ptr<Ipv4> ipv4, uint32_t interface)
++{
++  std::cerr << "OBS,ipdrop," << Simulator::Now ().GetSeconds () << "," << context << ","
++            << unsigned (reason) << "," << interface << "," << packet->GetUid () << ","
++            << header.GetSource () << "," << header.GetDestination () << ","
++            << header.GetIdentification () << "," << header.GetFragmentOffset () << ","
++            << packet->GetSize () << std::endl;
++}
++
++static void
++ConnectObservers ()
++{
++  static std::set<const QuicSocketBase *> connected;
++  Config::MatchContainer matches = Config::LookupMatches ("/NodeList/*/$ns3::QuicL4Protocol/SocketList/*/QuicSocketBase");
++  for (uint32_t i = 0; i < matches.GetN (); ++i)
++    {
++      Ptr<QuicSocketBase> socket = DynamicCast<QuicSocketBase> (matches.Get (i));
++      if (socket && connected.insert (PeekPointer (socket)).second)
++        {
++          socket->TraceConnect ("Tx", "Tx", MakeCallback (&ObservePacket));
++          socket->TraceConnect ("Rx", "Rx", MakeCallback (&ObservePacket));
++        }
++    }
++}
++
+ int
+ main (int argc, char *argv[])
+ {
+@@ -80,6 +218,7 @@ main (int argc, char *argv[])
+   int seed = 1;
+   int bLambda = 200, bVar = 0;
+   double simEnd = 60.0;
++  bool observe = false;
+ 
+   CommandLine cmd;
+   cmd.AddValue ("SchedulerType", "0 RR, 1 MinRTT, 2 BLEST, 3 ECF, 4 Peekaboo, 5 EAT(new), 6 MinRTT-multi(new)", schedulerType);
+@@ -102,6 +241,8 @@ main (int argc, char *argv[])
+   cmd.AddValue ("BLambda", "BLEST lambda", bLambda);
+   cmd.AddValue ("BVar", "BLEST lambda increment", bVar);
+   cmd.AddValue ("SimEnd", "hard stop [s]", simEnd);
++  cmd.AddValue ("CompletionGraceMs", "diagnostic wait after unchanged done threshold [ms]", g_completionGraceMs);
++  cmd.AddValue ("Observe", "read-only packet and sender-state diagnostics on stderr", observe);
+   cmd.Parse (argc, argv);
+ 
+   Time::SetResolution (Time::NS);
+@@ -232,6 +373,21 @@ main (int argc, char *argv[])
+                            Time::FromDouble (delay1, Time::MS));
+     }
+ 
++  if (observe)
++    {
++      Config::Connect ("/NodeList/*/DeviceList/*/$ns3::PointToPointNetDevice/TxQueue/Drop", MakeCallback (&ObserveDrop));
++      Config::Connect ("/NodeList/*/DeviceList/*/$ns3::PointToPointNetDevice/PhyRxDrop", MakeCallback (&ObserveDrop));
++      Config::Connect ("/NodeList/*/$ns3::Ipv4L3Protocol/Drop", MakeCallback (&ObserveIpDrop));
++      Config::Connect ("/NodeList/*/$ns3::Ipv4L3Protocol/Rx", MakeCallback (&ObserveIpFragment));
++      Config::Connect ("/NodeList/*/$ns3::Ipv4L3Protocol/Tx", MakeCallback (&ObserveIpFragment));
++      Config::Connect ("/NodeList/*/$ns3::TrafficControlLayer/RootQueueDiscList/*/DropBeforeEnqueue", MakeCallback (&ObserveQueueDrop));
++      Config::Connect ("/NodeList/*/$ns3::TrafficControlLayer/RootQueueDiscList/*/DropAfterDequeue", MakeCallback (&ObserveQueueDrop));
++      for (double t : {0.001, 1.000000001, 1.1, 1.2})
++        Simulator::Schedule (Seconds (t), &ConnectObservers);
++      for (double t : {2.0, 4.0, 6.0, 10.0, 30.0, simEnd - 0.001})
++        if (t < simEnd) Simulator::Schedule (Seconds (t), &ObserveState,
++                                              DynamicCast<MpquicBulkSendApplication> (srcApps.Get (0)));
++    }
+   Simulator::Stop (Seconds (simEnd));
+   Simulator::Run ();
+ 
+diff --git a/scratch/quic-loss-regression.cc b/scratch/quic-loss-regression.cc
+new file mode 100644
+index 0000000..fc1a8d1
+--- /dev/null
++++ b/scratch/quic-loss-regression.cc
+@@ -0,0 +1,150 @@
++// Loss detection regression: a received ACK-only/probe packet number need not
++// have a retransmittable item in SentList. ACK gaps still identify missing data.
++#include "ns3/core-module.h"
++#include "ns3/quic-socket-base.h"
++#include "ns3/quic-socket-tx-buffer.h"
++#include "ns3/quic-socket-tx-scheduler.h"
++#include "ns3/quic-subheader.h"
++#include <cstdint>
++#include <iostream>
++#include <string>
++#include <vector>
++
++using namespace ns3;
++
++static unsigned failures = 0;
++static void
++Check (bool ok, const std::string& name)
++{
++  std::cout << "REGRESSION," << name << "," << (ok ? "PASS" : "FAIL") << std::endl;
++  if (!ok) ++failures;
++}
++
++struct Sender
++{
++  Ptr<QuicSocketTxBuffer> buffer;
++  Ptr<QuicSocketState> state;
++
++  Sender ()
++    : buffer (CreateObject<QuicSocketTxBuffer> ()),
++      state (CreateObject<QuicSocketState> ())
++  {
++    buffer->SetScheduler (CreateObject<QuicSocketTxScheduler> ());
++    buffer->SetMaxBufferSize (4096);
++    state->m_kReorderingThreshold = 3;
++    state->m_kUsingTimeLossDetection = false;
++  }
++
++  uint32_t Send (uint32_t packetNumber, uint32_t offset)
++  {
++    std::vector<uint8_t> bytes (100);
++    for (uint32_t i = 0; i < bytes.size (); ++i) bytes[i] = (offset + i) % 251;
++    auto packet = Create<Packet> (bytes.data (), bytes.size ());
++    auto header = QuicSubheader::CreateStreamSubHeader (
++      1, offset, bytes.size (), offset != 0, true, false);
++    packet->AddHeader (header);
++    const uint32_t wireBytes = packet->GetSize ();
++    Check (buffer->Add (packet), "tx-add-packet-" + std::to_string (packetNumber));
++    auto sent = buffer->NextSequence (wireBytes, SequenceNumber32 (packetNumber), 0);
++    Check (sent && sent->GetSize () == wireBytes,
++           "tx-send-packet-" + std::to_string (packetNumber));
++    buffer->UpdatePacketSent (SequenceNumber32 (packetNumber), wireBytes, 0, state);
++    return wireBytes;
++  }
++};
++
++static bool
++ContainsPacket (const std::vector<Ptr<QuicSocketTxItem> >& items, uint32_t number)
++{
++  for (const auto& item : items)
++    if (item->m_packetNumber.GetValue () == number) return true;
++  return false;
++}
++
++static void
++MissingLargestDataItem ()
++{
++  Sender sender;
++  sender.Send (9, 0);
++  const uint32_t missingBytes = sender.Send (10, 100);
++  // Receiver reports packet 20 and packets <=9. Packets 10..19 are missing.
++  // Packet 20 was ACK-only or a probe and is absent from the data SentList.
++  auto acknowledged = sender.buffer->OnAckUpdate (
++    sender.state, 20, std::vector<uint32_t> {9}, std::vector<uint32_t> {19}, 0);
++  Check (acknowledged.size () == 1 && ContainsPacket (acknowledged, 9),
++         "gap-acknowledges-only-received-packet-9");
++  Check (!ContainsPacket (acknowledged, 10), "gap-does-not-acknowledge-missing-packet-10");
++  Check (sender.buffer->BytesInFlight (0) == missingBytes,
++         "missing-packet-10-remains-outstanding");
++  auto lost = sender.buffer->DetectLostPackets (0);
++  Check (lost.size () == 1 && ContainsPacket (lost, 10),
++         "missing-largest-data-item-still-detects-old-packet-10-loss");
++  Check (sender.buffer->GetLost (0) == missingBytes,
++         "lost-byte-count-is-exactly-missing-packet-10");
++
++  const uint32_t retransmitBytes = sender.buffer->Retransmission (SequenceNumber32 (30), 0);
++  Check (retransmitBytes == missingBytes && sender.buffer->AppSize () == missingBytes,
++         "retransmission-queues-missing-data-and-excludes-acked-packet-9");
++  if (retransmitBytes > 0)
++    {
++      auto retransmission = sender.buffer->NextSequence (
++        retransmitBytes, SequenceNumber32 (30), 0);
++      QuicSubheader header;
++      retransmission->RemoveHeader (header);
++      std::vector<uint8_t> bytes (retransmission->GetSize ());
++      retransmission->CopyData (bytes.data (), bytes.size ());
++      std::vector<uint8_t> expected (100);
++      for (uint32_t i = 0; i < expected.size (); ++i) expected[i] = (100 + i) % 251;
++      Check (header.IsStream () && header.GetOffset () == 100 && bytes == expected,
++             "retransmission-preserves-only-missing-payload-byte-sequence");
++      // Packet 31 is again not represented by a data item, while 30 is received.
++      acknowledged = sender.buffer->OnAckUpdate (sender.state, 31, {}, {}, 0);
++      Check (acknowledged.size () == 1 && ContainsPacket (acknowledged, 30),
++             "received-retransmission-is-acknowledged");
++      Check (sender.buffer->BytesInFlight (0) == 0 &&
++             sender.buffer->DetectLostPackets (0).empty (),
++             "acked-retransmission-leaves-no-outstanding-or-lost-data");
++    }
++}
++
++static void
++DoNotDeclareRecentPacketLost ()
++{
++  Sender sender;
++  const uint32_t missingBytes = sender.Send (10, 0);
++  // Packet 10 is missing, but largest acknowledged 12 is only two numbers ahead.
++  auto acknowledged = sender.buffer->OnAckUpdate (
++    sender.state, 12, std::vector<uint32_t> {9}, std::vector<uint32_t> {11}, 0);
++  Check (acknowledged.empty () && sender.buffer->BytesInFlight (0) == missingBytes,
++         "recent-gap-packet-stays-unacknowledged");
++  Check (sender.buffer->DetectLostPackets (0).empty (),
++         "packet-number-distance-two-does-not-exceed-existing-threshold-three");
++}
++
++static void
++LargestDataItemStillWorks ()
++{
++  Sender sender;
++  sender.Send (10, 0);
++  sender.Send (20, 100);
++  auto acknowledged = sender.buffer->OnAckUpdate (
++    sender.state, 20, std::vector<uint32_t> {9}, std::vector<uint32_t> {19}, 0);
++  auto lost = sender.buffer->DetectLostPackets (0);
++  Check (acknowledged.size () == 1 && ContainsPacket (acknowledged, 20),
++         "tracked-largest-packet-20-is-acknowledged");
++  Check (lost.size () == 1 && ContainsPacket (lost, 10),
++         "tracked-largest-packet-keeps-existing-packet-threshold-behavior");
++}
++
++int
++main (int argc, char** argv)
++{
++  CommandLine command;
++  command.Parse (argc, argv);
++  MissingLargestDataItem ();
++  DoNotDeclareRecentPacketLost ();
++  LargestDataItemStillWorks ();
++  Simulator::Destroy ();
++  std::cout << "REGRESSION_SUMMARY,failures=" << failures << std::endl;
++  return failures == 0 ? 0 : 1;
++}
+diff --git a/scratch/quic-rx-regression.cc b/scratch/quic-rx-regression.cc
+new file mode 100644
+index 0000000..61cf8e8
+--- /dev/null
++++ b/scratch/quic-rx-regression.cc
+@@ -0,0 +1,252 @@
++// Receiver regression tests: preserve byte order and byte count across reads,
++// duplicate retransmissions and retransmissions overlapping delivered data.
++// No topology, rate, timeout or completion threshold is changed by these tests.
++#include "ns3/core-module.h"
++#include "ns3/quic-socket-base.h"
++#include "ns3/quic-socket-rx-buffer.h"
++#include "ns3/quic-stream-base.h"
++#include "ns3/quic-l5-protocol.h"
++#include "ns3/quic-subheader.h"
++#include <algorithm>
++#include <cstdint>
++#include <iostream>
++#include <string>
++#include <vector>
++
++using namespace ns3;
++
++static unsigned failures = 0;
++
++static void
++Check (bool ok, const std::string& name)
++{
++  std::cout << "REGRESSION," << name << "," << (ok ? "PASS" : "FAIL") << std::endl;
++  if (!ok) ++failures;
++}
++
++static std::vector<uint8_t>
++Bytes (uint32_t offset, uint32_t count)
++{
++  std::vector<uint8_t> bytes (count);
++  for (uint32_t i = 0; i < count; ++i) bytes[i] = (offset + i) % 251;
++  return bytes;
++}
++
++static Ptr<Packet>
++Payload (uint32_t offset, uint32_t count)
++{
++  const auto bytes = Bytes (offset, count);
++  return Create<Packet> (bytes.data (), bytes.size ());
++}
++
++static void
++AppendBytes (Ptr<Packet> packet, std::vector<uint8_t>& bytes)
++{
++  if (!packet) return;
++  const auto previous = bytes.size ();
++  bytes.resize (previous + packet->GetSize ());
++  packet->CopyData (bytes.data () + previous, packet->GetSize ());
++}
++
++static Ptr<QuicSocketRxBuffer>
++SocketInput ()
++{
++  auto buffer = CreateObject<QuicSocketRxBuffer> ();
++  buffer->SetMaxBufferSize (4096);
++  Check (buffer->Add (Payload (0, 13)), "socket-add-13");
++  Check (buffer->Add (Payload (13, 7)), "socket-add-7");
++  Check (buffer->Add (Payload (20, 31)), "socket-add-31");
++  return buffer;
++}
++
++static void
++SocketReadTests ()
++{
++  {
++    auto buffer = SocketInput ();
++    auto packet = buffer->Extract (4096);
++    std::vector<uint8_t> received;
++    AppendBytes (packet, received);
++    Check (received == Bytes (0, 51), "socket-large-read-keeps-all-51-bytes-in-order");
++    Check (buffer->Size () == 0, "socket-large-read-remaining-size-zero");
++  }
++  {
++    auto buffer = SocketInput ();
++    std::vector<uint8_t> received;
++    auto first = buffer->Extract (20);
++    Check (first && first->GetSize () == 20, "socket-read-limit-20-consumes-two-frames");
++    AppendBytes (first, received);
++    Check (buffer->Size () == 31, "socket-after-20-read-31-bytes-remain");
++    auto second = buffer->Extract (31);
++    Check (second && second->GetSize () == 31, "socket-next-read-consumes-31-bytes");
++    AppendBytes (second, received);
++    Check (received == Bytes (0, 51), "socket-bounded-reads-preserve-byte-sequence");
++    Check (buffer->Size () == 0, "socket-bounded-reads-drain-buffer");
++  }
++  {
++    auto buffer = SocketInput ();
++    std::vector<uint8_t> received;
++    auto first = buffer->Extract (5); // Stop inside the first 13-byte packet.
++    Check (first && first->GetSize () == 5,
++           "socket-partial-first-read-obeys-five-byte-limit");
++    AppendBytes (first, received);
++    Check (buffer->Size () == 46,
++           "socket-partial-first-read-leaves-46-bytes");
++    auto second = buffer->Extract (17); // Cross packets, stopping inside the last.
++    Check (second && second->GetSize () == 17,
++           "socket-partial-cross-packet-read-obeys-17-byte-limit");
++    AppendBytes (second, received);
++    Check (buffer->Size () == 29,
++           "socket-partial-cross-packet-read-leaves-29-bytes");
++    auto last = buffer->Extract (100);
++    Check (last && last->GetSize () == 29,
++           "socket-partial-final-read-consumes-only-remaining-29-bytes");
++    AppendBytes (last, received);
++    Check (received == Bytes (0, 51),
++           "socket-partial-reads-preserve-all-51-bytes-in-order");
++    Check (buffer->Size () == 0,
++           "socket-partial-reads-drain-buffer");
++  }
++}
++
++// Keep flow-control advertisements outside this receiver-only fixture. The
++// exercised receive path is the production Recv -> L5 Recv -> AppendingRx path.
++class QuietRegressionStream : public QuicStreamBase
++{
++public:
++  void Configure (Ptr<QuicL5Protocol> l5)
++  {
++    SetQuicL5 (l5);
++    SetStreamId (1);
++    SetStreamDirectionType (QuicStream::RECEIVER);
++    SetStreamStateRecv (QuicStream::RECV);
++    SetMaxStreamData (1000000);
++    m_maxAdvertisedData = 1000000;
++  }
++
++  bool HasDeliveredFinalData () const
++  {
++    return m_streamStateRecv == QuicStream::DATA_READ;
++  }
++};
++
++class QuietRegressionSocket : public QuicSocketBase
++{
++public:
++  uint32_t PendingBytes () const { return m_rxBuffer->Size (); }
++};
++
++struct StreamReceiver
++{
++  Ptr<QuietRegressionSocket> socket;
++  Ptr<QuicL5Protocol> l5;
++  Ptr<QuietRegressionStream> stream;
++  Address source;
++
++  StreamReceiver ()
++    : socket (CreateObject<QuietRegressionSocket> ()),
++      l5 (CreateObject<QuicL5Protocol> ()),
++      stream (CreateObject<QuietRegressionStream> ())
++  {
++    l5->SetSocket (socket);
++    stream->Configure (l5);
++  }
++
++  void Receive (uint32_t offset, uint32_t count, bool fin = false)
++  {
++    auto header = QuicSubheader::CreateStreamSubHeader (
++      1, offset, count, offset != 0, true, fin);
++    Check (stream->Recv (Payload (offset, count), header, source) == 0,
++           "stream-receive-offset-" + std::to_string (offset) + (fin ? "-with-fin" : ""));
++  }
++};
++
++// Validate actual application bytes after the independent pending-byte checks.
++// The bounded loop prevents a corrupted buffer counter from hanging a test.
++static void
++CheckStreamPayload (StreamReceiver& receiver, uint32_t expectedBytes,
++                    const std::string& name)
++{
++  std::vector<uint8_t> received;
++  for (unsigned i = 0; i < 64; ++i)
++    {
++      auto packet = receiver.socket->Recv (4096, 0);
++      if (!packet || packet->GetSize () == 0) break;
++      AppendBytes (packet, received);
++    }
++  Check (received == Bytes (0, expectedBytes), name);
++}
++
++static void
++StreamReceiveTests ()
++{
++  {
++    StreamReceiver receiver;
++    receiver.Receive (0, 200);
++    // The bytes were already delivered, but FIN first arrives on this replay.
++    // Discard duplicate payload while preserving the stream termination signal.
++    receiver.Receive (0, 200, true);
++    Check (receiver.stream->HasDeliveredFinalData (),
++           "stream-duplicate-payload-first-fin-reaches-data-read");
++    Check (receiver.socket->PendingBytes () == 200,
++           "stream-duplicate-payload-first-fin-keeps-only-200-unique-bytes");
++    CheckStreamPayload (receiver, 200,
++                        "stream-duplicate-payload-first-fin-preserves-actual-byte-sequence");
++  }
++  {
++    StreamReceiver receiver;
++    receiver.Receive (0, 200);
++    receiver.Receive (0, 100);   // An already delivered range is retransmitted.
++    receiver.Receive (250, 50); // Buffer data beyond a genuine 50-byte hole.
++    receiver.Receive (200, 50); // Fill the hole; all 300 unique bytes are ready.
++    Check (receiver.socket->PendingBytes () == 300,
++           "stream-old-duplicate-does-not-prevent-delivery-of-300-bytes");
++    CheckStreamPayload (receiver, 300, "stream-old-duplicate-preserves-actual-byte-sequence");
++  }
++  {
++    StreamReceiver receiver;
++    receiver.Receive (0, 200);
++    receiver.Receive (250, 50);
++    receiver.Receive (190, 60); // 10 old bytes plus the missing 50 new bytes.
++    Check (receiver.socket->PendingBytes () == 300,
++           "stream-partial-overlap-delivers-300-unique-bytes");
++    CheckStreamPayload (receiver, 300, "stream-partial-overlap-preserves-actual-byte-sequence");
++  }
++  {
++    StreamReceiver receiver;
++    receiver.Receive (100, 50);
++    receiver.Receive (100, 50); // Duplicate still waiting in the reorder buffer.
++    receiver.Receive (0, 100);
++    Check (receiver.socket->PendingBytes () == 150,
++           "stream-buffered-duplicate-is-not-counted-twice");
++    CheckStreamPayload (receiver, 150, "stream-buffered-duplicate-preserves-actual-byte-sequence");
++  }
++  {
++    StreamReceiver receiver;
++    receiver.Receive (200, 100);
++    receiver.Receive (100, 100);
++    receiver.Receive (0, 100);
++    Check (receiver.socket->PendingBytes () == 300,
++           "stream-reversed-frames-deliver-300-bytes-after-hole-filled");
++    CheckStreamPayload (receiver, 300, "stream-reversed-frames-preserve-actual-byte-sequence");
++  }
++}
++
++int
++main (int argc, char** argv)
++{
++  std::string layer = "all";
++  CommandLine command;
++  command.AddValue ("Layer", "Run socket, stream or all receiver tests", layer);
++  command.Parse (argc, argv);
++  if (layer != "socket" && layer != "stream" && layer != "all")
++    {
++      std::cerr << "Layer must be socket, stream or all" << std::endl;
++      return 2;
++    }
++  if (layer == "socket" || layer == "all") SocketReadTests ();
++  if (layer == "stream" || layer == "all") StreamReceiveTests ();
++  Simulator::Destroy ();
++  std::cout << "REGRESSION_SUMMARY,failures=" << failures << std::endl;
++  return failures == 0 ? 0 : 1;
++}
+diff --git a/src/quic/model/quic-socket-base.cc b/src/quic/model/quic-socket-base.cc
+index 3f5481e..49dd4f0 100755
+--- a/src/quic/model/quic-socket-base.cc
++++ b/src/quic/model/quic-socket-base.cc
+@@ -325,14 +325,14 @@ QuicSocketBase::GetTypeId (void)
+                      MakeTraceSourceAccessor (&QuicSocketBase::m_rttTrace1),
+                      "ns3::Time::TracedValueCallback")
+      
+-    // .AddTraceSource ("Tx",
+-    //                  "Send QUIC packet to UDP protocol",
+-    //                  MakeTraceSourceAccessor (&QuicSocketBase::m_txTrace),
+-    //                  "ns3::QuicSocketBase::QuicTxRxTracedCallback")
+-    // .AddTraceSource ("Rx",
+-    //                  "Receive QUIC packet from UDP protocol",
+-    //                  MakeTraceSourceAccessor (&QuicSocketBase::m_rxTrace),
+-    //                  "ns3::QuicSocketBase::QuicTxRxTracedCallback")
++    .AddTraceSource ("Tx",
++                     "Send QUIC packet to UDP protocol",
++                     MakeTraceSourceAccessor (&QuicSocketBase::m_txTrace),
++                     "ns3::QuicSocketBase::QuicTxRxTracedCallback")
++    .AddTraceSource ("Rx",
++                     "Receive QUIC packet from UDP protocol",
++                     MakeTraceSourceAccessor (&QuicSocketBase::m_rxTrace),
++                     "ns3::QuicSocketBase::QuicTxRxTracedCallback")
+     
+   ;
+   return tid;
+diff --git a/src/quic/model/quic-socket-rx-buffer.cc b/src/quic/model/quic-socket-rx-buffer.cc
+index abdc24a..fed7861 100755
+--- a/src/quic/model/quic-socket-rx-buffer.cc
++++ b/src/quic/model/quic-socket-rx-buffer.cc
+@@ -136,30 +136,23 @@ QuicSocketRxBuffer::Extract (uint32_t maxSize)
+ 
+   Ptr<Packet> outPkt = Create<Packet> ();
+ 
+-  QuicSocketRxPacketList::iterator it = m_socketRecvList.begin ();
+-
+-  while (extractSize > 0 && !m_socketRecvList.empty () && it != m_socketRecvList.end ())
++  while (extractSize > 0 && !m_socketRecvList.empty ())
+     {
+-      it = m_socketRecvList.begin ();
+-      Ptr<Packet> currentPacket = *it;
+-
+-      if (currentPacket->GetSize () + outPkt->GetSize () <= extractSize)   // Merge
++      Ptr<Packet> currentPacket = m_socketRecvList.front ();
++      uint32_t bytes = std::min (extractSize, currentPacket->GetSize ());
++      outPkt->AddAtEnd (currentPacket->CreateFragment (0, bytes));
++      if (bytes == currentPacket->GetSize ())
+         {
+-
+-          outPkt->AddAtEnd ((*it));
+-          m_socketRecvList.erase (it);
+-
+-          m_recvSize -= (*it)->GetSize ();
+-          extractSize -= (*it)->GetSize ();
+-          NS_LOG_LOGIC ("Added packet of size " << (*it)->GetSize ());
+-          continue;
++          m_socketRecvList.erase (m_socketRecvList.begin ());
+         }
+       else
+         {
+-          break;
++          currentPacket->RemoveAtStart (bytes);
+         }
+-
+-      it++;
++      // Account for the extracted packet, never an invalidated iterator.
++      m_recvSize -= bytes;
++      extractSize -= bytes;
++      NS_LOG_LOGIC ("Added packet fragment of size " << bytes);
+     }
+ 
+   if (outPkt->GetSize () == 0)
+diff --git a/src/quic/model/quic-socket-tx-buffer.cc b/src/quic/model/quic-socket-tx-buffer.cc
+index 7c22e8e..c194b91 100755
+--- a/src/quic/model/quic-socket-tx-buffer.cc
++++ b/src/quic/model/quic-socket-tx-buffer.cc
+@@ -457,7 +457,6 @@ std::vector<Ptr<QuicSocketTxItem> > QuicSocketTxBuffer::OnAckUpdate (
+   // Mark packets as lost as in RFC (Sec. 4.2.1 of draft-ietf-quic-recovery-15)
+   uint32_t index = m_subflowSentList[pathId].size ();
+   bool lost = false;
+-  bool outstanding = false;
+   auto acked_it = m_subflowSentList[pathId].rend ();
+   // Iterate over the sent packet list in reverse
+   for (auto sent_it = m_subflowSentList[pathId].rbegin ();
+@@ -481,9 +480,9 @@ std::vector<Ptr<QuicSocketTxItem> > QuicSocketTxBuffer::OnAckUpdate (
+             {
+               // Mark the packet as ACKed
+               acked_it = sent_it;
+-              outstanding = true;
+             }
+-          else if (outstanding && !(*sent_it)->m_sacked)
++          else if ((*sent_it)->m_packetNumber.GetValue () < largestAcknowledged
++                   && !(*sent_it)->m_sacked)
+             {
+               //ACK-based detection
+               if (largestAcknowledged - (*sent_it)->m_packetNumber.GetValue ()
+@@ -495,7 +494,8 @@ std::vector<Ptr<QuicSocketTxItem> > QuicSocketTxBuffer::OnAckUpdate (
+                     "Largest ACK " << largestAcknowledged << ", lost packet " << (*sent_it)->m_packetNumber.GetValue () << " - reordering " << tcbd->m_kReorderingThreshold);
+                 }
+               // Time-based detection (optional)
+-              if (tcbd->m_kUsingTimeLossDetection)
++              if (tcbd->m_kUsingTimeLossDetection
++                  && acked_it != m_subflowSentList[pathId].rend ())
+                 {
+                   double lhsComparison = ((*acked_it)->m_ackTime
+                                           - (*sent_it)->m_lastSent).GetSeconds ();
+diff --git a/src/quic/model/quic-stream-base.cc b/src/quic/model/quic-stream-base.cc
+index 69709e1..28d20c3 100755
+--- a/src/quic/model/quic-stream-base.cc
++++ b/src/quic/model/quic-stream-base.cc
+@@ -308,10 +308,11 @@ QuicStreamBase::StreamWindow () const
+ }
+ 
+ int
+-QuicStreamBase::Recv (Ptr<Packet> frame, const QuicSubheader& sub, Address &address)
++QuicStreamBase::Recv (Ptr<Packet> frame, const QuicSubheader& receivedSub, Address &address)
+ {
+   NS_LOG_FUNCTION (this);
+ 
++  QuicSubheader sub = receivedSub;
+   uint8_t frameType = sub.GetFrameType ();
+ 
+   switch (frameType)
+@@ -445,6 +446,20 @@ QuicStreamBase::Recv (Ptr<Packet> frame, const QuicSubheader& sub, Address &addr
+         }
+       SetStreamStateRecvIf (m_streamStateRecv == RECV and m_fin, SIZE_KNOWN);
+ 
++      // Process FIN before removing retransmitted bytes that were delivered.
++      // A duplicate payload can carry the first end-of-stream notification.
++      if (sub.GetLength () > 0 && sub.GetOffset () < m_recvSize)
++        {
++          uint64_t delivered = std::min (sub.GetLength (), m_recvSize - sub.GetOffset ());
++          if (delivered == sub.GetLength () && !m_fin)
++            {
++              return 0;
++            }
++          frame->RemoveAtStart (delivered);
++          sub.SetOffset (sub.GetOffset () + delivered);
++          sub.SetLength (sub.GetLength () - delivered);
++        }
++
+ 
+     // temp_comment
+     std::cout<< Simulator::Now ().GetSeconds () << "\t"<< m_streamId <<"\t" << m_recvSize<<"\t"<<sub.GetOffset ()<< "\t" << m_rxBuffer->Size () << "\t" <<std::endl;
+@@ -475,7 +490,7 @@ QuicStreamBase::Recv (Ptr<Packet> frame, const QuicSubheader& sub, Address &addr
+           if (offSetLength.second > 0)
+             {
+               Ptr<Packet> payload = m_rxBuffer->Extract (offSetLength.second);
+-              m_recvSize += offSetLength.second;
++              if (payload) m_recvSize += payload->GetSize ();
+               if (payload) {
+                 frame->AddAtEnd (payload);
+               }

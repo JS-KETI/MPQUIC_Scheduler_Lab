@@ -325,14 +325,14 @@ QuicSocketBase::GetTypeId (void)
                      MakeTraceSourceAccessor (&QuicSocketBase::m_rttTrace1),
                      "ns3::Time::TracedValueCallback")
      
-    // .AddTraceSource ("Tx",
-    //                  "Send QUIC packet to UDP protocol",
-    //                  MakeTraceSourceAccessor (&QuicSocketBase::m_txTrace),
-    //                  "ns3::QuicSocketBase::QuicTxRxTracedCallback")
-    // .AddTraceSource ("Rx",
-    //                  "Receive QUIC packet from UDP protocol",
-    //                  MakeTraceSourceAccessor (&QuicSocketBase::m_rxTrace),
-    //                  "ns3::QuicSocketBase::QuicTxRxTracedCallback")
+    .AddTraceSource ("Tx",
+                     "Send QUIC packet to UDP protocol",
+                     MakeTraceSourceAccessor (&QuicSocketBase::m_txTrace),
+                     "ns3::QuicSocketBase::QuicTxRxTracedCallback")
+    .AddTraceSource ("Rx",
+                     "Receive QUIC packet from UDP protocol",
+                     MakeTraceSourceAccessor (&QuicSocketBase::m_rxTrace),
+                     "ns3::QuicSocketBase::QuicTxRxTracedCallback")
     
   ;
   return tid;

@@ -1,0 +1,320 @@
+{
+  "planned": 62,
+  "result_rows": 0,
+  "errors": [
+    {
+      "case": "dominating-2-seed06",
+      "returncode": -6,
+      "result_lines": 0
+    },
+    {
+      "case": "dominating-2-seed14",
+      "returncode": -6,
+      "result_lines": 0
+    },
+    {
+      "case": "dominating-2-seed18",
+      "returncode": -6,
+      "result_lines": 0
+    },
+    {
+      "case": "dominating-2-seed22",
+      "returncode": -6,
+      "result_lines": 0
+    },
+    {
+      "case": "dominating-3-seed09",
+      "returncode": -6,
+      "result_lines": 0
+    },
+    {
+      "case": "dominating-3-seed16",
+      "returncode": -6,
+      "result_lines": 0
+    },
+    {
+      "case": "competing-0-seed05",
+      "returncode": -6,
+      "result_lines": 0
+    },
+    {
+      "case": "competing-0-seed06",
+      "returncode": -6,
+      "result_lines": 0
+    },
+    {
+      "case": "competing-0-seed07",
+      "returncode": -6,
+      "result_lines": 0
+    },
+    {
+      "case": "competing-0-seed08",
+      "returncode": -6,
+      "result_lines": 0
+    },
+    {
+      "case": "competing-0-seed11",
+      "returncode": -6,
+      "result_lines": 0
+    },
+    {
+      "case": "competing-0-seed12",
+      "returncode": -6,
+      "result_lines": 0
+    },
+    {
+      "case": "competing-0-seed13",
+      "returncode": -6,
+      "result_lines": 0
+    },
+    {
+      "case": "competing-0-seed14",
+      "returncode": -6,
+      "result_lines": 0
+    },
+    {
+      "case": "competing-0-seed15",
+      "returncode": -6,
+      "result_lines": 0
+    },
+    {
+      "case": "competing-0-seed16",
+      "returncode": -6,
+      "result_lines": 0
+    },
+    {
+      "case": "competing-0-seed17",
+      "returncode": -6,
+      "result_lines": 0
+    },
+    {
+      "case": "competing-0-seed18",
+      "returncode": -6,
+      "result_lines": 0
+    },
+    {
+      "case": "competing-0-seed19",
+      "returncode": -6,
+      "result_lines": 0
+    },
+    {
+      "case": "competing-0-seed21",
+      "returncode": -6,
+      "result_lines": 0
+    },
+    {
+      "case": "competing-0-seed23",
+      "returncode": -6,
+      "result_lines": 0
+    },
+    {
+      "case": "competing-0-seed26",
+      "returncode": -6,
+      "result_lines": 0
+    },
+    {
+      "case": "competing-0-seed28",
+      "returncode": -6,
+      "result_lines": 0
+    },
+    {
+      "case": "competing-1-seed23",
+      "returncode": -6,
+      "result_lines": 0
+    },
+    {
+      "case": "competing-2-seed07",
+      "returncode": -6,
+      "result_lines": 0
+    },
+    {
+      "case": "competing-2-seed12",
+      "returncode": -6,
+      "result_lines": 0
+    },
+    {
+      "case": "competing-2-seed14",
+      "returncode": -6,
+      "result_lines": 0
+    },
+    {
+      "case": "competing-2-seed20",
+      "returncode": -6,
+      "result_lines": 0
+    },
+    {
+      "case": "competing-5-seed02",
+      "returncode": -6,
+      "result_lines": 0
+    },
+    {
+      "case": "competing-5-seed05",
+      "returncode": -6,
+      "result_lines": 0
+    },
+    {
+      "case": "competing-5-seed06",
+      "returncode": -6,
+      "result_lines": 0
+    },
+    {
+      "case": "competing-5-seed07",
+      "returncode": -6,
+      "result_lines": 0
+    },
+    {
+      "case": "competing-5-seed08",
+      "returncode": -6,
+      "result_lines": 0
+    },
+    {
+      "case": "competing-5-seed10",
+      "returncode": -6,
+      "result_lines": 0
+    },
+    {
+      "case": "competing-5-seed11",
+      "returncode": -6,
+      "result_lines": 0
+    },
+    {
+      "case": "competing-5-seed12",
+      "returncode": -6,
+      "result_lines": 0
+    },
+    {
+      "case": "competing-5-seed15",
+      "returncode": -6,
+      "result_lines": 0
+    },
+    {
+      "case": "competing-5-seed16",
+      "returncode": -6,
+      "result_lines": 0
+    },
+    {
+      "case": "competing-5-seed17",
+      "returncode": -6,
+      "result_lines": 0
+    },
+    {
+      "case": "competing-5-seed18",
+      "returncode": -6,
+      "result_lines": 0
+    },
+    {
+      "case": "competing-5-seed19",
+      "returncode": -6,
+      "result_lines": 0
+    },
+    {
+      "case": "competing-5-seed21",
+      "returncode": -6,
+      "result_lines": 0
+    },
+    {
+      "case": "competing-5-seed22",
+      "returncode": -6,
+      "result_lines": 0
+    },
+    {
+      "case": "competing-5-seed23",
+      "returncode": -6,
+      "result_lines": 0
+    },
+    {
+      "case": "competing-5-seed26",
+      "returncode": -6,
+      "result_lines": 0
+    },
+    {
+      "case": "competing-6-seed02",
+      "returncode": -6,
+      "result_lines": 0
+    },
+    {
+      "case": "competing-6-seed05",
+      "returncode": -6,
+      "result_lines": 0
+    },
+    {
+      "case": "competing-6-seed06",
+      "returncode": -6,
+      "result_lines": 0
+    },
+    {
+      "case": "competing-6-seed07",
+      "returncode": -6,
+      "result_lines": 0
+    },
+    {
+      "case": "competing-6-seed08",
+      "returncode": -6,
+      "result_lines": 0
+    },
+    {
+      "case": "competing-6-seed10",
+      "returncode": -6,
+      "result_lines": 0
+    },
+    {
+      "case": "competing-6-seed11",
+      "returncode": -6,
+      "result_lines": 0
+    },
+    {
+      "case": "competing-6-seed12",
+      "returncode": -6,
+      "result_lines": 0
+    },
+    {
+      "case": "competing-6-seed15",
+      "returncode": -6,
+      "result_lines": 0
+    },
+    {
+      "case": "competing-6-seed16",
+      "returncode": -6,
+      "result_lines": 0
+    },
+    {
+      "case": "competing-6-seed17",
+      "returncode": -6,
+      "result_lines": 0
+    },
+    {
+      "case": "competing-6-seed18",
+      "returncode": -6,
+      "result_lines": 0
+    },
+    {
+      "case": "competing-6-seed19",
+      "returncode": -6,
+      "result_lines": 0
+    },
+    {
+      "case": "competing-6-seed21",
+      "returncode": -6,
+      "result_lines": 0
+    },
+    {
+      "case": "competing-6-seed22",
+      "returncode": -6,
+      "result_lines": 0
+    },
+    {
+      "case": "competing-6-seed23",
+      "returncode": -6,
+      "result_lines": 0
+    },
+    {
+      "case": "competing-6-seed26",
+      "returncode": -6,
+      "result_lines": 0
+    }
+  ],
+  "duplicate_keys": 0,
+  "completed": 0,
+  "full_received": 0,
+  "baseline_sha256_after": "2a0e48432404913d484a24a91ca6498fc83ce402dad7e54c34534883f9b24ae5"
+}

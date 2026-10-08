@@ -1,0 +1,17 @@
+{
+  "socket": {
+    "returncode": 0,
+    "stdout": "REGRESSION,socket-add-13,PASS\nREGRESSION,socket-add-7,PASS\nREGRESSION,socket-add-31,PASS\nREGRESSION,socket-large-read-keeps-all-51-bytes-in-order,PASS\nREGRESSION,socket-large-read-remaining-size-zero,PASS\nREGRESSION,socket-add-13,PASS\nREGRESSION,socket-add-7,PASS\nREGRESSION,socket-add-31,PASS\nREGRESSION,socket-read-limit-20-consumes-two-frames,PASS\nREGRESSION,socket-after-20-read-31-bytes-remain,PASS\nREGRESSION,socket-next-read-consumes-31-bytes,PASS\nREGRESSION,socket-bounded-reads-preserve-byte-sequence,PASS\nREGRESSION,socket-bounded-reads-drain-buffer,PASS\nREGRESSION_SUMMARY,failures=0\n",
+    "stderr": ""
+  },
+  "stream": {
+    "returncode": 0,
+    "stdout": "0\t1\t0\t0\t0\t\nREGRESSION,stream-receive-offset-0,PASS\nREGRESSION,stream-receive-offset-0,PASS\n0\t1\t200\t250\t0\t\nREGRESSION,stream-receive-offset-250,PASS\n0\t1\t200\t200\t50\t\nREGRESSION,stream-receive-offset-200,PASS\nREGRESSION,stream-old-duplicate-does-not-prevent-delivery-of-300-bytes,PASS\n0\t1\t0\t0\t0\t\nREGRESSION,stream-receive-offset-0,PASS\n0\t1\t200\t250\t0\t\nREGRESSION,stream-receive-offset-250,PASS\n0\t1\t200\t200\t50\t\nREGRESSION,stream-receive-offset-190,PASS\nREGRESSION,stream-partial-overlap-delivers-300-unique-bytes,PASS\n0\t1\t0\t100\t0\t\nREGRESSION,stream-receive-offset-100,PASS\n0\t1\t0\t100\t50\t\nREGRESSION,stream-receive-offset-100,PASS\n0\t1\t0\t0\t50\t\nREGRESSION,stream-receive-offset-0,PASS\nREGRESSION,stream-buffered-duplicate-is-not-counted-twice,PASS\n0\t1\t0\t200\t0\t\nREGRESSION,stream-receive-offset-200,PASS\n0\t1\t0\t100\t100\t\nREGRESSION,stream-receive-offset-100,PASS\n0\t1\t0\t0\t200\t\nREGRESSION,stream-receive-offset-0,PASS\nREGRESSION,stream-reversed-frames-deliver-300-bytes-after-hole-filled,PASS\nREGRESSION_SUMMARY,failures=0\n",
+    "stderr": ""
+  },
+  "loss": {
+    "returncode": 0,
+    "stdout": "REGRESSION,tx-add-packet-9,PASS\nREGRESSION,tx-send-packet-9,PASS\nREGRESSION,tx-add-packet-10,PASS\nREGRESSION,tx-send-packet-10,PASS\nREGRESSION,gap-acknowledges-only-received-packet-9,PASS\nREGRESSION,gap-does-not-acknowledge-missing-packet-10,PASS\nREGRESSION,missing-packet-10-remains-outstanding,PASS\nREGRESSION,missing-largest-data-item-still-detects-old-packet-10-loss,PASS\nREGRESSION,lost-byte-count-is-exactly-missing-packet-10,PASS\nREGRESSION,retransmission-queues-missing-data-and-excludes-acked-packet-9,PASS\nREGRESSION,retransmission-preserves-only-missing-payload-byte-sequence,PASS\nREGRESSION,received-retransmission-is-acknowledged,PASS\nREGRESSION,acked-retransmission-leaves-no-outstanding-or-lost-data,PASS\nREGRESSION,tx-add-packet-10,PASS\nREGRESSION,tx-send-packet-10,PASS\nREGRESSION,recent-gap-packet-stays-unacknowledged,PASS\nREGRESSION,packet-number-distance-two-does-not-exceed-existing-threshold-three,PASS\nREGRESSION,tx-add-packet-10,PASS\nREGRESSION,tx-send-packet-10,PASS\nREGRESSION,tx-add-packet-20,PASS\nREGRESSION,tx-send-packet-20,PASS\nREGRESSION,tracked-largest-packet-20-is-acknowledged,PASS\nREGRESSION,tracked-largest-packet-keeps-existing-packet-threshold-behavior,PASS\nREGRESSION_SUMMARY,failures=0\n",
+    "stderr": ""
+  }
+}

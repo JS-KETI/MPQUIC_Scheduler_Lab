@@ -1,0 +1,12 @@
+{
+  "rows": 630,
+  "completed": 630,
+  "full_received": 630,
+  "missing": 0,
+  "duplicates": 0,
+  "time_and_fct95_identical_to_10ms": 630,
+  "only_argument_change": "--CompletionGraceMs=250",
+  "recovered_short_cases": 9,
+  "frozen_hashes_unchanged": 27,
+  "provided_reference_scope": "original-stack seed 1-10 only; no reference for modified stack or seed 11-30"
+}

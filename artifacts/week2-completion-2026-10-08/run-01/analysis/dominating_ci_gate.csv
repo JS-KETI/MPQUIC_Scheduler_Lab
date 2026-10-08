@@ -1,0 +1,8 @@
+scheduler,name,completed,runs,ci95_width_s,width_le_0_1_s
+0,RR,30,30,0.01845610247,True
+1,MinRTT,30,30,0.1720676233,False
+2,BLEST,30,30,0.07203631727,True
+3,ECF,30,30,0.1646958493,False
+4,Peekaboo,30,30,0.1751018714,False
+6,MinRTT-multi(new),30,30,0.02568390099,True
+5,EAT(new),30,30,0.02571289301,True

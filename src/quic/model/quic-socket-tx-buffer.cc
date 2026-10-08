@@ -457,7 +457,6 @@ std::vector<Ptr<QuicSocketTxItem> > QuicSocketTxBuffer::OnAckUpdate (
   // Mark packets as lost as in RFC (Sec. 4.2.1 of draft-ietf-quic-recovery-15)
   uint32_t index = m_subflowSentList[pathId].size ();
   bool lost = false;
-  bool outstanding = false;
   auto acked_it = m_subflowSentList[pathId].rend ();
   // Iterate over the sent packet list in reverse
   for (auto sent_it = m_subflowSentList[pathId].rbegin ();
@@ -481,9 +480,9 @@ std::vector<Ptr<QuicSocketTxItem> > QuicSocketTxBuffer::OnAckUpdate (
             {
               // Mark the packet as ACKed
               acked_it = sent_it;
-              outstanding = true;
             }
-          else if (outstanding && !(*sent_it)->m_sacked)
+          else if ((*sent_it)->m_packetNumber.GetValue () < largestAcknowledged
+                   && !(*sent_it)->m_sacked)
             {
               //ACK-based detection
               if (largestAcknowledged - (*sent_it)->m_packetNumber.GetValue ()
@@ -495,7 +494,8 @@ std::vector<Ptr<QuicSocketTxItem> > QuicSocketTxBuffer::OnAckUpdate (
                     "Largest ACK " << largestAcknowledged << ", lost packet " << (*sent_it)->m_packetNumber.GetValue () << " - reordering " << tcbd->m_kReorderingThreshold);
                 }
               // Time-based detection (optional)
-              if (tcbd->m_kUsingTimeLossDetection)
+              if (tcbd->m_kUsingTimeLossDetection
+                  && acked_it != m_subflowSentList[pathId].rend ())
                 {
                   double lhsComparison = ((*acked_it)->m_ackTime
                                           - (*sent_it)->m_lastSent).GetSeconds ();

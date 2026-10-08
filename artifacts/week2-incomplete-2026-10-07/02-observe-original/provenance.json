@@ -1,0 +1,24 @@
+{
+  "created_at": "2026-10-07T18:48:46+0900",
+  "head": "1dfe61122940afb7bcf0da6537a8f4dfeafad343",
+  "baseline_sha256": "2a0e48432404913d484a24a91ca6498fc83ce402dad7e54c34534883f9b24ae5",
+  "source_patch_sha256": "500f12b66b2a6ba80a278d196c3cd69f32f628fe0c98ba7a6032eb91a67db2e7",
+  "selection": "incomplete",
+  "cases": null,
+  "sim_end": 60,
+  "extra": "--Observe=1",
+  "planned_runs": 62,
+  "binary_sha256": "9959d218bf3bf7f99a8c531bea3c85d7dbefed33d403d139763d42d5c71bfb89",
+  "quic_library_sha256": {
+    "libns3-dev-quic-optimized.so": "d34bf34f2e6bffc89ed4022e809bd28c8a91e47da389f49330d53a3c26477ccb"
+  },
+  "runner_sha256": "332367bf0554fbe59e22d8337922a667fd02519dfc56cf9feb75fc35ab720c20",
+  "runner_command": [
+    "sched-lab/incomplete-investigate.py",
+    "--baseline-dir",
+    "artifacts/week2-2026-10-02/run-01",
+    "--out",
+    "artifacts/week2-incomplete-2026-10-07/02-observe-original",
+    "--extra=--Observe=1"
+  ]
+}

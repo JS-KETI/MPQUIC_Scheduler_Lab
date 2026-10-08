@@ -1,11 +1,11 @@
 {
-  "date_kst": "2026-10-07",
-  "file_count": 15,
+  "date_kst": "2026-10-08",
+  "file_count": 38,
   "files": [
     {
       "path": "README.md",
-      "bytes": 484,
-      "sha256": "0914ddc981c98a0e21a0614e53a6f7f6c2d1f1505e23d86a2a413c5fb1c9a6f8"
+      "bytes": 2624,
+      "sha256": "69a2e79504d76d74d2a407e485d71f16ca5db20d08aba2e0f9f1cdaf8d4fa6da"
     },
     {
       "path": "week1/1주차 상세 실험 기록.md",
@@ -43,14 +43,24 @@
       "sha256": "580b8785a849bf80ec3f4a4de3e01ab1aac746d2eb7389b68af20ba273290643"
     },
     {
+      "path": "week2/2주차 미완료 원인 분석.html",
+      "bytes": 138573,
+      "sha256": "d96cb3484abbef50b1f99891b47532143f7b235d2824950f9e6fd50fcf05c319"
+    },
+    {
+      "path": "week2/2주차 미완료 원인 분석.md",
+      "bytes": 13079,
+      "sha256": "0f1afaa12fdb8dc4a6dbce6f22d571118900e6f9b6ee7f59d991f8bb9efc173d"
+    },
+    {
       "path": "week2/2주차 진행상황.html",
-      "bytes": 393850,
-      "sha256": "2c57c21b0e26ac365c5f95bf5159bc808ebe0678c2f193ddc7e5c2946106de61"
+      "bytes": 517488,
+      "sha256": "56318bf78d8918cbba29cb5a769b2d1cb521514bb36835cdf0a859a68b742a6b"
     },
     {
       "path": "week2/2주차 진행상황.md",
-      "bytes": 16472,
-      "sha256": "26b590cf9d04fe096b2263bf8d14168f486710cff14359bb667ae9d043216a1c"
+      "bytes": 18822,
+      "sha256": "0c9deff572b3a1d7f3e7ccdc5b69fa61102ca3f69be3159e24e3bbbeb23f8d75"
     },
     {
       "path": "week2/2주차 측정 특이사항.md",
@@ -59,8 +69,8 @@
     },
     {
       "path": "week2/README.md",
-      "bytes": 894,
-      "sha256": "c9f5daa598466b481e3f4e481c8876098c66715a21304a9321a75825abb4eee4"
+      "bytes": 3088,
+      "sha256": "a889946b5ae67490f223ba357739369f7dbb5f5f23ba62ae6f61bbb47e99c571"
     },
     {
       "path": "week2/figures/completion_rates.png",
@@ -73,9 +83,114 @@
       "sha256": "8b7550b15dbea5a5daf68295c94531e0d74f60cf72848286db4f1b3a2a004f46"
     },
     {
+      "path": "week2/figures/incomplete_recovery.png",
+      "bytes": 90683,
+      "sha256": "065407653b6094a7a383e90c196f6d8765b79c0f3291c49e83ea45e08c192050"
+    },
+    {
+      "path": "week2/figures/incomplete_recovery.svg",
+      "bytes": 46739,
+      "sha256": "e74b7afc96c53f944cfc0796c1ed4bdd75077c286f2a8ead4513f351ea09e3ac"
+    },
+    {
       "path": "week2/figures/path_shares.png",
       "bytes": 88866,
       "sha256": "3e94bf3f56b656a184a44b7f35cb8a546b2c2edaf8917cd42d23976740d605af"
+    },
+    {
+      "path": "week2/pdf/2주차 진행상황.pdf",
+      "bytes": 564721,
+      "sha256": "009b932d769b3b790d6c1ad13bf17b677dd954660d3db2ea205317746a62af14"
+    },
+    {
+      "path": "week2/pdf/source.json",
+      "bytes": 731,
+      "sha256": "0624bcc8ae6f48f15659eefdd35cae6cafc07686898027d52009e0a67b0beff8"
+    },
+    {
+      "path": "week2/summary/2주차 진행상황.html",
+      "bytes": 562592,
+      "sha256": "210ad2b524c4a8de8f5cdf34a93db453926becb502dbba4c3f54f3f267dcdefc"
+    },
+    {
+      "path": "week2/summary/2주차 진행상황.md",
+      "bytes": 8095,
+      "sha256": "ee819c0ba687e831cab40a087e8fa13cfcc02ff7cea2e2aad6377cdc7b8b3255"
+    },
+    {
+      "path": "week2/summary/2주차 진행상황.pdf",
+      "bytes": 473795,
+      "sha256": "fa75dc9324df474a94ada200663dfcc556d370b2deb5d58cf244425000313d4c"
+    },
+    {
+      "path": "week2/summary/README.md",
+      "bytes": 2860,
+      "sha256": "f383b4693d1de612ef212a2494cf234a53847fb371322f9691d78c0e6cba2316"
+    },
+    {
+      "path": "week2/summary/figures/baseline_fct.png",
+      "bytes": 109890,
+      "sha256": "46d2f59297ead253c3a8bc7721a53d0acfcfcab4f59a524f78e0eaca8b1bc4fb"
+    },
+    {
+      "path": "week2/summary/figures/baseline_fct.svg",
+      "bytes": 107965,
+      "sha256": "f729dc528cd472f3d2f3e2f83b75d5855c30ebdd81f9fdddadc04f07e497e2fa"
+    },
+    {
+      "path": "week2/summary/figures/baseline_performance.png",
+      "bytes": 167307,
+      "sha256": "1e8db0f119084fc8af0fecccf762fbb99df1b47f1800e31efc1c1307c35de33a"
+    },
+    {
+      "path": "week2/summary/figures/baseline_performance.svg",
+      "bytes": 97762,
+      "sha256": "5dcc3ecbd10ac77977bc1273c656130d0bc15a1694ea96c0564e4c33957ebe61"
+    },
+    {
+      "path": "week2/summary/figures/completion_grace_counts.png",
+      "bytes": 97228,
+      "sha256": "9cda793d81e4d2707003473fc7478be5cdc2a77e2637095f53b98b35e4b4a98f"
+    },
+    {
+      "path": "week2/summary/figures/completion_grace_counts.svg",
+      "bytes": 43803,
+      "sha256": "8311e4b895521db72191c313edb61e858557e7256e9dfdc8ba01e4611cf1c976"
+    },
+    {
+      "path": "week2/summary/figures/completion_rates.png",
+      "bytes": 74559,
+      "sha256": "76c0e9e3f3dca3cb169e92ada5976f77984bd9bcf3fc7c1303597d44b08d6527"
+    },
+    {
+      "path": "week2/summary/figures/completion_rates.svg",
+      "bytes": 48652,
+      "sha256": "cedbe178c3bd371230f411ed31a6505d3500e8a4732d297766e95405c7b203c3"
+    },
+    {
+      "path": "week2/summary/figures/path_shares.png",
+      "bytes": 88866,
+      "sha256": "3e94bf3f56b656a184a44b7f35cb8a546b2c2edaf8917cd42d23976740d605af"
+    },
+    {
+      "path": "week2/summary/figures/path_shares.svg",
+      "bytes": 47427,
+      "sha256": "64de583afe5493e3c847f07de4ec6e3cbd2a71ea7bca581d2f3bcae52e5959a6"
+    },
+    {
+      "path": "week2/summary/figures/recovery_counts.png",
+      "bytes": 42144,
+      "sha256": "7530c299a885a2a1dfdd45f558e3229199be492e6f799ab81d64ead9226139bd"
+    },
+    {
+      "path": "week2/summary/figures/recovery_counts.svg",
+      "bytes": 27084,
+      "sha256": "0050254e4c2ba6f59c92f2d21c2b03f68d84145e857d034b6fb76fb26ed655cf"
+    },
+    {
+      "path": "week2/summary/source.json",
+      "bytes": 1806,
+      "sha256": "8aca9be0979ac4c7f765feb62c482df3f35b1fb2baa5598a1f9dd48a68835eee"
     }
   ]
 }

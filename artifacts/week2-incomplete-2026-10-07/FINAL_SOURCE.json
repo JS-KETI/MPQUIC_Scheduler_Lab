@@ -1,0 +1,24 @@
+{
+  "code_commit": "856af610bc34cf3aeefe57bc6843c5480658fbe7",
+  "branch": "fix/#9-week2-incomplete-diagnosis",
+  "issue": 9,
+  "canonical_run": "14-fin-preservation-full-630",
+  "canonical_metrics_equal_08": true,
+  "source_file_hashes": {
+    "scratch/mpquic-sched-lab.cc": "8a08a33678fc2803a880477d6f0012344552494cb89d5ca6e12db4b3af222946",
+    "src/quic/model/quic-socket-base.cc": "32526060385ce08137c7c1ded3b78d5c00fd5d35b0a98096c56fcde43ae23d70",
+    "src/quic/model/quic-socket-rx-buffer.cc": "523aadfc1846b4cf91e6f0d414f4f2243d3c1063499b95562ec00dc772ae467c",
+    "src/quic/model/quic-socket-tx-buffer.cc": "529d4351b9c9f0cf19ad1a99f36ab1ce47ee9e1bf332bbb4ed3959ae67a66a91",
+    "src/quic/model/quic-stream-base.cc": "f48964f5fdfc23398a7b111c011f52d196339a388472574d5c50b00d9ebb4a26",
+    "scratch/quic-rx-regression.cc": "7042b6028826d28c650422e05506cdcf43541f423e0b31c9e8450bcaf655146b",
+    "scratch/quic-loss-regression.cc": "20ef7e65f2269ca980ce276626c8194afa6bae34d26045dc13b85e30e0e1e4dc",
+    "sched-lab/incomplete-investigate.py": "2726e63faad6ae8432aedb63d02f36edf08c63f750f24b6dcaef785f4f77673b"
+  },
+  "quic_library_hashes": {
+    "libns3-dev-quic-optimized.so": "fc28ea939dadc745517e1499ce3b9cf88278542ed45eeb762912be653e539c03"
+  },
+  "test_record": "regression-latest-final.json",
+  "test_source_note": "quic-loss-regression.cc last CRLF normalized to LF for Git diff check after latest test; code unchanged",
+  "critical_review": "critical-review.md",
+  "baseline_preserved": true
+}

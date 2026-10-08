@@ -1,0 +1,10 @@
+scenario,scheduler,seed,name,done_original,rx_app_original,fct_s_original,done_fixed,rx_app_fixed,fct_s_fixed,provided_reference,original_full,fixed_full,common_done_delta_s,rx_app_grace250ms,fct_s_grace250ms
+competing,1,8,MinRTT,1,5242880,4.1663,1,5240806,4.9876,seed 1-10: original matches provided CSV,True,False,0.8213,5242880,4.9876
+competing,2,16,BLEST,1,5242880,5.6571,1,5242250,9.4357,seed 11-30: no provided reference,True,False,3.7786,5242880,9.4357
+competing,3,23,ECF,1,5242880,5.7874,1,5242250,5.7357,seed 11-30: no provided reference,True,False,-0.0517,5242880,5.7357
+degrade,0,4,RR,1,5240806,6.3898,1,5240806,6.3898,seed 1-10: original matches provided CSV,False,False,0.0,5242880,6.3898
+degrade,0,6,RR,1,5240806,6.3394,1,5240806,6.3394,seed 1-10: original matches provided CSV,False,False,0.0,5242880,6.3394
+degrade,0,19,RR,1,5240806,6.3272,1,5240806,6.3143,seed 11-30: no provided reference,False,False,-0.0129,5242880,6.3143
+degrade,1,9,MinRTT,1,5242880,7.3485,1,5242250,8.6882,seed 1-10: original matches provided CSV,True,False,1.3397,5242880,8.6882
+degrade,6,17,MinRTT-multi(new),1,5240806,6.3148,1,5240806,6.3148,seed 11-30: no provided reference,False,False,0.0,5242880,6.3148
+degrade,6,22,MinRTT-multi(new),1,5240806,6.3274,1,5240806,6.3145,seed 11-30: no provided reference,False,False,-0.0129,5242880,6.3145

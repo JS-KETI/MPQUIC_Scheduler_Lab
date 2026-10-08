@@ -1,0 +1,17 @@
+{
+  "status": "ACTIVE_USER_ACCEPTED_FROZEN_BASELINE",
+  "accepted_date_kst": "2026-10-08",
+  "run_directory": "artifacts/week2-completion-2026-10-08/run-01",
+  "baseline_csv": "artifacts/week2-completion-2026-10-08/run-01/baseline.csv",
+  "summary_csv": "artifacts/week2-completion-2026-10-08/run-01/analysis/summary.csv",
+  "freeze_record": "artifacts/week2-completion-2026-10-08/run-01/FROZEN.json",
+  "sha256_manifest": "artifacts/week2-completion-2026-10-08/run-01/SHA256SUMS",
+  "baseline_sha256": "f58931aa387de2e04a1da655f6bcfcd3da69a85ff0bf7e94fb31ef266c77d94b",
+  "summary_sha256": "1e069d1eb8ec1e4f5506d298a45dc6d9304a75f32b85fb0f0fc19f572c2af989",
+  "code_commit": "50076608950738c163466a1f0fc8e6a1cb5e26bb",
+  "primary_scheduler": "MinRTT-multi",
+  "completion_grace_ms": 250,
+  "original_reference_run": "artifacts/week2-2026-10-02/run-01",
+  "original_reference_role": "historical frozen results, not active baseline",
+  "gate2_ci_scope": "unresolved"
+}

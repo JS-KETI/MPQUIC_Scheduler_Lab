@@ -1,0 +1,16 @@
+{
+  "input": "artifacts/week2-2026-10-02/run-01/baseline.csv",
+  "input_sha256": "2a0e48432404913d484a24a91ca6498fc83ce402dad7e54c34534883f9b24ae5",
+  "provided_analyzer": "sched-lab/analyze.py",
+  "analyzer_sha256": "4eaf1f038ced6972e241fc058e7baa9917ac0ea11e4a8d9e9e973207816be29f",
+  "compatibility": "Existing matplotlib compatibility patch: tick_labels -> labels; measurement and plotting logic retained",
+  "command": "python3 artifacts/report-tools/week2_compact_report.py --repo /home/ubuntu/projects/keti/mpquic-sched-lab/mpquic --charts",
+  "provided_cli_equivalent": "python3 sched-lab/analyze.py artifacts/week2-basic-visuals-2026-10-08/baseline.csv",
+  "execution_method": "runpy.run_path with the supplied analyzer path and copied CSV in sys.argv",
+  "svg_export": "matplotlib.pyplot.gcf().savefig on the same figure after runpy execution",
+  "copied_week2_figures": [
+    "completion_rates",
+    "path_shares"
+  ],
+  "additional_simulation_runs": 0
+}

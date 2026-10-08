@@ -1,0 +1,11 @@
+{
+  "rows": 630,
+  "unique_keys": 630,
+  "completed": 630,
+  "full_received": 630,
+  "paired_comparison_rows": 63,
+  "dominating_all_seven_ci_widths_le_0_1_s": false,
+  "ci_method": "95% two-sided Student t; completed runs only",
+  "wilcoxon_method": "exact conditional sign permutation; zero differences discarded; tied midranks; 0.0001s precision",
+  "multiplicity": "Holm adjustment across 21 pairs within each scenario"
+}
