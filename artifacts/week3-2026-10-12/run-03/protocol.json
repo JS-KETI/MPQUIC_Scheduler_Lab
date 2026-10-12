@@ -1,0 +1,57 @@
+{
+  "created_at": "2026-10-12T10:30:20.904646+09:00",
+  "scope": "week3 D11-D15 only; fixed ratios are integration tests, not a new algorithm",
+  "planned_runs": 72,
+  "seed_range": [
+    1,
+    3
+  ],
+  "baseline": "artifacts/week2-completion-2026-10-08/run-01/baseline.csv",
+  "baseline_sha256": "f58931aa387de2e04a1da655f6bcfcd3da69a85ff0bf7e94fb31ef266c77d94b",
+  "parameters": {
+    "Size": 5242880,
+    "CcType": 1,
+    "LossRate": 0,
+    "CompletionGraceMs": 250,
+    "SimEnd": 60
+  },
+  "fixed_batch_transport": "ID7 opt-in absolute snapshot; partial probes if raw quota > total cwnd; partial recovery if outstanding bytes > reduced cwnd; otherwise wait for BOTH path quotas; no share adaptation",
+  "fixed_mode": "ID7; up to 10 MSS packet burst, 3/7,1/9,5/5 on full burst; reduced/tail cases retained",
+  "gate": {
+    "relative_tolerance": 0.05,
+    "also_report": "percentage-point error",
+    "unit": "serialized STREAM frame bytes returned by SendDataPacket, excluding ACK/QUIC/IP",
+    "aggregation": "sum actual bytes per path over eligible decisions in each run, not mean of decision ratios",
+    "exclude": "whole decision if any path nominal_demand_frame_bytes exceeds pre-send cwnd_room_bytes",
+    "retain": "flow-control/pacing/state/refill/quantization/tail discrepancies, no extra exclusions",
+    "no_eligible_bytes": "indeterminate, never pass"
+  },
+  "packet_unit": "application STREAM payload bytes; stream0 handshake excluded; Tx offsets deduplicated across paths",
+  "arrival_estimate": "RTT/2 + requested frame bytes*RTT/cwnd, cwnd/RTT service model; not physical arrival guarantee",
+  "versions": {
+    "compiler": "g++ (Ubuntu 13.3.0-6ubuntu2~24.04.1) 13.3.0",
+    "python": "3.12.3",
+    "platform": "Linux-6.18.40.1-microsoft-standard-WSL2-x86_64-with-glibc2.39",
+    "cpu": "Architecture:                            x86_64\nCPU op-mode(s):                          32-bit, 64-bit\nAddress sizes:                           42 bits physical, 48 bits virtual\nByte Order:                              Little Endian\nCPU(s):                                  20\nOn-line CPU(s) list:                     0-19\nVendor ID:                               GenuineIntel\nModel name:                              Intel(R) Core(TM) Ultra 7 265F\nCPU family:                              6\nModel:                                   198\nThread(s) per core:                      1\nCore(s) per socket:                      20\nSocket(s):                               1\nStepping:                                2\nBogoMIPS:                                4761.60\nFlags:                                   fpu vme de pse tsc msr pae mce cx8 apic sep mtrr pge mca cmov pat pse36 clflush mmx fxsr sse sse2 ss ht syscall nx pdpe1gb rdtscp lm constant_tsc rep_good nopl xtopology tsc_reliable nonstop_tsc cpuid tsc_known_freq pni pclmulqdq vmx ssse3 fma cx16 pcid sse4_1 sse4_2 x2apic movbe popcnt tsc_deadline_timer aes xsave avx f16c rdrand hypervisor lahf_lm abm 3dnowprefetch ssbd ibrs ibpb stibp ibrs_enhanced tpr_shadow ept vpid ept_ad fsgsbase tsc_adjust bmi1 avx2 smep bmi2 erms invpcid rdseed adx smap clflushopt clwb sha_ni xsaveopt xsavec xgetbv1 xsaves avx_vnni vnmi umip waitpkg gfni vaes vpclmulqdq rdpid movdiri movdir64b fsrm md_clear serialize ibt flush_l1d arch_capabilities\nVirtualization:                          VT-x\nHypervisor vendor:                       Microsoft\nVirtualization type:                     full\nL1d cache:                               960 KiB (20 instances)\nL1i cache:                               1.3 MiB (20 instances)\nL2 cache:                                60 MiB (20 instances)\nL3 cache:                                30 MiB (1 instance)\nNUMA node(s):                            1\nNUMA node0 CPU(s):                       0-19\nVulnerability Gather data sampling:      Not affected\nVulnerability Ghostwrite:                Not affected\nVulnerability Indirect target selection: Not affected\nVulnerability Itlb multihit:             Not affected\nVulnerability L1tf:                      Not affected\nVulnerability Mds:                       Not affected\nVulnerability Meltdown:                  Not affected\nVulnerability Mmio stale data:           Not affected\nVulnerability Old microcode:             Not affected\nVulnerability Reg file data sampling:    Not affected\nVulnerability Retbleed:                  Mitigation; Enhanced IBRS\nVulnerability Spec rstack overflow:      Not affected\nVulnerability Spec store bypass:         Mitigation; Speculative Store Bypass disabled via prctl\nVulnerability Spectre v1:                Mitigation; usercopy/swapgs barriers and __user pointer sanitization\nVulnerability Spectre v2:                Mitigation; Enhanced / Automatic IBRS; IBPB conditional; PBRSB-eIBRS SW sequence; BHI BHI_DIS_S\nVulnerability Srbds:                     Not affected\nVulnerability Tsa:                       Not affected\nVulnerability Tsx async abort:           Not affected\nVulnerability Vmscape:                   Not affected\n"
+  },
+  "commit": "064a2614c3a4f0180b1e984f54a2b234a337feab",
+  "branch": "lab/week3-scheduler-20261012",
+  "source_hashes": {
+    "src/quic/model/mp-quic-scheduler.h": "1d99e97b2b21d6fee7b27397ba93ecc68ed888036835d2cfd30ee5924ef0a0ee",
+    "src/quic/model/mp-quic-scheduler.cc": "9156db3c08681dab3051b18785819a117e088744574f850125b6d205b698a3d9",
+    "src/quic/model/quic-socket-base.h": "28a3493ce2c761d828cf18aa2ea41462df972489f9024fb0a6c7e2872053af69",
+    "src/quic/model/quic-socket-base.cc": "427a36e1e6b6e25c2daf5a0c2e119287c868bedf7050e006b051f0543781e4b6",
+    "src/quic/model/quic-stream-base.h": "8e2762c9e8a56b6117580c5dd1ff3dc2f95f38fd71e4745280095573ca8b9e04",
+    "src/quic/model/quic-stream-base.cc": "73bc10541a1926cff92e0b3d9525f4e22efe5c619d9770c3410e91f3ef5c7923",
+    "src/quic/model/quic-l5-protocol.cc": "7b940bd5398bd88e35e7b65d392e406595261b45685e5ca739f4fe95b56ccb79",
+    "src/quic/model/quic-stream-rx-buffer.h": "b8e2838e7f694dd75a7cbd89bee33ef570b6187da02f8dfe8f67a264fefffdcd",
+    "src/quic/model/quic-stream-rx-buffer.cc": "85ef0620ecc961c3f93f29ce78a268252bfdaf902b1d3270b6aadd695b7fd3eb",
+    "src/quic/test/mp-quic-scheduler-test.cc": "362221bdd0ec9bb1dcd2681efbd84b54aa1649673a82a4eb2213dc187f6e206c",
+    "src/quic/wscript": "4fd37a0c936ccb5910af0082ee9f4ebe28cd96a0bce394a88f32dbf278148761",
+    "scratch/mpquic-sched-lab.cc": "7beed4e1ea0c1006294031fc67ddc9894e00db9b576e9fd128289393a37cacd2",
+    "sched-lab/run_sweep.py": "61717a7c581b1e82e998e976a9ea2988e0c758ed691fa039cbffbad421487757",
+    "sched-lab/week3_validate.py": "a46cd6231c8c2803d3ce6dea80c0cb83b7e4b95bc1e6fdcbff9e6c33595fad35",
+    "sched-lab/week3_analyze.py": "6e9e94af95e75ddbd4320e1e769adbbb5648ba56270a30c745d6f2d9b1b15609"
+  },
+  "build_binary_sha256": "c08a4dca253c36f082caded2021b1beebff78a8bf7b372f5f2103bd9f11a645a"
+}

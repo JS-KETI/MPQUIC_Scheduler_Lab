@@ -42,7 +42,8 @@ public:
       ECF,
       PEEKABOO,
       EAT,              //!< (new) N-path Earliest-Arrival-Time scheduler, example extension
-      MIN_RTT_MULTI     //!< (new) control baseline: MinRTT that fills all open windows per call
+      MIN_RTT_MULTI,    //!< (new) control baseline: MinRTT that fills all open windows per call
+      NEW_SCHED = 7     //!< week-3 slot; automatic scheduling is reserved for week 5
     } SchedulerType_t;
   
   /**
@@ -57,6 +58,21 @@ public:
 
   std::vector<double> GetNextPathIdToUse();
   void SetSocket(Ptr<QuicSocketBase> sock);
+  /** Only ID 7's explicit two-path fixed-ratio diagnostic uses atomic batches. */
+  bool IsFixedRatioDiagnostic () const;
+
+  /**
+   * Convert wanted bytes to ratios for the sender's sequential path loop.
+   * Each request is rounded DOWN to a whole MSS; sub-MSS requests become zero.
+   * Ratios use backlog minus earlier quantized requests, not the initial backlog.
+   * The quantized sum must not exceed backlog. Invalid input (MSS zero or
+   * oversubscription) returns an all-zero vector of the same length.
+   * This conversion assumes earlier requests consume those bytes. Frame
+   * splitting, cwnd caps, pacing, or app refills can change the actual backlog;
+   * the caller must observe the applied requests separately.
+   */
+  static std::vector<double> BytesToRatio (const std::vector<uint32_t>& desired,
+                                          uint32_t backlog, uint32_t mss);
     
   void UpdateReward (uint32_t oldValue, uint32_t newValue);
   void SetNumOfLostPackets(uint16_t lost);
@@ -82,6 +98,14 @@ private:
   std::vector<double> Ecf();
   std::vector<double> Eat();          //!< (new) example extension scheduler
   std::vector<double> MinRttMulti();  //!< (new) control baseline for Eat()
+  std::vector<double> NewSched();     //!< week-3 MinRTT-multi / fixed two-path diagnostic
+
+  // Reserved week-5 parameters. They do not change week-3 scheduling decisions.
+  double m_newKappa;
+  double m_newBeta;
+  double m_newSmax;
+  bool m_fixedRatio;
+  double m_path0Share;
 
   // ---- state for the EAT example scheduler (scheduler-local RTT filter) ----
   double m_eatMargin;                    //!< safety margin on slow-path arrival (0.2 = 20%)

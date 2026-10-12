@@ -129,6 +129,7 @@ QuicL5Protocol::CreateStream (
 
 
   m_streams.push_back (stream);
+  m_socket->NotifyLabStreamCreated (stream);
 
 }
 

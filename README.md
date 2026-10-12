@@ -1,3 +1,20 @@
+## 3주차 진행상황
+
+- 신규 스케줄러 ID 7 기본 동작·옵션형 계측·고정 비율 30/70·10/90·50/50 검증
+- 최종 기본 검증 72/72회 완료·전체 수신, 기존 공식 기준 대조45/45 일치, 고정 비율27/27회 분배 기준 충족
+- **3주차 진행상황**
+  - https://github.com/JS-KETI/MPQUIC_Scheduler_Lab/blob/lab/week3-scheduler-20261012/reports/week3/3%EC%A3%BC%EC%B0%A8%20%EC%A7%84%ED%96%89%EC%83%81%ED%99%A9.md
+- **3주차 진행상황 HTML**
+  - https://github.com/JS-KETI/MPQUIC_Scheduler_Lab/blob/lab/week3-scheduler-20261012/reports/week3/3%EC%A3%BC%EC%B0%A8%20%EC%A7%84%ED%96%89%EC%83%81%ED%99%A9.html
+- **실행별 측정 결과**
+  - https://github.com/JS-KETI/MPQUIC_Scheduler_Lab/blob/lab/week3-scheduler-20261012/artifacts/week3-2026-10-12/run-03/results.csv
+- **고정 비율·도착 시차·수신 대기량 검증 결과**
+  - https://github.com/JS-KETI/MPQUIC_Scheduler_Lab/blob/lab/week3-scheduler-20261012/artifacts/week3-2026-10-12/run-03/analysis/fixed_ratio_summary.csv
+- **계측 로그 항목과 계산 방법**
+  - https://github.com/JS-KETI/MPQUIC_Scheduler_Lab/blob/lab/week3-scheduler-20261012/reports/week3/%EA%B3%84%EC%B8%A1%20%EB%A1%9C%EA%B7%B8%20%ED%98%95%EC%8B%9D.md
+- **상세 실험 기록**
+  - https://github.com/JS-KETI/MPQUIC_Scheduler_Lab/blob/lab/week3-scheduler-20261012/reports/week3/3%EC%A3%BC%EC%B0%A8%20%EC%83%81%EC%84%B8%20%EC%8B%A4%ED%97%98%20%EA%B8%B0%EB%A1%9D.md
+
 # MPQUIC Scheduler Lab · JS-KETI
 ## 현재 2주차 공식 기준값 (630회 완료·전체 수신)
 

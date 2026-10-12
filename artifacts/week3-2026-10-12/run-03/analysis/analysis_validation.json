@@ -1,0 +1,13 @@
+{
+  "allocation_pass": 27,
+  "allocation_runs": 27,
+  "invariant_errors": [],
+  "actual_arrival_valid_batches": 7878,
+  "minimum_eligible_byte_fraction": 0.36173360647452696,
+  "comparison": "per-run byte-weighted shares; whole decision excluded only for nominal demand > cwnd room",
+  "arrival": "last original application packet receive time on path1 minus path0 within one unique decision timestamp; censored and ambiguous kept",
+  "cumulative_gap": "sum of absolute valid batch gap samples; diagnostic accumulator, no control feedback",
+  "completed": 72,
+  "full": 72,
+  "runs": 72
+}

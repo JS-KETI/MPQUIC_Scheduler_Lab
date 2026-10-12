@@ -1,0 +1,2670 @@
+{
+  "created": "2026-10-12T10:50:47.126451+09:00",
+  "branch": "lab/week3-scheduler-20261012",
+  "commit": "064a2614c3a4f0180b1e984f54a2b234a337feab",
+  "baseline_checks": [
+    {
+      "path": "FROZEN.json",
+      "matched": true
+    },
+    {
+      "path": "README.md",
+      "matched": true
+    },
+    {
+      "path": "analysis/baseline-visualization-provenance.json",
+      "matched": true
+    },
+    {
+      "path": "analysis/baseline-visualization.log",
+      "matched": true
+    },
+    {
+      "path": "analysis/below_target_runs.csv",
+      "matched": true
+    },
+    {
+      "path": "analysis/dominating_ci_gate.csv",
+      "matched": true
+    },
+    {
+      "path": "analysis/paired_comparisons.csv",
+      "matched": true
+    },
+    {
+      "path": "analysis/paired_observations.csv",
+      "matched": true
+    },
+    {
+      "path": "analysis/provided_summary.csv",
+      "matched": true
+    },
+    {
+      "path": "analysis/summary.csv",
+      "matched": true
+    },
+    {
+      "path": "analysis/validation.json",
+      "matched": true
+    },
+    {
+      "path": "baseline.csv",
+      "matched": true
+    },
+    {
+      "path": "commands.json",
+      "matched": true
+    },
+    {
+      "path": "comparison.json",
+      "matched": true
+    },
+    {
+      "path": "effective-code.patch",
+      "matched": true
+    },
+    {
+      "path": "environment.json",
+      "matched": true
+    },
+    {
+      "path": "figures/baseline_fct.png",
+      "matched": true
+    },
+    {
+      "path": "figures/baseline_fct.svg",
+      "matched": true
+    },
+    {
+      "path": "figures/completion_rates.png",
+      "matched": true
+    },
+    {
+      "path": "figures/completion_rates.svg",
+      "matched": true
+    },
+    {
+      "path": "figures/fct_distributions.png",
+      "matched": true
+    },
+    {
+      "path": "figures/fct_distributions.svg",
+      "matched": true
+    },
+    {
+      "path": "figures/path_shares.png",
+      "matched": true
+    },
+    {
+      "path": "figures/path_shares.svg",
+      "matched": true
+    },
+    {
+      "path": "logs/competing-0-seed01.stdout.gz",
+      "matched": true
+    },
+    {
+      "path": "logs/competing-0-seed02.stdout.gz",
+      "matched": true
+    },
+    {
+      "path": "logs/competing-0-seed03.stdout.gz",
+      "matched": true
+    },
+    {
+      "path": "logs/competing-0-seed04.stdout.gz",
+      "matched": true
+    },
+    {
+      "path": "logs/competing-0-seed05.stdout.gz",
+      "matched": true
+    },
+    {
+      "path": "logs/competing-0-seed06.stdout.gz",
+      "matched": true
+    },
+    {
+      "path": "logs/competing-0-seed07.stdout.gz",
+      "matched": true
+    },
+    {
+      "path": "logs/competing-0-seed08.stdout.gz",
+      "matched": true
+    },
+    {
+      "path": "logs/competing-0-seed09.stdout.gz",
+      "matched": true
+    },
+    {
+      "path": "logs/competing-0-seed10.stdout.gz",
+      "matched": true
+    },
+    {
+      "path": "logs/competing-0-seed11.stdout.gz",
+      "matched": true
+    },
+    {
+      "path": "logs/competing-0-seed12.stdout.gz",
+      "matched": true
+    },
+    {
+      "path": "logs/competing-0-seed13.stdout.gz",
+      "matched": true
+    },
+    {
+      "path": "logs/competing-0-seed14.stdout.gz",
+      "matched": true
+    },
+    {
+      "path": "logs/competing-0-seed15.stdout.gz",
+      "matched": true
+    },
+    {
+      "path": "logs/competing-0-seed16.stdout.gz",
+      "matched": true
+    },
+    {
+      "path": "logs/competing-0-seed17.stdout.gz",
+      "matched": true
+    },
+    {
+      "path": "logs/competing-0-seed18.stdout.gz",
+      "matched": true
+    },
+    {
+      "path": "logs/competing-0-seed19.stdout.gz",
+      "matched": true
+    },
+    {
+      "path": "logs/competing-0-seed20.stdout.gz",
+      "matched": true
+    },
+    {
+      "path": "logs/competing-0-seed21.stdout.gz",
+      "matched": true
+    },
+    {
+      "path": "logs/competing-0-seed22.stdout.gz",
+      "matched": true
+    },
+    {
+      "path": "logs/competing-0-seed23.stdout.gz",
+      "matched": true
+    },
+    {
+      "path": "logs/competing-0-seed24.stdout.gz",
+      "matched": true
+    },
+    {
+      "path": "logs/competing-0-seed25.stdout.gz",
+      "matched": true
+    },
+    {
+      "path": "logs/competing-0-seed26.stdout.gz",
+      "matched": true
+    },
+    {
+      "path": "logs/competing-0-seed27.stdout.gz",
+      "matched": true
+    },
+    {
+      "path": "logs/competing-0-seed28.stdout.gz",
+      "matched": true
+    },
+    {
+      "path": "logs/competing-0-seed29.stdout.gz",
+      "matched": true
+    },
+    {
+      "path": "logs/competing-0-seed30.stdout.gz",
+      "matched": true
+    },
+    {
+      "path": "logs/competing-1-seed01.stdout.gz",
+      "matched": true
+    },
+    {
+      "path": "logs/competing-1-seed02.stdout.gz",
+      "matched": true
+    },
+    {
+      "path": "logs/competing-1-seed03.stdout.gz",
+      "matched": true
+    },
+    {
+      "path": "logs/competing-1-seed04.stdout.gz",
+      "matched": true
+    },
+    {
+      "path": "logs/competing-1-seed05.stdout.gz",
+      "matched": true
+    },
+    {
+      "path": "logs/competing-1-seed06.stdout.gz",
+      "matched": true
+    },
+    {
+      "path": "logs/competing-1-seed07.stdout.gz",
+      "matched": true
+    },
+    {
+      "path": "logs/competing-1-seed08.stdout.gz",
+      "matched": true
+    },
+    {
+      "path": "logs/competing-1-seed09.stdout.gz",
+      "matched": true
+    },
+    {
+      "path": "logs/competing-1-seed10.stdout.gz",
+      "matched": true
+    },
+    {
+      "path": "logs/competing-1-seed11.stdout.gz",
+      "matched": true
+    },
+    {
+      "path": "logs/competing-1-seed12.stdout.gz",
+      "matched": true
+    },
+    {
+      "path": "logs/competing-1-seed13.stdout.gz",
+      "matched": true
+    },
+    {
+      "path": "logs/competing-1-seed14.stdout.gz",
+      "matched": true
+    },
+    {
+      "path": "logs/competing-1-seed15.stdout.gz",
+      "matched": true
+    },
+    {
+      "path": "logs/competing-1-seed16.stdout.gz",
+      "matched": true
+    },
+    {
+      "path": "logs/competing-1-seed17.stdout.gz",
+      "matched": true
+    },
+    {
+      "path": "logs/competing-1-seed18.stdout.gz",
+      "matched": true
+    },
+    {
+      "path": "logs/competing-1-seed19.stdout.gz",
+      "matched": true
+    },
+    {
+      "path": "logs/competing-1-seed20.stdout.gz",
+      "matched": true
+    },
+    {
+      "path": "logs/competing-1-seed21.stdout.gz",
+      "matched": true
+    },
+    {
+      "path": "logs/competing-1-seed22.stdout.gz",
+      "matched": true
+    },
+    {
+      "path": "logs/competing-1-seed23.stdout.gz",
+      "matched": true
+    },
+    {
+      "path": "logs/competing-1-seed24.stdout.gz",
+      "matched": true
+    },
+    {
+      "path": "logs/competing-1-seed25.stdout.gz",
+      "matched": true
+    },
+    {
+      "path": "logs/competing-1-seed26.stdout.gz",
+      "matched": true
+    },
+    {
+      "path": "logs/competing-1-seed27.stdout.gz",
+      "matched": true
+    },
+    {
+      "path": "logs/competing-1-seed28.stdout.gz",
+      "matched": true
+    },
+    {
+      "path": "logs/competing-1-seed29.stdout.gz",
+      "matched": true
+    },
+    {
+      "path": "logs/competing-1-seed30.stdout.gz",
+      "matched": true
+    },
+    {
+      "path": "logs/competing-2-seed01.stdout.gz",
+      "matched": true
+    },
+    {
+      "path": "logs/competing-2-seed02.stdout.gz",
+      "matched": true
+    },
+    {
+      "path": "logs/competing-2-seed03.stdout.gz",
+      "matched": true
+    },
+    {
+      "path": "logs/competing-2-seed04.stdout.gz",
+      "matched": true
+    },
+    {
+      "path": "logs/competing-2-seed05.stdout.gz",
+      "matched": true
+    },
+    {
+      "path": "logs/competing-2-seed06.stdout.gz",
+      "matched": true
+    },
+    {
+      "path": "logs/competing-2-seed07.stdout.gz",
+      "matched": true
+    },
+    {
+      "path": "logs/competing-2-seed08.stdout.gz",
+      "matched": true
+    },
+    {
+      "path": "logs/competing-2-seed09.stdout.gz",
+      "matched": true
+    },
+    {
+      "path": "logs/competing-2-seed10.stdout.gz",
+      "matched": true
+    },
+    {
+      "path": "logs/competing-2-seed11.stdout.gz",
+      "matched": true
+    },
+    {
+      "path": "logs/competing-2-seed12.stdout.gz",
+      "matched": true
+    },
+    {
+      "path": "logs/competing-2-seed13.stdout.gz",
+      "matched": true
+    },
+    {
+      "path": "logs/competing-2-seed14.stdout.gz",
+      "matched": true
+    },
+    {
+      "path": "logs/competing-2-seed15.stdout.gz",
+      "matched": true
+    },
+    {
+      "path": "logs/competing-2-seed16.stdout.gz",
+      "matched": true
+    },
+    {
+      "path": "logs/competing-2-seed17.stdout.gz",
+      "matched": true
+    },
+    {
+      "path": "logs/competing-2-seed18.stdout.gz",
+      "matched": true
+    },
+    {
+      "path": "logs/competing-2-seed19.stdout.gz",
+      "matched": true
+    },
+    {
+      "path": "logs/competing-2-seed20.stdout.gz",
+      "matched": true
+    },
+    {
+      "path": "logs/competing-2-seed21.stdout.gz",
+      "matched": true
+    },
+    {
+      "path": "logs/competing-2-seed22.stdout.gz",
+      "matched": true
+    },
+    {
+      "path": "logs/competing-2-seed23.stdout.gz",
+      "matched": true
+    },
+    {
+      "path": "logs/competing-2-seed24.stdout.gz",
+      "matched": true
+    },
+    {
+      "path": "logs/competing-2-seed25.stdout.gz",
+      "matched": true
+    },
+    {
+      "path": "logs/competing-2-seed26.stdout.gz",
+      "matched": true
+    },
+    {
+      "path": "logs/competing-2-seed27.stdout.gz",
+      "matched": true
+    },
+    {
+      "path": "logs/competing-2-seed28.stdout.gz",
+      "matched": true
+    },
+    {
+      "path": "logs/competing-2-seed29.stdout.gz",
+      "matched": true
+    },
+    {
+      "path": "logs/competing-2-seed30.stdout.gz",
+      "matched": true
+    },
+    {
+      "path": "logs/competing-3-seed01.stdout.gz",
+      "matched": true
+    },
+    {
+      "path": "logs/competing-3-seed02.stdout.gz",
+      "matched": true
+    },
+    {
+      "path": "logs/competing-3-seed03.stdout.gz",
+      "matched": true
+    },
+    {
+      "path": "logs/competing-3-seed04.stdout.gz",
+      "matched": true
+    },
+    {
+      "path": "logs/competing-3-seed05.stdout.gz",
+      "matched": true
+    },
+    {
+      "path": "logs/competing-3-seed06.stdout.gz",
+      "matched": true
+    },
+    {
+      "path": "logs/competing-3-seed07.stdout.gz",
+      "matched": true
+    },
+    {
+      "path": "logs/competing-3-seed08.stdout.gz",
+      "matched": true
+    },
+    {
+      "path": "logs/competing-3-seed09.stdout.gz",
+      "matched": true
+    },
+    {
+      "path": "logs/competing-3-seed10.stdout.gz",
+      "matched": true
+    },
+    {
+      "path": "logs/competing-3-seed11.stdout.gz",
+      "matched": true
+    },
+    {
+      "path": "logs/competing-3-seed12.stdout.gz",
+      "matched": true
+    },
+    {
+      "path": "logs/competing-3-seed13.stdout.gz",
+      "matched": true
+    },
+    {
+      "path": "logs/competing-3-seed14.stdout.gz",
+      "matched": true
+    },
+    {
+      "path": "logs/competing-3-seed15.stdout.gz",
+      "matched": true
+    },
+    {
+      "path": "logs/competing-3-seed16.stdout.gz",
+      "matched": true
+    },
+    {
+      "path": "logs/competing-3-seed17.stdout.gz",
+      "matched": true
+    },
+    {
+      "path": "logs/competing-3-seed18.stdout.gz",
+      "matched": true
+    },
+    {
+      "path": "logs/competing-3-seed19.stdout.gz",
+      "matched": true
+    },
+    {
+      "path": "logs/competing-3-seed20.stdout.gz",
+      "matched": true
+    },
+    {
+      "path": "logs/competing-3-seed21.stdout.gz",
+      "matched": true
+    },
+    {
+      "path": "logs/competing-3-seed22.stdout.gz",
+      "matched": true
+    },
+    {
+      "path": "logs/competing-3-seed23.stdout.gz",
+      "matched": true
+    },
+    {
+      "path": "logs/competing-3-seed24.stdout.gz",
+      "matched": true
+    },
+    {
+      "path": "logs/competing-3-seed25.stdout.gz",
+      "matched": true
+    },
+    {
+      "path": "logs/competing-3-seed26.stdout.gz",
+      "matched": true
+    },
+    {
+      "path": "logs/competing-3-seed27.stdout.gz",
+      "matched": true
+    },
+    {
+      "path": "logs/competing-3-seed28.stdout.gz",
+      "matched": true
+    },
+    {
+      "path": "logs/competing-3-seed29.stdout.gz",
+      "matched": true
+    },
+    {
+      "path": "logs/competing-3-seed30.stdout.gz",
+      "matched": true
+    },
+    {
+      "path": "logs/competing-4-seed01.stdout.gz",
+      "matched": true
+    },
+    {
+      "path": "logs/competing-4-seed02.stdout.gz",
+      "matched": true
+    },
+    {
+      "path": "logs/competing-4-seed03.stdout.gz",
+      "matched": true
+    },
+    {
+      "path": "logs/competing-4-seed04.stdout.gz",
+      "matched": true
+    },
+    {
+      "path": "logs/competing-4-seed05.stdout.gz",
+      "matched": true
+    },
+    {
+      "path": "logs/competing-4-seed06.stdout.gz",
+      "matched": true
+    },
+    {
+      "path": "logs/competing-4-seed07.stdout.gz",
+      "matched": true
+    },
+    {
+      "path": "logs/competing-4-seed08.stdout.gz",
+      "matched": true
+    },
+    {
+      "path": "logs/competing-4-seed09.stdout.gz",
+      "matched": true
+    },
+    {
+      "path": "logs/competing-4-seed10.stdout.gz",
+      "matched": true
+    },
+    {
+      "path": "logs/competing-4-seed11.stdout.gz",
+      "matched": true
+    },
+    {
+      "path": "logs/competing-4-seed12.stdout.gz",
+      "matched": true
+    },
+    {
+      "path": "logs/competing-4-seed13.stdout.gz",
+      "matched": true
+    },
+    {
+      "path": "logs/competing-4-seed14.stdout.gz",
+      "matched": true
+    },
+    {
+      "path": "logs/competing-4-seed15.stdout.gz",
+      "matched": true
+    },
+    {
+      "path": "logs/competing-4-seed16.stdout.gz",
+      "matched": true
+    },
+    {
+      "path": "logs/competing-4-seed17.stdout.gz",
+      "matched": true
+    },
+    {
+      "path": "logs/competing-4-seed18.stdout.gz",
+      "matched": true
+    },
+    {
+      "path": "logs/competing-4-seed19.stdout.gz",
+      "matched": true
+    },
+    {
+      "path": "logs/competing-4-seed20.stdout.gz",
+      "matched": true
+    },
+    {
+      "path": "logs/competing-4-seed21.stdout.gz",
+      "matched": true
+    },
+    {
+      "path": "logs/competing-4-seed22.stdout.gz",
+      "matched": true
+    },
+    {
+      "path": "logs/competing-4-seed23.stdout.gz",
+      "matched": true
+    },
+    {
+      "path": "logs/competing-4-seed24.stdout.gz",
+      "matched": true
+    },
+    {
+      "path": "logs/competing-4-seed25.stdout.gz",
+      "matched": true
+    },
+    {
+      "path": "logs/competing-4-seed26.stdout.gz",
+      "matched": true
+    },
+    {
+      "path": "logs/competing-4-seed27.stdout.gz",
+      "matched": true
+    },
+    {
+      "path": "logs/competing-4-seed28.stdout.gz",
+      "matched": true
+    },
+    {
+      "path": "logs/competing-4-seed29.stdout.gz",
+      "matched": true
+    },
+    {
+      "path": "logs/competing-4-seed30.stdout.gz",
+      "matched": true
+    },
+    {
+      "path": "logs/competing-5-seed01.stdout.gz",
+      "matched": true
+    },
+    {
+      "path": "logs/competing-5-seed02.stdout.gz",
+      "matched": true
+    },
+    {
+      "path": "logs/competing-5-seed03.stdout.gz",
+      "matched": true
+    },
+    {
+      "path": "logs/competing-5-seed04.stdout.gz",
+      "matched": true
+    },
+    {
+      "path": "logs/competing-5-seed05.stdout.gz",
+      "matched": true
+    },
+    {
+      "path": "logs/competing-5-seed06.stdout.gz",
+      "matched": true
+    },
+    {
+      "path": "logs/competing-5-seed07.stdout.gz",
+      "matched": true
+    },
+    {
+      "path": "logs/competing-5-seed08.stdout.gz",
+      "matched": true
+    },
+    {
+      "path": "logs/competing-5-seed09.stdout.gz",
+      "matched": true
+    },
+    {
+      "path": "logs/competing-5-seed10.stdout.gz",
+      "matched": true
+    },
+    {
+      "path": "logs/competing-5-seed11.stdout.gz",
+      "matched": true
+    },
+    {
+      "path": "logs/competing-5-seed12.stdout.gz",
+      "matched": true
+    },
+    {
+      "path": "logs/competing-5-seed13.stdout.gz",
+      "matched": true
+    },
+    {
+      "path": "logs/competing-5-seed14.stdout.gz",
+      "matched": true
+    },
+    {
+      "path": "logs/competing-5-seed15.stdout.gz",
+      "matched": true
+    },
+    {
+      "path": "logs/competing-5-seed16.stdout.gz",
+      "matched": true
+    },
+    {
+      "path": "logs/competing-5-seed17.stdout.gz",
+      "matched": true
+    },
+    {
+      "path": "logs/competing-5-seed18.stdout.gz",
+      "matched": true
+    },
+    {
+      "path": "logs/competing-5-seed19.stdout.gz",
+      "matched": true
+    },
+    {
+      "path": "logs/competing-5-seed20.stdout.gz",
+      "matched": true
+    },
+    {
+      "path": "logs/competing-5-seed21.stdout.gz",
+      "matched": true
+    },
+    {
+      "path": "logs/competing-5-seed22.stdout.gz",
+      "matched": true
+    },
+    {
+      "path": "logs/competing-5-seed23.stdout.gz",
+      "matched": true
+    },
+    {
+      "path": "logs/competing-5-seed24.stdout.gz",
+      "matched": true
+    },
+    {
+      "path": "logs/competing-5-seed25.stdout.gz",
+      "matched": true
+    },
+    {
+      "path": "logs/competing-5-seed26.stdout.gz",
+      "matched": true
+    },
+    {
+      "path": "logs/competing-5-seed27.stdout.gz",
+      "matched": true
+    },
+    {
+      "path": "logs/competing-5-seed28.stdout.gz",
+      "matched": true
+    },
+    {
+      "path": "logs/competing-5-seed29.stdout.gz",
+      "matched": true
+    },
+    {
+      "path": "logs/competing-5-seed30.stdout.gz",
+      "matched": true
+    },
+    {
+      "path": "logs/competing-6-seed01.stdout.gz",
+      "matched": true
+    },
+    {
+      "path": "logs/competing-6-seed02.stdout.gz",
+      "matched": true
+    },
+    {
+      "path": "logs/competing-6-seed03.stdout.gz",
+      "matched": true
+    },
+    {
+      "path": "logs/competing-6-seed04.stdout.gz",
+      "matched": true
+    },
+    {
+      "path": "logs/competing-6-seed05.stdout.gz",
+      "matched": true
+    },
+    {
+      "path": "logs/competing-6-seed06.stdout.gz",
+      "matched": true
+    },
+    {
+      "path": "logs/competing-6-seed07.stdout.gz",
+      "matched": true
+    },
+    {
+      "path": "logs/competing-6-seed08.stdout.gz",
+      "matched": true
+    },
+    {
+      "path": "logs/competing-6-seed09.stdout.gz",
+      "matched": true
+    },
+    {
+      "path": "logs/competing-6-seed10.stdout.gz",
+      "matched": true
+    },
+    {
+      "path": "logs/competing-6-seed11.stdout.gz",
+      "matched": true
+    },
+    {
+      "path": "logs/competing-6-seed12.stdout.gz",
+      "matched": true
+    },
+    {
+      "path": "logs/competing-6-seed13.stdout.gz",
+      "matched": true
+    },
+    {
+      "path": "logs/competing-6-seed14.stdout.gz",
+      "matched": true
+    },
+    {
+      "path": "logs/competing-6-seed15.stdout.gz",
+      "matched": true
+    },
+    {
+      "path": "logs/competing-6-seed16.stdout.gz",
+      "matched": true
+    },
+    {
+      "path": "logs/competing-6-seed17.stdout.gz",
+      "matched": true
+    },
+    {
+      "path": "logs/competing-6-seed18.stdout.gz",
+      "matched": true
+    },
+    {
+      "path": "logs/competing-6-seed19.stdout.gz",
+      "matched": true
+    },
+    {
+      "path": "logs/competing-6-seed20.stdout.gz",
+      "matched": true
+    },
+    {
+      "path": "logs/competing-6-seed21.stdout.gz",
+      "matched": true
+    },
+    {
+      "path": "logs/competing-6-seed22.stdout.gz",
+      "matched": true
+    },
+    {
+      "path": "logs/competing-6-seed23.stdout.gz",
+      "matched": true
+    },
+    {
+      "path": "logs/competing-6-seed24.stdout.gz",
+      "matched": true
+    },
+    {
+      "path": "logs/competing-6-seed25.stdout.gz",
+      "matched": true
+    },
+    {
+      "path": "logs/competing-6-seed26.stdout.gz",
+      "matched": true
+    },
+    {
+      "path": "logs/competing-6-seed27.stdout.gz",
+      "matched": true
+    },
+    {
+      "path": "logs/competing-6-seed28.stdout.gz",
+      "matched": true
+    },
+    {
+      "path": "logs/competing-6-seed29.stdout.gz",
+      "matched": true
+    },
+    {
+      "path": "logs/competing-6-seed30.stdout.gz",
+      "matched": true
+    },
+    {
+      "path": "logs/degrade-0-seed01.stdout.gz",
+      "matched": true
+    },
+    {
+      "path": "logs/degrade-0-seed02.stdout.gz",
+      "matched": true
+    },
+    {
+      "path": "logs/degrade-0-seed03.stdout.gz",
+      "matched": true
+    },
+    {
+      "path": "logs/degrade-0-seed04.stdout.gz",
+      "matched": true
+    },
+    {
+      "path": "logs/degrade-0-seed05.stdout.gz",
+      "matched": true
+    },
+    {
+      "path": "logs/degrade-0-seed06.stdout.gz",
+      "matched": true
+    },
+    {
+      "path": "logs/degrade-0-seed07.stdout.gz",
+      "matched": true
+    },
+    {
+      "path": "logs/degrade-0-seed08.stdout.gz",
+      "matched": true
+    },
+    {
+      "path": "logs/degrade-0-seed09.stdout.gz",
+      "matched": true
+    },
+    {
+      "path": "logs/degrade-0-seed10.stdout.gz",
+      "matched": true
+    },
+    {
+      "path": "logs/degrade-0-seed11.stdout.gz",
+      "matched": true
+    },
+    {
+      "path": "logs/degrade-0-seed12.stdout.gz",
+      "matched": true
+    },
+    {
+      "path": "logs/degrade-0-seed13.stdout.gz",
+      "matched": true
+    },
+    {
+      "path": "logs/degrade-0-seed14.stdout.gz",
+      "matched": true
+    },
+    {
+      "path": "logs/degrade-0-seed15.stdout.gz",
+      "matched": true
+    },
+    {
+      "path": "logs/degrade-0-seed16.stdout.gz",
+      "matched": true
+    },
+    {
+      "path": "logs/degrade-0-seed17.stdout.gz",
+      "matched": true
+    },
+    {
+      "path": "logs/degrade-0-seed18.stdout.gz",
+      "matched": true
+    },
+    {
+      "path": "logs/degrade-0-seed19.stdout.gz",
+      "matched": true
+    },
+    {
+      "path": "logs/degrade-0-seed20.stdout.gz",
+      "matched": true
+    },
+    {
+      "path": "logs/degrade-0-seed21.stdout.gz",
+      "matched": true
+    },
+    {
+      "path": "logs/degrade-0-seed22.stdout.gz",
+      "matched": true
+    },
+    {
+      "path": "logs/degrade-0-seed23.stdout.gz",
+      "matched": true
+    },
+    {
+      "path": "logs/degrade-0-seed24.stdout.gz",
+      "matched": true
+    },
+    {
+      "path": "logs/degrade-0-seed25.stdout.gz",
+      "matched": true
+    },
+    {
+      "path": "logs/degrade-0-seed26.stdout.gz",
+      "matched": true
+    },
+    {
+      "path": "logs/degrade-0-seed27.stdout.gz",
+      "matched": true
+    },
+    {
+      "path": "logs/degrade-0-seed28.stdout.gz",
+      "matched": true
+    },
+    {
+      "path": "logs/degrade-0-seed29.stdout.gz",
+      "matched": true
+    },
+    {
+      "path": "logs/degrade-0-seed30.stdout.gz",
+      "matched": true
+    },
+    {
+      "path": "logs/degrade-1-seed01.stdout.gz",
+      "matched": true
+    },
+    {
+      "path": "logs/degrade-1-seed02.stdout.gz",
+      "matched": true
+    },
+    {
+      "path": "logs/degrade-1-seed03.stdout.gz",
+      "matched": true
+    },
+    {
+      "path": "logs/degrade-1-seed04.stdout.gz",
+      "matched": true
+    },
+    {
+      "path": "logs/degrade-1-seed05.stdout.gz",
+      "matched": true
+    },
+    {
+      "path": "logs/degrade-1-seed06.stdout.gz",
+      "matched": true
+    },
+    {
+      "path": "logs/degrade-1-seed07.stdout.gz",
+      "matched": true
+    },
+    {
+      "path": "logs/degrade-1-seed08.stdout.gz",
+      "matched": true
+    },
+    {
+      "path": "logs/degrade-1-seed09.stdout.gz",
+      "matched": true
+    },
+    {
+      "path": "logs/degrade-1-seed10.stdout.gz",
+      "matched": true
+    },
+    {
+      "path": "logs/degrade-1-seed11.stdout.gz",
+      "matched": true
+    },
+    {
+      "path": "logs/degrade-1-seed12.stdout.gz",
+      "matched": true
+    },
+    {
+      "path": "logs/degrade-1-seed13.stdout.gz",
+      "matched": true
+    },
+    {
+      "path": "logs/degrade-1-seed14.stdout.gz",
+      "matched": true
+    },
+    {
+      "path": "logs/degrade-1-seed15.stdout.gz",
+      "matched": true
+    },
+    {
+      "path": "logs/degrade-1-seed16.stdout.gz",
+      "matched": true
+    },
+    {
+      "path": "logs/degrade-1-seed17.stdout.gz",
+      "matched": true
+    },
+    {
+      "path": "logs/degrade-1-seed18.stdout.gz",
+      "matched": true
+    },
+    {
+      "path": "logs/degrade-1-seed19.stdout.gz",
+      "matched": true
+    },
+    {
+      "path": "logs/degrade-1-seed20.stdout.gz",
+      "matched": true
+    },
+    {
+      "path": "logs/degrade-1-seed21.stdout.gz",
+      "matched": true
+    },
+    {
+      "path": "logs/degrade-1-seed22.stdout.gz",
+      "matched": true
+    },
+    {
+      "path": "logs/degrade-1-seed23.stdout.gz",
+      "matched": true
+    },
+    {
+      "path": "logs/degrade-1-seed24.stdout.gz",
+      "matched": true
+    },
+    {
+      "path": "logs/degrade-1-seed25.stdout.gz",
+      "matched": true
+    },
+    {
+      "path": "logs/degrade-1-seed26.stdout.gz",
+      "matched": true
+    },
+    {
+      "path": "logs/degrade-1-seed27.stdout.gz",
+      "matched": true
+    },
+    {
+      "path": "logs/degrade-1-seed28.stdout.gz",
+      "matched": true
+    },
+    {
+      "path": "logs/degrade-1-seed29.stdout.gz",
+      "matched": true
+    },
+    {
+      "path": "logs/degrade-1-seed30.stdout.gz",
+      "matched": true
+    },
+    {
+      "path": "logs/degrade-2-seed01.stdout.gz",
+      "matched": true
+    },
+    {
+      "path": "logs/degrade-2-seed02.stdout.gz",
+      "matched": true
+    },
+    {
+      "path": "logs/degrade-2-seed03.stdout.gz",
+      "matched": true
+    },
+    {
+      "path": "logs/degrade-2-seed04.stdout.gz",
+      "matched": true
+    },
+    {
+      "path": "logs/degrade-2-seed05.stdout.gz",
+      "matched": true
+    },
+    {
+      "path": "logs/degrade-2-seed06.stdout.gz",
+      "matched": true
+    },
+    {
+      "path": "logs/degrade-2-seed07.stdout.gz",
+      "matched": true
+    },
+    {
+      "path": "logs/degrade-2-seed08.stdout.gz",
+      "matched": true
+    },
+    {
+      "path": "logs/degrade-2-seed09.stdout.gz",
+      "matched": true
+    },
+    {
+      "path": "logs/degrade-2-seed10.stdout.gz",
+      "matched": true
+    },
+    {
+      "path": "logs/degrade-2-seed11.stdout.gz",
+      "matched": true
+    },
+    {
+      "path": "logs/degrade-2-seed12.stdout.gz",
+      "matched": true
+    },
+    {
+      "path": "logs/degrade-2-seed13.stdout.gz",
+      "matched": true
+    },
+    {
+      "path": "logs/degrade-2-seed14.stdout.gz",
+      "matched": true
+    },
+    {
+      "path": "logs/degrade-2-seed15.stdout.gz",
+      "matched": true
+    },
+    {
+      "path": "logs/degrade-2-seed16.stdout.gz",
+      "matched": true
+    },
+    {
+      "path": "logs/degrade-2-seed17.stdout.gz",
+      "matched": true
+    },
+    {
+      "path": "logs/degrade-2-seed18.stdout.gz",
+      "matched": true
+    },
+    {
+      "path": "logs/degrade-2-seed19.stdout.gz",
+      "matched": true
+    },
+    {
+      "path": "logs/degrade-2-seed20.stdout.gz",
+      "matched": true
+    },
+    {
+      "path": "logs/degrade-2-seed21.stdout.gz",
+      "matched": true
+    },
+    {
+      "path": "logs/degrade-2-seed22.stdout.gz",
+      "matched": true
+    },
+    {
+      "path": "logs/degrade-2-seed23.stdout.gz",
+      "matched": true
+    },
+    {
+      "path": "logs/degrade-2-seed24.stdout.gz",
+      "matched": true
+    },
+    {
+      "path": "logs/degrade-2-seed25.stdout.gz",
+      "matched": true
+    },
+    {
+      "path": "logs/degrade-2-seed26.stdout.gz",
+      "matched": true
+    },
+    {
+      "path": "logs/degrade-2-seed27.stdout.gz",
+      "matched": true
+    },
+    {
+      "path": "logs/degrade-2-seed28.stdout.gz",
+      "matched": true
+    },
+    {
+      "path": "logs/degrade-2-seed29.stdout.gz",
+      "matched": true
+    },
+    {
+      "path": "logs/degrade-2-seed30.stdout.gz",
+      "matched": true
+    },
+    {
+      "path": "logs/degrade-3-seed01.stdout.gz",
+      "matched": true
+    },
+    {
+      "path": "logs/degrade-3-seed02.stdout.gz",
+      "matched": true
+    },
+    {
+      "path": "logs/degrade-3-seed03.stdout.gz",
+      "matched": true
+    },
+    {
+      "path": "logs/degrade-3-seed04.stdout.gz",
+      "matched": true
+    },
+    {
+      "path": "logs/degrade-3-seed05.stdout.gz",
+      "matched": true
+    },
+    {
+      "path": "logs/degrade-3-seed06.stdout.gz",
+      "matched": true
+    },
+    {
+      "path": "logs/degrade-3-seed07.stdout.gz",
+      "matched": true
+    },
+    {
+      "path": "logs/degrade-3-seed08.stdout.gz",
+      "matched": true
+    },
+    {
+      "path": "logs/degrade-3-seed09.stdout.gz",
+      "matched": true
+    },
+    {
+      "path": "logs/degrade-3-seed10.stdout.gz",
+      "matched": true
+    },
+    {
+      "path": "logs/degrade-3-seed11.stdout.gz",
+      "matched": true
+    },
+    {
+      "path": "logs/degrade-3-seed12.stdout.gz",
+      "matched": true
+    },
+    {
+      "path": "logs/degrade-3-seed13.stdout.gz",
+      "matched": true
+    },
+    {
+      "path": "logs/degrade-3-seed14.stdout.gz",
+      "matched": true
+    },
+    {
+      "path": "logs/degrade-3-seed15.stdout.gz",
+      "matched": true
+    },
+    {
+      "path": "logs/degrade-3-seed16.stdout.gz",
+      "matched": true
+    },
+    {
+      "path": "logs/degrade-3-seed17.stdout.gz",
+      "matched": true
+    },
+    {
+      "path": "logs/degrade-3-seed18.stdout.gz",
+      "matched": true
+    },
+    {
+      "path": "logs/degrade-3-seed19.stdout.gz",
+      "matched": true
+    },
+    {
+      "path": "logs/degrade-3-seed20.stdout.gz",
+      "matched": true
+    },
+    {
+      "path": "logs/degrade-3-seed21.stdout.gz",
+      "matched": true
+    },
+    {
+      "path": "logs/degrade-3-seed22.stdout.gz",
+      "matched": true
+    },
+    {
+      "path": "logs/degrade-3-seed23.stdout.gz",
+      "matched": true
+    },
+    {
+      "path": "logs/degrade-3-seed24.stdout.gz",
+      "matched": true
+    },
+    {
+      "path": "logs/degrade-3-seed25.stdout.gz",
+      "matched": true
+    },
+    {
+      "path": "logs/degrade-3-seed26.stdout.gz",
+      "matched": true
+    },
+    {
+      "path": "logs/degrade-3-seed27.stdout.gz",
+      "matched": true
+    },
+    {
+      "path": "logs/degrade-3-seed28.stdout.gz",
+      "matched": true
+    },
+    {
+      "path": "logs/degrade-3-seed29.stdout.gz",
+      "matched": true
+    },
+    {
+      "path": "logs/degrade-3-seed30.stdout.gz",
+      "matched": true
+    },
+    {
+      "path": "logs/degrade-4-seed01.stdout.gz",
+      "matched": true
+    },
+    {
+      "path": "logs/degrade-4-seed02.stdout.gz",
+      "matched": true
+    },
+    {
+      "path": "logs/degrade-4-seed03.stdout.gz",
+      "matched": true
+    },
+    {
+      "path": "logs/degrade-4-seed04.stdout.gz",
+      "matched": true
+    },
+    {
+      "path": "logs/degrade-4-seed05.stdout.gz",
+      "matched": true
+    },
+    {
+      "path": "logs/degrade-4-seed06.stdout.gz",
+      "matched": true
+    },
+    {
+      "path": "logs/degrade-4-seed07.stdout.gz",
+      "matched": true
+    },
+    {
+      "path": "logs/degrade-4-seed08.stdout.gz",
+      "matched": true
+    },
+    {
+      "path": "logs/degrade-4-seed09.stdout.gz",
+      "matched": true
+    },
+    {
+      "path": "logs/degrade-4-seed10.stdout.gz",
+      "matched": true
+    },
+    {
+      "path": "logs/degrade-4-seed11.stdout.gz",
+      "matched": true
+    },
+    {
+      "path": "logs/degrade-4-seed12.stdout.gz",
+      "matched": true
+    },
+    {
+      "path": "logs/degrade-4-seed13.stdout.gz",
+      "matched": true
+    },
+    {
+      "path": "logs/degrade-4-seed14.stdout.gz",
+      "matched": true
+    },
+    {
+      "path": "logs/degrade-4-seed15.stdout.gz",
+      "matched": true
+    },
+    {
+      "path": "logs/degrade-4-seed16.stdout.gz",
+      "matched": true
+    },
+    {
+      "path": "logs/degrade-4-seed17.stdout.gz",
+      "matched": true
+    },
+    {
+      "path": "logs/degrade-4-seed18.stdout.gz",
+      "matched": true
+    },
+    {
+      "path": "logs/degrade-4-seed19.stdout.gz",
+      "matched": true
+    },
+    {
+      "path": "logs/degrade-4-seed20.stdout.gz",
+      "matched": true
+    },
+    {
+      "path": "logs/degrade-4-seed21.stdout.gz",
+      "matched": true
+    },
+    {
+      "path": "logs/degrade-4-seed22.stdout.gz",
+      "matched": true
+    },
+    {
+      "path": "logs/degrade-4-seed23.stdout.gz",
+      "matched": true
+    },
+    {
+      "path": "logs/degrade-4-seed24.stdout.gz",
+      "matched": true
+    },
+    {
+      "path": "logs/degrade-4-seed25.stdout.gz",
+      "matched": true
+    },
+    {
+      "path": "logs/degrade-4-seed26.stdout.gz",
+      "matched": true
+    },
+    {
+      "path": "logs/degrade-4-seed27.stdout.gz",
+      "matched": true
+    },
+    {
+      "path": "logs/degrade-4-seed28.stdout.gz",
+      "matched": true
+    },
+    {
+      "path": "logs/degrade-4-seed29.stdout.gz",
+      "matched": true
+    },
+    {
+      "path": "logs/degrade-4-seed30.stdout.gz",
+      "matched": true
+    },
+    {
+      "path": "logs/degrade-5-seed01.stdout.gz",
+      "matched": true
+    },
+    {
+      "path": "logs/degrade-5-seed02.stdout.gz",
+      "matched": true
+    },
+    {
+      "path": "logs/degrade-5-seed03.stdout.gz",
+      "matched": true
+    },
+    {
+      "path": "logs/degrade-5-seed04.stdout.gz",
+      "matched": true
+    },
+    {
+      "path": "logs/degrade-5-seed05.stdout.gz",
+      "matched": true
+    },
+    {
+      "path": "logs/degrade-5-seed06.stdout.gz",
+      "matched": true
+    },
+    {
+      "path": "logs/degrade-5-seed07.stdout.gz",
+      "matched": true
+    },
+    {
+      "path": "logs/degrade-5-seed08.stdout.gz",
+      "matched": true
+    },
+    {
+      "path": "logs/degrade-5-seed09.stdout.gz",
+      "matched": true
+    },
+    {
+      "path": "logs/degrade-5-seed10.stdout.gz",
+      "matched": true
+    },
+    {
+      "path": "logs/degrade-5-seed11.stdout.gz",
+      "matched": true
+    },
+    {
+      "path": "logs/degrade-5-seed12.stdout.gz",
+      "matched": true
+    },
+    {
+      "path": "logs/degrade-5-seed13.stdout.gz",
+      "matched": true
+    },
+    {
+      "path": "logs/degrade-5-seed14.stdout.gz",
+      "matched": true
+    },
+    {
+      "path": "logs/degrade-5-seed15.stdout.gz",
+      "matched": true
+    },
+    {
+      "path": "logs/degrade-5-seed16.stdout.gz",
+      "matched": true
+    },
+    {
+      "path": "logs/degrade-5-seed17.stdout.gz",
+      "matched": true
+    },
+    {
+      "path": "logs/degrade-5-seed18.stdout.gz",
+      "matched": true
+    },
+    {
+      "path": "logs/degrade-5-seed19.stdout.gz",
+      "matched": true
+    },
+    {
+      "path": "logs/degrade-5-seed20.stdout.gz",
+      "matched": true
+    },
+    {
+      "path": "logs/degrade-5-seed21.stdout.gz",
+      "matched": true
+    },
+    {
+      "path": "logs/degrade-5-seed22.stdout.gz",
+      "matched": true
+    },
+    {
+      "path": "logs/degrade-5-seed23.stdout.gz",
+      "matched": true
+    },
+    {
+      "path": "logs/degrade-5-seed24.stdout.gz",
+      "matched": true
+    },
+    {
+      "path": "logs/degrade-5-seed25.stdout.gz",
+      "matched": true
+    },
+    {
+      "path": "logs/degrade-5-seed26.stdout.gz",
+      "matched": true
+    },
+    {
+      "path": "logs/degrade-5-seed27.stdout.gz",
+      "matched": true
+    },
+    {
+      "path": "logs/degrade-5-seed28.stdout.gz",
+      "matched": true
+    },
+    {
+      "path": "logs/degrade-5-seed29.stdout.gz",
+      "matched": true
+    },
+    {
+      "path": "logs/degrade-5-seed30.stdout.gz",
+      "matched": true
+    },
+    {
+      "path": "logs/degrade-6-seed01.stdout.gz",
+      "matched": true
+    },
+    {
+      "path": "logs/degrade-6-seed02.stdout.gz",
+      "matched": true
+    },
+    {
+      "path": "logs/degrade-6-seed03.stdout.gz",
+      "matched": true
+    },
+    {
+      "path": "logs/degrade-6-seed04.stdout.gz",
+      "matched": true
+    },
+    {
+      "path": "logs/degrade-6-seed05.stdout.gz",
+      "matched": true
+    },
+    {
+      "path": "logs/degrade-6-seed06.stdout.gz",
+      "matched": true
+    },
+    {
+      "path": "logs/degrade-6-seed07.stdout.gz",
+      "matched": true
+    },
+    {
+      "path": "logs/degrade-6-seed08.stdout.gz",
+      "matched": true
+    },
+    {
+      "path": "logs/degrade-6-seed09.stdout.gz",
+      "matched": true
+    },
+    {
+      "path": "logs/degrade-6-seed10.stdout.gz",
+      "matched": true
+    },
+    {
+      "path": "logs/degrade-6-seed11.stdout.gz",
+      "matched": true
+    },
+    {
+      "path": "logs/degrade-6-seed12.stdout.gz",
+      "matched": true
+    },
+    {
+      "path": "logs/degrade-6-seed13.stdout.gz",
+      "matched": true
+    },
+    {
+      "path": "logs/degrade-6-seed14.stdout.gz",
+      "matched": true
+    },
+    {
+      "path": "logs/degrade-6-seed15.stdout.gz",
+      "matched": true
+    },
+    {
+      "path": "logs/degrade-6-seed16.stdout.gz",
+      "matched": true
+    },
+    {
+      "path": "logs/degrade-6-seed17.stdout.gz",
+      "matched": true
+    },
+    {
+      "path": "logs/degrade-6-seed18.stdout.gz",
+      "matched": true
+    },
+    {
+      "path": "logs/degrade-6-seed19.stdout.gz",
+      "matched": true
+    },
+    {
+      "path": "logs/degrade-6-seed20.stdout.gz",
+      "matched": true
+    },
+    {
+      "path": "logs/degrade-6-seed21.stdout.gz",
+      "matched": true
+    },
+    {
+      "path": "logs/degrade-6-seed22.stdout.gz",
+      "matched": true
+    },
+    {
+      "path": "logs/degrade-6-seed23.stdout.gz",
+      "matched": true
+    },
+    {
+      "path": "logs/degrade-6-seed24.stdout.gz",
+      "matched": true
+    },
+    {
+      "path": "logs/degrade-6-seed25.stdout.gz",
+      "matched": true
+    },
+    {
+      "path": "logs/degrade-6-seed26.stdout.gz",
+      "matched": true
+    },
+    {
+      "path": "logs/degrade-6-seed27.stdout.gz",
+      "matched": true
+    },
+    {
+      "path": "logs/degrade-6-seed28.stdout.gz",
+      "matched": true
+    },
+    {
+      "path": "logs/degrade-6-seed29.stdout.gz",
+      "matched": true
+    },
+    {
+      "path": "logs/degrade-6-seed30.stdout.gz",
+      "matched": true
+    },
+    {
+      "path": "logs/dominating-0-seed01.stdout.gz",
+      "matched": true
+    },
+    {
+      "path": "logs/dominating-0-seed02.stdout.gz",
+      "matched": true
+    },
+    {
+      "path": "logs/dominating-0-seed03.stdout.gz",
+      "matched": true
+    },
+    {
+      "path": "logs/dominating-0-seed04.stdout.gz",
+      "matched": true
+    },
+    {
+      "path": "logs/dominating-0-seed05.stdout.gz",
+      "matched": true
+    },
+    {
+      "path": "logs/dominating-0-seed06.stdout.gz",
+      "matched": true
+    },
+    {
+      "path": "logs/dominating-0-seed07.stdout.gz",
+      "matched": true
+    },
+    {
+      "path": "logs/dominating-0-seed08.stdout.gz",
+      "matched": true
+    },
+    {
+      "path": "logs/dominating-0-seed09.stdout.gz",
+      "matched": true
+    },
+    {
+      "path": "logs/dominating-0-seed10.stdout.gz",
+      "matched": true
+    },
+    {
+      "path": "logs/dominating-0-seed11.stdout.gz",
+      "matched": true
+    },
+    {
+      "path": "logs/dominating-0-seed12.stdout.gz",
+      "matched": true
+    },
+    {
+      "path": "logs/dominating-0-seed13.stdout.gz",
+      "matched": true
+    },
+    {
+      "path": "logs/dominating-0-seed14.stdout.gz",
+      "matched": true
+    },
+    {
+      "path": "logs/dominating-0-seed15.stdout.gz",
+      "matched": true
+    },
+    {
+      "path": "logs/dominating-0-seed16.stdout.gz",
+      "matched": true
+    },
+    {
+      "path": "logs/dominating-0-seed17.stdout.gz",
+      "matched": true
+    },
+    {
+      "path": "logs/dominating-0-seed18.stdout.gz",
+      "matched": true
+    },
+    {
+      "path": "logs/dominating-0-seed19.stdout.gz",
+      "matched": true
+    },
+    {
+      "path": "logs/dominating-0-seed20.stdout.gz",
+      "matched": true
+    },
+    {
+      "path": "logs/dominating-0-seed21.stdout.gz",
+      "matched": true
+    },
+    {
+      "path": "logs/dominating-0-seed22.stdout.gz",
+      "matched": true
+    },
+    {
+      "path": "logs/dominating-0-seed23.stdout.gz",
+      "matched": true
+    },
+    {
+      "path": "logs/dominating-0-seed24.stdout.gz",
+      "matched": true
+    },
+    {
+      "path": "logs/dominating-0-seed25.stdout.gz",
+      "matched": true
+    },
+    {
+      "path": "logs/dominating-0-seed26.stdout.gz",
+      "matched": true
+    },
+    {
+      "path": "logs/dominating-0-seed27.stdout.gz",
+      "matched": true
+    },
+    {
+      "path": "logs/dominating-0-seed28.stdout.gz",
+      "matched": true
+    },
+    {
+      "path": "logs/dominating-0-seed29.stdout.gz",
+      "matched": true
+    },
+    {
+      "path": "logs/dominating-0-seed30.stdout.gz",
+      "matched": true
+    },
+    {
+      "path": "logs/dominating-1-seed01.stdout.gz",
+      "matched": true
+    },
+    {
+      "path": "logs/dominating-1-seed02.stdout.gz",
+      "matched": true
+    },
+    {
+      "path": "logs/dominating-1-seed03.stdout.gz",
+      "matched": true
+    },
+    {
+      "path": "logs/dominating-1-seed04.stdout.gz",
+      "matched": true
+    },
+    {
+      "path": "logs/dominating-1-seed05.stdout.gz",
+      "matched": true
+    },
+    {
+      "path": "logs/dominating-1-seed06.stdout.gz",
+      "matched": true
+    },
+    {
+      "path": "logs/dominating-1-seed07.stdout.gz",
+      "matched": true
+    },
+    {
+      "path": "logs/dominating-1-seed08.stdout.gz",
+      "matched": true
+    },
+    {
+      "path": "logs/dominating-1-seed09.stdout.gz",
+      "matched": true
+    },
+    {
+      "path": "logs/dominating-1-seed10.stdout.gz",
+      "matched": true
+    },
+    {
+      "path": "logs/dominating-1-seed11.stdout.gz",
+      "matched": true
+    },
+    {
+      "path": "logs/dominating-1-seed12.stdout.gz",
+      "matched": true
+    },
+    {
+      "path": "logs/dominating-1-seed13.stdout.gz",
+      "matched": true
+    },
+    {
+      "path": "logs/dominating-1-seed14.stdout.gz",
+      "matched": true
+    },
+    {
+      "path": "logs/dominating-1-seed15.stdout.gz",
+      "matched": true
+    },
+    {
+      "path": "logs/dominating-1-seed16.stdout.gz",
+      "matched": true
+    },
+    {
+      "path": "logs/dominating-1-seed17.stdout.gz",
+      "matched": true
+    },
+    {
+      "path": "logs/dominating-1-seed18.stdout.gz",
+      "matched": true
+    },
+    {
+      "path": "logs/dominating-1-seed19.stdout.gz",
+      "matched": true
+    },
+    {
+      "path": "logs/dominating-1-seed20.stdout.gz",
+      "matched": true
+    },
+    {
+      "path": "logs/dominating-1-seed21.stdout.gz",
+      "matched": true
+    },
+    {
+      "path": "logs/dominating-1-seed22.stdout.gz",
+      "matched": true
+    },
+    {
+      "path": "logs/dominating-1-seed23.stdout.gz",
+      "matched": true
+    },
+    {
+      "path": "logs/dominating-1-seed24.stdout.gz",
+      "matched": true
+    },
+    {
+      "path": "logs/dominating-1-seed25.stdout.gz",
+      "matched": true
+    },
+    {
+      "path": "logs/dominating-1-seed26.stdout.gz",
+      "matched": true
+    },
+    {
+      "path": "logs/dominating-1-seed27.stdout.gz",
+      "matched": true
+    },
+    {
+      "path": "logs/dominating-1-seed28.stdout.gz",
+      "matched": true
+    },
+    {
+      "path": "logs/dominating-1-seed29.stdout.gz",
+      "matched": true
+    },
+    {
+      "path": "logs/dominating-1-seed30.stdout.gz",
+      "matched": true
+    },
+    {
+      "path": "logs/dominating-2-seed01.stdout.gz",
+      "matched": true
+    },
+    {
+      "path": "logs/dominating-2-seed02.stdout.gz",
+      "matched": true
+    },
+    {
+      "path": "logs/dominating-2-seed03.stdout.gz",
+      "matched": true
+    },
+    {
+      "path": "logs/dominating-2-seed04.stdout.gz",
+      "matched": true
+    },
+    {
+      "path": "logs/dominating-2-seed05.stdout.gz",
+      "matched": true
+    },
+    {
+      "path": "logs/dominating-2-seed06.stdout.gz",
+      "matched": true
+    },
+    {
+      "path": "logs/dominating-2-seed07.stdout.gz",
+      "matched": true
+    },
+    {
+      "path": "logs/dominating-2-seed08.stdout.gz",
+      "matched": true
+    },
+    {
+      "path": "logs/dominating-2-seed09.stdout.gz",
+      "matched": true
+    },
+    {
+      "path": "logs/dominating-2-seed10.stdout.gz",
+      "matched": true
+    },
+    {
+      "path": "logs/dominating-2-seed11.stdout.gz",
+      "matched": true
+    },
+    {
+      "path": "logs/dominating-2-seed12.stdout.gz",
+      "matched": true
+    },
+    {
+      "path": "logs/dominating-2-seed13.stdout.gz",
+      "matched": true
+    },
+    {
+      "path": "logs/dominating-2-seed14.stdout.gz",
+      "matched": true
+    },
+    {
+      "path": "logs/dominating-2-seed15.stdout.gz",
+      "matched": true
+    },
+    {
+      "path": "logs/dominating-2-seed16.stdout.gz",
+      "matched": true
+    },
+    {
+      "path": "logs/dominating-2-seed17.stdout.gz",
+      "matched": true
+    },
+    {
+      "path": "logs/dominating-2-seed18.stdout.gz",
+      "matched": true
+    },
+    {
+      "path": "logs/dominating-2-seed19.stdout.gz",
+      "matched": true
+    },
+    {
+      "path": "logs/dominating-2-seed20.stdout.gz",
+      "matched": true
+    },
+    {
+      "path": "logs/dominating-2-seed21.stdout.gz",
+      "matched": true
+    },
+    {
+      "path": "logs/dominating-2-seed22.stdout.gz",
+      "matched": true
+    },
+    {
+      "path": "logs/dominating-2-seed23.stdout.gz",
+      "matched": true
+    },
+    {
+      "path": "logs/dominating-2-seed24.stdout.gz",
+      "matched": true
+    },
+    {
+      "path": "logs/dominating-2-seed25.stdout.gz",
+      "matched": true
+    },
+    {
+      "path": "logs/dominating-2-seed26.stdout.gz",
+      "matched": true
+    },
+    {
+      "path": "logs/dominating-2-seed27.stdout.gz",
+      "matched": true
+    },
+    {
+      "path": "logs/dominating-2-seed28.stdout.gz",
+      "matched": true
+    },
+    {
+      "path": "logs/dominating-2-seed29.stdout.gz",
+      "matched": true
+    },
+    {
+      "path": "logs/dominating-2-seed30.stdout.gz",
+      "matched": true
+    },
+    {
+      "path": "logs/dominating-3-seed01.stdout.gz",
+      "matched": true
+    },
+    {
+      "path": "logs/dominating-3-seed02.stdout.gz",
+      "matched": true
+    },
+    {
+      "path": "logs/dominating-3-seed03.stdout.gz",
+      "matched": true
+    },
+    {
+      "path": "logs/dominating-3-seed04.stdout.gz",
+      "matched": true
+    },
+    {
+      "path": "logs/dominating-3-seed05.stdout.gz",
+      "matched": true
+    },
+    {
+      "path": "logs/dominating-3-seed06.stdout.gz",
+      "matched": true
+    },
+    {
+      "path": "logs/dominating-3-seed07.stdout.gz",
+      "matched": true
+    },
+    {
+      "path": "logs/dominating-3-seed08.stdout.gz",
+      "matched": true
+    },
+    {
+      "path": "logs/dominating-3-seed09.stdout.gz",
+      "matched": true
+    },
+    {
+      "path": "logs/dominating-3-seed10.stdout.gz",
+      "matched": true
+    },
+    {
+      "path": "logs/dominating-3-seed11.stdout.gz",
+      "matched": true
+    },
+    {
+      "path": "logs/dominating-3-seed12.stdout.gz",
+      "matched": true
+    },
+    {
+      "path": "logs/dominating-3-seed13.stdout.gz",
+      "matched": true
+    },
+    {
+      "path": "logs/dominating-3-seed14.stdout.gz",
+      "matched": true
+    },
+    {
+      "path": "logs/dominating-3-seed15.stdout.gz",
+      "matched": true
+    },
+    {
+      "path": "logs/dominating-3-seed16.stdout.gz",
+      "matched": true
+    },
+    {
+      "path": "logs/dominating-3-seed17.stdout.gz",
+      "matched": true
+    },
+    {
+      "path": "logs/dominating-3-seed18.stdout.gz",
+      "matched": true
+    },
+    {
+      "path": "logs/dominating-3-seed19.stdout.gz",
+      "matched": true
+    },
+    {
+      "path": "logs/dominating-3-seed20.stdout.gz",
+      "matched": true
+    },
+    {
+      "path": "logs/dominating-3-seed21.stdout.gz",
+      "matched": true
+    },
+    {
+      "path": "logs/dominating-3-seed22.stdout.gz",
+      "matched": true
+    },
+    {
+      "path": "logs/dominating-3-seed23.stdout.gz",
+      "matched": true
+    },
+    {
+      "path": "logs/dominating-3-seed24.stdout.gz",
+      "matched": true
+    },
+    {
+      "path": "logs/dominating-3-seed25.stdout.gz",
+      "matched": true
+    },
+    {
+      "path": "logs/dominating-3-seed26.stdout.gz",
+      "matched": true
+    },
+    {
+      "path": "logs/dominating-3-seed27.stdout.gz",
+      "matched": true
+    },
+    {
+      "path": "logs/dominating-3-seed28.stdout.gz",
+      "matched": true
+    },
+    {
+      "path": "logs/dominating-3-seed29.stdout.gz",
+      "matched": true
+    },
+    {
+      "path": "logs/dominating-3-seed30.stdout.gz",
+      "matched": true
+    },
+    {
+      "path": "logs/dominating-4-seed01.stdout.gz",
+      "matched": true
+    },
+    {
+      "path": "logs/dominating-4-seed02.stdout.gz",
+      "matched": true
+    },
+    {
+      "path": "logs/dominating-4-seed03.stdout.gz",
+      "matched": true
+    },
+    {
+      "path": "logs/dominating-4-seed04.stdout.gz",
+      "matched": true
+    },
+    {
+      "path": "logs/dominating-4-seed05.stdout.gz",
+      "matched": true
+    },
+    {
+      "path": "logs/dominating-4-seed06.stdout.gz",
+      "matched": true
+    },
+    {
+      "path": "logs/dominating-4-seed07.stdout.gz",
+      "matched": true
+    },
+    {
+      "path": "logs/dominating-4-seed08.stdout.gz",
+      "matched": true
+    },
+    {
+      "path": "logs/dominating-4-seed09.stdout.gz",
+      "matched": true
+    },
+    {
+      "path": "logs/dominating-4-seed10.stdout.gz",
+      "matched": true
+    },
+    {
+      "path": "logs/dominating-4-seed11.stdout.gz",
+      "matched": true
+    },
+    {
+      "path": "logs/dominating-4-seed12.stdout.gz",
+      "matched": true
+    },
+    {
+      "path": "logs/dominating-4-seed13.stdout.gz",
+      "matched": true
+    },
+    {
+      "path": "logs/dominating-4-seed14.stdout.gz",
+      "matched": true
+    },
+    {
+      "path": "logs/dominating-4-seed15.stdout.gz",
+      "matched": true
+    },
+    {
+      "path": "logs/dominating-4-seed16.stdout.gz",
+      "matched": true
+    },
+    {
+      "path": "logs/dominating-4-seed17.stdout.gz",
+      "matched": true
+    },
+    {
+      "path": "logs/dominating-4-seed18.stdout.gz",
+      "matched": true
+    },
+    {
+      "path": "logs/dominating-4-seed19.stdout.gz",
+      "matched": true
+    },
+    {
+      "path": "logs/dominating-4-seed20.stdout.gz",
+      "matched": true
+    },
+    {
+      "path": "logs/dominating-4-seed21.stdout.gz",
+      "matched": true
+    },
+    {
+      "path": "logs/dominating-4-seed22.stdout.gz",
+      "matched": true
+    },
+    {
+      "path": "logs/dominating-4-seed23.stdout.gz",
+      "matched": true
+    },
+    {
+      "path": "logs/dominating-4-seed24.stdout.gz",
+      "matched": true
+    },
+    {
+      "path": "logs/dominating-4-seed25.stdout.gz",
+      "matched": true
+    },
+    {
+      "path": "logs/dominating-4-seed26.stdout.gz",
+      "matched": true
+    },
+    {
+      "path": "logs/dominating-4-seed27.stdout.gz",
+      "matched": true
+    },
+    {
+      "path": "logs/dominating-4-seed28.stdout.gz",
+      "matched": true
+    },
+    {
+      "path": "logs/dominating-4-seed29.stdout.gz",
+      "matched": true
+    },
+    {
+      "path": "logs/dominating-4-seed30.stdout.gz",
+      "matched": true
+    },
+    {
+      "path": "logs/dominating-5-seed01.stdout.gz",
+      "matched": true
+    },
+    {
+      "path": "logs/dominating-5-seed02.stdout.gz",
+      "matched": true
+    },
+    {
+      "path": "logs/dominating-5-seed03.stdout.gz",
+      "matched": true
+    },
+    {
+      "path": "logs/dominating-5-seed04.stdout.gz",
+      "matched": true
+    },
+    {
+      "path": "logs/dominating-5-seed05.stdout.gz",
+      "matched": true
+    },
+    {
+      "path": "logs/dominating-5-seed06.stdout.gz",
+      "matched": true
+    },
+    {
+      "path": "logs/dominating-5-seed07.stdout.gz",
+      "matched": true
+    },
+    {
+      "path": "logs/dominating-5-seed08.stdout.gz",
+      "matched": true
+    },
+    {
+      "path": "logs/dominating-5-seed09.stdout.gz",
+      "matched": true
+    },
+    {
+      "path": "logs/dominating-5-seed10.stdout.gz",
+      "matched": true
+    },
+    {
+      "path": "logs/dominating-5-seed11.stdout.gz",
+      "matched": true
+    },
+    {
+      "path": "logs/dominating-5-seed12.stdout.gz",
+      "matched": true
+    },
+    {
+      "path": "logs/dominating-5-seed13.stdout.gz",
+      "matched": true
+    },
+    {
+      "path": "logs/dominating-5-seed14.stdout.gz",
+      "matched": true
+    },
+    {
+      "path": "logs/dominating-5-seed15.stdout.gz",
+      "matched": true
+    },
+    {
+      "path": "logs/dominating-5-seed16.stdout.gz",
+      "matched": true
+    },
+    {
+      "path": "logs/dominating-5-seed17.stdout.gz",
+      "matched": true
+    },
+    {
+      "path": "logs/dominating-5-seed18.stdout.gz",
+      "matched": true
+    },
+    {
+      "path": "logs/dominating-5-seed19.stdout.gz",
+      "matched": true
+    },
+    {
+      "path": "logs/dominating-5-seed20.stdout.gz",
+      "matched": true
+    },
+    {
+      "path": "logs/dominating-5-seed21.stdout.gz",
+      "matched": true
+    },
+    {
+      "path": "logs/dominating-5-seed22.stdout.gz",
+      "matched": true
+    },
+    {
+      "path": "logs/dominating-5-seed23.stdout.gz",
+      "matched": true
+    },
+    {
+      "path": "logs/dominating-5-seed24.stdout.gz",
+      "matched": true
+    },
+    {
+      "path": "logs/dominating-5-seed25.stdout.gz",
+      "matched": true
+    },
+    {
+      "path": "logs/dominating-5-seed26.stdout.gz",
+      "matched": true
+    },
+    {
+      "path": "logs/dominating-5-seed27.stdout.gz",
+      "matched": true
+    },
+    {
+      "path": "logs/dominating-5-seed28.stdout.gz",
+      "matched": true
+    },
+    {
+      "path": "logs/dominating-5-seed29.stdout.gz",
+      "matched": true
+    },
+    {
+      "path": "logs/dominating-5-seed30.stdout.gz",
+      "matched": true
+    },
+    {
+      "path": "logs/dominating-6-seed01.stdout.gz",
+      "matched": true
+    },
+    {
+      "path": "logs/dominating-6-seed02.stdout.gz",
+      "matched": true
+    },
+    {
+      "path": "logs/dominating-6-seed03.stdout.gz",
+      "matched": true
+    },
+    {
+      "path": "logs/dominating-6-seed04.stdout.gz",
+      "matched": true
+    },
+    {
+      "path": "logs/dominating-6-seed05.stdout.gz",
+      "matched": true
+    },
+    {
+      "path": "logs/dominating-6-seed06.stdout.gz",
+      "matched": true
+    },
+    {
+      "path": "logs/dominating-6-seed07.stdout.gz",
+      "matched": true
+    },
+    {
+      "path": "logs/dominating-6-seed08.stdout.gz",
+      "matched": true
+    },
+    {
+      "path": "logs/dominating-6-seed09.stdout.gz",
+      "matched": true
+    },
+    {
+      "path": "logs/dominating-6-seed10.stdout.gz",
+      "matched": true
+    },
+    {
+      "path": "logs/dominating-6-seed11.stdout.gz",
+      "matched": true
+    },
+    {
+      "path": "logs/dominating-6-seed12.stdout.gz",
+      "matched": true
+    },
+    {
+      "path": "logs/dominating-6-seed13.stdout.gz",
+      "matched": true
+    },
+    {
+      "path": "logs/dominating-6-seed14.stdout.gz",
+      "matched": true
+    },
+    {
+      "path": "logs/dominating-6-seed15.stdout.gz",
+      "matched": true
+    },
+    {
+      "path": "logs/dominating-6-seed16.stdout.gz",
+      "matched": true
+    },
+    {
+      "path": "logs/dominating-6-seed17.stdout.gz",
+      "matched": true
+    },
+    {
+      "path": "logs/dominating-6-seed18.stdout.gz",
+      "matched": true
+    },
+    {
+      "path": "logs/dominating-6-seed19.stdout.gz",
+      "matched": true
+    },
+    {
+      "path": "logs/dominating-6-seed20.stdout.gz",
+      "matched": true
+    },
+    {
+      "path": "logs/dominating-6-seed21.stdout.gz",
+      "matched": true
+    },
+    {
+      "path": "logs/dominating-6-seed22.stdout.gz",
+      "matched": true
+    },
+    {
+      "path": "logs/dominating-6-seed23.stdout.gz",
+      "matched": true
+    },
+    {
+      "path": "logs/dominating-6-seed24.stdout.gz",
+      "matched": true
+    },
+    {
+      "path": "logs/dominating-6-seed25.stdout.gz",
+      "matched": true
+    },
+    {
+      "path": "logs/dominating-6-seed26.stdout.gz",
+      "matched": true
+    },
+    {
+      "path": "logs/dominating-6-seed27.stdout.gz",
+      "matched": true
+    },
+    {
+      "path": "logs/dominating-6-seed28.stdout.gz",
+      "matched": true
+    },
+    {
+      "path": "logs/dominating-6-seed29.stdout.gz",
+      "matched": true
+    },
+    {
+      "path": "logs/dominating-6-seed30.stdout.gz",
+      "matched": true
+    },
+    {
+      "path": "provenance.json",
+      "matched": true
+    },
+    {
+      "path": "results.csv",
+      "matched": true
+    },
+    {
+      "path": "source.patch",
+      "matched": true
+    },
+    {
+      "path": "validation.json",
+      "matched": true
+    }
+  ],
+  "default_baseline_unchanged": true,
+  "internal_files_untracked": true,
+  "ignored_internal_files": [
+    "STATUS.md",
+    "AGENTS.md"
+  ],
+  "patch_files": {
+    "week3-instrumentation.patch": "c24df161667b2c502660ab2596c44b1650187a1530cbac73bccf0750311c21ae",
+    "week3-implementation.patch": "83bf445552d3ec921862fc632881e0e3a65e3d0fb4ccecb55adb9c95a7e9a221"
+  },
+  "source_hashes": {
+    "src/quic/model/mp-quic-scheduler.h": "1d99e97b2b21d6fee7b27397ba93ecc68ed888036835d2cfd30ee5924ef0a0ee",
+    "src/quic/model/mp-quic-scheduler.cc": "9156db3c08681dab3051b18785819a117e088744574f850125b6d205b698a3d9",
+    "src/quic/model/quic-socket-base.h": "28a3493ce2c761d828cf18aa2ea41462df972489f9024fb0a6c7e2872053af69",
+    "src/quic/model/quic-socket-base.cc": "427a36e1e6b6e25c2daf5a0c2e119287c868bedf7050e006b051f0543781e4b6",
+    "src/quic/model/quic-stream-base.h": "8e2762c9e8a56b6117580c5dd1ff3dc2f95f38fd71e4745280095573ca8b9e04",
+    "src/quic/model/quic-stream-base.cc": "73bc10541a1926cff92e0b3d9525f4e22efe5c619d9770c3410e91f3ef5c7923",
+    "src/quic/model/quic-stream-rx-buffer.h": "b8e2838e7f694dd75a7cbd89bee33ef570b6187da02f8dfe8f67a264fefffdcd",
+    "src/quic/model/quic-stream-rx-buffer.cc": "85ef0620ecc961c3f93f29ce78a268252bfdaf902b1d3270b6aadd695b7fd3eb",
+    "src/quic/model/quic-l5-protocol.cc": "7b940bd5398bd88e35e7b65d392e406595261b45685e5ca739f4fe95b56ccb79",
+    "scratch/mpquic-sched-lab.cc": "7beed4e1ea0c1006294031fc67ddc9894e00db9b576e9fd128289393a37cacd2",
+    "src/quic/wscript": "4fd37a0c936ccb5910af0082ee9f4ebe28cd96a0bce394a88f32dbf278148761",
+    "sched-lab/run_sweep.py": "61717a7c581b1e82e998e976a9ea2988e0c758ed691fa039cbffbad421487757",
+    "src/quic/test/mp-quic-scheduler-test.cc": "362221bdd0ec9bb1dcd2681efbd84b54aa1649673a82a4eb2213dc187f6e206c",
+    "sched-lab/week3_validate.py": "a46cd6231c8c2803d3ce6dea80c0cb83b7e4b95bc1e6fdcbff9e6c33595fad35",
+    "sched-lab/week3_analyze.py": "3ae47e2963de4c9558d65fe7aeed5c195705adbc35e64b16f578be1d89768853",
+    "sched-lab/week3_trace_equivalence.py": "92e567811620698ab7ae6512c6904c61aff562822bf86c4eb5326ca961828829",
+    "sched-lab/week3_report.py": "e929e75298fd61328f8561dfb57c8b5591588e73d2702e401947fd363035a81f",
+    "sched-lab/week3_render_html.py": "2f70410aa4815ca01889750af19f0243b819fc70c4ee152e2e9fea23c13fe24b"
+  },
+  "publication": "GitHub issue 11 and branch/commit/draft PR publication explicitly approved by user; remote verification stored separately after push"
+}

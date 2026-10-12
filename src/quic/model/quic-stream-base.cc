@@ -36,6 +36,9 @@
 #include "ns3/packet.h"
 #include "ns3/uinteger.h"
 #include "ns3/double.h"
+#include "ns3/boolean.h"
+#include <iomanip>
+#include <sstream>
 #include "ns3/pointer.h"
 #include "ns3/trace-source-accessor.h"
 #include "quic-stream-base.h"
@@ -70,6 +73,15 @@ QuicStreamBase::GetTypeId (void)
                    UintegerValue (15000),                 // 10 packets
                    MakeUintegerAccessor (&QuicStreamBase::m_maxDataInterval),
                    MakeUintegerChecker<uint32_t> ())
+    .AddAttribute ("EnableLabTracing",
+                   "Enable optional week-3 receive-reordering CSV diagnostics",
+                   BooleanValue (false),
+                   MakeBooleanAccessor (&QuicStreamBase::m_enableLabTracing),
+                   MakeBooleanChecker ())
+    .AddTraceSource ("LabReorder",
+                     "Post-frame out-of-order payload waiting bytes and nonzero-buffer episode duration (CSV body)",
+                     MakeTraceSourceAccessor (&QuicStreamBase::m_labReorderTrace),
+                     "ns3::QuicStreamBase::LabCsvTracedCallback")
     .AddTraceSource ("RxBufferTrace",
                      "The QUIC connection's congestion window",
                      MakeTraceSourceAccessor (&QuicStreamBase::m_rxbufTrace),
@@ -307,6 +319,45 @@ QuicStreamBase::StreamWindow () const
   return (inFlight > m_maxStreamData) ? 0 : m_maxStreamData - inFlight;
 }
 
+void
+QuicStreamBase::TraceLabReorder (const QuicSubheader& receivedSub,
+                                uint64_t expectedBefore,
+                                const std::string& frameStatus)
+{
+  if (!m_enableLabTracing) return;
+  const Time now = Simulator::Now ();
+  const uint64_t stored = m_rxBuffer->GetStoredPayloadBytes ();
+  const uint64_t waiting = m_rxBuffer->GetWaitingPayloadBytes (m_recvSize);
+  std::string state = "idle";
+  double elapsed = 0.0;
+  if (waiting > 0)
+    {
+      if (!m_labReorderOpen)
+        {
+          m_labReorderOpen = true;
+          m_labReorderStart = now;
+          ++m_labReorderEpisode;
+          state = "start";
+        }
+      else state = "open";
+      elapsed = (now - m_labReorderStart).GetSeconds ();
+    }
+  else if (m_labReorderOpen)
+    {
+      state = "end";
+      elapsed = (now - m_labReorderStart).GetSeconds ();
+      m_labReorderOpen = false;
+    }
+  // Each row is after the current frame and any deliverable buffer release.
+  // A final start/open without end is an explicitly censored episode in analysis.
+  std::ostringstream row;
+  row << std::setprecision (17)
+      << now.GetSeconds () << ',' << (m_node ? m_node->GetId () : 0) << ',' << m_connectionId << ',' << m_streamId << ','
+      << expectedBefore << ',' << receivedSub.GetOffset () << ',' << receivedSub.GetLength () << ',' << m_recvSize << ','
+      << stored << ',' << waiting << ',' << m_labReorderEpisode << ',' << state << ',' << elapsed << ',' << frameStatus;
+  m_labReorderTrace (row.str ());
+}
+
 int
 QuicStreamBase::Recv (Ptr<Packet> frame, const QuicSubheader& receivedSub, Address &address)
 {
@@ -314,6 +365,7 @@ QuicStreamBase::Recv (Ptr<Packet> frame, const QuicSubheader& receivedSub, Addre
 
   QuicSubheader sub = receivedSub;
   uint8_t frameType = sub.GetFrameType ();
+  const uint64_t labExpectedBefore = m_enableLabTracing ? m_recvSize : 0;
 
   switch (frameType)
     {
@@ -453,6 +505,7 @@ QuicStreamBase::Recv (Ptr<Packet> frame, const QuicSubheader& receivedSub, Addre
           uint64_t delivered = std::min (sub.GetLength (), m_recvSize - sub.GetOffset ());
           if (delivered == sub.GetLength () && !m_fin)
             {
+              TraceLabReorder (receivedSub, labExpectedBefore, "duplicate");
               return 0;
             }
           frame->RemoveAtStart (delivered);
@@ -534,6 +587,7 @@ QuicStreamBase::Recv (Ptr<Packet> frame, const QuicSubheader& receivedSub, Addre
             }
         }
 
+      TraceLabReorder (receivedSub, labExpectedBefore, "processed");
       break;
 
     default:

@@ -52,3 +52,6 @@ AGENTS.override.md
 .codex/
 .agents/
 /docs/GIT_AUTHOR_CORRECTION_*.json
+
+# Local multi-agent coordination state
+STATUS.md

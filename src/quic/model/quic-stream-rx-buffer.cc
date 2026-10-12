@@ -22,6 +22,8 @@
  *
  */
 
+#include <algorithm>
+#include <utility>
 #include "ns3/packet.h"
 #include "ns3/fatal-error.h"
 #include "ns3/log.h"
@@ -242,6 +244,39 @@ QuicStreamRxBuffer::GetDeliverable (uint64_t currRecvOffset)
     }
 
   return std::make_pair (offsetToExtract, lengthToExtract);
+}
+
+uint64_t
+QuicStreamRxBuffer::GetWaitingPayloadBytes (uint64_t expectedOffset) const
+{
+  std::vector<std::pair<uint64_t, uint64_t> > intervals;
+  for (const auto *item : m_streamRecvList)
+    {
+      const uint64_t end = item->m_offset + item->m_packet->GetSize ();
+      const uint64_t start = std::max (expectedOffset, item->m_offset);
+      if (end > start) intervals.push_back (std::make_pair (start, end));
+    }
+  std::sort (intervals.begin (), intervals.end ());
+  uint64_t bytes = 0;
+  uint64_t end = expectedOffset;
+  for (const auto& interval : intervals)
+    {
+      const uint64_t start = std::max (end, interval.first);
+      if (interval.second > start) bytes += interval.second - start;
+      end = std::max (end, interval.second);
+    }
+  return bytes;
+}
+
+uint64_t
+QuicStreamRxBuffer::GetStoredPayloadBytes () const
+{
+  uint64_t bytes = 0;
+  for (const auto *item : m_streamRecvList)
+    {
+      bytes += item->m_packet->GetSize ();
+    }
+  return bytes;
 }
 
 uint32_t

@@ -197,6 +197,8 @@ public:
   uint64_t GetStreamId (void);
   uint32_t GetStreamTxAvailable (void) const;
   void UpdateRxBuf (uint32_t oldValue, uint32_t newValue);
+  /** Optional lab CSV event: offsets and buffer occupancy are application bytes. */
+  typedef void (*LabCsvTracedCallback)(std::string row);
 
 protected:
   QuicStreamTypes_t m_streamType;                    //!< The stream type
@@ -222,6 +224,13 @@ protected:
   EventId m_streamSendPendingDataEvent;              //!< Micro-delay event to send pending data
 
   TracedCallback<uint32_t, uint32_t> m_rxbufTrace;
+  bool m_enableLabTracing = false;
+  bool m_labReorderOpen = false;
+  uint64_t m_labReorderEpisode = 0;
+  Time m_labReorderStart;
+  TracedCallback<std::string> m_labReorderTrace;
+  void TraceLabReorder (const QuicSubheader& receivedSub, uint64_t expectedBefore,
+                        const std::string& frameStatus);
 
 };
 
