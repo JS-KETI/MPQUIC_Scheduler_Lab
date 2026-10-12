@@ -2644,7 +2644,8 @@
   ],
   "patch_files": {
     "week3-instrumentation.patch": "c24df161667b2c502660ab2596c44b1650187a1530cbac73bccf0750311c21ae",
-    "week3-implementation.patch": "83bf445552d3ec921862fc632881e0e3a65e3d0fb4ccecb55adb9c95a7e9a221"
+    "week3-implementation.patch": "83bf445552d3ec921862fc632881e0e3a65e3d0fb4ccecb55adb9c95a7e9a221",
+    "week3-report-links.patch": "f9d16cfd9827cf2dce71a72bc74a7f0e59307a81ab34bbc42fc7bfa287f73ce5"
   },
   "source_hashes": {
     "src/quic/model/mp-quic-scheduler.h": "1d99e97b2b21d6fee7b27397ba93ecc68ed888036835d2cfd30ee5924ef0a0ee",
@@ -2664,7 +2665,13 @@
     "sched-lab/week3_analyze.py": "3ae47e2963de4c9558d65fe7aeed5c195705adbc35e64b16f578be1d89768853",
     "sched-lab/week3_trace_equivalence.py": "92e567811620698ab7ae6512c6904c61aff562822bf86c4eb5326ca961828829",
     "sched-lab/week3_report.py": "e929e75298fd61328f8561dfb57c8b5591588e73d2702e401947fd363035a81f",
-    "sched-lab/week3_render_html.py": "2f70410aa4815ca01889750af19f0243b819fc70c4ee152e2e9fea23c13fe24b"
+    "sched-lab/week3_render_html.py": "5a0808340d4ef933120efdbfa5e821ebbe40a2a4e218f309169fbbdc6d92b3af"
   },
-  "publication": "GitHub issue 11 and branch/commit/draft PR publication explicitly approved by user; remote verification stored separately after push"
+  "publication": "GitHub issue 11 and branch/commit/draft PR publication explicitly approved by user; remote verification stored separately after push",
+  "report_links": {
+    "visible_urls": 7,
+    "clickable_html_links": 7,
+    "markdown_unchanged": true,
+    "core_implementation_commit": "f886aa003af993cfaf369d4cbd7b5faecfefcc1f"
+  }
 }
