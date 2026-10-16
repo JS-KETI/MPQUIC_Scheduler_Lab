@@ -23,6 +23,12 @@ def main():
     root=source.resolve().parent
     original=source.read_bytes()
     text=original.decode('utf-8-sig')
+    handoff=None
+    if args.handoff:
+        handoff=Path('/mnt/c/Users/okqkf/OneDrive/Desktop/keti/outputs')/f'week{args.week}'
+        other=handoff/source.name
+        if not other.exists() or other.read_text(encoding='utf-8-sig')!=text:
+            raise ValueError('Windows Markdown differs: render the edited file with --source; do not overwrite it')
     images=[]
     def embed(m):
         target=m.group(2).strip('<>')
@@ -50,10 +56,6 @@ def main():
     record=root/'records/render.json';record.parent.mkdir(parents=True,exist_ok=True)
     record.write_text(json.dumps(validation,ensure_ascii=False,indent=2)+'\n')
     if args.handoff:
-        handoff=Path('/mnt/c/Users/okqkf/OneDrive/Desktop/keti/outputs')/f'week{args.week}'
-        other=handoff/source.name
-        if not other.exists() or other.read_text(encoding='utf-8-sig')!=text:
-            raise ValueError('Windows Markdown differs: render the edited file with --source; do not overwrite it')
         if dest.resolve()!=(handoff/dest.name).resolve():shutil.copy2(dest,handoff/dest.name)
         if record.resolve()!=(handoff/'records/render.json').resolve():shutil.copy2(record,handoff/'records/render.json')
     print(json.dumps({'week':args.week,'images':len(images),'headings':validation['heading_count'],'source_unchanged':True,'html':str(dest)},ensure_ascii=False))
