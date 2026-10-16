@@ -1,0 +1,34 @@
+{
+  "date_kst": "2026-10-16",
+  "weekly_reports": [
+    {
+      "week": 1,
+      "report_wording_preserved": true,
+      "data_files": 3,
+      "images": 3
+    },
+    {
+      "week": 2,
+      "report_wording_preserved": true,
+      "data_files": 5,
+      "images": 5
+    },
+    {
+      "week": 3,
+      "report_wording_preserved": true,
+      "data_files": 6,
+      "images": 2
+    }
+  ],
+  "final_data_files": 14,
+  "embedded_report_images": 10,
+  "current_image_references_checked": 14,
+  "current_github_file_urls_checked": 41,
+  "missing_references": [],
+  "frozen_files_unchanged": 659,
+  "baseline_pointer_unchanged": true,
+  "windows_moved_directories": 11,
+  "windows_files_byte_identical": 3911,
+  "pdf_files": "Existing Windows week2/week3 PDFs retained byte-identically; no new PDF conversion",
+  "scope": "Directory convention, indexes and safe report renderers; no simulation or transport changes"
+}

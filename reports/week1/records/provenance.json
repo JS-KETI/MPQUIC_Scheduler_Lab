@@ -1,0 +1,33 @@
+{
+  "updated_at": "2026-10-16T15:05:16.897305+09:00",
+  "week": 1,
+  "latest_report_source_before_migration": "outputs/reports/week1/1주차 진행상황.md",
+  "source_markdown_sha256": "8e129e1bb3186b7ad7e3d7ad6ebfbb7d551fd3df47554186388e2db1196999de",
+  "current_markdown_sha256": "8e129e1bb3186b7ad7e3d7ad6ebfbb7d551fd3df47554186388e2db1196999de",
+  "report_changes": "image destination normalization and moved-document URLs only; wording and values preserved",
+  "data_role": "byte-identical browsing copies; artifacts/BASELINE.json remains the official baseline pointer",
+  "data": [
+    {
+      "current": "data/results.csv",
+      "original": "artifacts/week1-2026-10-01/w1.csv",
+      "sha256": "20f4496921aaa5448547e7cc93d4c1198033b6c01a3bf3496681756c5fe5377b",
+      "bytes": 19451
+    },
+    {
+      "current": "data/summary.csv",
+      "original": "artifacts/week1-2026-10-01/w1_summary.csv",
+      "sha256": "2293cd08d2e72e1eb43de2bfdef6a79ef3c8a9c101960cf650f36742fad00bb4",
+      "bytes": 2351
+    },
+    {
+      "current": "data/single_path.csv",
+      "original": "artifacts/one-path-analysis-2026-10-01/reference-full-size/experiments.csv",
+      "sha256": "7f6863bf532b29c760a876cddf2f227e832cc0cfb1e1ca938975ade8f16a98aa",
+      "bytes": 1656
+    }
+  ],
+  "original_repository_commit": "bed6d487b00e409de601efd9df1e1f16afa1fd85",
+  "moved_paths": {
+    "reports/week1/1주차 상세 실험 기록.md": "reports/week1/records/1주차 상세 실험 기록.md"
+  }
+}

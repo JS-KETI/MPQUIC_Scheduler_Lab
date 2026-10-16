@@ -1,5 +1,5 @@
 from pathlib import Path
-import csv,json,statistics,shutil,hashlib,subprocess
+import csv,json,statistics,shutil,hashlib,subprocess,argparse
 from datetime import datetime
 from zoneinfo import ZoneInfo
 import matplotlib
@@ -10,6 +10,14 @@ from matplotlib import font_manager
 root=Path('/home/ubuntu/projects/keti/mpquic-sched-lab/mpquic')
 run=root/'artifacts/week3-2026-10-12/run-03'
 report=root/'reports/week3';fig=report/'figures';fig.mkdir(parents=True,exist_ok=True)
+ap=argparse.ArgumentParser(description='Regenerate week 3 figures; optional document drafts never overwrite the edited report')
+ap.add_argument('--write-record-drafts',action='store_true')
+opts=ap.parse_args()
+def write_draft(name,text):
+    if opts.write_record_drafts:
+        target=report/'records/drafts'/name
+        target.parent.mkdir(parents=True,exist_ok=True)
+        target.write_text(text)
 def read(p):return list(csv.DictReader(p.open()))
 rs=read(run/'results.csv');fixed=read(run/'analysis/fixed_ratio_summary.csv');conditions=read(run/'analysis/condition_summary.csv')
 equiv=read(run/'trace-equivalence/summary.csv')
@@ -177,11 +185,11 @@ text=f'''## 1. 3주차 작업 내용
 - **계측 활성화 전후 송수신 이벤트 대조**
   - https://github.com/JS-KETI/MPQUIC_Scheduler_Lab/blob/lab/week3-scheduler-20261012/artifacts/week3-2026-10-12/run-03/trace-equivalence/summary.csv
 - **계측 로그의 항목·단위·계산 방법**
-  - https://github.com/JS-KETI/MPQUIC_Scheduler_Lab/blob/lab/week3-scheduler-20261012/reports/week3/%EA%B3%84%EC%B8%A1%20%EB%A1%9C%EA%B7%B8%20%ED%98%95%EC%8B%9D.md
+  - https://github.com/JS-KETI/MPQUIC_Scheduler_Lab/blob/lab/week3-scheduler-20261012/reports/week3/records/%EA%B3%84%EC%B8%A1%20%EB%A1%9C%EA%B7%B8%20%ED%98%95%EC%8B%9D.md
 - **조건별 실행 명령·미통과 시도·수정 검증 기록**
-  - https://github.com/JS-KETI/MPQUIC_Scheduler_Lab/blob/lab/week3-scheduler-20261012/reports/week3/3%EC%A3%BC%EC%B0%A8%20%EC%83%81%EC%84%B8%20%EC%8B%A4%ED%97%98%20%EA%B8%B0%EB%A1%9D.md
+  - https://github.com/JS-KETI/MPQUIC_Scheduler_Lab/blob/lab/week3-scheduler-20261012/reports/week3/records/3%EC%A3%BC%EC%B0%A8%20%EC%83%81%EC%84%B8%20%EC%8B%A4%ED%97%98%20%EA%B8%B0%EB%A1%9D.md
 '''
-(report/'3주차 진행상황.md').write_text(text)
+write_draft('3주차 진행상황.md',text)
 log='''## 계측 로그 형식
 
 - **활성화·생성 위치**
@@ -220,7 +228,7 @@ log='''## 계측 로그 형식
   - `protocol.json`·`execution-manifest.json`·각 실행 `command.json`에 설정·명령·커밋·소스/바이너리 SHA-256 보존
   - 실험 소스는 각 실행 묶음의 `source/`, 집계에 사용한 소스는 `analysis/source/`에 별도 보존
 '''
-(report/'계측 로그 형식.md').write_text(log)
+write_draft('계측 로그 형식.md',log)
 detail='''## 1. 3주차 요구사항·실험 범위
 
 - 원본 요청서 D11~D15: ID 7 초기 MinRTT-multi 동작·파라미터·BytesToRatio·옵션형 계측·3개 고정 비율 검증
@@ -278,14 +286,10 @@ detail='''## 1. 3주차 요구사항·실험 범위
 - 보고 자료: reports/week3/3주차 진행상황.md·계측 로그 형식.md·figures/
 - 공식 기준값 artifacts/week2-completion-2026-10-08/run-01/은 변경하지 않음
 '''
-(report/'3주차 상세 실험 기록.md').write_text(detail)
+write_draft('3주차 상세 실험 기록.md',detail)
 amend=dict(purpose='Correct stale run-02 fixed_mode prose without overwriting the original protocol',
     actual='ID7 opt-in absolute quota snapshot; bootstrap when any total cwnd is below raw demand; otherwise both quotas must fit available windows; no recovery bypass in run-02',
     evidence='run-02/source/src/quic/model/quic-socket-base.cc and source hashes',created_at=datetime.now(ZoneInfo('Asia/Seoul')).isoformat())
-(root/'artifacts/week3-2026-10-12/run-02/PROTOCOL_AMENDMENT.json').write_text(json.dumps(amend,indent=2))
-handoff=Path('/mnt/c/Users/okqkf/OneDrive/Desktop/keti/outputs/week3-2026-10-12')
-for p in report.glob('*.md'):shutil.copyfile(p,handoff/p.name)
-shutil.copytree(fig,handoff/'figures',dirs_exist_ok=True)
-shutil.copytree(run/'analysis',handoff/'analysis',dirs_exist_ok=True)
-shutil.copyfile(run/'results.csv',handoff/'results.csv')
+write_draft('run-02-PROTOCOL_AMENDMENT.json',json.dumps(amend,indent=2))
+# Edited documents are exported only by render_weekly_report.py --handoff.
 print(json.dumps(dict(max_relative_error_percent=max_err,min_coverage_percent=min_cover,receiver_rows=rx_rows,obs_rows=obs_rows,arrival_batches=arrivals,censored=censored,unmatched=unmatched,report=str(report)),indent=2))

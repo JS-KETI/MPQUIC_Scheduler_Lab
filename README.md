@@ -1,66 +1,17 @@
-## 3주차 진행상황
-
-- 신규 스케줄러 ID 7 기본 동작·옵션형 계측·고정 비율 30/70·10/90·50/50 검증
-- 최종 기본 검증 72/72회 완료·전체 수신, 기존 공식 기준 대조45/45 일치, 고정 비율27/27회 분배 기준 충족
-- **3주차 진행상황**
-  - https://github.com/JS-KETI/MPQUIC_Scheduler_Lab/blob/lab/week3-scheduler-20261012/reports/week3/3%EC%A3%BC%EC%B0%A8%20%EC%A7%84%ED%96%89%EC%83%81%ED%99%A9.md
-- **3주차 진행상황 HTML**
-  - https://github.com/JS-KETI/MPQUIC_Scheduler_Lab/blob/lab/week3-scheduler-20261012/reports/week3/3%EC%A3%BC%EC%B0%A8%20%EC%A7%84%ED%96%89%EC%83%81%ED%99%A9.html
-- **실행별 측정 결과**
-  - https://github.com/JS-KETI/MPQUIC_Scheduler_Lab/blob/lab/week3-scheduler-20261012/artifacts/week3-2026-10-12/run-03/results.csv
-- **고정 비율·도착 시차·수신 대기량 검증 결과**
-  - https://github.com/JS-KETI/MPQUIC_Scheduler_Lab/blob/lab/week3-scheduler-20261012/artifacts/week3-2026-10-12/run-03/analysis/fixed_ratio_summary.csv
-- **계측 로그 항목과 계산 방법**
-  - https://github.com/JS-KETI/MPQUIC_Scheduler_Lab/blob/lab/week3-scheduler-20261012/reports/week3/%EA%B3%84%EC%B8%A1%20%EB%A1%9C%EA%B7%B8%20%ED%98%95%EC%8B%9D.md
-- **상세 실험 기록**
-  - https://github.com/JS-KETI/MPQUIC_Scheduler_Lab/blob/lab/week3-scheduler-20261012/reports/week3/3%EC%A3%BC%EC%B0%A8%20%EC%83%81%EC%84%B8%20%EC%8B%A4%ED%97%98%20%EA%B8%B0%EB%A1%9D.md
-
 # MPQUIC Scheduler Lab · JS-KETI
-## 현재 2주차 공식 기준값 (630회 완료·전체 수신)
 
-- 기준값 SET (측정값·통계·그림) : https://github.com/JS-KETI/MPQUIC_Scheduler_Lab/tree/fix/%239-week2-incomplete-diagnosis/artifacts/week2-completion-2026-10-08/run-01
-- 기준값 통계 : https://github.com/JS-KETI/MPQUIC_Scheduler_Lab/blob/fix/%239-week2-incomplete-diagnosis/artifacts/week2-completion-2026-10-08/run-01/analysis/summary.csv
-- 각 시행 원본 측정값 : https://github.com/JS-KETI/MPQUIC_Scheduler_Lab/blob/fix/%239-week2-incomplete-diagnosis/artifacts/week2-completion-2026-10-08/run-01/results.csv
-- 시각화 자료 : https://github.com/JS-KETI/MPQUIC_Scheduler_Lab/tree/fix/%239-week2-incomplete-diagnosis/artifacts/week2-completion-2026-10-08/run-01/figures
-- 현재 기준선 지정: artifacts/BASELINE.json. 원본 동결 자료는 최초 측정 이력으로 보존
+- **주차별 최신 보고서·산출물**
+  - **1주차**
+    - https://github.com/JS-KETI/MPQUIC_Scheduler_Lab/blob/lab/week3-scheduler-20261012/reports/week1/README.md
+  - **2주차**
+    - https://github.com/JS-KETI/MPQUIC_Scheduler_Lab/blob/lab/week3-scheduler-20261012/reports/week2/README.md
+  - **3주차**
+    - https://github.com/JS-KETI/MPQUIC_Scheduler_Lab/blob/lab/week3-scheduler-20261012/reports/week3/README.md
 
-
-- 2주차 진행상황 : https://github.com/JS-KETI/MPQUIC_Scheduler_Lab/blob/fix/%239-week2-incomplete-diagnosis/reports/week2/summary/2%EC%A3%BC%EC%B0%A8%20%EC%A7%84%ED%96%89%EC%83%81%ED%99%A9.md
-- 2주차 진행상황 HTML (그림 내장) : https://github.com/JS-KETI/MPQUIC_Scheduler_Lab/blob/fix/%239-week2-incomplete-diagnosis/reports/week2/summary/2%EC%A3%BC%EC%B0%A8%20%EC%A7%84%ED%96%89%EC%83%81%ED%99%A9.html
-- 이전 PDF (250ms 전체 재검증 반영 전) : https://github.com/JS-KETI/MPQUIC_Scheduler_Lab/blob/fix/%239-week2-incomplete-diagnosis/reports/week2/summary/2%EC%A3%BC%EC%B0%A8%20%EC%A7%84%ED%96%89%EC%83%81%ED%99%A9.pdf
-
-- 2주차 미완료 원인 분석 : https://github.com/JS-KETI/MPQUIC_Scheduler_Lab/blob/fix/%239-week2-incomplete-diagnosis/reports/week2/2%EC%A3%BC%EC%B0%A8%20%EB%AF%B8%EC%99%84%EB%A3%8C%20%EC%9B%90%EC%9D%B8%20%EB%B6%84%EC%84%9D.md
-- 수정 검증: 원본 미완료 62회 모두 전체 수신. 630회 완료·621회 전체 수신, 시간 증가와 종료 후 기록 범위 별도 확인
-
-- 2주차 진행상황 : https://github.com/JS-KETI/MPQUIC_Scheduler_Lab/blob/main/reports/week2/2%EC%A3%BC%EC%B0%A8%20%EC%A7%84%ED%96%89%EC%83%81%ED%99%A9.md
-
-ns-3 MP-QUIC 스케줄러의 환경 구축·결과 재현·원인 분석을 보관하는 실험 저장소입니다.
-
-- 1주차 진행상황 : https://github.com/JS-KETI/MPQUIC_Scheduler_Lab/blob/main/reports/week1/1%EC%A3%BC%EC%B0%A8%20%EC%A7%84%ED%96%89%EC%83%81%ED%99%A9.md
-- 코드·CSV·그림·로그·패치 인덱스 : https://github.com/JS-KETI/MPQUIC_Scheduler_Lab/blob/main/artifacts/README.md
-- 1주차 상세 실험 기록 : https://github.com/JS-KETI/MPQUIC_Scheduler_Lab/blob/main/reports/week1/1%EC%A3%BC%EC%B0%A8%20%EC%83%81%EC%84%B8%20%EC%8B%A4%ED%97%98%20%EA%B8%B0%EB%A1%9D.md
-- 작업 관례 : https://github.com/JS-KETI/MPQUIC_Scheduler_Lab/blob/main/docs/JS_KETI_CONVENTIONS.md
-
-- 주차별 보고서 : https://github.com/JS-KETI/MPQUIC_Scheduler_Lab/tree/main/reports
-
-## 재현 자료
-
-- 검증 환경: Ubuntu 24.04 · WSL 2 · Python 3.12 · g++ 13
-- 210회 실행·기준 대조: `artifacts/week1-2026-10-01/`
-- 단일 경로 원인 분석·조건별 실험: `artifacts/one-path-analysis-2026-10-01/`
-- 실행별 명령·소스 버전·환경·검증 결과는 각 폴더의 provenance·validation·로그에 보관
-- 최초 `setup.sh` 설치 기록: `artifacts/setup-test-2026-10-01/`
-- 고정 5Mbps·원본 링크 조건 5~6Mbps의 측정값·실행 기록 보존
-
-## 버전 근거
-
-- 기반: https://github.com/ssjShirley/mpquic
-- 원본 기준: `99df419d0bb49e81b9afa1f4747769ab3f9e53ae`
-- 1주차 setup 보존 : https://github.com/JS-KETI/MPQUIC_Scheduler_Lab/tree/week1-setup-20261001
-- 단일 경로 분석: `lab/w1-one-path-diagnosis-20261001`
-- 제공 01·02 패치와 추가 관찰·호환 패치를 구분해 보관. 원본 라이선스 유지
-
----
+- **폴더·파일 작성 규칙**
+  - https://github.com/JS-KETI/MPQUIC_Scheduler_Lab/blob/lab/week3-scheduler-20261012/docs/OUTPUT_CONVENTIONS.md
+- **공식 기준값**
+  - https://github.com/JS-KETI/MPQUIC_Scheduler_Lab/blob/lab/week3-scheduler-20261012/artifacts/BASELINE.json
 
 ## 원본 프로젝트 안내
 

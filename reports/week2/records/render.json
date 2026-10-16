@@ -1,0 +1,36 @@
+{
+  "week": 2,
+  "source_markdown_sha256": "84a0c6666fd36c44225806cde0bc428921b31dab422192ed26bb29d6f01d75d1",
+  "html_sha256": "09b52b15adedc40fcf9b1f44220d2ebd594a2d2ed71159290355a30bc6a0663b",
+  "images": [
+    {
+      "path": "figures/baseline_fct.png",
+      "bytes": 109890,
+      "sha256": "46d2f59297ead253c3a8bc7721a53d0acfcfcab4f59a524f78e0eaca8b1bc4fb"
+    },
+    {
+      "path": "figures/completion_rates.png",
+      "bytes": 74559,
+      "sha256": "76c0e9e3f3dca3cb169e92ada5976f77984bd9bcf3fc7c1303597d44b08d6527"
+    },
+    {
+      "path": "figures/path_shares.png",
+      "bytes": 88866,
+      "sha256": "3e94bf3f56b656a184a44b7f35cb8a546b2c2edaf8917cd42d23976740d605af"
+    },
+    {
+      "path": "figures/recovery_counts.png",
+      "bytes": 42144,
+      "sha256": "7530c299a885a2a1dfdd45f558e3229199be492e6f799ab81d64ead9226139bd"
+    },
+    {
+      "path": "figures/completion_grace_counts.png",
+      "bytes": 97228,
+      "sha256": "9cda793d81e4d2707003473fc7478be5cdc2a77e2637095f53b98b35e4b4a98f"
+    }
+  ],
+  "heading_count": 9,
+  "tables": 1,
+  "source_unchanged": true,
+  "all_report_images_embedded": true
+}

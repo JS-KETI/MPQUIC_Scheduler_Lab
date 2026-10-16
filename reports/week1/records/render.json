@@ -1,0 +1,26 @@
+{
+  "week": 1,
+  "source_markdown_sha256": "8e129e1bb3186b7ad7e3d7ad6ebfbb7d551fd3df47554186388e2db1196999de",
+  "html_sha256": "3e0e29c5c2ec0b343b93c46075fe4fd0ea51a50d39cc5dfb080505ae162c930d",
+  "images": [
+    {
+      "path": "figures/w1_fct.png",
+      "bytes": 106880,
+      "sha256": "580b8785a849bf80ec3f4a4de3e01ab1aac746d2eb7389b68af20ba273290643"
+    },
+    {
+      "path": "figures/completion_counts.png",
+      "bytes": 113759,
+      "sha256": "8471900c129f38ab351115ec071d9fbf74187821b140c7a082a003a4374c3ae0"
+    },
+    {
+      "path": "figures/one_path_comparison.png",
+      "bytes": 161493,
+      "sha256": "8990a1de7b47c437f4fc0a335f59ce42fb9424ff33e486eaa0b9d4e073fb0406"
+    }
+  ],
+  "heading_count": 12,
+  "tables": 9,
+  "source_unchanged": true,
+  "all_report_images_embedded": true
+}

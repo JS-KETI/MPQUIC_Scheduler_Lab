@@ -1,24 +1,16 @@
-# 주차별 보고서
-## 현재 2주차 공식 기준값 (630회 완료·전체 수신)
+# 주차별 최신 산출물
 
-- 기준값 SET (측정값·통계·그림) : https://github.com/JS-KETI/MPQUIC_Scheduler_Lab/tree/fix/%239-week2-incomplete-diagnosis/artifacts/week2-completion-2026-10-08/run-01
-- 기준값 통계 : https://github.com/JS-KETI/MPQUIC_Scheduler_Lab/blob/fix/%239-week2-incomplete-diagnosis/artifacts/week2-completion-2026-10-08/run-01/analysis/summary.csv
-- 각 시행 원본 측정값 : https://github.com/JS-KETI/MPQUIC_Scheduler_Lab/blob/fix/%239-week2-incomplete-diagnosis/artifacts/week2-completion-2026-10-08/run-01/results.csv
-- 시각화 자료 : https://github.com/JS-KETI/MPQUIC_Scheduler_Lab/tree/fix/%239-week2-incomplete-diagnosis/artifacts/week2-completion-2026-10-08/run-01/figures
-- 현재 기준선 지정: artifacts/BASELINE.json. 원본 동결 자료는 최초 측정 이력으로 보존
+- **1주차**
+  - 기준 재현 210/210회 일치. 완료 처리 191/210회·목표 전체 수신 181/210회도 제공 기준과 동일. 원본 링크 조건 단일 경로 10/10회 전체 수신·요청 시간 범위 충족.
+  - https://github.com/JS-KETI/MPQUIC_Scheduler_Lab/blob/lab/week3-scheduler-20261012/reports/week1/README.md
 
+- **2주차**
+  - 수정 후 630/630회 완료 처리·목표 전체 수신. 공식 기준값은 artifacts/BASELINE.json이 지정한 동결 원본. MinRTT-multi dominating 신뢰구간 기준 충족; 전체 스케줄러 적용 범위 해석은 기존 기록 유지.
+  - https://github.com/JS-KETI/MPQUIC_Scheduler_Lab/blob/lab/week3-scheduler-20261012/reports/week2/README.md
 
-- 2주차 진행상황 : https://github.com/JS-KETI/MPQUIC_Scheduler_Lab/blob/fix/%239-week2-incomplete-diagnosis/reports/week2/summary/2%EC%A3%BC%EC%B0%A8%20%EC%A7%84%ED%96%89%EC%83%81%ED%99%A9.md
-- 2주차 진행상황 HTML (그림 내장) : https://github.com/JS-KETI/MPQUIC_Scheduler_Lab/blob/fix/%239-week2-incomplete-diagnosis/reports/week2/summary/2%EC%A3%BC%EC%B0%A8%20%EC%A7%84%ED%96%89%EC%83%81%ED%99%A9.html
-- 2주차 진행상황 PDF (현재 Markdown 구성 유지) : https://github.com/JS-KETI/MPQUIC_Scheduler_Lab/raw/fix/%239-week2-incomplete-diagnosis/reports/week2/pdf/2%EC%A3%BC%EC%B0%A8%20%EC%A7%84%ED%96%89%EC%83%81%ED%99%A9.pdf
-- 이전 PDF (250ms 전체 재검증 반영 전) : https://github.com/JS-KETI/MPQUIC_Scheduler_Lab/blob/fix/%239-week2-incomplete-diagnosis/reports/week2/summary/2%EC%A3%BC%EC%B0%A8%20%EC%A7%84%ED%96%89%EC%83%81%ED%99%A9.pdf
+- **3주차**
+  - 최종 72/72회 완료 처리·목표 전체 수신. 공식 기준 대조 45/45건 일치. 고정 비율 27/27회 통과(전송 창 제약 구간 제외, 최대 상대오차 0.526%). 게이트 3 충족.
+  - https://github.com/JS-KETI/MPQUIC_Scheduler_Lab/blob/lab/week3-scheduler-20261012/reports/week3/README.md
 
-- 2주차 미완료 원인 분석 : https://github.com/JS-KETI/MPQUIC_Scheduler_Lab/blob/fix/%239-week2-incomplete-diagnosis/reports/week2/2%EC%A3%BC%EC%B0%A8%20%EB%AF%B8%EC%99%84%EB%A3%8C%20%EC%9B%90%EC%9D%B8%20%EB%B6%84%EC%84%9D.md
-- 수정 검증: 원본 미완료 62회 모두 전체 수신. 630회 완료·621회 전체 수신, 시간 증가와 종료 후 기록 범위 별도 확인
-
-- 2주차 진행상황 : https://github.com/JS-KETI/MPQUIC_Scheduler_Lab/blob/main/reports/week2/2%EC%A3%BC%EC%B0%A8%20%EC%A7%84%ED%96%89%EC%83%81%ED%99%A9.md
-
-주차별 보고서·HTML·본문 그림을 같은 폴더에 보관합니다.
-
-- 1주차 진행상황 : https://github.com/JS-KETI/MPQUIC_Scheduler_Lab/tree/main/reports/week1
-- 측정값·실행 로그·패치 인덱스 : https://github.com/JS-KETI/MPQUIC_Scheduler_Lab/blob/main/artifacts/README.md
+- **공통 폴더 규칙**
+  - https://github.com/JS-KETI/MPQUIC_Scheduler_Lab/blob/lab/week3-scheduler-20261012/docs/OUTPUT_CONVENTIONS.md
