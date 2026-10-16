@@ -29,6 +29,7 @@
 #include <iostream>
 #include <iomanip>
 #include <set>
+#include <fstream>
 
 using namespace ns3;
 
@@ -41,6 +42,71 @@ static double g_fct = -1.0;
 static double g_fct95 = -1.0;
 static double g_start = 1.0;
 static double g_completionGraceMs = 10.0;
+static std::ofstream g_labDecision, g_labPackets, g_labReorder;
+
+static void LabDecision (std::string row) { g_labDecision << row << "\n"; }
+static void LabReorder (std::string row) { g_labReorder << row << "\n"; }
+static void
+LabStreamCreated (Ptr<QuicStreamBase> stream)
+{
+  static std::set<const QuicStreamBase *> connected;
+  if (connected.insert (PeekPointer (stream)).second)
+    stream->TraceConnectWithoutContext ("LabReorder", MakeCallback (&LabReorder));
+}
+
+// App STREAM payload only: stream 0 is handshake data, outside allocation scope.
+static void
+LabPacket (std::string direction, Ptr<const Packet> packet,
+           const QuicHeader &header, Ptr<const QuicSocketBase> socket)
+{
+  Ptr<Packet> copy = packet->Copy ();
+  while (copy->GetSize () > 0)
+    {
+      QuicSubheader sub;
+      uint32_t n = copy->RemoveHeader (sub);
+      if (n == 0) break;
+      if (sub.IsStream ())
+        {
+          const uint32_t length = sub.GetLength ();
+          if (length > copy->GetSize ()) break;
+          if (sub.GetStreamId () > 0)
+            g_labPackets << std::setprecision (12) << Simulator::Now ().GetSeconds () << ","
+              << socket->GetNode ()->GetId () << "," << direction << ","
+              << unsigned (header.GetPathId ()) << "," << header.GetPacketNumber () << ","
+              << sub.GetStreamId () << "," << sub.GetOffset () << "," << length << ","
+              << sub.IsStreamFin () << "\n";
+          copy->RemoveAtStart (length);
+        }
+    }
+}
+
+static void
+ConnectLabSocket (Ptr<QuicSocketBase> socket)
+{
+  static std::set<const QuicSocketBase *> connected;
+  if (!socket || !connected.insert (PeekPointer (socket)).second) return;
+  socket->TraceConnectWithoutContext ("LabDecision", MakeCallback (&LabDecision));
+  socket->TraceConnectWithoutContext ("LabStreamCreated", MakeCallback (&LabStreamCreated));
+  socket->TraceConnect ("Tx", "Tx", MakeCallback (&LabPacket));
+  socket->TraceConnect ("Rx", "Rx", MakeCallback (&LabPacket));
+}
+
+static void
+ConnectLabListener ()
+{
+  auto matches = Config::LookupMatches ("/NodeList/*/$ns3::QuicL4Protocol/SocketList/*/QuicSocketBase");
+  for (uint32_t i = 0; i < matches.GetN (); ++i)
+    {
+      auto socket = DynamicCast<QuicSocketBase> (matches.Get (i));
+      if (socket && socket->GetNode ()->GetId () == 5) ConnectLabSocket (socket);
+    }
+}
+
+static void
+ConnectLabSource (Ptr<MpquicBulkSendApplication> app)
+{
+  ConnectLabSocket (DynamicCast<QuicSocketBase> (app->GetSocket ()));
+}
 
 // Keep the supplied benchmark's completion threshold for comparable FCTs.
 // Exact receipt is reported separately as rx_app == size. CompletionGraceMs
@@ -219,9 +285,13 @@ main (int argc, char *argv[])
   int bLambda = 200, bVar = 0;
   double simEnd = 60.0;
   bool observe = false;
+  std::string labLogPrefix;
+  bool fixedRatio = false;
+  double path0Share = 0.3;
+  double newKappa = 0.0, newBeta = 0.0, newSmax = 0.0;
 
   CommandLine cmd;
-  cmd.AddValue ("SchedulerType", "0 RR, 1 MinRTT, 2 BLEST, 3 ECF, 4 Peekaboo, 5 EAT(new), 6 MinRTT-multi(new)", schedulerType);
+  cmd.AddValue ("SchedulerType", "0 RR, 1 MinRTT, 2 BLEST, 3 ECF, 4 Peekaboo, 5 EAT(new), 6 MinRTT-multi(new), 7 NewSched", schedulerType);
   cmd.AddValue ("Size", "bytes to transfer", size);
   cmd.AddValue ("Seed", "RNG seed", seed);
   cmd.AddValue ("LossRate", "packet error rate on both bottlenecks", lossrate);
@@ -243,7 +313,25 @@ main (int argc, char *argv[])
   cmd.AddValue ("SimEnd", "hard stop [s]", simEnd);
   cmd.AddValue ("CompletionGraceMs", "diagnostic wait after unchanged done threshold [ms]", g_completionGraceMs);
   cmd.AddValue ("Observe", "read-only packet and sender-state diagnostics on stderr", observe);
+  cmd.AddValue ("FixedRatio", "ID 7 fixed-ratio diagnostic mode (default false)", fixedRatio);
+  cmd.AddValue ("Path0Share", "ID 7 desired path 0 share [0..1]; path 1 is 1-share", path0Share);
+  cmd.AddValue ("NewKappa", "ID 7 reserved week 5 parameter (no decision formula yet)", newKappa);
+  cmd.AddValue ("NewBeta", "ID 7 reserved week 5 parameter (no decision formula yet)", newBeta);
+  cmd.AddValue ("NewSmax", "ID 7 reserved week 5 parameter (no decision formula yet)", newSmax);
+  cmd.AddValue ("LabLogPrefix", "Optional week 3 trace file prefix; empty disables tracing", labLogPrefix);
   cmd.Parse (argc, argv);
+  if (!labLogPrefix.empty ())
+    {
+      g_labDecision.open (labLogPrefix + "-decisions.csv");
+      g_labPackets.open (labLogPrefix + "-packets.csv");
+      g_labReorder.open (labLogPrefix + "-reorder.csv");
+      NS_ABORT_MSG_IF (!g_labDecision || !g_labPackets || !g_labReorder, "Cannot open lab trace files");
+      g_labDecision << "decision_id,time_s,node,connection,path,ratio,entry_backlog_frame_bytes,decision_backlog_frame_bytes,apply_backlog_frame_bytes,nominal_requested_frame_bytes,nominal_quota_frame_bytes,nominal_demand_frame_bytes,requested_frame_bytes,quota_packets,quota_frame_bytes,cwnd_bytes,flow_limit_bytes,inflight_frame_bytes,cwnd_room_bytes,flow_room_bytes,available_window_bytes,mss_frame_bytes,last_rtt_s,rtt_valid,predicted_requested_end_s,predicted_quota_end_s,actual_frame_bytes,actual_packets,backlog_after_frame_bytes,cwnd_limited,flow_limited,fixed_diagnostic_mode,stop_reason\n";
+      g_labPackets << "time_s,node,direction,path,packet_number,stream,offset,payload_bytes,fin\n";
+      g_labReorder << "time_s,node,connection,stream,expected_offset_before,frame_offset,frame_payload_bytes,expected_offset_after,stored_payload_bytes,waiting_payload_bytes,episode_id,episode_state,episode_elapsed_s,frame_status\n";
+      Config::SetDefault ("ns3::QuicSocketBase::EnableLabTracing", BooleanValue (true));
+      Config::SetDefault ("ns3::QuicStreamBase::EnableLabTracing", BooleanValue (true));
+    }
 
   Time::SetResolution (Time::NS);
   RngSeedManager::SetSeed (seed);
@@ -264,6 +352,15 @@ main (int argc, char *argv[])
   Config::SetDefault ("ns3::MpQuicScheduler::BlestVar", UintegerValue (bVar));
   Config::SetDefault ("ns3::MpQuicScheduler::BlestLambda", UintegerValue (bLambda));
   Config::SetDefault ("ns3::MpQuicScheduler::EatMargin", DoubleValue (eatMargin));
+  Config::SetDefault ("ns3::MpQuicScheduler::FixedRatio", BooleanValue (fixedRatio));
+  Config::SetDefault ("ns3::MpQuicScheduler::Path0Share", DoubleValue (path0Share));
+  Config::SetDefault ("ns3::MpQuicScheduler::NewKappa", DoubleValue (newKappa));
+  Config::SetDefault ("ns3::MpQuicScheduler::NewBeta", DoubleValue (newBeta));
+  Config::SetDefault ("ns3::MpQuicScheduler::NewSmax", DoubleValue (newSmax));
+  if (schedulerType == 7)
+    std::cout << "CONFIG7,FixedRatio=" << fixedRatio << ",Path0Share=" << path0Share
+              << ",NewKappa=" << newKappa << ",NewBeta=" << newBeta
+              << ",NewSmax=" << newSmax << std::endl;
 
   Ptr<RateErrorModel> em = CreateObjectWithAttributes<RateErrorModel> (
       "RanVar", StringValue ("ns3::UniformRandomVariable[Min=0.0|Max=1.0]"),
@@ -387,6 +484,14 @@ main (int argc, char *argv[])
       for (double t : {2.0, 4.0, 6.0, 10.0, 30.0, simEnd - 0.001})
         if (t < simEnd) Simulator::Schedule (Seconds (t), &ObserveState,
                                               DynamicCast<MpquicBulkSendApplication> (srcApps.Get (0)));
+    }
+  if (!labLogPrefix.empty ())
+    {
+      // Listener callbacks are inherited by accepted sockets. Do not reconnect
+      // them later, which would duplicate receive and stream-created records.
+      Simulator::Schedule (Seconds (0.001), &ConnectLabListener);
+      Simulator::Schedule (Seconds (1.000000001), &ConnectLabSource,
+                          DynamicCast<MpquicBulkSendApplication> (srcApps.Get (0)));
     }
   Simulator::Stop (Seconds (simEnd));
   Simulator::Run ();

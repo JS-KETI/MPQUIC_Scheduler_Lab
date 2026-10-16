@@ -1,0 +1,326 @@
+{
+  "planned_runs": 72,
+  "actual_rows": 72,
+  "unique_run_ids": 72,
+  "completed": 69,
+  "exact_full_received": 69,
+  "reference_checks": [
+    {
+      "run_id": "001-regression-dominating-s0-seed1",
+      "reference_scheduler": 0,
+      "reference_seed": 1,
+      "matched": true,
+      "mismatches": []
+    },
+    {
+      "run_id": "002-regression-dominating-s1-seed1",
+      "reference_scheduler": 1,
+      "reference_seed": 1,
+      "matched": true,
+      "mismatches": []
+    },
+    {
+      "run_id": "003-regression-dominating-s2-seed1",
+      "reference_scheduler": 2,
+      "reference_seed": 1,
+      "matched": true,
+      "mismatches": []
+    },
+    {
+      "run_id": "004-regression-dominating-s3-seed1",
+      "reference_scheduler": 3,
+      "reference_seed": 1,
+      "matched": true,
+      "mismatches": []
+    },
+    {
+      "run_id": "005-regression-dominating-s4-seed1",
+      "reference_scheduler": 4,
+      "reference_seed": 1,
+      "matched": true,
+      "mismatches": []
+    },
+    {
+      "run_id": "006-regression-dominating-s5-seed1",
+      "reference_scheduler": 5,
+      "reference_seed": 1,
+      "matched": true,
+      "mismatches": []
+    },
+    {
+      "run_id": "007-regression-dominating-s6-seed1",
+      "reference_scheduler": 6,
+      "reference_seed": 1,
+      "matched": true,
+      "mismatches": []
+    },
+    {
+      "run_id": "008-baseline_extra-dominating-s6-seed2",
+      "reference_scheduler": 6,
+      "reference_seed": 2,
+      "matched": true,
+      "mismatches": []
+    },
+    {
+      "run_id": "009-baseline_extra-dominating-s6-seed3",
+      "reference_scheduler": 6,
+      "reference_seed": 3,
+      "matched": true,
+      "mismatches": []
+    },
+    {
+      "run_id": "010-slot_plain-dominating-s7-seed1",
+      "reference_scheduler": 6,
+      "reference_seed": 1,
+      "matched": true,
+      "mismatches": []
+    },
+    {
+      "run_id": "011-slot_plain-dominating-s7-seed2",
+      "reference_scheduler": 6,
+      "reference_seed": 2,
+      "matched": true,
+      "mismatches": []
+    },
+    {
+      "run_id": "012-slot_plain-dominating-s7-seed3",
+      "reference_scheduler": 6,
+      "reference_seed": 3,
+      "matched": true,
+      "mismatches": []
+    },
+    {
+      "run_id": "013-slot_trace-dominating-s7-seed1",
+      "reference_scheduler": 6,
+      "reference_seed": 1,
+      "matched": true,
+      "mismatches": []
+    },
+    {
+      "run_id": "014-slot_trace-dominating-s7-seed2",
+      "reference_scheduler": 6,
+      "reference_seed": 2,
+      "matched": true,
+      "mismatches": []
+    },
+    {
+      "run_id": "015-slot_trace-dominating-s7-seed3",
+      "reference_scheduler": 6,
+      "reference_seed": 3,
+      "matched": true,
+      "mismatches": []
+    },
+    {
+      "run_id": "025-regression-competing-s0-seed1",
+      "reference_scheduler": 0,
+      "reference_seed": 1,
+      "matched": true,
+      "mismatches": []
+    },
+    {
+      "run_id": "026-regression-competing-s1-seed1",
+      "reference_scheduler": 1,
+      "reference_seed": 1,
+      "matched": true,
+      "mismatches": []
+    },
+    {
+      "run_id": "027-regression-competing-s2-seed1",
+      "reference_scheduler": 2,
+      "reference_seed": 1,
+      "matched": true,
+      "mismatches": []
+    },
+    {
+      "run_id": "028-regression-competing-s3-seed1",
+      "reference_scheduler": 3,
+      "reference_seed": 1,
+      "matched": true,
+      "mismatches": []
+    },
+    {
+      "run_id": "029-regression-competing-s4-seed1",
+      "reference_scheduler": 4,
+      "reference_seed": 1,
+      "matched": true,
+      "mismatches": []
+    },
+    {
+      "run_id": "030-regression-competing-s5-seed1",
+      "reference_scheduler": 5,
+      "reference_seed": 1,
+      "matched": true,
+      "mismatches": []
+    },
+    {
+      "run_id": "031-regression-competing-s6-seed1",
+      "reference_scheduler": 6,
+      "reference_seed": 1,
+      "matched": true,
+      "mismatches": []
+    },
+    {
+      "run_id": "032-baseline_extra-competing-s6-seed2",
+      "reference_scheduler": 6,
+      "reference_seed": 2,
+      "matched": true,
+      "mismatches": []
+    },
+    {
+      "run_id": "033-baseline_extra-competing-s6-seed3",
+      "reference_scheduler": 6,
+      "reference_seed": 3,
+      "matched": true,
+      "mismatches": []
+    },
+    {
+      "run_id": "034-slot_plain-competing-s7-seed1",
+      "reference_scheduler": 6,
+      "reference_seed": 1,
+      "matched": true,
+      "mismatches": []
+    },
+    {
+      "run_id": "035-slot_plain-competing-s7-seed2",
+      "reference_scheduler": 6,
+      "reference_seed": 2,
+      "matched": true,
+      "mismatches": []
+    },
+    {
+      "run_id": "036-slot_plain-competing-s7-seed3",
+      "reference_scheduler": 6,
+      "reference_seed": 3,
+      "matched": true,
+      "mismatches": []
+    },
+    {
+      "run_id": "037-slot_trace-competing-s7-seed1",
+      "reference_scheduler": 6,
+      "reference_seed": 1,
+      "matched": true,
+      "mismatches": []
+    },
+    {
+      "run_id": "038-slot_trace-competing-s7-seed2",
+      "reference_scheduler": 6,
+      "reference_seed": 2,
+      "matched": true,
+      "mismatches": []
+    },
+    {
+      "run_id": "039-slot_trace-competing-s7-seed3",
+      "reference_scheduler": 6,
+      "reference_seed": 3,
+      "matched": true,
+      "mismatches": []
+    },
+    {
+      "run_id": "049-regression-degrade-s0-seed1",
+      "reference_scheduler": 0,
+      "reference_seed": 1,
+      "matched": true,
+      "mismatches": []
+    },
+    {
+      "run_id": "050-regression-degrade-s1-seed1",
+      "reference_scheduler": 1,
+      "reference_seed": 1,
+      "matched": true,
+      "mismatches": []
+    },
+    {
+      "run_id": "051-regression-degrade-s2-seed1",
+      "reference_scheduler": 2,
+      "reference_seed": 1,
+      "matched": true,
+      "mismatches": []
+    },
+    {
+      "run_id": "052-regression-degrade-s3-seed1",
+      "reference_scheduler": 3,
+      "reference_seed": 1,
+      "matched": true,
+      "mismatches": []
+    },
+    {
+      "run_id": "053-regression-degrade-s4-seed1",
+      "reference_scheduler": 4,
+      "reference_seed": 1,
+      "matched": true,
+      "mismatches": []
+    },
+    {
+      "run_id": "054-regression-degrade-s5-seed1",
+      "reference_scheduler": 5,
+      "reference_seed": 1,
+      "matched": true,
+      "mismatches": []
+    },
+    {
+      "run_id": "055-regression-degrade-s6-seed1",
+      "reference_scheduler": 6,
+      "reference_seed": 1,
+      "matched": true,
+      "mismatches": []
+    },
+    {
+      "run_id": "056-baseline_extra-degrade-s6-seed2",
+      "reference_scheduler": 6,
+      "reference_seed": 2,
+      "matched": true,
+      "mismatches": []
+    },
+    {
+      "run_id": "057-baseline_extra-degrade-s6-seed3",
+      "reference_scheduler": 6,
+      "reference_seed": 3,
+      "matched": true,
+      "mismatches": []
+    },
+    {
+      "run_id": "058-slot_plain-degrade-s7-seed1",
+      "reference_scheduler": 6,
+      "reference_seed": 1,
+      "matched": true,
+      "mismatches": []
+    },
+    {
+      "run_id": "059-slot_plain-degrade-s7-seed2",
+      "reference_scheduler": 6,
+      "reference_seed": 2,
+      "matched": true,
+      "mismatches": []
+    },
+    {
+      "run_id": "060-slot_plain-degrade-s7-seed3",
+      "reference_scheduler": 6,
+      "reference_seed": 3,
+      "matched": true,
+      "mismatches": []
+    },
+    {
+      "run_id": "061-slot_trace-degrade-s7-seed1",
+      "reference_scheduler": 6,
+      "reference_seed": 1,
+      "matched": true,
+      "mismatches": []
+    },
+    {
+      "run_id": "062-slot_trace-degrade-s7-seed2",
+      "reference_scheduler": 6,
+      "reference_seed": 2,
+      "matched": true,
+      "mismatches": []
+    },
+    {
+      "run_id": "063-slot_trace-degrade-s7-seed3",
+      "reference_scheduler": 6,
+      "reference_seed": 3,
+      "matched": true,
+      "mismatches": []
+    }
+  ],
+  "reference_matches": 45,
+  "baseline_sha256_unchanged": true
+}

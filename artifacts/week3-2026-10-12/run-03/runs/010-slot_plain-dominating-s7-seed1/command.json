@@ -1,0 +1,27 @@
+{
+  "run_id": "010-slot_plain-dominating-s7-seed1",
+  "started_at": "2026-10-12T10:30:24.688606+09:00",
+  "command": [
+    "/home/ubuntu/projects/keti/mpquic-sched-lab/mpquic/build/scratch/mpquic-sched-lab",
+    "--SchedulerType=7",
+    "--Seed=1",
+    "--Size=5242880",
+    "--CcType=1",
+    "--LossRate=0",
+    "--CompletionGraceMs=250",
+    "--SimEnd=60",
+    "--Rate0a=5",
+    "--Rate0b=5.5",
+    "--Delay0a=50",
+    "--Delay0b=55",
+    "--Rate1a=10",
+    "--Rate1b=11",
+    "--Delay1a=10",
+    "--Delay1b=11",
+    "--NewKappa=0.2",
+    "--NewBeta=0.7",
+    "--NewSmax=0.04"
+  ],
+  "returncode": 0,
+  "wall_s": 0.3310548679999954
+}

@@ -1,0 +1,58 @@
+{
+  "updated_at": "2026-10-16T15:05:16.911585+09:00",
+  "week": 3,
+  "latest_report_source_before_migration": "outputs/week3-2026-10-12/3주차 진행상황.md",
+  "source_markdown_sha256": "d2c40af4938925bc22b3c13f82c6f5038c72e13550fff0d3c62e49ee31101ed7",
+  "current_markdown_sha256": "181cdefc52b0276b9928ee6b34b99e07656f63b0ffdd697b59cf1c90925faf06",
+  "report_changes": "image destination normalization and moved-document URLs only; wording and values preserved",
+  "data_role": "byte-identical browsing copies; artifacts/BASELINE.json remains the official baseline pointer",
+  "data": [
+    {
+      "current": "data/results.csv",
+      "original": "artifacts/week3-2026-10-12/run-03/results.csv",
+      "sha256": "1f1e00638300e26144fe42cba0c3d2d6fb5368233cc8d909d10d9a7fc0992d4d",
+      "bytes": 11767
+    },
+    {
+      "current": "data/summary.csv",
+      "original": "artifacts/week3-2026-10-12/run-03/analysis/condition_summary.csv",
+      "sha256": "f099825d5bf2041862f0aabfdaf58fc6789d05f1faafca67206615cdcb1aad97",
+      "bytes": 1450
+    },
+    {
+      "current": "data/fixed_ratio_summary.csv",
+      "original": "artifacts/week3-2026-10-12/run-03/analysis/fixed_ratio_summary.csv",
+      "sha256": "20385ec2d7bdd7a7486ab05139812837133e695da13e7eec945d2706a677b61e",
+      "bytes": 14515
+    },
+    {
+      "current": "data/decision_metrics.csv",
+      "original": "artifacts/week3-2026-10-12/run-03/analysis/decision_metrics.csv",
+      "sha256": "d88546a55f7d32ed198a1829930645f4f5a50e0a19b07f9b82cb5da9d327e40b",
+      "bytes": 9308841
+    },
+    {
+      "current": "data/path_usage.csv",
+      "original": "artifacts/week3-2026-10-12/run-03/analysis/path_usage.csv",
+      "sha256": "a9aeda7f1596a7cee175b92a40dfc4acd1f5267d64801b33c6bd7a9e3e9f4456",
+      "bytes": 29747953
+    },
+    {
+      "current": "data/trace_equivalence.csv",
+      "original": "artifacts/week3-2026-10-12/run-03/trace-equivalence/summary.csv",
+      "sha256": "98d01543b95db302acae7a9df1d8e3bc60ab987a3d5ab4d5404d08eeef762d82",
+      "bytes": 410
+    }
+  ],
+  "original_repository_commit": "bed6d487b00e409de601efd9df1e1f16afa1fd85",
+  "moved_paths": {
+    "reports/week3/3주차 상세 실험 기록.md": "reports/week3/records/3주차 상세 실험 기록.md",
+    "reports/week3/계측 로그 형식.md": "reports/week3/records/계측 로그 형식.md"
+  },
+  "existing_pdf": {
+    "original": "outputs/week3-2026-10-12/3주차 진행상황.pdf",
+    "sha256": "1b6f288a74c98eeb19abcef1a937331a7aafb6301187ab187d5f8aa8288a9db2",
+    "status": "existing PDF retained; text, tables and image pixels independently match the source before path-only migration; no new conversion",
+    "reference_links": "created before the directory reorganization; use current HTML or README for moved-reference links"
+  }
+}

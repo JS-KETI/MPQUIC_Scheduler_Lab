@@ -10,7 +10,7 @@ Add your own scenario to SCENARIOS and your own scheduler id to NAMES.
 """
 import argparse, csv, glob, os, subprocess, sys, time
 
-NAMES = {0: "RR", 1: "MinRTT", 2: "BLEST", 3: "ECF", 4: "Peekaboo", 5: "EAT(new)", 6: "MinRTT-multi(new)"}
+NAMES = {0: "RR", 1: "MinRTT", 2: "BLEST", 3: "ECF", 4: "Peekaboo", 5: "EAT(new)", 6: "MinRTT-multi(new)", 7: "NewSched"}
 
 # rates in Mbps, delays = one-way ms, [min, max] redrawn every 100 ms (as in the paper)
 SCENARIOS = {

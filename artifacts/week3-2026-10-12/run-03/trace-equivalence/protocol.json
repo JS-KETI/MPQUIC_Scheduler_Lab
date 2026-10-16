@@ -1,0 +1,37 @@
+{
+  "planned_pairs": 7,
+  "planned_runs": 14,
+  "purpose": "toggle only LabLogPrefix with the original Observe diagnostic enabled on both sides; compare all OBS lines and RESULT",
+  "tasks": [
+    [
+      "dominating",
+      null
+    ],
+    [
+      "competing",
+      null
+    ],
+    [
+      "degrade",
+      null
+    ],
+    [
+      "dominating",
+      0.1
+    ],
+    [
+      "dominating",
+      0.3
+    ],
+    [
+      "dominating",
+      0.5
+    ],
+    [
+      "degrade",
+      0.5
+    ]
+  ],
+  "started": "2026-10-12T10:35:34.477519+09:00",
+  "source_sha256": "92e567811620698ab7ae6512c6904c61aff562822bf86c4eb5326ca961828829"
+}

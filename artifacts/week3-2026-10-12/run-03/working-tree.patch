@@ -1,0 +1,927 @@
+diff --git a/.gitignore b/.gitignore
+index 54c2dea..6c287c0 100644
+--- a/.gitignore
++++ b/.gitignore
+@@ -52,3 +52,6 @@ AGENTS.override.md
+ .codex/
+ .agents/
+ /docs/GIT_AUTHOR_CORRECTION_*.json
++
++# Local multi-agent coordination state
++STATUS.md
+diff --git a/sched-lab/run_sweep.py b/sched-lab/run_sweep.py
+index 2337c8d..026c7c3 100644
+--- a/sched-lab/run_sweep.py
++++ b/sched-lab/run_sweep.py
+@@ -10,7 +10,7 @@ Add your own scenario to SCENARIOS and your own scheduler id to NAMES.
+ """
+ import argparse, csv, glob, os, subprocess, sys, time
+ 
+-NAMES = {0: "RR", 1: "MinRTT", 2: "BLEST", 3: "ECF", 4: "Peekaboo", 5: "EAT(new)", 6: "MinRTT-multi(new)"}
++NAMES = {0: "RR", 1: "MinRTT", 2: "BLEST", 3: "ECF", 4: "Peekaboo", 5: "EAT(new)", 6: "MinRTT-multi(new)", 7: "NewSched"}
+ 
+ # rates in Mbps, delays = one-way ms, [min, max] redrawn every 100 ms (as in the paper)
+ SCENARIOS = {
+diff --git a/scratch/mpquic-sched-lab.cc b/scratch/mpquic-sched-lab.cc
+index 740d75e..9bb35a5 100644
+--- a/scratch/mpquic-sched-lab.cc
++++ b/scratch/mpquic-sched-lab.cc
+@@ -29,6 +29,7 @@
+ #include <iostream>
+ #include <iomanip>
+ #include <set>
++#include <fstream>
+ 
+ using namespace ns3;
+ 
+@@ -41,6 +42,71 @@ static double g_fct = -1.0;
+ static double g_fct95 = -1.0;
+ static double g_start = 1.0;
+ static double g_completionGraceMs = 10.0;
++static std::ofstream g_labDecision, g_labPackets, g_labReorder;
++
++static void LabDecision (std::string row) { g_labDecision << row << "\n"; }
++static void LabReorder (std::string row) { g_labReorder << row << "\n"; }
++static void
++LabStreamCreated (Ptr<QuicStreamBase> stream)
++{
++  static std::set<const QuicStreamBase *> connected;
++  if (connected.insert (PeekPointer (stream)).second)
++    stream->TraceConnectWithoutContext ("LabReorder", MakeCallback (&LabReorder));
++}
++
++// App STREAM payload only: stream 0 is handshake data, outside allocation scope.
++static void
++LabPacket (std::string direction, Ptr<const Packet> packet,
++           const QuicHeader &header, Ptr<const QuicSocketBase> socket)
++{
++  Ptr<Packet> copy = packet->Copy ();
++  while (copy->GetSize () > 0)
++    {
++      QuicSubheader sub;
++      uint32_t n = copy->RemoveHeader (sub);
++      if (n == 0) break;
++      if (sub.IsStream ())
++        {
++          const uint32_t length = sub.GetLength ();
++          if (length > copy->GetSize ()) break;
++          if (sub.GetStreamId () > 0)
++            g_labPackets << std::setprecision (12) << Simulator::Now ().GetSeconds () << ","
++              << socket->GetNode ()->GetId () << "," << direction << ","
++              << unsigned (header.GetPathId ()) << "," << header.GetPacketNumber () << ","
++              << sub.GetStreamId () << "," << sub.GetOffset () << "," << length << ","
++              << sub.IsStreamFin () << "\n";
++          copy->RemoveAtStart (length);
++        }
++    }
++}
++
++static void
++ConnectLabSocket (Ptr<QuicSocketBase> socket)
++{
++  static std::set<const QuicSocketBase *> connected;
++  if (!socket || !connected.insert (PeekPointer (socket)).second) return;
++  socket->TraceConnectWithoutContext ("LabDecision", MakeCallback (&LabDecision));
++  socket->TraceConnectWithoutContext ("LabStreamCreated", MakeCallback (&LabStreamCreated));
++  socket->TraceConnect ("Tx", "Tx", MakeCallback (&LabPacket));
++  socket->TraceConnect ("Rx", "Rx", MakeCallback (&LabPacket));
++}
++
++static void
++ConnectLabListener ()
++{
++  auto matches = Config::LookupMatches ("/NodeList/*/$ns3::QuicL4Protocol/SocketList/*/QuicSocketBase");
++  for (uint32_t i = 0; i < matches.GetN (); ++i)
++    {
++      auto socket = DynamicCast<QuicSocketBase> (matches.Get (i));
++      if (socket && socket->GetNode ()->GetId () == 5) ConnectLabSocket (socket);
++    }
++}
++
++static void
++ConnectLabSource (Ptr<MpquicBulkSendApplication> app)
++{
++  ConnectLabSocket (DynamicCast<QuicSocketBase> (app->GetSocket ()));
++}
+ 
+ // Keep the supplied benchmark's completion threshold for comparable FCTs.
+ // Exact receipt is reported separately as rx_app == size. CompletionGraceMs
+@@ -219,9 +285,13 @@ main (int argc, char *argv[])
+   int bLambda = 200, bVar = 0;
+   double simEnd = 60.0;
+   bool observe = false;
++  std::string labLogPrefix;
++  bool fixedRatio = false;
++  double path0Share = 0.3;
++  double newKappa = 0.0, newBeta = 0.0, newSmax = 0.0;
+ 
+   CommandLine cmd;
+-  cmd.AddValue ("SchedulerType", "0 RR, 1 MinRTT, 2 BLEST, 3 ECF, 4 Peekaboo, 5 EAT(new), 6 MinRTT-multi(new)", schedulerType);
++  cmd.AddValue ("SchedulerType", "0 RR, 1 MinRTT, 2 BLEST, 3 ECF, 4 Peekaboo, 5 EAT(new), 6 MinRTT-multi(new), 7 NewSched", schedulerType);
+   cmd.AddValue ("Size", "bytes to transfer", size);
+   cmd.AddValue ("Seed", "RNG seed", seed);
+   cmd.AddValue ("LossRate", "packet error rate on both bottlenecks", lossrate);
+@@ -243,7 +313,25 @@ main (int argc, char *argv[])
+   cmd.AddValue ("SimEnd", "hard stop [s]", simEnd);
+   cmd.AddValue ("CompletionGraceMs", "diagnostic wait after unchanged done threshold [ms]", g_completionGraceMs);
+   cmd.AddValue ("Observe", "read-only packet and sender-state diagnostics on stderr", observe);
++  cmd.AddValue ("FixedRatio", "ID 7 fixed-ratio diagnostic mode (default false)", fixedRatio);
++  cmd.AddValue ("Path0Share", "ID 7 desired path 0 share [0..1]; path 1 is 1-share", path0Share);
++  cmd.AddValue ("NewKappa", "ID 7 reserved week 5 parameter (no decision formula yet)", newKappa);
++  cmd.AddValue ("NewBeta", "ID 7 reserved week 5 parameter (no decision formula yet)", newBeta);
++  cmd.AddValue ("NewSmax", "ID 7 reserved week 5 parameter (no decision formula yet)", newSmax);
++  cmd.AddValue ("LabLogPrefix", "Optional week 3 trace file prefix; empty disables tracing", labLogPrefix);
+   cmd.Parse (argc, argv);
++  if (!labLogPrefix.empty ())
++    {
++      g_labDecision.open (labLogPrefix + "-decisions.csv");
++      g_labPackets.open (labLogPrefix + "-packets.csv");
++      g_labReorder.open (labLogPrefix + "-reorder.csv");
++      NS_ABORT_MSG_IF (!g_labDecision || !g_labPackets || !g_labReorder, "Cannot open lab trace files");
++      g_labDecision << "decision_id,time_s,node,connection,path,ratio,entry_backlog_frame_bytes,decision_backlog_frame_bytes,apply_backlog_frame_bytes,nominal_requested_frame_bytes,nominal_quota_frame_bytes,nominal_demand_frame_bytes,requested_frame_bytes,quota_packets,quota_frame_bytes,cwnd_bytes,flow_limit_bytes,inflight_frame_bytes,cwnd_room_bytes,flow_room_bytes,available_window_bytes,mss_frame_bytes,last_rtt_s,rtt_valid,predicted_requested_end_s,predicted_quota_end_s,actual_frame_bytes,actual_packets,backlog_after_frame_bytes,cwnd_limited,flow_limited,fixed_diagnostic_mode,stop_reason\n";
++      g_labPackets << "time_s,node,direction,path,packet_number,stream,offset,payload_bytes,fin\n";
++      g_labReorder << "time_s,node,connection,stream,expected_offset_before,frame_offset,frame_payload_bytes,expected_offset_after,stored_payload_bytes,waiting_payload_bytes,episode_id,episode_state,episode_elapsed_s,frame_status\n";
++      Config::SetDefault ("ns3::QuicSocketBase::EnableLabTracing", BooleanValue (true));
++      Config::SetDefault ("ns3::QuicStreamBase::EnableLabTracing", BooleanValue (true));
++    }
+ 
+   Time::SetResolution (Time::NS);
+   RngSeedManager::SetSeed (seed);
+@@ -264,6 +352,15 @@ main (int argc, char *argv[])
+   Config::SetDefault ("ns3::MpQuicScheduler::BlestVar", UintegerValue (bVar));
+   Config::SetDefault ("ns3::MpQuicScheduler::BlestLambda", UintegerValue (bLambda));
+   Config::SetDefault ("ns3::MpQuicScheduler::EatMargin", DoubleValue (eatMargin));
++  Config::SetDefault ("ns3::MpQuicScheduler::FixedRatio", BooleanValue (fixedRatio));
++  Config::SetDefault ("ns3::MpQuicScheduler::Path0Share", DoubleValue (path0Share));
++  Config::SetDefault ("ns3::MpQuicScheduler::NewKappa", DoubleValue (newKappa));
++  Config::SetDefault ("ns3::MpQuicScheduler::NewBeta", DoubleValue (newBeta));
++  Config::SetDefault ("ns3::MpQuicScheduler::NewSmax", DoubleValue (newSmax));
++  if (schedulerType == 7)
++    std::cout << "CONFIG7,FixedRatio=" << fixedRatio << ",Path0Share=" << path0Share
++              << ",NewKappa=" << newKappa << ",NewBeta=" << newBeta
++              << ",NewSmax=" << newSmax << std::endl;
+ 
+   Ptr<RateErrorModel> em = CreateObjectWithAttributes<RateErrorModel> (
+       "RanVar", StringValue ("ns3::UniformRandomVariable[Min=0.0|Max=1.0]"),
+@@ -388,6 +485,14 @@ main (int argc, char *argv[])
+         if (t < simEnd) Simulator::Schedule (Seconds (t), &ObserveState,
+                                               DynamicCast<MpquicBulkSendApplication> (srcApps.Get (0)));
+     }
++  if (!labLogPrefix.empty ())
++    {
++      // Listener callbacks are inherited by accepted sockets. Do not reconnect
++      // them later, which would duplicate receive and stream-created records.
++      Simulator::Schedule (Seconds (0.001), &ConnectLabListener);
++      Simulator::Schedule (Seconds (1.000000001), &ConnectLabSource,
++                          DynamicCast<MpquicBulkSendApplication> (srcApps.Get (0)));
++    }
+   Simulator::Stop (Seconds (simEnd));
+   Simulator::Run ();
+ 
+diff --git a/src/quic/model/mp-quic-scheduler.cc b/src/quic/model/mp-quic-scheduler.cc
+index 95157ec..ba80d6a 100755
+--- a/src/quic/model/mp-quic-scheduler.cc
++++ b/src/quic/model/mp-quic-scheduler.cc
+@@ -95,6 +95,31 @@ MpQuicScheduler::GetTypeId (void)
+                    DoubleValue (0.125),
+                    MakeDoubleAccessor (&MpQuicScheduler::m_eatAlpha),
+                    MakeDoubleChecker<double> (0.0, 1.0))
++    .AddAttribute ("NewKappa",
++                   "Reserved week-5 feedback gain; unused by the week-3 slot",
++                   DoubleValue (0.0),
++                   MakeDoubleAccessor (&MpQuicScheduler::m_newKappa),
++                   MakeDoubleChecker<double> (0.0))
++    .AddAttribute ("NewBeta",
++                   "Reserved week-5 leakage coefficient; unused by the week-3 slot",
++                   DoubleValue (0.0),
++                   MakeDoubleAccessor (&MpQuicScheduler::m_newBeta),
++                   MakeDoubleChecker<double> (0.0, 1.0))
++    .AddAttribute ("NewSmax",
++                   "Reserved week-5 integral bound; unused by the week-3 slot",
++                   DoubleValue (0.0),
++                   MakeDoubleAccessor (&MpQuicScheduler::m_newSmax),
++                   MakeDoubleChecker<double> (0.0))
++    .AddAttribute ("FixedRatio",
++                   "ID 7 only: fixed-share two-path diagnostic with a ten-packet budget",
++                   BooleanValue (false),
++                   MakeBooleanAccessor (&MpQuicScheduler::m_fixedRatio),
++                   MakeBooleanChecker ())
++    .AddAttribute ("Path0Share",
++                   "ID 7 fixed diagnostic: intended path-0 share before MSS quantization",
++                   DoubleValue (0.3),
++                   MakeDoubleAccessor (&MpQuicScheduler::m_path0Share),
++                   MakeDoubleChecker<double> (0.0, 1.0))
+      
+   ;
+   return tid;
+@@ -104,6 +129,11 @@ MpQuicScheduler::MpQuicScheduler ()
+   : Object (),
+   m_socket(0),
+   m_lastUsedPathId(0),
++  m_newKappa(0.0),
++  m_newBeta(0.0),
++  m_newSmax(0.0),
++  m_fixedRatio(false),
++  m_path0Share(0.3),
+   m_select(0)
+ {
+   NS_LOG_FUNCTION_NOARGS ();
+@@ -160,6 +190,10 @@ MpQuicScheduler::GetNextPathIdToUse()
+       tosend = MinRttMulti();
+       break;
+ 
++    case NEW_SCHED:
++      tosend = NewSched();
++      break;
++
+     default:
+       tosend = RoundRobin();
+       break;
+@@ -635,6 +669,105 @@ MpQuicScheduler::MinRttMulti ()
+   return tosend;
+ }
+ 
++std::vector<double>
++MpQuicScheduler::BytesToRatio (const std::vector<uint32_t>& desired,
++                               uint32_t backlog, uint32_t mss)
++{
++  std::vector<double> ratios (desired.size (), 0.0);
++  if (mss == 0 || backlog == 0)
++    {
++      return ratios;
++    }
++
++  uint64_t total = 0;
++  for (uint32_t bytes : desired)
++    {
++      total += (bytes / mss) * static_cast<uint64_t> (mss);
++      if (total > backlog)
++        {
++          // Reject the whole request, rather than silently favoring early paths.
++          return ratios;
++        }
++    }
++
++  uint32_t remaining = backlog;
++  for (size_t i = 0; i < desired.size (); ++i)
++    {
++      const uint32_t bytes = (desired[i] / mss) * mss;
++      if (bytes == 0)
++        {
++          continue;
++        }
++      double ratio = static_cast<double> (bytes) / remaining;
++      if (bytes < remaining)
++        {
++          // The sender casts remaining*ratio to uint32_t, then divides by MSS.
++          // One upward ULP prevents an exact MSS request becoming MSS-1.
++          ratio = std::nextafter (ratio, 1.0);
++        }
++      ratios[i] = ratio;
++      remaining -= bytes;
++    }
++  return ratios;
++}
++
++bool
++MpQuicScheduler::IsFixedRatioDiagnostic () const
++{
++  return m_schedulerType == NEW_SCHED && m_fixedRatio && m_subflows.size () == 2;
++}
++
++std::vector<double>
++MpQuicScheduler::NewSched ()
++{
++  if (!m_fixedRatio)
++    {
++      // Stage 1 must behave exactly like the existing ID 6 baseline.
++      return MinRttMulti ();
++    }
++  if (m_subflows.size () != 2)
++    {
++      NS_LOG_INFO ("NEW_SCHED mode=fallback-min-rtt-multi active_paths="
++                   << m_subflows.size ());
++      return MinRttMulti ();
++    }
++
++  const uint32_t backlog = m_socket->GetBytesInBuffer ();
++  const uint32_t mss = m_socket->GetSegSize ();
++  std::vector<double> tosend (2, 0.0);
++  if (backlog == 0 || mss == 0)
++    {
++      NS_LOG_INFO ("NEW_SCHED mode=empty-or-invalid backlog=" << backlog << " mss=" << mss);
++      return tosend;
++    }
++  if (backlog < mss)
++    {
++      // Keep the existing sender's sub-MSS tail drain reachable.
++      const uint32_t path = m_path0Share >= 0.5 ? 0 : 1;
++      tosend[path] = 1.0;
++      NS_LOG_INFO ("NEW_SCHED mode=tail path0_share=" << m_path0Share
++                   << " backlog=" << backlog << " selected_path=" << path);
++      return tosend;
++    }
++
++  // A ten-packet budget gives exact 3/7, 1/9 and 5/5 packet requests.
++  // It is a slot diagnostic only: no measured-share or arrival feedback.
++  const uint32_t packets = std::min<uint32_t> (10, backlog / mss);
++  uint32_t path0Packets = static_cast<uint32_t> (std::round (packets * m_path0Share));
++  if (packets >= 2 && m_path0Share > 0.0 && m_path0Share < 1.0)
++    {
++      // Do not floor a positive minority share to zero in a short burst.
++      path0Packets = std::max<uint32_t> (1, std::min (packets - 1, path0Packets));
++    }
++  const std::vector<uint32_t> desired = {path0Packets * mss, (packets - path0Packets) * mss};
++  tosend = BytesToRatio (desired, backlog, mss);
++  NS_LOG_INFO ("NEW_SCHED mode=fixed-two-path path0_share=" << m_path0Share
++               << " backlog=" << backlog << " mss=" << mss
++               << " desired0=" << desired[0] << " desired1=" << desired[1]
++               << " ratio0=" << tosend[0] << " ratio1=" << tosend[1]);
++  return tosend;
++}
++
+ void
+ MpQuicScheduler::SetNumOfLostPackets(uint16_t lost){
+   m_lostPackets = lost;
+diff --git a/src/quic/model/mp-quic-scheduler.h b/src/quic/model/mp-quic-scheduler.h
+index 687b00f..d4a47b7 100755
+--- a/src/quic/model/mp-quic-scheduler.h
++++ b/src/quic/model/mp-quic-scheduler.h
+@@ -42,7 +42,8 @@ public:
+       ECF,
+       PEEKABOO,
+       EAT,              //!< (new) N-path Earliest-Arrival-Time scheduler, example extension
+-      MIN_RTT_MULTI     //!< (new) control baseline: MinRTT that fills all open windows per call
++      MIN_RTT_MULTI,    //!< (new) control baseline: MinRTT that fills all open windows per call
++      NEW_SCHED = 7     //!< week-3 slot; automatic scheduling is reserved for week 5
+     } SchedulerType_t;
+   
+   /**
+@@ -57,6 +58,21 @@ public:
+ 
+   std::vector<double> GetNextPathIdToUse();
+   void SetSocket(Ptr<QuicSocketBase> sock);
++  /** Only ID 7's explicit two-path fixed-ratio diagnostic uses atomic batches. */
++  bool IsFixedRatioDiagnostic () const;
++
++  /**
++   * Convert wanted bytes to ratios for the sender's sequential path loop.
++   * Each request is rounded DOWN to a whole MSS; sub-MSS requests become zero.
++   * Ratios use backlog minus earlier quantized requests, not the initial backlog.
++   * The quantized sum must not exceed backlog. Invalid input (MSS zero or
++   * oversubscription) returns an all-zero vector of the same length.
++   * This conversion assumes earlier requests consume those bytes. Frame
++   * splitting, cwnd caps, pacing, or app refills can change the actual backlog;
++   * the caller must observe the applied requests separately.
++   */
++  static std::vector<double> BytesToRatio (const std::vector<uint32_t>& desired,
++                                          uint32_t backlog, uint32_t mss);
+     
+   void UpdateReward (uint32_t oldValue, uint32_t newValue);
+   void SetNumOfLostPackets(uint16_t lost);
+@@ -82,6 +98,14 @@ private:
+   std::vector<double> Ecf();
+   std::vector<double> Eat();          //!< (new) example extension scheduler
+   std::vector<double> MinRttMulti();  //!< (new) control baseline for Eat()
++  std::vector<double> NewSched();     //!< week-3 MinRTT-multi / fixed two-path diagnostic
++
++  // Reserved week-5 parameters. They do not change week-3 scheduling decisions.
++  double m_newKappa;
++  double m_newBeta;
++  double m_newSmax;
++  bool m_fixedRatio;
++  double m_path0Share;
+ 
+   // ---- state for the EAT example scheduler (scheduler-local RTT filter) ----
+   double m_eatMargin;                    //!< safety margin on slow-path arrival (0.2 = 20%)
+diff --git a/src/quic/model/quic-l5-protocol.cc b/src/quic/model/quic-l5-protocol.cc
+index b090166..33e9054 100755
+--- a/src/quic/model/quic-l5-protocol.cc
++++ b/src/quic/model/quic-l5-protocol.cc
+@@ -129,6 +129,7 @@ QuicL5Protocol::CreateStream (
+ 
+ 
+   m_streams.push_back (stream);
++  m_socket->NotifyLabStreamCreated (stream);
+ 
+ }
+ 
+diff --git a/src/quic/model/quic-socket-base.cc b/src/quic/model/quic-socket-base.cc
+index 49dd4f0..5828722 100755
+--- a/src/quic/model/quic-socket-base.cc
++++ b/src/quic/model/quic-socket-base.cc
+@@ -48,9 +48,12 @@
+ #include "ns3/nstime.h"
+ #include "ns3/uinteger.h"
+ #include "ns3/double.h"
++#include "ns3/boolean.h"
++#include <iomanip>
+ #include "ns3/pointer.h"
+ #include "ns3/trace-source-accessor.h"
+ #include "quic-socket-base.h"
++#include "quic-stream-base.h"
+ #include "quic-congestion-ops.h"
+ #include "ns3/tcp-congestion-ops.h"
+ #include "quic-header.h"
+@@ -325,6 +328,19 @@ QuicSocketBase::GetTypeId (void)
+                      MakeTraceSourceAccessor (&QuicSocketBase::m_rttTrace1),
+                      "ns3::Time::TracedValueCallback")
+      
++    .AddAttribute ("EnableLabTracing",
++                   "Enable optional week-3 CSV diagnostics; connect lab traces before sending",
++                   BooleanValue (false),
++                   MakeBooleanAccessor (&QuicSocketBase::m_enableLabTracing),
++                   MakeBooleanChecker ())
++    .AddTraceSource ("LabDecision",
++                     "Per-path scheduling application and actual serialized-frame transmission (CSV body)",
++                     MakeTraceSourceAccessor (&QuicSocketBase::m_labDecisionTrace),
++                     "ns3::QuicSocketBase::LabCsvTracedCallback")
++    .AddTraceSource ("LabStreamCreated",
++                     "Fully configured stream before first frame processing; optional lab tracing only",
++                     MakeTraceSourceAccessor (&QuicSocketBase::m_labStreamCreatedTrace),
++                     "ns3::QuicSocketBase::LabStreamCreatedTracedCallback")
+     .AddTraceSource ("Tx",
+                      "Send QUIC packet to UDP protocol",
+                      MakeTraceSourceAccessor (&QuicSocketBase::m_txTrace),
+@@ -600,6 +616,9 @@ QuicSocketBase::QuicSocketBase (const QuicSocketBase& sock)   // Copy constructo
+     m_pacingTimer (Timer::REMOVE_ON_DESTROY),
+     m_txTrace (sock.m_txTrace),
+     m_rxTrace (sock.m_rxTrace),
++    m_enableLabTracing (sock.m_enableLabTracing),
++    m_labDecisionTrace (sock.m_labDecisionTrace),
++    m_labStreamCreatedTrace (sock.m_labStreamCreatedTrace),
+     m_enableMultipath(sock.m_enableMultipath),
+     m_pathManager(sock.m_pathManager),
+     m_scheduler (sock.m_scheduler),
+@@ -980,6 +999,15 @@ QuicSocketBase::AppendingTx (Ptr<Packet> frame)
+ }
+ 
+ 
++void
++QuicSocketBase::NotifyLabStreamCreated (Ptr<QuicStreamBase> stream)
++{
++  if (m_enableLabTracing)
++    {
++      m_labStreamCreatedTrace (stream);
++    }
++}
++
+ uint32_t
+ QuicSocketBase::SendPendingData (bool withAck)
+ {
+@@ -997,6 +1025,7 @@ QuicSocketBase::SendPendingData (bool withAck)
+     }
+ 
+   uint32_t nPacketsSent = 0;
++  const uint32_t labEntryBacklog = m_enableLabTracing ? m_txBuffer->AppSize () : 0;
+ 
+   // prioritize stream 0
+   while (m_txBuffer->GetNumFrameStream0InBuffer () > 0)
+@@ -1045,12 +1074,89 @@ QuicSocketBase::SendPendingData (bool withAck)
+   }
+ 
+ 
++  const uint32_t labDecisionBacklog = m_enableLabTracing ? m_txBuffer->AppSize () : 0;
++  const uint64_t labDecisionId = m_enableLabTracing ? ++m_labDecisionId : 0;
++  const double labDecisionTime = m_enableLabTracing ? Simulator::Now ().GetSeconds () : 0.0;
+   std::vector<double> sendP = m_scheduler->GetNextPathIdToUse();
++  // The week-3 fixed-ratio dummy emits a complete 3/7, 1/9 or 5/5
++  // packet batch only when BOTH paths can carry their assigned bytes. Filling
++  // partial windows on every ACK otherwise leaves almost no unconstrained
++  // batch to validate. This guard changes only the explicit ID 7 diagnostic,
++  // and never adapts the requested share or uses performance feedback.
++  const bool fixedDiagnostic = m_scheduler->IsFixedRatioDiagnostic ();
++  std::vector<uint32_t> fixedDemand;
++  bool fixedBatchWait = false;
++  bool fixedBootstrap = false;
++  bool fixedRecovery = false;
++  if (fixedDiagnostic)
++    {
++      uint32_t remaining = m_txBuffer->AppSize ();
++      for (uint32_t i = 0; i < sendP.size (); ++i)
++        {
++          const uint32_t bytes = static_cast<uint32_t> (remaining * sendP[i]);
++          uint32_t packets = bytes / GetSegSize ();
++          if (packets == 0 && bytes > 0) packets = 1;
++          const uint32_t demand = std::min<uint64_t> (remaining,
++            static_cast<uint64_t> (packets) * GetSegSize ());
++          fixedDemand.push_back (demand);
++          // The initial 2-MSS cwnd cannot hold a 10-packet diagnostic batch.
++          // Permit partial probes only while a TOTAL cwnd is below its quota;
++          // a sufficient but occupied cwnd waits instead of filling again.
++          fixedBootstrap = fixedBootstrap ||
++            demand > m_subflows[i]->m_tcb->m_cWnd.Get ();
++          fixedBatchWait = fixedBatchWait || demand > AvailableWindow (i);
++          // A loss-driven cwnd reduction can leave old outstanding bytes
++          // above the new cwnd. Do not stall a healthy path behind that path;
++          // permit the original capped sends while this constraint persists.
++          fixedRecovery = fixedRecovery || (demand > 0 &&
++            m_txBuffer->BytesInFlight (i) > m_subflows[i]->m_tcb->m_cWnd.Get ());
++          remaining -= demand;
++        }
++    }
++
++  if (fixedBootstrap || fixedRecovery) fixedBatchWait = false;
++  const char* fixedMode = !fixedDiagnostic ? "off" :
++    (fixedRecovery ? "recovery" : (fixedBootstrap ? "bootstrap" : (fixedBatchWait ? "wait" : "batch")));
++
++  // Reconstruct the nominal sequential byte-to-ratio plan before NotifySend
++  // can refill the buffer.  This is separate from the actual application below.
++  std::vector<uint32_t> labNominalRequested;
++  std::vector<uint64_t> labNominalQuota;
++  std::vector<uint32_t> labNominalDemand;
++  if (m_enableLabTracing)
++    {
++      uint32_t remaining = labDecisionBacklog;
++      for (double ratio : sendP)
++        {
++          uint32_t bytes = static_cast<uint32_t> (remaining * ratio);
++          uint32_t packets = bytes / GetSegSize ();
++          if (packets == 0 && bytes > 0) packets = 1;
++          uint64_t quota = static_cast<uint64_t> (packets) * GetSegSize ();
++          labNominalRequested.push_back (bytes);
++          labNominalQuota.push_back (quota);
++          uint32_t demand = std::min<uint64_t> (remaining, quota);
++          labNominalDemand.push_back (demand);
++          remaining -= demand;
++        }
++    }
+ 
+   for (uint8_t sendingPathId = 0; sendingPathId < sendP.size(); sendingPathId++)
+   {
+     uint32_t availableWindow = AvailableWindow (sendingPathId);
+-    uint32_t sendSize = m_txBuffer->AppSize () * sendP[sendingPathId];
++    uint32_t sendSize = fixedDiagnostic ? fixedDemand[sendingPathId]
++                                        : m_txBuffer->AppSize () * sendP[sendingPathId];
++    const uint32_t labApplyBacklog = m_enableLabTracing ? m_txBuffer->AppSize () : 0;
++    // The socket BytesInFlight() accessor writes tcb; diagnostics use the pure
++    // TX-buffer calculation so enabling observations cannot mutate tcb.
++    const uint32_t labInflight = m_enableLabTracing ? m_txBuffer->BytesInFlight (sendingPathId) : 0;
++    const uint32_t labCwnd = m_enableLabTracing ? m_subflows[sendingPathId]->m_tcb->m_cWnd.Get () : 0;
++    const uint32_t labCwndRoom = labCwnd > labInflight ? labCwnd - labInflight : 0;
++    const uint32_t labFlowRoom = m_max_data > labInflight ? m_max_data - labInflight : 0;
++    const double labRtt = m_enableLabTracing ? m_subflows[sendingPathId]->m_tcb->m_lastRtt.Get ().GetSeconds () : 0.0;
++    const uint32_t labAvailableWindow = availableWindow;
++    uint64_t labActualBytes = 0;
++    uint32_t labActualPackets = 0;
++    std::string labStopReason;
+     uint32_t sendNumber = sendSize/GetSegSize();
+     if (sendNumber == 0 && sendSize > 0)
+       {
+@@ -1059,7 +1165,42 @@ QuicSocketBase::SendPendingData (bool withAck)
+     if (sendSize > availableWindow)
+     {
+       sendNumber = availableWindow/GetSegSize();
+-    } 
++    }
++
++    if (fixedBatchWait)
++      {
++        sendNumber = 0;
++        labStopReason = "fixed_batch_wait";
++      }
++    const uint32_t labQuotaPackets = sendNumber;
++    // A per-path end row includes zero-share / zero-window paths.  Predicted
++    // arrival is a cwnd/RTT service-rate estimate, relative to this decision:
++    // RTT/2 + bytes/(cwnd/RTT).  It is invalid (-1) without a positive sample.
++    auto emitLabPathEnd = [&] () {
++      if (!m_enableLabTracing) return;
++      bool valid = labRtt > 0.0 && labCwnd > 0;
++      double requestedEnd = valid ? labRtt / 2.0 + sendSize * labRtt / labCwnd : -1.0;
++      double quotaEnd = valid ? labRtt / 2.0 + static_cast<double> (labQuotaPackets) * GetSegSize () * labRtt / labCwnd : -1.0;
++      if (labStopReason.empty ())
++        {
++          if (sendNumber == 0) labStopReason = labQuotaPackets > 0 ? "quota" : (sendSize == 0 ? "zero_request" : "sub_mss_window");
++          else if (m_txBuffer->AppSize () == 0) labStopReason = "empty";
++          else labStopReason = "window";
++        }
++      std::ostringstream row;
++      row << std::setprecision (17)
++          << labDecisionId << ',' << labDecisionTime << ',' << (m_node ? m_node->GetId () : 0) << ',' << m_connectionId << ','
++          << static_cast<uint32_t> (sendingPathId) << ',' << sendP[sendingPathId] << ','
++          << labEntryBacklog << ',' << labDecisionBacklog << ',' << labApplyBacklog << ','
++          << labNominalRequested[sendingPathId] << ',' << labNominalQuota[sendingPathId] << ',' << labNominalDemand[sendingPathId] << ','
++          << sendSize << ',' << labQuotaPackets << ',' << static_cast<uint64_t> (labQuotaPackets) * GetSegSize () << ','
++          << labCwnd << ',' << m_max_data << ',' << labInflight << ',' << labCwndRoom << ',' << labFlowRoom << ','
++          << labAvailableWindow << ',' << GetSegSize () << ',' << labRtt << ',' << valid << ','
++          << requestedEnd << ',' << quotaEnd << ',' << labActualBytes << ',' << labActualPackets << ','
++          << m_txBuffer->AppSize () << ',' << (labNominalDemand[sendingPathId] > labCwndRoom) << ','
++          << (labNominalDemand[sendingPathId] > labFlowRoom) << ',' << fixedMode << ',' << labStopReason;
++      m_labDecisionTrace (row.str ());
++    };
+ 
+     while (sendNumber > 0 and availableWindow > 0 and m_txBuffer->AppSize () > 0)
+       {
+@@ -1067,6 +1208,8 @@ QuicSocketBase::SendPendingData (bool withAck)
+         if (m_drainingPeriodEvent.IsRunning ())
+           {
+             NS_LOG_INFO ("Draining period: no packets can be sent");
++            labStopReason = "draining";
++            emitLabPathEnd ();
+             return false;
+           }
+ 
+@@ -1077,6 +1220,7 @@ QuicSocketBase::SendPendingData (bool withAck)
+             if (m_pacingTimer.IsRunning ())
+               {
+                 NS_LOG_INFO ("Skipping Packet due to pacing - for " << m_pacingTimer.GetDelayLeft ());
++                labStopReason = "pacing";
+                 break;
+               }
+             NS_LOG_DEBUG ("Pacing Timer is not running");
+@@ -1086,6 +1230,7 @@ QuicSocketBase::SendPendingData (bool withAck)
+         if (m_socketState == CONNECTING_CLT || m_socketState == CONNECTING_SVR)
+           {
+             NS_LOG_INFO ("CONNECTING_CLT and CONNECTING_SVR state; no data to transmit");
++            labStopReason = "connecting";
+             break;
+           }
+ 
+@@ -1100,6 +1245,7 @@ QuicSocketBase::SendPendingData (bool withAck)
+         if (availableWindow < GetSegSize () and availableData > availableWindow and !m_closeOnEmpty)
+           {
+             NS_LOG_INFO ("Preventing Silly Window Syndrome. Wait to Send.");
++            labStopReason = "silly_window";
+             break;
+           }
+ 
+@@ -1120,7 +1266,14 @@ QuicSocketBase::SendPendingData (bool withAck)
+ 
+         NS_LOG_INFO ("on path " << sendingPathId << " SN " << next);
+         // uint32_t sz =
+-        SendDataPacket (next, s, withAck, sendingPathId);
++        uint32_t labSent = SendDataPacket (next, s, withAck, sendingPathId);
++        if (m_enableLabTracing && labSent > 0 && labSent != static_cast<uint32_t> (-1))
++          {
++            // This return value is the extracted serialized STREAM frames,
++            // measured before ACK appending; NotifySend may refill AppSize.
++            labActualBytes += labSent;
++            ++labActualPackets;
++          }
+ 
+         win = AvailableWindow (sendingPathId);
+         connWin = ConnectionWindow (sendingPathId);
+@@ -1137,6 +1290,7 @@ QuicSocketBase::SendPendingData (bool withAck)
+         availableWindow = AvailableWindow(sendingPathId);
+         sendNumber--;
+       }
++    emitLabPathEnd ();
+   }
+ 
+   if (nPacketsSent > 0)
+diff --git a/src/quic/model/quic-socket-base.h b/src/quic/model/quic-socket-base.h
+index 7da0975..6249792 100755
+--- a/src/quic/model/quic-socket-base.h
++++ b/src/quic/model/quic-socket-base.h
+@@ -55,6 +55,7 @@
+ namespace ns3 {
+ 
+ class QuicL5Protocol;
++class QuicStreamBase;
+ class QuicL4Protocol;
+ class MpQuicPathManager;
+ class MpQuicScheduler;
+@@ -663,6 +664,12 @@ public:
+                                          const Ptr<const QuicSocketBase> socket);
+ 
+ 
++  /** Optional lab CSV event: all byte counts are serialized STREAM-frame bytes. */
++  typedef void (*LabCsvTracedCallback)(std::string row);
++  /** A stream is fully configured and has not yet processed its first frame. */
++  typedef void (*LabStreamCreatedTracedCallback)(Ptr<QuicStreamBase> stream);
++  void NotifyLabStreamCreated (Ptr<QuicStreamBase> stream);
++
+   // Public: ------------ For Multipath Implementation -------------
+ 
+ 
+@@ -928,6 +935,13 @@ protected:
+                  Ptr<const QuicSocketBase> > m_rxTrace; //!< Trace of received packets
+ 
+ 
++  // This older ns-3 TracedCallback has no IsEmpty(); an explicit default-false
++  // attribute gates diagnostics without changing transport state.
++  bool m_enableLabTracing = false;
++  uint64_t m_labDecisionId = 0;
++  TracedCallback<std::string> m_labDecisionTrace;
++  TracedCallback<Ptr<QuicStreamBase> > m_labStreamCreatedTrace;
++
+   // Protected: ------------ For Multipath Implementation -------------
+   
+   bool m_enableMultipath;
+diff --git a/src/quic/model/quic-stream-base.cc b/src/quic/model/quic-stream-base.cc
+index 28d20c3..d42dcd8 100755
+--- a/src/quic/model/quic-stream-base.cc
++++ b/src/quic/model/quic-stream-base.cc
+@@ -36,6 +36,9 @@
+ #include "ns3/packet.h"
+ #include "ns3/uinteger.h"
+ #include "ns3/double.h"
++#include "ns3/boolean.h"
++#include <iomanip>
++#include <sstream>
+ #include "ns3/pointer.h"
+ #include "ns3/trace-source-accessor.h"
+ #include "quic-stream-base.h"
+@@ -70,6 +73,15 @@ QuicStreamBase::GetTypeId (void)
+                    UintegerValue (15000),                 // 10 packets
+                    MakeUintegerAccessor (&QuicStreamBase::m_maxDataInterval),
+                    MakeUintegerChecker<uint32_t> ())
++    .AddAttribute ("EnableLabTracing",
++                   "Enable optional week-3 receive-reordering CSV diagnostics",
++                   BooleanValue (false),
++                   MakeBooleanAccessor (&QuicStreamBase::m_enableLabTracing),
++                   MakeBooleanChecker ())
++    .AddTraceSource ("LabReorder",
++                     "Post-frame out-of-order payload waiting bytes and nonzero-buffer episode duration (CSV body)",
++                     MakeTraceSourceAccessor (&QuicStreamBase::m_labReorderTrace),
++                     "ns3::QuicStreamBase::LabCsvTracedCallback")
+     .AddTraceSource ("RxBufferTrace",
+                      "The QUIC connection's congestion window",
+                      MakeTraceSourceAccessor (&QuicStreamBase::m_rxbufTrace),
+@@ -307,6 +319,45 @@ QuicStreamBase::StreamWindow () const
+   return (inFlight > m_maxStreamData) ? 0 : m_maxStreamData - inFlight;
+ }
+ 
++void
++QuicStreamBase::TraceLabReorder (const QuicSubheader& receivedSub,
++                                uint64_t expectedBefore,
++                                const std::string& frameStatus)
++{
++  if (!m_enableLabTracing) return;
++  const Time now = Simulator::Now ();
++  const uint64_t stored = m_rxBuffer->GetStoredPayloadBytes ();
++  const uint64_t waiting = m_rxBuffer->GetWaitingPayloadBytes (m_recvSize);
++  std::string state = "idle";
++  double elapsed = 0.0;
++  if (waiting > 0)
++    {
++      if (!m_labReorderOpen)
++        {
++          m_labReorderOpen = true;
++          m_labReorderStart = now;
++          ++m_labReorderEpisode;
++          state = "start";
++        }
++      else state = "open";
++      elapsed = (now - m_labReorderStart).GetSeconds ();
++    }
++  else if (m_labReorderOpen)
++    {
++      state = "end";
++      elapsed = (now - m_labReorderStart).GetSeconds ();
++      m_labReorderOpen = false;
++    }
++  // Each row is after the current frame and any deliverable buffer release.
++  // A final start/open without end is an explicitly censored episode in analysis.
++  std::ostringstream row;
++  row << std::setprecision (17)
++      << now.GetSeconds () << ',' << (m_node ? m_node->GetId () : 0) << ',' << m_connectionId << ',' << m_streamId << ','
++      << expectedBefore << ',' << receivedSub.GetOffset () << ',' << receivedSub.GetLength () << ',' << m_recvSize << ','
++      << stored << ',' << waiting << ',' << m_labReorderEpisode << ',' << state << ',' << elapsed << ',' << frameStatus;
++  m_labReorderTrace (row.str ());
++}
++
+ int
+ QuicStreamBase::Recv (Ptr<Packet> frame, const QuicSubheader& receivedSub, Address &address)
+ {
+@@ -314,6 +365,7 @@ QuicStreamBase::Recv (Ptr<Packet> frame, const QuicSubheader& receivedSub, Addre
+ 
+   QuicSubheader sub = receivedSub;
+   uint8_t frameType = sub.GetFrameType ();
++  const uint64_t labExpectedBefore = m_enableLabTracing ? m_recvSize : 0;
+ 
+   switch (frameType)
+     {
+@@ -453,6 +505,7 @@ QuicStreamBase::Recv (Ptr<Packet> frame, const QuicSubheader& receivedSub, Addre
+           uint64_t delivered = std::min (sub.GetLength (), m_recvSize - sub.GetOffset ());
+           if (delivered == sub.GetLength () && !m_fin)
+             {
++              TraceLabReorder (receivedSub, labExpectedBefore, "duplicate");
+               return 0;
+             }
+           frame->RemoveAtStart (delivered);
+@@ -534,6 +587,7 @@ QuicStreamBase::Recv (Ptr<Packet> frame, const QuicSubheader& receivedSub, Addre
+             }
+         }
+ 
++      TraceLabReorder (receivedSub, labExpectedBefore, "processed");
+       break;
+ 
+     default:
+diff --git a/src/quic/model/quic-stream-base.h b/src/quic/model/quic-stream-base.h
+index 073022b..79d672c 100755
+--- a/src/quic/model/quic-stream-base.h
++++ b/src/quic/model/quic-stream-base.h
+@@ -197,6 +197,8 @@ public:
+   uint64_t GetStreamId (void);
+   uint32_t GetStreamTxAvailable (void) const;
+   void UpdateRxBuf (uint32_t oldValue, uint32_t newValue);
++  /** Optional lab CSV event: offsets and buffer occupancy are application bytes. */
++  typedef void (*LabCsvTracedCallback)(std::string row);
+ 
+ protected:
+   QuicStreamTypes_t m_streamType;                    //!< The stream type
+@@ -222,6 +224,13 @@ protected:
+   EventId m_streamSendPendingDataEvent;              //!< Micro-delay event to send pending data
+ 
+   TracedCallback<uint32_t, uint32_t> m_rxbufTrace;
++  bool m_enableLabTracing = false;
++  bool m_labReorderOpen = false;
++  uint64_t m_labReorderEpisode = 0;
++  Time m_labReorderStart;
++  TracedCallback<std::string> m_labReorderTrace;
++  void TraceLabReorder (const QuicSubheader& receivedSub, uint64_t expectedBefore,
++                        const std::string& frameStatus);
+ 
+ };
+ 
+diff --git a/src/quic/model/quic-stream-rx-buffer.cc b/src/quic/model/quic-stream-rx-buffer.cc
+index 886f420..5f6487f 100755
+--- a/src/quic/model/quic-stream-rx-buffer.cc
++++ b/src/quic/model/quic-stream-rx-buffer.cc
+@@ -22,6 +22,8 @@
+  *
+  */
+ 
++#include <algorithm>
++#include <utility>
+ #include "ns3/packet.h"
+ #include "ns3/fatal-error.h"
+ #include "ns3/log.h"
+@@ -244,6 +246,39 @@ QuicStreamRxBuffer::GetDeliverable (uint64_t currRecvOffset)
+   return std::make_pair (offsetToExtract, lengthToExtract);
+ }
+ 
++uint64_t
++QuicStreamRxBuffer::GetWaitingPayloadBytes (uint64_t expectedOffset) const
++{
++  std::vector<std::pair<uint64_t, uint64_t> > intervals;
++  for (const auto *item : m_streamRecvList)
++    {
++      const uint64_t end = item->m_offset + item->m_packet->GetSize ();
++      const uint64_t start = std::max (expectedOffset, item->m_offset);
++      if (end > start) intervals.push_back (std::make_pair (start, end));
++    }
++  std::sort (intervals.begin (), intervals.end ());
++  uint64_t bytes = 0;
++  uint64_t end = expectedOffset;
++  for (const auto& interval : intervals)
++    {
++      const uint64_t start = std::max (end, interval.first);
++      if (interval.second > start) bytes += interval.second - start;
++      end = std::max (end, interval.second);
++    }
++  return bytes;
++}
++
++uint64_t
++QuicStreamRxBuffer::GetStoredPayloadBytes () const
++{
++  uint64_t bytes = 0;
++  for (const auto *item : m_streamRecvList)
++    {
++      bytes += item->m_packet->GetSize ();
++    }
++  return bytes;
++}
++
+ uint32_t
+ QuicStreamRxBuffer::Size (void) const
+ {
+diff --git a/src/quic/model/quic-stream-rx-buffer.h b/src/quic/model/quic-stream-rx-buffer.h
+index 890d323..f88ed6e 100755
+--- a/src/quic/model/quic-stream-rx-buffer.h
++++ b/src/quic/model/quic-stream-rx-buffer.h
+@@ -165,6 +165,20 @@ public:
+    */
+   uint32_t Size (void) const;
+ 
++  /**
++   * Pure diagnostic count of all payload physically stored in the reorder list.
++   * Includes payload in FIN items that the legacy Size() counter omits.
++   * Does not change flow-control accounting or delivery behavior.
++   */
++  uint64_t GetStoredPayloadBytes () const;
++
++  /**
++   * Pure diagnostic count of unique stored payload beyond the delivered prefix.
++   * Clips stale bytes and unions duplicate/overlapping intervals without changing
++   * the reorder list, legacy Size() counter, or transport delivery behavior.
++   */
++  uint64_t GetWaitingPayloadBytes (uint64_t expectedOffset) const;
++
+ private:
+   // TODO consider replacing std::vector with a ordered data structure
+   typedef std::vector<QuicStreamRxItem*> QuicStreamRxPacketList;  //!< container for data stored in the buffer
+diff --git a/src/quic/wscript b/src/quic/wscript
+index 63608d1..278e644 100644
+--- a/src/quic/wscript
++++ b/src/quic/wscript
+@@ -40,6 +40,7 @@ def build(bld):
+         'test/quic-rx-buffer-test.cc',
+         'test/quic-tx-buffer-test.cc',
+         'test/quic-header-test.cc',
++        'test/mp-quic-scheduler-test.cc',
+         ]
+ 
+     headers = bld(features='ns3header')

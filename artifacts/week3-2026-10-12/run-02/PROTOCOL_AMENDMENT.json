@@ -1,0 +1,6 @@
+{
+  "purpose": "Correct stale run-02 fixed_mode prose without overwriting the original protocol",
+  "actual": "ID7 opt-in absolute quota snapshot; bootstrap when any total cwnd is below raw demand; otherwise both quotas must fit available windows; no recovery bypass in run-02",
+  "evidence": "run-02/source/src/quic/model/quic-socket-base.cc and source hashes",
+  "created_at": "2026-10-12T10:50:05.825685+09:00"
+}

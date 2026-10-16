@@ -1,0 +1,27 @@
+{
+  "run_id": "056-baseline_extra-degrade-s6-seed2",
+  "started_at": "2026-10-12T10:25:48.539938+09:00",
+  "command": [
+    "/home/ubuntu/projects/keti/mpquic-sched-lab/mpquic/build/scratch/mpquic-sched-lab",
+    "--SchedulerType=6",
+    "--Seed=2",
+    "--Size=5242880",
+    "--CcType=1",
+    "--LossRate=0",
+    "--CompletionGraceMs=250",
+    "--SimEnd=60",
+    "--Rate0a=5",
+    "--Rate0b=5.5",
+    "--Delay0a=50",
+    "--Delay0b=55",
+    "--Rate1a=10",
+    "--Rate1b=11",
+    "--Delay1a=10",
+    "--Delay1b=11",
+    "--EventTime=1.5",
+    "--Rate1After=1.0",
+    "--Delay1After=120"
+  ],
+  "returncode": 0,
+  "wall_s": 0.34035809499999914
+}

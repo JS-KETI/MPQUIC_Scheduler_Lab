@@ -1,0 +1,22 @@
+{
+  "week": 3,
+  "source_markdown_sha256": "181cdefc52b0276b9928ee6b34b99e07656f63b0ffdd697b59cf1c90925faf06",
+  "html_sha256": "aa9bb01e4a82e6f503ebfd9f506a6cf376efb35604f6772d7d0e31f615600242",
+  "images": [
+    {
+      "path": "figures/fixed_ratio_validation.png",
+      "bytes": 77892,
+      "sha256": "13f9ee5acf073f578b9f85b6fec872bd4f00d603101043e45f0b891b6ebd4525"
+    },
+    {
+      "path": "figures/arrival_and_reordering.png",
+      "bytes": 130989,
+      "sha256": "6d2ea3a98637992c30c1f51f03bdd4df62f61c6d48c3a02fee730695396f52eb"
+    }
+  ],
+  "heading_count": 9,
+  "tables": 3,
+  "clickable_links": 7,
+  "source_unchanged": true,
+  "all_report_images_embedded": true
+}

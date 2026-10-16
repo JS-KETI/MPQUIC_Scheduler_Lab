@@ -1,0 +1,25 @@
+{
+  "command": [
+    "/home/ubuntu/projects/keti/mpquic-sched-lab/mpquic/build/scratch/mpquic-sched-lab",
+    "--SchedulerType=7",
+    "--Seed=1",
+    "--Size=5242880",
+    "--CcType=1",
+    "--LossRate=0",
+    "--CompletionGraceMs=250",
+    "--SimEnd=60",
+    "--Observe=1",
+    "--Rate0a=5",
+    "--Rate0b=5.5",
+    "--Delay0a=50",
+    "--Delay0b=55",
+    "--Rate1a=10",
+    "--Rate1b=11",
+    "--Delay1a=10",
+    "--Delay1b=11",
+    "--FixedRatio=1",
+    "--Path0Share=0.3",
+    "--LabLogPrefix=/home/ubuntu/projects/keti/mpquic-sched-lab/mpquic/artifacts/week3-2026-10-12/run-03/trace-equivalence/05-dominating-0.3-lab1/trace"
+  ],
+  "returncode": 0
+}

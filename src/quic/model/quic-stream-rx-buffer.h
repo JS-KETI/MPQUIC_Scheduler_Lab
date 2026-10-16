@@ -165,6 +165,20 @@ public:
    */
   uint32_t Size (void) const;
 
+  /**
+   * Pure diagnostic count of all payload physically stored in the reorder list.
+   * Includes payload in FIN items that the legacy Size() counter omits.
+   * Does not change flow-control accounting or delivery behavior.
+   */
+  uint64_t GetStoredPayloadBytes () const;
+
+  /**
+   * Pure diagnostic count of unique stored payload beyond the delivered prefix.
+   * Clips stale bytes and unions duplicate/overlapping intervals without changing
+   * the reorder list, legacy Size() counter, or transport delivery behavior.
+   */
+  uint64_t GetWaitingPayloadBytes (uint64_t expectedOffset) const;
+
 private:
   // TODO consider replacing std::vector with a ordered data structure
   typedef std::vector<QuicStreamRxItem*> QuicStreamRxPacketList;  //!< container for data stored in the buffer

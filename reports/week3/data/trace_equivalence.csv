@@ -1,0 +1,8 @@
+scenario,share0,seed,obs_rows_disabled,obs_rows_enabled,obs_exact_match,result_exact_match,done,rx_app
+dominating,,1,101444,101444,1,1,1,5242880
+competing,,1,101238,101238,1,1,1,5242880
+degrade,,1,102966,102966,1,1,1,5242880
+dominating,0.1,1,102712,102712,1,1,1,5242880
+dominating,0.3,1,101609,101609,1,1,1,5242880
+dominating,0.5,1,101478,101478,1,1,1,5242880
+degrade,0.5,1,103345,103345,1,1,1,5242880

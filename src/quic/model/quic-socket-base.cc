@@ -48,9 +48,12 @@
 #include "ns3/nstime.h"
 #include "ns3/uinteger.h"
 #include "ns3/double.h"
+#include "ns3/boolean.h"
+#include <iomanip>
 #include "ns3/pointer.h"
 #include "ns3/trace-source-accessor.h"
 #include "quic-socket-base.h"
+#include "quic-stream-base.h"
 #include "quic-congestion-ops.h"
 #include "ns3/tcp-congestion-ops.h"
 #include "quic-header.h"
@@ -325,6 +328,19 @@ QuicSocketBase::GetTypeId (void)
                      MakeTraceSourceAccessor (&QuicSocketBase::m_rttTrace1),
                      "ns3::Time::TracedValueCallback")
      
+    .AddAttribute ("EnableLabTracing",
+                   "Enable optional week-3 CSV diagnostics; connect lab traces before sending",
+                   BooleanValue (false),
+                   MakeBooleanAccessor (&QuicSocketBase::m_enableLabTracing),
+                   MakeBooleanChecker ())
+    .AddTraceSource ("LabDecision",
+                     "Per-path scheduling application and actual serialized-frame transmission (CSV body)",
+                     MakeTraceSourceAccessor (&QuicSocketBase::m_labDecisionTrace),
+                     "ns3::QuicSocketBase::LabCsvTracedCallback")
+    .AddTraceSource ("LabStreamCreated",
+                     "Fully configured stream before first frame processing; optional lab tracing only",
+                     MakeTraceSourceAccessor (&QuicSocketBase::m_labStreamCreatedTrace),
+                     "ns3::QuicSocketBase::LabStreamCreatedTracedCallback")
     .AddTraceSource ("Tx",
                      "Send QUIC packet to UDP protocol",
                      MakeTraceSourceAccessor (&QuicSocketBase::m_txTrace),
@@ -600,6 +616,9 @@ QuicSocketBase::QuicSocketBase (const QuicSocketBase& sock)   // Copy constructo
     m_pacingTimer (Timer::REMOVE_ON_DESTROY),
     m_txTrace (sock.m_txTrace),
     m_rxTrace (sock.m_rxTrace),
+    m_enableLabTracing (sock.m_enableLabTracing),
+    m_labDecisionTrace (sock.m_labDecisionTrace),
+    m_labStreamCreatedTrace (sock.m_labStreamCreatedTrace),
     m_enableMultipath(sock.m_enableMultipath),
     m_pathManager(sock.m_pathManager),
     m_scheduler (sock.m_scheduler),
@@ -980,6 +999,15 @@ QuicSocketBase::AppendingTx (Ptr<Packet> frame)
 }
 
 
+void
+QuicSocketBase::NotifyLabStreamCreated (Ptr<QuicStreamBase> stream)
+{
+  if (m_enableLabTracing)
+    {
+      m_labStreamCreatedTrace (stream);
+    }
+}
+
 uint32_t
 QuicSocketBase::SendPendingData (bool withAck)
 {
@@ -997,6 +1025,7 @@ QuicSocketBase::SendPendingData (bool withAck)
     }
 
   uint32_t nPacketsSent = 0;
+  const uint32_t labEntryBacklog = m_enableLabTracing ? m_txBuffer->AppSize () : 0;
 
   // prioritize stream 0
   while (m_txBuffer->GetNumFrameStream0InBuffer () > 0)
@@ -1045,12 +1074,89 @@ QuicSocketBase::SendPendingData (bool withAck)
   }
 
 
+  const uint32_t labDecisionBacklog = m_enableLabTracing ? m_txBuffer->AppSize () : 0;
+  const uint64_t labDecisionId = m_enableLabTracing ? ++m_labDecisionId : 0;
+  const double labDecisionTime = m_enableLabTracing ? Simulator::Now ().GetSeconds () : 0.0;
   std::vector<double> sendP = m_scheduler->GetNextPathIdToUse();
+  // The week-3 fixed-ratio dummy emits a complete 3/7, 1/9 or 5/5
+  // packet batch only when BOTH paths can carry their assigned bytes. Filling
+  // partial windows on every ACK otherwise leaves almost no unconstrained
+  // batch to validate. This guard changes only the explicit ID 7 diagnostic,
+  // and never adapts the requested share or uses performance feedback.
+  const bool fixedDiagnostic = m_scheduler->IsFixedRatioDiagnostic ();
+  std::vector<uint32_t> fixedDemand;
+  bool fixedBatchWait = false;
+  bool fixedBootstrap = false;
+  bool fixedRecovery = false;
+  if (fixedDiagnostic)
+    {
+      uint32_t remaining = m_txBuffer->AppSize ();
+      for (uint32_t i = 0; i < sendP.size (); ++i)
+        {
+          const uint32_t bytes = static_cast<uint32_t> (remaining * sendP[i]);
+          uint32_t packets = bytes / GetSegSize ();
+          if (packets == 0 && bytes > 0) packets = 1;
+          const uint32_t demand = std::min<uint64_t> (remaining,
+            static_cast<uint64_t> (packets) * GetSegSize ());
+          fixedDemand.push_back (demand);
+          // The initial 2-MSS cwnd cannot hold a 10-packet diagnostic batch.
+          // Permit partial probes only while a TOTAL cwnd is below its quota;
+          // a sufficient but occupied cwnd waits instead of filling again.
+          fixedBootstrap = fixedBootstrap ||
+            demand > m_subflows[i]->m_tcb->m_cWnd.Get ();
+          fixedBatchWait = fixedBatchWait || demand > AvailableWindow (i);
+          // A loss-driven cwnd reduction can leave old outstanding bytes
+          // above the new cwnd. Do not stall a healthy path behind that path;
+          // permit the original capped sends while this constraint persists.
+          fixedRecovery = fixedRecovery || (demand > 0 &&
+            m_txBuffer->BytesInFlight (i) > m_subflows[i]->m_tcb->m_cWnd.Get ());
+          remaining -= demand;
+        }
+    }
+
+  if (fixedBootstrap || fixedRecovery) fixedBatchWait = false;
+  const char* fixedMode = !fixedDiagnostic ? "off" :
+    (fixedRecovery ? "recovery" : (fixedBootstrap ? "bootstrap" : (fixedBatchWait ? "wait" : "batch")));
+
+  // Reconstruct the nominal sequential byte-to-ratio plan before NotifySend
+  // can refill the buffer.  This is separate from the actual application below.
+  std::vector<uint32_t> labNominalRequested;
+  std::vector<uint64_t> labNominalQuota;
+  std::vector<uint32_t> labNominalDemand;
+  if (m_enableLabTracing)
+    {
+      uint32_t remaining = labDecisionBacklog;
+      for (double ratio : sendP)
+        {
+          uint32_t bytes = static_cast<uint32_t> (remaining * ratio);
+          uint32_t packets = bytes / GetSegSize ();
+          if (packets == 0 && bytes > 0) packets = 1;
+          uint64_t quota = static_cast<uint64_t> (packets) * GetSegSize ();
+          labNominalRequested.push_back (bytes);
+          labNominalQuota.push_back (quota);
+          uint32_t demand = std::min<uint64_t> (remaining, quota);
+          labNominalDemand.push_back (demand);
+          remaining -= demand;
+        }
+    }
 
   for (uint8_t sendingPathId = 0; sendingPathId < sendP.size(); sendingPathId++)
   {
     uint32_t availableWindow = AvailableWindow (sendingPathId);
-    uint32_t sendSize = m_txBuffer->AppSize () * sendP[sendingPathId];
+    uint32_t sendSize = fixedDiagnostic ? fixedDemand[sendingPathId]
+                                        : m_txBuffer->AppSize () * sendP[sendingPathId];
+    const uint32_t labApplyBacklog = m_enableLabTracing ? m_txBuffer->AppSize () : 0;
+    // The socket BytesInFlight() accessor writes tcb; diagnostics use the pure
+    // TX-buffer calculation so enabling observations cannot mutate tcb.
+    const uint32_t labInflight = m_enableLabTracing ? m_txBuffer->BytesInFlight (sendingPathId) : 0;
+    const uint32_t labCwnd = m_enableLabTracing ? m_subflows[sendingPathId]->m_tcb->m_cWnd.Get () : 0;
+    const uint32_t labCwndRoom = labCwnd > labInflight ? labCwnd - labInflight : 0;
+    const uint32_t labFlowRoom = m_max_data > labInflight ? m_max_data - labInflight : 0;
+    const double labRtt = m_enableLabTracing ? m_subflows[sendingPathId]->m_tcb->m_lastRtt.Get ().GetSeconds () : 0.0;
+    const uint32_t labAvailableWindow = availableWindow;
+    uint64_t labActualBytes = 0;
+    uint32_t labActualPackets = 0;
+    std::string labStopReason;
     uint32_t sendNumber = sendSize/GetSegSize();
     if (sendNumber == 0 && sendSize > 0)
       {
@@ -1059,7 +1165,42 @@ QuicSocketBase::SendPendingData (bool withAck)
     if (sendSize > availableWindow)
     {
       sendNumber = availableWindow/GetSegSize();
-    } 
+    }
+
+    if (fixedBatchWait)
+      {
+        sendNumber = 0;
+        labStopReason = "fixed_batch_wait";
+      }
+    const uint32_t labQuotaPackets = sendNumber;
+    // A per-path end row includes zero-share / zero-window paths.  Predicted
+    // arrival is a cwnd/RTT service-rate estimate, relative to this decision:
+    // RTT/2 + bytes/(cwnd/RTT).  It is invalid (-1) without a positive sample.
+    auto emitLabPathEnd = [&] () {
+      if (!m_enableLabTracing) return;
+      bool valid = labRtt > 0.0 && labCwnd > 0;
+      double requestedEnd = valid ? labRtt / 2.0 + sendSize * labRtt / labCwnd : -1.0;
+      double quotaEnd = valid ? labRtt / 2.0 + static_cast<double> (labQuotaPackets) * GetSegSize () * labRtt / labCwnd : -1.0;
+      if (labStopReason.empty ())
+        {
+          if (sendNumber == 0) labStopReason = labQuotaPackets > 0 ? "quota" : (sendSize == 0 ? "zero_request" : "sub_mss_window");
+          else if (m_txBuffer->AppSize () == 0) labStopReason = "empty";
+          else labStopReason = "window";
+        }
+      std::ostringstream row;
+      row << std::setprecision (17)
+          << labDecisionId << ',' << labDecisionTime << ',' << (m_node ? m_node->GetId () : 0) << ',' << m_connectionId << ','
+          << static_cast<uint32_t> (sendingPathId) << ',' << sendP[sendingPathId] << ','
+          << labEntryBacklog << ',' << labDecisionBacklog << ',' << labApplyBacklog << ','
+          << labNominalRequested[sendingPathId] << ',' << labNominalQuota[sendingPathId] << ',' << labNominalDemand[sendingPathId] << ','
+          << sendSize << ',' << labQuotaPackets << ',' << static_cast<uint64_t> (labQuotaPackets) * GetSegSize () << ','
+          << labCwnd << ',' << m_max_data << ',' << labInflight << ',' << labCwndRoom << ',' << labFlowRoom << ','
+          << labAvailableWindow << ',' << GetSegSize () << ',' << labRtt << ',' << valid << ','
+          << requestedEnd << ',' << quotaEnd << ',' << labActualBytes << ',' << labActualPackets << ','
+          << m_txBuffer->AppSize () << ',' << (labNominalDemand[sendingPathId] > labCwndRoom) << ','
+          << (labNominalDemand[sendingPathId] > labFlowRoom) << ',' << fixedMode << ',' << labStopReason;
+      m_labDecisionTrace (row.str ());
+    };
 
     while (sendNumber > 0 and availableWindow > 0 and m_txBuffer->AppSize () > 0)
       {
@@ -1067,6 +1208,8 @@ QuicSocketBase::SendPendingData (bool withAck)
         if (m_drainingPeriodEvent.IsRunning ())
           {
             NS_LOG_INFO ("Draining period: no packets can be sent");
+            labStopReason = "draining";
+            emitLabPathEnd ();
             return false;
           }
 
@@ -1077,6 +1220,7 @@ QuicSocketBase::SendPendingData (bool withAck)
             if (m_pacingTimer.IsRunning ())
               {
                 NS_LOG_INFO ("Skipping Packet due to pacing - for " << m_pacingTimer.GetDelayLeft ());
+                labStopReason = "pacing";
                 break;
               }
             NS_LOG_DEBUG ("Pacing Timer is not running");
@@ -1086,6 +1230,7 @@ QuicSocketBase::SendPendingData (bool withAck)
         if (m_socketState == CONNECTING_CLT || m_socketState == CONNECTING_SVR)
           {
             NS_LOG_INFO ("CONNECTING_CLT and CONNECTING_SVR state; no data to transmit");
+            labStopReason = "connecting";
             break;
           }
 
@@ -1100,6 +1245,7 @@ QuicSocketBase::SendPendingData (bool withAck)
         if (availableWindow < GetSegSize () and availableData > availableWindow and !m_closeOnEmpty)
           {
             NS_LOG_INFO ("Preventing Silly Window Syndrome. Wait to Send.");
+            labStopReason = "silly_window";
             break;
           }
 
@@ -1120,7 +1266,14 @@ QuicSocketBase::SendPendingData (bool withAck)
 
         NS_LOG_INFO ("on path " << sendingPathId << " SN " << next);
         // uint32_t sz =
-        SendDataPacket (next, s, withAck, sendingPathId);
+        uint32_t labSent = SendDataPacket (next, s, withAck, sendingPathId);
+        if (m_enableLabTracing && labSent > 0 && labSent != static_cast<uint32_t> (-1))
+          {
+            // This return value is the extracted serialized STREAM frames,
+            // measured before ACK appending; NotifySend may refill AppSize.
+            labActualBytes += labSent;
+            ++labActualPackets;
+          }
 
         win = AvailableWindow (sendingPathId);
         connWin = ConnectionWindow (sendingPathId);
@@ -1137,6 +1290,7 @@ QuicSocketBase::SendPendingData (bool withAck)
         availableWindow = AvailableWindow(sendingPathId);
         sendNumber--;
       }
+    emitLabPathEnd ();
   }
 
   if (nPacketsSent > 0)

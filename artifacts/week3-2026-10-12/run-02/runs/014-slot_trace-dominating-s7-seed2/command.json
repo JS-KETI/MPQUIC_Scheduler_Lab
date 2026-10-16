@@ -1,0 +1,25 @@
+{
+  "run_id": "014-slot_trace-dominating-s7-seed2",
+  "started_at": "2026-10-12T10:25:35.245281+09:00",
+  "command": [
+    "/home/ubuntu/projects/keti/mpquic-sched-lab/mpquic/build/scratch/mpquic-sched-lab",
+    "--SchedulerType=7",
+    "--Seed=2",
+    "--Size=5242880",
+    "--CcType=1",
+    "--LossRate=0",
+    "--CompletionGraceMs=250",
+    "--SimEnd=60",
+    "--Rate0a=5",
+    "--Rate0b=5.5",
+    "--Delay0a=50",
+    "--Delay0b=55",
+    "--Rate1a=10",
+    "--Rate1b=11",
+    "--Delay1a=10",
+    "--Delay1b=11",
+    "--LabLogPrefix=/home/ubuntu/projects/keti/mpquic-sched-lab/mpquic/artifacts/week3-2026-10-12/run-02/runs/014-slot_trace-dominating-s7-seed2/trace"
+  ],
+  "returncode": 0,
+  "wall_s": 0.463879291000012
+}

@@ -95,6 +95,31 @@ MpQuicScheduler::GetTypeId (void)
                    DoubleValue (0.125),
                    MakeDoubleAccessor (&MpQuicScheduler::m_eatAlpha),
                    MakeDoubleChecker<double> (0.0, 1.0))
+    .AddAttribute ("NewKappa",
+                   "Reserved week-5 feedback gain; unused by the week-3 slot",
+                   DoubleValue (0.0),
+                   MakeDoubleAccessor (&MpQuicScheduler::m_newKappa),
+                   MakeDoubleChecker<double> (0.0))
+    .AddAttribute ("NewBeta",
+                   "Reserved week-5 leakage coefficient; unused by the week-3 slot",
+                   DoubleValue (0.0),
+                   MakeDoubleAccessor (&MpQuicScheduler::m_newBeta),
+                   MakeDoubleChecker<double> (0.0, 1.0))
+    .AddAttribute ("NewSmax",
+                   "Reserved week-5 integral bound; unused by the week-3 slot",
+                   DoubleValue (0.0),
+                   MakeDoubleAccessor (&MpQuicScheduler::m_newSmax),
+                   MakeDoubleChecker<double> (0.0))
+    .AddAttribute ("FixedRatio",
+                   "ID 7 only: fixed-share two-path diagnostic with a ten-packet budget",
+                   BooleanValue (false),
+                   MakeBooleanAccessor (&MpQuicScheduler::m_fixedRatio),
+                   MakeBooleanChecker ())
+    .AddAttribute ("Path0Share",
+                   "ID 7 fixed diagnostic: intended path-0 share before MSS quantization",
+                   DoubleValue (0.3),
+                   MakeDoubleAccessor (&MpQuicScheduler::m_path0Share),
+                   MakeDoubleChecker<double> (0.0, 1.0))
      
   ;
   return tid;
@@ -104,6 +129,11 @@ MpQuicScheduler::MpQuicScheduler ()
   : Object (),
   m_socket(0),
   m_lastUsedPathId(0),
+  m_newKappa(0.0),
+  m_newBeta(0.0),
+  m_newSmax(0.0),
+  m_fixedRatio(false),
+  m_path0Share(0.3),
   m_select(0)
 {
   NS_LOG_FUNCTION_NOARGS ();
@@ -158,6 +188,10 @@ MpQuicScheduler::GetNextPathIdToUse()
 
     case MIN_RTT_MULTI:
       tosend = MinRttMulti();
+      break;
+
+    case NEW_SCHED:
+      tosend = NewSched();
       break;
 
     default:
@@ -632,6 +666,105 @@ MpQuicScheduler::MinRttMulti ()
     {
       tosend[0] = 1.0;
     }
+  return tosend;
+}
+
+std::vector<double>
+MpQuicScheduler::BytesToRatio (const std::vector<uint32_t>& desired,
+                               uint32_t backlog, uint32_t mss)
+{
+  std::vector<double> ratios (desired.size (), 0.0);
+  if (mss == 0 || backlog == 0)
+    {
+      return ratios;
+    }
+
+  uint64_t total = 0;
+  for (uint32_t bytes : desired)
+    {
+      total += (bytes / mss) * static_cast<uint64_t> (mss);
+      if (total > backlog)
+        {
+          // Reject the whole request, rather than silently favoring early paths.
+          return ratios;
+        }
+    }
+
+  uint32_t remaining = backlog;
+  for (size_t i = 0; i < desired.size (); ++i)
+    {
+      const uint32_t bytes = (desired[i] / mss) * mss;
+      if (bytes == 0)
+        {
+          continue;
+        }
+      double ratio = static_cast<double> (bytes) / remaining;
+      if (bytes < remaining)
+        {
+          // The sender casts remaining*ratio to uint32_t, then divides by MSS.
+          // One upward ULP prevents an exact MSS request becoming MSS-1.
+          ratio = std::nextafter (ratio, 1.0);
+        }
+      ratios[i] = ratio;
+      remaining -= bytes;
+    }
+  return ratios;
+}
+
+bool
+MpQuicScheduler::IsFixedRatioDiagnostic () const
+{
+  return m_schedulerType == NEW_SCHED && m_fixedRatio && m_subflows.size () == 2;
+}
+
+std::vector<double>
+MpQuicScheduler::NewSched ()
+{
+  if (!m_fixedRatio)
+    {
+      // Stage 1 must behave exactly like the existing ID 6 baseline.
+      return MinRttMulti ();
+    }
+  if (m_subflows.size () != 2)
+    {
+      NS_LOG_INFO ("NEW_SCHED mode=fallback-min-rtt-multi active_paths="
+                   << m_subflows.size ());
+      return MinRttMulti ();
+    }
+
+  const uint32_t backlog = m_socket->GetBytesInBuffer ();
+  const uint32_t mss = m_socket->GetSegSize ();
+  std::vector<double> tosend (2, 0.0);
+  if (backlog == 0 || mss == 0)
+    {
+      NS_LOG_INFO ("NEW_SCHED mode=empty-or-invalid backlog=" << backlog << " mss=" << mss);
+      return tosend;
+    }
+  if (backlog < mss)
+    {
+      // Keep the existing sender's sub-MSS tail drain reachable.
+      const uint32_t path = m_path0Share >= 0.5 ? 0 : 1;
+      tosend[path] = 1.0;
+      NS_LOG_INFO ("NEW_SCHED mode=tail path0_share=" << m_path0Share
+                   << " backlog=" << backlog << " selected_path=" << path);
+      return tosend;
+    }
+
+  // A ten-packet budget gives exact 3/7, 1/9 and 5/5 packet requests.
+  // It is a slot diagnostic only: no measured-share or arrival feedback.
+  const uint32_t packets = std::min<uint32_t> (10, backlog / mss);
+  uint32_t path0Packets = static_cast<uint32_t> (std::round (packets * m_path0Share));
+  if (packets >= 2 && m_path0Share > 0.0 && m_path0Share < 1.0)
+    {
+      // Do not floor a positive minority share to zero in a short burst.
+      path0Packets = std::max<uint32_t> (1, std::min (packets - 1, path0Packets));
+    }
+  const std::vector<uint32_t> desired = {path0Packets * mss, (packets - path0Packets) * mss};
+  tosend = BytesToRatio (desired, backlog, mss);
+  NS_LOG_INFO ("NEW_SCHED mode=fixed-two-path path0_share=" << m_path0Share
+               << " backlog=" << backlog << " mss=" << mss
+               << " desired0=" << desired[0] << " desired1=" << desired[1]
+               << " ratio0=" << tosend[0] << " ratio1=" << tosend[1]);
   return tosend;
 }
 

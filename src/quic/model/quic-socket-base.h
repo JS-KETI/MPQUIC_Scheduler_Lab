@@ -55,6 +55,7 @@
 namespace ns3 {
 
 class QuicL5Protocol;
+class QuicStreamBase;
 class QuicL4Protocol;
 class MpQuicPathManager;
 class MpQuicScheduler;
@@ -663,6 +664,12 @@ public:
                                          const Ptr<const QuicSocketBase> socket);
 
 
+  /** Optional lab CSV event: all byte counts are serialized STREAM-frame bytes. */
+  typedef void (*LabCsvTracedCallback)(std::string row);
+  /** A stream is fully configured and has not yet processed its first frame. */
+  typedef void (*LabStreamCreatedTracedCallback)(Ptr<QuicStreamBase> stream);
+  void NotifyLabStreamCreated (Ptr<QuicStreamBase> stream);
+
   // Public: ------------ For Multipath Implementation -------------
 
 
@@ -927,6 +934,13 @@ protected:
   TracedCallback<Ptr<const Packet>, const QuicHeader&,
                  Ptr<const QuicSocketBase> > m_rxTrace; //!< Trace of received packets
 
+
+  // This older ns-3 TracedCallback has no IsEmpty(); an explicit default-false
+  // attribute gates diagnostics without changing transport state.
+  bool m_enableLabTracing = false;
+  uint64_t m_labDecisionId = 0;
+  TracedCallback<std::string> m_labDecisionTrace;
+  TracedCallback<Ptr<QuicStreamBase> > m_labStreamCreatedTrace;
 
   // Protected: ------------ For Multipath Implementation -------------
   
