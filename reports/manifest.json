@@ -15,8 +15,8 @@
     },
     {
       "path": "week1/1주차 진행상황.html",
-      "bytes": 525911,
-      "sha256": "3e0e29c5c2ec0b343b93c46075fe4fd0ea51a50d39cc5dfb080505ae162c930d"
+      "bytes": 526340,
+      "sha256": "c7fba0cb8fa77d7696a9736cb1a556f07756999e18251f5b53c391282ecdab5b"
     },
     {
       "path": "week1/1주차 진행상황.md",
@@ -75,8 +75,8 @@
     },
     {
       "path": "week1/records/render.json",
-      "bytes": 808,
-      "sha256": "3e3bf58cc2f6e82d7c095d1f45ae76aa70919c5d7e54d4c6193dab258fdcef79"
+      "bytes": 832,
+      "sha256": "3d3f3e759326c8e5d5d6dd90c801bb958307248b92cd0a438aa545403eb57bcf"
     },
     {
       "path": "week2/2주차 진행상황.html",
@@ -365,8 +365,8 @@
     },
     {
       "path": "week2/records/render.json",
-      "bytes": 1136,
-      "sha256": "fb34a0d5650908fb2b5b75833b9ebca1a1791c5d587d4321bf579d740338f1a3"
+      "bytes": 1160,
+      "sha256": "e49ec67e869d009d5ef1384ec66c624d215ad95be456f3e83593425d720ab57b"
     },
     {
       "path": "week3/3주차 진행상황.html",
@@ -460,8 +460,8 @@
     },
     {
       "path": "week3/records/render.json",
-      "bytes": 659,
-      "sha256": "6d4f5ce1c42b65531d521c0e8b3d323bae1cb319788ad4e98f546ee7a71fd5e5"
+      "bytes": 683,
+      "sha256": "a2837df8fbf7ee3d169cc90aa7ad529b0851ab81d239d414e1d1d86adf5f5cdb"
     },
     {
       "path": "week3/records/계측 로그 형식.md",

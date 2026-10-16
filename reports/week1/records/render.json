@@ -1,7 +1,7 @@
 {
   "week": 1,
   "source_markdown_sha256": "8e129e1bb3186b7ad7e3d7ad6ebfbb7d551fd3df47554186388e2db1196999de",
-  "html_sha256": "3e0e29c5c2ec0b343b93c46075fe4fd0ea51a50d39cc5dfb080505ae162c930d",
+  "html_sha256": "c7fba0cb8fa77d7696a9736cb1a556f07756999e18251f5b53c391282ecdab5b",
   "images": [
     {
       "path": "figures/w1_fct.png",
@@ -21,6 +21,7 @@
   ],
   "heading_count": 12,
   "tables": 9,
+  "clickable_links": 4,
   "source_unchanged": true,
   "all_report_images_embedded": true
 }

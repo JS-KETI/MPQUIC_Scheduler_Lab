@@ -43,6 +43,7 @@ def main():
         return f'![{m.group(1)}](data:{mime};base64,{base64.b64encode(data).decode()})'
     md=re.sub(r'!\[([^\]]*)\]\(([^)]+)\)',embed,text)
     md=re.sub(r'(?m)^(\s*-\s+)(https://\S+)$',r'\1<\2>',md)
+    md=re.sub(r'(?m)^(\s*-\s+.+?:\s+)(https://[^\s<>)]+)$',r'\1<\2>',md)
     parser=MarkdownIt('commonmark',{'html':True}).enable('table')
     body=parser.render(md)
     style='body{max-width:1100px;margin:30px auto;padding:0 20px;font:15px/1.6 "Malgun Gothic",sans-serif;color:#203344}h2{background:#e5f1e9;padding:8px 12px;margin-top:28px}h3{background:#e8eff7;padding:7px 10px}img{max-width:100%;height:auto}table{border-collapse:collapse;width:100%;font-size:13px}th,td{border:1px solid #cbd5df;padding:7px;vertical-align:top}th{background:#f0f4f7}li{margin:3px 0}code{font:12px Consolas,monospace;overflow-wrap:anywhere}a{overflow-wrap:anywhere}'
@@ -52,7 +53,7 @@ def main():
     assert len(re.findall(r'<img[^>]+src="data:image/',body))==len(images)
     dest=source.with_suffix('.html')
     dest.write_text(rendered,encoding='utf-8')
-    validation={'week':args.week,'source_markdown_sha256':hashlib.sha256(original).hexdigest(),'html_sha256':hashlib.sha256(dest.read_bytes()).hexdigest(),'images':images,'heading_count':len(re.findall(r'<h[1-6]>',body)),'tables':body.count('<table>'),'source_unchanged':True,'all_report_images_embedded':True}
+    validation={'week':args.week,'source_markdown_sha256':hashlib.sha256(original).hexdigest(),'html_sha256':hashlib.sha256(dest.read_bytes()).hexdigest(),'images':images,'heading_count':len(re.findall(r'<h[1-6]>',body)),'tables':body.count('<table>'),'clickable_links':body.count('<a href='),'source_unchanged':True,'all_report_images_embedded':True}
     record=root/'records/render.json';record.parent.mkdir(parents=True,exist_ok=True)
     record.write_text(json.dumps(validation,ensure_ascii=False,indent=2)+'\n')
     if args.handoff:
