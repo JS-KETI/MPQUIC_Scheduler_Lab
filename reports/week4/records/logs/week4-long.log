@@ -1,0 +1,22 @@
+10/210 0010-long-dominating-s0-seed10 status=ok done=1 rx=52428800
+20/210 0019-long-dominating-s1-seed9 status=ok done=1 rx=52428800
+30/210 0030-long-dominating-s2-seed10 status=ok done=1 rx=52428800
+40/210 0040-long-dominating-s3-seed10 status=ok done=1 rx=52428800
+50/210 0049-long-dominating-s4-seed9 status=ok done=1 rx=52428800
+60/210 0060-long-dominating-s5-seed10 status=ok done=1 rx=52428800
+70/210 0071-long-competing-s0-seed1 status=ok done=1 rx=52428800
+80/210 0079-long-competing-s0-seed9 status=ok done=1 rx=52428800
+90/210 0090-long-competing-s1-seed10 status=ok done=1 rx=52428800
+100/210 0099-long-competing-s2-seed9 status=ok done=1 rx=52428800
+110/210 0112-long-competing-s4-seed2 status=ok done=1 rx=52428800
+120/210 0120-long-competing-s4-seed10 status=ok done=1 rx=52428800
+130/210 0130-long-competing-s5-seed10 status=ok done=1 rx=52428800
+140/210 0140-long-competing-s6-seed10 status=ok done=1 rx=52428800
+150/210 0150-long-degrade-s0-seed10 status=ok done=1 rx=52428800
+160/210 0160-long-degrade-s1-seed10 status=ok done=1 rx=52428800
+170/210 0170-long-degrade-s2-seed10 status=ok done=1 rx=52428800
+180/210 0180-long-degrade-s3-seed10 status=ok done=1 rx=52428800
+190/210 0190-long-degrade-s4-seed10 status=ok done=1 rx=52428800
+200/210 0200-long-degrade-s5-seed10 status=ok done=1 rx=52428800
+210/210 0210-long-degrade-s6-seed10 status=ok done=1 rx=52428800
+/home/ubuntu/projects/keti/mpquic-sched-lab/mpquic/artifacts/week4/runs/2026-10-18/run-04

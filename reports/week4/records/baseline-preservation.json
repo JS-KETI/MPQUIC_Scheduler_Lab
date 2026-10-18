@@ -1,0 +1,2647 @@
+{
+  "compared_commit": "e97594c3ed48b6b367fc9e7eed1f28ec139f423a",
+  "unchanged": 660,
+  "files": [
+    {
+      "path": "artifacts/BASELINE.json",
+      "git_blob": "9b2cd63e86a8fe0545b2ee78f8aeae24bbb04eb3"
+    },
+    {
+      "path": "artifacts/week2-completion-2026-10-08/run-01/FROZEN.json",
+      "git_blob": "8f1fd1fbb1bafcf66d3363917a118bd02804e3c0"
+    },
+    {
+      "path": "artifacts/week2-completion-2026-10-08/run-01/README.md",
+      "git_blob": "166d57a73f69acd6a7cdb5b45711da0007e54bf7"
+    },
+    {
+      "path": "artifacts/week2-completion-2026-10-08/run-01/SHA256SUMS",
+      "git_blob": "232e97098572943157553ea0ac9c6d29bb13e68f"
+    },
+    {
+      "path": "artifacts/week2-completion-2026-10-08/run-01/analysis/baseline-visualization-provenance.json",
+      "git_blob": "d4f834e2825954e481b1643833dc7eee16c36f48"
+    },
+    {
+      "path": "artifacts/week2-completion-2026-10-08/run-01/analysis/baseline-visualization.log",
+      "git_blob": "ecb3185f7ca0dcfb8862aaf2176b30bb298b3895"
+    },
+    {
+      "path": "artifacts/week2-completion-2026-10-08/run-01/analysis/below_target_runs.csv",
+      "git_blob": "42fae37a427c20779f465c3fe70bbfaf0452af31"
+    },
+    {
+      "path": "artifacts/week2-completion-2026-10-08/run-01/analysis/dominating_ci_gate.csv",
+      "git_blob": "cabaac486e90c74f8999a4cf7548f96ccc5aeee1"
+    },
+    {
+      "path": "artifacts/week2-completion-2026-10-08/run-01/analysis/paired_comparisons.csv",
+      "git_blob": "d1faed2dff24d3b27ea12d0d2e3fed3b0e286b80"
+    },
+    {
+      "path": "artifacts/week2-completion-2026-10-08/run-01/analysis/paired_observations.csv",
+      "git_blob": "8879887b52dbec3e3acf36ffde438cc02ad33804"
+    },
+    {
+      "path": "artifacts/week2-completion-2026-10-08/run-01/analysis/provided_summary.csv",
+      "git_blob": "b184a3ec1de8fdb8e127bc574a6a2f95a4fc265f"
+    },
+    {
+      "path": "artifacts/week2-completion-2026-10-08/run-01/analysis/summary.csv",
+      "git_blob": "3bfe332a416194abd9428f8a6f575dee5736423e"
+    },
+    {
+      "path": "artifacts/week2-completion-2026-10-08/run-01/analysis/validation.json",
+      "git_blob": "bb18f84d7cc48d1132662343d6d681b1dbed14e0"
+    },
+    {
+      "path": "artifacts/week2-completion-2026-10-08/run-01/baseline.csv",
+      "git_blob": "72c3962280f7e3d665044d0b6d34e5503154aa1c"
+    },
+    {
+      "path": "artifacts/week2-completion-2026-10-08/run-01/commands.json",
+      "git_blob": "c5f0c38c02e5de445d8078ad27464bb23129f12e"
+    },
+    {
+      "path": "artifacts/week2-completion-2026-10-08/run-01/comparison.json",
+      "git_blob": "9e652c2c1d6d22a2004b049acfea7a7ac5d05ec2"
+    },
+    {
+      "path": "artifacts/week2-completion-2026-10-08/run-01/effective-code.patch",
+      "git_blob": "e17144373be701da2788b64c6e0a4e6e83b9bc8b"
+    },
+    {
+      "path": "artifacts/week2-completion-2026-10-08/run-01/environment.json",
+      "git_blob": "79f93c49d48385f5228647342c42003e328df90b"
+    },
+    {
+      "path": "artifacts/week2-completion-2026-10-08/run-01/figures/baseline_fct.png",
+      "git_blob": "c71453a066c622e89831176f2e3954b589ccffb2"
+    },
+    {
+      "path": "artifacts/week2-completion-2026-10-08/run-01/figures/baseline_fct.svg",
+      "git_blob": "3b6d23a1bd361559f45147ea2ecd413be4dba4be"
+    },
+    {
+      "path": "artifacts/week2-completion-2026-10-08/run-01/figures/completion_rates.png",
+      "git_blob": "a9e06d1be659f4eca3b1d4087a92fa6dc9caf4a7"
+    },
+    {
+      "path": "artifacts/week2-completion-2026-10-08/run-01/figures/completion_rates.svg",
+      "git_blob": "0791d2149bc37bae6d427c8db48348adeb049849"
+    },
+    {
+      "path": "artifacts/week2-completion-2026-10-08/run-01/figures/fct_distributions.png",
+      "git_blob": "7986b21eaacef454a15ad2fb1eb527bb4c54b4ce"
+    },
+    {
+      "path": "artifacts/week2-completion-2026-10-08/run-01/figures/fct_distributions.svg",
+      "git_blob": "f10c92da0401a95b9be0f139e061f121b62321e2"
+    },
+    {
+      "path": "artifacts/week2-completion-2026-10-08/run-01/figures/path_shares.png",
+      "git_blob": "33482da5d6dfe7e3cb5a9c19d78f04dc79e4a1ce"
+    },
+    {
+      "path": "artifacts/week2-completion-2026-10-08/run-01/figures/path_shares.svg",
+      "git_blob": "910dc166a7df644092b8b011ea882a2289740c27"
+    },
+    {
+      "path": "artifacts/week2-completion-2026-10-08/run-01/logs/competing-0-seed01.stdout.gz",
+      "git_blob": "6a02861c5b3e59655a2568a46e7fa287175d9ed0"
+    },
+    {
+      "path": "artifacts/week2-completion-2026-10-08/run-01/logs/competing-0-seed02.stdout.gz",
+      "git_blob": "ff32b9427d7bb62239784a5f6d395e9cbea0ca25"
+    },
+    {
+      "path": "artifacts/week2-completion-2026-10-08/run-01/logs/competing-0-seed03.stdout.gz",
+      "git_blob": "73f6406b42cc7a32c9014ebbc3e3e172605d3b1d"
+    },
+    {
+      "path": "artifacts/week2-completion-2026-10-08/run-01/logs/competing-0-seed04.stdout.gz",
+      "git_blob": "fa1837841f773f6a17fbeb248bbb05161d1e5537"
+    },
+    {
+      "path": "artifacts/week2-completion-2026-10-08/run-01/logs/competing-0-seed05.stdout.gz",
+      "git_blob": "ba8d7dc7b8a909fc80e7adfe9f7f46d2e6087b17"
+    },
+    {
+      "path": "artifacts/week2-completion-2026-10-08/run-01/logs/competing-0-seed06.stdout.gz",
+      "git_blob": "dcd91fe21a5bd33f3e89710e5bf36d533f644c57"
+    },
+    {
+      "path": "artifacts/week2-completion-2026-10-08/run-01/logs/competing-0-seed07.stdout.gz",
+      "git_blob": "93095957d0f818b7abad4d32ac372fa98fc93fba"
+    },
+    {
+      "path": "artifacts/week2-completion-2026-10-08/run-01/logs/competing-0-seed08.stdout.gz",
+      "git_blob": "d6b59799e48c3602ec974b54c9eb9cf6efc86982"
+    },
+    {
+      "path": "artifacts/week2-completion-2026-10-08/run-01/logs/competing-0-seed09.stdout.gz",
+      "git_blob": "e2fb144b375ebd32f90a7049bbf43a6fd7cb3f5b"
+    },
+    {
+      "path": "artifacts/week2-completion-2026-10-08/run-01/logs/competing-0-seed10.stdout.gz",
+      "git_blob": "319f636b3081795ca14228b91cb0d12c94b18056"
+    },
+    {
+      "path": "artifacts/week2-completion-2026-10-08/run-01/logs/competing-0-seed11.stdout.gz",
+      "git_blob": "80fb231adbd9b4dd7e20db949697886c2b107079"
+    },
+    {
+      "path": "artifacts/week2-completion-2026-10-08/run-01/logs/competing-0-seed12.stdout.gz",
+      "git_blob": "377b0b9ceeb9c03e6c90ef5efd8f483816b01475"
+    },
+    {
+      "path": "artifacts/week2-completion-2026-10-08/run-01/logs/competing-0-seed13.stdout.gz",
+      "git_blob": "7530c64941ff8c03c261d36204135ec02caa95a4"
+    },
+    {
+      "path": "artifacts/week2-completion-2026-10-08/run-01/logs/competing-0-seed14.stdout.gz",
+      "git_blob": "6023925d56efe6428cb45c69a18e0b087e1c10ee"
+    },
+    {
+      "path": "artifacts/week2-completion-2026-10-08/run-01/logs/competing-0-seed15.stdout.gz",
+      "git_blob": "a5f3dbc32d00ea44c8b2510305aa00aeca0e46d0"
+    },
+    {
+      "path": "artifacts/week2-completion-2026-10-08/run-01/logs/competing-0-seed16.stdout.gz",
+      "git_blob": "5eb1458306f0be153ca7cb2d278ae242df32a69a"
+    },
+    {
+      "path": "artifacts/week2-completion-2026-10-08/run-01/logs/competing-0-seed17.stdout.gz",
+      "git_blob": "c53ab4bc417baba495e54e7f7948a3543f47b135"
+    },
+    {
+      "path": "artifacts/week2-completion-2026-10-08/run-01/logs/competing-0-seed18.stdout.gz",
+      "git_blob": "95faf899687bcabd2b19305c1c2319d2dbe58cd7"
+    },
+    {
+      "path": "artifacts/week2-completion-2026-10-08/run-01/logs/competing-0-seed19.stdout.gz",
+      "git_blob": "302e5e1e98480b2c675a3dca8ba00ec84c1dfd13"
+    },
+    {
+      "path": "artifacts/week2-completion-2026-10-08/run-01/logs/competing-0-seed20.stdout.gz",
+      "git_blob": "ffb325ad0daff2a149aa7a3228f014ac59d2fdfb"
+    },
+    {
+      "path": "artifacts/week2-completion-2026-10-08/run-01/logs/competing-0-seed21.stdout.gz",
+      "git_blob": "9e18cf00ee8e30db8d32c3e334b2ae7c296937fe"
+    },
+    {
+      "path": "artifacts/week2-completion-2026-10-08/run-01/logs/competing-0-seed22.stdout.gz",
+      "git_blob": "969a477fe99972f9d026dc10cfbc26c26302e777"
+    },
+    {
+      "path": "artifacts/week2-completion-2026-10-08/run-01/logs/competing-0-seed23.stdout.gz",
+      "git_blob": "79135944d7edb846f4808cde6bcde83f4a0436f8"
+    },
+    {
+      "path": "artifacts/week2-completion-2026-10-08/run-01/logs/competing-0-seed24.stdout.gz",
+      "git_blob": "79c102731bf146fda4cd009c93e61783951f650e"
+    },
+    {
+      "path": "artifacts/week2-completion-2026-10-08/run-01/logs/competing-0-seed25.stdout.gz",
+      "git_blob": "788e722dc02399a3311dbc599a404ee46d0c9c90"
+    },
+    {
+      "path": "artifacts/week2-completion-2026-10-08/run-01/logs/competing-0-seed26.stdout.gz",
+      "git_blob": "de179f255461e94c68a455bdf5c7385742944e30"
+    },
+    {
+      "path": "artifacts/week2-completion-2026-10-08/run-01/logs/competing-0-seed27.stdout.gz",
+      "git_blob": "2e059b3f4e2db4760219203650dd775686e45781"
+    },
+    {
+      "path": "artifacts/week2-completion-2026-10-08/run-01/logs/competing-0-seed28.stdout.gz",
+      "git_blob": "c6e546e1495472c4c940b6b6584cd8145ecbd9fe"
+    },
+    {
+      "path": "artifacts/week2-completion-2026-10-08/run-01/logs/competing-0-seed29.stdout.gz",
+      "git_blob": "651137e10aa2c5c4fd632afb4d2da87de7fa3932"
+    },
+    {
+      "path": "artifacts/week2-completion-2026-10-08/run-01/logs/competing-0-seed30.stdout.gz",
+      "git_blob": "dfb917056c4ca8df94078995df70ef269862effb"
+    },
+    {
+      "path": "artifacts/week2-completion-2026-10-08/run-01/logs/competing-1-seed01.stdout.gz",
+      "git_blob": "213d7b8f8facfd4d403b2974c3ed77e71b2b0982"
+    },
+    {
+      "path": "artifacts/week2-completion-2026-10-08/run-01/logs/competing-1-seed02.stdout.gz",
+      "git_blob": "f0efb1bfc0b5a3ed71a71b9b3094fae742a23ccf"
+    },
+    {
+      "path": "artifacts/week2-completion-2026-10-08/run-01/logs/competing-1-seed03.stdout.gz",
+      "git_blob": "98a53a634e906c090a03112632978d8dd7e2c6fd"
+    },
+    {
+      "path": "artifacts/week2-completion-2026-10-08/run-01/logs/competing-1-seed04.stdout.gz",
+      "git_blob": "d3e44d66d495473ae406ce1950a1da71e7403acc"
+    },
+    {
+      "path": "artifacts/week2-completion-2026-10-08/run-01/logs/competing-1-seed05.stdout.gz",
+      "git_blob": "8e5853ca6f420bf9ade9c79748f9553e333687f8"
+    },
+    {
+      "path": "artifacts/week2-completion-2026-10-08/run-01/logs/competing-1-seed06.stdout.gz",
+      "git_blob": "cdf49bff12c6bf8ad69aeb0891dff3039f35ece6"
+    },
+    {
+      "path": "artifacts/week2-completion-2026-10-08/run-01/logs/competing-1-seed07.stdout.gz",
+      "git_blob": "1f2d35b3778e75ec52d4c02c00856894b2789b19"
+    },
+    {
+      "path": "artifacts/week2-completion-2026-10-08/run-01/logs/competing-1-seed08.stdout.gz",
+      "git_blob": "529eea99f778e454aa2c2c2ede3a73ffbb750c72"
+    },
+    {
+      "path": "artifacts/week2-completion-2026-10-08/run-01/logs/competing-1-seed09.stdout.gz",
+      "git_blob": "8aa7c8b2db96c4168f9dcdb5290bd32c9b538f67"
+    },
+    {
+      "path": "artifacts/week2-completion-2026-10-08/run-01/logs/competing-1-seed10.stdout.gz",
+      "git_blob": "ce0d35280d8694f7e0ac2e05287449cc714f6e90"
+    },
+    {
+      "path": "artifacts/week2-completion-2026-10-08/run-01/logs/competing-1-seed11.stdout.gz",
+      "git_blob": "25032c3d3b3ea4a1e14d73449663371e98ee1325"
+    },
+    {
+      "path": "artifacts/week2-completion-2026-10-08/run-01/logs/competing-1-seed12.stdout.gz",
+      "git_blob": "ec1f504261b4916e2b651391c95795ebe9172acc"
+    },
+    {
+      "path": "artifacts/week2-completion-2026-10-08/run-01/logs/competing-1-seed13.stdout.gz",
+      "git_blob": "ba36bf84d5947f36e3646471c3e4a0c7489e799d"
+    },
+    {
+      "path": "artifacts/week2-completion-2026-10-08/run-01/logs/competing-1-seed14.stdout.gz",
+      "git_blob": "b8500838f1e72ff7b5f4b6d2575b4c54b57f8856"
+    },
+    {
+      "path": "artifacts/week2-completion-2026-10-08/run-01/logs/competing-1-seed15.stdout.gz",
+      "git_blob": "279de579b137bc2f0a97c34327c213cc99daefe4"
+    },
+    {
+      "path": "artifacts/week2-completion-2026-10-08/run-01/logs/competing-1-seed16.stdout.gz",
+      "git_blob": "eab43ee04dd372653dce54f191f011229f3155ce"
+    },
+    {
+      "path": "artifacts/week2-completion-2026-10-08/run-01/logs/competing-1-seed17.stdout.gz",
+      "git_blob": "887a120e92969e13af2052b2b697a5727608078a"
+    },
+    {
+      "path": "artifacts/week2-completion-2026-10-08/run-01/logs/competing-1-seed18.stdout.gz",
+      "git_blob": "57b35413b4c1a59cc0c4f587d121ae521a28eae4"
+    },
+    {
+      "path": "artifacts/week2-completion-2026-10-08/run-01/logs/competing-1-seed19.stdout.gz",
+      "git_blob": "c9eda61316b93ca30b9ff15b201abeb736182605"
+    },
+    {
+      "path": "artifacts/week2-completion-2026-10-08/run-01/logs/competing-1-seed20.stdout.gz",
+      "git_blob": "182237cc635937d84a401661b72230918d659c55"
+    },
+    {
+      "path": "artifacts/week2-completion-2026-10-08/run-01/logs/competing-1-seed21.stdout.gz",
+      "git_blob": "3474cbe696c832ff5e95f235c780f81f62726d1e"
+    },
+    {
+      "path": "artifacts/week2-completion-2026-10-08/run-01/logs/competing-1-seed22.stdout.gz",
+      "git_blob": "f890552a4df8f9a4669ce3bf3bf719732727c1db"
+    },
+    {
+      "path": "artifacts/week2-completion-2026-10-08/run-01/logs/competing-1-seed23.stdout.gz",
+      "git_blob": "9511646ab2b24d3235c3331b5438ff6b3e4482ce"
+    },
+    {
+      "path": "artifacts/week2-completion-2026-10-08/run-01/logs/competing-1-seed24.stdout.gz",
+      "git_blob": "f12a848e157be1797643754df8fefcd11faaee78"
+    },
+    {
+      "path": "artifacts/week2-completion-2026-10-08/run-01/logs/competing-1-seed25.stdout.gz",
+      "git_blob": "74e62be27d15651d0915e181354a234fdb483a99"
+    },
+    {
+      "path": "artifacts/week2-completion-2026-10-08/run-01/logs/competing-1-seed26.stdout.gz",
+      "git_blob": "1da0dc42d20ef9cce90690342f9c5267e1028ddb"
+    },
+    {
+      "path": "artifacts/week2-completion-2026-10-08/run-01/logs/competing-1-seed27.stdout.gz",
+      "git_blob": "8a45717d704982fca51dbfe5daab1380ea3b8987"
+    },
+    {
+      "path": "artifacts/week2-completion-2026-10-08/run-01/logs/competing-1-seed28.stdout.gz",
+      "git_blob": "0b85b6a9fade904f1f9c7a75b2eea72092323fa1"
+    },
+    {
+      "path": "artifacts/week2-completion-2026-10-08/run-01/logs/competing-1-seed29.stdout.gz",
+      "git_blob": "62b9852262fc494f45b24b99c0cb3dfa518cbcf0"
+    },
+    {
+      "path": "artifacts/week2-completion-2026-10-08/run-01/logs/competing-1-seed30.stdout.gz",
+      "git_blob": "2bd2b5702374ed67e76158223dc639fa4199e108"
+    },
+    {
+      "path": "artifacts/week2-completion-2026-10-08/run-01/logs/competing-2-seed01.stdout.gz",
+      "git_blob": "c74f9bf444efce007cbab621d07f71de25d1c655"
+    },
+    {
+      "path": "artifacts/week2-completion-2026-10-08/run-01/logs/competing-2-seed02.stdout.gz",
+      "git_blob": "b79b57c98cf905bd9b305047390399ae4c52811e"
+    },
+    {
+      "path": "artifacts/week2-completion-2026-10-08/run-01/logs/competing-2-seed03.stdout.gz",
+      "git_blob": "bd29eacc84a6ff313268d8430eca6a84ee319890"
+    },
+    {
+      "path": "artifacts/week2-completion-2026-10-08/run-01/logs/competing-2-seed04.stdout.gz",
+      "git_blob": "ff2bc04a6012e1655eedb00f17c1099a89b45d54"
+    },
+    {
+      "path": "artifacts/week2-completion-2026-10-08/run-01/logs/competing-2-seed05.stdout.gz",
+      "git_blob": "0121b7b7cefc82ed6f0cd85ddc17b4ac0a16653e"
+    },
+    {
+      "path": "artifacts/week2-completion-2026-10-08/run-01/logs/competing-2-seed06.stdout.gz",
+      "git_blob": "3a5d397e48b5b70114058ed2e507daf38a2b7f09"
+    },
+    {
+      "path": "artifacts/week2-completion-2026-10-08/run-01/logs/competing-2-seed07.stdout.gz",
+      "git_blob": "cb7f78bab4eed3d6751cb80a23cfb4fa1d6d9f22"
+    },
+    {
+      "path": "artifacts/week2-completion-2026-10-08/run-01/logs/competing-2-seed08.stdout.gz",
+      "git_blob": "67aa21c0cdfc0eb5f0c1a7e843bc7d42d7e9d140"
+    },
+    {
+      "path": "artifacts/week2-completion-2026-10-08/run-01/logs/competing-2-seed09.stdout.gz",
+      "git_blob": "c004e49f984302b04a3de97b5854d1e6754df61d"
+    },
+    {
+      "path": "artifacts/week2-completion-2026-10-08/run-01/logs/competing-2-seed10.stdout.gz",
+      "git_blob": "f7a0da14705177d5c7fa36573396cc45a8df1102"
+    },
+    {
+      "path": "artifacts/week2-completion-2026-10-08/run-01/logs/competing-2-seed11.stdout.gz",
+      "git_blob": "d68808efa6c0b0ed687ed8799a81dfaae7918bbc"
+    },
+    {
+      "path": "artifacts/week2-completion-2026-10-08/run-01/logs/competing-2-seed12.stdout.gz",
+      "git_blob": "13a1046a3a091222ce49fb11803592252425e8e2"
+    },
+    {
+      "path": "artifacts/week2-completion-2026-10-08/run-01/logs/competing-2-seed13.stdout.gz",
+      "git_blob": "9f7c69b7d555184406eef1aa684542724d46b174"
+    },
+    {
+      "path": "artifacts/week2-completion-2026-10-08/run-01/logs/competing-2-seed14.stdout.gz",
+      "git_blob": "248ff60f769c4cd33152982774622d1eced73c3b"
+    },
+    {
+      "path": "artifacts/week2-completion-2026-10-08/run-01/logs/competing-2-seed15.stdout.gz",
+      "git_blob": "7b631c7c62aa2b26b32efa85b0253fb696fccffd"
+    },
+    {
+      "path": "artifacts/week2-completion-2026-10-08/run-01/logs/competing-2-seed16.stdout.gz",
+      "git_blob": "1260b6e901c2591b514b0667e193cc74a405f37a"
+    },
+    {
+      "path": "artifacts/week2-completion-2026-10-08/run-01/logs/competing-2-seed17.stdout.gz",
+      "git_blob": "36c26563604da72463318dd507cd16837dc3abba"
+    },
+    {
+      "path": "artifacts/week2-completion-2026-10-08/run-01/logs/competing-2-seed18.stdout.gz",
+      "git_blob": "53bdb35189786ac6802809e96bcdb165b68ffb1f"
+    },
+    {
+      "path": "artifacts/week2-completion-2026-10-08/run-01/logs/competing-2-seed19.stdout.gz",
+      "git_blob": "b7054937482d539a216773c4bbbd80f87e69f223"
+    },
+    {
+      "path": "artifacts/week2-completion-2026-10-08/run-01/logs/competing-2-seed20.stdout.gz",
+      "git_blob": "c2880d8a880d302071717dff90dc86a967cd4c81"
+    },
+    {
+      "path": "artifacts/week2-completion-2026-10-08/run-01/logs/competing-2-seed21.stdout.gz",
+      "git_blob": "0282326aa06b3709935a14e69afe8c8395151b07"
+    },
+    {
+      "path": "artifacts/week2-completion-2026-10-08/run-01/logs/competing-2-seed22.stdout.gz",
+      "git_blob": "5620fd593150dc5b3087fd634c507123c9dd975a"
+    },
+    {
+      "path": "artifacts/week2-completion-2026-10-08/run-01/logs/competing-2-seed23.stdout.gz",
+      "git_blob": "83f2e870ac09ccf93810dd61345e7b2e9b4e36fc"
+    },
+    {
+      "path": "artifacts/week2-completion-2026-10-08/run-01/logs/competing-2-seed24.stdout.gz",
+      "git_blob": "2c05b85197fc443913290cfccd816843c4e9ab70"
+    },
+    {
+      "path": "artifacts/week2-completion-2026-10-08/run-01/logs/competing-2-seed25.stdout.gz",
+      "git_blob": "266d369238fe805f124e9e79a87ce111d196b651"
+    },
+    {
+      "path": "artifacts/week2-completion-2026-10-08/run-01/logs/competing-2-seed26.stdout.gz",
+      "git_blob": "ea0e3e897026c64ac9b9c2a0cb13b05283c473ed"
+    },
+    {
+      "path": "artifacts/week2-completion-2026-10-08/run-01/logs/competing-2-seed27.stdout.gz",
+      "git_blob": "824af2224dd88356851656996e85e40cbab9b5d7"
+    },
+    {
+      "path": "artifacts/week2-completion-2026-10-08/run-01/logs/competing-2-seed28.stdout.gz",
+      "git_blob": "10db9b98044e743cfb73e29845b5e1ba34e22390"
+    },
+    {
+      "path": "artifacts/week2-completion-2026-10-08/run-01/logs/competing-2-seed29.stdout.gz",
+      "git_blob": "691a3c04d7779732048bd9ac3140114f40ab09a2"
+    },
+    {
+      "path": "artifacts/week2-completion-2026-10-08/run-01/logs/competing-2-seed30.stdout.gz",
+      "git_blob": "a4e400eefc9b8e2d458d9f4dc56be5d1f5c3f33f"
+    },
+    {
+      "path": "artifacts/week2-completion-2026-10-08/run-01/logs/competing-3-seed01.stdout.gz",
+      "git_blob": "6cf0f06148761a3e7d6aa59815a1ff16f9b9d016"
+    },
+    {
+      "path": "artifacts/week2-completion-2026-10-08/run-01/logs/competing-3-seed02.stdout.gz",
+      "git_blob": "26a170b9a245c1ce62a8fb0c1c96d8a3a21c8875"
+    },
+    {
+      "path": "artifacts/week2-completion-2026-10-08/run-01/logs/competing-3-seed03.stdout.gz",
+      "git_blob": "d92516c7e273124c5b9f6d07d5b0aa1414c24e94"
+    },
+    {
+      "path": "artifacts/week2-completion-2026-10-08/run-01/logs/competing-3-seed04.stdout.gz",
+      "git_blob": "87ba190803f9472cbecc1ebf95a644b7ef35ba3e"
+    },
+    {
+      "path": "artifacts/week2-completion-2026-10-08/run-01/logs/competing-3-seed05.stdout.gz",
+      "git_blob": "9d46e983399393cdd2a13a15b590cce7316b9ec7"
+    },
+    {
+      "path": "artifacts/week2-completion-2026-10-08/run-01/logs/competing-3-seed06.stdout.gz",
+      "git_blob": "1c7440c6880e9ae1e37e72f17c75445a7bec3957"
+    },
+    {
+      "path": "artifacts/week2-completion-2026-10-08/run-01/logs/competing-3-seed07.stdout.gz",
+      "git_blob": "1f66a4b439ba8ee16037c8e0149ff8502855171f"
+    },
+    {
+      "path": "artifacts/week2-completion-2026-10-08/run-01/logs/competing-3-seed08.stdout.gz",
+      "git_blob": "f9bf15838bdb143ca3fc9c2b7232c7bb01b50187"
+    },
+    {
+      "path": "artifacts/week2-completion-2026-10-08/run-01/logs/competing-3-seed09.stdout.gz",
+      "git_blob": "696c95faf48cbc0b8bb3907b61d1264ab00ac321"
+    },
+    {
+      "path": "artifacts/week2-completion-2026-10-08/run-01/logs/competing-3-seed10.stdout.gz",
+      "git_blob": "69d0182d0e31955a95f0c9475d4d945fe3deae2e"
+    },
+    {
+      "path": "artifacts/week2-completion-2026-10-08/run-01/logs/competing-3-seed11.stdout.gz",
+      "git_blob": "c0563cfae0b2814b5693781fb3f94a9679fa5226"
+    },
+    {
+      "path": "artifacts/week2-completion-2026-10-08/run-01/logs/competing-3-seed12.stdout.gz",
+      "git_blob": "de88ba3dfc03e81c752d0ec33f747e058eb868c8"
+    },
+    {
+      "path": "artifacts/week2-completion-2026-10-08/run-01/logs/competing-3-seed13.stdout.gz",
+      "git_blob": "1a645cf76302781f7726dca932534608d949c7b1"
+    },
+    {
+      "path": "artifacts/week2-completion-2026-10-08/run-01/logs/competing-3-seed14.stdout.gz",
+      "git_blob": "d652d3e5b3c3a0b6c1465ed74a910026a5f6b8a2"
+    },
+    {
+      "path": "artifacts/week2-completion-2026-10-08/run-01/logs/competing-3-seed15.stdout.gz",
+      "git_blob": "21fcb94e3b29b549713e67068d32b0ec902f28d6"
+    },
+    {
+      "path": "artifacts/week2-completion-2026-10-08/run-01/logs/competing-3-seed16.stdout.gz",
+      "git_blob": "bb049b82d41fd32294b6497d0b6dd54a69cc5e56"
+    },
+    {
+      "path": "artifacts/week2-completion-2026-10-08/run-01/logs/competing-3-seed17.stdout.gz",
+      "git_blob": "c5876095e6b3e28ad4cd70756f0e606de7164a9c"
+    },
+    {
+      "path": "artifacts/week2-completion-2026-10-08/run-01/logs/competing-3-seed18.stdout.gz",
+      "git_blob": "2de79a49ebd046b9b8093e2cb216fd49ffbd66d4"
+    },
+    {
+      "path": "artifacts/week2-completion-2026-10-08/run-01/logs/competing-3-seed19.stdout.gz",
+      "git_blob": "9d7ef398e2a39f5a23e5da8612f659a41316d9da"
+    },
+    {
+      "path": "artifacts/week2-completion-2026-10-08/run-01/logs/competing-3-seed20.stdout.gz",
+      "git_blob": "a71ecfa493ee24159841d6fabc347ccb173b180f"
+    },
+    {
+      "path": "artifacts/week2-completion-2026-10-08/run-01/logs/competing-3-seed21.stdout.gz",
+      "git_blob": "42abe2f68cec3cb1b2126660eaf30b9f9ac64e6f"
+    },
+    {
+      "path": "artifacts/week2-completion-2026-10-08/run-01/logs/competing-3-seed22.stdout.gz",
+      "git_blob": "d3e3cd6f86f88741994caa0ba2ba5d7844511c8a"
+    },
+    {
+      "path": "artifacts/week2-completion-2026-10-08/run-01/logs/competing-3-seed23.stdout.gz",
+      "git_blob": "721428a0773fd44dc942ee8211a9492dfd70f243"
+    },
+    {
+      "path": "artifacts/week2-completion-2026-10-08/run-01/logs/competing-3-seed24.stdout.gz",
+      "git_blob": "bcc805a7d09b8e76795f34fd16e9b506e7aa9cb4"
+    },
+    {
+      "path": "artifacts/week2-completion-2026-10-08/run-01/logs/competing-3-seed25.stdout.gz",
+      "git_blob": "08171001cd5831e29fb7a5d5f4f25419801bca11"
+    },
+    {
+      "path": "artifacts/week2-completion-2026-10-08/run-01/logs/competing-3-seed26.stdout.gz",
+      "git_blob": "3bad1e1b01d5622f9fc3962f75a4d2c4e4321433"
+    },
+    {
+      "path": "artifacts/week2-completion-2026-10-08/run-01/logs/competing-3-seed27.stdout.gz",
+      "git_blob": "f71bfd948ff903d447a2c05a5cdb80ec9cd2894e"
+    },
+    {
+      "path": "artifacts/week2-completion-2026-10-08/run-01/logs/competing-3-seed28.stdout.gz",
+      "git_blob": "8d9412342cccefed8e0d1d34582f048ed36f2c07"
+    },
+    {
+      "path": "artifacts/week2-completion-2026-10-08/run-01/logs/competing-3-seed29.stdout.gz",
+      "git_blob": "8537ebab8deb8988f369825398ec4613da2c811b"
+    },
+    {
+      "path": "artifacts/week2-completion-2026-10-08/run-01/logs/competing-3-seed30.stdout.gz",
+      "git_blob": "6172ff51d3befba12c8566942035e1dd14796c40"
+    },
+    {
+      "path": "artifacts/week2-completion-2026-10-08/run-01/logs/competing-4-seed01.stdout.gz",
+      "git_blob": "02387642a5966dfda574c1c82f4b85ed7cd64a86"
+    },
+    {
+      "path": "artifacts/week2-completion-2026-10-08/run-01/logs/competing-4-seed02.stdout.gz",
+      "git_blob": "40c62b8f3a71f2a57122b1faa0cfc9394b41c34b"
+    },
+    {
+      "path": "artifacts/week2-completion-2026-10-08/run-01/logs/competing-4-seed03.stdout.gz",
+      "git_blob": "a79dd7a9724d2648c57971e0a535fd0253f1d8f9"
+    },
+    {
+      "path": "artifacts/week2-completion-2026-10-08/run-01/logs/competing-4-seed04.stdout.gz",
+      "git_blob": "ea4657ee0debd689e37ff0c645532aaf8d9c3cc4"
+    },
+    {
+      "path": "artifacts/week2-completion-2026-10-08/run-01/logs/competing-4-seed05.stdout.gz",
+      "git_blob": "8d796c5f7ff1a8e3b8824121f2bd6bf8f0ad98d9"
+    },
+    {
+      "path": "artifacts/week2-completion-2026-10-08/run-01/logs/competing-4-seed06.stdout.gz",
+      "git_blob": "f7ffabd22c3af6d4fe3ac9f61f9b1d9389949f54"
+    },
+    {
+      "path": "artifacts/week2-completion-2026-10-08/run-01/logs/competing-4-seed07.stdout.gz",
+      "git_blob": "1fb05249ed85d3fd37df39760a95e0716f9f7b3a"
+    },
+    {
+      "path": "artifacts/week2-completion-2026-10-08/run-01/logs/competing-4-seed08.stdout.gz",
+      "git_blob": "81b6654a1ff5105792701930e11f090dc5a8e0a7"
+    },
+    {
+      "path": "artifacts/week2-completion-2026-10-08/run-01/logs/competing-4-seed09.stdout.gz",
+      "git_blob": "7191f51f963003d19f71bc19385fea9eae4ab1b9"
+    },
+    {
+      "path": "artifacts/week2-completion-2026-10-08/run-01/logs/competing-4-seed10.stdout.gz",
+      "git_blob": "dd9fb8a1927b137d5aa3dfa8c410c390c163d1d3"
+    },
+    {
+      "path": "artifacts/week2-completion-2026-10-08/run-01/logs/competing-4-seed11.stdout.gz",
+      "git_blob": "13c235b67bca46285c0501aca658b25e4f16ef82"
+    },
+    {
+      "path": "artifacts/week2-completion-2026-10-08/run-01/logs/competing-4-seed12.stdout.gz",
+      "git_blob": "db945be6de7b4f3766d60097490e690ab4dfdbba"
+    },
+    {
+      "path": "artifacts/week2-completion-2026-10-08/run-01/logs/competing-4-seed13.stdout.gz",
+      "git_blob": "3c846e65319b0d4b66c0401cd651754b171bad1a"
+    },
+    {
+      "path": "artifacts/week2-completion-2026-10-08/run-01/logs/competing-4-seed14.stdout.gz",
+      "git_blob": "3302d7e571083bdf0c7c9cf71e10e25b0c0a8ef3"
+    },
+    {
+      "path": "artifacts/week2-completion-2026-10-08/run-01/logs/competing-4-seed15.stdout.gz",
+      "git_blob": "c92051c3220d4f40a842b7ccf2b0f4d9dba22aa7"
+    },
+    {
+      "path": "artifacts/week2-completion-2026-10-08/run-01/logs/competing-4-seed16.stdout.gz",
+      "git_blob": "57b63718c7e2ce59429f6d3f0064bdc9393874e7"
+    },
+    {
+      "path": "artifacts/week2-completion-2026-10-08/run-01/logs/competing-4-seed17.stdout.gz",
+      "git_blob": "265fe75259f8fa2d313389d372573ff52d247240"
+    },
+    {
+      "path": "artifacts/week2-completion-2026-10-08/run-01/logs/competing-4-seed18.stdout.gz",
+      "git_blob": "5a7aa7576503241c9cb0392c81d46393a4425faa"
+    },
+    {
+      "path": "artifacts/week2-completion-2026-10-08/run-01/logs/competing-4-seed19.stdout.gz",
+      "git_blob": "c2429c78bf26256aeb508d78498c2faf99937bf2"
+    },
+    {
+      "path": "artifacts/week2-completion-2026-10-08/run-01/logs/competing-4-seed20.stdout.gz",
+      "git_blob": "06fb9e5c35e8f7a24afdd84614a2dd8e8a55c2e1"
+    },
+    {
+      "path": "artifacts/week2-completion-2026-10-08/run-01/logs/competing-4-seed21.stdout.gz",
+      "git_blob": "afa0675d8e55e9d9045372a19b6427970311125c"
+    },
+    {
+      "path": "artifacts/week2-completion-2026-10-08/run-01/logs/competing-4-seed22.stdout.gz",
+      "git_blob": "9519b9cf315656691cc66faaaa41cb8e2bbd94b7"
+    },
+    {
+      "path": "artifacts/week2-completion-2026-10-08/run-01/logs/competing-4-seed23.stdout.gz",
+      "git_blob": "5eb6c6624dd819acbf5e126a98bcb1162dafc51d"
+    },
+    {
+      "path": "artifacts/week2-completion-2026-10-08/run-01/logs/competing-4-seed24.stdout.gz",
+      "git_blob": "21389f5ba5a14c74f53e8b07b501409613330b5e"
+    },
+    {
+      "path": "artifacts/week2-completion-2026-10-08/run-01/logs/competing-4-seed25.stdout.gz",
+      "git_blob": "7f0a5db8a5413c3309d15368a5d0929ae581053d"
+    },
+    {
+      "path": "artifacts/week2-completion-2026-10-08/run-01/logs/competing-4-seed26.stdout.gz",
+      "git_blob": "1acb56f2c2419a8ff0a7da13e181a9479d8030d7"
+    },
+    {
+      "path": "artifacts/week2-completion-2026-10-08/run-01/logs/competing-4-seed27.stdout.gz",
+      "git_blob": "4796a914a7749567d621f781eb0f97b8a2280831"
+    },
+    {
+      "path": "artifacts/week2-completion-2026-10-08/run-01/logs/competing-4-seed28.stdout.gz",
+      "git_blob": "0644b0ca637983bb512f6209326921c05c098029"
+    },
+    {
+      "path": "artifacts/week2-completion-2026-10-08/run-01/logs/competing-4-seed29.stdout.gz",
+      "git_blob": "6e38ef15b2d6b179161639610d3e374c798d134c"
+    },
+    {
+      "path": "artifacts/week2-completion-2026-10-08/run-01/logs/competing-4-seed30.stdout.gz",
+      "git_blob": "9b8f5dc74dcb19ba2deffd48419f3e7703a9d307"
+    },
+    {
+      "path": "artifacts/week2-completion-2026-10-08/run-01/logs/competing-5-seed01.stdout.gz",
+      "git_blob": "e9163ffd6dfd1b8ee5e819bc21e8fbcf8a60a02b"
+    },
+    {
+      "path": "artifacts/week2-completion-2026-10-08/run-01/logs/competing-5-seed02.stdout.gz",
+      "git_blob": "d7eab30a692f00c6b14f508dc684d65abb64b4ca"
+    },
+    {
+      "path": "artifacts/week2-completion-2026-10-08/run-01/logs/competing-5-seed03.stdout.gz",
+      "git_blob": "b248a518f5fb43d9b71c94e39206d2853eedfdbc"
+    },
+    {
+      "path": "artifacts/week2-completion-2026-10-08/run-01/logs/competing-5-seed04.stdout.gz",
+      "git_blob": "43996e500f78607a912e95508af67aab46b3c80c"
+    },
+    {
+      "path": "artifacts/week2-completion-2026-10-08/run-01/logs/competing-5-seed05.stdout.gz",
+      "git_blob": "e0e2120b84a7c81ebc8d557c0a2866a5c8b1f5f0"
+    },
+    {
+      "path": "artifacts/week2-completion-2026-10-08/run-01/logs/competing-5-seed06.stdout.gz",
+      "git_blob": "3d015f7fba414c8941ee38196c19805ec219987e"
+    },
+    {
+      "path": "artifacts/week2-completion-2026-10-08/run-01/logs/competing-5-seed07.stdout.gz",
+      "git_blob": "6d2d58fd6a1df711f376dee7933ab83bec12cc70"
+    },
+    {
+      "path": "artifacts/week2-completion-2026-10-08/run-01/logs/competing-5-seed08.stdout.gz",
+      "git_blob": "1878ab4a6130ee6faf29d318076b16789697ecdd"
+    },
+    {
+      "path": "artifacts/week2-completion-2026-10-08/run-01/logs/competing-5-seed09.stdout.gz",
+      "git_blob": "822a589aa6c18be43b1eba738c842f4474660999"
+    },
+    {
+      "path": "artifacts/week2-completion-2026-10-08/run-01/logs/competing-5-seed10.stdout.gz",
+      "git_blob": "3645058ab05c32254f277e383556d6d4ef8fa648"
+    },
+    {
+      "path": "artifacts/week2-completion-2026-10-08/run-01/logs/competing-5-seed11.stdout.gz",
+      "git_blob": "4594e4b15d2adf749693bf846a30d8df66de058d"
+    },
+    {
+      "path": "artifacts/week2-completion-2026-10-08/run-01/logs/competing-5-seed12.stdout.gz",
+      "git_blob": "3b3aac913d7b6e403ee1f2659d3af817112a61d3"
+    },
+    {
+      "path": "artifacts/week2-completion-2026-10-08/run-01/logs/competing-5-seed13.stdout.gz",
+      "git_blob": "cd7510f9ed641ebd1d2c100ce272681a297d6524"
+    },
+    {
+      "path": "artifacts/week2-completion-2026-10-08/run-01/logs/competing-5-seed14.stdout.gz",
+      "git_blob": "f0876ded1acb1d041b6634b2abaca2e56a789ea0"
+    },
+    {
+      "path": "artifacts/week2-completion-2026-10-08/run-01/logs/competing-5-seed15.stdout.gz",
+      "git_blob": "90b1bc15b776d7aac6f47cb9f0f2afaaeff8d0ce"
+    },
+    {
+      "path": "artifacts/week2-completion-2026-10-08/run-01/logs/competing-5-seed16.stdout.gz",
+      "git_blob": "737b8ddfad6fe411c1faad131c5cd25a68de47dd"
+    },
+    {
+      "path": "artifacts/week2-completion-2026-10-08/run-01/logs/competing-5-seed17.stdout.gz",
+      "git_blob": "8bde6382c28682bd5ec936a6b8da8e2b71e0caa8"
+    },
+    {
+      "path": "artifacts/week2-completion-2026-10-08/run-01/logs/competing-5-seed18.stdout.gz",
+      "git_blob": "8de780db41a543bca8f384961273b79f6c0896c3"
+    },
+    {
+      "path": "artifacts/week2-completion-2026-10-08/run-01/logs/competing-5-seed19.stdout.gz",
+      "git_blob": "ecfaefc4e28150847f1675ad31c01116ff65de04"
+    },
+    {
+      "path": "artifacts/week2-completion-2026-10-08/run-01/logs/competing-5-seed20.stdout.gz",
+      "git_blob": "f27b22147dbfa4869afd44955c6733c0fa6305d1"
+    },
+    {
+      "path": "artifacts/week2-completion-2026-10-08/run-01/logs/competing-5-seed21.stdout.gz",
+      "git_blob": "269cfec6a61f4e2e1f25a751af66d9cfccb27e6c"
+    },
+    {
+      "path": "artifacts/week2-completion-2026-10-08/run-01/logs/competing-5-seed22.stdout.gz",
+      "git_blob": "b0911fbfdeec2db73f7bdea22898974552806e84"
+    },
+    {
+      "path": "artifacts/week2-completion-2026-10-08/run-01/logs/competing-5-seed23.stdout.gz",
+      "git_blob": "c991011fcd56c98a69a860b9bb8c08504b98be7d"
+    },
+    {
+      "path": "artifacts/week2-completion-2026-10-08/run-01/logs/competing-5-seed24.stdout.gz",
+      "git_blob": "8098448375702bbc603d50f0b4330e47f7373c8a"
+    },
+    {
+      "path": "artifacts/week2-completion-2026-10-08/run-01/logs/competing-5-seed25.stdout.gz",
+      "git_blob": "c863b5954a8900bac28bf050b08fa2bbff02c52a"
+    },
+    {
+      "path": "artifacts/week2-completion-2026-10-08/run-01/logs/competing-5-seed26.stdout.gz",
+      "git_blob": "514fe6f1f1fc4006bd87175d8b81e013987a2025"
+    },
+    {
+      "path": "artifacts/week2-completion-2026-10-08/run-01/logs/competing-5-seed27.stdout.gz",
+      "git_blob": "25460cb3685799eed4d1b123c3166f19b5d07853"
+    },
+    {
+      "path": "artifacts/week2-completion-2026-10-08/run-01/logs/competing-5-seed28.stdout.gz",
+      "git_blob": "b53730584f73d50b72747ea5bcd11d87f1a5277c"
+    },
+    {
+      "path": "artifacts/week2-completion-2026-10-08/run-01/logs/competing-5-seed29.stdout.gz",
+      "git_blob": "6fafc581b9fcc152d1c765b6b529bcda3bfc6174"
+    },
+    {
+      "path": "artifacts/week2-completion-2026-10-08/run-01/logs/competing-5-seed30.stdout.gz",
+      "git_blob": "0a0331eb8d55ef05bf9b0f9d9f7e22f6a5050533"
+    },
+    {
+      "path": "artifacts/week2-completion-2026-10-08/run-01/logs/competing-6-seed01.stdout.gz",
+      "git_blob": "235fedfb4db943a6552e303cee0046205ca0875e"
+    },
+    {
+      "path": "artifacts/week2-completion-2026-10-08/run-01/logs/competing-6-seed02.stdout.gz",
+      "git_blob": "d218a09a4348066ebfe727d8c8eed9e2b7626b67"
+    },
+    {
+      "path": "artifacts/week2-completion-2026-10-08/run-01/logs/competing-6-seed03.stdout.gz",
+      "git_blob": "4d2f48dfea00dc18c6c4f9775d73ea430fae0add"
+    },
+    {
+      "path": "artifacts/week2-completion-2026-10-08/run-01/logs/competing-6-seed04.stdout.gz",
+      "git_blob": "b5c986c9c37afbb47afe6f67a90e8a657d6ae179"
+    },
+    {
+      "path": "artifacts/week2-completion-2026-10-08/run-01/logs/competing-6-seed05.stdout.gz",
+      "git_blob": "7dbd16a1f41684e8a6edc2cb4fab21b2930ce48a"
+    },
+    {
+      "path": "artifacts/week2-completion-2026-10-08/run-01/logs/competing-6-seed06.stdout.gz",
+      "git_blob": "3e499d0211f8bbd7b22c7b933cb0aee43e0a0f8e"
+    },
+    {
+      "path": "artifacts/week2-completion-2026-10-08/run-01/logs/competing-6-seed07.stdout.gz",
+      "git_blob": "fb3c207c697510a9f0ce606e43cf74056aa637fb"
+    },
+    {
+      "path": "artifacts/week2-completion-2026-10-08/run-01/logs/competing-6-seed08.stdout.gz",
+      "git_blob": "59d94d6d3aa6ab55fbbeac1f6452b1fe6e88dad7"
+    },
+    {
+      "path": "artifacts/week2-completion-2026-10-08/run-01/logs/competing-6-seed09.stdout.gz",
+      "git_blob": "4b21931a983098fcd8a6dc127d4744e13425a452"
+    },
+    {
+      "path": "artifacts/week2-completion-2026-10-08/run-01/logs/competing-6-seed10.stdout.gz",
+      "git_blob": "d99a46de0370c2a0628e62dde1ca685dd492510b"
+    },
+    {
+      "path": "artifacts/week2-completion-2026-10-08/run-01/logs/competing-6-seed11.stdout.gz",
+      "git_blob": "41a18459f2bb919f8ef37a8acb12f9fdc9b7b05a"
+    },
+    {
+      "path": "artifacts/week2-completion-2026-10-08/run-01/logs/competing-6-seed12.stdout.gz",
+      "git_blob": "6e5bd267b34aeef32a45bbb4756ad76421ff8edc"
+    },
+    {
+      "path": "artifacts/week2-completion-2026-10-08/run-01/logs/competing-6-seed13.stdout.gz",
+      "git_blob": "4bd3ec9fd73ec8e8021ea17ff51e77771bbffbf9"
+    },
+    {
+      "path": "artifacts/week2-completion-2026-10-08/run-01/logs/competing-6-seed14.stdout.gz",
+      "git_blob": "603a2e29ede493e8623c7741c713b7121b0f42ac"
+    },
+    {
+      "path": "artifacts/week2-completion-2026-10-08/run-01/logs/competing-6-seed15.stdout.gz",
+      "git_blob": "dabe73122ba0a8f581378b410ba6dc8fb473671a"
+    },
+    {
+      "path": "artifacts/week2-completion-2026-10-08/run-01/logs/competing-6-seed16.stdout.gz",
+      "git_blob": "ff50440e152503dd21ee328c428cb0f22b824d88"
+    },
+    {
+      "path": "artifacts/week2-completion-2026-10-08/run-01/logs/competing-6-seed17.stdout.gz",
+      "git_blob": "00837426225d7f7b263b99f5952e1549780573b4"
+    },
+    {
+      "path": "artifacts/week2-completion-2026-10-08/run-01/logs/competing-6-seed18.stdout.gz",
+      "git_blob": "0e19229a4611146ba4eca043a293634e86e795b3"
+    },
+    {
+      "path": "artifacts/week2-completion-2026-10-08/run-01/logs/competing-6-seed19.stdout.gz",
+      "git_blob": "dca84f274af308f2369bb0ed5ae02d97e2ca14f6"
+    },
+    {
+      "path": "artifacts/week2-completion-2026-10-08/run-01/logs/competing-6-seed20.stdout.gz",
+      "git_blob": "0544e346a696cdf76851ff548b30b70a74d715fc"
+    },
+    {
+      "path": "artifacts/week2-completion-2026-10-08/run-01/logs/competing-6-seed21.stdout.gz",
+      "git_blob": "555fa640b78166e783275626610b5c40761a951e"
+    },
+    {
+      "path": "artifacts/week2-completion-2026-10-08/run-01/logs/competing-6-seed22.stdout.gz",
+      "git_blob": "7c2cefe03280ff4913751f7b27cab9e986a0691c"
+    },
+    {
+      "path": "artifacts/week2-completion-2026-10-08/run-01/logs/competing-6-seed23.stdout.gz",
+      "git_blob": "68437454627ddfa26b3dedfbe7441d2ef84b0371"
+    },
+    {
+      "path": "artifacts/week2-completion-2026-10-08/run-01/logs/competing-6-seed24.stdout.gz",
+      "git_blob": "cee96c6ddbc384132d7d7ffbaf8729ff0942166f"
+    },
+    {
+      "path": "artifacts/week2-completion-2026-10-08/run-01/logs/competing-6-seed25.stdout.gz",
+      "git_blob": "64e8c80d5cbd8a781b3fad00f160271b5116f364"
+    },
+    {
+      "path": "artifacts/week2-completion-2026-10-08/run-01/logs/competing-6-seed26.stdout.gz",
+      "git_blob": "0e0d270df6440235abf9d3ae6df7b2bf4e305ea9"
+    },
+    {
+      "path": "artifacts/week2-completion-2026-10-08/run-01/logs/competing-6-seed27.stdout.gz",
+      "git_blob": "89374e87144c6797014e4103bba1f12fcf3a635c"
+    },
+    {
+      "path": "artifacts/week2-completion-2026-10-08/run-01/logs/competing-6-seed28.stdout.gz",
+      "git_blob": "3bc9ebaa3d91f864ce7697f06e3d9ec5f2e21022"
+    },
+    {
+      "path": "artifacts/week2-completion-2026-10-08/run-01/logs/competing-6-seed29.stdout.gz",
+      "git_blob": "f566c4d157dec4fc0b5241608527f18440cf6251"
+    },
+    {
+      "path": "artifacts/week2-completion-2026-10-08/run-01/logs/competing-6-seed30.stdout.gz",
+      "git_blob": "b964291a05151a40eb4c076ef3e0fec02dbf3d9e"
+    },
+    {
+      "path": "artifacts/week2-completion-2026-10-08/run-01/logs/degrade-0-seed01.stdout.gz",
+      "git_blob": "6a8fb878f6336d559945d9c02f1a9c170aed53f7"
+    },
+    {
+      "path": "artifacts/week2-completion-2026-10-08/run-01/logs/degrade-0-seed02.stdout.gz",
+      "git_blob": "f53f95cbdbcbe11bff0a4cf741859d36591c36b3"
+    },
+    {
+      "path": "artifacts/week2-completion-2026-10-08/run-01/logs/degrade-0-seed03.stdout.gz",
+      "git_blob": "dd421d66afd2f922a6401f0eb4295aff215cc218"
+    },
+    {
+      "path": "artifacts/week2-completion-2026-10-08/run-01/logs/degrade-0-seed04.stdout.gz",
+      "git_blob": "177144edd74cb77cf322591c1515366bde4affc0"
+    },
+    {
+      "path": "artifacts/week2-completion-2026-10-08/run-01/logs/degrade-0-seed05.stdout.gz",
+      "git_blob": "dd5233ab4eff8206fbbfc1059f264798747fcbde"
+    },
+    {
+      "path": "artifacts/week2-completion-2026-10-08/run-01/logs/degrade-0-seed06.stdout.gz",
+      "git_blob": "8097219bd4748248c196d7ee28dbf52b89087a24"
+    },
+    {
+      "path": "artifacts/week2-completion-2026-10-08/run-01/logs/degrade-0-seed07.stdout.gz",
+      "git_blob": "2a76211f64023e2a2b33f343f0cf45b853390d85"
+    },
+    {
+      "path": "artifacts/week2-completion-2026-10-08/run-01/logs/degrade-0-seed08.stdout.gz",
+      "git_blob": "bc13b6913627d3da74c831d2f701343588072a53"
+    },
+    {
+      "path": "artifacts/week2-completion-2026-10-08/run-01/logs/degrade-0-seed09.stdout.gz",
+      "git_blob": "c48458f073e01326c836a26ad3e69335d3ed5380"
+    },
+    {
+      "path": "artifacts/week2-completion-2026-10-08/run-01/logs/degrade-0-seed10.stdout.gz",
+      "git_blob": "f2bc12a9833f9c62f08fa4b0b49d991c94167a3e"
+    },
+    {
+      "path": "artifacts/week2-completion-2026-10-08/run-01/logs/degrade-0-seed11.stdout.gz",
+      "git_blob": "dcbee4a03db527cddf4d779f13d2c606997a5b8b"
+    },
+    {
+      "path": "artifacts/week2-completion-2026-10-08/run-01/logs/degrade-0-seed12.stdout.gz",
+      "git_blob": "08c2d8dfaf3cfdce5c3fd8b3e293dceaa44fd143"
+    },
+    {
+      "path": "artifacts/week2-completion-2026-10-08/run-01/logs/degrade-0-seed13.stdout.gz",
+      "git_blob": "dc5739c7ae734a245a65cf10b4c0b2396a80a828"
+    },
+    {
+      "path": "artifacts/week2-completion-2026-10-08/run-01/logs/degrade-0-seed14.stdout.gz",
+      "git_blob": "0ccaa825e7285cf4296f56e70bcd8a37feccfe15"
+    },
+    {
+      "path": "artifacts/week2-completion-2026-10-08/run-01/logs/degrade-0-seed15.stdout.gz",
+      "git_blob": "c22e885965c402ec84d466bde74c7b5035fa6641"
+    },
+    {
+      "path": "artifacts/week2-completion-2026-10-08/run-01/logs/degrade-0-seed16.stdout.gz",
+      "git_blob": "9e89ca69d0dd76dba1a7ee81abbd333f51917a13"
+    },
+    {
+      "path": "artifacts/week2-completion-2026-10-08/run-01/logs/degrade-0-seed17.stdout.gz",
+      "git_blob": "ec892311efcf0ed2bab7145b61c4a9d579c752f9"
+    },
+    {
+      "path": "artifacts/week2-completion-2026-10-08/run-01/logs/degrade-0-seed18.stdout.gz",
+      "git_blob": "6a6f87cd31c1044d85de001ec327a37864e7bb17"
+    },
+    {
+      "path": "artifacts/week2-completion-2026-10-08/run-01/logs/degrade-0-seed19.stdout.gz",
+      "git_blob": "700d8892449ad88c488c167eb4d153c358231fa9"
+    },
+    {
+      "path": "artifacts/week2-completion-2026-10-08/run-01/logs/degrade-0-seed20.stdout.gz",
+      "git_blob": "0861ff2826fe36e4586cf504d2f561d52e886a4c"
+    },
+    {
+      "path": "artifacts/week2-completion-2026-10-08/run-01/logs/degrade-0-seed21.stdout.gz",
+      "git_blob": "6c1ec58a29e52041bcfb3c035c1f3019db374800"
+    },
+    {
+      "path": "artifacts/week2-completion-2026-10-08/run-01/logs/degrade-0-seed22.stdout.gz",
+      "git_blob": "c8e8b9981ed7fece607847d794d7e48c2c683e58"
+    },
+    {
+      "path": "artifacts/week2-completion-2026-10-08/run-01/logs/degrade-0-seed23.stdout.gz",
+      "git_blob": "edcb63fb65365b8cd61d90736081fc5b76ec1d2e"
+    },
+    {
+      "path": "artifacts/week2-completion-2026-10-08/run-01/logs/degrade-0-seed24.stdout.gz",
+      "git_blob": "cf1f0a72144c848f5befd3f3bb2122a93ee909ec"
+    },
+    {
+      "path": "artifacts/week2-completion-2026-10-08/run-01/logs/degrade-0-seed25.stdout.gz",
+      "git_blob": "ce4dd5d01470b4a055989dc76f7e2823791902e4"
+    },
+    {
+      "path": "artifacts/week2-completion-2026-10-08/run-01/logs/degrade-0-seed26.stdout.gz",
+      "git_blob": "4394bdaf2fa3a3fb1c1970890e04e277e2b06627"
+    },
+    {
+      "path": "artifacts/week2-completion-2026-10-08/run-01/logs/degrade-0-seed27.stdout.gz",
+      "git_blob": "c94b75e89c4e4ea663c3cb817fe55afecefd49a7"
+    },
+    {
+      "path": "artifacts/week2-completion-2026-10-08/run-01/logs/degrade-0-seed28.stdout.gz",
+      "git_blob": "6ea4727c3a7981da1d30077a83a8fc13debc0904"
+    },
+    {
+      "path": "artifacts/week2-completion-2026-10-08/run-01/logs/degrade-0-seed29.stdout.gz",
+      "git_blob": "1b6bb4ccb9eee20854a05e082271cb815c544d02"
+    },
+    {
+      "path": "artifacts/week2-completion-2026-10-08/run-01/logs/degrade-0-seed30.stdout.gz",
+      "git_blob": "d19cea8884d19859a7f671f2fc8ac66120540773"
+    },
+    {
+      "path": "artifacts/week2-completion-2026-10-08/run-01/logs/degrade-1-seed01.stdout.gz",
+      "git_blob": "45bed00fe36f9d78c07925b7038ce550f8d711cf"
+    },
+    {
+      "path": "artifacts/week2-completion-2026-10-08/run-01/logs/degrade-1-seed02.stdout.gz",
+      "git_blob": "1d114037e3b45d74cc185c104104e423cd6fee1e"
+    },
+    {
+      "path": "artifacts/week2-completion-2026-10-08/run-01/logs/degrade-1-seed03.stdout.gz",
+      "git_blob": "40980f559b8a473bca7561b1991923eef4b4bfed"
+    },
+    {
+      "path": "artifacts/week2-completion-2026-10-08/run-01/logs/degrade-1-seed04.stdout.gz",
+      "git_blob": "4fb417c5be1f3b343213e2253df180fef2296f77"
+    },
+    {
+      "path": "artifacts/week2-completion-2026-10-08/run-01/logs/degrade-1-seed05.stdout.gz",
+      "git_blob": "2fabafe55f842c7f656b1df36e67bd910303eae3"
+    },
+    {
+      "path": "artifacts/week2-completion-2026-10-08/run-01/logs/degrade-1-seed06.stdout.gz",
+      "git_blob": "e527a132281f7f28ecaebd84f72b1cf84dffa10e"
+    },
+    {
+      "path": "artifacts/week2-completion-2026-10-08/run-01/logs/degrade-1-seed07.stdout.gz",
+      "git_blob": "f1077f27a0a35810d656b9c9645ec7bbb8aae09b"
+    },
+    {
+      "path": "artifacts/week2-completion-2026-10-08/run-01/logs/degrade-1-seed08.stdout.gz",
+      "git_blob": "ed688ba0c1d6be851fca4587206a1484adef1829"
+    },
+    {
+      "path": "artifacts/week2-completion-2026-10-08/run-01/logs/degrade-1-seed09.stdout.gz",
+      "git_blob": "88c10812d2472370abb377d1a6cc514dc4cb12aa"
+    },
+    {
+      "path": "artifacts/week2-completion-2026-10-08/run-01/logs/degrade-1-seed10.stdout.gz",
+      "git_blob": "d6e16d341bfba3fbbc5f1ced4d32de78d0438629"
+    },
+    {
+      "path": "artifacts/week2-completion-2026-10-08/run-01/logs/degrade-1-seed11.stdout.gz",
+      "git_blob": "deedd832fe89c4122a2243e1f8091b38fdacb888"
+    },
+    {
+      "path": "artifacts/week2-completion-2026-10-08/run-01/logs/degrade-1-seed12.stdout.gz",
+      "git_blob": "fee23e0280d2668cfd2f38dfa34da0de42777b2b"
+    },
+    {
+      "path": "artifacts/week2-completion-2026-10-08/run-01/logs/degrade-1-seed13.stdout.gz",
+      "git_blob": "4f74d2580b0169fa41e3c629f67b8b127f3d7bd5"
+    },
+    {
+      "path": "artifacts/week2-completion-2026-10-08/run-01/logs/degrade-1-seed14.stdout.gz",
+      "git_blob": "64752927a32f6705a10aa4c06df5b92980e66118"
+    },
+    {
+      "path": "artifacts/week2-completion-2026-10-08/run-01/logs/degrade-1-seed15.stdout.gz",
+      "git_blob": "b91abb5161fe7297f5632c52881119a8f6c2f91a"
+    },
+    {
+      "path": "artifacts/week2-completion-2026-10-08/run-01/logs/degrade-1-seed16.stdout.gz",
+      "git_blob": "7af45e30c8a716db59c58299aa0cee76968e78c8"
+    },
+    {
+      "path": "artifacts/week2-completion-2026-10-08/run-01/logs/degrade-1-seed17.stdout.gz",
+      "git_blob": "f0080b8c9b443f0d7e564ca0cd3f38b968faf282"
+    },
+    {
+      "path": "artifacts/week2-completion-2026-10-08/run-01/logs/degrade-1-seed18.stdout.gz",
+      "git_blob": "406292f6ffb0509eb95c7c85d563ad2861aa48cc"
+    },
+    {
+      "path": "artifacts/week2-completion-2026-10-08/run-01/logs/degrade-1-seed19.stdout.gz",
+      "git_blob": "e2781ce6408af6254779503a5319d613ff0dc70f"
+    },
+    {
+      "path": "artifacts/week2-completion-2026-10-08/run-01/logs/degrade-1-seed20.stdout.gz",
+      "git_blob": "7952af427ad874c67033865bcffdc87091e691b5"
+    },
+    {
+      "path": "artifacts/week2-completion-2026-10-08/run-01/logs/degrade-1-seed21.stdout.gz",
+      "git_blob": "c5b7358903c6589b5d5e8a9e23f68979dc7e2cf2"
+    },
+    {
+      "path": "artifacts/week2-completion-2026-10-08/run-01/logs/degrade-1-seed22.stdout.gz",
+      "git_blob": "f6be9817567b165ffb52d8be02cf3d7d2a01f057"
+    },
+    {
+      "path": "artifacts/week2-completion-2026-10-08/run-01/logs/degrade-1-seed23.stdout.gz",
+      "git_blob": "ed64e226051fef60b8dffe64583f2ddde2ac4c5d"
+    },
+    {
+      "path": "artifacts/week2-completion-2026-10-08/run-01/logs/degrade-1-seed24.stdout.gz",
+      "git_blob": "bb5d4c25456f5d6ecf4bc1fc88560cff774f2ced"
+    },
+    {
+      "path": "artifacts/week2-completion-2026-10-08/run-01/logs/degrade-1-seed25.stdout.gz",
+      "git_blob": "c31a980a37a9b8f2e645f5682367a0a64b043c8e"
+    },
+    {
+      "path": "artifacts/week2-completion-2026-10-08/run-01/logs/degrade-1-seed26.stdout.gz",
+      "git_blob": "56410df506d399e7a21b937743c59f75b751e1fb"
+    },
+    {
+      "path": "artifacts/week2-completion-2026-10-08/run-01/logs/degrade-1-seed27.stdout.gz",
+      "git_blob": "effb6c6827d35b3660e8fe492c0bd98e8e20f9e5"
+    },
+    {
+      "path": "artifacts/week2-completion-2026-10-08/run-01/logs/degrade-1-seed28.stdout.gz",
+      "git_blob": "979272f93d7755258e21b447f53298a008150d7b"
+    },
+    {
+      "path": "artifacts/week2-completion-2026-10-08/run-01/logs/degrade-1-seed29.stdout.gz",
+      "git_blob": "6662c2c1b24c7745740a852714870653248f4e0f"
+    },
+    {
+      "path": "artifacts/week2-completion-2026-10-08/run-01/logs/degrade-1-seed30.stdout.gz",
+      "git_blob": "2cbb1f53978c518e421a07761b22fa8b24a6e3a6"
+    },
+    {
+      "path": "artifacts/week2-completion-2026-10-08/run-01/logs/degrade-2-seed01.stdout.gz",
+      "git_blob": "e0084da51dc86d085b6ba40de961ad57c1d06c87"
+    },
+    {
+      "path": "artifacts/week2-completion-2026-10-08/run-01/logs/degrade-2-seed02.stdout.gz",
+      "git_blob": "289dbea7dfc7766f46298d56536d7ed55403d8c7"
+    },
+    {
+      "path": "artifacts/week2-completion-2026-10-08/run-01/logs/degrade-2-seed03.stdout.gz",
+      "git_blob": "c64f33f7e800788573225494e10fc3ca41f4929d"
+    },
+    {
+      "path": "artifacts/week2-completion-2026-10-08/run-01/logs/degrade-2-seed04.stdout.gz",
+      "git_blob": "261c412b12af7eb7448458ffef237349e04ae7d7"
+    },
+    {
+      "path": "artifacts/week2-completion-2026-10-08/run-01/logs/degrade-2-seed05.stdout.gz",
+      "git_blob": "fe15c0f714d7fe46016694ed5762793653be2e20"
+    },
+    {
+      "path": "artifacts/week2-completion-2026-10-08/run-01/logs/degrade-2-seed06.stdout.gz",
+      "git_blob": "7c9dbb7fd576e5c6d32890edbf1e75c24bbb7acc"
+    },
+    {
+      "path": "artifacts/week2-completion-2026-10-08/run-01/logs/degrade-2-seed07.stdout.gz",
+      "git_blob": "0a31c6699ca508069d5b2d902348fd1f81cf0fef"
+    },
+    {
+      "path": "artifacts/week2-completion-2026-10-08/run-01/logs/degrade-2-seed08.stdout.gz",
+      "git_blob": "de85bc03cd8d4f9588730ce1b46b3797af3988cc"
+    },
+    {
+      "path": "artifacts/week2-completion-2026-10-08/run-01/logs/degrade-2-seed09.stdout.gz",
+      "git_blob": "5aa2e2c1564ae72a40bdc24870a57b4881083166"
+    },
+    {
+      "path": "artifacts/week2-completion-2026-10-08/run-01/logs/degrade-2-seed10.stdout.gz",
+      "git_blob": "5e702d9d662649fa71807f1ae872300dd33c70b4"
+    },
+    {
+      "path": "artifacts/week2-completion-2026-10-08/run-01/logs/degrade-2-seed11.stdout.gz",
+      "git_blob": "3e21cfbc2db579b3d365e264b7331413f2393744"
+    },
+    {
+      "path": "artifacts/week2-completion-2026-10-08/run-01/logs/degrade-2-seed12.stdout.gz",
+      "git_blob": "f846129c1a16b4cdda978fc349500331ea999ace"
+    },
+    {
+      "path": "artifacts/week2-completion-2026-10-08/run-01/logs/degrade-2-seed13.stdout.gz",
+      "git_blob": "0eee6e03d610c5a025703430afffef95f8400666"
+    },
+    {
+      "path": "artifacts/week2-completion-2026-10-08/run-01/logs/degrade-2-seed14.stdout.gz",
+      "git_blob": "f557102fda225eb91013f90ea4ef889e51d399fd"
+    },
+    {
+      "path": "artifacts/week2-completion-2026-10-08/run-01/logs/degrade-2-seed15.stdout.gz",
+      "git_blob": "c60d20ab774335f25f3926fe968eddbd5bcfeb4c"
+    },
+    {
+      "path": "artifacts/week2-completion-2026-10-08/run-01/logs/degrade-2-seed16.stdout.gz",
+      "git_blob": "c13f1eb5202ad86b058ee5e02675242b22284b64"
+    },
+    {
+      "path": "artifacts/week2-completion-2026-10-08/run-01/logs/degrade-2-seed17.stdout.gz",
+      "git_blob": "044571672d3728165e9408c434fc8a0a4fd1d522"
+    },
+    {
+      "path": "artifacts/week2-completion-2026-10-08/run-01/logs/degrade-2-seed18.stdout.gz",
+      "git_blob": "14cee8bbcf3408b92f67830d1682adcf79c1f5b5"
+    },
+    {
+      "path": "artifacts/week2-completion-2026-10-08/run-01/logs/degrade-2-seed19.stdout.gz",
+      "git_blob": "c238835b1f65acdda2e39700834d2e573062f83b"
+    },
+    {
+      "path": "artifacts/week2-completion-2026-10-08/run-01/logs/degrade-2-seed20.stdout.gz",
+      "git_blob": "c475c6cdc1354ac425f1dc17e495f32b09e96b3b"
+    },
+    {
+      "path": "artifacts/week2-completion-2026-10-08/run-01/logs/degrade-2-seed21.stdout.gz",
+      "git_blob": "6805f719b37c8bbd674e887b7552038b0e12b32a"
+    },
+    {
+      "path": "artifacts/week2-completion-2026-10-08/run-01/logs/degrade-2-seed22.stdout.gz",
+      "git_blob": "4ff6ae35e8c2b2ceff26b1463a6346b205a46e59"
+    },
+    {
+      "path": "artifacts/week2-completion-2026-10-08/run-01/logs/degrade-2-seed23.stdout.gz",
+      "git_blob": "59d0ce6c27518f92a9d1f5a66bda3308af3c54eb"
+    },
+    {
+      "path": "artifacts/week2-completion-2026-10-08/run-01/logs/degrade-2-seed24.stdout.gz",
+      "git_blob": "efea1c7620eea0951a6bada0d46dd1cc72e36a2d"
+    },
+    {
+      "path": "artifacts/week2-completion-2026-10-08/run-01/logs/degrade-2-seed25.stdout.gz",
+      "git_blob": "e562183e7f42b4636de445f5097f2d2740ed2271"
+    },
+    {
+      "path": "artifacts/week2-completion-2026-10-08/run-01/logs/degrade-2-seed26.stdout.gz",
+      "git_blob": "9979499054ddc84565bbb11dd11ba0ee1f0226af"
+    },
+    {
+      "path": "artifacts/week2-completion-2026-10-08/run-01/logs/degrade-2-seed27.stdout.gz",
+      "git_blob": "47d1e3474e25131ad6f033a6a9c42aa6d2336ee1"
+    },
+    {
+      "path": "artifacts/week2-completion-2026-10-08/run-01/logs/degrade-2-seed28.stdout.gz",
+      "git_blob": "4681219522533ee4eeac35116e20c0b634b98e43"
+    },
+    {
+      "path": "artifacts/week2-completion-2026-10-08/run-01/logs/degrade-2-seed29.stdout.gz",
+      "git_blob": "2cd02114bbba0daa3b0e0de7273827f8a59b0573"
+    },
+    {
+      "path": "artifacts/week2-completion-2026-10-08/run-01/logs/degrade-2-seed30.stdout.gz",
+      "git_blob": "9e2d112473d1630df64cff949bfdcb62cd76ac2b"
+    },
+    {
+      "path": "artifacts/week2-completion-2026-10-08/run-01/logs/degrade-3-seed01.stdout.gz",
+      "git_blob": "ebff50856ff5ebcca223e1d8207011815b71e909"
+    },
+    {
+      "path": "artifacts/week2-completion-2026-10-08/run-01/logs/degrade-3-seed02.stdout.gz",
+      "git_blob": "fade22ea94f0d6f367b429df280609b20171824e"
+    },
+    {
+      "path": "artifacts/week2-completion-2026-10-08/run-01/logs/degrade-3-seed03.stdout.gz",
+      "git_blob": "9242f33a1bdd4e234cd4d826131aeaa0a7ac7fff"
+    },
+    {
+      "path": "artifacts/week2-completion-2026-10-08/run-01/logs/degrade-3-seed04.stdout.gz",
+      "git_blob": "c1b627e5fd2fc5a0511e190730bbec1f7963c493"
+    },
+    {
+      "path": "artifacts/week2-completion-2026-10-08/run-01/logs/degrade-3-seed05.stdout.gz",
+      "git_blob": "0c27a3b04979d65e923fcda806ec963b2f0baf78"
+    },
+    {
+      "path": "artifacts/week2-completion-2026-10-08/run-01/logs/degrade-3-seed06.stdout.gz",
+      "git_blob": "7e732747f21d38cb93f1083e491700c8bb9e11b5"
+    },
+    {
+      "path": "artifacts/week2-completion-2026-10-08/run-01/logs/degrade-3-seed07.stdout.gz",
+      "git_blob": "8b1ac3ac18e63c67295ce0b757494c9f1b9e82ac"
+    },
+    {
+      "path": "artifacts/week2-completion-2026-10-08/run-01/logs/degrade-3-seed08.stdout.gz",
+      "git_blob": "e577d421760ebc6ea75fa4b48af96f2cb341305b"
+    },
+    {
+      "path": "artifacts/week2-completion-2026-10-08/run-01/logs/degrade-3-seed09.stdout.gz",
+      "git_blob": "65c137b4100305b76fbe8cbd2c484543db54f71d"
+    },
+    {
+      "path": "artifacts/week2-completion-2026-10-08/run-01/logs/degrade-3-seed10.stdout.gz",
+      "git_blob": "b81f017e7c50fdc2ec5086d0ca75946de4d93bf4"
+    },
+    {
+      "path": "artifacts/week2-completion-2026-10-08/run-01/logs/degrade-3-seed11.stdout.gz",
+      "git_blob": "47d818e673282f9ab60cf3f1b00c92faf47b5aab"
+    },
+    {
+      "path": "artifacts/week2-completion-2026-10-08/run-01/logs/degrade-3-seed12.stdout.gz",
+      "git_blob": "e33b8818d15a8552a4a4fc3d26504d5cde6ad1f7"
+    },
+    {
+      "path": "artifacts/week2-completion-2026-10-08/run-01/logs/degrade-3-seed13.stdout.gz",
+      "git_blob": "e7664720ad68b9d1af72793f2147e2b16ebcc137"
+    },
+    {
+      "path": "artifacts/week2-completion-2026-10-08/run-01/logs/degrade-3-seed14.stdout.gz",
+      "git_blob": "4d639fc493cf6dbd5f72e4855beed8a0f01a23c7"
+    },
+    {
+      "path": "artifacts/week2-completion-2026-10-08/run-01/logs/degrade-3-seed15.stdout.gz",
+      "git_blob": "a799047f85d50d19a69e447766d7c36ba8abbc41"
+    },
+    {
+      "path": "artifacts/week2-completion-2026-10-08/run-01/logs/degrade-3-seed16.stdout.gz",
+      "git_blob": "62ea1df66a2762f275b194329862c53b3ab82814"
+    },
+    {
+      "path": "artifacts/week2-completion-2026-10-08/run-01/logs/degrade-3-seed17.stdout.gz",
+      "git_blob": "87308e4f0a06d55d3344d25e71c44112587fb3de"
+    },
+    {
+      "path": "artifacts/week2-completion-2026-10-08/run-01/logs/degrade-3-seed18.stdout.gz",
+      "git_blob": "102b6f9d976d8482902664b030aa8688b625df84"
+    },
+    {
+      "path": "artifacts/week2-completion-2026-10-08/run-01/logs/degrade-3-seed19.stdout.gz",
+      "git_blob": "78f39ee6873e3eba81aba2b5f474138e9e2a09e9"
+    },
+    {
+      "path": "artifacts/week2-completion-2026-10-08/run-01/logs/degrade-3-seed20.stdout.gz",
+      "git_blob": "6572c7fa9f86d44e60cef67433d0c841f590c897"
+    },
+    {
+      "path": "artifacts/week2-completion-2026-10-08/run-01/logs/degrade-3-seed21.stdout.gz",
+      "git_blob": "eb0e3813047b5d6ed6c3b353615c8002d40ac6d3"
+    },
+    {
+      "path": "artifacts/week2-completion-2026-10-08/run-01/logs/degrade-3-seed22.stdout.gz",
+      "git_blob": "54d6c9231ed33b65abbddfb0e2e34d9ddf2e3492"
+    },
+    {
+      "path": "artifacts/week2-completion-2026-10-08/run-01/logs/degrade-3-seed23.stdout.gz",
+      "git_blob": "2a16b8a463d50cbe3c6d663c6e6cb74a1089eedc"
+    },
+    {
+      "path": "artifacts/week2-completion-2026-10-08/run-01/logs/degrade-3-seed24.stdout.gz",
+      "git_blob": "8a66c725f15ba8890a5d076105061cdbe74a871d"
+    },
+    {
+      "path": "artifacts/week2-completion-2026-10-08/run-01/logs/degrade-3-seed25.stdout.gz",
+      "git_blob": "09b64b1381590e0c018161727f068fd07e0fae73"
+    },
+    {
+      "path": "artifacts/week2-completion-2026-10-08/run-01/logs/degrade-3-seed26.stdout.gz",
+      "git_blob": "a31546922a3751ba2765b359574565507da759b8"
+    },
+    {
+      "path": "artifacts/week2-completion-2026-10-08/run-01/logs/degrade-3-seed27.stdout.gz",
+      "git_blob": "b0900281d2f71a86af45d750ab54e2c45e6cdf0e"
+    },
+    {
+      "path": "artifacts/week2-completion-2026-10-08/run-01/logs/degrade-3-seed28.stdout.gz",
+      "git_blob": "30af047361da23732f09489eadbb6b0a7eb07d14"
+    },
+    {
+      "path": "artifacts/week2-completion-2026-10-08/run-01/logs/degrade-3-seed29.stdout.gz",
+      "git_blob": "a601164cd4ffb1d1835e281936d7fb4fe8942e45"
+    },
+    {
+      "path": "artifacts/week2-completion-2026-10-08/run-01/logs/degrade-3-seed30.stdout.gz",
+      "git_blob": "9e56346961ab245a31f6ca7f670d997e3b3fba1b"
+    },
+    {
+      "path": "artifacts/week2-completion-2026-10-08/run-01/logs/degrade-4-seed01.stdout.gz",
+      "git_blob": "6af07535a26f706d84a22cd98faec6aa4f64d1f1"
+    },
+    {
+      "path": "artifacts/week2-completion-2026-10-08/run-01/logs/degrade-4-seed02.stdout.gz",
+      "git_blob": "da456c41ff967b1a085d9dccb99a668b259c6de7"
+    },
+    {
+      "path": "artifacts/week2-completion-2026-10-08/run-01/logs/degrade-4-seed03.stdout.gz",
+      "git_blob": "3880d37b2e06bab3ac36e4eb3c0a93305054f0ec"
+    },
+    {
+      "path": "artifacts/week2-completion-2026-10-08/run-01/logs/degrade-4-seed04.stdout.gz",
+      "git_blob": "d864bdbed5fb1fa8f9a7e1e6c910b2b9ad18619a"
+    },
+    {
+      "path": "artifacts/week2-completion-2026-10-08/run-01/logs/degrade-4-seed05.stdout.gz",
+      "git_blob": "a998a2c759ebe347408afda04a425e9832e742ec"
+    },
+    {
+      "path": "artifacts/week2-completion-2026-10-08/run-01/logs/degrade-4-seed06.stdout.gz",
+      "git_blob": "42cc12abe68ba7a3e85df12097c8a8505186cbb8"
+    },
+    {
+      "path": "artifacts/week2-completion-2026-10-08/run-01/logs/degrade-4-seed07.stdout.gz",
+      "git_blob": "70f63f950683d80891df109588193b623c2b30dc"
+    },
+    {
+      "path": "artifacts/week2-completion-2026-10-08/run-01/logs/degrade-4-seed08.stdout.gz",
+      "git_blob": "85f1dd8615755910635b24c452d1cee117853bbd"
+    },
+    {
+      "path": "artifacts/week2-completion-2026-10-08/run-01/logs/degrade-4-seed09.stdout.gz",
+      "git_blob": "35d83809e4ee30d501cf5fd086e5fc6f3f513b01"
+    },
+    {
+      "path": "artifacts/week2-completion-2026-10-08/run-01/logs/degrade-4-seed10.stdout.gz",
+      "git_blob": "ff9c6209cb1fe7bcbac6b721c627fa53be2ac346"
+    },
+    {
+      "path": "artifacts/week2-completion-2026-10-08/run-01/logs/degrade-4-seed11.stdout.gz",
+      "git_blob": "39fe8f8f4313534201f9de17803ee7abc258d9d8"
+    },
+    {
+      "path": "artifacts/week2-completion-2026-10-08/run-01/logs/degrade-4-seed12.stdout.gz",
+      "git_blob": "a0d243644cdbcc6941ef0e25a24f380051dbe347"
+    },
+    {
+      "path": "artifacts/week2-completion-2026-10-08/run-01/logs/degrade-4-seed13.stdout.gz",
+      "git_blob": "6cb7cd8cc9a12f7766c966d5296a2df28b88d26b"
+    },
+    {
+      "path": "artifacts/week2-completion-2026-10-08/run-01/logs/degrade-4-seed14.stdout.gz",
+      "git_blob": "3a7caedf334fed8460b98fd79b93008c44aca39a"
+    },
+    {
+      "path": "artifacts/week2-completion-2026-10-08/run-01/logs/degrade-4-seed15.stdout.gz",
+      "git_blob": "16a9d400374653818d8e6f49b8162dd39f3bfec9"
+    },
+    {
+      "path": "artifacts/week2-completion-2026-10-08/run-01/logs/degrade-4-seed16.stdout.gz",
+      "git_blob": "8b560b82549b2d5093480c95916c979afa5bff2f"
+    },
+    {
+      "path": "artifacts/week2-completion-2026-10-08/run-01/logs/degrade-4-seed17.stdout.gz",
+      "git_blob": "7155e2fb50255fad1db48ff0a5779e425c6d2161"
+    },
+    {
+      "path": "artifacts/week2-completion-2026-10-08/run-01/logs/degrade-4-seed18.stdout.gz",
+      "git_blob": "05dec83fe2873a644f1b0af49ac8d04281b4f07f"
+    },
+    {
+      "path": "artifacts/week2-completion-2026-10-08/run-01/logs/degrade-4-seed19.stdout.gz",
+      "git_blob": "9d09c035438690762ab3d1e9dbe8617bbceccdbc"
+    },
+    {
+      "path": "artifacts/week2-completion-2026-10-08/run-01/logs/degrade-4-seed20.stdout.gz",
+      "git_blob": "fc9b47adc294a6fc412c306f44d5483025470edd"
+    },
+    {
+      "path": "artifacts/week2-completion-2026-10-08/run-01/logs/degrade-4-seed21.stdout.gz",
+      "git_blob": "1acd8840d1c1d84e0a4145639485eb7b7e0a771b"
+    },
+    {
+      "path": "artifacts/week2-completion-2026-10-08/run-01/logs/degrade-4-seed22.stdout.gz",
+      "git_blob": "8d78678044d4ff8ea52a83d22164775067f28347"
+    },
+    {
+      "path": "artifacts/week2-completion-2026-10-08/run-01/logs/degrade-4-seed23.stdout.gz",
+      "git_blob": "08f9141345c8317f9d69eddb6560bb5f5312c935"
+    },
+    {
+      "path": "artifacts/week2-completion-2026-10-08/run-01/logs/degrade-4-seed24.stdout.gz",
+      "git_blob": "7e0f4c053ee184dab58a1ceb639b6cddaeb4ac0c"
+    },
+    {
+      "path": "artifacts/week2-completion-2026-10-08/run-01/logs/degrade-4-seed25.stdout.gz",
+      "git_blob": "a6ee5b270de325e8fc29aac53de2a7ead92cbabf"
+    },
+    {
+      "path": "artifacts/week2-completion-2026-10-08/run-01/logs/degrade-4-seed26.stdout.gz",
+      "git_blob": "ed4c61d8e70cc201af89259c4aa082d33fcbfd34"
+    },
+    {
+      "path": "artifacts/week2-completion-2026-10-08/run-01/logs/degrade-4-seed27.stdout.gz",
+      "git_blob": "b49afd2c883ca71fdf2c8065fceca552c25880f0"
+    },
+    {
+      "path": "artifacts/week2-completion-2026-10-08/run-01/logs/degrade-4-seed28.stdout.gz",
+      "git_blob": "f6f19e5a1df72c96d44511583ddc21df3b3c8c8e"
+    },
+    {
+      "path": "artifacts/week2-completion-2026-10-08/run-01/logs/degrade-4-seed29.stdout.gz",
+      "git_blob": "1276e50fd3b904d8771ba16ebabe3b8d9c128fdb"
+    },
+    {
+      "path": "artifacts/week2-completion-2026-10-08/run-01/logs/degrade-4-seed30.stdout.gz",
+      "git_blob": "9f7fdbd55ef647bfc8535a65e787bbbf57dbb607"
+    },
+    {
+      "path": "artifacts/week2-completion-2026-10-08/run-01/logs/degrade-5-seed01.stdout.gz",
+      "git_blob": "a1d18779d1235a80f208cb028bcc129314807e13"
+    },
+    {
+      "path": "artifacts/week2-completion-2026-10-08/run-01/logs/degrade-5-seed02.stdout.gz",
+      "git_blob": "b7b6d5a54ab049977a56fd4d0bd92d397e27a4db"
+    },
+    {
+      "path": "artifacts/week2-completion-2026-10-08/run-01/logs/degrade-5-seed03.stdout.gz",
+      "git_blob": "c88a06e6bc6e331804e9cb59b83751a43d246610"
+    },
+    {
+      "path": "artifacts/week2-completion-2026-10-08/run-01/logs/degrade-5-seed04.stdout.gz",
+      "git_blob": "c9edc8dcf1595b4ff70296698f2e4d8c7c51131c"
+    },
+    {
+      "path": "artifacts/week2-completion-2026-10-08/run-01/logs/degrade-5-seed05.stdout.gz",
+      "git_blob": "66fa5ae57b88e12c171ab353c56a607a07a9c368"
+    },
+    {
+      "path": "artifacts/week2-completion-2026-10-08/run-01/logs/degrade-5-seed06.stdout.gz",
+      "git_blob": "5c468a66fa734ce6a08306a248f2b62be1a4772f"
+    },
+    {
+      "path": "artifacts/week2-completion-2026-10-08/run-01/logs/degrade-5-seed07.stdout.gz",
+      "git_blob": "8999991213fa08af418257060d40b9063ead352a"
+    },
+    {
+      "path": "artifacts/week2-completion-2026-10-08/run-01/logs/degrade-5-seed08.stdout.gz",
+      "git_blob": "6853c35314d3c577a619cbb38d434548baffdb59"
+    },
+    {
+      "path": "artifacts/week2-completion-2026-10-08/run-01/logs/degrade-5-seed09.stdout.gz",
+      "git_blob": "8600b8c79cc29261a015b08340adaf2cdd1918b6"
+    },
+    {
+      "path": "artifacts/week2-completion-2026-10-08/run-01/logs/degrade-5-seed10.stdout.gz",
+      "git_blob": "948b73209cafa7b70d600ecd27c343c32613ce28"
+    },
+    {
+      "path": "artifacts/week2-completion-2026-10-08/run-01/logs/degrade-5-seed11.stdout.gz",
+      "git_blob": "988c148a468bff432e62bd1c9230eb94a348df96"
+    },
+    {
+      "path": "artifacts/week2-completion-2026-10-08/run-01/logs/degrade-5-seed12.stdout.gz",
+      "git_blob": "fab32a4799f947702914c16574cc553c8ae25454"
+    },
+    {
+      "path": "artifacts/week2-completion-2026-10-08/run-01/logs/degrade-5-seed13.stdout.gz",
+      "git_blob": "b352a663d34b8422eb851dc253a5258a5d290789"
+    },
+    {
+      "path": "artifacts/week2-completion-2026-10-08/run-01/logs/degrade-5-seed14.stdout.gz",
+      "git_blob": "f4034b11a1ee8af152e75e179c386ae3e5378b85"
+    },
+    {
+      "path": "artifacts/week2-completion-2026-10-08/run-01/logs/degrade-5-seed15.stdout.gz",
+      "git_blob": "9297f94cd94c09ba61ca5ca8ab06e610c8d767b8"
+    },
+    {
+      "path": "artifacts/week2-completion-2026-10-08/run-01/logs/degrade-5-seed16.stdout.gz",
+      "git_blob": "a035a2941fe7633f07d308ab408b086237670cc9"
+    },
+    {
+      "path": "artifacts/week2-completion-2026-10-08/run-01/logs/degrade-5-seed17.stdout.gz",
+      "git_blob": "8ccc06923cbee37d307bc91aa6cdb7ccc781d11b"
+    },
+    {
+      "path": "artifacts/week2-completion-2026-10-08/run-01/logs/degrade-5-seed18.stdout.gz",
+      "git_blob": "621f93e0a74130f8f8c649c8b8a9a39eaee86bf9"
+    },
+    {
+      "path": "artifacts/week2-completion-2026-10-08/run-01/logs/degrade-5-seed19.stdout.gz",
+      "git_blob": "39077ed488b4fd57e7a1e0bce09e079e21851388"
+    },
+    {
+      "path": "artifacts/week2-completion-2026-10-08/run-01/logs/degrade-5-seed20.stdout.gz",
+      "git_blob": "916ae8d51a1d4268fd3cf52dcbed8b0391f9e40a"
+    },
+    {
+      "path": "artifacts/week2-completion-2026-10-08/run-01/logs/degrade-5-seed21.stdout.gz",
+      "git_blob": "94972839d849ac1de0b415501d64e65f09315fdb"
+    },
+    {
+      "path": "artifacts/week2-completion-2026-10-08/run-01/logs/degrade-5-seed22.stdout.gz",
+      "git_blob": "fa38622eb7be823d6a6a541fe55258eedca0b3f4"
+    },
+    {
+      "path": "artifacts/week2-completion-2026-10-08/run-01/logs/degrade-5-seed23.stdout.gz",
+      "git_blob": "ece9464c11c7de8547e4cdd28d1a25beb28aec7c"
+    },
+    {
+      "path": "artifacts/week2-completion-2026-10-08/run-01/logs/degrade-5-seed24.stdout.gz",
+      "git_blob": "4606ed876ed634045f659965b4face7ed7e82676"
+    },
+    {
+      "path": "artifacts/week2-completion-2026-10-08/run-01/logs/degrade-5-seed25.stdout.gz",
+      "git_blob": "dbb53a66c63d24bc77fa38ea93a13291cadd71d8"
+    },
+    {
+      "path": "artifacts/week2-completion-2026-10-08/run-01/logs/degrade-5-seed26.stdout.gz",
+      "git_blob": "dda9e215d2ad3b6bf9e24b27984ce7851efeb4ae"
+    },
+    {
+      "path": "artifacts/week2-completion-2026-10-08/run-01/logs/degrade-5-seed27.stdout.gz",
+      "git_blob": "1cc37dc1c871058664d24fe9bc8ce097302fab71"
+    },
+    {
+      "path": "artifacts/week2-completion-2026-10-08/run-01/logs/degrade-5-seed28.stdout.gz",
+      "git_blob": "6d3af8e388a35076eb4c9cdf15b53b2e00e552c5"
+    },
+    {
+      "path": "artifacts/week2-completion-2026-10-08/run-01/logs/degrade-5-seed29.stdout.gz",
+      "git_blob": "a4e1e4c54c4001e4c3bb3602f3ddc26074550cb7"
+    },
+    {
+      "path": "artifacts/week2-completion-2026-10-08/run-01/logs/degrade-5-seed30.stdout.gz",
+      "git_blob": "096d35598d0a482c7d4f1d0aec54f4d71e2d0c02"
+    },
+    {
+      "path": "artifacts/week2-completion-2026-10-08/run-01/logs/degrade-6-seed01.stdout.gz",
+      "git_blob": "f264f6847404fb1ec7c714ed394a2b9bd476b7e5"
+    },
+    {
+      "path": "artifacts/week2-completion-2026-10-08/run-01/logs/degrade-6-seed02.stdout.gz",
+      "git_blob": "590b1fd65c2a8a2d9e2119f5224db010735244a8"
+    },
+    {
+      "path": "artifacts/week2-completion-2026-10-08/run-01/logs/degrade-6-seed03.stdout.gz",
+      "git_blob": "a49ee260841f8a31012e55c6c1d587c789b106d1"
+    },
+    {
+      "path": "artifacts/week2-completion-2026-10-08/run-01/logs/degrade-6-seed04.stdout.gz",
+      "git_blob": "79b9e42c5b0787eb79033385cf3ccf3d7603570e"
+    },
+    {
+      "path": "artifacts/week2-completion-2026-10-08/run-01/logs/degrade-6-seed05.stdout.gz",
+      "git_blob": "1e19dd50bf924efb9f2f5af3412fb0b3998ee832"
+    },
+    {
+      "path": "artifacts/week2-completion-2026-10-08/run-01/logs/degrade-6-seed06.stdout.gz",
+      "git_blob": "5e4cd6940f9139b54bfb12c66949da9ef974b5d3"
+    },
+    {
+      "path": "artifacts/week2-completion-2026-10-08/run-01/logs/degrade-6-seed07.stdout.gz",
+      "git_blob": "332a1905943e32391fb08f2049bbd2d74434eac7"
+    },
+    {
+      "path": "artifacts/week2-completion-2026-10-08/run-01/logs/degrade-6-seed08.stdout.gz",
+      "git_blob": "effc65c7cc49c136b4422e87dc0835a53140e410"
+    },
+    {
+      "path": "artifacts/week2-completion-2026-10-08/run-01/logs/degrade-6-seed09.stdout.gz",
+      "git_blob": "79ee07f76d5531dd769cfc896109307645dd5157"
+    },
+    {
+      "path": "artifacts/week2-completion-2026-10-08/run-01/logs/degrade-6-seed10.stdout.gz",
+      "git_blob": "2bb2c3fd435be0efc26dbea2279bb88f4ccc879c"
+    },
+    {
+      "path": "artifacts/week2-completion-2026-10-08/run-01/logs/degrade-6-seed11.stdout.gz",
+      "git_blob": "c3cd305c3b02144198902eacc227a6bbc40b567b"
+    },
+    {
+      "path": "artifacts/week2-completion-2026-10-08/run-01/logs/degrade-6-seed12.stdout.gz",
+      "git_blob": "a94aa20c718200c9096d65ea3114530e9e561ac5"
+    },
+    {
+      "path": "artifacts/week2-completion-2026-10-08/run-01/logs/degrade-6-seed13.stdout.gz",
+      "git_blob": "cacb4b9a13c6e6dd096152db2d80a5bf72901e7d"
+    },
+    {
+      "path": "artifacts/week2-completion-2026-10-08/run-01/logs/degrade-6-seed14.stdout.gz",
+      "git_blob": "57438230a48dd8a2cc47e250ae5f1ad080bca4e4"
+    },
+    {
+      "path": "artifacts/week2-completion-2026-10-08/run-01/logs/degrade-6-seed15.stdout.gz",
+      "git_blob": "0938bb0e6c43b29f2bb1916712ff7518e8135c5f"
+    },
+    {
+      "path": "artifacts/week2-completion-2026-10-08/run-01/logs/degrade-6-seed16.stdout.gz",
+      "git_blob": "3ca72881ef1fb779448e33446c79740fd90d3602"
+    },
+    {
+      "path": "artifacts/week2-completion-2026-10-08/run-01/logs/degrade-6-seed17.stdout.gz",
+      "git_blob": "a617bd2652378c217216fa53a0d360cd7f1389ec"
+    },
+    {
+      "path": "artifacts/week2-completion-2026-10-08/run-01/logs/degrade-6-seed18.stdout.gz",
+      "git_blob": "3f77c522137a48188db8ae4f0c7af55d9e582a4e"
+    },
+    {
+      "path": "artifacts/week2-completion-2026-10-08/run-01/logs/degrade-6-seed19.stdout.gz",
+      "git_blob": "7ad9d64fb0bf8720df910f9bbc592123e53d059b"
+    },
+    {
+      "path": "artifacts/week2-completion-2026-10-08/run-01/logs/degrade-6-seed20.stdout.gz",
+      "git_blob": "bd586ac0d7403c0e70d3eea8021c67d615f566ea"
+    },
+    {
+      "path": "artifacts/week2-completion-2026-10-08/run-01/logs/degrade-6-seed21.stdout.gz",
+      "git_blob": "dba3c9116ee3980535e4db26988805014c36c056"
+    },
+    {
+      "path": "artifacts/week2-completion-2026-10-08/run-01/logs/degrade-6-seed22.stdout.gz",
+      "git_blob": "2194bfab6b41b5802208254a9cc3386ab7298932"
+    },
+    {
+      "path": "artifacts/week2-completion-2026-10-08/run-01/logs/degrade-6-seed23.stdout.gz",
+      "git_blob": "291f9ed08a073b33f005373d56db2d0e3459a9d3"
+    },
+    {
+      "path": "artifacts/week2-completion-2026-10-08/run-01/logs/degrade-6-seed24.stdout.gz",
+      "git_blob": "8a4674ab5c9c383243802c5b90c1e1fcbe320ab8"
+    },
+    {
+      "path": "artifacts/week2-completion-2026-10-08/run-01/logs/degrade-6-seed25.stdout.gz",
+      "git_blob": "3a8049007c934d1e884148d3ea631e03bb64ee23"
+    },
+    {
+      "path": "artifacts/week2-completion-2026-10-08/run-01/logs/degrade-6-seed26.stdout.gz",
+      "git_blob": "02d3ab9703b2350ac4045eeea840fc3cbf851876"
+    },
+    {
+      "path": "artifacts/week2-completion-2026-10-08/run-01/logs/degrade-6-seed27.stdout.gz",
+      "git_blob": "926d176002540cf244a165e75436ad08ef482d8b"
+    },
+    {
+      "path": "artifacts/week2-completion-2026-10-08/run-01/logs/degrade-6-seed28.stdout.gz",
+      "git_blob": "759935644e59f7d08e7f400bbd3b52428b93cdab"
+    },
+    {
+      "path": "artifacts/week2-completion-2026-10-08/run-01/logs/degrade-6-seed29.stdout.gz",
+      "git_blob": "3b1523a8a9ce6164c7c9f76ca21ba1b98dfcdd4a"
+    },
+    {
+      "path": "artifacts/week2-completion-2026-10-08/run-01/logs/degrade-6-seed30.stdout.gz",
+      "git_blob": "435131fb2935b4efc455a3851b59fe09a69cb6f8"
+    },
+    {
+      "path": "artifacts/week2-completion-2026-10-08/run-01/logs/dominating-0-seed01.stdout.gz",
+      "git_blob": "ff1aaee72c770c17f325e38133370396f27a6a11"
+    },
+    {
+      "path": "artifacts/week2-completion-2026-10-08/run-01/logs/dominating-0-seed02.stdout.gz",
+      "git_blob": "4fd48c27b0cd4e45b5bf196c83446b02db4f4726"
+    },
+    {
+      "path": "artifacts/week2-completion-2026-10-08/run-01/logs/dominating-0-seed03.stdout.gz",
+      "git_blob": "18fbb013e5df01e584f929efcaa958fca83c08d5"
+    },
+    {
+      "path": "artifacts/week2-completion-2026-10-08/run-01/logs/dominating-0-seed04.stdout.gz",
+      "git_blob": "00c1f811f69b09c248ffa1baefc1cf4c68ba37e4"
+    },
+    {
+      "path": "artifacts/week2-completion-2026-10-08/run-01/logs/dominating-0-seed05.stdout.gz",
+      "git_blob": "5fbe65afbbdb703b7ef9901f6180baf344190fab"
+    },
+    {
+      "path": "artifacts/week2-completion-2026-10-08/run-01/logs/dominating-0-seed06.stdout.gz",
+      "git_blob": "e793bdd1fc602493b736562fe7f7e75e141c5d3b"
+    },
+    {
+      "path": "artifacts/week2-completion-2026-10-08/run-01/logs/dominating-0-seed07.stdout.gz",
+      "git_blob": "ce83e4eee08752ccc70300072201ac8d3e4cc403"
+    },
+    {
+      "path": "artifacts/week2-completion-2026-10-08/run-01/logs/dominating-0-seed08.stdout.gz",
+      "git_blob": "4349942984fb1edddc3f3480dc76fb287cd0246e"
+    },
+    {
+      "path": "artifacts/week2-completion-2026-10-08/run-01/logs/dominating-0-seed09.stdout.gz",
+      "git_blob": "9787cc42e61e4b313becfe9fb320bf36f6733049"
+    },
+    {
+      "path": "artifacts/week2-completion-2026-10-08/run-01/logs/dominating-0-seed10.stdout.gz",
+      "git_blob": "ab631118f1ec450e615fb80dd8fe2fc2ba57dc83"
+    },
+    {
+      "path": "artifacts/week2-completion-2026-10-08/run-01/logs/dominating-0-seed11.stdout.gz",
+      "git_blob": "c1ee2ed3b771e286588968a18706af0d518e07c6"
+    },
+    {
+      "path": "artifacts/week2-completion-2026-10-08/run-01/logs/dominating-0-seed12.stdout.gz",
+      "git_blob": "4f96f253310ac3bdf0861ffffd3ef940bcbafe5b"
+    },
+    {
+      "path": "artifacts/week2-completion-2026-10-08/run-01/logs/dominating-0-seed13.stdout.gz",
+      "git_blob": "86b787a9e8d2a24425568cc85b77e3bb00ae8ef8"
+    },
+    {
+      "path": "artifacts/week2-completion-2026-10-08/run-01/logs/dominating-0-seed14.stdout.gz",
+      "git_blob": "a7a59f9739785068c2f9f5697fe85f9f40d7e8e9"
+    },
+    {
+      "path": "artifacts/week2-completion-2026-10-08/run-01/logs/dominating-0-seed15.stdout.gz",
+      "git_blob": "e37423c819154493485db80b821b4a38372ec760"
+    },
+    {
+      "path": "artifacts/week2-completion-2026-10-08/run-01/logs/dominating-0-seed16.stdout.gz",
+      "git_blob": "d593d8a19f1333967e7c1e9f9c2b59b76a2064e3"
+    },
+    {
+      "path": "artifacts/week2-completion-2026-10-08/run-01/logs/dominating-0-seed17.stdout.gz",
+      "git_blob": "bb570b1333926e53833aaeab7319f837e2afe5c8"
+    },
+    {
+      "path": "artifacts/week2-completion-2026-10-08/run-01/logs/dominating-0-seed18.stdout.gz",
+      "git_blob": "4aeb04160dd315c39f33ae72c9f6424b67ad23ec"
+    },
+    {
+      "path": "artifacts/week2-completion-2026-10-08/run-01/logs/dominating-0-seed19.stdout.gz",
+      "git_blob": "b8ff69a6e48195f299a2830f3f0f2786d11ae4f2"
+    },
+    {
+      "path": "artifacts/week2-completion-2026-10-08/run-01/logs/dominating-0-seed20.stdout.gz",
+      "git_blob": "019c12c651d453bb01c1d08dbf9da527e47cf853"
+    },
+    {
+      "path": "artifacts/week2-completion-2026-10-08/run-01/logs/dominating-0-seed21.stdout.gz",
+      "git_blob": "bcf4e55d4245a26eb904eb28cfbf1d08aac975f1"
+    },
+    {
+      "path": "artifacts/week2-completion-2026-10-08/run-01/logs/dominating-0-seed22.stdout.gz",
+      "git_blob": "6138d471697900a2717c88766ffdca0e181b1b2d"
+    },
+    {
+      "path": "artifacts/week2-completion-2026-10-08/run-01/logs/dominating-0-seed23.stdout.gz",
+      "git_blob": "aa8c98a54d42496bbfaaeb77dc6fc89bcce1dfac"
+    },
+    {
+      "path": "artifacts/week2-completion-2026-10-08/run-01/logs/dominating-0-seed24.stdout.gz",
+      "git_blob": "5db231c615a379e698c46ea79700d6c44f8df5ed"
+    },
+    {
+      "path": "artifacts/week2-completion-2026-10-08/run-01/logs/dominating-0-seed25.stdout.gz",
+      "git_blob": "d6c7e644c475c6b46ea71f4f73153a4d2d717efc"
+    },
+    {
+      "path": "artifacts/week2-completion-2026-10-08/run-01/logs/dominating-0-seed26.stdout.gz",
+      "git_blob": "04916b7b172d7ee343f68c52bbad4c74340bf52a"
+    },
+    {
+      "path": "artifacts/week2-completion-2026-10-08/run-01/logs/dominating-0-seed27.stdout.gz",
+      "git_blob": "6901988c84dd428cce7baca363ff235e151861ec"
+    },
+    {
+      "path": "artifacts/week2-completion-2026-10-08/run-01/logs/dominating-0-seed28.stdout.gz",
+      "git_blob": "0eb35af9b2dbc0050dded9ff6bed5c2c9ad2bf87"
+    },
+    {
+      "path": "artifacts/week2-completion-2026-10-08/run-01/logs/dominating-0-seed29.stdout.gz",
+      "git_blob": "1e5ec39d5b8b73465c385997a47cf455c86b03fd"
+    },
+    {
+      "path": "artifacts/week2-completion-2026-10-08/run-01/logs/dominating-0-seed30.stdout.gz",
+      "git_blob": "9c4acd736897fe96e209363982d9fa002cb3073d"
+    },
+    {
+      "path": "artifacts/week2-completion-2026-10-08/run-01/logs/dominating-1-seed01.stdout.gz",
+      "git_blob": "4a4797459c3ac6e930270013499788912954f2b1"
+    },
+    {
+      "path": "artifacts/week2-completion-2026-10-08/run-01/logs/dominating-1-seed02.stdout.gz",
+      "git_blob": "5deb3c824f0c46bf5c832190e8a6c02573188f1f"
+    },
+    {
+      "path": "artifacts/week2-completion-2026-10-08/run-01/logs/dominating-1-seed03.stdout.gz",
+      "git_blob": "9d3917a1cf9545ce4bb79fc8f9b265523d4511b3"
+    },
+    {
+      "path": "artifacts/week2-completion-2026-10-08/run-01/logs/dominating-1-seed04.stdout.gz",
+      "git_blob": "095dd474869e6d78c81f8cc8444b3dd4bbc6cadc"
+    },
+    {
+      "path": "artifacts/week2-completion-2026-10-08/run-01/logs/dominating-1-seed05.stdout.gz",
+      "git_blob": "f5ae89e181058c9aba82a97cdb095b54ab9b6226"
+    },
+    {
+      "path": "artifacts/week2-completion-2026-10-08/run-01/logs/dominating-1-seed06.stdout.gz",
+      "git_blob": "a38e636863e0f03548ab8e3477fc68ecb769b3d3"
+    },
+    {
+      "path": "artifacts/week2-completion-2026-10-08/run-01/logs/dominating-1-seed07.stdout.gz",
+      "git_blob": "ae2aaa2a367c1dad79640f462cb18025eb02f048"
+    },
+    {
+      "path": "artifacts/week2-completion-2026-10-08/run-01/logs/dominating-1-seed08.stdout.gz",
+      "git_blob": "98734448d5248378b1ec3d558671523fbb1ac132"
+    },
+    {
+      "path": "artifacts/week2-completion-2026-10-08/run-01/logs/dominating-1-seed09.stdout.gz",
+      "git_blob": "77a5e1083ffc909c1f4464edd17d2b8ecf771708"
+    },
+    {
+      "path": "artifacts/week2-completion-2026-10-08/run-01/logs/dominating-1-seed10.stdout.gz",
+      "git_blob": "42226943a0e19cc62dcfc446a90049398a2172ed"
+    },
+    {
+      "path": "artifacts/week2-completion-2026-10-08/run-01/logs/dominating-1-seed11.stdout.gz",
+      "git_blob": "1daa791fcd552212f4498d634f7b29a1a0d7ef66"
+    },
+    {
+      "path": "artifacts/week2-completion-2026-10-08/run-01/logs/dominating-1-seed12.stdout.gz",
+      "git_blob": "93f5d2a9216db8ba9c337927c1f0ef296f36f4a4"
+    },
+    {
+      "path": "artifacts/week2-completion-2026-10-08/run-01/logs/dominating-1-seed13.stdout.gz",
+      "git_blob": "becbeed897e48b27544a0432250fe9650b5580cc"
+    },
+    {
+      "path": "artifacts/week2-completion-2026-10-08/run-01/logs/dominating-1-seed14.stdout.gz",
+      "git_blob": "4970b8ed2d72cd837805bda292f57f10a1e7ed61"
+    },
+    {
+      "path": "artifacts/week2-completion-2026-10-08/run-01/logs/dominating-1-seed15.stdout.gz",
+      "git_blob": "55a63e7902583b37e98b3e34d9a30590c777e56b"
+    },
+    {
+      "path": "artifacts/week2-completion-2026-10-08/run-01/logs/dominating-1-seed16.stdout.gz",
+      "git_blob": "7b00dbf54f6b0d7bb03c6f98af25d43b16ee397e"
+    },
+    {
+      "path": "artifacts/week2-completion-2026-10-08/run-01/logs/dominating-1-seed17.stdout.gz",
+      "git_blob": "81eff47d98dd6bcf775bcf49d8b94454bf27cf8c"
+    },
+    {
+      "path": "artifacts/week2-completion-2026-10-08/run-01/logs/dominating-1-seed18.stdout.gz",
+      "git_blob": "f654e74bdf2ae389481936f4d1b7b2482d55770d"
+    },
+    {
+      "path": "artifacts/week2-completion-2026-10-08/run-01/logs/dominating-1-seed19.stdout.gz",
+      "git_blob": "acd162a4b63c9c028e3816f61cf36ba3477d6275"
+    },
+    {
+      "path": "artifacts/week2-completion-2026-10-08/run-01/logs/dominating-1-seed20.stdout.gz",
+      "git_blob": "b8fcddd460b86cd82405eeb5e24394fc9e336f53"
+    },
+    {
+      "path": "artifacts/week2-completion-2026-10-08/run-01/logs/dominating-1-seed21.stdout.gz",
+      "git_blob": "6f855c834d24acfefc50220b1f94c0c53d2f87bd"
+    },
+    {
+      "path": "artifacts/week2-completion-2026-10-08/run-01/logs/dominating-1-seed22.stdout.gz",
+      "git_blob": "e0019ec99047c1b3e8d34dc572de2dc1ee7977ec"
+    },
+    {
+      "path": "artifacts/week2-completion-2026-10-08/run-01/logs/dominating-1-seed23.stdout.gz",
+      "git_blob": "75f95d17f1c7609b517bf7305753883cea0dd548"
+    },
+    {
+      "path": "artifacts/week2-completion-2026-10-08/run-01/logs/dominating-1-seed24.stdout.gz",
+      "git_blob": "75478687f992573713e3b7b587ade174d990d910"
+    },
+    {
+      "path": "artifacts/week2-completion-2026-10-08/run-01/logs/dominating-1-seed25.stdout.gz",
+      "git_blob": "3131114b56f3a8fd4cada3641e4362f6dc861596"
+    },
+    {
+      "path": "artifacts/week2-completion-2026-10-08/run-01/logs/dominating-1-seed26.stdout.gz",
+      "git_blob": "de628ea26782f4d5278fdfba3aba4cdab60ae66f"
+    },
+    {
+      "path": "artifacts/week2-completion-2026-10-08/run-01/logs/dominating-1-seed27.stdout.gz",
+      "git_blob": "8f17d0058f4aa5c4b94b7202e61f9c5b7310c326"
+    },
+    {
+      "path": "artifacts/week2-completion-2026-10-08/run-01/logs/dominating-1-seed28.stdout.gz",
+      "git_blob": "8f987952cc51860482bb07ab027790d4eedeb1f1"
+    },
+    {
+      "path": "artifacts/week2-completion-2026-10-08/run-01/logs/dominating-1-seed29.stdout.gz",
+      "git_blob": "4ba9545ac107c59f61f7e7d4cda688c21180c674"
+    },
+    {
+      "path": "artifacts/week2-completion-2026-10-08/run-01/logs/dominating-1-seed30.stdout.gz",
+      "git_blob": "85d652af20748da0632d174beb7c8f7d0ca75e2f"
+    },
+    {
+      "path": "artifacts/week2-completion-2026-10-08/run-01/logs/dominating-2-seed01.stdout.gz",
+      "git_blob": "c1fdf0e67c7c05f01e5fc45266c0e68caae8601f"
+    },
+    {
+      "path": "artifacts/week2-completion-2026-10-08/run-01/logs/dominating-2-seed02.stdout.gz",
+      "git_blob": "08689eb80f8afd1bff0c1fa1df8202cb0bdebdc2"
+    },
+    {
+      "path": "artifacts/week2-completion-2026-10-08/run-01/logs/dominating-2-seed03.stdout.gz",
+      "git_blob": "78edabeef1b39c5eb97aa045ecb37c789055196a"
+    },
+    {
+      "path": "artifacts/week2-completion-2026-10-08/run-01/logs/dominating-2-seed04.stdout.gz",
+      "git_blob": "b72cce0239c1795d0b02ac1d605a416d8e85ad17"
+    },
+    {
+      "path": "artifacts/week2-completion-2026-10-08/run-01/logs/dominating-2-seed05.stdout.gz",
+      "git_blob": "fe9c5bd2c7b2b01c37a3b58e40e31927c04e5faf"
+    },
+    {
+      "path": "artifacts/week2-completion-2026-10-08/run-01/logs/dominating-2-seed06.stdout.gz",
+      "git_blob": "9e472f66b2062d9a7b84cf0a9767fd8fe9df0df0"
+    },
+    {
+      "path": "artifacts/week2-completion-2026-10-08/run-01/logs/dominating-2-seed07.stdout.gz",
+      "git_blob": "7a7b842eaa9a3e2f8c1647884e05abc215275312"
+    },
+    {
+      "path": "artifacts/week2-completion-2026-10-08/run-01/logs/dominating-2-seed08.stdout.gz",
+      "git_blob": "ae2291a8aa72225ccc6d6cd10de1373c36645b52"
+    },
+    {
+      "path": "artifacts/week2-completion-2026-10-08/run-01/logs/dominating-2-seed09.stdout.gz",
+      "git_blob": "562058177c8a26c22ce5a3814a82c616c336e1a1"
+    },
+    {
+      "path": "artifacts/week2-completion-2026-10-08/run-01/logs/dominating-2-seed10.stdout.gz",
+      "git_blob": "1ff756759fe68b3710c2e5602d16b315b5b7a7bf"
+    },
+    {
+      "path": "artifacts/week2-completion-2026-10-08/run-01/logs/dominating-2-seed11.stdout.gz",
+      "git_blob": "0c1a52a8c38d9544ffe175768319a4fc6fd787d5"
+    },
+    {
+      "path": "artifacts/week2-completion-2026-10-08/run-01/logs/dominating-2-seed12.stdout.gz",
+      "git_blob": "04312fdc86c384df704ad9c8dd1a4329f1fbeb1a"
+    },
+    {
+      "path": "artifacts/week2-completion-2026-10-08/run-01/logs/dominating-2-seed13.stdout.gz",
+      "git_blob": "bf8bd766369b70f3f4fc52d9d27e3e44bf022824"
+    },
+    {
+      "path": "artifacts/week2-completion-2026-10-08/run-01/logs/dominating-2-seed14.stdout.gz",
+      "git_blob": "25ec0fcc78a84aad29f6242da7f1570c8f415c7f"
+    },
+    {
+      "path": "artifacts/week2-completion-2026-10-08/run-01/logs/dominating-2-seed15.stdout.gz",
+      "git_blob": "cc9ddd723f0e50ac1097416f6b85615e17fbf23a"
+    },
+    {
+      "path": "artifacts/week2-completion-2026-10-08/run-01/logs/dominating-2-seed16.stdout.gz",
+      "git_blob": "cf500c4837c0e27fa9054929abe20a2fe4498792"
+    },
+    {
+      "path": "artifacts/week2-completion-2026-10-08/run-01/logs/dominating-2-seed17.stdout.gz",
+      "git_blob": "d64d520f2b97b64c30110138755be21ab9da2279"
+    },
+    {
+      "path": "artifacts/week2-completion-2026-10-08/run-01/logs/dominating-2-seed18.stdout.gz",
+      "git_blob": "80f16e532e721c4e5ad4da2f0bbcc4f320190bb1"
+    },
+    {
+      "path": "artifacts/week2-completion-2026-10-08/run-01/logs/dominating-2-seed19.stdout.gz",
+      "git_blob": "f7bfbf854c63b3f7e3d0556067499edc1537c6e5"
+    },
+    {
+      "path": "artifacts/week2-completion-2026-10-08/run-01/logs/dominating-2-seed20.stdout.gz",
+      "git_blob": "d7b2948948af6dc2c647f808868123e205a95408"
+    },
+    {
+      "path": "artifacts/week2-completion-2026-10-08/run-01/logs/dominating-2-seed21.stdout.gz",
+      "git_blob": "e5e6cb649126420fccea0caa945fa71d36b352b6"
+    },
+    {
+      "path": "artifacts/week2-completion-2026-10-08/run-01/logs/dominating-2-seed22.stdout.gz",
+      "git_blob": "377b8f96a3fcb5138946263ff3f793850f1c2bce"
+    },
+    {
+      "path": "artifacts/week2-completion-2026-10-08/run-01/logs/dominating-2-seed23.stdout.gz",
+      "git_blob": "6cf66bf4c34f859f621b74f504069785a56f77b7"
+    },
+    {
+      "path": "artifacts/week2-completion-2026-10-08/run-01/logs/dominating-2-seed24.stdout.gz",
+      "git_blob": "2413c282a39d848789323c2892d9cc04377dcacd"
+    },
+    {
+      "path": "artifacts/week2-completion-2026-10-08/run-01/logs/dominating-2-seed25.stdout.gz",
+      "git_blob": "0d5ff964e65e2492ff20feeca37ec1b44a3331d0"
+    },
+    {
+      "path": "artifacts/week2-completion-2026-10-08/run-01/logs/dominating-2-seed26.stdout.gz",
+      "git_blob": "d9dd8ddcb76b42e62c491501102d135066a4b005"
+    },
+    {
+      "path": "artifacts/week2-completion-2026-10-08/run-01/logs/dominating-2-seed27.stdout.gz",
+      "git_blob": "2b4cb6512fa2047b453751b83f7d827b50161bfa"
+    },
+    {
+      "path": "artifacts/week2-completion-2026-10-08/run-01/logs/dominating-2-seed28.stdout.gz",
+      "git_blob": "030010d06a87fdda4ad44572d97ad2166dfda7d0"
+    },
+    {
+      "path": "artifacts/week2-completion-2026-10-08/run-01/logs/dominating-2-seed29.stdout.gz",
+      "git_blob": "642ca2f15d9648236964faddc0a4778bf6363531"
+    },
+    {
+      "path": "artifacts/week2-completion-2026-10-08/run-01/logs/dominating-2-seed30.stdout.gz",
+      "git_blob": "13857206b2594c0bfbf6145473c22f0f305c6fd8"
+    },
+    {
+      "path": "artifacts/week2-completion-2026-10-08/run-01/logs/dominating-3-seed01.stdout.gz",
+      "git_blob": "518efd12e6c88b1ab51ddaa13b6e55775211947f"
+    },
+    {
+      "path": "artifacts/week2-completion-2026-10-08/run-01/logs/dominating-3-seed02.stdout.gz",
+      "git_blob": "1744defe17e05275a94a7184872c1027e512d102"
+    },
+    {
+      "path": "artifacts/week2-completion-2026-10-08/run-01/logs/dominating-3-seed03.stdout.gz",
+      "git_blob": "f97ce2f9475f64660a753d78ba7666a09c5ba538"
+    },
+    {
+      "path": "artifacts/week2-completion-2026-10-08/run-01/logs/dominating-3-seed04.stdout.gz",
+      "git_blob": "af8e61c71f25b55c45ca60aa2a4099a55f43ef78"
+    },
+    {
+      "path": "artifacts/week2-completion-2026-10-08/run-01/logs/dominating-3-seed05.stdout.gz",
+      "git_blob": "ae37a2a3a7f3f1c600512fddb3fc517fa8fceb57"
+    },
+    {
+      "path": "artifacts/week2-completion-2026-10-08/run-01/logs/dominating-3-seed06.stdout.gz",
+      "git_blob": "67211a873ed57db75793e0b9a2b12cb4e1f07a21"
+    },
+    {
+      "path": "artifacts/week2-completion-2026-10-08/run-01/logs/dominating-3-seed07.stdout.gz",
+      "git_blob": "6537cc7245c16e4173075c958943f97f11d42f21"
+    },
+    {
+      "path": "artifacts/week2-completion-2026-10-08/run-01/logs/dominating-3-seed08.stdout.gz",
+      "git_blob": "0a55a76b05ca07def6e2e166b156a87bba135ef1"
+    },
+    {
+      "path": "artifacts/week2-completion-2026-10-08/run-01/logs/dominating-3-seed09.stdout.gz",
+      "git_blob": "b78f1dc1b6569c12c5c906a1d9d7aa082ab84941"
+    },
+    {
+      "path": "artifacts/week2-completion-2026-10-08/run-01/logs/dominating-3-seed10.stdout.gz",
+      "git_blob": "7ae09009bb6593c936c4b35e934c9050a64484a9"
+    },
+    {
+      "path": "artifacts/week2-completion-2026-10-08/run-01/logs/dominating-3-seed11.stdout.gz",
+      "git_blob": "1980349901c7b96088674783c368d0367f423c6a"
+    },
+    {
+      "path": "artifacts/week2-completion-2026-10-08/run-01/logs/dominating-3-seed12.stdout.gz",
+      "git_blob": "d05b38ee19840cbb115a5bc81f8d94f5c2ca6784"
+    },
+    {
+      "path": "artifacts/week2-completion-2026-10-08/run-01/logs/dominating-3-seed13.stdout.gz",
+      "git_blob": "061bed0d31536f8a845f91f29b1d1c9c3bcecac8"
+    },
+    {
+      "path": "artifacts/week2-completion-2026-10-08/run-01/logs/dominating-3-seed14.stdout.gz",
+      "git_blob": "d00f22f4702ba86e408107c1e3067fb252350dbb"
+    },
+    {
+      "path": "artifacts/week2-completion-2026-10-08/run-01/logs/dominating-3-seed15.stdout.gz",
+      "git_blob": "2a3a1f03ffffa82357661400494bca0484ad4b01"
+    },
+    {
+      "path": "artifacts/week2-completion-2026-10-08/run-01/logs/dominating-3-seed16.stdout.gz",
+      "git_blob": "b8f78d6b46836ded28a3196b2c86615dd9c47a12"
+    },
+    {
+      "path": "artifacts/week2-completion-2026-10-08/run-01/logs/dominating-3-seed17.stdout.gz",
+      "git_blob": "600df24383e1449a1362e0940f66402af0483abf"
+    },
+    {
+      "path": "artifacts/week2-completion-2026-10-08/run-01/logs/dominating-3-seed18.stdout.gz",
+      "git_blob": "19bbcca4f56870f8de5da011e5f830ebc69951bb"
+    },
+    {
+      "path": "artifacts/week2-completion-2026-10-08/run-01/logs/dominating-3-seed19.stdout.gz",
+      "git_blob": "d0e68c12a1fc95052fcd4a93dc708ecb309bf59d"
+    },
+    {
+      "path": "artifacts/week2-completion-2026-10-08/run-01/logs/dominating-3-seed20.stdout.gz",
+      "git_blob": "9b74d858d15ce6c9981425edf17f8305639f0bf0"
+    },
+    {
+      "path": "artifacts/week2-completion-2026-10-08/run-01/logs/dominating-3-seed21.stdout.gz",
+      "git_blob": "c03177d4d49084d0b128f539152eb92fabf9fa93"
+    },
+    {
+      "path": "artifacts/week2-completion-2026-10-08/run-01/logs/dominating-3-seed22.stdout.gz",
+      "git_blob": "21dd34352e3f6ca5579afce30a6bb1468f7050fe"
+    },
+    {
+      "path": "artifacts/week2-completion-2026-10-08/run-01/logs/dominating-3-seed23.stdout.gz",
+      "git_blob": "c54aaab45a893f79cfc3b21403da8b49a7ba5fc0"
+    },
+    {
+      "path": "artifacts/week2-completion-2026-10-08/run-01/logs/dominating-3-seed24.stdout.gz",
+      "git_blob": "ffaa31ab5904d2edd6ea3507cc96829723468931"
+    },
+    {
+      "path": "artifacts/week2-completion-2026-10-08/run-01/logs/dominating-3-seed25.stdout.gz",
+      "git_blob": "d8ebe3282eaa477ed9d412dc9d3f8149fc9d3a0b"
+    },
+    {
+      "path": "artifacts/week2-completion-2026-10-08/run-01/logs/dominating-3-seed26.stdout.gz",
+      "git_blob": "a28b3cfa4d91c308d1887c303859fb5ccad9fecd"
+    },
+    {
+      "path": "artifacts/week2-completion-2026-10-08/run-01/logs/dominating-3-seed27.stdout.gz",
+      "git_blob": "d4a2e848294cc0d8c4fdda603bf62b03d40b6e56"
+    },
+    {
+      "path": "artifacts/week2-completion-2026-10-08/run-01/logs/dominating-3-seed28.stdout.gz",
+      "git_blob": "4023188ff9ed15598b239321c014526a6cfc148b"
+    },
+    {
+      "path": "artifacts/week2-completion-2026-10-08/run-01/logs/dominating-3-seed29.stdout.gz",
+      "git_blob": "3512a067f7874d584af91d0d56f9e71d18d43846"
+    },
+    {
+      "path": "artifacts/week2-completion-2026-10-08/run-01/logs/dominating-3-seed30.stdout.gz",
+      "git_blob": "b0b01ef97bdd89130e4bbe3ccde16ecd5d305c9a"
+    },
+    {
+      "path": "artifacts/week2-completion-2026-10-08/run-01/logs/dominating-4-seed01.stdout.gz",
+      "git_blob": "e6d33e298e5e7ab1b676dc33ca249115b029b593"
+    },
+    {
+      "path": "artifacts/week2-completion-2026-10-08/run-01/logs/dominating-4-seed02.stdout.gz",
+      "git_blob": "f1817e7714907ea1755d288c025ad262c4ba5d36"
+    },
+    {
+      "path": "artifacts/week2-completion-2026-10-08/run-01/logs/dominating-4-seed03.stdout.gz",
+      "git_blob": "88e9e426f5ad0bff02aa83d24dec56ce441f6ac3"
+    },
+    {
+      "path": "artifacts/week2-completion-2026-10-08/run-01/logs/dominating-4-seed04.stdout.gz",
+      "git_blob": "8f0aa9f87b926879178105d394f86ab9af7507f1"
+    },
+    {
+      "path": "artifacts/week2-completion-2026-10-08/run-01/logs/dominating-4-seed05.stdout.gz",
+      "git_blob": "e3d6664cd61921346ff6c89cd2ad9288f79f0c67"
+    },
+    {
+      "path": "artifacts/week2-completion-2026-10-08/run-01/logs/dominating-4-seed06.stdout.gz",
+      "git_blob": "7600e0faec8fb73b164421d86e7cc50b73dba7d5"
+    },
+    {
+      "path": "artifacts/week2-completion-2026-10-08/run-01/logs/dominating-4-seed07.stdout.gz",
+      "git_blob": "c9ea5d7b22d6ac5fa6c31570d4e79bb99c3f6339"
+    },
+    {
+      "path": "artifacts/week2-completion-2026-10-08/run-01/logs/dominating-4-seed08.stdout.gz",
+      "git_blob": "c6dc29dfdc72b1bf997c7fe2332ead661ac1fef8"
+    },
+    {
+      "path": "artifacts/week2-completion-2026-10-08/run-01/logs/dominating-4-seed09.stdout.gz",
+      "git_blob": "e5632d5cbc2fec86f8e171acdd13e8b23d6a8ccd"
+    },
+    {
+      "path": "artifacts/week2-completion-2026-10-08/run-01/logs/dominating-4-seed10.stdout.gz",
+      "git_blob": "ae580fbdf60cbb7721850db5d143a6028b74653b"
+    },
+    {
+      "path": "artifacts/week2-completion-2026-10-08/run-01/logs/dominating-4-seed11.stdout.gz",
+      "git_blob": "27f6d927baae773126fe5894dc2621b26307614c"
+    },
+    {
+      "path": "artifacts/week2-completion-2026-10-08/run-01/logs/dominating-4-seed12.stdout.gz",
+      "git_blob": "0fa9286a5189ef7d85816684a36f65e096291ce9"
+    },
+    {
+      "path": "artifacts/week2-completion-2026-10-08/run-01/logs/dominating-4-seed13.stdout.gz",
+      "git_blob": "6b229159adf219e51972418bcccf2c8549d71dea"
+    },
+    {
+      "path": "artifacts/week2-completion-2026-10-08/run-01/logs/dominating-4-seed14.stdout.gz",
+      "git_blob": "3ace940c87c45fe1bd854fb89f545d656b5f7f51"
+    },
+    {
+      "path": "artifacts/week2-completion-2026-10-08/run-01/logs/dominating-4-seed15.stdout.gz",
+      "git_blob": "c962e60a99762769025970f3557a84feab96671b"
+    },
+    {
+      "path": "artifacts/week2-completion-2026-10-08/run-01/logs/dominating-4-seed16.stdout.gz",
+      "git_blob": "b86fca8509f58b5363ad235a4cca0195a3e59bbe"
+    },
+    {
+      "path": "artifacts/week2-completion-2026-10-08/run-01/logs/dominating-4-seed17.stdout.gz",
+      "git_blob": "bc84003dad57f1e9042a92201f7a1b18492b1730"
+    },
+    {
+      "path": "artifacts/week2-completion-2026-10-08/run-01/logs/dominating-4-seed18.stdout.gz",
+      "git_blob": "0eab09f5e6c51d86f078e2f6393a1f63867b03e7"
+    },
+    {
+      "path": "artifacts/week2-completion-2026-10-08/run-01/logs/dominating-4-seed19.stdout.gz",
+      "git_blob": "299d233c6a7540113b0db5eb68d6b9169e17808e"
+    },
+    {
+      "path": "artifacts/week2-completion-2026-10-08/run-01/logs/dominating-4-seed20.stdout.gz",
+      "git_blob": "663e790310a375d20108759f2ca43bcb26c15b22"
+    },
+    {
+      "path": "artifacts/week2-completion-2026-10-08/run-01/logs/dominating-4-seed21.stdout.gz",
+      "git_blob": "cf46c80d5f3b87645ff2d21224f8efc898c55754"
+    },
+    {
+      "path": "artifacts/week2-completion-2026-10-08/run-01/logs/dominating-4-seed22.stdout.gz",
+      "git_blob": "80f5353e62fedaaaf0177c9db994dcc9fd4cdcec"
+    },
+    {
+      "path": "artifacts/week2-completion-2026-10-08/run-01/logs/dominating-4-seed23.stdout.gz",
+      "git_blob": "70c36031e3c5d5543553d9f9ed8b7e84ed9b90c3"
+    },
+    {
+      "path": "artifacts/week2-completion-2026-10-08/run-01/logs/dominating-4-seed24.stdout.gz",
+      "git_blob": "e158b78ab0ec55f5fd9f4ca600aa972c884d7f57"
+    },
+    {
+      "path": "artifacts/week2-completion-2026-10-08/run-01/logs/dominating-4-seed25.stdout.gz",
+      "git_blob": "f4ce16525d73227af709e5ea49ee30fade95e197"
+    },
+    {
+      "path": "artifacts/week2-completion-2026-10-08/run-01/logs/dominating-4-seed26.stdout.gz",
+      "git_blob": "1d79a522fc4062e3dd2d5dabb3c01aeaabe0146d"
+    },
+    {
+      "path": "artifacts/week2-completion-2026-10-08/run-01/logs/dominating-4-seed27.stdout.gz",
+      "git_blob": "ce10e131f523db846534b103bac76aebc3f1b2aa"
+    },
+    {
+      "path": "artifacts/week2-completion-2026-10-08/run-01/logs/dominating-4-seed28.stdout.gz",
+      "git_blob": "61da147f87e181b8ce10c74ed5e62d427dd7a603"
+    },
+    {
+      "path": "artifacts/week2-completion-2026-10-08/run-01/logs/dominating-4-seed29.stdout.gz",
+      "git_blob": "dc8ba1a6c4da845aa94728f5652fbd8619e16341"
+    },
+    {
+      "path": "artifacts/week2-completion-2026-10-08/run-01/logs/dominating-4-seed30.stdout.gz",
+      "git_blob": "27ffcbed4e7b3be8dd151fc2e5de62d0c9eeb548"
+    },
+    {
+      "path": "artifacts/week2-completion-2026-10-08/run-01/logs/dominating-5-seed01.stdout.gz",
+      "git_blob": "12a18e10fd9bd7a3070fb9047713a39c106c9583"
+    },
+    {
+      "path": "artifacts/week2-completion-2026-10-08/run-01/logs/dominating-5-seed02.stdout.gz",
+      "git_blob": "b672e9df89a2c9f13a944888a3abd76cf21ac9ea"
+    },
+    {
+      "path": "artifacts/week2-completion-2026-10-08/run-01/logs/dominating-5-seed03.stdout.gz",
+      "git_blob": "db62d66677e289df7b68fc73b368e689630877d0"
+    },
+    {
+      "path": "artifacts/week2-completion-2026-10-08/run-01/logs/dominating-5-seed04.stdout.gz",
+      "git_blob": "b68287ca9b98dbe520f9e37ddd19ae74af3f7f46"
+    },
+    {
+      "path": "artifacts/week2-completion-2026-10-08/run-01/logs/dominating-5-seed05.stdout.gz",
+      "git_blob": "4a74f4c338f8ab4b88cf37c3c3efd770a14d13ba"
+    },
+    {
+      "path": "artifacts/week2-completion-2026-10-08/run-01/logs/dominating-5-seed06.stdout.gz",
+      "git_blob": "6151841404369db93755bdda97ba8dee33254be5"
+    },
+    {
+      "path": "artifacts/week2-completion-2026-10-08/run-01/logs/dominating-5-seed07.stdout.gz",
+      "git_blob": "0f066dcf43ea9e4cded95f34a227c998a6e3763c"
+    },
+    {
+      "path": "artifacts/week2-completion-2026-10-08/run-01/logs/dominating-5-seed08.stdout.gz",
+      "git_blob": "e0054e48d64d6b3dbed098dcfd0f3fb32f571ed7"
+    },
+    {
+      "path": "artifacts/week2-completion-2026-10-08/run-01/logs/dominating-5-seed09.stdout.gz",
+      "git_blob": "7331b4b513a78569da73a11555983b72deda6b6a"
+    },
+    {
+      "path": "artifacts/week2-completion-2026-10-08/run-01/logs/dominating-5-seed10.stdout.gz",
+      "git_blob": "048bc77ea6a4e3fac211eb5b5487bd9fcdab12ce"
+    },
+    {
+      "path": "artifacts/week2-completion-2026-10-08/run-01/logs/dominating-5-seed11.stdout.gz",
+      "git_blob": "5b07632a03904101e0d86cc69a56bf97e522aaab"
+    },
+    {
+      "path": "artifacts/week2-completion-2026-10-08/run-01/logs/dominating-5-seed12.stdout.gz",
+      "git_blob": "629b8d468c5e62e271fca725a6d27d63b8734872"
+    },
+    {
+      "path": "artifacts/week2-completion-2026-10-08/run-01/logs/dominating-5-seed13.stdout.gz",
+      "git_blob": "5771414572b32b53d6a811eaf48b7dff1f072b77"
+    },
+    {
+      "path": "artifacts/week2-completion-2026-10-08/run-01/logs/dominating-5-seed14.stdout.gz",
+      "git_blob": "9e8de477bf0791e8b0a27e42332d362d6e6bf691"
+    },
+    {
+      "path": "artifacts/week2-completion-2026-10-08/run-01/logs/dominating-5-seed15.stdout.gz",
+      "git_blob": "a8e8851a275fb8e33c07fae8387c83cb457e6eab"
+    },
+    {
+      "path": "artifacts/week2-completion-2026-10-08/run-01/logs/dominating-5-seed16.stdout.gz",
+      "git_blob": "247bd68e7ee348bd24a71ef0bb4592b7a24b8bac"
+    },
+    {
+      "path": "artifacts/week2-completion-2026-10-08/run-01/logs/dominating-5-seed17.stdout.gz",
+      "git_blob": "f06a0fda7f386294b0860032935f36391d40337a"
+    },
+    {
+      "path": "artifacts/week2-completion-2026-10-08/run-01/logs/dominating-5-seed18.stdout.gz",
+      "git_blob": "993c637c2beb4bf05134b739d7b3e7951ae92165"
+    },
+    {
+      "path": "artifacts/week2-completion-2026-10-08/run-01/logs/dominating-5-seed19.stdout.gz",
+      "git_blob": "59b025370acd6773362fffaf9e54f2bfbcbe3c08"
+    },
+    {
+      "path": "artifacts/week2-completion-2026-10-08/run-01/logs/dominating-5-seed20.stdout.gz",
+      "git_blob": "03ef8a2232897fb616fe037bd862336eec5748ca"
+    },
+    {
+      "path": "artifacts/week2-completion-2026-10-08/run-01/logs/dominating-5-seed21.stdout.gz",
+      "git_blob": "7d3435059bdffd589f377210066b42fe56b01373"
+    },
+    {
+      "path": "artifacts/week2-completion-2026-10-08/run-01/logs/dominating-5-seed22.stdout.gz",
+      "git_blob": "3ff6fbea34e0c18b29474dc54756d7dd0a2e9e79"
+    },
+    {
+      "path": "artifacts/week2-completion-2026-10-08/run-01/logs/dominating-5-seed23.stdout.gz",
+      "git_blob": "41c3e4a47c43331b2defd114b02e688e1a6426c3"
+    },
+    {
+      "path": "artifacts/week2-completion-2026-10-08/run-01/logs/dominating-5-seed24.stdout.gz",
+      "git_blob": "6c4a8150e87c3708758186daeeb19ef1d43f3429"
+    },
+    {
+      "path": "artifacts/week2-completion-2026-10-08/run-01/logs/dominating-5-seed25.stdout.gz",
+      "git_blob": "840bf8482a7c9d8492bc27db74e0c89db9fdaf1c"
+    },
+    {
+      "path": "artifacts/week2-completion-2026-10-08/run-01/logs/dominating-5-seed26.stdout.gz",
+      "git_blob": "552cca692936e5b00f6af6001445e757e2cd1e9d"
+    },
+    {
+      "path": "artifacts/week2-completion-2026-10-08/run-01/logs/dominating-5-seed27.stdout.gz",
+      "git_blob": "80a8647b01ac66b08313fe0ba8f3f160862d2fdd"
+    },
+    {
+      "path": "artifacts/week2-completion-2026-10-08/run-01/logs/dominating-5-seed28.stdout.gz",
+      "git_blob": "fc657194bd5c7e6879a4492a9fc5be1a05ad0ef2"
+    },
+    {
+      "path": "artifacts/week2-completion-2026-10-08/run-01/logs/dominating-5-seed29.stdout.gz",
+      "git_blob": "bd26694fb77c8f7cd13d24ccfc27e399de387d3e"
+    },
+    {
+      "path": "artifacts/week2-completion-2026-10-08/run-01/logs/dominating-5-seed30.stdout.gz",
+      "git_blob": "3f4ce2cc6200f78a506d3b297a923c57b6f7c621"
+    },
+    {
+      "path": "artifacts/week2-completion-2026-10-08/run-01/logs/dominating-6-seed01.stdout.gz",
+      "git_blob": "f5af621f0b8a16fd73986525c417ac729c7418d9"
+    },
+    {
+      "path": "artifacts/week2-completion-2026-10-08/run-01/logs/dominating-6-seed02.stdout.gz",
+      "git_blob": "9a9451e0d35046cd84d4695a829593c1a9e34d9c"
+    },
+    {
+      "path": "artifacts/week2-completion-2026-10-08/run-01/logs/dominating-6-seed03.stdout.gz",
+      "git_blob": "3d8866fa4e06635d3b571f67ffcdfe4547758e69"
+    },
+    {
+      "path": "artifacts/week2-completion-2026-10-08/run-01/logs/dominating-6-seed04.stdout.gz",
+      "git_blob": "322a082f8a2d71ffdc3d06b45a3be4d199d77ac5"
+    },
+    {
+      "path": "artifacts/week2-completion-2026-10-08/run-01/logs/dominating-6-seed05.stdout.gz",
+      "git_blob": "9341b4cbde7786e1f2f1ddfe4654ed8db2aabecb"
+    },
+    {
+      "path": "artifacts/week2-completion-2026-10-08/run-01/logs/dominating-6-seed06.stdout.gz",
+      "git_blob": "42e58f94c02f5991b58c7bc4e02fa4f583b744d9"
+    },
+    {
+      "path": "artifacts/week2-completion-2026-10-08/run-01/logs/dominating-6-seed07.stdout.gz",
+      "git_blob": "a438ce9d3391197c559490d8953575cc3e1b321d"
+    },
+    {
+      "path": "artifacts/week2-completion-2026-10-08/run-01/logs/dominating-6-seed08.stdout.gz",
+      "git_blob": "d6b879286321b7c4d0e0362534b18fb1c67ff0e2"
+    },
+    {
+      "path": "artifacts/week2-completion-2026-10-08/run-01/logs/dominating-6-seed09.stdout.gz",
+      "git_blob": "79fd2381d9b719ed29fa56d53981b47e6b0c995e"
+    },
+    {
+      "path": "artifacts/week2-completion-2026-10-08/run-01/logs/dominating-6-seed10.stdout.gz",
+      "git_blob": "254c9cf1caf0681d65b61f129364194f24309b0f"
+    },
+    {
+      "path": "artifacts/week2-completion-2026-10-08/run-01/logs/dominating-6-seed11.stdout.gz",
+      "git_blob": "7c4663b08a45d23022bac8c797a43498a6aed17a"
+    },
+    {
+      "path": "artifacts/week2-completion-2026-10-08/run-01/logs/dominating-6-seed12.stdout.gz",
+      "git_blob": "de8213e31c7f7349ce57c911ad9a5546f80488b2"
+    },
+    {
+      "path": "artifacts/week2-completion-2026-10-08/run-01/logs/dominating-6-seed13.stdout.gz",
+      "git_blob": "47ba5b8a3b19be0991d59a86bde39904cb5973c6"
+    },
+    {
+      "path": "artifacts/week2-completion-2026-10-08/run-01/logs/dominating-6-seed14.stdout.gz",
+      "git_blob": "f420494e5a22828897ba6c837237815ae5065e81"
+    },
+    {
+      "path": "artifacts/week2-completion-2026-10-08/run-01/logs/dominating-6-seed15.stdout.gz",
+      "git_blob": "34fbe774d4d6ad9fdea464e66529b2548c34f985"
+    },
+    {
+      "path": "artifacts/week2-completion-2026-10-08/run-01/logs/dominating-6-seed16.stdout.gz",
+      "git_blob": "fe7b7ea7f8c131df26af32c88d31fd7340ea3a04"
+    },
+    {
+      "path": "artifacts/week2-completion-2026-10-08/run-01/logs/dominating-6-seed17.stdout.gz",
+      "git_blob": "9fc543b80416ff6dcd84fc48fbf515243dc8ba64"
+    },
+    {
+      "path": "artifacts/week2-completion-2026-10-08/run-01/logs/dominating-6-seed18.stdout.gz",
+      "git_blob": "02f7b0c4d426bd6228ff75e80ffbf1a6759da7f2"
+    },
+    {
+      "path": "artifacts/week2-completion-2026-10-08/run-01/logs/dominating-6-seed19.stdout.gz",
+      "git_blob": "5c4de64970cf08183623127a165821951886822f"
+    },
+    {
+      "path": "artifacts/week2-completion-2026-10-08/run-01/logs/dominating-6-seed20.stdout.gz",
+      "git_blob": "35840344de9e164c1face9e95d683fcf3538a003"
+    },
+    {
+      "path": "artifacts/week2-completion-2026-10-08/run-01/logs/dominating-6-seed21.stdout.gz",
+      "git_blob": "25c875b94e3a38f04e5a742c943be7eb46eab9fd"
+    },
+    {
+      "path": "artifacts/week2-completion-2026-10-08/run-01/logs/dominating-6-seed22.stdout.gz",
+      "git_blob": "aa5607d24ca381846a0c8666f85a022f0a1e0447"
+    },
+    {
+      "path": "artifacts/week2-completion-2026-10-08/run-01/logs/dominating-6-seed23.stdout.gz",
+      "git_blob": "da22b0796b75eb3cd78d44efabb2560a35858aa6"
+    },
+    {
+      "path": "artifacts/week2-completion-2026-10-08/run-01/logs/dominating-6-seed24.stdout.gz",
+      "git_blob": "91dff6462ba82b80328c49b91706ef62e9af2f70"
+    },
+    {
+      "path": "artifacts/week2-completion-2026-10-08/run-01/logs/dominating-6-seed25.stdout.gz",
+      "git_blob": "712778a0af5f7ba38f78b227c18f301d3c8de272"
+    },
+    {
+      "path": "artifacts/week2-completion-2026-10-08/run-01/logs/dominating-6-seed26.stdout.gz",
+      "git_blob": "8667e798ccd905a186ee8013ca4fc0b9cd18fe44"
+    },
+    {
+      "path": "artifacts/week2-completion-2026-10-08/run-01/logs/dominating-6-seed27.stdout.gz",
+      "git_blob": "3a8046fca268c93e79dd792a9adbbca50209c958"
+    },
+    {
+      "path": "artifacts/week2-completion-2026-10-08/run-01/logs/dominating-6-seed28.stdout.gz",
+      "git_blob": "4cdcafd537bd728831836b70b1935168086e128a"
+    },
+    {
+      "path": "artifacts/week2-completion-2026-10-08/run-01/logs/dominating-6-seed29.stdout.gz",
+      "git_blob": "dcdea47eab283d2235cfd078d271bd54ad1bc781"
+    },
+    {
+      "path": "artifacts/week2-completion-2026-10-08/run-01/logs/dominating-6-seed30.stdout.gz",
+      "git_blob": "34e4304078f0d27424ad647671798b8289db332a"
+    },
+    {
+      "path": "artifacts/week2-completion-2026-10-08/run-01/provenance.json",
+      "git_blob": "d1141128eb95e5c53b8415283dde0b01009c33fd"
+    },
+    {
+      "path": "artifacts/week2-completion-2026-10-08/run-01/results.csv",
+      "git_blob": "72c3962280f7e3d665044d0b6d34e5503154aa1c"
+    },
+    {
+      "path": "artifacts/week2-completion-2026-10-08/run-01/source.patch",
+      "git_blob": "e69de29bb2d1d6434b8b29ae775ad8c2e48c5391"
+    },
+    {
+      "path": "artifacts/week2-completion-2026-10-08/run-01/validation.json",
+      "git_blob": "dff19018a5f62b9c2eda0add85bafe1c148dc70c"
+    }
+  ],
+  "baseline_sha256": "f58931aa387de2e04a1da655f6bcfcd3da69a85ff0bf7e94fb31ef266c77d94b"
+}

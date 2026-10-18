@@ -1,0 +1,9 @@
+{
+  "measurement": "artifacts/week4/analysis/2026-10-18/run-01/baseline-long.csv",
+  "summary": "artifacts/week4/analysis/2026-10-18/run-01/summary-long.csv",
+  "sha256": "846b3d23d55dc860b1e59ec370adb81dc6a9ac340946ceb01a598b9147ba47f1",
+  "rows": 210,
+  "completed": 206,
+  "full_received": 206,
+  "freeze": "artifacts/week4/FROZEN.json"
+}

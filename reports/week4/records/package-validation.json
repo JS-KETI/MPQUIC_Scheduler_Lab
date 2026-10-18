@@ -1,0 +1,22 @@
+{
+  "archive_reassembled": "week4-reproduction.tar.xz",
+  "archive_sha256": "91cb923ba9df3c41e03535ef20db552f8e25c6664c59c7f76ea24aa2ea78f458",
+  "archive_bytes": 117183904,
+  "parts": [
+    {
+      "file": "week4-reproduction.tar.xz.part-01",
+      "bytes": 67108864,
+      "sha256": "91d07fd897dd66c7284db48a18f0c662b27cf60686d6395ac0f4e013a51d9bb9"
+    },
+    {
+      "file": "week4-reproduction.tar.xz.part-02",
+      "bytes": 50075040,
+      "sha256": "00da9e2407ab9f3a029a0efa2c0a69310ee41cdce44dbc0188e779ddbabdfbb4"
+    }
+  ],
+  "files": 8599,
+  "all_archive_file_hashes_verified": true,
+  "source_commit": "5a88ce7bc5871f5bde42f60b7f71620e9ba233d7",
+  "no_build_or_agent_files": true,
+  "part_concatenation_sha256_matches": true
+}

@@ -1,0 +1,25 @@
+{
+  "markdown_starts_with_work_section": true,
+  "embedded_html_images": 5,
+  "relative_images_exist": [
+    "figures/degradation.png",
+    "figures/long_fct_provided.png",
+    "figures/robustness_overview.png",
+    "figures/robustness.png",
+    "figures/four_path.png"
+  ],
+  "direct_repository_targets_exist": [
+    "reports/week4/data/results.csv",
+    "reports/week4/data/summary.csv",
+    "reports/week4/data/baseline-long.csv",
+    "reports/week4/data/summary-long.csv",
+    "reports/week4/data/paired_comparisons.csv",
+    "reports/week4/figures/long_completion.png",
+    "reports/week4/figures/long_path_share.png",
+    "reports/week4/figures/robustness.png",
+    "artifacts/week4/package/2026-10-18/README.md",
+    "reports/week4/records/4주차 상세 실험 기록.md"
+  ],
+  "data_copies_identical": 8,
+  "source_markdown_sha256": "ecd1c4e75611cfed8eff134319adf3970a76f869ea589df706a3506abf853a87"
+}

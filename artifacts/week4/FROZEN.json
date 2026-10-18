@@ -1,0 +1,26 @@
+{
+  "frozen_utc": "2026-10-18T08:50:34.307104+00:00",
+  "source_commit": "5a88ce7bc5871f5bde42f60b7f71620e9ba233d7",
+  "files": 4803,
+  "source_configuration": "01+02 + accepted week2 fixes + week3 slot/tracing + week4 harness options; OLIA",
+  "run_plan": "each run/plan.json; actual commands and patches retained per run",
+  "main_rows": 1163,
+  "main_completed": 886,
+  "main_exact_received": 886,
+  "pilot_rows": 17,
+  "baseline_long": "analysis/2026-10-18/run-01/baseline-long.csv",
+  "baseline_long_sha256": "846b3d23d55dc860b1e59ec370adb81dc6a9ac340946ceb01a598b9147ba47f1",
+  "baseline_long_rows": 210,
+  "baseline_long_completed": 206,
+  "baseline_long_exact_received": 206,
+  "long_conditions": {
+    "size_bytes": 52428800,
+    "buffer_bytes": 80000000,
+    "sim_end_s": 180,
+    "completion_grace_ms": 250,
+    "loss": 0,
+    "seed": "1..10"
+  },
+  "old_baseline": "artifacts/BASELINE.json unchanged",
+  "hashes": "SHA256SUMS"
+}
