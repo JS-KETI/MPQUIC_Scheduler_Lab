@@ -669,6 +669,8 @@ public:
   /** A stream is fully configured and has not yet processed its first frame. */
   typedef void (*LabStreamCreatedTracedCallback)(Ptr<QuicStreamBase> stream);
   void NotifyLabStreamCreated (Ptr<QuicStreamBase> stream);
+  /** Read-only diagnostic snapshot; never calls the mutating socket inflight accessor. */
+  std::string GetLabDiagnosticState () const;
 
   // Public: ------------ For Multipath Implementation -------------
 
@@ -938,6 +940,7 @@ protected:
   // This older ns-3 TracedCallback has no IsEmpty(); an explicit default-false
   // attribute gates diagnostics without changing transport state.
   bool m_enableLabTracing = false;
+  bool m_enableLabDiagnostics = false;
   uint64_t m_labDecisionId = 0;
   TracedCallback<std::string> m_labDecisionTrace;
   TracedCallback<Ptr<QuicStreamBase> > m_labStreamCreatedTrace;

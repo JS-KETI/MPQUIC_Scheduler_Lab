@@ -328,6 +328,11 @@ QuicSocketBase::GetTypeId (void)
                      MakeTraceSourceAccessor (&QuicSocketBase::m_rttTrace1),
                      "ns3::Time::TracedValueCallback")
      
+    .AddAttribute ("EnableLabDiagnostics",
+                   "Read-only diagnostic connection close/abort events",
+                   BooleanValue (false),
+                   MakeBooleanAccessor (&QuicSocketBase::m_enableLabDiagnostics),
+                   MakeBooleanChecker ())
     .AddAttribute ("EnableLabTracing",
                    "Enable optional week-3 CSV diagnostics; connect lab traces before sending",
                    BooleanValue (false),
@@ -617,6 +622,7 @@ QuicSocketBase::QuicSocketBase (const QuicSocketBase& sock)   // Copy constructo
     m_txTrace (sock.m_txTrace),
     m_rxTrace (sock.m_rxTrace),
     m_enableLabTracing (sock.m_enableLabTracing),
+    m_enableLabDiagnostics (sock.m_enableLabDiagnostics),
     m_labDecisionTrace (sock.m_labDecisionTrace),
     m_labStreamCreatedTrace (sock.m_labStreamCreatedTrace),
     m_enableMultipath(sock.m_enableMultipath),
@@ -998,6 +1004,32 @@ QuicSocketBase::AppendingTx (Ptr<Packet> frame)
     }
 }
 
+
+std::string
+QuicSocketBase::GetLabDiagnosticState () const
+{
+  std::ostringstream out;
+  out << std::setprecision (17);
+  const double t = Simulator::Now ().GetSeconds ();
+  const uint32_t node = m_node ? m_node->GetId () : 0;
+  out << "SOCKET," << t << ',' << node << ',' << m_socketState.Get () << ','
+      << m_txBuffer->AppSize () << ',' << m_txBuffer->Available () << ','
+      << m_max_data << ',' << m_closeOnEmpty << ',' << m_connected << ','
+      << m_sendPendingDataEvent.IsRunning () << ',' << m_idleTimeoutEvent.IsRunning () << ','
+      << m_drainingPeriodEvent.IsRunning () << ',' << m_pacingTimer.IsRunning () << '\n';
+  for (uint32_t i = 0; i < m_subflows.size (); ++i)
+    {
+      auto tcb = m_subflows[i]->m_tcb;
+      out << "PATH," << t << ',' << node << ',' << i << ','
+          << m_txBuffer->BytesInFlight (i) << ',' << tcb->m_cWnd.Get () << ','
+          << tcb->m_lastRtt.Get ().GetSeconds () << ',' << tcb->m_smoothedRtt.GetSeconds () << ','
+          << tcb->m_highTxMark.Get () << ',' << tcb->m_lastAckedSeq << ','
+          << tcb->m_lossDetectionAlarm.IsRunning () << ',' << tcb->m_nextAlarmTrigger.GetSeconds () << ','
+          << unsigned (tcb->m_alarmType) << ',' << tcb->m_tlpCount << ',' << tcb->m_rtoCount << ','
+          << tcb->m_congState.Get () << '\n';
+    }
+  return out.str ();
+}
 
 void
 QuicSocketBase::NotifyLabStreamCreated (Ptr<QuicStreamBase> stream)
@@ -1844,6 +1876,11 @@ QuicSocketBase::ScheduleCloseAndSendConnectionClosePacket ()
 int
 QuicSocketBase::Close (void)
 {
+  if (m_enableLabDiagnostics)
+    std::cout << std::setprecision (17) << "DIAG_CLOSE," << Simulator::Now ().GetSeconds () << ','
+              << m_node->GetId () << ',' << m_socketState.Get () << ','
+              << m_idleTimeoutEvent.IsRunning () << ',' << m_txBuffer->AppSize () << ','
+              << m_txBuffer->SentListIsEmpty () << std::endl;
   NS_LOG_FUNCTION (this);
   NS_LOG_INFO (this << " Close at time " << Simulator::Now ().GetSeconds ());
 
@@ -3070,6 +3107,9 @@ QuicSocketBase::AbortConnection (uint16_t transportErrorCode,
                                  const char* reasonPhrase,
                                  bool applicationClose)
 {
+  if (m_enableLabDiagnostics)
+    std::cout << std::setprecision (17) << "DIAG_ABORT," << Simulator::Now ().GetSeconds () << ','
+              << m_node->GetId () << ',' << transportErrorCode << ',' << reasonPhrase << std::endl;
   NS_LOG_FUNCTION (this);
 
   NS_LOG_INFO (

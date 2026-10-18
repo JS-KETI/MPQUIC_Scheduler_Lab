@@ -1,7 +1,7 @@
 {
   "week": 4,
-  "source_markdown_sha256": "ecd1c4e75611cfed8eff134319adf3970a76f869ea589df706a3506abf853a87",
-  "html_sha256": "57bf40a5e5bb5f7839f0890814622fa5465a2af29c9a5a411fc65b5d76a882d1",
+  "source_markdown_sha256": "1756553ff9a8343d642b5442b56cf92db30a3e2ba8706bd749da326bcdbf0dcf",
+  "html_sha256": "e9ae5a72e59748d72dc4001b87484841eeab70e66b8b8dc8c181913b4faac6e8",
   "images": [
     {
       "path": "figures/degradation.png",
@@ -31,7 +31,7 @@
   ],
   "heading_count": 8,
   "tables": 2,
-  "clickable_links": 10,
+  "clickable_links": 11,
   "source_unchanged": true,
   "all_report_images_embedded": true
 }

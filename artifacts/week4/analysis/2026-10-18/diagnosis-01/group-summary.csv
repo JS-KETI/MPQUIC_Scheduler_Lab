@@ -1,0 +1,6 @@
+group,count,conditions
+premature_close_socket_backlog,78,loss01=7; loss1=71
+progress_at_deadline,7,long=4; loss1=3
+oversized_retransmission_bundle,87,queue100=87
+stream_backlog,68,buffer1m=68
+rx_buffer_abort,37,buffer1m=37

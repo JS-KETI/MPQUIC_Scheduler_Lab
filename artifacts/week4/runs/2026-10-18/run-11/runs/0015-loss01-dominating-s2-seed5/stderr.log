@@ -1,0 +1,16 @@
+OBS,qdrop,1.58335,/NodeList/6/$ns3::TrafficControlLayer/RootQueueDiscList/1/DropAfterDequeue,(Dropped by child queue disc) Target exceeded drop,10.1.6.1,10.1.7.2,243,0,1480,1,244
+OBS,qdrop,1.68442,/NodeList/6/$ns3::TrafficControlLayer/RootQueueDiscList/1/DropAfterDequeue,(Dropped by child queue disc) Target exceeded drop,10.1.6.1,10.1.7.2,394,0,1480,1,395
+OBS,qdrop,1.73409,/NodeList/6/$ns3::TrafficControlLayer/RootQueueDiscList/1/DropAfterDequeue,(Dropped by child queue disc) Target exceeded drop,10.1.6.1,10.1.7.2,469,0,1480,1,470
+OBS,qdrop,2.03263,/NodeList/6/$ns3::TrafficControlLayer/RootQueueDiscList/1/DropAfterDequeue,(Dropped by child queue disc) Target exceeded drop,10.1.6.1,10.1.7.2,675,0,1480,1,676
+OBS,qdrop,2.09969,/NodeList/6/$ns3::TrafficControlLayer/RootQueueDiscList/1/DropAfterDequeue,(Dropped by child queue disc) Target exceeded drop,10.1.6.1,10.1.7.2,792,0,1480,1,793
+OBS,ipdrop,31.5085,/NodeList/5/$ns3::Ipv4L3Protocol/Drop,6,2,85376,10.1.6.1,10.1.7.2,243,1480,0
+OBS,ipdrop,31.6137,/NodeList/5/$ns3::Ipv4L3Protocol/Drop,6,2,85386,10.1.6.1,10.1.7.2,394,1480,0
+OBS,ipdrop,31.7118,/NodeList/5/$ns3::Ipv4L3Protocol/Drop,6,2,85405,10.1.6.1,10.1.7.2,469,1480,0
+OBS,ipdrop,32.0574,/NodeList/5/$ns3::Ipv4L3Protocol/Drop,6,2,85451,10.1.6.1,10.1.7.2,675,1480,0
+OBS,ipdrop,32.1674,/NodeList/5/$ns3::Ipv4L3Protocol/Drop,6,2,85470,10.1.6.1,10.1.7.2,792,1480,0
+OBS,ipdrop,32.4913,/NodeList/5/$ns3::Ipv4L3Protocol/Drop,6,2,85509,10.1.6.1,10.1.7.2,1084,1480,0
+OBS,ipdrop,33.754,/NodeList/5/$ns3::Ipv4L3Protocol/Drop,6,2,85688,10.1.6.1,10.1.7.2,2279,0,1480
+OBS,ipdrop,34.1199,/NodeList/5/$ns3::Ipv4L3Protocol/Drop,6,2,85750,10.1.6.1,10.1.7.2,2616,0,1480
+OBS,ipdrop,34.1487,/NodeList/5/$ns3::Ipv4L3Protocol/Drop,6,2,85758,10.1.6.1,10.1.7.2,2643,1480,0
+OBS,ipdrop,35.0032,/NodeList/5/$ns3::Ipv4L3Protocol/Drop,6,2,85876,10.1.6.1,10.1.7.2,2943,1480,0
+OBS,ipdrop,35.0823,/NodeList/5/$ns3::Ipv4L3Protocol/Drop,6,2,85888,10.1.6.1,10.1.7.2,2970,0,1480

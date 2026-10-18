@@ -1,0 +1,20 @@
+{
+  "commit": "47e82c0c7f7efb477ae6179bc6e490370ce137a3",
+  "binary_sha256": "41204b11bb65132b758a49fe89be80cce897887c84cf97cfe13592957e44c9be",
+  "patch_sha256": "55fd1f5b3f51d4a808c8bef715fc0da7c3755418d75b098dc3a1c381c8b5150e",
+  "mode": "packet",
+  "command": [
+    "/mnt/c/Users/okqkf/OneDrive/Desktop/keti/work/diag_run.py",
+    "--mode",
+    "packet",
+    "--out",
+    "artifacts/week4/runs/2026-10-18/run-11"
+  ],
+  "source": "existing main 277; no baseline overwrite",
+  "schema": {
+    "APP": "time,accepted,rx_app,last_sink_s,last_tx_payload_s,last_rx_payload_s",
+    "SOCKET": "time,node,state,app_frame_bytes,available_bytes,max_data,close_on_empty,connected,send_event,idle_event,drain_event,pacing_event",
+    "PATH": "time,node,path,inflight_frame_bytes,cwnd_frame_bytes,last_rtt,srtt,high_tx,last_acked,alarm_running,next_alarm_s,alarm_type,tlp,rto,cc_state",
+    "STREAM": "time,node,stream,app_payload_bytes,available_bytes,sent_offset,recv_offset,send_event,send_state,recv_state,fin,stored_payload,waiting_payload"
+  }
+}
