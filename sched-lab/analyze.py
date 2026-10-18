@@ -15,9 +15,10 @@ order = [o for o in order if o in set(df.name)] + sorted(set(df.name) - set(orde
 rows = []
 for (sc, name), g in df.groupby(["scenario", "name"]):
     ok = g[g.done == 1]
-    rows.append(dict(scenario=sc, scheduler=name, runs=len(g), completed=len(ok),
+    reached95 = g[g.rx_app >= (g['size'] * .95).astype('int64')]
+    rows.append(dict(scenario=sc, scheduler=name, runs=len(g), completed=len(ok), full_received=int(g.rx_app.eq(g["size"]).sum()), fct95_reached=len(reached95),
                      fct_mean=ok.fct_s.mean(), fct_std=ok.fct_s.std(), fct_median=ok.fct_s.median(),
-                     fct_p90=ok.fct_s.quantile(0.9), fct95_mean=ok.fct95_s.mean(),
+                     fct_p90=ok.fct_s.quantile(0.9), fct95_mean=reached95.fct95_s.mean(),
                      share_p1=(ok.rx_p1 / (ok.rx_p0 + ok.rx_p1)).mean()))
 summ = pd.DataFrame(rows)
 summ["scheduler"] = pd.Categorical(summ.scheduler, order, ordered=True)
