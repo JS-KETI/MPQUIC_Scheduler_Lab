@@ -1,17 +1,18 @@
 {
-  "date_kst": "2026-10-16",
+  "date_kst": "2026-10-18",
   "convention": "docs/OUTPUT_CONVENTIONS.md",
   "latest_weeks": {
     "1": "week1/README.md",
     "2": "week2/README.md",
-    "3": "week3/README.md"
+    "3": "week3/README.md",
+    "4": "week4/README.md"
   },
-  "file_count": 92,
+  "file_count": 126,
   "files": [
     {
       "path": "README.md",
-      "bytes": 1216,
-      "sha256": "bb974911dbe3e455240f7ee1e2f17fa1339c161fee6b39d14bea51b62a4dafe3"
+      "bytes": 1509,
+      "sha256": "9c03fc8c02f0014856b4e5d801147f8b8bfc6aebdb9181cf539e47b5cbb50d78"
     },
     {
       "path": "week1/1주차 진행상황.html",
@@ -467,6 +468,176 @@
       "path": "week3/records/계측 로그 형식.md",
       "bytes": 3849,
       "sha256": "80ec354f15573d01be390d0f57641ec9b92729aab8f7ee8ad4e6f65982392ff0"
+    },
+    {
+      "path": "week4/4주차 진행상황.html",
+      "bytes": 958929,
+      "sha256": "57bf40a5e5bb5f7839f0890814622fa5465a2af29c9a5a411fc65b5d76a882d1"
+    },
+    {
+      "path": "week4/4주차 진행상황.md",
+      "bytes": 9977,
+      "sha256": "ecd1c4e75611cfed8eff134319adf3970a76f869ea589df706a3506abf853a87"
+    },
+    {
+      "path": "week4/README.md",
+      "bytes": 1527,
+      "sha256": "364fdacf405b71ded3d482db4e722e937c99cdf5a68ea3d002393f28116c7aec"
+    },
+    {
+      "path": "week4/data/baseline-long.csv",
+      "bytes": 51169,
+      "sha256": "846b3d23d55dc860b1e59ec370adb81dc6a9ac340946ceb01a598b9147ba47f1"
+    },
+    {
+      "path": "week4/data/baseline_comparison.csv",
+      "bytes": 34692,
+      "sha256": "f83e1d11b8b79c47cd63956bd96e7f0555b3e32102ba395f3a8a65af1eb2f7e2"
+    },
+    {
+      "path": "week4/data/four_path.csv",
+      "bytes": 2503,
+      "sha256": "d49948c79ebdb6cb0e3848c5fb8a31cafa309f626a5a164f2b9b584c8bff9e50"
+    },
+    {
+      "path": "week4/data/observed_rank_changes.csv",
+      "bytes": 74633,
+      "sha256": "9a839ff31308b4eb20d0112266e2ab7bb25e743c1ef9a7f2c6d13b25fd4d3db4"
+    },
+    {
+      "path": "week4/data/paired_comparisons.csv",
+      "bytes": 82143,
+      "sha256": "ddcf7dba0364353890f00e13b21d0a0a2a0de55680fbbd7fc7e65c2ab98979af"
+    },
+    {
+      "path": "week4/data/results.csv",
+      "bytes": 275856,
+      "sha256": "986b65bebd33af7901891842d366067ed9b13c65f990ba3114ea7de823438e2c"
+    },
+    {
+      "path": "week4/data/summary-long.csv",
+      "bytes": 5711,
+      "sha256": "aed9ad8052cc19dcf72141d7d5eaa05ce241c5eea858fd18c6b3028c2d9b6ed2"
+    },
+    {
+      "path": "week4/data/summary.csv",
+      "bytes": 45497,
+      "sha256": "ccc471ba88f5c0ecacfc42374908cf084268e0380ec894600d332cd7e1369f8c"
+    },
+    {
+      "path": "week4/figures/degradation.png",
+      "bytes": 154960,
+      "sha256": "4e931b8744e225ef151bbf1394ce0461dc0d705c8f43012a2375a6a561e52c45"
+    },
+    {
+      "path": "week4/figures/four_path.png",
+      "bytes": 72313,
+      "sha256": "9f1517cfefb82facf2c5fa8222104f3ab1e3602b5d2d318f5aa36e5267c2d38a"
+    },
+    {
+      "path": "week4/figures/long_completion.png",
+      "bytes": 68183,
+      "sha256": "21268529a8c7af148783e7789c8c07bea61e37d0e9aed44ba8f509c7703483f6"
+    },
+    {
+      "path": "week4/figures/long_fct_provided.png",
+      "bytes": 109316,
+      "sha256": "ed01bb0af4c6ed2eeff5563bfb82f3c322ffff0a16506c89939e8c14bfedcb53"
+    },
+    {
+      "path": "week4/figures/long_path_share.png",
+      "bytes": 65830,
+      "sha256": "25cf32b2b588746ecc798f5dc2722a40d0a2e271be2e5cf50158cf4004853c67"
+    },
+    {
+      "path": "week4/figures/robustness.png",
+      "bytes": 231775,
+      "sha256": "28f85cee05f8f602febdf499212c336e75e7bb9f2e0c38410eafda32eb137d0a"
+    },
+    {
+      "path": "week4/figures/robustness_overview.png",
+      "bytes": 140208,
+      "sha256": "a78609868d58263d42b026885d0d1653db5689013b2cfa78d37cee0858da9d0a"
+    },
+    {
+      "path": "week4/records/4주차 상세 실험 기록.md",
+      "bytes": 15298,
+      "sha256": "a155b122bd624dea0a18782c08f7f980d87745c2a17ad452c435dc37f35e1c2e"
+    },
+    {
+      "path": "week4/records/README.md",
+      "bytes": 248,
+      "sha256": "9fa673a82ea1aa2b47d7f50ee79d6b2c8bf0a5012e363bf075d00f7ec12b45a5"
+    },
+    {
+      "path": "week4/records/baseline-preservation.json",
+      "bytes": 111818,
+      "sha256": "bf519e9a94bfb10ab2d5ce81e9035becc6ff84259692cf1b47aca743ace2269e"
+    },
+    {
+      "path": "week4/records/layout-validation.json",
+      "bytes": 912,
+      "sha256": "1642ea91198dd320380ced1fb1fd0c2c1bf1dd057c9c6acb952a69da54f4653d"
+    },
+    {
+      "path": "week4/records/logs/week4-fourpath.log",
+      "bytes": 157,
+      "sha256": "ae970a375d0916d1a7daf856f970c013fa643e379f51e319935bdd390d2b23aa"
+    },
+    {
+      "path": "week4/records/logs/week4-long.log",
+      "bytes": 1474,
+      "sha256": "9fef7ddb412cdad77e1e9f3211bb70c6f13fd50db3123f0f8ad9a392e1602b5d"
+    },
+    {
+      "path": "week4/records/logs/week4-rebuild.log",
+      "bytes": 550087,
+      "sha256": "67b1f246cc3a4db5bc014faa4df851bdac87bff2828c140d4432820adbf8f68a"
+    },
+    {
+      "path": "week4/records/logs/week4-repro-smoke.log",
+      "bytes": 329,
+      "sha256": "11b962d62d860ae3ea430cf090dffb9e4f98e533e4c7b3bb578895cddf6ce859"
+    },
+    {
+      "path": "week4/records/logs/week4-robustness.log",
+      "bytes": 4359,
+      "sha256": "7c8611fafe4f5f8a2c9d835b371727d00743926eb1d47d270b1e618f0a811d19"
+    },
+    {
+      "path": "week4/records/logs/week4-short.log",
+      "bytes": 2265,
+      "sha256": "a151027f519ab435d9524d52104f5506d8d58e5d2990b9e82340792dc17799ef"
+    },
+    {
+      "path": "week4/records/package-validation.json",
+      "bytes": 740,
+      "sha256": "aee863da56c6f94756f0531c866496226c8411b3763d2f7410173443c1ee864b"
+    },
+    {
+      "path": "week4/records/provenance.json",
+      "bytes": 3629,
+      "sha256": "0dbf608c09f76305afc30641cd67d8f8626d7e156189a861bb8f770ac133b2b6"
+    },
+    {
+      "path": "week4/records/render.json",
+      "bytes": 1153,
+      "sha256": "0c457dfd108df62407be645d4c43c1422fdd05b60cab7f2dfa36799ee193964c"
+    },
+    {
+      "path": "week4/records/reproduction-validation.json",
+      "bytes": 3281,
+      "sha256": "0a3bd80a23d71598de06f5e1a46034354b7b20ee2f98a75902fe7d931320be08"
+    },
+    {
+      "path": "week4/records/실험 설계.md",
+      "bytes": 2860,
+      "sha256": "3d685e35ce394bcd8397e36a272d41931359e3f6de173a8d6530f94779d649ad"
+    },
+    {
+      "path": "week4/records/재현 안내.md",
+      "bytes": 4108,
+      "sha256": "1a200cea3edf3147cd640401b8f8d8c6a9aeb5698921de17b824377e235d9cbf"
     }
   ]
 }

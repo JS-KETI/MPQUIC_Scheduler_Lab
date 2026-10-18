@@ -12,5 +12,9 @@
   - 최종 72/72회 완료 처리·목표 전체 수신. 공식 기준 대조 45/45건 일치. 고정 비율 27/27회 통과(전송 창 제약 구간 제외, 최대 상대오차 0.526%). 게이트 3 충족.
   - https://github.com/JS-KETI/MPQUIC_Scheduler_Lab/blob/lab/week3-scheduler-20261012/reports/week3/README.md
 
+- **4주차**
+  - 기존·열화 315/315회, 장시간 206/210회, 강건성 357/630회, 4경로 8/8회 완료·전체 수신. 장시간 기준값·재현 패키지·한계 기록.
+  - https://github.com/JS-KETI/MPQUIC_Scheduler_Lab/blob/lab/week4-validation-20261018/reports/week4/README.md
+
 - **공통 폴더 규칙**
   - https://github.com/JS-KETI/MPQUIC_Scheduler_Lab/blob/lab/week3-scheduler-20261012/docs/OUTPUT_CONVENTIONS.md

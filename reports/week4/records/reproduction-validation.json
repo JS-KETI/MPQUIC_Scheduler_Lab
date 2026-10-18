@@ -1,0 +1,149 @@
+{
+  "fresh_build": true,
+  "unit_tests_passed": 4,
+  "analysis_accounting_tests_passed": 4,
+  "independent_output_folder": "/home/ubuntu/projects/keti/week4-reproduction-20261018",
+  "plot_command": [
+    "/usr/bin/python3",
+    "sched-lab/week4_analyze.py",
+    "--runs",
+    "artifacts/week4/runs/2026-10-18/run-03",
+    "artifacts/week4/runs/2026-10-18/run-04",
+    "artifacts/week4/runs/2026-10-18/run-05",
+    "artifacts/week4/runs/2026-10-18/run-06",
+    "--out",
+    "reproduced-analysis"
+  ],
+  "regenerated_files": [
+    {
+      "path": "summary-long.csv",
+      "identical": true
+    },
+    {
+      "path": "baseline-long_summary.csv",
+      "identical": true
+    },
+    {
+      "path": "baseline-long.csv",
+      "identical": true
+    },
+    {
+      "path": "observed_rank_changes.csv",
+      "identical": true
+    },
+    {
+      "path": "four_path.csv",
+      "identical": true
+    },
+    {
+      "path": "paired_comparisons.csv",
+      "identical": true
+    },
+    {
+      "path": "summary.csv",
+      "identical": true
+    },
+    {
+      "path": "baseline_comparison.csv",
+      "identical": true
+    },
+    {
+      "path": "results.csv",
+      "identical": true
+    },
+    {
+      "path": "baseline-long_fct.png",
+      "identical": true
+    },
+    {
+      "path": "figures/long_path_share.png",
+      "identical": true
+    },
+    {
+      "path": "figures/four_path.png",
+      "identical": true
+    },
+    {
+      "path": "figures/long_completion.png",
+      "identical": true
+    },
+    {
+      "path": "figures/robustness.png",
+      "identical": true
+    },
+    {
+      "path": "figures/degradation.png",
+      "identical": true
+    }
+  ],
+  "simulation_reproductions": [
+    {
+      "original_run": "run-02",
+      "reproduction_run": "run-01",
+      "runs": 5,
+      "all_fields_equal": 5,
+      "fields": [
+        "size",
+        "fct_s",
+        "fct95_s",
+        "rx_app",
+        "rx_p0",
+        "rx_p1",
+        "delay_p0_ms",
+        "delay_p1_ms",
+        "done",
+        "full_fct_s",
+        "queue_drops",
+        "error_drops",
+        "active_subflows",
+        "tx_payload_p0",
+        "rx_payload_p0",
+        "tx_payload_p1",
+        "rx_payload_p1",
+        "tx_payload_p2",
+        "rx_payload_p2",
+        "tx_payload_p3",
+        "rx_payload_p3"
+      ]
+    },
+    {
+      "original_run": "run-06",
+      "reproduction_run": "run-02",
+      "runs": 8,
+      "all_fields_equal": 8,
+      "fields": [
+        "size",
+        "fct_s",
+        "fct95_s",
+        "rx_app",
+        "rx_p0",
+        "rx_p1",
+        "delay_p0_ms",
+        "delay_p1_ms",
+        "done",
+        "full_fct_s",
+        "queue_drops",
+        "error_drops",
+        "active_subflows",
+        "tx_payload_p0",
+        "rx_payload_p0",
+        "tx_payload_p1",
+        "rx_payload_p1",
+        "tx_payload_p2",
+        "rx_payload_p2",
+        "tx_payload_p3",
+        "rx_payload_p3"
+      ]
+    }
+  ],
+  "note": "Full 1163-row data reanalysed; 13 simulations rerun from rebuilt source. Full sweep was not run a second time.",
+  "report_overview": {
+    "command": [
+      "/usr/bin/python3",
+      "sched-lab/plot_week4_overview.py",
+      "reproduced-analysis/summary.csv",
+      "reproduced-analysis/robustness_overview.png"
+    ],
+    "identical": true
+  }
+}

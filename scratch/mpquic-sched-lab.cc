@@ -43,6 +43,76 @@ static double g_fct95 = -1.0;
 static double g_start = 1.0;
 static double g_completionGraceMs = 10.0;
 static std::ofstream g_labDecision, g_labPackets, g_labReorder;
+// Week 4 counters are optional and never modify transport state.
+static bool g_bufferValidation = false;
+static double g_fullFct = -1;
+static uint64_t g_exactTarget = 0;
+static uint64_t g_pathPayloadTx[4] = {0,0,0,0};
+static uint64_t g_pathPayloadRx[4] = {0,0,0,0};
+static uint64_t g_queueDrops = 0, g_errorDrops = 0;
+static void CountQueueDrop (Ptr<const QueueDiscItem>) { ++g_queueDrops; }
+static void CountErrorDrop (Ptr<const Packet>) { ++g_errorDrops; }
+static void
+CountPayload (std::string direction, Ptr<const Packet> packet,
+              const QuicHeader &header, Ptr<const QuicSocketBase> socket)
+{
+  unsigned path = header.GetPathId ();
+  if (path >= 4 || (direction == "Tx" && socket->GetNode ()->GetId () != 4)
+      || (direction == "Rx" && socket->GetNode ()->GetId () != 5)) return;
+  Ptr<Packet> copy = packet->Copy ();
+  while (copy->GetSize ())
+    {
+      QuicSubheader sub;
+      if (!copy->RemoveHeader (sub)) break;
+      if (sub.IsStream ())
+        {
+          uint32_t length = sub.GetLength ();
+          if (length > copy->GetSize ()) break;
+          if (sub.GetStreamId () > 0)
+            (direction == "Tx" ? g_pathPayloadTx[path] : g_pathPayloadRx[path]) += length;
+          copy->RemoveAtStart (length);
+        }
+    }
+}
+static void ReadStreamBuffers (std::string node, Ptr<QuicStreamBase> stream)
+{
+  std::cout << "BUFFER4,stream," << node << "," << stream->GetStreamId ()
+            << "," << stream->GetStreamSndBufSize () << "," << stream->GetStreamRcvBufSize () << std::endl;
+}
+static void ReadSocketState ()
+{
+  auto matches = Config::LookupMatches ("/NodeList/*/$ns3::QuicL4Protocol/SocketList/*/QuicSocketBase");
+  for (uint32_t i = 0; i < matches.GetN (); ++i)
+    {
+      auto socket = DynamicCast<QuicSocketBase> (matches.Get (i));
+      if (!socket) continue;
+      std::cout << "BUFFER4,socket," << socket->GetNode ()->GetId () << ","
+                << socket->GetSocketSndBufSize () << "," << socket->GetSocketRcvBufSize () << std::endl;
+      for (auto flow : socket->GetActiveSubflows ())
+        std::cout << "PATH4," << socket->GetNode ()->GetId () << "," << flow->m_flowId
+                  << "," << unsigned (flow->m_subflowState.Get ()) << ","
+                  << flow->m_localAddr << "," << flow->m_peerAddr << std::endl;
+    }
+}
+static void ConnectMetricSocket (Ptr<QuicSocketBase> socket)
+{
+  if (!socket) return;
+  if (g_bufferValidation) socket->TraceConnect ("LabStreamCreated", std::to_string (socket->GetNode ()->GetId ()), MakeCallback (&ReadStreamBuffers));
+  socket->TraceConnect ("Tx", "Tx", MakeCallback (&CountPayload));
+  socket->TraceConnect ("Rx", "Rx", MakeCallback (&CountPayload));
+}
+static void ConnectMetricListener ()
+{
+  auto matches = Config::LookupMatches ("/NodeList/*/$ns3::QuicL4Protocol/SocketList/*/QuicSocketBase");
+  for (uint32_t i = 0; i < matches.GetN (); ++i)
+    {
+      auto socket = DynamicCast<QuicSocketBase> (matches.Get (i));
+      if (socket && socket->GetNode ()->GetId () == 5) ConnectMetricSocket (socket);
+    }
+}
+static void ConnectMetricSource (Ptr<MpquicBulkSendApplication> app)
+{ ConnectMetricSocket (DynamicCast<QuicSocketBase> (app->GetSocket ())); }
+
 
 static void LabDecision (std::string row) { g_labDecision << row << "\n"; }
 static void LabReorder (std::string row) { g_labReorder << row << "\n"; }
@@ -116,6 +186,7 @@ SinkRx (Ptr<const Packet> p, const Address &from)
 {
   g_rxTotal += p->GetSize ();
   double t = Simulator::Now ().GetSeconds () - g_start;
+  if (g_fullFct < 0 && g_rxTotal >= g_exactTarget) g_fullFct = t;
   if (g_fct95 < 0 && g_rxTotal >= g_target95)
     {
       g_fct95 = t;
@@ -289,12 +360,16 @@ main (int argc, char *argv[])
   bool fixedRatio = false;
   double path0Share = 0.3;
   double newKappa = 0.0, newBeta = 0.0, newSmax = 0.0;
+  uint32_t bufferBytes = 40000000, queueMaxPackets = 0, pathCount = 2;
+  bool benchMetrics = false;
+  std::string lossUnit = "byte"; // Preserve the supplied RateErrorModel default.
+
 
   CommandLine cmd;
   cmd.AddValue ("SchedulerType", "0 RR, 1 MinRTT, 2 BLEST, 3 ECF, 4 Peekaboo, 5 EAT(new), 6 MinRTT-multi(new), 7 NewSched", schedulerType);
   cmd.AddValue ("Size", "bytes to transfer", size);
   cmd.AddValue ("Seed", "RNG seed", seed);
-  cmd.AddValue ("LossRate", "packet error rate on both bottlenecks", lossrate);
+  cmd.AddValue ("LossRate", "error probability per LossUnit on bottleneck receiving devices", lossrate);
   cmd.AddValue ("Rate0a", "path0 min rate [Mbps]", rate0a);
   cmd.AddValue ("Rate0b", "path0 max rate [Mbps]", rate0b);
   cmd.AddValue ("Delay0a", "path0 min one-way delay [ms]", delay0a);
@@ -319,7 +394,23 @@ main (int argc, char *argv[])
   cmd.AddValue ("NewBeta", "ID 7 reserved week 5 parameter (no decision formula yet)", newBeta);
   cmd.AddValue ("NewSmax", "ID 7 reserved week 5 parameter (no decision formula yet)", newSmax);
   cmd.AddValue ("LabLogPrefix", "Optional week 3 trace file prefix; empty disables tracing", labLogPrefix);
+  cmd.AddValue ("BufferBytes", "each QUIC socket/stream send/receive buffer [B]", bufferBytes);
+  cmd.AddValue ("QueueMaxPackets", "bottleneck FqCoDel packet limit; 0 preserves default 10240p", queueMaxPackets);
+  cmd.AddValue ("LossUnit", "byte (original default) or packet", lossUnit);
+  cmd.AddValue ("PathCount", "2 original topology, 4 operation/limitation probe", pathCount);
+  cmd.AddValue ("BenchMetrics", "optional payload/drop/config counters on stdout", benchMetrics);
+  cmd.AddValue ("BufferValidation", "enable existing lab stream-created hook for buffer readback smoke", g_bufferValidation);
   cmd.Parse (argc, argv);
+  if (g_bufferValidation)
+    {
+      NS_ABORT_MSG_IF (!benchMetrics, "BufferValidation requires BenchMetrics");
+      Config::SetDefault ("ns3::QuicSocketBase::EnableLabTracing", BooleanValue (true));
+    }
+  NS_ABORT_MSG_IF (pathCount != 2 && pathCount != 4, "PathCount must be 2 or 4");
+  NS_ABORT_MSG_IF (lossUnit != "byte" && lossUnit != "packet", "Invalid LossUnit");
+  NS_ABORT_MSG_IF (bufferBytes < 3000 || size == 0 || simEnd <= g_start || lossrate < 0 || lossrate > 1,
+                   "Invalid buffer, size, time or loss probability");
+  g_exactTarget = size;
   if (!labLogPrefix.empty ())
     {
       g_labDecision.open (labLogPrefix + "-decisions.csv");
@@ -341,10 +432,10 @@ main (int argc, char *argv[])
   TypeId ccTypeId = (ccType == QuicSocketBase::OLIA) ? MpQuicCongestionOps::GetTypeId ()
                                                      : QuicCongestionOps::GetTypeId ();
 
-  Config::SetDefault ("ns3::QuicSocketBase::SocketSndBufSize", UintegerValue (40000000));
-  Config::SetDefault ("ns3::QuicStreamBase::StreamSndBufSize", UintegerValue (40000000));
-  Config::SetDefault ("ns3::QuicSocketBase::SocketRcvBufSize", UintegerValue (40000000));
-  Config::SetDefault ("ns3::QuicStreamBase::StreamRcvBufSize", UintegerValue (40000000));
+  Config::SetDefault ("ns3::QuicSocketBase::SocketSndBufSize", UintegerValue (bufferBytes));
+  Config::SetDefault ("ns3::QuicStreamBase::StreamSndBufSize", UintegerValue (bufferBytes));
+  Config::SetDefault ("ns3::QuicSocketBase::SocketRcvBufSize", UintegerValue (bufferBytes));
+  Config::SetDefault ("ns3::QuicStreamBase::StreamRcvBufSize", UintegerValue (bufferBytes));
   Config::SetDefault ("ns3::QuicSocketBase::EnableMultipath", BooleanValue (true));
   Config::SetDefault ("ns3::QuicSocketBase::CcType", IntegerValue (ccType));
   Config::SetDefault ("ns3::QuicL4Protocol::SocketType", TypeIdValue (ccTypeId));
@@ -364,7 +455,9 @@ main (int argc, char *argv[])
 
   Ptr<RateErrorModel> em = CreateObjectWithAttributes<RateErrorModel> (
       "RanVar", StringValue ("ns3::UniformRandomVariable[Min=0.0|Max=1.0]"),
-      "ErrorRate", DoubleValue (lossrate));
+      "ErrorRate", DoubleValue (lossrate),
+      "ErrorUnit", EnumValue (lossUnit == "packet" ? RateErrorModel::ERROR_UNIT_PACKET
+                                                  : RateErrorModel::ERROR_UNIT_BYTE));
 
   Ptr<UniformRandomVariable> r0 = CreateObject<UniformRandomVariable> ();
   r0->SetAttribute ("Min", DoubleValue (rate0a));
@@ -381,7 +474,7 @@ main (int argc, char *argv[])
 
   // ---------------- topology (identical to the paper's two-path script) ----------------
   NodeContainer c;
-  c.Create (10);
+  c.Create (pathCount == 4 ? 14 : 10);
   NodeContainer n0n1 (c.Get (0), c.Get (1)), n1n8 (c.Get (1), c.Get (8)), n8n2 (c.Get (8), c.Get (2));
   NodeContainer n3n6 (c.Get (3), c.Get (6)), n6n9 (c.Get (6), c.Get (9)), n9n7 (c.Get (9), c.Get (7));
   NodeContainer n4n1 (c.Get (4), c.Get (1)), n8n5 (c.Get (8), c.Get (5));
@@ -392,6 +485,7 @@ main (int argc, char *argv[])
     {
       internet.Install (c.Get (i));
     }
+  for (uint32_t i = 10; i < c.GetN (); ++i) internet.Install (c.Get (i));
   QuicHelper stack;
   stack.InstallQuic (c.Get (4));
   stack.InstallQuic (c.Get (5));
@@ -418,6 +512,19 @@ main (int argc, char *argv[])
   NetDeviceContainer d3d6 = p2p.Install (n3n6);
   NetDeviceContainer d9d7 = p2p.Install (n9n7);
 
+  std::vector<NetDeviceContainer> extraAccessTx, extraBottleneck, extraAccessRx;
+  for (uint32_t path = 2; path < pathCount; ++path)
+    {
+      uint32_t r = 10 + 2 * (path - 2);
+      p2p.SetDeviceAttribute ("DataRate", StringValue ("100Mbps"));
+      p2p.SetChannelAttribute ("Delay", StringValue ("0.01ms"));
+      extraAccessTx.push_back (p2p.Install (NodeContainer (c.Get (4), c.Get (r))));
+      extraAccessRx.push_back (p2p.Install (NodeContainer (c.Get (r+1), c.Get (5))));
+      p2p.SetDeviceAttribute ("DataRate", StringValue ("8Mbps"));
+      p2p.SetChannelAttribute ("Delay", StringValue ("20ms"));
+      extraBottleneck.push_back (p2p.Install (NodeContainer (c.Get (r), c.Get (r+1))));
+      extraBottleneck.back ().Get (1)->SetAttribute ("ReceiveErrorModel", PointerValue (em));
+    }
   Ipv4AddressHelper ipv4;
   ipv4.SetBase ("10.1.4.0", "255.255.255.0");  ipv4.Assign (d4d1);
   ipv4.SetBase ("10.1.9.0", "255.255.255.0");  ipv4.Assign (d1d8);
@@ -430,6 +537,41 @@ main (int argc, char *argv[])
   ipv4.SetBase ("10.1.3.0", "255.255.255.0");  ipv4.Assign (d3d6);
   ipv4.SetBase ("10.1.8.0", "255.255.255.0");  ipv4.Assign (d9d7);
 
+  for (uint32_t i = 0; i < extraAccessTx.size (); ++i)
+    {
+      for (uint32_t k = 0; k < 3; ++k)
+        {
+          std::string base = "10.2." + std::to_string (20 + i*3 + k) + ".0";
+          ipv4.SetBase (base.c_str (), "255.255.255.0");
+          ipv4.Assign (k == 0 ? extraAccessTx[i] : (k == 1 ? extraBottleneck[i] : extraAccessRx[i]));
+        }
+    }
+
+  // IP address assignment installs the original default FqCoDel disciplines.
+  // Change only their bottleneck limits; preserve queue type, target and device queue.
+  std::vector<NetDeviceContainer> bottlenecks = {d1d8, d6d9};
+  bottlenecks.insert (bottlenecks.end (), extraBottleneck.begin (), extraBottleneck.end ());
+  for (uint32_t path = 0; path < bottlenecks.size (); ++path)
+    for (uint32_t end = 0; end < 2; ++end)
+      {
+        auto device = bottlenecks[path].Get (end);
+        auto tc = device->GetNode ()->GetObject<TrafficControlLayer> ();
+        auto q = tc->GetRootQueueDiscOnDevice (device);
+        NS_ABORT_MSG_IF (!q, "Missing bottleneck queue discipline");
+        if (queueMaxPackets) q->SetMaxSize (QueueSize (std::to_string (queueMaxPackets) + "p"));
+        if (benchMetrics)
+          {
+            std::cout << "QUEUE4," << path << "," << end << "," << q->GetInstanceTypeId ().GetName ()
+                      << "," << q->GetMaxSize () << std::endl;
+            q->TraceConnectWithoutContext ("Drop", MakeCallback (&CountQueueDrop));
+            device->TraceConnectWithoutContext ("PhyRxDrop", MakeCallback (&CountErrorDrop));
+          }
+      }
+  if (benchMetrics)
+    std::cout << "CONFIG4,BufferBytes=" << bufferBytes << ",QueueMaxPackets=" << queueMaxPackets
+              << ",LossUnit=" << lossUnit << ",LossRate=" << lossrate << ",PathCount=" << pathCount
+              << ",CompletionGraceMs=" << g_completionGraceMs << ",SimEnd=" << simEnd << std::endl;
+
   Ipv4StaticRoutingHelper rh;
   Ptr<Ipv4StaticRouting> sr4 = rh.GetStaticRouting (c.Get (4)->GetObject<Ipv4> ());
   sr4->AddHostRouteTo (Ipv4Address ("10.1.5.2"), Ipv4Address ("10.1.9.2"), 1);
@@ -437,8 +579,23 @@ main (int argc, char *argv[])
   Ptr<Ipv4StaticRouting> sr5 = rh.GetStaticRouting (c.Get (5)->GetObject<Ipv4> ());
   sr5->AddHostRouteTo (Ipv4Address ("10.1.4.1"), Ipv4Address ("10.1.9.1"), 1);
   sr5->AddHostRouteTo (Ipv4Address ("10.1.6.1"), Ipv4Address ("10.1.10.1"), 2);
+  for (uint32_t i = 0; i < extraAccessTx.size (); ++i)
+    {
+      std::string txnet = "10.2." + std::to_string (20 + i*3);
+      std::string rxnet = "10.2." + std::to_string (22 + i*3);
+      sr4->AddHostRouteTo (Ipv4Address ((rxnet+".2").c_str ()), Ipv4Address ((txnet+".2").c_str ()), i+3);
+      sr5->AddHostRouteTo (Ipv4Address ((txnet+".1").c_str ()), Ipv4Address ((rxnet+".1").c_str ()), i+3);
+    }
   Ipv4GlobalRoutingHelper::PopulateRoutingTables ();
 
+  if (benchMetrics)
+    for (uint32_t node : {4u,5u})
+      {
+        auto ip = c.Get (node)->GetObject<Ipv4> ();
+        for (uint32_t iface = 1; iface < ip->GetNInterfaces (); ++iface)
+          std::cout << "INTERFACE4," << node << "," << iface << "," << iface-1 << ","
+                    << ip->GetAddress (iface,0).GetLocal () << std::endl;
+      }
   // ---------------- application ----------------
   uint16_t port = 9;
   MpquicBulkSendHelper source ("ns3::QuicSocketFactory", InetSocketAddress (i8i5.GetAddress (1), port));
@@ -460,6 +617,8 @@ main (int argc, char *argv[])
   for (double t = g_start; t < simEnd; t += 0.1)
     {
       bool after = (eventTime >= 0 && t >= g_start + eventTime);
+      if (benchMetrics && after && t - 0.1 < g_start + eventTime)
+        std::cout << std::setprecision (12) << "EVENT4," << eventTime << "," << t-g_start << "," << t << std::endl;
       Simulator::Schedule (Seconds (t), &ModifyLinkRate, &d1d8,
                            DataRate (std::to_string (r0->GetValue ()) + "Mbps"),
                            Time::FromDouble (d0->GetValue (), Time::MS));
@@ -493,6 +652,13 @@ main (int argc, char *argv[])
       Simulator::Schedule (Seconds (1.000000001), &ConnectLabSource,
                           DynamicCast<MpquicBulkSendApplication> (srcApps.Get (0)));
     }
+  if (benchMetrics)
+    {
+      Simulator::Schedule (Seconds (0.001), &ConnectMetricListener);
+      Simulator::Schedule (Seconds (1.5), &ReadSocketState);
+      Simulator::Schedule (Seconds (1.000000001), &ConnectMetricSource,
+                          DynamicCast<MpquicBulkSendApplication> (srcApps.Get (0)));
+    }
   Simulator::Stop (Seconds (simEnd));
   Simulator::Run ();
 
@@ -521,6 +687,14 @@ main (int argc, char *argv[])
             << (np[1] ? 1000 * dsum[1] / np[1] : 0) << ","
             << (g_fct < 0 ? 0 : 1) << std::endl;
 
+  if (benchMetrics)
+    {
+      auto socket = DynamicCast<QuicSocketBase> (DynamicCast<MpquicBulkSendApplication> (srcApps.Get (0))->GetSocket ());
+      std::cout << "METRICS4," << g_fullFct << "," << g_queueDrops << "," << g_errorDrops
+                << "," << (socket ? socket->GetActiveSubflows ().size () : 0);
+      for (uint32_t i = 0; i < 4; ++i) std::cout << "," << g_pathPayloadTx[i] << "," << g_pathPayloadRx[i];
+      std::cout << std::endl;
+    }
   Simulator::Destroy ();
   return 0;
 }

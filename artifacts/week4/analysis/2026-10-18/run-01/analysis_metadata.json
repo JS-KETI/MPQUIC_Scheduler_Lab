@@ -1,0 +1,27 @@
+{
+  "generated_utc": "2026-10-18T08:43:07.571053+00:00",
+  "command": [
+    "sched-lab/week4_analyze.py",
+    "--runs",
+    "artifacts/week4/runs/2026-10-18/run-03",
+    "artifacts/week4/runs/2026-10-18/run-04",
+    "artifacts/week4/runs/2026-10-18/run-05",
+    "artifacts/week4/runs/2026-10-18/run-06",
+    "--out",
+    "artifacts/week4/analysis/2026-10-18/run-01"
+  ],
+  "source_sha256": {
+    "week4_analyze.py": "341655bcff85d5ffb43fa391f07c3a6b88d380f183c31cc0f7b1f654c0174df0",
+    "stats.py": "092d879d1986a30dead901f41183244a8cfd1e0add16f67a07eb56be09d577b9",
+    "analyze.py": "718062c54156046458bd472cf504f96d6a26cef3e70e84c7e14e13df6160e489"
+  },
+  "input_csv_sha256": {
+    "artifacts/week4/runs/2026-10-18/run-03": "d4e60b0600087551dd47769ad7c01b536e49dc2494f35b8a2efcd90f3bca7d2d",
+    "artifacts/week4/runs/2026-10-18/run-04": "b9ac2a15910654f819aee33a1de13b74243c326e77dbb381f4de73f21879c928",
+    "artifacts/week4/runs/2026-10-18/run-05": "8b19d90db9900d80feeed03d6d857d5044327807ffd47b2fe023ed38fc49df69",
+    "artifacts/week4/runs/2026-10-18/run-06": "621a8ee435c34e0bb77560a8ae075d9f5d4040090d6106f91eb0297d86bdc79c"
+  },
+  "baseline_sha256": "f58931aa387de2e04a1da655f6bcfcd3da69a85ff0bf7e94fb31ef266c77d94b",
+  "pandas": "2.1.4",
+  "numpy": "1.26.4"
+}

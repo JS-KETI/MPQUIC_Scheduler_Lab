@@ -1,0 +1,2512 @@
+{
+  "rows": 1163,
+  "process_ok": 1163,
+  "completed": 886,
+  "exact_received": 886,
+  "reference_compared": 105,
+  "reference_equal": 105,
+  "long_min_completed_fct_s": 28.9748,
+  "definitions": {
+    "fct": "size-3000B threshold, completed only",
+    "fct95": "95% target bytes, all reached runs",
+    "path_share": "received path1/(path0+path1) IP byte share, completed two-path runs only; four_path is NA; includes IP/UDP/QUIC headers",
+    "four_path_share": "transmitted STREAM payload sum including retransmission",
+    "missing_reference": "all new conditions have no supplied reference"
+  },
+  "incomplete": [
+    {
+      "condition": "long",
+      "scenario": "competing",
+      "scheduler": 2,
+      "seed": 4,
+      "rx_app": 51340338,
+      "size": 52428800,
+      "sim_end": 180
+    },
+    {
+      "condition": "long",
+      "scenario": "competing",
+      "scheduler": 2,
+      "seed": 7,
+      "rx_app": 49939526,
+      "size": 52428800,
+      "sim_end": 180
+    },
+    {
+      "condition": "long",
+      "scenario": "competing",
+      "scheduler": 2,
+      "seed": 10,
+      "rx_app": 40920930,
+      "size": 52428800,
+      "sim_end": 180
+    },
+    {
+      "condition": "long",
+      "scenario": "competing",
+      "scheduler": 3,
+      "seed": 8,
+      "rx_app": 46128474,
+      "size": 52428800,
+      "sim_end": 180
+    },
+    {
+      "condition": "loss01",
+      "scenario": "dominating",
+      "scheduler": 2,
+      "seed": 5,
+      "rx_app": 4241462,
+      "size": 5242880,
+      "sim_end": 60
+    },
+    {
+      "condition": "loss01",
+      "scenario": "competing",
+      "scheduler": 2,
+      "seed": 1,
+      "rx_app": 3939642,
+      "size": 5242880,
+      "sim_end": 60
+    },
+    {
+      "condition": "loss01",
+      "scenario": "competing",
+      "scheduler": 3,
+      "seed": 3,
+      "rx_app": 3845770,
+      "size": 5242880,
+      "sim_end": 60
+    },
+    {
+      "condition": "loss01",
+      "scenario": "competing",
+      "scheduler": 3,
+      "seed": 5,
+      "rx_app": 4768570,
+      "size": 5242880,
+      "sim_end": 60
+    },
+    {
+      "condition": "loss01",
+      "scenario": "competing",
+      "scheduler": 4,
+      "seed": 4,
+      "rx_app": 4879770,
+      "size": 5242880,
+      "sim_end": 60
+    },
+    {
+      "condition": "loss01",
+      "scenario": "competing",
+      "scheduler": 4,
+      "seed": 5,
+      "rx_app": 4284794,
+      "size": 5242880,
+      "sim_end": 60
+    },
+    {
+      "condition": "loss01",
+      "scenario": "degrade",
+      "scheduler": 1,
+      "seed": 5,
+      "rx_app": 4534630,
+      "size": 5242880,
+      "sim_end": 60
+    },
+    {
+      "condition": "loss1",
+      "scenario": "dominating",
+      "scheduler": 0,
+      "seed": 1,
+      "rx_app": 1678134,
+      "size": 5242880,
+      "sim_end": 60
+    },
+    {
+      "condition": "loss1",
+      "scenario": "dominating",
+      "scheduler": 0,
+      "seed": 2,
+      "rx_app": 5079066,
+      "size": 5242880,
+      "sim_end": 60
+    },
+    {
+      "condition": "loss1",
+      "scenario": "dominating",
+      "scheduler": 0,
+      "seed": 3,
+      "rx_app": 2846438,
+      "size": 5242880,
+      "sim_end": 60
+    },
+    {
+      "condition": "loss1",
+      "scenario": "dominating",
+      "scheduler": 0,
+      "seed": 4,
+      "rx_app": 2314998,
+      "size": 5242880,
+      "sim_end": 60
+    },
+    {
+      "condition": "loss1",
+      "scenario": "dominating",
+      "scheduler": 0,
+      "seed": 5,
+      "rx_app": 2862322,
+      "size": 5242880,
+      "sim_end": 60
+    },
+    {
+      "condition": "loss1",
+      "scenario": "dominating",
+      "scheduler": 1,
+      "seed": 1,
+      "rx_app": 1516394,
+      "size": 5242880,
+      "sim_end": 60
+    },
+    {
+      "condition": "loss1",
+      "scenario": "dominating",
+      "scheduler": 1,
+      "seed": 2,
+      "rx_app": 1800886,
+      "size": 5242880,
+      "sim_end": 60
+    },
+    {
+      "condition": "loss1",
+      "scenario": "dominating",
+      "scheduler": 1,
+      "seed": 3,
+      "rx_app": 1457178,
+      "size": 5242880,
+      "sim_end": 60
+    },
+    {
+      "condition": "loss1",
+      "scenario": "dominating",
+      "scheduler": 1,
+      "seed": 4,
+      "rx_app": 867978,
+      "size": 5242880,
+      "sim_end": 60
+    },
+    {
+      "condition": "loss1",
+      "scenario": "dominating",
+      "scheduler": 1,
+      "seed": 5,
+      "rx_app": 18834,
+      "size": 5242880,
+      "sim_end": 60
+    },
+    {
+      "condition": "loss1",
+      "scenario": "dominating",
+      "scheduler": 2,
+      "seed": 1,
+      "rx_app": 1516394,
+      "size": 5242880,
+      "sim_end": 60
+    },
+    {
+      "condition": "loss1",
+      "scenario": "dominating",
+      "scheduler": 2,
+      "seed": 2,
+      "rx_app": 3406758,
+      "size": 5242880,
+      "sim_end": 60
+    },
+    {
+      "condition": "loss1",
+      "scenario": "dominating",
+      "scheduler": 2,
+      "seed": 3,
+      "rx_app": 1457178,
+      "size": 5242880,
+      "sim_end": 60
+    },
+    {
+      "condition": "loss1",
+      "scenario": "dominating",
+      "scheduler": 2,
+      "seed": 4,
+      "rx_app": 867978,
+      "size": 5242880,
+      "sim_end": 60
+    },
+    {
+      "condition": "loss1",
+      "scenario": "dominating",
+      "scheduler": 2,
+      "seed": 5,
+      "rx_app": 18834,
+      "size": 5242880,
+      "sim_end": 60
+    },
+    {
+      "condition": "loss1",
+      "scenario": "dominating",
+      "scheduler": 3,
+      "seed": 1,
+      "rx_app": 2291894,
+      "size": 5242880,
+      "sim_end": 60
+    },
+    {
+      "condition": "loss1",
+      "scenario": "dominating",
+      "scheduler": 3,
+      "seed": 2,
+      "rx_app": 2375646,
+      "size": 5242880,
+      "sim_end": 60
+    },
+    {
+      "condition": "loss1",
+      "scenario": "dominating",
+      "scheduler": 3,
+      "seed": 3,
+      "rx_app": 1764786,
+      "size": 5242880,
+      "sim_end": 60
+    },
+    {
+      "condition": "loss1",
+      "scenario": "dominating",
+      "scheduler": 3,
+      "seed": 4,
+      "rx_app": 989286,
+      "size": 5242880,
+      "sim_end": 60
+    },
+    {
+      "condition": "loss1",
+      "scenario": "dominating",
+      "scheduler": 3,
+      "seed": 5,
+      "rx_app": 24610,
+      "size": 5242880,
+      "sim_end": 60
+    },
+    {
+      "condition": "loss1",
+      "scenario": "dominating",
+      "scheduler": 4,
+      "seed": 1,
+      "rx_app": 1516394,
+      "size": 5242880,
+      "sim_end": 60
+    },
+    {
+      "condition": "loss1",
+      "scenario": "dominating",
+      "scheduler": 4,
+      "seed": 2,
+      "rx_app": 1805218,
+      "size": 5242880,
+      "sim_end": 60
+    },
+    {
+      "condition": "loss1",
+      "scenario": "dominating",
+      "scheduler": 4,
+      "seed": 3,
+      "rx_app": 1457178,
+      "size": 5242880,
+      "sim_end": 60
+    },
+    {
+      "condition": "loss1",
+      "scenario": "dominating",
+      "scheduler": 4,
+      "seed": 4,
+      "rx_app": 867978,
+      "size": 5242880,
+      "sim_end": 60
+    },
+    {
+      "condition": "loss1",
+      "scenario": "dominating",
+      "scheduler": 4,
+      "seed": 5,
+      "rx_app": 18834,
+      "size": 5242880,
+      "sim_end": 60
+    },
+    {
+      "condition": "loss1",
+      "scenario": "competing",
+      "scheduler": 0,
+      "seed": 1,
+      "rx_app": 3175694,
+      "size": 5242880,
+      "sim_end": 60
+    },
+    {
+      "condition": "loss1",
+      "scenario": "competing",
+      "scheduler": 0,
+      "seed": 2,
+      "rx_app": 2980742,
+      "size": 5242880,
+      "sim_end": 60
+    },
+    {
+      "condition": "loss1",
+      "scenario": "competing",
+      "scheduler": 0,
+      "seed": 3,
+      "rx_app": 1725786,
+      "size": 5242880,
+      "sim_end": 60
+    },
+    {
+      "condition": "loss1",
+      "scenario": "competing",
+      "scheduler": 0,
+      "seed": 4,
+      "rx_app": 1204464,
+      "size": 5242880,
+      "sim_end": 60
+    },
+    {
+      "condition": "loss1",
+      "scenario": "competing",
+      "scheduler": 0,
+      "seed": 5,
+      "rx_app": 2395862,
+      "size": 5242880,
+      "sim_end": 60
+    },
+    {
+      "condition": "loss1",
+      "scenario": "competing",
+      "scheduler": 1,
+      "seed": 1,
+      "rx_app": 609478,
+      "size": 5242880,
+      "sim_end": 60
+    },
+    {
+      "condition": "loss1",
+      "scenario": "competing",
+      "scheduler": 1,
+      "seed": 2,
+      "rx_app": 2863766,
+      "size": 5242880,
+      "sim_end": 60
+    },
+    {
+      "condition": "loss1",
+      "scenario": "competing",
+      "scheduler": 1,
+      "seed": 3,
+      "rx_app": 766886,
+      "size": 5242880,
+      "sim_end": 60
+    },
+    {
+      "condition": "loss1",
+      "scenario": "competing",
+      "scheduler": 1,
+      "seed": 4,
+      "rx_app": 441962,
+      "size": 5242880,
+      "sim_end": 60
+    },
+    {
+      "condition": "loss1",
+      "scenario": "competing",
+      "scheduler": 1,
+      "seed": 5,
+      "rx_app": 190682,
+      "size": 5242880,
+      "sim_end": 60
+    },
+    {
+      "condition": "loss1",
+      "scenario": "competing",
+      "scheduler": 2,
+      "seed": 1,
+      "rx_app": 609478,
+      "size": 5242880,
+      "sim_end": 60
+    },
+    {
+      "condition": "loss1",
+      "scenario": "competing",
+      "scheduler": 2,
+      "seed": 2,
+      "rx_app": 2863766,
+      "size": 5242880,
+      "sim_end": 60
+    },
+    {
+      "condition": "loss1",
+      "scenario": "competing",
+      "scheduler": 2,
+      "seed": 3,
+      "rx_app": 766886,
+      "size": 5242880,
+      "sim_end": 60
+    },
+    {
+      "condition": "loss1",
+      "scenario": "competing",
+      "scheduler": 2,
+      "seed": 4,
+      "rx_app": 441962,
+      "size": 5242880,
+      "sim_end": 60
+    },
+    {
+      "condition": "loss1",
+      "scenario": "competing",
+      "scheduler": 2,
+      "seed": 5,
+      "rx_app": 190682,
+      "size": 5242880,
+      "sim_end": 60
+    },
+    {
+      "condition": "loss1",
+      "scenario": "competing",
+      "scheduler": 3,
+      "seed": 1,
+      "rx_app": 654242,
+      "size": 5242880,
+      "sim_end": 60
+    },
+    {
+      "condition": "loss1",
+      "scenario": "competing",
+      "scheduler": 3,
+      "seed": 2,
+      "rx_app": 2418978,
+      "size": 5242880,
+      "sim_end": 60
+    },
+    {
+      "condition": "loss1",
+      "scenario": "competing",
+      "scheduler": 3,
+      "seed": 3,
+      "rx_app": 586374,
+      "size": 5242880,
+      "sim_end": 60
+    },
+    {
+      "condition": "loss1",
+      "scenario": "competing",
+      "scheduler": 3,
+      "seed": 4,
+      "rx_app": 755334,
+      "size": 5242880,
+      "sim_end": 60
+    },
+    {
+      "condition": "loss1",
+      "scenario": "competing",
+      "scheduler": 3,
+      "seed": 5,
+      "rx_app": 222450,
+      "size": 5242880,
+      "sim_end": 60
+    },
+    {
+      "condition": "loss1",
+      "scenario": "competing",
+      "scheduler": 4,
+      "seed": 1,
+      "rx_app": 609478,
+      "size": 5242880,
+      "sim_end": 60
+    },
+    {
+      "condition": "loss1",
+      "scenario": "competing",
+      "scheduler": 4,
+      "seed": 2,
+      "rx_app": 1643478,
+      "size": 5242880,
+      "sim_end": 60
+    },
+    {
+      "condition": "loss1",
+      "scenario": "competing",
+      "scheduler": 4,
+      "seed": 3,
+      "rx_app": 766886,
+      "size": 5242880,
+      "sim_end": 60
+    },
+    {
+      "condition": "loss1",
+      "scenario": "competing",
+      "scheduler": 4,
+      "seed": 4,
+      "rx_app": 441962,
+      "size": 5242880,
+      "sim_end": 60
+    },
+    {
+      "condition": "loss1",
+      "scenario": "competing",
+      "scheduler": 4,
+      "seed": 5,
+      "rx_app": 190682,
+      "size": 5242880,
+      "sim_end": 60
+    },
+    {
+      "condition": "loss1",
+      "scenario": "degrade",
+      "scheduler": 0,
+      "seed": 1,
+      "rx_app": 4866774,
+      "size": 5242880,
+      "sim_end": 60
+    },
+    {
+      "condition": "loss1",
+      "scenario": "degrade",
+      "scheduler": 0,
+      "seed": 3,
+      "rx_app": 4923099,
+      "size": 5242880,
+      "sim_end": 60
+    },
+    {
+      "condition": "loss1",
+      "scenario": "degrade",
+      "scheduler": 0,
+      "seed": 5,
+      "rx_app": 4583726,
+      "size": 5242880,
+      "sim_end": 60
+    },
+    {
+      "condition": "loss1",
+      "scenario": "degrade",
+      "scheduler": 1,
+      "seed": 1,
+      "rx_app": 1536610,
+      "size": 5242880,
+      "sim_end": 60
+    },
+    {
+      "condition": "loss1",
+      "scenario": "degrade",
+      "scheduler": 1,
+      "seed": 2,
+      "rx_app": 1880318,
+      "size": 5242880,
+      "sim_end": 60
+    },
+    {
+      "condition": "loss1",
+      "scenario": "degrade",
+      "scheduler": 1,
+      "seed": 3,
+      "rx_app": 1324318,
+      "size": 5242880,
+      "sim_end": 60
+    },
+    {
+      "condition": "loss1",
+      "scenario": "degrade",
+      "scheduler": 1,
+      "seed": 4,
+      "rx_app": 1139474,
+      "size": 5242880,
+      "sim_end": 60
+    },
+    {
+      "condition": "loss1",
+      "scenario": "degrade",
+      "scheduler": 1,
+      "seed": 5,
+      "rx_app": 18834,
+      "size": 5242880,
+      "sim_end": 60
+    },
+    {
+      "condition": "loss1",
+      "scenario": "degrade",
+      "scheduler": 2,
+      "seed": 1,
+      "rx_app": 1536610,
+      "size": 5242880,
+      "sim_end": 60
+    },
+    {
+      "condition": "loss1",
+      "scenario": "degrade",
+      "scheduler": 2,
+      "seed": 2,
+      "rx_app": 2362650,
+      "size": 5242880,
+      "sim_end": 60
+    },
+    {
+      "condition": "loss1",
+      "scenario": "degrade",
+      "scheduler": 2,
+      "seed": 3,
+      "rx_app": 1324318,
+      "size": 5242880,
+      "sim_end": 60
+    },
+    {
+      "condition": "loss1",
+      "scenario": "degrade",
+      "scheduler": 2,
+      "seed": 4,
+      "rx_app": 1139474,
+      "size": 5242880,
+      "sim_end": 60
+    },
+    {
+      "condition": "loss1",
+      "scenario": "degrade",
+      "scheduler": 2,
+      "seed": 5,
+      "rx_app": 18834,
+      "size": 5242880,
+      "sim_end": 60
+    },
+    {
+      "condition": "loss1",
+      "scenario": "degrade",
+      "scheduler": 3,
+      "seed": 1,
+      "rx_app": 1412414,
+      "size": 5242880,
+      "sim_end": 60
+    },
+    {
+      "condition": "loss1",
+      "scenario": "degrade",
+      "scheduler": 3,
+      "seed": 2,
+      "rx_app": 2644254,
+      "size": 5242880,
+      "sim_end": 60
+    },
+    {
+      "condition": "loss1",
+      "scenario": "degrade",
+      "scheduler": 3,
+      "seed": 3,
+      "rx_app": 1731562,
+      "size": 5242880,
+      "sim_end": 60
+    },
+    {
+      "condition": "loss1",
+      "scenario": "degrade",
+      "scheduler": 3,
+      "seed": 4,
+      "rx_app": 1003726,
+      "size": 5242880,
+      "sim_end": 60
+    },
+    {
+      "condition": "loss1",
+      "scenario": "degrade",
+      "scheduler": 3,
+      "seed": 5,
+      "rx_app": 24610,
+      "size": 5242880,
+      "sim_end": 60
+    },
+    {
+      "condition": "loss1",
+      "scenario": "degrade",
+      "scheduler": 4,
+      "seed": 1,
+      "rx_app": 2216794,
+      "size": 5242880,
+      "sim_end": 60
+    },
+    {
+      "condition": "loss1",
+      "scenario": "degrade",
+      "scheduler": 4,
+      "seed": 2,
+      "rx_app": 2238454,
+      "size": 5242880,
+      "sim_end": 60
+    },
+    {
+      "condition": "loss1",
+      "scenario": "degrade",
+      "scheduler": 4,
+      "seed": 3,
+      "rx_app": 1052822,
+      "size": 5242880,
+      "sim_end": 60
+    },
+    {
+      "condition": "loss1",
+      "scenario": "degrade",
+      "scheduler": 4,
+      "seed": 4,
+      "rx_app": 1106262,
+      "size": 5242880,
+      "sim_end": 60
+    },
+    {
+      "condition": "loss1",
+      "scenario": "degrade",
+      "scheduler": 4,
+      "seed": 5,
+      "rx_app": 18834,
+      "size": 5242880,
+      "sim_end": 60
+    },
+    {
+      "condition": "loss1",
+      "scenario": "degrade",
+      "scheduler": 5,
+      "seed": 3,
+      "rx_app": 5131050,
+      "size": 5242880,
+      "sim_end": 60
+    },
+    {
+      "condition": "queue100",
+      "scenario": "dominating",
+      "scheduler": 0,
+      "seed": 1,
+      "rx_app": 249886,
+      "size": 5242880,
+      "sim_end": 60
+    },
+    {
+      "condition": "queue100",
+      "scenario": "dominating",
+      "scheduler": 0,
+      "seed": 2,
+      "rx_app": 740894,
+      "size": 5242880,
+      "sim_end": 60
+    },
+    {
+      "condition": "queue100",
+      "scenario": "dominating",
+      "scheduler": 0,
+      "seed": 3,
+      "rx_app": 1100486,
+      "size": 5242880,
+      "sim_end": 60
+    },
+    {
+      "condition": "queue100",
+      "scenario": "dominating",
+      "scheduler": 0,
+      "seed": 4,
+      "rx_app": 739450,
+      "size": 5242880,
+      "sim_end": 60
+    },
+    {
+      "condition": "queue100",
+      "scenario": "dominating",
+      "scheduler": 1,
+      "seed": 1,
+      "rx_app": 236890,
+      "size": 5242880,
+      "sim_end": 60
+    },
+    {
+      "condition": "queue100",
+      "scenario": "dominating",
+      "scheduler": 1,
+      "seed": 2,
+      "rx_app": 815994,
+      "size": 5242880,
+      "sim_end": 60
+    },
+    {
+      "condition": "queue100",
+      "scenario": "dominating",
+      "scheduler": 1,
+      "seed": 3,
+      "rx_app": 236890,
+      "size": 5242880,
+      "sim_end": 60
+    },
+    {
+      "condition": "queue100",
+      "scenario": "dominating",
+      "scheduler": 1,
+      "seed": 4,
+      "rx_app": 1002282,
+      "size": 5242880,
+      "sim_end": 60
+    },
+    {
+      "condition": "queue100",
+      "scenario": "dominating",
+      "scheduler": 1,
+      "seed": 5,
+      "rx_app": 820326,
+      "size": 5242880,
+      "sim_end": 60
+    },
+    {
+      "condition": "queue100",
+      "scenario": "dominating",
+      "scheduler": 2,
+      "seed": 1,
+      "rx_app": 236890,
+      "size": 5242880,
+      "sim_end": 60
+    },
+    {
+      "condition": "queue100",
+      "scenario": "dominating",
+      "scheduler": 2,
+      "seed": 2,
+      "rx_app": 1026830,
+      "size": 5242880,
+      "sim_end": 60
+    },
+    {
+      "condition": "queue100",
+      "scenario": "dominating",
+      "scheduler": 2,
+      "seed": 3,
+      "rx_app": 236890,
+      "size": 5242880,
+      "sim_end": 60
+    },
+    {
+      "condition": "queue100",
+      "scenario": "dominating",
+      "scheduler": 2,
+      "seed": 4,
+      "rx_app": 714902,
+      "size": 5242880,
+      "sim_end": 60
+    },
+    {
+      "condition": "queue100",
+      "scenario": "dominating",
+      "scheduler": 2,
+      "seed": 5,
+      "rx_app": 714902,
+      "size": 5242880,
+      "sim_end": 60
+    },
+    {
+      "condition": "queue100",
+      "scenario": "dominating",
+      "scheduler": 3,
+      "seed": 1,
+      "rx_app": 242666,
+      "size": 5242880,
+      "sim_end": 60
+    },
+    {
+      "condition": "queue100",
+      "scenario": "dominating",
+      "scheduler": 3,
+      "seed": 2,
+      "rx_app": 813106,
+      "size": 5242880,
+      "sim_end": 60
+    },
+    {
+      "condition": "queue100",
+      "scenario": "dominating",
+      "scheduler": 3,
+      "seed": 3,
+      "rx_app": 242666,
+      "size": 5242880,
+      "sim_end": 60
+    },
+    {
+      "condition": "queue100",
+      "scenario": "dominating",
+      "scheduler": 3,
+      "seed": 4,
+      "rx_app": 824658,
+      "size": 5242880,
+      "sim_end": 60
+    },
+    {
+      "condition": "queue100",
+      "scenario": "dominating",
+      "scheduler": 4,
+      "seed": 1,
+      "rx_app": 236890,
+      "size": 5242880,
+      "sim_end": 60
+    },
+    {
+      "condition": "queue100",
+      "scenario": "dominating",
+      "scheduler": 4,
+      "seed": 2,
+      "rx_app": 815994,
+      "size": 5242880,
+      "sim_end": 60
+    },
+    {
+      "condition": "queue100",
+      "scenario": "dominating",
+      "scheduler": 4,
+      "seed": 3,
+      "rx_app": 236890,
+      "size": 5242880,
+      "sim_end": 60
+    },
+    {
+      "condition": "queue100",
+      "scenario": "dominating",
+      "scheduler": 4,
+      "seed": 4,
+      "rx_app": 1002282,
+      "size": 5242880,
+      "sim_end": 60
+    },
+    {
+      "condition": "queue100",
+      "scenario": "dominating",
+      "scheduler": 4,
+      "seed": 5,
+      "rx_app": 820326,
+      "size": 5242880,
+      "sim_end": 60
+    },
+    {
+      "condition": "queue100",
+      "scenario": "dominating",
+      "scheduler": 5,
+      "seed": 1,
+      "rx_app": 242666,
+      "size": 5242880,
+      "sim_end": 60
+    },
+    {
+      "condition": "queue100",
+      "scenario": "dominating",
+      "scheduler": 5,
+      "seed": 4,
+      "rx_app": 245554,
+      "size": 5242880,
+      "sim_end": 60
+    },
+    {
+      "condition": "queue100",
+      "scenario": "dominating",
+      "scheduler": 6,
+      "seed": 1,
+      "rx_app": 242666,
+      "size": 5242880,
+      "sim_end": 60
+    },
+    {
+      "condition": "queue100",
+      "scenario": "dominating",
+      "scheduler": 6,
+      "seed": 3,
+      "rx_app": 242666,
+      "size": 5242880,
+      "sim_end": 60
+    },
+    {
+      "condition": "queue100",
+      "scenario": "dominating",
+      "scheduler": 6,
+      "seed": 4,
+      "rx_app": 245554,
+      "size": 5242880,
+      "sim_end": 60
+    },
+    {
+      "condition": "queue100",
+      "scenario": "competing",
+      "scheduler": 0,
+      "seed": 1,
+      "rx_app": 1151026,
+      "size": 5242880,
+      "sim_end": 60
+    },
+    {
+      "condition": "queue100",
+      "scenario": "competing",
+      "scheduler": 0,
+      "seed": 2,
+      "rx_app": 1218906,
+      "size": 5242880,
+      "sim_end": 60
+    },
+    {
+      "condition": "queue100",
+      "scenario": "competing",
+      "scheduler": 0,
+      "seed": 3,
+      "rx_app": 987842,
+      "size": 5242880,
+      "sim_end": 60
+    },
+    {
+      "condition": "queue100",
+      "scenario": "competing",
+      "scheduler": 0,
+      "seed": 4,
+      "rx_app": 931514,
+      "size": 5242880,
+      "sim_end": 60
+    },
+    {
+      "condition": "queue100",
+      "scenario": "competing",
+      "scheduler": 0,
+      "seed": 5,
+      "rx_app": 1156802,
+      "size": 5242880,
+      "sim_end": 60
+    },
+    {
+      "condition": "queue100",
+      "scenario": "competing",
+      "scheduler": 1,
+      "seed": 1,
+      "rx_app": 2821890,
+      "size": 5242880,
+      "sim_end": 60
+    },
+    {
+      "condition": "queue100",
+      "scenario": "competing",
+      "scheduler": 1,
+      "seed": 2,
+      "rx_app": 896858,
+      "size": 5242880,
+      "sim_end": 60
+    },
+    {
+      "condition": "queue100",
+      "scenario": "competing",
+      "scheduler": 1,
+      "seed": 3,
+      "rx_app": 2661582,
+      "size": 5242880,
+      "sim_end": 60
+    },
+    {
+      "condition": "queue100",
+      "scenario": "competing",
+      "scheduler": 1,
+      "seed": 4,
+      "rx_app": 893970,
+      "size": 5242880,
+      "sim_end": 60
+    },
+    {
+      "condition": "queue100",
+      "scenario": "competing",
+      "scheduler": 2,
+      "seed": 1,
+      "rx_app": 2821890,
+      "size": 5242880,
+      "sim_end": 60
+    },
+    {
+      "condition": "queue100",
+      "scenario": "competing",
+      "scheduler": 2,
+      "seed": 2,
+      "rx_app": 896858,
+      "size": 5242880,
+      "sim_end": 60
+    },
+    {
+      "condition": "queue100",
+      "scenario": "competing",
+      "scheduler": 2,
+      "seed": 3,
+      "rx_app": 2661582,
+      "size": 5242880,
+      "sim_end": 60
+    },
+    {
+      "condition": "queue100",
+      "scenario": "competing",
+      "scheduler": 2,
+      "seed": 4,
+      "rx_app": 893970,
+      "size": 5242880,
+      "sim_end": 60
+    },
+    {
+      "condition": "queue100",
+      "scenario": "competing",
+      "scheduler": 3,
+      "seed": 1,
+      "rx_app": 807329,
+      "size": 5242880,
+      "sim_end": 60
+    },
+    {
+      "condition": "queue100",
+      "scenario": "competing",
+      "scheduler": 3,
+      "seed": 2,
+      "rx_app": 911298,
+      "size": 5242880,
+      "sim_end": 60
+    },
+    {
+      "condition": "queue100",
+      "scenario": "competing",
+      "scheduler": 3,
+      "seed": 3,
+      "rx_app": 1201574,
+      "size": 5242880,
+      "sim_end": 60
+    },
+    {
+      "condition": "queue100",
+      "scenario": "competing",
+      "scheduler": 3,
+      "seed": 4,
+      "rx_app": 1025386,
+      "size": 5242880,
+      "sim_end": 60
+    },
+    {
+      "condition": "queue100",
+      "scenario": "competing",
+      "scheduler": 3,
+      "seed": 5,
+      "rx_app": 2561946,
+      "size": 5242880,
+      "sim_end": 60
+    },
+    {
+      "condition": "queue100",
+      "scenario": "competing",
+      "scheduler": 4,
+      "seed": 1,
+      "rx_app": 1259338,
+      "size": 5242880,
+      "sim_end": 60
+    },
+    {
+      "condition": "queue100",
+      "scenario": "competing",
+      "scheduler": 4,
+      "seed": 2,
+      "rx_app": 896858,
+      "size": 5242880,
+      "sim_end": 60
+    },
+    {
+      "condition": "queue100",
+      "scenario": "competing",
+      "scheduler": 4,
+      "seed": 3,
+      "rx_app": 931514,
+      "size": 5242880,
+      "sim_end": 60
+    },
+    {
+      "condition": "queue100",
+      "scenario": "competing",
+      "scheduler": 4,
+      "seed": 4,
+      "rx_app": 893970,
+      "size": 5242880,
+      "sim_end": 60
+    },
+    {
+      "condition": "queue100",
+      "scenario": "competing",
+      "scheduler": 4,
+      "seed": 5,
+      "rx_app": 759666,
+      "size": 5242880,
+      "sim_end": 60
+    },
+    {
+      "condition": "queue100",
+      "scenario": "competing",
+      "scheduler": 5,
+      "seed": 1,
+      "rx_app": 1130810,
+      "size": 5242880,
+      "sim_end": 60
+    },
+    {
+      "condition": "queue100",
+      "scenario": "competing",
+      "scheduler": 5,
+      "seed": 2,
+      "rx_app": 1214574,
+      "size": 5242880,
+      "sim_end": 60
+    },
+    {
+      "condition": "queue100",
+      "scenario": "competing",
+      "scheduler": 5,
+      "seed": 3,
+      "rx_app": 179130,
+      "size": 5242880,
+      "sim_end": 60
+    },
+    {
+      "condition": "queue100",
+      "scenario": "competing",
+      "scheduler": 5,
+      "seed": 5,
+      "rx_app": 177686,
+      "size": 5242880,
+      "sim_end": 60
+    },
+    {
+      "condition": "queue100",
+      "scenario": "competing",
+      "scheduler": 6,
+      "seed": 1,
+      "rx_app": 1130810,
+      "size": 5242880,
+      "sim_end": 60
+    },
+    {
+      "condition": "queue100",
+      "scenario": "competing",
+      "scheduler": 6,
+      "seed": 2,
+      "rx_app": 1214574,
+      "size": 5242880,
+      "sim_end": 60
+    },
+    {
+      "condition": "queue100",
+      "scenario": "competing",
+      "scheduler": 6,
+      "seed": 3,
+      "rx_app": 179130,
+      "size": 5242880,
+      "sim_end": 60
+    },
+    {
+      "condition": "queue100",
+      "scenario": "competing",
+      "scheduler": 6,
+      "seed": 5,
+      "rx_app": 177686,
+      "size": 5242880,
+      "sim_end": 60
+    },
+    {
+      "condition": "queue100",
+      "scenario": "degrade",
+      "scheduler": 0,
+      "seed": 1,
+      "rx_app": 249886,
+      "size": 5242880,
+      "sim_end": 60
+    },
+    {
+      "condition": "queue100",
+      "scenario": "degrade",
+      "scheduler": 0,
+      "seed": 2,
+      "rx_app": 740894,
+      "size": 5242880,
+      "sim_end": 60
+    },
+    {
+      "condition": "queue100",
+      "scenario": "degrade",
+      "scheduler": 0,
+      "seed": 3,
+      "rx_app": 1100486,
+      "size": 5242880,
+      "sim_end": 60
+    },
+    {
+      "condition": "queue100",
+      "scenario": "degrade",
+      "scheduler": 0,
+      "seed": 4,
+      "rx_app": 739450,
+      "size": 5242880,
+      "sim_end": 60
+    },
+    {
+      "condition": "queue100",
+      "scenario": "degrade",
+      "scheduler": 1,
+      "seed": 1,
+      "rx_app": 236890,
+      "size": 5242880,
+      "sim_end": 60
+    },
+    {
+      "condition": "queue100",
+      "scenario": "degrade",
+      "scheduler": 1,
+      "seed": 2,
+      "rx_app": 815994,
+      "size": 5242880,
+      "sim_end": 60
+    },
+    {
+      "condition": "queue100",
+      "scenario": "degrade",
+      "scheduler": 1,
+      "seed": 3,
+      "rx_app": 236890,
+      "size": 5242880,
+      "sim_end": 60
+    },
+    {
+      "condition": "queue100",
+      "scenario": "degrade",
+      "scheduler": 1,
+      "seed": 4,
+      "rx_app": 1246342,
+      "size": 5242880,
+      "sim_end": 60
+    },
+    {
+      "condition": "queue100",
+      "scenario": "degrade",
+      "scheduler": 1,
+      "seed": 5,
+      "rx_app": 820326,
+      "size": 5242880,
+      "sim_end": 60
+    },
+    {
+      "condition": "queue100",
+      "scenario": "degrade",
+      "scheduler": 2,
+      "seed": 1,
+      "rx_app": 236890,
+      "size": 5242880,
+      "sim_end": 60
+    },
+    {
+      "condition": "queue100",
+      "scenario": "degrade",
+      "scheduler": 2,
+      "seed": 2,
+      "rx_app": 1029718,
+      "size": 5242880,
+      "sim_end": 60
+    },
+    {
+      "condition": "queue100",
+      "scenario": "degrade",
+      "scheduler": 2,
+      "seed": 3,
+      "rx_app": 236890,
+      "size": 5242880,
+      "sim_end": 60
+    },
+    {
+      "condition": "queue100",
+      "scenario": "degrade",
+      "scheduler": 2,
+      "seed": 4,
+      "rx_app": 714902,
+      "size": 5242880,
+      "sim_end": 60
+    },
+    {
+      "condition": "queue100",
+      "scenario": "degrade",
+      "scheduler": 2,
+      "seed": 5,
+      "rx_app": 714902,
+      "size": 5242880,
+      "sim_end": 60
+    },
+    {
+      "condition": "queue100",
+      "scenario": "degrade",
+      "scheduler": 3,
+      "seed": 1,
+      "rx_app": 242666,
+      "size": 5242880,
+      "sim_end": 60
+    },
+    {
+      "condition": "queue100",
+      "scenario": "degrade",
+      "scheduler": 3,
+      "seed": 2,
+      "rx_app": 813106,
+      "size": 5242880,
+      "sim_end": 60
+    },
+    {
+      "condition": "queue100",
+      "scenario": "degrade",
+      "scheduler": 3,
+      "seed": 3,
+      "rx_app": 242666,
+      "size": 5242880,
+      "sim_end": 60
+    },
+    {
+      "condition": "queue100",
+      "scenario": "degrade",
+      "scheduler": 3,
+      "seed": 4,
+      "rx_app": 824658,
+      "size": 5242880,
+      "sim_end": 60
+    },
+    {
+      "condition": "queue100",
+      "scenario": "degrade",
+      "scheduler": 4,
+      "seed": 1,
+      "rx_app": 236890,
+      "size": 5242880,
+      "sim_end": 60
+    },
+    {
+      "condition": "queue100",
+      "scenario": "degrade",
+      "scheduler": 4,
+      "seed": 2,
+      "rx_app": 815994,
+      "size": 5242880,
+      "sim_end": 60
+    },
+    {
+      "condition": "queue100",
+      "scenario": "degrade",
+      "scheduler": 4,
+      "seed": 3,
+      "rx_app": 236890,
+      "size": 5242880,
+      "sim_end": 60
+    },
+    {
+      "condition": "queue100",
+      "scenario": "degrade",
+      "scheduler": 4,
+      "seed": 4,
+      "rx_app": 1246342,
+      "size": 5242880,
+      "sim_end": 60
+    },
+    {
+      "condition": "queue100",
+      "scenario": "degrade",
+      "scheduler": 4,
+      "seed": 5,
+      "rx_app": 820326,
+      "size": 5242880,
+      "sim_end": 60
+    },
+    {
+      "condition": "queue100",
+      "scenario": "degrade",
+      "scheduler": 5,
+      "seed": 1,
+      "rx_app": 242666,
+      "size": 5242880,
+      "sim_end": 60
+    },
+    {
+      "condition": "queue100",
+      "scenario": "degrade",
+      "scheduler": 5,
+      "seed": 4,
+      "rx_app": 245554,
+      "size": 5242880,
+      "sim_end": 60
+    },
+    {
+      "condition": "queue100",
+      "scenario": "degrade",
+      "scheduler": 6,
+      "seed": 1,
+      "rx_app": 242666,
+      "size": 5242880,
+      "sim_end": 60
+    },
+    {
+      "condition": "queue100",
+      "scenario": "degrade",
+      "scheduler": 6,
+      "seed": 3,
+      "rx_app": 242666,
+      "size": 5242880,
+      "sim_end": 60
+    },
+    {
+      "condition": "queue100",
+      "scenario": "degrade",
+      "scheduler": 6,
+      "seed": 4,
+      "rx_app": 245554,
+      "size": 5242880,
+      "sim_end": 60
+    },
+    {
+      "condition": "buffer1m",
+      "scenario": "dominating",
+      "scheduler": 0,
+      "seed": 1,
+      "rx_app": 4201880,
+      "size": 5242880,
+      "sim_end": 60
+    },
+    {
+      "condition": "buffer1m",
+      "scenario": "dominating",
+      "scheduler": 0,
+      "seed": 2,
+      "rx_app": 1190014,
+      "size": 5242880,
+      "sim_end": 60
+    },
+    {
+      "condition": "buffer1m",
+      "scenario": "dominating",
+      "scheduler": 0,
+      "seed": 3,
+      "rx_app": 1171242,
+      "size": 5242880,
+      "sim_end": 60
+    },
+    {
+      "condition": "buffer1m",
+      "scenario": "dominating",
+      "scheduler": 0,
+      "seed": 4,
+      "rx_app": 4198960,
+      "size": 5242880,
+      "sim_end": 60
+    },
+    {
+      "condition": "buffer1m",
+      "scenario": "dominating",
+      "scheduler": 0,
+      "seed": 5,
+      "rx_app": 1177018,
+      "size": 5242880,
+      "sim_end": 60
+    },
+    {
+      "condition": "buffer1m",
+      "scenario": "dominating",
+      "scheduler": 1,
+      "seed": 1,
+      "rx_app": 4200420,
+      "size": 5242880,
+      "sim_end": 60
+    },
+    {
+      "condition": "buffer1m",
+      "scenario": "dominating",
+      "scheduler": 1,
+      "seed": 2,
+      "rx_app": 1600154,
+      "size": 5242880,
+      "sim_end": 60
+    },
+    {
+      "condition": "buffer1m",
+      "scenario": "dominating",
+      "scheduler": 1,
+      "seed": 3,
+      "rx_app": 4200420,
+      "size": 5242880,
+      "sim_end": 60
+    },
+    {
+      "condition": "buffer1m",
+      "scenario": "dominating",
+      "scheduler": 1,
+      "seed": 4,
+      "rx_app": 4201880,
+      "size": 5242880,
+      "sim_end": 60
+    },
+    {
+      "condition": "buffer1m",
+      "scenario": "dominating",
+      "scheduler": 1,
+      "seed": 5,
+      "rx_app": 4295320,
+      "size": 5242880,
+      "sim_end": 60
+    },
+    {
+      "condition": "buffer1m",
+      "scenario": "dominating",
+      "scheduler": 2,
+      "seed": 1,
+      "rx_app": 4200420,
+      "size": 5242880,
+      "sim_end": 60
+    },
+    {
+      "condition": "buffer1m",
+      "scenario": "dominating",
+      "scheduler": 2,
+      "seed": 2,
+      "rx_app": 1600154,
+      "size": 5242880,
+      "sim_end": 60
+    },
+    {
+      "condition": "buffer1m",
+      "scenario": "dominating",
+      "scheduler": 2,
+      "seed": 3,
+      "rx_app": 4200420,
+      "size": 5242880,
+      "sim_end": 60
+    },
+    {
+      "condition": "buffer1m",
+      "scenario": "dominating",
+      "scheduler": 2,
+      "seed": 4,
+      "rx_app": 4201880,
+      "size": 5242880,
+      "sim_end": 60
+    },
+    {
+      "condition": "buffer1m",
+      "scenario": "dominating",
+      "scheduler": 2,
+      "seed": 5,
+      "rx_app": 4295320,
+      "size": 5242880,
+      "sim_end": 60
+    },
+    {
+      "condition": "buffer1m",
+      "scenario": "dominating",
+      "scheduler": 3,
+      "seed": 1,
+      "rx_app": 4194580,
+      "size": 5242880,
+      "sim_end": 60
+    },
+    {
+      "condition": "buffer1m",
+      "scenario": "dominating",
+      "scheduler": 3,
+      "seed": 2,
+      "rx_app": 4196040,
+      "size": 5242880,
+      "sim_end": 60
+    },
+    {
+      "condition": "buffer1m",
+      "scenario": "dominating",
+      "scheduler": 3,
+      "seed": 3,
+      "rx_app": 1701238,
+      "size": 5242880,
+      "sim_end": 60
+    },
+    {
+      "condition": "buffer1m",
+      "scenario": "dominating",
+      "scheduler": 3,
+      "seed": 4,
+      "rx_app": 4198960,
+      "size": 5242880,
+      "sim_end": 60
+    },
+    {
+      "condition": "buffer1m",
+      "scenario": "dominating",
+      "scheduler": 3,
+      "seed": 5,
+      "rx_app": 963294,
+      "size": 5242880,
+      "sim_end": 60
+    },
+    {
+      "condition": "buffer1m",
+      "scenario": "dominating",
+      "scheduler": 4,
+      "seed": 1,
+      "rx_app": 4200420,
+      "size": 5242880,
+      "sim_end": 60
+    },
+    {
+      "condition": "buffer1m",
+      "scenario": "dominating",
+      "scheduler": 4,
+      "seed": 2,
+      "rx_app": 1600154,
+      "size": 5242880,
+      "sim_end": 60
+    },
+    {
+      "condition": "buffer1m",
+      "scenario": "dominating",
+      "scheduler": 4,
+      "seed": 3,
+      "rx_app": 4200420,
+      "size": 5242880,
+      "sim_end": 60
+    },
+    {
+      "condition": "buffer1m",
+      "scenario": "dominating",
+      "scheduler": 4,
+      "seed": 4,
+      "rx_app": 4201880,
+      "size": 5242880,
+      "sim_end": 60
+    },
+    {
+      "condition": "buffer1m",
+      "scenario": "dominating",
+      "scheduler": 4,
+      "seed": 5,
+      "rx_app": 4295320,
+      "size": 5242880,
+      "sim_end": 60
+    },
+    {
+      "condition": "buffer1m",
+      "scenario": "dominating",
+      "scheduler": 5,
+      "seed": 1,
+      "rx_app": 4200420,
+      "size": 5242880,
+      "sim_end": 60
+    },
+    {
+      "condition": "buffer1m",
+      "scenario": "dominating",
+      "scheduler": 5,
+      "seed": 2,
+      "rx_app": 1369094,
+      "size": 5242880,
+      "sim_end": 60
+    },
+    {
+      "condition": "buffer1m",
+      "scenario": "dominating",
+      "scheduler": 5,
+      "seed": 3,
+      "rx_app": 1171242,
+      "size": 5242880,
+      "sim_end": 60
+    },
+    {
+      "condition": "buffer1m",
+      "scenario": "dominating",
+      "scheduler": 5,
+      "seed": 4,
+      "rx_app": 4198960,
+      "size": 5242880,
+      "sim_end": 60
+    },
+    {
+      "condition": "buffer1m",
+      "scenario": "dominating",
+      "scheduler": 5,
+      "seed": 5,
+      "rx_app": 1166910,
+      "size": 5242880,
+      "sim_end": 60
+    },
+    {
+      "condition": "buffer1m",
+      "scenario": "dominating",
+      "scheduler": 6,
+      "seed": 1,
+      "rx_app": 4200420,
+      "size": 5242880,
+      "sim_end": 60
+    },
+    {
+      "condition": "buffer1m",
+      "scenario": "dominating",
+      "scheduler": 6,
+      "seed": 2,
+      "rx_app": 1188570,
+      "size": 5242880,
+      "sim_end": 60
+    },
+    {
+      "condition": "buffer1m",
+      "scenario": "dominating",
+      "scheduler": 6,
+      "seed": 3,
+      "rx_app": 1171242,
+      "size": 5242880,
+      "sim_end": 60
+    },
+    {
+      "condition": "buffer1m",
+      "scenario": "dominating",
+      "scheduler": 6,
+      "seed": 4,
+      "rx_app": 4198960,
+      "size": 5242880,
+      "sim_end": 60
+    },
+    {
+      "condition": "buffer1m",
+      "scenario": "dominating",
+      "scheduler": 6,
+      "seed": 5,
+      "rx_app": 1166910,
+      "size": 5242880,
+      "sim_end": 60
+    },
+    {
+      "condition": "buffer1m",
+      "scenario": "competing",
+      "scheduler": 0,
+      "seed": 1,
+      "rx_app": 4200420,
+      "size": 5242880,
+      "sim_end": 60
+    },
+    {
+      "condition": "buffer1m",
+      "scenario": "competing",
+      "scheduler": 0,
+      "seed": 2,
+      "rx_app": 1382090,
+      "size": 5242880,
+      "sim_end": 60
+    },
+    {
+      "condition": "buffer1m",
+      "scenario": "competing",
+      "scheduler": 0,
+      "seed": 3,
+      "rx_app": 4197500,
+      "size": 5242880,
+      "sim_end": 60
+    },
+    {
+      "condition": "buffer1m",
+      "scenario": "competing",
+      "scheduler": 0,
+      "seed": 4,
+      "rx_app": 4200420,
+      "size": 5242880,
+      "sim_end": 60
+    },
+    {
+      "condition": "buffer1m",
+      "scenario": "competing",
+      "scheduler": 0,
+      "seed": 5,
+      "rx_app": 4194580,
+      "size": 5242880,
+      "sim_end": 60
+    },
+    {
+      "condition": "buffer1m",
+      "scenario": "competing",
+      "scheduler": 1,
+      "seed": 1,
+      "rx_app": 651354,
+      "size": 5242880,
+      "sim_end": 60
+    },
+    {
+      "condition": "buffer1m",
+      "scenario": "competing",
+      "scheduler": 1,
+      "seed": 2,
+      "rx_app": 4200420,
+      "size": 5242880,
+      "sim_end": 60
+    },
+    {
+      "condition": "buffer1m",
+      "scenario": "competing",
+      "scheduler": 1,
+      "seed": 3,
+      "rx_app": 662906,
+      "size": 5242880,
+      "sim_end": 60
+    },
+    {
+      "condition": "buffer1m",
+      "scenario": "competing",
+      "scheduler": 1,
+      "seed": 4,
+      "rx_app": 4194580,
+      "size": 5242880,
+      "sim_end": 60
+    },
+    {
+      "condition": "buffer1m",
+      "scenario": "competing",
+      "scheduler": 1,
+      "seed": 5,
+      "rx_app": 608034,
+      "size": 5242880,
+      "sim_end": 60
+    },
+    {
+      "condition": "buffer1m",
+      "scenario": "competing",
+      "scheduler": 2,
+      "seed": 1,
+      "rx_app": 651354,
+      "size": 5242880,
+      "sim_end": 60
+    },
+    {
+      "condition": "buffer1m",
+      "scenario": "competing",
+      "scheduler": 2,
+      "seed": 2,
+      "rx_app": 4200420,
+      "size": 5242880,
+      "sim_end": 60
+    },
+    {
+      "condition": "buffer1m",
+      "scenario": "competing",
+      "scheduler": 2,
+      "seed": 3,
+      "rx_app": 662906,
+      "size": 5242880,
+      "sim_end": 60
+    },
+    {
+      "condition": "buffer1m",
+      "scenario": "competing",
+      "scheduler": 2,
+      "seed": 4,
+      "rx_app": 4194580,
+      "size": 5242880,
+      "sim_end": 60
+    },
+    {
+      "condition": "buffer1m",
+      "scenario": "competing",
+      "scheduler": 2,
+      "seed": 5,
+      "rx_app": 608034,
+      "size": 5242880,
+      "sim_end": 60
+    },
+    {
+      "condition": "buffer1m",
+      "scenario": "competing",
+      "scheduler": 3,
+      "seed": 1,
+      "rx_app": 1013834,
+      "size": 5242880,
+      "sim_end": 60
+    },
+    {
+      "condition": "buffer1m",
+      "scenario": "competing",
+      "scheduler": 3,
+      "seed": 2,
+      "rx_app": 4200420,
+      "size": 5242880,
+      "sim_end": 60
+    },
+    {
+      "condition": "buffer1m",
+      "scenario": "competing",
+      "scheduler": 3,
+      "seed": 3,
+      "rx_app": 4198960,
+      "size": 5242880,
+      "sim_end": 60
+    },
+    {
+      "condition": "buffer1m",
+      "scenario": "competing",
+      "scheduler": 3,
+      "seed": 4,
+      "rx_app": 1054266,
+      "size": 5242880,
+      "sim_end": 60
+    },
+    {
+      "condition": "buffer1m",
+      "scenario": "competing",
+      "scheduler": 3,
+      "seed": 5,
+      "rx_app": 4196040,
+      "size": 5242880,
+      "sim_end": 60
+    },
+    {
+      "condition": "buffer1m",
+      "scenario": "competing",
+      "scheduler": 4,
+      "seed": 1,
+      "rx_app": 651354,
+      "size": 5242880,
+      "sim_end": 60
+    },
+    {
+      "condition": "buffer1m",
+      "scenario": "competing",
+      "scheduler": 4,
+      "seed": 2,
+      "rx_app": 4200420,
+      "size": 5242880,
+      "sim_end": 60
+    },
+    {
+      "condition": "buffer1m",
+      "scenario": "competing",
+      "scheduler": 4,
+      "seed": 3,
+      "rx_app": 662906,
+      "size": 5242880,
+      "sim_end": 60
+    },
+    {
+      "condition": "buffer1m",
+      "scenario": "competing",
+      "scheduler": 4,
+      "seed": 4,
+      "rx_app": 4200420,
+      "size": 5242880,
+      "sim_end": 60
+    },
+    {
+      "condition": "buffer1m",
+      "scenario": "competing",
+      "scheduler": 4,
+      "seed": 5,
+      "rx_app": 608034,
+      "size": 5242880,
+      "sim_end": 60
+    },
+    {
+      "condition": "buffer1m",
+      "scenario": "competing",
+      "scheduler": 5,
+      "seed": 1,
+      "rx_app": 4200420,
+      "size": 5242880,
+      "sim_end": 60
+    },
+    {
+      "condition": "buffer1m",
+      "scenario": "competing",
+      "scheduler": 5,
+      "seed": 2,
+      "rx_app": 1383534,
+      "size": 5242880,
+      "sim_end": 60
+    },
+    {
+      "condition": "buffer1m",
+      "scenario": "competing",
+      "scheduler": 5,
+      "seed": 3,
+      "rx_app": 4200420,
+      "size": 5242880,
+      "sim_end": 60
+    },
+    {
+      "condition": "buffer1m",
+      "scenario": "competing",
+      "scheduler": 5,
+      "seed": 4,
+      "rx_app": 4201880,
+      "size": 5242880,
+      "sim_end": 60
+    },
+    {
+      "condition": "buffer1m",
+      "scenario": "competing",
+      "scheduler": 5,
+      "seed": 5,
+      "rx_app": 4198960,
+      "size": 5242880,
+      "sim_end": 60
+    },
+    {
+      "condition": "buffer1m",
+      "scenario": "competing",
+      "scheduler": 6,
+      "seed": 1,
+      "rx_app": 4200420,
+      "size": 5242880,
+      "sim_end": 60
+    },
+    {
+      "condition": "buffer1m",
+      "scenario": "competing",
+      "scheduler": 6,
+      "seed": 2,
+      "rx_app": 1383534,
+      "size": 5242880,
+      "sim_end": 60
+    },
+    {
+      "condition": "buffer1m",
+      "scenario": "competing",
+      "scheduler": 6,
+      "seed": 3,
+      "rx_app": 4200420,
+      "size": 5242880,
+      "sim_end": 60
+    },
+    {
+      "condition": "buffer1m",
+      "scenario": "competing",
+      "scheduler": 6,
+      "seed": 4,
+      "rx_app": 4201880,
+      "size": 5242880,
+      "sim_end": 60
+    },
+    {
+      "condition": "buffer1m",
+      "scenario": "competing",
+      "scheduler": 6,
+      "seed": 5,
+      "rx_app": 4198960,
+      "size": 5242880,
+      "sim_end": 60
+    },
+    {
+      "condition": "buffer1m",
+      "scenario": "degrade",
+      "scheduler": 0,
+      "seed": 1,
+      "rx_app": 4200420,
+      "size": 5242880,
+      "sim_end": 60
+    },
+    {
+      "condition": "buffer1m",
+      "scenario": "degrade",
+      "scheduler": 0,
+      "seed": 2,
+      "rx_app": 1190014,
+      "size": 5242880,
+      "sim_end": 60
+    },
+    {
+      "condition": "buffer1m",
+      "scenario": "degrade",
+      "scheduler": 0,
+      "seed": 3,
+      "rx_app": 1171242,
+      "size": 5242880,
+      "sim_end": 60
+    },
+    {
+      "condition": "buffer1m",
+      "scenario": "degrade",
+      "scheduler": 0,
+      "seed": 4,
+      "rx_app": 4203340,
+      "size": 5242880,
+      "sim_end": 60
+    },
+    {
+      "condition": "buffer1m",
+      "scenario": "degrade",
+      "scheduler": 0,
+      "seed": 5,
+      "rx_app": 1177018,
+      "size": 5242880,
+      "sim_end": 60
+    },
+    {
+      "condition": "buffer1m",
+      "scenario": "degrade",
+      "scheduler": 1,
+      "seed": 1,
+      "rx_app": 4201880,
+      "size": 5242880,
+      "sim_end": 60
+    },
+    {
+      "condition": "buffer1m",
+      "scenario": "degrade",
+      "scheduler": 1,
+      "seed": 2,
+      "rx_app": 4201880,
+      "size": 5242880,
+      "sim_end": 60
+    },
+    {
+      "condition": "buffer1m",
+      "scenario": "degrade",
+      "scheduler": 1,
+      "seed": 3,
+      "rx_app": 4200420,
+      "size": 5242880,
+      "sim_end": 60
+    },
+    {
+      "condition": "buffer1m",
+      "scenario": "degrade",
+      "scheduler": 1,
+      "seed": 4,
+      "rx_app": 4197500,
+      "size": 5242880,
+      "sim_end": 60
+    },
+    {
+      "condition": "buffer1m",
+      "scenario": "degrade",
+      "scheduler": 1,
+      "seed": 5,
+      "rx_app": 4198960,
+      "size": 5242880,
+      "sim_end": 60
+    },
+    {
+      "condition": "buffer1m",
+      "scenario": "degrade",
+      "scheduler": 2,
+      "seed": 1,
+      "rx_app": 4201880,
+      "size": 5242880,
+      "sim_end": 60
+    },
+    {
+      "condition": "buffer1m",
+      "scenario": "degrade",
+      "scheduler": 2,
+      "seed": 2,
+      "rx_app": 4201880,
+      "size": 5242880,
+      "sim_end": 60
+    },
+    {
+      "condition": "buffer1m",
+      "scenario": "degrade",
+      "scheduler": 2,
+      "seed": 3,
+      "rx_app": 4200420,
+      "size": 5242880,
+      "sim_end": 60
+    },
+    {
+      "condition": "buffer1m",
+      "scenario": "degrade",
+      "scheduler": 2,
+      "seed": 4,
+      "rx_app": 4197500,
+      "size": 5242880,
+      "sim_end": 60
+    },
+    {
+      "condition": "buffer1m",
+      "scenario": "degrade",
+      "scheduler": 2,
+      "seed": 5,
+      "rx_app": 4198960,
+      "size": 5242880,
+      "sim_end": 60
+    },
+    {
+      "condition": "buffer1m",
+      "scenario": "degrade",
+      "scheduler": 3,
+      "seed": 1,
+      "rx_app": 4198960,
+      "size": 5242880,
+      "sim_end": 60
+    },
+    {
+      "condition": "buffer1m",
+      "scenario": "degrade",
+      "scheduler": 3,
+      "seed": 2,
+      "rx_app": 4196040,
+      "size": 5242880,
+      "sim_end": 60
+    },
+    {
+      "condition": "buffer1m",
+      "scenario": "degrade",
+      "scheduler": 3,
+      "seed": 3,
+      "rx_app": 4198960,
+      "size": 5242880,
+      "sim_end": 60
+    },
+    {
+      "condition": "buffer1m",
+      "scenario": "degrade",
+      "scheduler": 3,
+      "seed": 4,
+      "rx_app": 4198960,
+      "size": 5242880,
+      "sim_end": 60
+    },
+    {
+      "condition": "buffer1m",
+      "scenario": "degrade",
+      "scheduler": 3,
+      "seed": 5,
+      "rx_app": 4197500,
+      "size": 5242880,
+      "sim_end": 60
+    },
+    {
+      "condition": "buffer1m",
+      "scenario": "degrade",
+      "scheduler": 4,
+      "seed": 1,
+      "rx_app": 4198960,
+      "size": 5242880,
+      "sim_end": 60
+    },
+    {
+      "condition": "buffer1m",
+      "scenario": "degrade",
+      "scheduler": 4,
+      "seed": 2,
+      "rx_app": 4198960,
+      "size": 5242880,
+      "sim_end": 60
+    },
+    {
+      "condition": "buffer1m",
+      "scenario": "degrade",
+      "scheduler": 4,
+      "seed": 3,
+      "rx_app": 4200420,
+      "size": 5242880,
+      "sim_end": 60
+    },
+    {
+      "condition": "buffer1m",
+      "scenario": "degrade",
+      "scheduler": 4,
+      "seed": 4,
+      "rx_app": 4198960,
+      "size": 5242880,
+      "sim_end": 60
+    },
+    {
+      "condition": "buffer1m",
+      "scenario": "degrade",
+      "scheduler": 4,
+      "seed": 5,
+      "rx_app": 4198960,
+      "size": 5242880,
+      "sim_end": 60
+    },
+    {
+      "condition": "buffer1m",
+      "scenario": "degrade",
+      "scheduler": 5,
+      "seed": 1,
+      "rx_app": 4201880,
+      "size": 5242880,
+      "sim_end": 60
+    },
+    {
+      "condition": "buffer1m",
+      "scenario": "degrade",
+      "scheduler": 5,
+      "seed": 2,
+      "rx_app": 1369094,
+      "size": 5242880,
+      "sim_end": 60
+    },
+    {
+      "condition": "buffer1m",
+      "scenario": "degrade",
+      "scheduler": 5,
+      "seed": 3,
+      "rx_app": 1171242,
+      "size": 5242880,
+      "sim_end": 60
+    },
+    {
+      "condition": "buffer1m",
+      "scenario": "degrade",
+      "scheduler": 5,
+      "seed": 4,
+      "rx_app": 4198960,
+      "size": 5242880,
+      "sim_end": 60
+    },
+    {
+      "condition": "buffer1m",
+      "scenario": "degrade",
+      "scheduler": 5,
+      "seed": 5,
+      "rx_app": 1166910,
+      "size": 5242880,
+      "sim_end": 60
+    },
+    {
+      "condition": "buffer1m",
+      "scenario": "degrade",
+      "scheduler": 6,
+      "seed": 1,
+      "rx_app": 4201880,
+      "size": 5242880,
+      "sim_end": 60
+    },
+    {
+      "condition": "buffer1m",
+      "scenario": "degrade",
+      "scheduler": 6,
+      "seed": 2,
+      "rx_app": 1188570,
+      "size": 5242880,
+      "sim_end": 60
+    },
+    {
+      "condition": "buffer1m",
+      "scenario": "degrade",
+      "scheduler": 6,
+      "seed": 3,
+      "rx_app": 1171242,
+      "size": 5242880,
+      "sim_end": 60
+    },
+    {
+      "condition": "buffer1m",
+      "scenario": "degrade",
+      "scheduler": 6,
+      "seed": 4,
+      "rx_app": 4198960,
+      "size": 5242880,
+      "sim_end": 60
+    },
+    {
+      "condition": "buffer1m",
+      "scenario": "degrade",
+      "scheduler": 6,
+      "seed": 5,
+      "rx_app": 1166910,
+      "size": 5242880,
+      "sim_end": 60
+    }
+  ],
+  "process_failures": []
+}
