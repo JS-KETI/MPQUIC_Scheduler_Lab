@@ -1905,7 +1905,7 @@ QuicSocketBase::DrainStreamsAndCheckClose ()
   if (m_socketState != OPEN || m_drainingStreams) return;
   m_drainingStreams = true;
   m_quicl5->ResumePendingStreams ();
-  if (m_socketState == OPEN) SendPendingData (m_connected);
+  // AppendingTx already schedules the normal send event for resumed frames.
   m_drainingStreams = false;
   if (m_socketState != OPEN) return;
   // No self-reschedule: the next ACK or application send supplies new progress.
