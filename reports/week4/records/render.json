@@ -1,7 +1,7 @@
 {
   "week": 4,
-  "source_markdown_sha256": "65fd227d69e4c98eb22e59bcb32a71f50f9154cd8af0a77b4905462a58bbbabf",
-  "html_sha256": "9357e2d0b4e2c0bac77e22d0478a7027c081014f3b17e21d6b0d34ff941ced38",
+  "source_markdown_sha256": "e5a7677602b862fb6c02b45102e82248fc420a58fe4baeb361fede3e38655d33",
+  "html_sha256": "df020a281a88ae756b360ca135e0b37ee9c6a8debe5ba93b36cf3b0c52625cf5",
   "images": [
     {
       "path": "figures/robustness_overview.png",
@@ -26,7 +26,7 @@
   ],
   "heading_count": 9,
   "tables": 3,
-  "clickable_links": 4,
+  "clickable_links": 5,
   "source_unchanged": true,
   "all_report_images_embedded": true
 }
