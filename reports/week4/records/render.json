@@ -1,7 +1,7 @@
 {
   "week": 4,
-  "source_markdown_sha256": "90f69a7cac1d82e2b82e620fbcaf16c25c4d2ceaba12fb478ee416a85d9f663e",
-  "html_sha256": "20c49dcdf3f99199d3c83b1bc377917143f7eba7c6a97050cb663252030ed2dc",
+  "source_markdown_sha256": "fb5f6246471869c74ab0ed101b59db995c70ad6c4c02e01448ba1c4d330ac357",
+  "html_sha256": "2000f0891c96556c911f59dd9357acf7d0b21a847c7ae6029ffc3560151db03b",
   "images": [
     {
       "path": "figures/degradation.png",
