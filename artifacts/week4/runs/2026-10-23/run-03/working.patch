@@ -1,0 +1,108 @@
+diff --git a/sched-lab/week4_final_compare.py b/sched-lab/week4_final_compare.py
+index 2364015..3a35bb6 100755
+--- a/sched-lab/week4_final_compare.py
++++ b/sched-lab/week4_final_compare.py
+@@ -7,7 +7,7 @@ import matplotlib
+ matplotlib.use('Agg')
+ import matplotlib.pyplot as plt
+ from week4_analyze import KEY,read_run,CONDITION_LABELS
+-from stats import mean_ci
++from stats import mean_ci,signed_rank_exact,holm
+ ROOT=Path(__file__).resolve().parents[1]
+ def sha(p):return hashlib.sha256(p.read_bytes()).hexdigest()
+ def main():
+@@ -24,26 +24,29 @@ def main():
+  m['completed_after']=m.status_after.eq('ok')&m.done_after.eq(1)
+  m['full_before']=m.status_before.eq('ok')&m.rx_app_before.eq(m['size_before'])
+  m['full_after']=m.status_after.eq('ok')&m.rx_app_after.eq(m['size_after'])
++ m['process_error_after']=m.status_after.ne('ok')
++ m['normal_incomplete_after']=m.status_after.eq('ok')&m.done_after.eq(0)
+  m['rx_delta_bytes']=m.rx_app_after-m.rx_app_before
+- m['completion_transition']=np.select([m.completed_before&m.completed_after,m.completed_before&~m.completed_after,~m.completed_before&m.completed_after],['retained_complete','new_incomplete','new_complete'],default='still_incomplete')
++ m['completion_transition']=np.select([m.process_error_after,m.completed_before&m.completed_after,m.completed_before&m.normal_incomplete_after,~m.completed_before&m.completed_after],['process_error','retained_complete','new_incomplete','new_complete'],default='still_incomplete')
+  classification=pd.read_csv(ROOT/'artifacts/week4/analysis/2026-10-18/diagnosis-01/classification.csv')[['run_id','group']].rename(columns={'run_id':'run_id_before','group':'original_cause_group'})
+  m=m.merge(classification,on='run_id_before',how='left',validate='one_to_one')
+  m['original_cause_group']=m.original_cause_group.fillna('previously_complete')
+  m.to_csv(out/'before_after_run.csv',index=False)
+  rows=[]
+  for cond,g in m.groupby('condition',sort=False):
+-  rows.append(dict(condition=cond,runs=len(g),completed_before=int(g.completed_before.sum()),completed_after=int(g.completed_after.sum()),full_before=int(g.full_before.sum()),full_after=int(g.full_after.sum()),new_complete=int((~g.completed_before&g.completed_after).sum()),new_incomplete=int((g.completed_before&~g.completed_after).sum()),completed_short_after=int((g.completed_after&~g.full_after).sum())))
++  rows.append(dict(condition=cond,runs=len(g),completed_before=int(g.completed_before.sum()),completed_after=int(g.completed_after.sum()),full_before=int(g.full_before.sum()),full_after=int(g.full_after.sum()),new_complete=int((~g.completed_before&g.completed_after).sum()),new_incomplete=int((g.completed_before&g.normal_incomplete_after).sum()),completion_regressions=int((g.completed_before&~g.completed_after).sum()),process_error_after=int(g.process_error_after.sum()),normal_incomplete_after=int(g.normal_incomplete_after.sum()),completed_short_after=int((g.completed_after&~g.full_after).sum())))
+  pd.DataFrame(rows).to_csv(out/'before_after_condition.csv',index=False)
+  groups=[]
+  for group,g in m.groupby('original_cause_group',sort=False):
+-  groups.append(dict(original_group=group,runs=len(g),completed_after=int(g.completed_after.sum()),full_after=int(g.full_after.sum()),incomplete_after=int((~g.completed_after).sum()),rx_increased=int(g.rx_delta_bytes.gt(0).sum()),rx_decreased=int(g.rx_delta_bytes.lt(0).sum()),rx_equal=int(g.rx_delta_bytes.eq(0).sum())))
++  groups.append(dict(original_group=group,runs=len(g),completed_after=int(g.completed_after.sum()),full_after=int(g.full_after.sum()),incomplete_after=int(g.normal_incomplete_after.sum()),process_error_after=int(g.process_error_after.sum()),rx_increased=int(g.rx_delta_bytes.gt(0).sum()),rx_decreased=int(g.rx_delta_bytes.lt(0).sum()),rx_equal=int(g.rx_delta_bytes.eq(0).sum())))
+  pd.DataFrame(groups).to_csv(out/'before_after_original_group.csv',index=False)
+  common=m[m.completed_before&m.completed_after]
+  times=[]
+  for keys,g in m.groupby(['condition','scenario','scheduler'],sort=False):
+-  c=g[g.completed_before&g.completed_after];delta=c.fct_s_after-c.fct_s_before;mean,lo,hi,width=mean_ci(delta)
+-  times.append(dict(condition=keys[0],scenario=keys[1],scheduler=keys[2],runs=len(g),completed_before=int(g.completed_before.sum()),completed_after=int(g.completed_after.sum()),common_completed=len(c),mean_before_s=c.fct_s_before.mean(),mean_after_s=c.fct_s_after.mean(),mean_delta_s=mean,ci95_low_s=lo,ci95_high_s=hi,faster=int(delta.lt(0).sum()),slower=int(delta.gt(0).sum()),ties=int(delta.eq(0).sum())))
+- pd.DataFrame(times).to_csv(out/'before_after_common_fct.csv',index=False)
++  c=g[g.completed_before&g.completed_after];delta=(c.fct_s_after-c.fct_s_before).round(4);mean,lo,hi,width=mean_ci(delta);stat,p,n=signed_rank_exact(delta)
++  times.append(dict(condition=keys[0],scenario=keys[1],scheduler=keys[2],runs=len(g),completed_before=int(g.completed_before.sum()),completed_after=int(g.completed_after.sum()),common_completed=len(c),paired_seeds=','.join(map(str,c.seed)),mean_before_s=c.fct_s_before.mean(),mean_after_s=c.fct_s_after.mean(),mean_delta_s=mean,ci95_low_s=lo,ci95_high_s=hi,wilcoxon_statistic=stat,wilcoxon_p=p,nonzero_pairs=n,faster=int(delta.lt(0).sum()),slower=int(delta.gt(0).sum()),ties=int(delta.eq(0).sum())))
++ time_table=pd.DataFrame(times);time_table['wilcoxon_p_holm_all_groups']=holm(time_table.wilcoxon_p)
++ time_table.to_csv(out/'before_after_common_fct.csv',index=False)
+  # A compact before/after plot keeps original timeouts and failures visible.
+  fig,ax=plt.subplots(figsize=(10,6));s=pd.DataFrame(rows);y=np.arange(len(s));
+  ax.barh(y-.18,s.completed_before,.36,label='Before: completed');ax.barh(y+.18,s.completed_after,.36,label='Integrated: completed')
+@@ -54,7 +57,7 @@ def main():
+   h,rel=line.split('  ',1);assert sha(ROOT/'artifacts/week4'/rel)==h,rel;preserved+=1
+  paths=subprocess.check_output(['git','ls-tree','-r','--name-only','1fe68f1','--','artifacts/week2-completion-2026-10-08/run-01/','artifacts/BASELINE.json'],cwd=ROOT,text=True).splitlines()
+  for rel in paths:assert (ROOT/rel).read_bytes()==subprocess.check_output(['git','show',f'1fe68f1:{rel}'],cwd=ROOT),rel
+- record=dict(rows=len(m),identical_original_command_arguments=len(plan),process_ok=int(now.status.eq('ok').sum()),completed_before=int(m.completed_before.sum()),completed_after=int(m.completed_after.sum()),full_before=int(m.full_before.sum()),full_after=int(m.full_after.sum()),new_complete=int((~m.completed_before&m.completed_after).sum()),new_incomplete=int((m.completed_before&~m.completed_after).sum()),still_incomplete=int((~m.completed_before&~m.completed_after).sum()),completed_short=int((m.completed_after&~m.full_after).sum()),previously_full_now_short=int((m.full_before&~m.full_after).sum()),frozen_week4_files_preserved=preserved,approved_baseline_files_preserved=len(paths),new_incomplete_ids=m.loc[m.completed_before&~m.completed_after,'run_id_after'].tolist())
++ record=dict(rows=len(m),identical_original_command_arguments=len(plan),process_ok=int(now.status.eq('ok').sum()),process_error_after=int(m.process_error_after.sum()),completed_before=int(m.completed_before.sum()),completed_after=int(m.completed_after.sum()),full_before=int(m.full_before.sum()),full_after=int(m.full_after.sum()),new_complete=int((~m.completed_before&m.completed_after).sum()),new_incomplete=int((m.completed_before&m.normal_incomplete_after).sum()),completion_regressions=int((m.completed_before&~m.completed_after).sum()),still_incomplete=int((~m.completed_before&m.normal_incomplete_after).sum()),completed_short=int((m.completed_after&~m.full_after).sum()),previously_full_lost=int((m.full_before&~m.full_after).sum()),frozen_week4_files_preserved=preserved,approved_baseline_files_preserved=len(paths),new_incomplete_ids=m.loc[m.completed_before&~m.completed_after,'run_id_after'].tolist())
+  (out/'final_validation.json').write_text(json.dumps(record,ensure_ascii=False,indent=2)+'\n')
+  print(json.dumps(record,ensure_ascii=False,indent=2));print(pd.DataFrame(rows).to_string(index=False));print(pd.DataFrame(groups).to_string(index=False))
+ if __name__=='__main__':main()
+diff --git a/sched-lab/week4_final_probe.py b/sched-lab/week4_final_probe.py
+new file mode 100755
+index 0000000..745be7b
+--- /dev/null
++++ b/sched-lab/week4_final_probe.py
+@@ -0,0 +1,31 @@
++"""Replay a named subset for one-factor diagnosis, preserving exact base settings."""
++from pathlib import Path
++import argparse,csv,json,copy,sys,subprocess,os,hashlib,concurrent.futures
++from datetime import datetime,timezone
++ROOT=Path(__file__).resolve().parents[1]
++sys.path.insert(0,str(ROOT/'sched-lab'))
++from week4_run import run_one,find_binary,jsonwrite,sha
++def main():
++ p=argparse.ArgumentParser(description=__doc__);p.add_argument('--source',type=Path,required=True);p.add_argument('--out',type=Path,required=True);p.add_argument('--ids',nargs='+',required=True);p.add_argument('--diagnostics',action='store_true');a=p.parse_args()
++ a.out.mkdir(parents=True,exist_ok=False);base={x['run_id']:x for x in json.loads((a.source/'plan.json').read_text())};previous={x['run_id']:x for x in csv.DictReader((a.source/'results.csv').open())}
++ plan=[copy.deepcopy(base[i]) for i in a.ids];assert len(set(a.ids))==len(a.ids)
++ for d in plan:
++  if a.diagnostics:d['args']['DiagnosticPrefix']=str(a.out/'runs'/d['run_id']/'diag')
++  assert {k:v for k,v in d['args'].items() if not k.startswith('Diagnostic')}=={k:v for k,v in base[d['run_id']]['args'].items() if not k.startswith('Diagnostic')}
++ jsonwrite(a.out/'plan.json',plan)
++ binary=Path(find_binary(str(ROOT)));env=dict(os.environ,LD_LIBRARY_PATH=str(ROOT/'build/lib'))
++ patch=subprocess.check_output(['git','diff','HEAD','--','src/quic','scratch','sched-lab'],cwd=ROOT);(a.out/'working.patch').write_bytes(patch)
++ ldd=subprocess.check_output(['ldd',str(binary)],env=env,text=True);libs={}
++ for line in ldd.splitlines():
++  for word in line.split():
++   if word.startswith('/') and Path(word).is_file():libs[str(Path(word).resolve())]=sha(Path(word))
++ jsonwrite(a.out/'metadata.json',dict(commit=subprocess.check_output(['git','rev-parse','HEAD'],cwd=ROOT,text=True).strip(),started_utc=datetime.now(timezone.utc).isoformat(),command=sys.argv,source_run=str(a.source),binary_sha256=sha(binary),patch_sha256=hashlib.sha256(patch).hexdigest(),runtime_libraries=libs,planned=len(plan)))
++ done=[]
++ with concurrent.futures.ThreadPoolExecutor(max_workers=4) as pool:
++  fs={pool.submit(run_one,d,a.out,binary,env,240):d for d in plan}
++  for f in concurrent.futures.as_completed(fs):
++   r=f.result();r['base_done']=previous[r['run_id']]['done'];r['base_rx']=previous[r['run_id']]['rx_app'];done.append(r);print(len(done),len(plan),r['run_id'],r['status'],r.get('done'),r.get('rx_app'),flush=True)
++ done.sort(key=lambda r:r['run_id']);fields=list(dict.fromkeys(k for r in done for k in r))
++ with (a.out/'results.csv').open('w',newline='') as f:w=csv.DictWriter(f,fields);w.writeheader();w.writerows(done)
++ jsonwrite(a.out/'execution.json',dict(rows=len(done),process_ok=sum(r['status']=='ok' for r in done),completed=sum(r.get('done')=='1' for r in done),full_received=sum(r.get('rx_app')==str(r['size']) for r in done)))
++if __name__=='__main__':main()
+diff --git a/src/quic/model/quic-socket-base.cc b/src/quic/model/quic-socket-base.cc
+index 0d7a274..469faca 100755
+--- a/src/quic/model/quic-socket-base.cc
++++ b/src/quic/model/quic-socket-base.cc
+@@ -1905,7 +1905,7 @@ QuicSocketBase::DrainStreamsAndCheckClose ()
+   if (m_socketState != OPEN || m_drainingStreams) return;
+   m_drainingStreams = true;
+   m_quicl5->ResumePendingStreams ();
+-  if (m_socketState == OPEN) SendPendingData (m_connected);
++  // AppendingTx already schedules the normal send event for resumed frames.
+   m_drainingStreams = false;
+   if (m_socketState != OPEN) return;
+   // No self-reschedule: the next ACK or application send supplies new progress.

@@ -1,0 +1,18 @@
+{
+  "planned": 1163,
+  "rows": 1163,
+  "process_ok": 1163,
+  "completed": 1104,
+  "full_received": 1104,
+  "previously_completed": 886,
+  "regressions": [
+    "0083-long-competing-s1-seed3",
+    "0093-long-competing-s2-seed3",
+    "0179-loss1-degrade-s0-seed4",
+    "0201-loss1-degrade-s5-seed1",
+    "0204-loss1-degrade-s5-seed4",
+    "0205-loss1-degrade-s5-seed5",
+    "0210-loss1-degrade-s6-seed5"
+  ],
+  "finished_utc": "2026-10-23T04:17:33.323627+00:00"
+}

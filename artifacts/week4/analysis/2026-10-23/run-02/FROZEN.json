@@ -1,0 +1,37 @@
+{
+  "created_utc": "2026-10-23T04:19:08.257864+00:00",
+  "source_commit": "45189f80b8b67be8d0206cf8f7297175057511b5",
+  "final_run": "artifacts/week4/runs/2026-10-23/run-05",
+  "final_analysis": "artifacts/week4/analysis/2026-10-23/run-02",
+  "runtime_libraries_rechecked": 16,
+  "validation": {
+    "rows": 1163,
+    "identical_original_command_arguments": 1163,
+    "process_ok": 1163,
+    "process_error_after": 0,
+    "completed_before": 886,
+    "completed_after": 1104,
+    "full_before": 886,
+    "full_after": 1104,
+    "new_complete": 225,
+    "new_incomplete": 7,
+    "completion_regressions": 7,
+    "still_incomplete": 52,
+    "completed_short": 0,
+    "previously_full_lost": 7,
+    "frozen_week4_files_preserved": 4803,
+    "approved_baseline_files_preserved": 660,
+    "new_incomplete_ids": [
+      "0083-long-competing-s1-seed3",
+      "0093-long-competing-s2-seed3",
+      "0179-loss1-degrade-s0-seed4",
+      "0201-loss1-degrade-s5-seed1",
+      "0204-loss1-degrade-s5-seed4",
+      "0205-loss1-degrade-s5-seed5",
+      "0210-loss1-degrade-s6-seed5"
+    ]
+  },
+  "official_baseline_replaced": false,
+  "prior_frozen_files_changed": 0,
+  "scope": "one integrated source version; original 1163 arguments unchanged"
+}

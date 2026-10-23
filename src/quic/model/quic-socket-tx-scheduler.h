@@ -171,6 +171,8 @@ public:
    * \return the total number of bytes in the application buffer
    */
   uint32_t AppSize (void) const;
+  bool HasPendingRetransmissions () const;
+
   /**
    * Add a schedule tx item to the scheduling list
    *

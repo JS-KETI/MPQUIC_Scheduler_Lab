@@ -40,6 +40,7 @@ def build(bld):
         'test/quic-rx-buffer-test.cc',
         'test/quic-tx-buffer-test.cc',
         'test/quic-header-test.cc',
+        'test/quic-transfer-regression-test.cc',
         'test/mp-quic-scheduler-test.cc',
         ]
 

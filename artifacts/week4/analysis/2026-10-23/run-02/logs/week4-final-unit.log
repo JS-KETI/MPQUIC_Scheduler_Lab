@@ -1,0 +1,10 @@
+/home/ubuntu/projects/keti/mpquic-sched-lab/mpquic/bindings/python/wscript:321: SyntaxWarning: invalid escape sequence '\d'
+  m = re.match( "^castxml version (\d\.\d)(-)?(\w+)?", castxml_version_line)
+Waf: Entering directory `/home/ubuntu/projects/keti/mpquic-sched-lab/mpquic/build'
+Waf: Leaving directory `/home/ubuntu/projects/keti/mpquic-sched-lab/mpquic/build'
+Build commands will be stored in build/compile_commands.json
+'build' finished successfully (0.087s)
+PASS quic-transfer-regression 0.000 s
+  PASS Mixed retransmission frames preserve controls, bytes and empty FIN 0.000 s
+  PASS Implicit STREAM length consumes remaining payload and retains FIN 0.000 s
+  PASS Piggyback ACK cannot mutate stored sent packet or byte counters 0.000 s

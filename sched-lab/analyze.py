@@ -1,13 +1,24 @@
 #!/usr/bin/env python3
 """Summarise sched-lab results:  python3 sched-lab/analyze.py sched-lab/results.csv"""
 import sys
+import argparse
+from pathlib import Path
 import pandas as pd
 import matplotlib
 matplotlib.use("Agg")
 import matplotlib.pyplot as plt
 
-csv = sys.argv[1] if len(sys.argv) > 1 else "sched-lab/results.csv"
-out_png = csv.rsplit(".", 1)[0] + "_fct.png"
+ap = argparse.ArgumentParser(description=__doc__)
+ap.add_argument('csv',nargs='?',default='sched-lab/results.csv')
+ap.add_argument('--language',choices=['en','ko'],default='en')
+ap.add_argument('--plot-only',action='store_true',help='Read CSV without rewriting its summary')
+ap.add_argument('--output',type=Path,help='Explicit destination for the figure')
+args=ap.parse_args()
+if args.language=='ko':
+    from report_plot_korean import configure_font,localize
+    configure_font()
+csv = args.csv
+out_png = str(args.output) if args.output else csv.rsplit(".", 1)[0] + "_fct.png"
 df = pd.read_csv(csv)
 order = ["RR", "MinRTT", "BLEST", "ECF", "Peekaboo", "MinRTT-multi(new)", "EAT(new)"]
 order = [o for o in order if o in set(df.name)] + sorted(set(df.name) - set(order))
@@ -25,10 +36,11 @@ summ["scheduler"] = pd.Categorical(summ.scheduler, order, ordered=True)
 summ = summ.sort_values(["scenario", "scheduler"])
 pd.set_option("display.width", 160)
 print(summ.to_string(index=False, float_format=lambda x: f"{x:.3f}"))
-summ.to_csv(csv.rsplit(".", 1)[0] + "_summary.csv", index=False)
+if not args.plot_only:
+    summ.to_csv(csv.rsplit(".", 1)[0] + "_summary.csv", index=False)
 
 scens = list(dict.fromkeys(df.scenario))
-fig, axes = plt.subplots(1, len(scens), figsize=(5.2 * len(scens), 4.2), squeeze=False)
+fig, axes = plt.subplots(1, len(scens), figsize=(5.6 * len(scens), 5.8) if args.language=='ko' else (5.2 * len(scens), 4.2), squeeze=False)
 for ax, sc in zip(axes[0], scens):
     d = df[(df.scenario == sc) & (df.done == 1)]
     data = [d[d.name == n].fct_s.values for n in order]
@@ -41,6 +53,7 @@ for ax, sc in zip(axes[0], scens):
     ax.grid(axis="y", ls="--", alpha=0.5)
 sizes = ", ".join(f"{int(n):,} B" for n in sorted(df["size"].unique()))
 fig.suptitle(f"MPQUIC ns-3, {sizes} bulk transfer (* = added; n/N = completed/total runs, stalled runs not plotted)")
+if args.language=='ko':localize(fig,'provided')
 fig.tight_layout()
 fig.savefig(out_png, dpi=130)
 print("saved", out_png)

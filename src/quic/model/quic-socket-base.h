@@ -966,7 +966,13 @@ protected:
   double GetOliaAlpha(uint8_t pathId);
   
   void UpdateReward (uint32_t oldValue, uint32_t newValue);
-  int m_appCloseSentListNoEmpty;
+  int m_appCloseSentListNoEmpty {false};
+  EventId m_streamDrainEvent;
+  bool m_drainingStreams {false};
+  bool HasPendingTransmitData () const;
+  void ScheduleStreamDrain ();
+  void DrainStreamsAndCheckClose ();
+
   Time lastAckTime;
 };
 

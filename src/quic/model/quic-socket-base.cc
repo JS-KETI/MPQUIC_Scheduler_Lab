@@ -673,6 +673,7 @@ QuicSocketBase::~QuicSocketBase (void)
     }
   m_quicl4 = 0;
   m_subflows.clear();
+  m_streamDrainEvent.Cancel ();
   //CancelAllTimers ();
   m_pacingTimer.Cancel ();
 }
@@ -1674,7 +1675,18 @@ QuicSocketBase::DoRetransmit (std::vector<Ptr<QuicSocketTxItem> > lostPackets, u
 
   // Send the retransmitted data
   NS_LOG_INFO ("Retransmitted packet, next sequence number " << m_subflows[pathId]->m_tcb->m_nextTxSequence);
-  SendDataPacket (next, toRetx, m_connected,pathId);
+  // Serialized bytes change when frames are split or stale ACKs are removed.
+  // Drain retransmission work, not a stale byte budget or the fresh backlog.
+  while (toRetx > 0 && m_txBuffer->HasPendingRetransmissions ())
+    {
+      uint32_t sent = SendDataPacket (next, GetSegSize (), m_connected, pathId);
+      // This call uses the full MSS, unlike ordinary window-limited requests.
+      NS_ABORT_MSG_IF (sent == 0 && m_socketState == OPEN && m_txBuffer->HasPendingRetransmissions (),
+                       "Retransmission frame cannot fit the full MSS budget");
+      if (sent == 0 || sent == static_cast<uint32_t> (-1)) break;
+      if (m_txBuffer->HasPendingRetransmissions ())
+        next = ++m_subflows[pathId]->m_tcb->m_nextTxSequence;
+    }
 }
 
 void
@@ -1873,6 +1885,33 @@ QuicSocketBase::ScheduleCloseAndSendConnectionClosePacket ()
 }
 
 
+bool
+QuicSocketBase::HasPendingTransmitData () const
+{
+  return !m_txBuffer->SentListIsEmpty () || m_txBuffer->AppSize () > 0 ||
+    (m_quicl5 && m_quicl5->PendingStreamBytes () > 0);
+}
+
+void
+QuicSocketBase::ScheduleStreamDrain ()
+{
+  if (m_socketState == OPEN && !m_drainingStreams && !m_streamDrainEvent.IsRunning ())
+    m_streamDrainEvent = Simulator::ScheduleNow (&QuicSocketBase::DrainStreamsAndCheckClose, this);
+}
+
+void
+QuicSocketBase::DrainStreamsAndCheckClose ()
+{
+  if (m_socketState != OPEN || m_drainingStreams) return;
+  m_drainingStreams = true;
+  m_quicl5->ResumePendingStreams ();
+  // AppendingTx already schedules the normal send event for resumed frames.
+  m_drainingStreams = false;
+  if (m_socketState != OPEN) return;
+  // No self-reschedule: the next ACK or application send supplies new progress.
+  if (m_appCloseSentListNoEmpty && !HasPendingTransmitData ()) Close ();
+}
+
 int
 QuicSocketBase::Close (void)
 {
@@ -1890,8 +1929,9 @@ QuicSocketBase::Close (void)
   if (m_idleTimeoutEvent.IsRunning () and m_socketState != IDLE
       and m_socketState != CLOSING)   //Connection Close from application signal
     {
-      if(!m_txBuffer->SentListIsEmpty()) {
+      if (HasPendingTransmitData ()) {
         m_appCloseSentListNoEmpty = true;
+        ScheduleStreamDrain ();
       } else {
         m_appCloseSentListNoEmpty = false;
         SetState (CLOSING);
@@ -2533,9 +2573,6 @@ QuicSocketBase::OnReceivedAckFrame (QuicSubheader &sub)
   // Find lost packets
   std::vector<Ptr<QuicSocketTxItem> > lostPackets = m_txBuffer->DetectLostPackets (pathId);
 
-  if (m_appCloseSentListNoEmpty && m_txBuffer->SentListIsEmpty()){
-    Close();
-  }
 
 
   // Recover from losses
@@ -2651,6 +2688,10 @@ QuicSocketBase::OnReceivedAckFrame (QuicSubheader &sub)
 
   // try to send more data
   SendPendingData (m_connected);
+
+  // Refill socket space from streams only after ACK/loss/congestion updates.
+  if (m_quicl5->PendingStreamBytes () > 0 || m_appCloseSentListNoEmpty)
+    ScheduleStreamDrain ();
 
   // Compute timers
   SetReTxTimeout (pathId);
@@ -2830,6 +2871,7 @@ QuicSocketBase::DoClose (void)
 {
   NS_LOG_FUNCTION (this);
   NS_LOG_INFO (this << " DoClose at time " << Simulator::Now ().GetSeconds ());
+  m_streamDrainEvent.Cancel ();
 
   if (m_socketState != IDLE)
     {

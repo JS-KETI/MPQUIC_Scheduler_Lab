@@ -1,0 +1,9 @@
+{
+  "rows": 1163,
+  "process_ok": 1163,
+  "completed": 1109,
+  "exact_received": 1109,
+  "reference_compared": 105,
+  "reference_equal": 0,
+  "long_min_completed_fct_s": 28.9625
+}

@@ -1,0 +1,11 @@
+/home/ubuntu/projects/keti/mpquic-sched-lab/mpquic/bindings/python/wscript:321: SyntaxWarning: invalid escape sequence '\d'
+  m = re.match( "^castxml version (\d\.\d)(-)?(\w+)?", castxml_version_line)
+Waf: Entering directory `/home/ubuntu/projects/keti/mpquic-sched-lab/mpquic/build'
+Waf: Leaving directory `/home/ubuntu/projects/keti/mpquic-sched-lab/mpquic/build'
+Build commands will be stored in build/compile_commands.json
+'build' finished successfully (0.083s)
+PASS mp-quic-scheduler 0.000 s
+  PASS Sequential byte requests, MSS boundaries and invalid inputs 0.000 s
+  PASS Fixed byte requests with actual QUIC frame splitting 0.000 s
+  PASS Observe stored out-of-order FIN payload without changing transport counters 0.000 s
+  PASS ID 7 and reserved-parameter attribute contract 0.000 s

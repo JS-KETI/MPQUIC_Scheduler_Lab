@@ -1,0 +1,629 @@
+diff --git a/sched-lab/week4_final_compare.py b/sched-lab/week4_final_compare.py
+new file mode 100755
+index 0000000..2364015
+--- /dev/null
++++ b/sched-lab/week4_final_compare.py
+@@ -0,0 +1,60 @@
++"""Compare one integrated week4 run against the preserved original 1163 trials."""
++from pathlib import Path
++import argparse,json,csv,hashlib,subprocess
++import pandas as pd
++import numpy as np
++import matplotlib
++matplotlib.use('Agg')
++import matplotlib.pyplot as plt
++from week4_analyze import KEY,read_run,CONDITION_LABELS
++from stats import mean_ci
++ROOT=Path(__file__).resolve().parents[1]
++def sha(p):return hashlib.sha256(p.read_bytes()).hexdigest()
++def main():
++ ap=argparse.ArgumentParser(description=__doc__);ap.add_argument('--run',type=Path,required=True);ap.add_argument('--analysis',type=Path,required=True);a=ap.parse_args()
++ out=a.analysis;assert out.is_dir() and not (out/'before_after_run.csv').exists()
++ now=read_run(a.run);old=pd.read_csv(ROOT/'artifacts/week4/analysis/2026-10-18/run-01/results.csv')
++ assert len(now)==len(old)==1163 and not now[KEY].duplicated().any()
++ plan=json.loads((a.run/'plan.json').read_text())
++ for item in plan:
++  original=json.loads((ROOT/item['source_command']).read_text())
++  assert item['args']==original['args'],item['run_id']
++ m=old.merge(now,on=KEY,suffixes=('_before','_after'),validate='one_to_one');assert len(m)==1163
++ m['completed_before']=m.status_before.eq('ok')&m.done_before.eq(1)
++ m['completed_after']=m.status_after.eq('ok')&m.done_after.eq(1)
++ m['full_before']=m.status_before.eq('ok')&m.rx_app_before.eq(m['size_before'])
++ m['full_after']=m.status_after.eq('ok')&m.rx_app_after.eq(m['size_after'])
++ m['rx_delta_bytes']=m.rx_app_after-m.rx_app_before
++ m['completion_transition']=np.select([m.completed_before&m.completed_after,m.completed_before&~m.completed_after,~m.completed_before&m.completed_after],['retained_complete','new_incomplete','new_complete'],default='still_incomplete')
++ classification=pd.read_csv(ROOT/'artifacts/week4/analysis/2026-10-18/diagnosis-01/classification.csv')[['run_id','group']].rename(columns={'run_id':'run_id_before','group':'original_cause_group'})
++ m=m.merge(classification,on='run_id_before',how='left',validate='one_to_one')
++ m['original_cause_group']=m.original_cause_group.fillna('previously_complete')
++ m.to_csv(out/'before_after_run.csv',index=False)
++ rows=[]
++ for cond,g in m.groupby('condition',sort=False):
++  rows.append(dict(condition=cond,runs=len(g),completed_before=int(g.completed_before.sum()),completed_after=int(g.completed_after.sum()),full_before=int(g.full_before.sum()),full_after=int(g.full_after.sum()),new_complete=int((~g.completed_before&g.completed_after).sum()),new_incomplete=int((g.completed_before&~g.completed_after).sum()),completed_short_after=int((g.completed_after&~g.full_after).sum())))
++ pd.DataFrame(rows).to_csv(out/'before_after_condition.csv',index=False)
++ groups=[]
++ for group,g in m.groupby('original_cause_group',sort=False):
++  groups.append(dict(original_group=group,runs=len(g),completed_after=int(g.completed_after.sum()),full_after=int(g.full_after.sum()),incomplete_after=int((~g.completed_after).sum()),rx_increased=int(g.rx_delta_bytes.gt(0).sum()),rx_decreased=int(g.rx_delta_bytes.lt(0).sum()),rx_equal=int(g.rx_delta_bytes.eq(0).sum())))
++ pd.DataFrame(groups).to_csv(out/'before_after_original_group.csv',index=False)
++ common=m[m.completed_before&m.completed_after]
++ times=[]
++ for keys,g in m.groupby(['condition','scenario','scheduler'],sort=False):
++  c=g[g.completed_before&g.completed_after];delta=c.fct_s_after-c.fct_s_before;mean,lo,hi,width=mean_ci(delta)
++  times.append(dict(condition=keys[0],scenario=keys[1],scheduler=keys[2],runs=len(g),completed_before=int(g.completed_before.sum()),completed_after=int(g.completed_after.sum()),common_completed=len(c),mean_before_s=c.fct_s_before.mean(),mean_after_s=c.fct_s_after.mean(),mean_delta_s=mean,ci95_low_s=lo,ci95_high_s=hi,faster=int(delta.lt(0).sum()),slower=int(delta.gt(0).sum()),ties=int(delta.eq(0).sum())))
++ pd.DataFrame(times).to_csv(out/'before_after_common_fct.csv',index=False)
++ # A compact before/after plot keeps original timeouts and failures visible.
++ fig,ax=plt.subplots(figsize=(10,6));s=pd.DataFrame(rows);y=np.arange(len(s));
++ ax.barh(y-.18,s.completed_before,.36,label='Before: completed');ax.barh(y+.18,s.completed_after,.36,label='Integrated: completed')
++ for i,r in enumerate(s.itertuples()):ax.text(max(r.completed_before,r.completed_after)+1,i,f'{r.completed_before}/{r.runs} -> {r.completed_after}/{r.runs}',va='center',fontsize=8)
++ ax.set_yticks(y);ax.set_yticklabels([CONDITION_LABELS[x] for x in s.condition],fontsize=8);ax.invert_yaxis();ax.set_xlim(0,max(s.runs)*1.35);ax.set_xlabel('Completed executions');ax.legend();ax.set_title('Week 4: original settings replayed on one integrated QUIC version\nSame seeds, buffers, loss, queue and simulation end time');fig.tight_layout();fig.savefig(out/'figures/final_validation.png',dpi=160);plt.close(fig)
++ preserved=0
++ for line in (ROOT/'artifacts/week4/SHA256SUMS').read_text().splitlines():
++  h,rel=line.split('  ',1);assert sha(ROOT/'artifacts/week4'/rel)==h,rel;preserved+=1
++ paths=subprocess.check_output(['git','ls-tree','-r','--name-only','1fe68f1','--','artifacts/week2-completion-2026-10-08/run-01/','artifacts/BASELINE.json'],cwd=ROOT,text=True).splitlines()
++ for rel in paths:assert (ROOT/rel).read_bytes()==subprocess.check_output(['git','show',f'1fe68f1:{rel}'],cwd=ROOT),rel
++ record=dict(rows=len(m),identical_original_command_arguments=len(plan),process_ok=int(now.status.eq('ok').sum()),completed_before=int(m.completed_before.sum()),completed_after=int(m.completed_after.sum()),full_before=int(m.full_before.sum()),full_after=int(m.full_after.sum()),new_complete=int((~m.completed_before&m.completed_after).sum()),new_incomplete=int((m.completed_before&~m.completed_after).sum()),still_incomplete=int((~m.completed_before&~m.completed_after).sum()),completed_short=int((m.completed_after&~m.full_after).sum()),previously_full_now_short=int((m.full_before&~m.full_after).sum()),frozen_week4_files_preserved=preserved,approved_baseline_files_preserved=len(paths),new_incomplete_ids=m.loc[m.completed_before&~m.completed_after,'run_id_after'].tolist())
++ (out/'final_validation.json').write_text(json.dumps(record,ensure_ascii=False,indent=2)+'\n')
++ print(json.dumps(record,ensure_ascii=False,indent=2));print(pd.DataFrame(rows).to_string(index=False));print(pd.DataFrame(groups).to_string(index=False))
++if __name__=='__main__':main()
+diff --git a/sched-lab/week4_final_run.py b/sched-lab/week4_final_run.py
+new file mode 100755
+index 0000000..ddee867
+--- /dev/null
++++ b/sched-lab/week4_final_run.py
+@@ -0,0 +1,45 @@
++"""Replay the original week4 command plans on one integrated QUIC version."""
++from pathlib import Path
++import argparse,sys,json,csv,os,subprocess,concurrent.futures,platform,hashlib,time
++from datetime import datetime,timezone
++ROOT=Path(__file__).resolve().parents[1]
++sys.path.insert(0,str(ROOT/'sched-lab'))
++from week4_run import run_one,find_binary,jsonwrite,sha
++
++def main():
++ p=argparse.ArgumentParser(description=__doc__);p.add_argument('--out',type=Path,required=True);p.add_argument('--pilot',action='store_true');p.add_argument('--jobs',type=int,default=4);a=p.parse_args()
++ out=a.out.resolve();out.mkdir(parents=True,exist_ok=False)
++ old=ROOT/'artifacts/week4/analysis/2026-10-18/run-01/results.csv'
++ original=list(csv.DictReader(old.open()));assert len(original)==1163
++ plan=[];before={r['run_id']:r for r in original};assert len(before)==1163
++ for r in original:
++  source=ROOT/'artifacts/week4/runs/2026-10-18'/r['source_run']/'runs'/r['run_id']/'command.json'
++  d=json.loads(source.read_text());item={k:d[k] for k in ['run_id','condition','scenario','scheduler','name','seed','args']}
++  item['source_command']=str(source.relative_to(ROOT));item['original_done']=int(r['done']);item['original_rx']=int(r['rx_app'])
++  if a.pilot:
++   choose=(r['condition']=='reference' and r['scheduler'] in ['0','6'] and r['seed']=='1') or (r['condition'] in ['buffer1m','queue100','loss1'] and r['scheduler'] in ['0','2','6'] and r['seed']=='1') or (r['condition']=='loss01' and r['scheduler'] in ['2','6'] and r['seed']=='1') or (r['condition']=='long' and r['done']=='0') or r['condition']=='four_path'
++   if not choose:continue
++   item['args']['DiagnosticPrefix']=str(out/'runs'/item['run_id']/'diag')
++  # Every transport/environment argument is replayed verbatim. Diagnostics are
++  # optional read-only outputs, and are disabled for the complete final run.
++  assert all(v==d['args'][k] for k,v in item['args'].items() if not k.startswith('Diagnostic'))
++  plan.append(item)
++ assert a.pilot or len(plan)==1163
++ jsonwrite(out/'plan.json',plan)
++ binary=Path(find_binary(str(ROOT)));env=dict(os.environ,LD_LIBRARY_PATH=str(ROOT/'build/lib'))
++ git=lambda args:subprocess.check_output(['git',*args],cwd=ROOT)
++ patch=git(['diff','HEAD','--','src/quic','scratch','sched-lab']);(out/'working.patch').write_bytes(patch)
++ files=git(['ls-files','src/quic','scratch','sched-lab']).decode().splitlines()
++ hashes={f:sha(ROOT/f) for f in files if (ROOT/f).is_file() and '__pycache__' not in f}
++ jsonwrite(out/'metadata.json',dict(commit=git(['rev-parse','HEAD']).decode().strip(),started_utc=datetime.now(timezone.utc).isoformat(),full_command=sys.argv,planned=len(plan),pilot=a.pilot,original_csv_sha256=sha(old),binary_sha256=sha(binary),patch_sha256=hashlib.sha256(patch).hexdigest(),source_sha256=hashes,python=platform.python_version(),platform=platform.platform(),compiler=subprocess.check_output(['g++','--version'],text=True).splitlines()[0],cpu=Path('/proc/cpuinfo').read_text().split('model name')[1].split('\n')[0],sim_end_and_buffers='verbatim original commands; no extension or enlargement',baseline='preserved accepted week2; compare previous week4 separately',wall_timeout_s=240))
++ complete=[]
++ with concurrent.futures.ThreadPoolExecutor(max_workers=a.jobs) as pool:
++  futures={pool.submit(run_one,d,out,binary,env,240):d for d in plan}
++  for future in concurrent.futures.as_completed(futures):
++   d=futures[future];r=future.result();r['original_done']=d['original_done'];r['original_rx']=d['original_rx'];complete.append(r)
++   if len(complete)%25==0 or len(complete)==len(plan) or r['status']!='ok': print(len(complete),len(plan),r['run_id'],r['status'],r.get('done'),r.get('rx_app'),flush=True)
++ complete.sort(key=lambda r:r['run_id']);fields=list(dict.fromkeys(k for r in complete for k in r))
++ with (out/'results.csv').open('w',newline='') as f:w=csv.DictWriter(f,fields);w.writeheader();w.writerows(complete)
++ jsonwrite(out/'execution.json',dict(planned=len(plan),rows=len(complete),process_ok=sum(r['status']=='ok' for r in complete),completed=sum(r.get('done')=='1' for r in complete),full_received=sum(r.get('rx_app')==str(r['size']) for r in complete),previously_completed=sum(r['original_done']==1 for r in complete),regressions=[r['run_id'] for r in complete if r['original_done']==1 and (r.get('done')!='1' or r.get('rx_app')!=str(r['size']))],finished_utc=datetime.now(timezone.utc).isoformat()))
++ print(json.loads((out/'execution.json').read_text()),flush=True)
++if __name__=='__main__':main()
+diff --git a/src/quic/model/quic-l5-protocol.cc b/src/quic/model/quic-l5-protocol.cc
+index 33e9054..8492c47 100755
+--- a/src/quic/model/quic-l5-protocol.cc
++++ b/src/quic/model/quic-l5-protocol.cc
+@@ -234,6 +234,25 @@ QuicL5Protocol::DispatchSend (Ptr<Packet> data, uint64_t streamId)
+   return sentData;
+ }
+ 
++uint64_t
++QuicL5Protocol::PendingStreamBytes () const
++{
++  uint64_t pending = 0;
++  for (const auto& stream : m_streams)
++    if (stream->GetStreamId () > 0)
++      pending += stream->GetStreamSndBufSize () - stream->GetStreamTxAvailable ();
++  return pending;
++}
++
++void
++QuicL5Protocol::ResumePendingStreams ()
++{
++  for (const auto& stream : m_streams)
++    if (stream->GetStreamId () > 0 &&
++        stream->GetStreamTxAvailable () < stream->GetStreamSndBufSize ())
++      stream->SendPendingData ();
++}
++
+ int
+ QuicL5Protocol::DispatchRecv (Ptr<Packet> data, Address &address)
+ {
+diff --git a/src/quic/model/quic-l5-protocol.h b/src/quic/model/quic-l5-protocol.h
+index 0a35f15..020a5e5 100755
+--- a/src/quic/model/quic-l5-protocol.h
++++ b/src/quic/model/quic-l5-protocol.h
+@@ -76,6 +76,9 @@ public:
+    * \param sock a smart pointer to the Quic Socket to be associated with
+    */
+   void SetSocket (Ptr<QuicSocketBase> sock);
++  uint64_t PendingStreamBytes () const;
++  void ResumePendingStreams ();
++
+ 
+   /**
+    * \brief Set the node associated with this stack
+diff --git a/src/quic/model/quic-socket-base.cc b/src/quic/model/quic-socket-base.cc
+index 7e9cb49..0d7a274 100755
+--- a/src/quic/model/quic-socket-base.cc
++++ b/src/quic/model/quic-socket-base.cc
+@@ -673,6 +673,7 @@ QuicSocketBase::~QuicSocketBase (void)
+     }
+   m_quicl4 = 0;
+   m_subflows.clear();
++  m_streamDrainEvent.Cancel ();
+   //CancelAllTimers ();
+   m_pacingTimer.Cancel ();
+ }
+@@ -1674,7 +1675,18 @@ QuicSocketBase::DoRetransmit (std::vector<Ptr<QuicSocketTxItem> > lostPackets, u
+ 
+   // Send the retransmitted data
+   NS_LOG_INFO ("Retransmitted packet, next sequence number " << m_subflows[pathId]->m_tcb->m_nextTxSequence);
+-  SendDataPacket (next, toRetx, m_connected,pathId);
++  // Serialized bytes change when frames are split or stale ACKs are removed.
++  // Drain retransmission work, not a stale byte budget or the fresh backlog.
++  while (toRetx > 0 && m_txBuffer->HasPendingRetransmissions ())
++    {
++      uint32_t sent = SendDataPacket (next, GetSegSize (), m_connected, pathId);
++      // This call uses the full MSS, unlike ordinary window-limited requests.
++      NS_ABORT_MSG_IF (sent == 0 && m_socketState == OPEN && m_txBuffer->HasPendingRetransmissions (),
++                       "Retransmission frame cannot fit the full MSS budget");
++      if (sent == 0 || sent == static_cast<uint32_t> (-1)) break;
++      if (m_txBuffer->HasPendingRetransmissions ())
++        next = ++m_subflows[pathId]->m_tcb->m_nextTxSequence;
++    }
+ }
+ 
+ void
+@@ -1873,6 +1885,33 @@ QuicSocketBase::ScheduleCloseAndSendConnectionClosePacket ()
+ }
+ 
+ 
++bool
++QuicSocketBase::HasPendingTransmitData () const
++{
++  return !m_txBuffer->SentListIsEmpty () || m_txBuffer->AppSize () > 0 ||
++    (m_quicl5 && m_quicl5->PendingStreamBytes () > 0);
++}
++
++void
++QuicSocketBase::ScheduleStreamDrain ()
++{
++  if (m_socketState == OPEN && !m_drainingStreams && !m_streamDrainEvent.IsRunning ())
++    m_streamDrainEvent = Simulator::ScheduleNow (&QuicSocketBase::DrainStreamsAndCheckClose, this);
++}
++
++void
++QuicSocketBase::DrainStreamsAndCheckClose ()
++{
++  if (m_socketState != OPEN || m_drainingStreams) return;
++  m_drainingStreams = true;
++  m_quicl5->ResumePendingStreams ();
++  if (m_socketState == OPEN) SendPendingData (m_connected);
++  m_drainingStreams = false;
++  if (m_socketState != OPEN) return;
++  // No self-reschedule: the next ACK or application send supplies new progress.
++  if (m_appCloseSentListNoEmpty && !HasPendingTransmitData ()) Close ();
++}
++
+ int
+ QuicSocketBase::Close (void)
+ {
+@@ -1890,8 +1929,9 @@ QuicSocketBase::Close (void)
+   if (m_idleTimeoutEvent.IsRunning () and m_socketState != IDLE
+       and m_socketState != CLOSING)   //Connection Close from application signal
+     {
+-      if(!m_txBuffer->SentListIsEmpty()) {
++      if (HasPendingTransmitData ()) {
+         m_appCloseSentListNoEmpty = true;
++        ScheduleStreamDrain ();
+       } else {
+         m_appCloseSentListNoEmpty = false;
+         SetState (CLOSING);
+@@ -2533,9 +2573,6 @@ QuicSocketBase::OnReceivedAckFrame (QuicSubheader &sub)
+   // Find lost packets
+   std::vector<Ptr<QuicSocketTxItem> > lostPackets = m_txBuffer->DetectLostPackets (pathId);
+ 
+-  if (m_appCloseSentListNoEmpty && m_txBuffer->SentListIsEmpty()){
+-    Close();
+-  }
+ 
+ 
+   // Recover from losses
+@@ -2652,6 +2689,10 @@ QuicSocketBase::OnReceivedAckFrame (QuicSubheader &sub)
+   // try to send more data
+   SendPendingData (m_connected);
+ 
++  // Refill socket space from streams only after ACK/loss/congestion updates.
++  if (m_quicl5->PendingStreamBytes () > 0 || m_appCloseSentListNoEmpty)
++    ScheduleStreamDrain ();
++
+   // Compute timers
+   SetReTxTimeout (pathId);
+ }
+@@ -2830,6 +2871,7 @@ QuicSocketBase::DoClose (void)
+ {
+   NS_LOG_FUNCTION (this);
+   NS_LOG_INFO (this << " DoClose at time " << Simulator::Now ().GetSeconds ());
++  m_streamDrainEvent.Cancel ();
+ 
+   if (m_socketState != IDLE)
+     {
+diff --git a/src/quic/model/quic-socket-base.h b/src/quic/model/quic-socket-base.h
+index 57f855d..fcad2c0 100755
+--- a/src/quic/model/quic-socket-base.h
++++ b/src/quic/model/quic-socket-base.h
+@@ -966,7 +966,13 @@ protected:
+   double GetOliaAlpha(uint8_t pathId);
+   
+   void UpdateReward (uint32_t oldValue, uint32_t newValue);
+-  int m_appCloseSentListNoEmpty;
++  int m_appCloseSentListNoEmpty {false};
++  EventId m_streamDrainEvent;
++  bool m_drainingStreams {false};
++  bool HasPendingTransmitData () const;
++  void ScheduleStreamDrain ();
++  void DrainStreamsAndCheckClose ();
++
+   Time lastAckTime;
+ };
+ 
+diff --git a/src/quic/model/quic-socket-tx-buffer.cc b/src/quic/model/quic-socket-tx-buffer.cc
+index c194b91..b994bdb 100755
+--- a/src/quic/model/quic-socket-tx-buffer.cc
++++ b/src/quic/model/quic-socket-tx-buffer.cc
+@@ -322,7 +322,7 @@ Ptr<Packet> QuicSocketTxBuffer::NextStream0Sequence (
+       m_subflowSentList[0].insert (m_subflowSentList[0].end (), outItem);  //only use path 0 to deal with stream 0
+       m_sentSizeList[0] += outItem->m_packet->GetSize ();
+       --m_numFrameStream0InBuffer;
+-      Ptr<Packet> toRet = outItem->m_packet;
++      Ptr<Packet> toRet = outItem->m_packet->Copy ();
+       return toRet;
+     }
+   return 0;
+@@ -342,7 +342,7 @@ Ptr<Packet> QuicSocketTxBuffer::NextSequence (uint32_t numBytes,
+       NS_LOG_INFO ("Extracting " << outItem->m_packet->GetSize () << " bytes");
+       outItem->m_packetNumber = seq;
+       outItem->m_lastSent = Now ();
+-      Ptr<Packet> toRet = outItem->m_packet;
++      Ptr<Packet> toRet = outItem->m_packet->Copy ();
+       // outItem->m_round = currentRound;
+       return toRet;
+     }
+@@ -680,6 +680,12 @@ void QuicSocketTxBuffer::SetMaxBufferSize (uint32_t n)
+   m_maxBuffer = n;
+ }
+ 
++bool QuicSocketTxBuffer::HasPendingRetransmissions () const
++{
++  return (!m_streamZeroList.empty () && m_streamZeroList.front ()->m_retrans) ||
++    m_scheduler->HasPendingRetransmissions ();
++}
++
+ uint32_t QuicSocketTxBuffer::AppSize (void) const
+ {
+   return m_streamZeroSize + m_scheduler->AppSize ();
+diff --git a/src/quic/model/quic-socket-tx-buffer.h b/src/quic/model/quic-socket-tx-buffer.h
+index 16ce70a..3b8615f 100755
+--- a/src/quic/model/quic-socket-tx-buffer.h
++++ b/src/quic/model/quic-socket-tx-buffer.h
+@@ -239,6 +239,8 @@ public:
+    * \return the total number of bytes in the application buffer
+    */
+   uint32_t AppSize (void) const;
++  bool HasPendingRetransmissions () const;
++
+ 
+   /**
+    * \brief Return total bytes in flight
+diff --git a/src/quic/model/quic-socket-tx-scheduler.cc b/src/quic/model/quic-socket-tx-scheduler.cc
+index c625dee..5d3752e 100755
+--- a/src/quic/model/quic-socket-tx-scheduler.cc
++++ b/src/quic/model/quic-socket-tx-scheduler.cc
+@@ -155,6 +155,40 @@ void
+ QuicSocketTxScheduler::Add (Ptr<QuicSocketTxItem> item, bool retx)
+ {
+   NS_LOG_FUNCTION (this << item);
++  if (retx)
++    {
++      Ptr<Packet> remaining = item->m_packet->Copy ();
++      while (remaining->GetSize () > 0)
++        {
++          const uint32_t before = remaining->GetSize ();
++          QuicSubheader sub;
++          const uint32_t header = remaining->RemoveHeader (sub);
++          NS_ABORT_MSG_IF (header == 0 || header > before,
++                           "Invalid retransmission frame header");
++          const bool stream = sub.IsStream ();
++          const bool explicitLength = (sub.GetFrameType () & 0x02) != 0;
++          const uint32_t payload = !stream ? 0 :
++            (explicitLength ? sub.GetLength () : remaining->GetSize ());
++          NS_ABORT_MSG_IF (stream && explicitLength && sub.GetLength () > remaining->GetSize (),
++                           "Retransmission STREAM length exceeds packet");
++          Ptr<Packet> frame = remaining->CreateFragment (0, payload);
++          remaining->RemoveAtStart (payload);
++          // ACKs describe an old receive state; fresh ACKs are generated by the
++          // socket. Padding is not retransmittable. Preserve other controls.
++          if (sub.IsAck () || sub.IsMpAck () || sub.IsPadding ()) continue;
++          if (stream && !explicitLength)
++            sub = QuicSubheader::CreateStreamSubHeader (sub.GetStreamId (), sub.GetOffset (),
++              payload, (sub.GetFrameType () & 0x04) != 0, true, sub.IsStreamFin ());
++          frame->AddHeader (sub);
++          Ptr<QuicSocketTxItem> part = CreateObject<QuicSocketTxItem> (*item);
++          part->m_packet = frame;
++          part->m_retrans = true;
++          part->m_isStream = stream;
++          AddScheduleItem (CreateObject<QuicSocketTxScheduleItem> (
++            stream ? sub.GetStreamId () : 0, stream ? sub.GetOffset () : 0, -1, part), true);
++        }
++      return;
++    }
+   QuicSubheader qsb;
+   item->m_packet->PeekHeader (qsb);
+   double priority = -1;
+@@ -241,6 +275,14 @@ QuicSocketTxScheduler::GetNewSegment (uint32_t numBytes, uint8_t pathId)
+           QuicSubheader qsb;
+           currentPacket->PeekHeader (qsb);
+ 
++          // A control frame is indivisible. Leave it queued if it does not fit.
++          if (!qsb.IsStream ())
++            {
++              m_appList.push (scheduleItem);
++              m_appSize += currentPacket->GetSize ();
++              break;
++            }
++
+           // new packet size
+           int newPacketSizeInt = (int)numBytes - outItemSize - qsb.GetSerializedSize ();
+  
+@@ -321,6 +363,12 @@ QuicSocketTxScheduler::GetNewSegment (uint32_t numBytes, uint8_t pathId)
+   return outItem;
+ }
+ 
++bool
++QuicSocketTxScheduler::HasPendingRetransmissions () const
++{
++  return !m_appList.empty () && m_appList.top ()->GetItem ()->m_retrans;
++}
++
+ uint32_t
+ QuicSocketTxScheduler::AppSize (void) const
+ {
+diff --git a/src/quic/model/quic-socket-tx-scheduler.h b/src/quic/model/quic-socket-tx-scheduler.h
+index e07db12..d12c972 100755
+--- a/src/quic/model/quic-socket-tx-scheduler.h
++++ b/src/quic/model/quic-socket-tx-scheduler.h
+@@ -171,6 +171,8 @@ public:
+    * \return the total number of bytes in the application buffer
+    */
+   uint32_t AppSize (void) const;
++  bool HasPendingRetransmissions () const;
++
+   /**
+    * Add a schedule tx item to the scheduling list
+    *
+diff --git a/src/quic/test/quic-transfer-regression-test.cc b/src/quic/test/quic-transfer-regression-test.cc
+new file mode 100755
+index 0000000..ae997ac
+--- /dev/null
++++ b/src/quic/test/quic-transfer-regression-test.cc
+@@ -0,0 +1,191 @@
++#include "ns3/test.h"
++#include "ns3/quic-socket-tx-buffer.h"
++#include "ns3/quic-socket-tx-scheduler.h"
++#include "ns3/quic-subheader.h"
++#include <vector>
++
++using namespace ns3;
++
++static Ptr<Packet> DataFrame (uint64_t stream, uint32_t offset, uint32_t size,
++                              bool fin = false, bool length = true)
++{
++  std::vector<uint8_t> bytes (size);
++  for (uint32_t i = 0; i < size; ++i) bytes[i] = (offset + i) % 251;
++  Ptr<Packet> packet = size ? Create<Packet> (bytes.data (), size) : Create<Packet> ();
++  packet->AddHeader (QuicSubheader::CreateStreamSubHeader (
++    stream, offset, size, offset != 0, length, fin));
++  return packet;
++}
++
++class RetransmissionFramesTest : public TestCase
++{
++public:
++  RetransmissionFramesTest () : TestCase ("Mixed retransmission frames preserve controls, bytes and empty FIN") {}
++  void DoRun () override
++  {
++    QuicSocketTxScheduler scheduler;
++    Ptr<QuicSocketTxItem> item = CreateObject<QuicSocketTxItem> ();
++    item->m_isStream = true;
++    item->m_packet = DataFrame (1, 0, 63);
++    std::vector<uint32_t> gaps, blocks;
++    Ptr<Packet> control = Create<Packet> ();
++    control->AddHeader (QuicSubheader::CreateAck (4, 0, 0, gaps, blocks));
++    item->m_packet->AddAtEnd (control);
++    control = Create<Packet> ();
++    control->AddHeader (QuicSubheader::CreateMpAck (5, 0, 0, gaps, blocks, 1));
++    item->m_packet->AddAtEnd (control);
++    control = Create<Packet> ();
++    control->AddHeader (QuicSubheader::CreatePadding ());
++    item->m_packet->AddAtEnd (control);
++    control = Create<Packet> ();
++    control->AddHeader (QuicSubheader::CreateMaxData (100000));
++    item->m_packet->AddAtEnd (control);
++    item->m_packet->AddAtEnd (DataFrame (1, 63, 69937));
++    item->m_packet->AddAtEnd (DataFrame (1, 70000, 0, true));
++    item->m_packet->AddAtEnd (DataFrame (3, 0, 5, true));
++    const uint32_t originalSize = item->m_packet->GetSize ();
++    scheduler.Add (item, true);
++    std::vector<bool> seen (70000, false);
++    uint32_t received = 0, otherReceived = 0, fins = 0, controls = 0, packets = 0;
++    while (scheduler.HasPendingRetransmissions () && packets < 1000)
++      {
++        Ptr<Packet> out = scheduler.GetNewSegment (1200, 0)->m_packet;
++        NS_TEST_ASSERT_MSG_EQ ((out->GetSize () > 0), true, "Retransmission made no progress");
++        NS_TEST_ASSERT_MSG_EQ ((out->GetSize () <= 1200), true, "Packet exceeded MSS budget");
++        if (out->GetSize () == 0) break;
++        ++packets;
++        while (out->GetSize () > 0)
++          {
++            QuicSubheader sub;
++            const uint32_t header = out->RemoveHeader (sub);
++            NS_TEST_ASSERT_MSG_EQ ((header > 0), true, "Header parser stalled");
++            if (sub.IsStream ())
++              {
++                const uint32_t length = sub.GetLength ();
++                NS_TEST_ASSERT_MSG_EQ ((length <= out->GetSize ()), true, "Frame crossed packet boundary");
++                if (sub.GetStreamId () == 3)
++                  {
++                    NS_TEST_ASSERT_MSG_EQ (sub.GetOffset (), 0, "Other stream offset changed");
++                    NS_TEST_ASSERT_MSG_EQ (length, 5, "Other stream payload changed");
++                    NS_TEST_ASSERT_MSG_EQ (sub.IsStreamFin (), true, "Other stream FIN lost");
++                    std::vector<uint8_t> bytes (length);out->CopyData (bytes.data (), length);
++                    for (uint32_t i = 0; i < length; ++i)
++                      NS_TEST_ASSERT_MSG_EQ (bytes[i], i, "Other stream payload corrupted");
++                    otherReceived += length;out->RemoveAtStart (length);continue;
++                  }
++                NS_TEST_ASSERT_MSG_EQ (sub.GetStreamId (), 1, "Stream identity changed");
++                NS_TEST_ASSERT_MSG_EQ ((sub.GetOffset () + length <= seen.size ()), true, "Invalid stream offset");
++                std::vector<uint8_t> bytes (length);
++                if (length) out->CopyData (bytes.data (), length);
++                for (uint32_t i = 0; i < length; ++i)
++                  {
++                    const uint32_t offset = sub.GetOffset () + i;
++                    NS_TEST_ASSERT_MSG_EQ (seen[offset], false, "Duplicate retransmission payload");
++                    NS_TEST_ASSERT_MSG_EQ (bytes[i], offset % 251, "Frame split changed payload bytes");
++                    seen[offset] = true;
++                  }
++                received += length;
++                out->RemoveAtStart (length);
++                if (sub.IsStreamFin ())
++                  {
++                    ++fins;
++                    NS_TEST_ASSERT_MSG_EQ (sub.GetOffset () + length, 70000, "FIN final offset changed");
++                  }
++              }
++            else
++              {
++                NS_TEST_ASSERT_MSG_EQ (sub.IsMaxData (), true, "Stale ACK or padding retransmitted");
++                NS_TEST_ASSERT_MSG_EQ (sub.GetMaxData (), 100000, "Control frame value changed");
++                ++controls;
++              }
++          }
++      }
++    NS_TEST_ASSERT_MSG_EQ (received, 70000, "Retransmission lost stream bytes");
++    NS_TEST_ASSERT_MSG_EQ (otherReceived, 5, "Second stream lost or duplicated");
++    NS_TEST_ASSERT_MSG_EQ (fins, 1, "Empty FIN lost or duplicated");
++    NS_TEST_ASSERT_MSG_EQ (controls, 1, "Retransmittable control lost or duplicated");
++    NS_TEST_ASSERT_MSG_EQ (scheduler.AppSize (), 0, "Split header overhead left queued data");
++    NS_TEST_ASSERT_MSG_EQ (item->m_packet->GetSize (), originalSize, "Normalizing mutated source packet");
++    // Ordinary sends may have less than a full MSS of window available.
++    Ptr<QuicSocketTxItem> onlyControl = CreateObject<QuicSocketTxItem> ();
++    onlyControl->m_packet = Create<Packet> ();
++    onlyControl->m_packet->AddHeader (QuicSubheader::CreateMaxData (100000));
++    scheduler.Add (onlyControl, true);
++    const uint32_t bufferedControl = scheduler.AppSize ();
++    NS_TEST_ASSERT_MSG_EQ (scheduler.GetNewSegment (1, 0)->m_packet->GetSize (), 0,
++                           "Indivisible control should wait for sufficient window");
++    NS_TEST_ASSERT_MSG_EQ (scheduler.AppSize (), bufferedControl, "Small window dropped control");
++    Ptr<Packet> drainedControl = scheduler.GetNewSegment (1200, 0)->m_packet;
++    QuicSubheader sub;drainedControl->RemoveHeader (sub);
++    NS_TEST_ASSERT_MSG_EQ (sub.IsMaxData (), true, "Queued control type changed");
++    NS_TEST_ASSERT_MSG_EQ (sub.GetMaxData (), 100000, "Queued control value changed");
++    NS_TEST_ASSERT_MSG_EQ (scheduler.AppSize (), 0, "Queued control was not drained once");
++  }
++};
++
++class ImplicitLengthTest : public TestCase
++{
++public:
++  ImplicitLengthTest () : TestCase ("Implicit STREAM length consumes remaining payload and retains FIN") {}
++  void DoRun () override
++  {
++    QuicSocketTxScheduler scheduler;
++    Ptr<QuicSocketTxItem> item = CreateObject<QuicSocketTxItem> ();
++    item->m_packet = DataFrame (1, 4090, 100, true, false);
++    scheduler.Add (item, true);
++    uint32_t total = 0, fins = 0, iterations = 0;
++    while (scheduler.HasPendingRetransmissions () && iterations++ < 20)
++      {
++        Ptr<Packet> out = scheduler.GetNewSegment (32, 0)->m_packet;
++        NS_TEST_ASSERT_MSG_EQ ((out->GetSize () > 0 && out->GetSize () <= 32), true, "Invalid packet size");
++        if (!out->GetSize ()) break;
++        QuicSubheader sub;out->RemoveHeader (sub);
++        NS_TEST_ASSERT_MSG_EQ (sub.GetOffset (), 4090 + total, "Offset changed across varint boundary");
++        NS_TEST_ASSERT_MSG_EQ (sub.GetLength (), out->GetSize (), "Implicit length was not normalized");
++        total += out->GetSize ();
++        fins += sub.IsStreamFin ();
++      }
++    NS_TEST_ASSERT_MSG_EQ (total, 100, "Implicit-length payload lost");
++    NS_TEST_ASSERT_MSG_EQ (fins, 1, "Implicit-length FIN lost");
++    NS_TEST_ASSERT_MSG_EQ (scheduler.AppSize (), 0, "Retx budget missed added headers");
++  }
++};
++
++class WirePacketCopyTest : public TestCase
++{
++public:
++  WirePacketCopyTest () : TestCase ("Piggyback ACK cannot mutate stored sent packet or byte counters") {}
++  void DoRun () override
++  {
++    for (uint64_t stream : {0, 1})
++      {
++        QuicSocketTxBuffer buffer;
++        buffer.SetScheduler (CreateObject<QuicSocketTxScheduler> ());
++        Ptr<Packet> frame = DataFrame (stream, 0, 100);
++        const uint32_t bytes = frame->GetSize ();
++        NS_TEST_ASSERT_MSG_EQ (buffer.Add (frame), true, "Could not queue test packet");
++        Ptr<Packet> wire = stream == 0 ? buffer.NextStream0Sequence (SequenceNumber32 (1)) :
++          buffer.NextSequence (1200, SequenceNumber32 (1), 0);
++        std::vector<uint32_t> gaps, blocks;
++        wire->AddHeader (QuicSubheader::CreateAck (5, 0, 0, gaps, blocks));
++        NS_TEST_ASSERT_MSG_EQ (buffer.MarkAsLost (SequenceNumber32 (1), 0), true, "Lost packet not found");
++        const auto lost = buffer.DetectLostPackets (0);
++        NS_TEST_ASSERT_MSG_EQ (lost.size (), 1, "Expected one stored packet");
++        NS_TEST_ASSERT_MSG_EQ (lost[0]->m_packet->GetSize (), bytes, "ACK altered stored packet");
++        NS_TEST_ASSERT_MSG_EQ (buffer.Retransmission (SequenceNumber32 (2), 0), bytes, "Lost byte count changed");
++        NS_TEST_ASSERT_MSG_EQ (buffer.AppSize (), bytes, "Retransmission size changed");
++      }
++  }
++};
++
++class TransferRegressionSuite : public TestSuite
++{
++public:
++  TransferRegressionSuite () : TestSuite ("quic-transfer-regression", UNIT)
++  {
++    AddTestCase (new RetransmissionFramesTest, TestCase::QUICK);
++    AddTestCase (new ImplicitLengthTest, TestCase::QUICK);
++    AddTestCase (new WirePacketCopyTest, TestCase::QUICK);
++  }
++};
++static TransferRegressionSuite transferRegressionSuite;
+diff --git a/src/quic/wscript b/src/quic/wscript
+index 278e644..6287356 100644
+--- a/src/quic/wscript
++++ b/src/quic/wscript
+@@ -40,6 +40,7 @@ def build(bld):
+         'test/quic-rx-buffer-test.cc',
+         'test/quic-tx-buffer-test.cc',
+         'test/quic-header-test.cc',
++        'test/quic-transfer-regression-test.cc',
+         'test/mp-quic-scheduler-test.cc',
+         ]
+ 

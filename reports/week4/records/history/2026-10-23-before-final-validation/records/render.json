@@ -1,0 +1,37 @@
+{
+  "week": 4,
+  "source_markdown_sha256": "d7ecf98db56a0915bf83f3197ab2c575d5c655d91cfe2eb75e5d17c3895aff78",
+  "html_sha256": "3d50490fb38b2c10a2b92b6a0bd8ac41c18f183fb937ef6b3aef92cb358e1879",
+  "images": [
+    {
+      "path": "figures/degradation.png",
+      "bytes": 154960,
+      "sha256": "4e931b8744e225ef151bbf1394ce0461dc0d705c8f43012a2375a6a561e52c45"
+    },
+    {
+      "path": "figures/long_fct_provided.png",
+      "bytes": 109316,
+      "sha256": "ed01bb0af4c6ed2eeff5563bfb82f3c322ffff0a16506c89939e8c14bfedcb53"
+    },
+    {
+      "path": "figures/robustness_overview.png",
+      "bytes": 140208,
+      "sha256": "a78609868d58263d42b026885d0d1653db5689013b2cfa78d37cee0858da9d0a"
+    },
+    {
+      "path": "figures/robustness.png",
+      "bytes": 231775,
+      "sha256": "28f85cee05f8f602febdf499212c336e75e7bb9f2e0c38410eafda32eb137d0a"
+    },
+    {
+      "path": "figures/four_path.png",
+      "bytes": 72313,
+      "sha256": "9f1517cfefb82facf2c5fa8222104f3ab1e3602b5d2d318f5aa36e5267c2d38a"
+    }
+  ],
+  "heading_count": 8,
+  "tables": 2,
+  "clickable_links": 12,
+  "source_unchanged": true,
+  "all_report_images_embedded": true
+}

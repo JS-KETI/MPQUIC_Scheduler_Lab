@@ -1,0 +1,23 @@
+  scenario         scheduler  runs  completed  full_received  fct95_reached  fct_mean  fct_std  fct_median  fct_p90  fct95_mean  share_p1
+ competing                RR    10         10             10             10    52.806    2.921      52.001   57.386      49.601     0.386
+ competing            MinRTT    10          9              9              9    83.453    0.717      83.302   84.441      79.186     0.033
+ competing             BLEST    10          9              9              9    82.173    2.794      83.053   84.045      77.969     0.051
+ competing               ECF    10         10             10             10    91.527   25.619      83.702   92.301      85.680     0.125
+ competing          Peekaboo    10         10             10             10    84.482    0.591      84.757   84.988      80.178     0.021
+ competing MinRTT-multi(new)    10         10             10             10    60.833    4.792      58.755   66.581      57.468     0.293
+ competing          EAT(new)    10         10             10             10    60.566    4.590      58.755   66.581      57.272     0.296
+   degrade                RR    10         10             10             10    71.814    0.882      71.514   71.947      68.194     0.182
+   degrade            MinRTT    10         10             10             10    84.165    1.073      83.861   84.598      79.862     0.035
+   degrade             BLEST    10         10             10             10    85.161    0.539      84.907   85.897      80.857     0.025
+   degrade               ECF    10         10             10             10    83.988    0.303      83.955   84.240      79.714     0.034
+   degrade          Peekaboo    10         10             10             10    84.504    0.201      84.552   84.678      80.196     0.027
+   degrade MinRTT-multi(new)    10         10             10             10    71.457    0.246      71.377   71.528      67.862     0.182
+   degrade          EAT(new)    10         10             10             10    71.112    0.062      71.099   71.189      67.784     0.182
+dominating                RR    10         10             10             10    29.200    0.466      29.050   29.247      27.761     0.671
+dominating            MinRTT    10         10             10             10    41.975    0.194      41.980   42.191      39.857     0.965
+dominating             BLEST    10         10             10             10    42.553    0.090      42.583   42.655      40.412     0.973
+dominating               ECF    10         10             10             10    42.083    0.263      42.041   42.362      40.026     0.967
+dominating          Peekaboo    10         10             10             10    42.053    0.165      42.083   42.156      39.923     0.966
+dominating MinRTT-multi(new)    10         10             10             10    29.212    0.385      29.047   29.722      27.752     0.672
+dominating          EAT(new)    10         10             10             10    29.562    0.947      29.020   30.856      28.117     0.681
+saved artifacts/week4/analysis/2026-10-23/run-02/baseline-long_fct.png

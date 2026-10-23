@@ -322,7 +322,7 @@ Ptr<Packet> QuicSocketTxBuffer::NextStream0Sequence (
       m_subflowSentList[0].insert (m_subflowSentList[0].end (), outItem);  //only use path 0 to deal with stream 0
       m_sentSizeList[0] += outItem->m_packet->GetSize ();
       --m_numFrameStream0InBuffer;
-      Ptr<Packet> toRet = outItem->m_packet;
+      Ptr<Packet> toRet = outItem->m_packet->Copy ();
       return toRet;
     }
   return 0;
@@ -342,7 +342,7 @@ Ptr<Packet> QuicSocketTxBuffer::NextSequence (uint32_t numBytes,
       NS_LOG_INFO ("Extracting " << outItem->m_packet->GetSize () << " bytes");
       outItem->m_packetNumber = seq;
       outItem->m_lastSent = Now ();
-      Ptr<Packet> toRet = outItem->m_packet;
+      Ptr<Packet> toRet = outItem->m_packet->Copy ();
       // outItem->m_round = currentRound;
       return toRet;
     }
@@ -678,6 +678,12 @@ uint32_t QuicSocketTxBuffer::GetMaxBufferSize (void) const
 void QuicSocketTxBuffer::SetMaxBufferSize (uint32_t n)
 {
   m_maxBuffer = n;
+}
+
+bool QuicSocketTxBuffer::HasPendingRetransmissions () const
+{
+  return (!m_streamZeroList.empty () && m_streamZeroList.front ()->m_retrans) ||
+    m_scheduler->HasPendingRetransmissions ();
 }
 
 uint32_t QuicSocketTxBuffer::AppSize (void) const
