@@ -32,24 +32,36 @@
     "Malgun Gothic"
   ],
   "figures": {
-    "degradation.png": "36c99522a25948b0b6ef402d168b23a002628267c69f11fe90fcd37b168ce3ef",
+    "degradation.png": "38b9a519f7a4eb5187c658c068201ebf63db9fcd199d75a66f41f0d1e54aec4f",
     "final_long_fct_provided.png": "c9593050b9dc77a1f77b031ef683a0d299a95256dfb7c6308d40ddb96083d258",
-    "final_robustness_overview.png": "3f2bd3b538266f1d283b235331b94e004ead5f67930bdc43597ed1675af90b1e",
+    "final_robustness_overview.png": "27a85f58d0b67c4a69e4cd17754c35f872b9c4487dba826caddfba5ff4cb8f66",
     "final_validation.png": "f5969c35cad00199ed85417d25e69011be3a4e296bcdacffb364c65b85265919",
     "four_path.png": "14753418c35ec44686ea6d73f0f4f2b3bd646969aa422bea2f1df83ae89e391f",
     "long_completion.png": "42a7946a7b9d8e8604b7e0b954b6b912c1f01043495f095f20167c9f688459e0",
     "long_fct_provided.png": "0843b6d369167330f7cbae75d51308fbe00021c5cf96a741a183a607e16a0a48",
     "long_path_share.png": "0d8f87dbd27c93ce84aa788fa23922d2a2f63508068b11ae07d70431e62129b8",
-    "robustness.png": "e6c448e15a5fda89b814b338e934c47ecf96550da76451ff6b82579811c76170",
-    "robustness_overview.png": "b37d96543865766df507f34403b3be3e7d7f373938a31def9ec691e9603ced51"
+    "robustness.png": "0da8b85cc45d4cdbaf615b0e40566a6435336ebdb05e34cc2009ff66a3e74833",
+    "robustness_overview.png": "957dd30c05d3037ad71c74414ca9affb07254d164864bf8225c5eb366681cb58"
   },
   "source_sha256": {
-    "report_plot_korean.py": "3fd9584fce3bc900b16742d95b6ce0099c4c7db53cb6a705a2ea397475ccf204",
+    "report_plot_korean.py": "fd7b635edf7511a701b9f57e71b455e9130eeb3ef0deeff4781aaec685c9ffd2",
     "analyze.py": "a00b35ddd3f054ea22c27536654bad69906efac0057213dc95cadbd0ba12e810",
     "plot_week4_overview.py": "c59171fac179bc26dc76803308235be4760f611120cbba4708d209ccd6cc7259",
     "week4_analyze.py": "2f2b4fae97e62406a10d8732895986a6ee71b201fcf57f0a18625f99cf87332d",
     "week4_final_compare.py": "8396a440380b6fd093431a6d3c64e0ef4d7765ac4ce9c44467828349f4ff1ec1"
   },
   "default_analyze_summary_and_figure_unchanged": true,
-  "korean_5MiB_and_50MiB_titles_verified": true
+  "korean_5MiB_and_50MiB_titles_verified": true,
+  "cell_borders": {
+    "figures": [
+      "degradation.png",
+      "final_robustness_overview.png",
+      "robustness.png",
+      "robustness_overview.png"
+    ],
+    "color": "#9eacbd",
+    "width_pt": 1.0,
+    "data_and_axis_limits_unchanged": true,
+    "other_six_figures_byte_identical": true
+  }
 }

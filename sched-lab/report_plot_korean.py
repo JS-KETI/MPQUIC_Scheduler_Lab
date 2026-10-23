@@ -100,6 +100,15 @@ def translate_text(s,kind):
 
 def localize(fig,kind):
     """Replace text only, keeping all plotted samples, bars and heatmap arrays."""
+    # Cell edges stay visible even when adjacent cells have the same color.
+    if kind in ('degradation','robustness','overview'):
+        from matplotlib.collections import LineCollection
+        for ax in fig.axes:
+            for image in ax.images:
+                rows,cols=image.get_array().shape[:2]
+                segments=[[(x-.5,-.5),(x-.5,rows-.5)] for x in range(cols+1)]
+                segments += [[(-.5,y-.5),(cols-.5,y-.5)] for y in range(rows+1)]
+                ax.add_collection(LineCollection(segments,colors='#9eacbd',linewidths=1.0,zorder=2),autolim=False)
     for ax in fig.axes:
         for axis in (ax.xaxis,ax.yaxis):
             labels=[t.get_text() for t in axis.get_ticklabels()]

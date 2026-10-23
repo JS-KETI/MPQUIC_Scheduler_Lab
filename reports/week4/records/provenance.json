@@ -130,7 +130,7 @@
   "figures": [
     {
       "file": "reports/week4/figures/degradation.png",
-      "sha256": "36c99522a25948b0b6ef402d168b23a002628267c69f11fe90fcd37b168ce3ef",
+      "sha256": "38b9a519f7a4eb5187c658c068201ebf63db9fcd199d75a66f41f0d1e54aec4f",
       "original_figure_reference": "artifacts/week4/analysis/2026-10-18/run-01/figures/degradation.png",
       "previous_report_sha256": "4e931b8744e225ef151bbf1394ce0461dc0d705c8f43012a2375a6a561e52c45",
       "source": "sched-lab/report_plot_korean.py (existing plot functions; Korean labels and layout)",
@@ -186,7 +186,7 @@
     },
     {
       "file": "reports/week4/figures/robustness.png",
-      "sha256": "e6c448e15a5fda89b814b338e934c47ecf96550da76451ff6b82579811c76170",
+      "sha256": "0da8b85cc45d4cdbaf615b0e40566a6435336ebdb05e34cc2009ff66a3e74833",
       "original_figure_reference": "artifacts/week4/analysis/2026-10-18/run-01/figures/robustness.png",
       "previous_report_sha256": "28f85cee05f8f602febdf499212c336e75e7bb9f2e0c38410eafda32eb137d0a",
       "source": "sched-lab/report_plot_korean.py (existing plot functions; Korean labels and layout)",
@@ -198,7 +198,7 @@
     },
     {
       "file": "reports/week4/figures/robustness_overview.png",
-      "sha256": "b37d96543865766df507f34403b3be3e7d7f373938a31def9ec691e9603ced51",
+      "sha256": "957dd30c05d3037ad71c74414ca9affb07254d164864bf8225c5eb366681cb58",
       "original_figure_reference": "sched-lab/plot_week4_overview.py + reports/week4/data/summary.csv",
       "previous_report_sha256": "a78609868d58263d42b026885d0d1653db5689013b2cfa78d37cee0858da9d0a",
       "source": "sched-lab/report_plot_korean.py (existing plot functions; Korean labels and layout)",
@@ -231,7 +231,7 @@
     },
     {
       "file": "reports/week4/figures/final_robustness_overview.png",
-      "sha256": "3f2bd3b538266f1d283b235331b94e004ead5f67930bdc43597ed1675af90b1e",
+      "sha256": "27a85f58d0b67c4a69e4cd17754c35f872b9c4487dba826caddfba5ff4cb8f66",
       "original_figure_reference": "artifacts/week4/analysis/2026-10-23/run-02/figures/final_robustness_overview.png",
       "previous_report_sha256": "06d7ba9f4c2eda03cd0c84b3b25de503334fa087d6d294f2eff126fd8ebdaaa2",
       "source": "sched-lab/report_plot_korean.py (existing plot functions; Korean labels and layout)",
@@ -248,6 +248,7 @@
     "measurements_changed": false,
     "statistics_changed": false,
     "original_frozen_figures_preserved": true,
-    "description": "Presentation-only regeneration. The supplied analyze.py remains the source of both FCT boxplots."
+    "description": "Presentation-only regeneration. The supplied analyze.py remains the source of both FCT boxplots.",
+    "cell_borders": "Row and column borders in four heatmaps; plotted values and color scales unchanged."
   }
 }
