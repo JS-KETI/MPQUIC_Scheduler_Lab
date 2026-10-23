@@ -76,6 +76,9 @@ public:
    * \param sock a smart pointer to the Quic Socket to be associated with
    */
   void SetSocket (Ptr<QuicSocketBase> sock);
+  uint64_t PendingStreamBytes () const;
+  void ResumePendingStreams ();
+
 
   /**
    * \brief Set the node associated with this stack

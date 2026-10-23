@@ -234,6 +234,25 @@ QuicL5Protocol::DispatchSend (Ptr<Packet> data, uint64_t streamId)
   return sentData;
 }
 
+uint64_t
+QuicL5Protocol::PendingStreamBytes () const
+{
+  uint64_t pending = 0;
+  for (const auto& stream : m_streams)
+    if (stream->GetStreamId () > 0)
+      pending += stream->GetStreamSndBufSize () - stream->GetStreamTxAvailable ();
+  return pending;
+}
+
+void
+QuicL5Protocol::ResumePendingStreams ()
+{
+  for (const auto& stream : m_streams)
+    if (stream->GetStreamId () > 0 &&
+        stream->GetStreamTxAvailable () < stream->GetStreamSndBufSize ())
+      stream->SendPendingData ();
+}
+
 int
 QuicL5Protocol::DispatchRecv (Ptr<Packet> data, Address &address)
 {

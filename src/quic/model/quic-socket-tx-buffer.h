@@ -239,6 +239,8 @@ public:
    * \return the total number of bytes in the application buffer
    */
   uint32_t AppSize (void) const;
+  bool HasPendingRetransmissions () const;
+
 
   /**
    * \brief Return total bytes in flight
