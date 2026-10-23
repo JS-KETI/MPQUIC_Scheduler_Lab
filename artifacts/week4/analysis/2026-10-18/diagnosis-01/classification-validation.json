@@ -1,0 +1,57 @@
+{
+  "original_failures": 277,
+  "groups": {
+    "premature_close_socket_backlog": 78,
+    "progress_at_deadline": 7,
+    "oversized_retransmission_bundle": 87,
+    "stream_backlog": 68,
+    "rx_buffer_abort": 37
+  },
+  "matched_fields": [
+    "fct_s",
+    "fct95_s",
+    "rx_app",
+    "rx_p0",
+    "rx_p1",
+    "delay_p0_ms",
+    "delay_p1_ms",
+    "done",
+    "full_fct_s",
+    "queue_drops",
+    "error_drops",
+    "active_subflows",
+    "tx_payload_p0",
+    "rx_payload_p0",
+    "tx_payload_p1",
+    "rx_payload_p1",
+    "tx_payload_p2",
+    "rx_payload_p2",
+    "tx_payload_p3",
+    "rx_payload_p3",
+    "size"
+  ],
+  "reproductions": [
+    {
+      "run": "run-08",
+      "runs": 277,
+      "fields": 21,
+      "matched_cells": 5817
+    },
+    {
+      "run": "run-10",
+      "runs": 37,
+      "fields": 21,
+      "matched_cells": 777
+    },
+    {
+      "run": "run-13",
+      "runs": 87,
+      "fields": 21,
+      "matched_cells": 1827
+    }
+  ],
+  "additional_executions": 954,
+  "frozen_week4_files_preserved": 4803,
+  "approved_baseline_files_preserved": 660,
+  "candidate_adopted": false
+}

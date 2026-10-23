@@ -39,6 +39,36 @@
       "file": "reports/week4/data/observed_rank_changes.csv",
       "source": "artifacts/week4/analysis/2026-10-18/run-01/observed_rank_changes.csv",
       "sha256": "9a839ff31308b4eb20d0112266e2ab7bb25e743c1ef9a7f2c6d13b25fd4d3db4"
+    },
+    {
+      "file": "reports/week4/data/incomplete-candidate-by-original-group.csv",
+      "source": "artifacts/week4/analysis/2026-10-18/diagnosis-01/candidate-by-original-group.csv",
+      "sha256": "10547796ba0eb1b96e7a0ad26b9aad91f9c256460c8da62165886f7bc2941065"
+    },
+    {
+      "file": "reports/week4/data/incomplete-classification.csv",
+      "source": "artifacts/week4/analysis/2026-10-18/diagnosis-01/classification.csv",
+      "sha256": "e0cd07d2dad3d28dc58df36ca96fc59f53abd6d302d11a2450900b9e7e93ae72"
+    },
+    {
+      "file": "reports/week4/data/incomplete-experiment-results.csv",
+      "source": "artifacts/week4/analysis/2026-10-18/diagnosis-01/experiment-results.csv",
+      "sha256": "dc86e6db4606dc742a25a714f53ca865d8a66279400af5facfc972b9fceb1986"
+    },
+    {
+      "file": "reports/week4/data/incomplete-experiment-summary.csv",
+      "source": "artifacts/week4/analysis/2026-10-18/diagnosis-01/experiment-summary.csv",
+      "sha256": "96844526f9744def636fae4710e37f66f4979027821a62d0149d1f022a90005f"
+    },
+    {
+      "file": "reports/week4/data/incomplete-group-combinations.csv",
+      "source": "artifacts/week4/analysis/2026-10-18/diagnosis-01/group-combinations.csv",
+      "sha256": "1108bb224c76828527fb2b5f5677895fb351dddf1b15cd5bc0a4dec7398a793b"
+    },
+    {
+      "file": "reports/week4/data/incomplete-group-summary.csv",
+      "source": "artifacts/week4/analysis/2026-10-18/diagnosis-01/group-summary.csv",
+      "sha256": "3a42aeb91f9efd0fc6fcfee60b7db426f6d1aa4968c4df9d2163fdef0603ed9b"
     }
   ],
   "source_analysis": "artifacts/week4/analysis/2026-10-18/run-01",
@@ -78,5 +108,6 @@
       "sha256": "a78609868d58263d42b026885d0d1653db5689013b2cfa78d37cee0858da9d0a",
       "source": "sched-lab/plot_week4_overview.py + reports/week4/data/summary.csv"
     }
-  ]
+  ],
+  "diagnosis_analysis": "artifacts/week4/analysis/2026-10-18/diagnosis-01"
 }

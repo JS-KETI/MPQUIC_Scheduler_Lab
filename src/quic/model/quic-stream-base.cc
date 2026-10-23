@@ -176,6 +176,19 @@ QuicStreamBase::Send (Ptr<Packet> frame)
     }
 }
 
+std::string
+QuicStreamBase::GetLabDiagnosticState () const
+{
+  std::ostringstream out;
+  out << std::setprecision (17) << "STREAM," << Simulator::Now ().GetSeconds () << ','
+      << (m_node ? m_node->GetId () : 0) << ',' << m_streamId << ','
+      << m_txBuffer->AppSize () << ',' << m_txBuffer->Available () << ','
+      << m_sentSize << ',' << m_recvSize << ',' << m_streamSendPendingDataEvent.IsRunning () << ','
+      << m_streamStateSend << ',' << m_streamStateRecv << ',' << m_fin << ','
+      << m_rxBuffer->GetStoredPayloadBytes () << ',' << m_rxBuffer->GetWaitingPayloadBytes (m_recvSize) << '\n';
+  return out.str ();
+}
+
 int
 QuicStreamBase::AppendingTx (Ptr<Packet> frame)
 {

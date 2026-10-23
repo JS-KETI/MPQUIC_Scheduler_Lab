@@ -196,6 +196,8 @@ public:
   void SetStreamId (uint64_t streamId);
   uint64_t GetStreamId (void);
   uint32_t GetStreamTxAvailable (void) const;
+  /** Read-only stream backlog and receiver contiguous-prefix snapshot. */
+  std::string GetLabDiagnosticState () const;
   void UpdateRxBuf (uint32_t oldValue, uint32_t newValue);
   /** Optional lab CSV event: offsets and buffer occupancy are application bytes. */
   typedef void (*LabCsvTracedCallback)(std::string row);
