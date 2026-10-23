@@ -1,0 +1,27 @@
+{
+  "rows": 1163,
+  "identical_original_command_arguments": 1163,
+  "process_ok": 1163,
+  "process_error_after": 0,
+  "completed_before": 886,
+  "completed_after": 1109,
+  "full_before": 886,
+  "full_after": 1109,
+  "new_complete": 230,
+  "new_incomplete": 7,
+  "completion_regressions": 7,
+  "still_incomplete": 47,
+  "completed_short": 0,
+  "previously_full_lost": 7,
+  "frozen_week4_files_preserved": 4803,
+  "approved_baseline_files_preserved": 660,
+  "new_incomplete_ids": [
+    "0087-long-competing-s1-seed7",
+    "0089-long-competing-s1-seed9",
+    "0092-long-competing-s2-seed2",
+    "0096-long-competing-s2-seed6",
+    "0106-long-competing-s3-seed6",
+    "0205-loss1-degrade-s5-seed5",
+    "0210-loss1-degrade-s6-seed5"
+  ]
+}

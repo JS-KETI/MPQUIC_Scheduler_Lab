@@ -1,0 +1,113 @@
+{
+  "data": [
+    {
+      "file": "reports/week4/data/results.csv",
+      "source": "artifacts/week4/analysis/2026-10-18/run-01/results.csv",
+      "sha256": "986b65bebd33af7901891842d366067ed9b13c65f990ba3114ea7de823438e2c"
+    },
+    {
+      "file": "reports/week4/data/summary.csv",
+      "source": "artifacts/week4/analysis/2026-10-18/run-01/summary.csv",
+      "sha256": "ccc471ba88f5c0ecacfc42374908cf084268e0380ec894600d332cd7e1369f8c"
+    },
+    {
+      "file": "reports/week4/data/baseline-long.csv",
+      "source": "artifacts/week4/analysis/2026-10-18/run-01/baseline-long.csv",
+      "sha256": "846b3d23d55dc860b1e59ec370adb81dc6a9ac340946ceb01a598b9147ba47f1"
+    },
+    {
+      "file": "reports/week4/data/summary-long.csv",
+      "source": "artifacts/week4/analysis/2026-10-18/run-01/summary-long.csv",
+      "sha256": "aed9ad8052cc19dcf72141d7d5eaa05ce241c5eea858fd18c6b3028c2d9b6ed2"
+    },
+    {
+      "file": "reports/week4/data/paired_comparisons.csv",
+      "source": "artifacts/week4/analysis/2026-10-18/run-01/paired_comparisons.csv",
+      "sha256": "ddcf7dba0364353890f00e13b21d0a0a2a0de55680fbbd7fc7e65c2ab98979af"
+    },
+    {
+      "file": "reports/week4/data/baseline_comparison.csv",
+      "source": "artifacts/week4/analysis/2026-10-18/run-01/baseline_comparison.csv",
+      "sha256": "f83e1d11b8b79c47cd63956bd96e7f0555b3e32102ba395f3a8a65af1eb2f7e2"
+    },
+    {
+      "file": "reports/week4/data/four_path.csv",
+      "source": "artifacts/week4/analysis/2026-10-18/run-01/four_path.csv",
+      "sha256": "d49948c79ebdb6cb0e3848c5fb8a31cafa309f626a5a164f2b9b584c8bff9e50"
+    },
+    {
+      "file": "reports/week4/data/observed_rank_changes.csv",
+      "source": "artifacts/week4/analysis/2026-10-18/run-01/observed_rank_changes.csv",
+      "sha256": "9a839ff31308b4eb20d0112266e2ab7bb25e743c1ef9a7f2c6d13b25fd4d3db4"
+    },
+    {
+      "file": "reports/week4/data/incomplete-candidate-by-original-group.csv",
+      "source": "artifacts/week4/analysis/2026-10-18/diagnosis-01/candidate-by-original-group.csv",
+      "sha256": "10547796ba0eb1b96e7a0ad26b9aad91f9c256460c8da62165886f7bc2941065"
+    },
+    {
+      "file": "reports/week4/data/incomplete-classification.csv",
+      "source": "artifacts/week4/analysis/2026-10-18/diagnosis-01/classification.csv",
+      "sha256": "e0cd07d2dad3d28dc58df36ca96fc59f53abd6d302d11a2450900b9e7e93ae72"
+    },
+    {
+      "file": "reports/week4/data/incomplete-experiment-results.csv",
+      "source": "artifacts/week4/analysis/2026-10-18/diagnosis-01/experiment-results.csv",
+      "sha256": "dc86e6db4606dc742a25a714f53ca865d8a66279400af5facfc972b9fceb1986"
+    },
+    {
+      "file": "reports/week4/data/incomplete-experiment-summary.csv",
+      "source": "artifacts/week4/analysis/2026-10-18/diagnosis-01/experiment-summary.csv",
+      "sha256": "96844526f9744def636fae4710e37f66f4979027821a62d0149d1f022a90005f"
+    },
+    {
+      "file": "reports/week4/data/incomplete-group-combinations.csv",
+      "source": "artifacts/week4/analysis/2026-10-18/diagnosis-01/group-combinations.csv",
+      "sha256": "1108bb224c76828527fb2b5f5677895fb351dddf1b15cd5bc0a4dec7398a793b"
+    },
+    {
+      "file": "reports/week4/data/incomplete-group-summary.csv",
+      "source": "artifacts/week4/analysis/2026-10-18/diagnosis-01/group-summary.csv",
+      "sha256": "3a42aeb91f9efd0fc6fcfee60b7db426f6d1aa4968c4df9d2163fdef0603ed9b"
+    }
+  ],
+  "source_analysis": "artifacts/week4/analysis/2026-10-18/run-01",
+  "figures": [
+    {
+      "file": "reports/week4/figures/degradation.png",
+      "sha256": "4e931b8744e225ef151bbf1394ce0461dc0d705c8f43012a2375a6a561e52c45",
+      "source": "artifacts/week4/analysis/2026-10-18/run-01/figures/degradation.png"
+    },
+    {
+      "file": "reports/week4/figures/four_path.png",
+      "sha256": "9f1517cfefb82facf2c5fa8222104f3ab1e3602b5d2d318f5aa36e5267c2d38a",
+      "source": "artifacts/week4/analysis/2026-10-18/run-01/figures/four_path.png"
+    },
+    {
+      "file": "reports/week4/figures/long_completion.png",
+      "sha256": "21268529a8c7af148783e7789c8c07bea61e37d0e9aed44ba8f509c7703483f6",
+      "source": "artifacts/week4/analysis/2026-10-18/run-01/figures/long_completion.png"
+    },
+    {
+      "file": "reports/week4/figures/long_fct_provided.png",
+      "sha256": "ed01bb0af4c6ed2eeff5563bfb82f3c322ffff0a16506c89939e8c14bfedcb53",
+      "source": "artifacts/week4/analysis/2026-10-18/run-01/baseline-long_fct.png"
+    },
+    {
+      "file": "reports/week4/figures/long_path_share.png",
+      "sha256": "25cf32b2b588746ecc798f5dc2722a40d0a2e271be2e5cf50158cf4004853c67",
+      "source": "artifacts/week4/analysis/2026-10-18/run-01/figures/long_path_share.png"
+    },
+    {
+      "file": "reports/week4/figures/robustness.png",
+      "sha256": "28f85cee05f8f602febdf499212c336e75e7bb9f2e0c38410eafda32eb137d0a",
+      "source": "artifacts/week4/analysis/2026-10-18/run-01/figures/robustness.png"
+    },
+    {
+      "file": "reports/week4/figures/robustness_overview.png",
+      "sha256": "a78609868d58263d42b026885d0d1653db5689013b2cfa78d37cee0858da9d0a",
+      "source": "sched-lab/plot_week4_overview.py + reports/week4/data/summary.csv"
+    }
+  ],
+  "diagnosis_analysis": "artifacts/week4/analysis/2026-10-18/diagnosis-01"
+}

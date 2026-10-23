@@ -1,0 +1,10 @@
+{
+  "planned": 51,
+  "rows": 51,
+  "process_ok": 51,
+  "completed": 48,
+  "full_received": 48,
+  "previously_completed": 22,
+  "regressions": [],
+  "finished_utc": "2026-10-23T03:27:03.038034+00:00"
+}

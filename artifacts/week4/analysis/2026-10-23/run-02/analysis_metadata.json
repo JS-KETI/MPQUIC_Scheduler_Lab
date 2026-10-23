@@ -1,0 +1,21 @@
+{
+  "generated_utc": "2026-10-23T04:17:51.171718+00:00",
+  "command": [
+    "sched-lab/week4_analyze.py",
+    "--runs",
+    "artifacts/week4/runs/2026-10-23/run-05",
+    "--out",
+    "artifacts/week4/analysis/2026-10-23/run-02"
+  ],
+  "source_sha256": {
+    "week4_analyze.py": "341655bcff85d5ffb43fa391f07c3a6b88d380f183c31cc0f7b1f654c0174df0",
+    "stats.py": "092d879d1986a30dead901f41183244a8cfd1e0add16f67a07eb56be09d577b9",
+    "analyze.py": "718062c54156046458bd472cf504f96d6a26cef3e70e84c7e14e13df6160e489"
+  },
+  "input_csv_sha256": {
+    "artifacts/week4/runs/2026-10-23/run-05": "540ad0b7ca71f0a5f474fcf46d4fc0576a248374172ee11e4bf9bdee765e4216"
+  },
+  "baseline_sha256": "f58931aa387de2e04a1da655f6bcfcd3da69a85ff0bf7e94fb31ef266c77d94b",
+  "pandas": "2.1.4",
+  "numpy": "1.26.4"
+}

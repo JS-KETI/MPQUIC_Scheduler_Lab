@@ -69,6 +69,61 @@
       "file": "reports/week4/data/incomplete-group-summary.csv",
       "source": "artifacts/week4/analysis/2026-10-18/diagnosis-01/group-summary.csv",
       "sha256": "3a42aeb91f9efd0fc6fcfee60b7db426f6d1aa4968c4df9d2163fdef0603ed9b"
+    },
+    {
+      "file": "reports/week4/data/final-results.csv",
+      "source": "artifacts/week4/analysis/2026-10-23/run-02/results.csv",
+      "sha256": "ee449ac2ad8a291c617ad416c2acbabd67c5a63bccf15dbb8bbac61ab21e6619"
+    },
+    {
+      "file": "reports/week4/data/final-summary.csv",
+      "source": "artifacts/week4/analysis/2026-10-23/run-02/summary.csv",
+      "sha256": "06ad3d6107e0abdae26902014825cd43382a17b74f45ed75e01266e525106e5d"
+    },
+    {
+      "file": "reports/week4/data/final-paired-comparisons.csv",
+      "source": "artifacts/week4/analysis/2026-10-23/run-02/paired_comparisons.csv",
+      "sha256": "166ac038104c37af028977ce79567730d29558615cdc86e925e80953972cafff"
+    },
+    {
+      "file": "reports/week4/data/final-long-results.csv",
+      "source": "artifacts/week4/analysis/2026-10-23/run-02/baseline-long.csv",
+      "sha256": "7f8e2357209931cbc51a4c8e2e7001c0db05ce538aa52bb1d20f15c60bb61d62"
+    },
+    {
+      "file": "reports/week4/data/final-long-summary.csv",
+      "source": "artifacts/week4/analysis/2026-10-23/run-02/summary-long.csv",
+      "sha256": "54ef8e797c8ef59143d66946a847401f5bd20f755e72bb2fb257cecd42f5b40c"
+    },
+    {
+      "file": "reports/week4/data/final-before-after-executions.csv",
+      "source": "artifacts/week4/analysis/2026-10-23/run-02/before_after_run.csv",
+      "sha256": "7715da9625e4619ea16297cf55518b6319f806956fcc40439b0651666e9b669a"
+    },
+    {
+      "file": "reports/week4/data/final-before-after-conditions.csv",
+      "source": "artifacts/week4/analysis/2026-10-23/run-02/before_after_condition.csv",
+      "sha256": "ecaf869617ede0d25ddcb304f997404fd77070980cd0d543e42a7557e3aa01ef"
+    },
+    {
+      "file": "reports/week4/data/final-original-cause-groups.csv",
+      "source": "artifacts/week4/analysis/2026-10-23/run-02/before_after_original_group.csv",
+      "sha256": "07d01e4ce40f9bfb2b37bf4ca751db9736132b606ced72f041517bdbb152c984"
+    },
+    {
+      "file": "reports/week4/data/final-common-seed-times.csv",
+      "source": "artifacts/week4/analysis/2026-10-23/run-02/before_after_common_fct.csv",
+      "sha256": "ac9daf4f8c71211f728a9bd63ee1291218240b1391a46915f06810e23b7f660e"
+    },
+    {
+      "file": "reports/week4/data/final-baseline-comparison.csv",
+      "source": "artifacts/week4/analysis/2026-10-23/run-02/baseline_comparison.csv",
+      "sha256": "c4b9bde8a1d8904d40ff6979a472b8b4dac1fcd8403f42637279dea13a886d81"
+    },
+    {
+      "file": "reports/week4/data/final-remaining.csv",
+      "source": "artifacts/week4/analysis/2026-10-23/run-02/remaining.csv",
+      "sha256": "b51ef9a83e09a8dd880166bc45fd64c88d1c6c5ac564ddcf74299dda82285a2e"
     }
   ],
   "source_analysis": "artifacts/week4/analysis/2026-10-18/run-01",
@@ -107,7 +162,23 @@
       "file": "reports/week4/figures/robustness_overview.png",
       "sha256": "a78609868d58263d42b026885d0d1653db5689013b2cfa78d37cee0858da9d0a",
       "source": "sched-lab/plot_week4_overview.py + reports/week4/data/summary.csv"
+    },
+    {
+      "file": "reports/week4/figures/final_validation.png",
+      "source": "artifacts/week4/analysis/2026-10-23/run-02/figures/final_validation.png",
+      "sha256": "80601207b095eefac8940890f4f92bc6afebcbf4608353f84b4acea3e1251eee"
+    },
+    {
+      "file": "reports/week4/figures/final_long_fct_provided.png",
+      "source": "artifacts/week4/analysis/2026-10-23/run-02/baseline-long_fct.png",
+      "sha256": "d1c7c42e891b869dcbba8dea87d45afe6176c3c7047078675a1654a06f4abf80"
+    },
+    {
+      "file": "reports/week4/figures/final_robustness_overview.png",
+      "source": "artifacts/week4/analysis/2026-10-23/run-02/figures/final_robustness_overview.png",
+      "sha256": "06d7ba9f4c2eda03cd0c84b3b25de503334fa087d6d294f2eff126fd8ebdaaa2"
     }
   ],
-  "diagnosis_analysis": "artifacts/week4/analysis/2026-10-18/diagnosis-01"
+  "diagnosis_analysis": "artifacts/week4/analysis/2026-10-18/diagnosis-01",
+  "final_validation_analysis": "artifacts/week4/analysis/2026-10-23/run-02"
 }

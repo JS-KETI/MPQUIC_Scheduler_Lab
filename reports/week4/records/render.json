@@ -1,7 +1,7 @@
 {
   "week": 4,
-  "source_markdown_sha256": "d7ecf98db56a0915bf83f3197ab2c575d5c655d91cfe2eb75e5d17c3895aff78",
-  "html_sha256": "3d50490fb38b2c10a2b92b6a0bd8ac41c18f183fb937ef6b3aef92cb358e1879",
+  "source_markdown_sha256": "1e6416cd10889ec3d5ea8737997ef515f1e56c056372fd4ecf88be3324e23097",
+  "html_sha256": "0b05c8144bd8a6f7a11b97d84e0f8ccc0681ced6b6b69e5e735ca88a91f3d9fc",
   "images": [
     {
       "path": "figures/degradation.png",
@@ -27,11 +27,26 @@
       "path": "figures/four_path.png",
       "bytes": 72313,
       "sha256": "9f1517cfefb82facf2c5fa8222104f3ab1e3602b5d2d318f5aa36e5267c2d38a"
+    },
+    {
+      "path": "figures/final_validation.png",
+      "bytes": 125643,
+      "sha256": "80601207b095eefac8940890f4f92bc6afebcbf4608353f84b4acea3e1251eee"
+    },
+    {
+      "path": "figures/final_robustness_overview.png",
+      "bytes": 149362,
+      "sha256": "06d7ba9f4c2eda03cd0c84b3b25de503334fa087d6d294f2eff126fd8ebdaaa2"
+    },
+    {
+      "path": "figures/final_long_fct_provided.png",
+      "bytes": 114165,
+      "sha256": "d1c7c42e891b869dcbba8dea87d45afe6176c3c7047078675a1654a06f4abf80"
     }
   ],
-  "heading_count": 8,
-  "tables": 2,
-  "clickable_links": 12,
+  "heading_count": 9,
+  "tables": 3,
+  "clickable_links": 17,
   "source_unchanged": true,
   "all_report_images_embedded": true
 }

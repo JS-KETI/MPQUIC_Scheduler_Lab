@@ -1,0 +1,36 @@
+{
+  "regressions": [
+    "0087-long-competing-s1-seed7",
+    "0089-long-competing-s1-seed9",
+    "0092-long-competing-s2-seed2",
+    "0096-long-competing-s2-seed6",
+    "0106-long-competing-s3-seed6",
+    "0205-loss1-degrade-s5-seed5",
+    "0210-loss1-degrade-s6-seed5"
+  ],
+  "controls": [
+    "0137-long-competing-s6-seed7",
+    "0139-long-competing-s6-seed9",
+    "0132-long-competing-s6-seed2",
+    "0136-long-competing-s6-seed6",
+    "0136-long-competing-s6-seed6",
+    "0105-reference-degrade-s6-seed5",
+    "0105-reference-degrade-s6-seed5"
+  ],
+  "additional_small_buffer_case": "0431-buffer1m-dominating-s2-seed1",
+  "selected_ids": [
+    "0087-long-competing-s1-seed7",
+    "0089-long-competing-s1-seed9",
+    "0092-long-competing-s2-seed2",
+    "0096-long-competing-s2-seed6",
+    "0105-reference-degrade-s6-seed5",
+    "0106-long-competing-s3-seed6",
+    "0132-long-competing-s6-seed2",
+    "0136-long-competing-s6-seed6",
+    "0137-long-competing-s6-seed7",
+    "0139-long-competing-s6-seed9",
+    "0205-loss1-degrade-s5-seed5",
+    "0210-loss1-degrade-s6-seed5",
+    "0431-buffer1m-dominating-s2-seed1"
+  ]
+}

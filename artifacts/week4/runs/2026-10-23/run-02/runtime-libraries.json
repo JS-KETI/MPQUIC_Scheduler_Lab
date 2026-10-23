@@ -1,0 +1,107 @@
+{
+  "captured_utc": "2026-10-23T03:42:00.570977+00:00",
+  "run_started_utc": "2026-10-23T03:33:28.448685+00:00",
+  "captured_after_start": true,
+  "no_builds_during_run": true,
+  "library_mtimes_predate_start": true,
+  "ld_library_path": "/home/ubuntu/projects/keti/mpquic-sched-lab/mpquic/build/lib",
+  "ldd": "\tlinux-vdso.so.1 (0x0000784de5731000)\n\tlibns3-dev-quic-optimized.so => /home/ubuntu/projects/keti/mpquic-sched-lab/mpquic/build/lib/libns3-dev-quic-optimized.so (0x0000784de55b6000)\n\tlibns3-dev-applications-optimized.so => /home/ubuntu/projects/keti/mpquic-sched-lab/mpquic/build/lib/libns3-dev-applications-optimized.so (0x0000784de5478000)\n\tlibns3-dev-flow-monitor-optimized.so => /home/ubuntu/projects/keti/mpquic-sched-lab/mpquic/build/lib/libns3-dev-flow-monitor-optimized.so (0x0000784de5435000)\n\tlibns3-dev-internet-optimized.so => /home/ubuntu/projects/keti/mpquic-sched-lab/mpquic/build/lib/libns3-dev-internet-optimized.so (0x0000784de5000000)\n\tlibns3-dev-bridge-optimized.so => /home/ubuntu/projects/keti/mpquic-sched-lab/mpquic/build/lib/libns3-dev-bridge-optimized.so (0x0000784de541a000)\n\tlibns3-dev-traffic-control-optimized.so => /home/ubuntu/projects/keti/mpquic-sched-lab/mpquic/build/lib/libns3-dev-traffic-control-optimized.so (0x0000784de4f17000)\n\tlibns3-dev-config-store-optimized.so => /home/ubuntu/projects/keti/mpquic-sched-lab/mpquic/build/lib/libns3-dev-config-store-optimized.so (0x0000784de53fd000)\n\tlibns3-dev-point-to-point-optimized.so => /home/ubuntu/projects/keti/mpquic-sched-lab/mpquic/build/lib/libns3-dev-point-to-point-optimized.so (0x0000784de4ecd000)\n\tlibns3-dev-network-optimized.so => /home/ubuntu/projects/keti/mpquic-sched-lab/mpquic/build/lib/libns3-dev-network-optimized.so (0x0000784de4d62000)\n\tlibns3-dev-stats-optimized.so => /home/ubuntu/projects/keti/mpquic-sched-lab/mpquic/build/lib/libns3-dev-stats-optimized.so (0x0000784de4cd3000)\n\tlibns3-dev-core-optimized.so => /home/ubuntu/projects/keti/mpquic-sched-lab/mpquic/build/lib/libns3-dev-core-optimized.so (0x0000784de4ba8000)\n\tlibstdc++.so.6 => /lib/x86_64-linux-gnu/libstdc++.so.6 (0x0000784de4800000)\n\tlibm.so.6 => /lib/x86_64-linux-gnu/libm.so.6 (0x0000784de4abf000)\n\tlibgcc_s.so.1 => /lib/x86_64-linux-gnu/libgcc_s.so.1 (0x0000784de4a91000)\n\tlibc.so.6 => /lib/x86_64-linux-gnu/libc.so.6 (0x0000784de4400000)\n\t/lib64/ld-linux-x86-64.so.2 (0x0000784de5733000)\n",
+  "libraries": {
+    "/home/ubuntu/projects/keti/mpquic-sched-lab/mpquic/build/lib/libns3-dev-quic-optimized.so": {
+      "sha256": "29c81f9569b9aaf3cc889f974f223ee424cb9928d8fdb0c7eab644c814713991",
+      "bytes": 22436584,
+      "mtime_utc": "2026-10-23T03:31:50.135257+00:00",
+      "predates_run_start": true
+    },
+    "/home/ubuntu/projects/keti/mpquic-sched-lab/mpquic/build/lib/libns3-dev-applications-optimized.so": {
+      "sha256": "12962b09e7a218075fa78b0ed021bb659e3c3e66fd8054ba02bf53a6c3eb3c30",
+      "bytes": 17590000,
+      "mtime_utc": "2026-09-30T16:32:01.695625+00:00",
+      "predates_run_start": true
+    },
+    "/home/ubuntu/projects/keti/mpquic-sched-lab/mpquic/build/lib/libns3-dev-flow-monitor-optimized.so": {
+      "sha256": "e875d7fa68cd1ca9dfbfaaf673af21b89aa56279fba3e24ad8c332a7020b3402",
+      "bytes": 3839192,
+      "mtime_utc": "2026-09-30T16:32:01.576010+00:00",
+      "predates_run_start": true
+    },
+    "/home/ubuntu/projects/keti/mpquic-sched-lab/mpquic/build/lib/libns3-dev-internet-optimized.so": {
+      "sha256": "981466016099a09b90736d58e938625ce4c1da55156dff3acf0b9fa748673956",
+      "bytes": 50621560,
+      "mtime_utc": "2026-09-30T16:32:01.202764+00:00",
+      "predates_run_start": true
+    },
+    "/home/ubuntu/projects/keti/mpquic-sched-lab/mpquic/build/lib/libns3-dev-bridge-optimized.so": {
+      "sha256": "88824d41ea3b2710db7d1bfeb6abcb5d3fbb080dc3fd2d14d14c06aad4401efe",
+      "bytes": 1119096,
+      "mtime_utc": "2026-09-30T16:31:47.123590+00:00",
+      "predates_run_start": true
+    },
+    "/home/ubuntu/projects/keti/mpquic-sched-lab/mpquic/build/lib/libns3-dev-traffic-control-optimized.so": {
+      "sha256": "ef88809626b2f86e8397d44d9961f572343ee1798483d66bd44b5edcfd2938fb",
+      "bytes": 11202224,
+      "mtime_utc": "2026-09-30T16:31:50.007828+00:00",
+      "predates_run_start": true
+    },
+    "/home/ubuntu/projects/keti/mpquic-sched-lab/mpquic/build/lib/libns3-dev-config-store-optimized.so": {
+      "sha256": "e8175f4a251273b5ffec6fee20a518417d3e81d6f4c6a1f1f53f7644e9529eb7",
+      "bytes": 1177104,
+      "mtime_utc": "2026-09-30T16:31:54.660654+00:00",
+      "predates_run_start": true
+    },
+    "/home/ubuntu/projects/keti/mpquic-sched-lab/mpquic/build/lib/libns3-dev-point-to-point-optimized.so": {
+      "sha256": "661bd3ee582e9224d6f99c8106f393345d38015a012a35e7951b7e1e313e21e0",
+      "bytes": 3059576,
+      "mtime_utc": "2026-09-30T16:32:00.197045+00:00",
+      "predates_run_start": true
+    },
+    "/home/ubuntu/projects/keti/mpquic-sched-lab/mpquic/build/lib/libns3-dev-network-optimized.so": {
+      "sha256": "c75e6bda4356e87f35c0dd14721a09ae3d453ed503603590c7850faa133f6eec",
+      "bytes": 16711528,
+      "mtime_utc": "2026-09-30T16:31:46.738142+00:00",
+      "predates_run_start": true
+    },
+    "/home/ubuntu/projects/keti/mpquic-sched-lab/mpquic/build/lib/libns3-dev-stats-optimized.so": {
+      "sha256": "67da44a7a1f7a63381171edfc408168a4e4fdd5d2d9e5f8a883128363257687d",
+      "bytes": 8743784,
+      "mtime_utc": "2026-09-30T16:31:44.838256+00:00",
+      "predates_run_start": true
+    },
+    "/home/ubuntu/projects/keti/mpquic-sched-lab/mpquic/build/lib/libns3-dev-core-optimized.so": {
+      "sha256": "8ffbef15ea182cd2ef449b0dafbc201f09758f8807ecb71463d7479d60907920",
+      "bytes": 14844208,
+      "mtime_utc": "2026-09-30T16:31:43.000293+00:00",
+      "predates_run_start": true
+    },
+    "/usr/lib/x86_64-linux-gnu/libstdc++.so.6.0.33": {
+      "sha256": "1fd75fe70354a416d75aef22bcae68c47bd25d20e2d0568c30b1a9838cf62f11",
+      "bytes": 2592224,
+      "mtime_utc": "2025-12-18T21:36:50+00:00",
+      "predates_run_start": true
+    },
+    "/usr/lib/x86_64-linux-gnu/libm.so.6": {
+      "sha256": "fce00b6f25f459cf4ae0b7fae4257909a1a8a86f9149e7c029a5d617baf1ccd0",
+      "bytes": 952616,
+      "mtime_utc": "2026-09-03T14:15:12+00:00",
+      "predates_run_start": true
+    },
+    "/usr/lib/x86_64-linux-gnu/libgcc_s.so.1": {
+      "sha256": "d93224d2b0dab4247598be683adca02f5cf00586f99c187579cd7e92058fb7cb",
+      "bytes": 183024,
+      "mtime_utc": "2025-12-18T21:36:50+00:00",
+      "predates_run_start": true
+    },
+    "/usr/lib/x86_64-linux-gnu/libc.so.6": {
+      "sha256": "3a15d66867d83762c7f2f1e37359cb8f6c5743edb369c65285cb0b1c4f7498bf",
+      "bytes": 2129424,
+      "mtime_utc": "2026-09-03T14:15:12+00:00",
+      "predates_run_start": true
+    },
+    "/usr/lib/x86_64-linux-gnu/ld-linux-x86-64.so.2": {
+      "sha256": "c20a2dc8917c755f02b94049356320fe1f62ac7d9f8994731f807d9df39302da",
+      "bytes": 236616,
+      "mtime_utc": "2026-09-03T14:15:12+00:00",
+      "predates_run_start": true
+    }
+  }
+}

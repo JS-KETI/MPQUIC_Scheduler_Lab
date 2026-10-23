@@ -10,7 +10,7 @@
 
 - **4주차**
   - 기존·열화 315/315회, 장시간 206/210회, 강건성 357/630회, 4경로 8/8회 완료·전체 수신. 장시간 기준값·재현 패키지·한계 기록.
-  - https://github.com/JS-KETI/MPQUIC_Scheduler_Lab/blob/lab/week4-incomplete-diagnosis-20261018/reports/week4/README.md
+  - https://github.com/JS-KETI/MPQUIC_Scheduler_Lab/blob/lab/week4-final-validation-20261023/reports/week4/README.md
 
 - **폴더·파일 작성 규칙**
   - https://github.com/JS-KETI/MPQUIC_Scheduler_Lab/blob/lab/week3-scheduler-20261012/docs/OUTPUT_CONVENTIONS.md
