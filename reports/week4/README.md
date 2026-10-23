@@ -9,6 +9,10 @@
 
 ## 현재 보고서
 
+- **4주차 진행상황 Markdown (그림 4개 내장·파일 하나로 다운로드)**
+  - https://github.com/JS-KETI/MPQUIC_Scheduler_Lab/blob/lab/week4-final-validation-20261023/reports/week4/records/exports/4%EC%A3%BC%EC%B0%A8%20%EC%A7%84%ED%96%89%EC%83%81%ED%99%A9.md
+  - 다운로드 후 이미지 내장 Markdown을 지원하는 편집기에서 열기
+
 - **4주차 진행상황**
   - https://github.com/JS-KETI/MPQUIC_Scheduler_Lab/blob/lab/week4-final-validation-20261023/reports/week4/4%EC%A3%BC%EC%B0%A8%20%EC%A7%84%ED%96%89%EC%83%81%ED%99%A9.md
 - **4주차 진행상황 HTML (이미지 내장)**
