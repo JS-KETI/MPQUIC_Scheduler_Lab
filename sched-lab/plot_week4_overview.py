@@ -10,13 +10,17 @@ import matplotlib.pyplot as plt
 def main():
     p=argparse.ArgumentParser(description=__doc__)
     p.add_argument('summary',type=Path);p.add_argument('output',type=Path)
+    p.add_argument('--language',choices=['en','ko'],default='en')
     a=p.parse_args();s=pd.read_csv(a.summary)
+    if a.language=='ko':
+        from report_plot_korean import configure_font,localize
+        configure_font()
     conds=['reference','loss01','loss1','queue100','queue1000','buffer1m','buffer8m']
     labels=['Default','Packet loss 0.1%','Packet loss 1%','FqCoDel 100 packets','FqCoDel 1000 packets','QUIC buffers 1 MiB','QUIC buffers 8 MiB']
     scens=['dominating','competing','degrade']
     agg=s[s.condition.isin(conds)].groupby(['condition','scenario'])[['runs','completed','full_received']].sum()
     vals=np.array([[agg.loc[(c,sc),'completed']/agg.loc[(c,sc),'runs'] for sc in scens] for c in conds])
-    fig,ax=plt.subplots(figsize=(8.5,4.8));ax.imshow(vals,cmap='Blues',vmin=0,vmax=1,aspect='auto')
+    fig,ax=plt.subplots(figsize=(11,6.5) if a.language=='ko' else (8.5,4.8));ax.imshow(vals,cmap='Blues',vmin=0,vmax=1,aspect='auto')
     for y,c in enumerate(conds):
         for x,sc in enumerate(scens):
             r=agg.loc[(c,sc)]
@@ -24,6 +28,7 @@ def main():
     ax.set_xticks(range(3));ax.set_xticklabels(scens)
     ax.set_yticks(range(len(conds)));ax.set_yticklabels(labels,fontsize=10)
     ax.set_title('5 MiB: seven schedulers × five seeds per cell\nOLIA; grace=250 ms; one factor changed per row',fontsize=11)
+    if a.language=='ko':localize(fig,'overview')
     fig.tight_layout();a.output.parent.mkdir(parents=True,exist_ok=True)
     fig.savefig(a.output,dpi=160);plt.close(fig)
 

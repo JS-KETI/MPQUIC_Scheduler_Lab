@@ -124,11 +124,14 @@ def rank_changes(df):
     return pd.DataFrame(rows)
 
 
-def plots(df,summ,out):
-    out.mkdir()
+def plots(df,summ,out,language='en'):
+    if language=='ko':
+        from report_plot_korean import configure_font,localize
+        configure_font()
+    out.mkdir(parents=True,exist_ok=True)
     for name,field,title in [('long_completion','completion_rate','50 MiB transfer: completion / exact receipt'),
                              ('long_path_share','mean_path1_ip_share','50 MiB transfer: path 1 fraction of received IP bytes')]:
-        fig,axes=plt.subplots(1,3,figsize=(14,3.8))
+        fig,axes=plt.subplots(1,3,figsize=(16,5.5) if language=='ko' else (14,3.8))
         for ax,sc in zip(axes,['dominating','competing','degrade']):
             g=summ[summ.condition.eq('long')&summ.scenario.eq(sc)].set_index('scheduler').reindex(ORDER)
             x=np.arange(7)
@@ -142,13 +145,14 @@ def plots(df,summ,out):
             ax.grid(axis='y',alpha=.2)
         if field=='completion_rate':axes[0].legend(fontsize=8)
         fig.suptitle(title+(' (mean of completed-run shares)' if field!='completion_rate' else '')+'\nOLIA; loss=0; QUIC buffers=80 MB; grace=250 ms; seeds=1–10',fontsize=10)
-        fig.tight_layout();fig.savefig(out/f'{name}.png',dpi=150);plt.close(fig)
+        if language=='ko':localize(fig,name)
+        fig.tight_layout(rect=(0,0,1,.94) if language=='ko' else None);fig.savefig(out/f'{name}.png',dpi=150);plt.close(fig)
     for name,conditions in [('degradation',['reference','early','late','rate_mild','rate_severe','delay_mild','delay_severe']),
                              ('robustness',['reference','loss01','loss1','queue100','queue1000','buffer1m','buffer8m'])]:
         scens=['degrade'] if name=='degradation' else ['dominating','competing','degrade']
-        fig,axes=plt.subplots(1,len(scens),figsize=(8 if len(scens)==1 else 16,5),squeeze=False)
+        fig,axes=plt.subplots(len(scens) if language=='ko' else 1,1 if language=='ko' else len(scens),figsize=(12,6.8*len(scens)) if language=='ko' else (8 if len(scens)==1 else 16,5),squeeze=False)
         color_max=summ[summ.scenario.isin(scens)&summ.condition.isin(conditions)].mean_s.max()
-        for ax,sc in zip(axes[0],scens):
+        for ax,sc in zip(axes.flat,scens):
             g=summ[summ.scenario.eq(sc)&summ.condition.isin(conditions)]
             vals=g.pivot(index='condition',columns='scheduler',values='mean_s').reindex(index=conditions,columns=ORDER)
             im=ax.imshow(vals.to_numpy(),cmap='YlGnBu',aspect='auto',vmin=0,vmax=color_max)
@@ -157,13 +161,14 @@ def plots(df,summ,out):
                     row=g[g.condition.eq(c)&g.scheduler.eq(s)].iloc[0]
                     val='—' if pd.isna(row.mean_s) else f'{row.mean_s:.2f}s'
                     text=f'{val}\n{row.completed}/{row.runs} · {row.full_received}/{row.runs}'
-                    ax.text(x,y,text,ha='center',va='center',fontsize=7,color='white' if pd.notna(row.mean_s) and row.mean_s>color_max*.6 else '#17243b')
+                    ax.text(x,y,text,ha='center',va='center',fontsize=10 if language=='ko' else 7,color='white' if pd.notna(row.mean_s) and row.mean_s>color_max*.6 else '#17243b')
             ax.set_title(sc);ax.set_yticks(range(len(conditions)));ax.set_yticklabels([CONDITION_LABELS[c] for c in conditions],fontsize=8)
             ax.set_xticks(range(7));ax.set_xticklabels([NAMES[s].replace('(new)','*') for s in ORDER],rotation=40,ha='right',fontsize=8)
         fig.suptitle('5 MiB: mean completion time; completed/N · exact receipt/N\nOLIA; grace=250 ms; seeds=1–5; one factor per row; shared color scale 0–'+f'{color_max:.1f} s',fontsize=10)
-        fig.tight_layout();fig.savefig(out/f'{name}.png',dpi=160);plt.close(fig)
+        if language=='ko':localize(fig,name)
+        fig.tight_layout(rect=(0,0,1,.94) if language=='ko' else None);fig.savefig(out/f'{name}.png',dpi=160);plt.close(fig)
     g=df[df.condition.eq('four_path')].sort_values('scheduler')
-    fig,ax=plt.subplots(figsize=(10,3.8));bottom=np.zeros(len(g))
+    fig,ax=plt.subplots(figsize=(14,6.2) if language=='ko' else (10,3.8));bottom=np.zeros(len(g))
     total=g[[f'tx_payload_p{i}' for i in range(4)]].sum(axis=1).to_numpy()
     for i in range(4):
         v=np.divide(g[f'tx_payload_p{i}'].to_numpy(),total,out=np.zeros(len(g)),where=np.isfinite(total)&(total>0))
@@ -173,6 +178,7 @@ def plots(df,summ,out):
         if r.status!='ok' or not np.isfinite(total[j]) or total[j]<=0:ax.text(j,.3,'NO VALID TX',ha='center',rotation=90,color='red')
     ax.set_ylim(0,1.1);ax.legend(ncol=4,fontsize=9);ax.set_ylabel('Fraction of transmitted STREAM payload\n(retransmissions included)')
     ax.set_title('4-path operation probe — seed 1, 5 MiB, OLIA, loss=0\nAdditional paths: 8 Mbps, 20 ms each; no algorithm changes',fontsize=10)
+    if language=='ko':localize(fig,'four_path')
     fig.tight_layout();fig.savefig(out/'four_path.png',dpi=150);plt.close(fig)
 
 def main():

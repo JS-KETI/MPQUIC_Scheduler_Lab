@@ -1,0 +1,55 @@
+{
+  "language": "ko",
+  "csv_files_unchanged": {
+    "final-common-seed-times.csv": "ac9daf4f8c71211f728a9bd63ee1291218240b1391a46915f06810e23b7f660e",
+    "final-remaining.csv": "b51ef9a83e09a8dd880166bc45fd64c88d1c6c5ac564ddcf74299dda82285a2e",
+    "final-before-after-conditions.csv": "ecaf869617ede0d25ddcb304f997404fd77070980cd0d543e42a7557e3aa01ef",
+    "summary-long.csv": "aed9ad8052cc19dcf72141d7d5eaa05ce241c5eea858fd18c6b3028c2d9b6ed2",
+    "final-long-summary.csv": "54ef8e797c8ef59143d66946a847401f5bd20f755e72bb2fb257cecd42f5b40c",
+    "incomplete-group-summary.csv": "3a42aeb91f9efd0fc6fcfee60b7db426f6d1aa4968c4df9d2163fdef0603ed9b",
+    "final-summary.csv": "06ad3d6107e0abdae26902014825cd43382a17b74f45ed75e01266e525106e5d",
+    "baseline-long.csv": "846b3d23d55dc860b1e59ec370adb81dc6a9ac340946ceb01a598b9147ba47f1",
+    "incomplete-group-combinations.csv": "1108bb224c76828527fb2b5f5677895fb351dddf1b15cd5bc0a4dec7398a793b",
+    "observed_rank_changes.csv": "9a839ff31308b4eb20d0112266e2ab7bb25e743c1ef9a7f2c6d13b25fd4d3db4",
+    "incomplete-candidate-by-original-group.csv": "10547796ba0eb1b96e7a0ad26b9aad91f9c256460c8da62165886f7bc2941065",
+    "four_path.csv": "d49948c79ebdb6cb0e3848c5fb8a31cafa309f626a5a164f2b9b584c8bff9e50",
+    "incomplete-experiment-summary.csv": "96844526f9744def636fae4710e37f66f4979027821a62d0149d1f022a90005f",
+    "paired_comparisons.csv": "ddcf7dba0364353890f00e13b21d0a0a2a0de55680fbbd7fc7e65c2ab98979af",
+    "final-before-after-executions.csv": "7715da9625e4619ea16297cf55518b6319f806956fcc40439b0651666e9b669a",
+    "final-results.csv": "ee449ac2ad8a291c617ad416c2acbabd67c5a63bccf15dbb8bbac61ab21e6619",
+    "final-baseline-comparison.csv": "c4b9bde8a1d8904d40ff6979a472b8b4dac1fcd8403f42637279dea13a886d81",
+    "final-long-results.csv": "7f8e2357209931cbc51a4c8e2e7001c0db05ce538aa52bb1d20f15c60bb61d62",
+    "summary.csv": "ccc471ba88f5c0ecacfc42374908cf084268e0380ec894600d332cd7e1369f8c",
+    "incomplete-classification.csv": "e0cd07d2dad3d28dc58df36ca96fc59f53abd6d302d11a2450900b9e7e93ae72",
+    "baseline_comparison.csv": "f83e1d11b8b79c47cd63956bd96e7f0555b3e32102ba395f3a8a65af1eb2f7e2",
+    "results.csv": "986b65bebd33af7901891842d366067ed9b13c65f990ba3114ea7de823438e2c",
+    "incomplete-experiment-results.csv": "dc86e6db4606dc742a25a714f53ca865d8a66279400af5facfc972b9fceb1986",
+    "final-paired-comparisons.csv": "166ac038104c37af028977ce79567730d29558615cdc86e925e80953972cafff",
+    "final-original-cause-groups.csv": "07d01e4ce40f9bfb2b37bf4ca751db9736132b606ced72f041517bdbb152c984"
+  },
+  "plotting": "Existing plot functions and supplied analyze.py; Korean labels and layout only",
+  "font": [
+    "Malgun Gothic"
+  ],
+  "figures": {
+    "degradation.png": "36c99522a25948b0b6ef402d168b23a002628267c69f11fe90fcd37b168ce3ef",
+    "final_long_fct_provided.png": "c9593050b9dc77a1f77b031ef683a0d299a95256dfb7c6308d40ddb96083d258",
+    "final_robustness_overview.png": "3f2bd3b538266f1d283b235331b94e004ead5f67930bdc43597ed1675af90b1e",
+    "final_validation.png": "f5969c35cad00199ed85417d25e69011be3a4e296bcdacffb364c65b85265919",
+    "four_path.png": "14753418c35ec44686ea6d73f0f4f2b3bd646969aa422bea2f1df83ae89e391f",
+    "long_completion.png": "42a7946a7b9d8e8604b7e0b954b6b912c1f01043495f095f20167c9f688459e0",
+    "long_fct_provided.png": "0843b6d369167330f7cbae75d51308fbe00021c5cf96a741a183a607e16a0a48",
+    "long_path_share.png": "0d8f87dbd27c93ce84aa788fa23922d2a2f63508068b11ae07d70431e62129b8",
+    "robustness.png": "e6c448e15a5fda89b814b338e934c47ecf96550da76451ff6b82579811c76170",
+    "robustness_overview.png": "b37d96543865766df507f34403b3be3e7d7f373938a31def9ec691e9603ced51"
+  },
+  "source_sha256": {
+    "report_plot_korean.py": "3fd9584fce3bc900b16742d95b6ce0099c4c7db53cb6a705a2ea397475ccf204",
+    "analyze.py": "a00b35ddd3f054ea22c27536654bad69906efac0057213dc95cadbd0ba12e810",
+    "plot_week4_overview.py": "c59171fac179bc26dc76803308235be4760f611120cbba4708d209ccd6cc7259",
+    "week4_analyze.py": "2f2b4fae97e62406a10d8732895986a6ee71b201fcf57f0a18625f99cf87332d",
+    "week4_final_compare.py": "8396a440380b6fd093431a6d3c64e0ef4d7765ac4ce9c44467828349f4ff1ec1"
+  },
+  "default_analyze_summary_and_figure_unchanged": true,
+  "korean_5MiB_and_50MiB_titles_verified": true
+}

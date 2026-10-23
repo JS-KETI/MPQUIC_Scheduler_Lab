@@ -10,6 +10,17 @@ from week4_analyze import KEY,read_run,CONDITION_LABELS
 from stats import mean_ci,signed_rank_exact,holm
 ROOT=Path(__file__).resolve().parents[1]
 def sha(p):return hashlib.sha256(p.read_bytes()).hexdigest()
+def plot_comparison(s,output,language='en'):
+ if language=='ko':
+  from report_plot_korean import configure_font,localize
+  configure_font()
+ fig,ax=plt.subplots(figsize=(12,9) if language=='ko' else (10,6));y=np.arange(len(s));
+ ax.barh(y-.18,s.completed_before,.36,label='Before: completed');ax.barh(y+.18,s.completed_after,.36,label='Integrated: completed')
+ for i,r in enumerate(s.itertuples()):ax.text(max(r.completed_before,r.completed_after)+1,i,f'{r.completed_before}/{r.runs} -> {r.completed_after}/{r.runs}',va='center',fontsize=8)
+ ax.set_yticks(y);ax.set_yticklabels([CONDITION_LABELS[x] for x in s.condition],fontsize=8);ax.invert_yaxis();ax.set_xlim(0,max(s.runs)*1.35);ax.set_xlabel('Completed executions');ax.legend();ax.set_title('Week 4: original settings replayed on one integrated QUIC version\nSame seeds, buffers, loss, queue and simulation end time')
+ if language=='ko':localize(fig,'comparison')
+ fig.tight_layout();fig.savefig(output,dpi=160);plt.close(fig)
+
 def main():
  ap=argparse.ArgumentParser(description=__doc__);ap.add_argument('--run',type=Path,required=True);ap.add_argument('--analysis',type=Path,required=True);a=ap.parse_args()
  out=a.analysis;assert out.is_dir() and not (out/'before_after_run.csv').exists()
@@ -47,11 +58,7 @@ def main():
   times.append(dict(condition=keys[0],scenario=keys[1],scheduler=keys[2],runs=len(g),completed_before=int(g.completed_before.sum()),completed_after=int(g.completed_after.sum()),common_completed=len(c),paired_seeds=','.join(map(str,c.seed)),mean_before_s=c.fct_s_before.mean(),mean_after_s=c.fct_s_after.mean(),mean_delta_s=mean,ci95_low_s=lo,ci95_high_s=hi,wilcoxon_statistic=stat,wilcoxon_p=p,nonzero_pairs=n,faster=int(delta.lt(0).sum()),slower=int(delta.gt(0).sum()),ties=int(delta.eq(0).sum())))
  time_table=pd.DataFrame(times);time_table['wilcoxon_p_holm_all_groups']=holm(time_table.wilcoxon_p)
  time_table.to_csv(out/'before_after_common_fct.csv',index=False)
- # A compact before/after plot keeps original timeouts and failures visible.
- fig,ax=plt.subplots(figsize=(10,6));s=pd.DataFrame(rows);y=np.arange(len(s));
- ax.barh(y-.18,s.completed_before,.36,label='Before: completed');ax.barh(y+.18,s.completed_after,.36,label='Integrated: completed')
- for i,r in enumerate(s.itertuples()):ax.text(max(r.completed_before,r.completed_after)+1,i,f'{r.completed_before}/{r.runs} -> {r.completed_after}/{r.runs}',va='center',fontsize=8)
- ax.set_yticks(y);ax.set_yticklabels([CONDITION_LABELS[x] for x in s.condition],fontsize=8);ax.invert_yaxis();ax.set_xlim(0,max(s.runs)*1.35);ax.set_xlabel('Completed executions');ax.legend();ax.set_title('Week 4: original settings replayed on one integrated QUIC version\nSame seeds, buffers, loss, queue and simulation end time');fig.tight_layout();fig.savefig(out/'figures/final_validation.png',dpi=160);plt.close(fig)
+ plot_comparison(pd.DataFrame(rows),out/'figures/final_validation.png')
  preserved=0
  for line in (ROOT/'artifacts/week4/SHA256SUMS').read_text().splitlines():
   h,rel=line.split('  ',1);assert sha(ROOT/'artifacts/week4'/rel)==h,rel;preserved+=1
